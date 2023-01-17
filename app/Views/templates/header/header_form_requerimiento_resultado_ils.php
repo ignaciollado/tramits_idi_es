@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
 
 	<div class="menu">
 		<ul>
@@ -8,7 +8,7 @@
 			</li>
 		</ul>
 	</div>	
-</header>
+</header> -->
 
 <article  class="alert alert-info">
 <h2><?php echo lang('message_lang.datos_empresa_ils_recibidos');?></h2>

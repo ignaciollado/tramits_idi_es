@@ -42,7 +42,7 @@
 <body>
 <article>
 	<!-- HEADER: MENU + HEROE SECTION -->
-	<heade class="header__formempresasils">
+	<header class="header__formempresasils">
 		<fieldset  class="header__formempresasils--logo">
 			<a href="http://www.idi.es" target="_blank">
 				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_institut_dinnovacio_empresarial_col_horitz.jpg";?>" />
@@ -54,5 +54,5 @@
     	<h5><?php echo lang('message_lang.destino_solicitud');?>: <?php echo lang('message_lang.idi');?></h5>
     	<h5><?php echo lang('message_lang.codigo_dir3');?> <?php echo $data['configuracion']['emisorDIR3'];?></h5>
   	</fieldset> 
-	</heade>
+	</header>
 </article>

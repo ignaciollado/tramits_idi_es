@@ -86,6 +86,8 @@ header {
 .header__formempresasils {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	max-width: 1110px;
+	margin: auto;
 }
 
 .header__formempresasils--logo {

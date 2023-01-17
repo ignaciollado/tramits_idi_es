@@ -27,7 +27,7 @@
 		<h3><strong><?php echo lang('message_lang.solicitud_doc_itinerario_formativo_ils_titulo');?></strong></h3>
   </div>
 
-  <form action="<?php echo base_url('/public/index.php/expedientes/do_doc_itinerario_formativo_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+  <form action="<?php echo base_url('/public/index.php/expedientes/do_doc_itinerario_formativo_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_itinerrioFormativo" id="form_itinerrioFormativo" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
   <input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
 	<input type = "hidden" name="empresa" id="empresa" value = "<?php echo $data['expedientes']['empresa'];?>">
@@ -52,7 +52,7 @@
 			  <div class = "content-file-upload">
   				<h5>[.pdf, .jpg, .png, .webp] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</h5>
 				  <div>
-					  <input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_itinerarioFormativoIls" name="file_itinerarioFormativoIls[]" required size="20" accept=".pdf, .jpg, .png, .webp"/>
+					  <input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_certificado_itinerario_formativo" name="file_certificado_itinerario_formativo[]" required size="20" accept=".pdf, .jpg, .png, .webp"/>
 				  </div>
 			  </div>
 		  </section>
@@ -67,8 +67,8 @@
 </article>
 
 <script>
-	$('#form_justificacion').submit(function(){
-		if ( $("#file_PlanTransformacionDigital").val().length == 0 && $("#file_FactTransformacionDigital").val().length == 0 && $("#file_PagosTransformacionDigital").val().length == 0)
+	$('#form_itinerrioFormativo').submit(function(){
+		if ( $("#file_certificado_itinerario_formativo").val().length == 0 && $("#file_FactTransformacionDigital").val().length == 0 && $("#file_PagosTransformacionDigital").val().length == 0)
 			{
 			alert ("¡Por favor, seleccione algún archivo para enviarnos!");
 			return false;
@@ -99,7 +99,7 @@
         <?php echo lang('message_lang.rgpd_txt');?>
         </span></div>
         <div class="modal-footer">
-          <button type = "button" id = "documentacion_justificacion" class = "btn btn-default" data-dismiss="modal"><?php echo lang('message_lang.cierra');?></button>
+          <button type = "button" id = "documentacion_itinerarioFormativo" class = "btn btn-default" data-dismiss="modal"><?php echo lang('message_lang.cierra');?></button>
         </div>
       </div>
     </div>
@@ -108,17 +108,17 @@
 
 <script>
 	$(document).ready(function(){
-		$("#file_PlanTransformacionDigital").focusout(function() {
+		$("#file_certificado_itinerario_formativo").focusout(function() {
 		var inputValue = $(this).val();
 		var txt = "";
 		
-		if (inputValue == "" || document.getElementById("file_PlanTransformacionDigital").validity.patternMismatch)
+		if (inputValue == "" || document.getElementById("file_certificado_itinerario_formativo").validity.patternMismatch)
 			{
 			txt = "Hauria de ser un nom vàlid !!!";
 			document.getElementById("mensaje").innerHTML = txt;			
-			$("#file_PlanTransformacionDigital").focus();
+			$("#file_certificado_itinerario_formativo").focus();
 			$('#centre').prop('disabled', true);
-			$("#file_PlanTransformacionDigital").addClass("form-control is-not-valid");
+			$("#file_certificado_itinerario_formativo").addClass("form-control is-not-valid");
 			$('#enviar_inscripcion').prop('disabled', true);
 			}
 		else
@@ -132,11 +132,11 @@
 		$( "#rgpd" ).change(function() {
 		if ($(this).is(":checked"))
 			{
-			$('#documentacion_justificacion').prop('disabled', false);
+			$('#documentacion_itinerarioFormativo').prop('disabled', false);
 		}
 		else
 		{
-			$('#documentacion_justificacion').prop('disabled', true);	
+			$('#documentacion_itinerarioFormativo').prop('disabled', true);	
 		}
 		});
 	});	

@@ -5,6 +5,8 @@
 body {
     background-color: rgba(241, 241, 241, 0);
     font-family: "Montserrat";
+    max-width: 1120px;
+    margin: auto!important;
   }
 
 article {
@@ -43,7 +45,7 @@ section {
   }
 header .logo {
     float: left;
-    width: 23%;
+    width: 60%;
     height: auto;
     padding: .4rem .5rem;
 }
@@ -294,12 +296,12 @@ select, input, textarea {
     padding: .5rem 0;
   }
 footer {
-    position: fixed;
+    position: sticky;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgba(221, 72, 20, .8);
-    background-color: rgba(163, 212, 219, 1);
+/*     background-color: rgba(221, 72, 20, .8);
+    background-color: rgba(163, 212, 219, 1); */
     text-align: center;
 }
 

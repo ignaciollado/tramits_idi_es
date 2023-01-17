@@ -1634,8 +1634,6 @@ class Expedientes extends Controller
 		$selloTiempo = date("d_m_Y_h_i_sa");
 		$tipo_tramite = 'ILS';
 
-
-		
 		// Sube el logo de la empresa
 		$documentosfile = $this->request->getFiles();
 		foreach($documentosfile['file_logotipoEmpresaIls'] as $lotogtipo)
@@ -1671,6 +1669,162 @@ class Expedientes extends Controller
 					fecha_creacion_empresa = '".$this->request->getVar('fecha_creacion_empresa')."'
 
 			WHERE id =" . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+	
+		$data['titulo'] = "Expedient: " . $id ." / ". $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach($expediente as $exped_item):
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		echo view('templates/header/header_form_ils', $data);
+		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);	
+		echo view('templates/footer/footer_form');
+	}
+
+	public function do_doc_itinerario_formativo_upload( $id, $nif, $idioma, $convocatoria )
+	{
+
+		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un documento 
+				de itinerario formativo que no sea válido. Entonces, se lo solicitamos nuevamente. */
+
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Itinerari Formatiu per adherir-se a ILS"
+			];
+
+		$db = \Config\Database::connect();
+		$documentos = $db->table('pindust_documentos');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = 'ILS';
+
+		// Sube el itinerario formativo de la empresa
+		$documentosfile = $this->request->getFiles();
+		foreach($documentosfile['file_certificado_itinerario_formativo'] as $lotogtipo)
+				{
+					if ($lotogtipo->isValid() && ! $lotogtipo->hasMoved())
+					{
+						$newName = $lotogtipo->getRandomName();
+						$lotogtipo->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $newName);
+						$data_file = [
+							'name' => $newName,
+							'type' => $lotogtipo->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+							'corresponde_documento' => 'file_certificado_itinerario_formativo',
+							'datetime_uploaded' => time(),
+							'convocatoria' 		=> $convocatoria,
+							'created_at'  		=> $lotogtipo->getTempName(),
+							'selloDeTiempo'  	=> $selloTiempo,
+							'docRequerido' 		=> 'SI',
+							'id_sol'         	=> $id
+						];
+						$save = $documentos->insert($data_file);
+						$last_insert_id = $save->connID->insert_id;
+					}
+				}
+		/* ------------------ actualiza el estado del expediente a 'file_certificado_itinerario_formativo a cargado SI' ---------------*/
+		$sql = "UPDATE pindust_expediente 
+		
+			SET file_certificado_itinerario_formativo = 'SI' WHERE id =" . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+	
+		$data['titulo'] = "Expedient: " . $id ." / ". $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach($expediente as $exped_item):
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		echo view('templates/header/header_form_ils', $data);
+		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);	
+		echo view('templates/footer/footer_form');
+	}
+
+	public function do_doc_informe_gei_upload( $id, $nif, $idioma, $convocatoria )
+	{
+
+		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un informe GEI
+		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
+
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Informe GEI per adherir-se a ILS"
+			];
+
+		$db = \Config\Database::connect();
+		$documentos = $db->table('pindust_documentos');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = 'ILS';
+
+		// Sube el itinerario formativo de la empresa
+		$documentosfile = $this->request->getFiles();
+		foreach($documentosfile['file_informeInventarioIls'] as $lotogtipo)
+				{
+					if ($lotogtipo->isValid() && ! $lotogtipo->hasMoved())
+					{
+						$newName = $lotogtipo->getRandomName();
+						$lotogtipo->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $newName);
+						$data_file = [
+							'name' => $newName,
+							'type' => $lotogtipo->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+							'corresponde_documento' => 'file_informeInventarioIls',
+							'datetime_uploaded' => time(),
+							'convocatoria' 		=> $convocatoria,
+							'created_at'  		=> $lotogtipo->getTempName(),
+							'selloDeTiempo'  	=> $selloTiempo,
+							'docRequerido' 		=> 'SI',
+							'id_sol'         	=> $id
+						];
+						$save = $documentos->insert($data_file);
+						$last_insert_id = $save->connID->insert_id;
+					}
+				}
+		/* ------------------ actualiza el estado del expediente a 'file_informeInventarioIls a cargado SI' ---------------*/
+		$sql = "UPDATE pindust_expediente 
+		
+			SET file_informeInventarioIls = 'SI' WHERE id =" . $id;
 		$db->simpleQuery($sql);
 		/*-------------------------------------------------------------------------------------------------*/
 	
