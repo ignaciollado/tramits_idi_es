@@ -389,7 +389,6 @@
                     }   
                 ?>
 
-
             <br>
             <div class="alert alert-info">
                 <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
@@ -436,7 +435,7 @@
                 <!-----------------------------------------1.-enero_Envía formulario formulario solicitud itinerario formativo ----------------->
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-itinerario-formativo-ils.php';?>
                 <!------------------------------------------------------------------------------------------------------>
-                <!-----------------------------------------1.-enero_Envía formulario solicitud informe GEI ----------------->
+                <!-----------------------------------------1.-enero_Envía formulario solicitud informe GEH ----------------->
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-gei-ils.php';?>
                 <!------------------------------------------------------------------------------------------------------>
                 <!-----------------------------------------1.-enero_Envía manual y logotipos ILS ----------------->

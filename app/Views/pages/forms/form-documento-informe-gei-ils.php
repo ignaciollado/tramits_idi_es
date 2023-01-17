@@ -68,21 +68,16 @@
 
 <script>
 	$('#form_informeGEI').submit(function(){
-		if ( $("#file_PlanTransformacionDigital").val().length == 0 && $("#file_FactTransformacionDigital").val().length == 0 && $("#file_PagosTransformacionDigital").val().length == 0)
-			{
-			alert ("¡Por favor, seleccione algún archivo para enviarnos!");
-			return false;
-			}
-		else {
-			let theForm=document.getElementById("form_informeGEI");
-			theForm.style.cursor="progress";
+
+			let theForm = document.getElementById("form_informeGEI");
+			theForm.style.cursor = "progress";
   			theForm.disabled = true;
   			theForm.style.opacity =".2";
 			$("#enviar_docs", this)
 				.html("Enviant, un moment per favor ...")
 				.attr('disabled', 'disabled')
 				.css("background-color","orange");			
-		}
+
 	});
 </script>
 

@@ -170,7 +170,10 @@ function logSubmit(btnID) {
 }
 
 function cambiaEstadoDoc(id) {
-	let element = document.getElementById(id);
+	let element = document.getElementById(id)
+	let tipoDocumento = document.getElementById("tipoTramite")
+	/* alert (tipoDocumento.innerHTML) */
+
 	element.style.color = "yellow";
 	let estado = '';
 	let stateChanged = false;

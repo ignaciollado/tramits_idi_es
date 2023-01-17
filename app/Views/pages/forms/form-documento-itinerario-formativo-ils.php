@@ -27,7 +27,7 @@
 		<h3><strong><?php echo lang('message_lang.solicitud_doc_itinerario_formativo_ils_titulo');?></strong></h3>
   </div>
 
-  <form action="<?php echo base_url('/public/index.php/expedientes/do_doc_itinerario_formativo_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_itinerrioFormativo" id="form_itinerrioFormativo" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+  <form action="<?php echo base_url('/public/index.php/expedientes/do_doc_itinerario_formativo_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_itinerarioFormativo" id="form_itinerarioFormativo" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
   <input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
 	<input type = "hidden" name="empresa" id="empresa" value = "<?php echo $data['expedientes']['empresa'];?>">
@@ -67,22 +67,17 @@
 </article>
 
 <script>
-	$('#form_itinerrioFormativo').submit(function(){
-		if ( $("#file_certificado_itinerario_formativo").val().length == 0 && $("#file_FactTransformacionDigital").val().length == 0 && $("#file_PagosTransformacionDigital").val().length == 0)
-			{
-			alert ("¡Por favor, seleccione algún archivo para enviarnos!");
-			return false;
-			}
-		else {
-			let theForm=document.getElementById("form_justificacion");
-			theForm.style.cursor="progress";
+	$('#form_itinerarioFormativo').submit(function(){
+
+			let theForm = document.getElementById("form_itinerarioFormativo");
+			theForm.style.cursor = "progress";
   			theForm.disabled = true;
   			theForm.style.opacity =".2";
 			$("#enviar_docs", this)
 				.html("Enviant, un moment per favor ...")
 				.attr('disabled', 'disabled')
-				.css("background-color","orange");			
-		}
+				.css("background-color","orange");
+	
 	});
 </script>
 
@@ -108,10 +103,10 @@
 
 <script>
 	$(document).ready(function(){
+
 		$("#file_certificado_itinerario_formativo").focusout(function() {
 		var inputValue = $(this).val();
 		var txt = "";
-		
 		if (inputValue == "" || document.getElementById("file_certificado_itinerario_formativo").validity.patternMismatch)
 			{
 			txt = "Hauria de ser un nom vàlid !!!";
@@ -139,5 +134,6 @@
 			$('#documentacion_itinerarioFormativo').prop('disabled', true);	
 		}
 		});
+	
 	});	
 </script>

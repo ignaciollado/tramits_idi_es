@@ -5,7 +5,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
         else {?>
-			  <button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myEnviarInformeGEI" id="myBtnEnviarInformeGEI">PENDING -> Enviar al sol·licitant el formulari de sol·licitud l'informe GEI de ILS</button>       
+			  <button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myEnviarInformeGEI" id="myBtnEnviarInformeGEI">PENDING -> Enviar al sol·licitant el formulari de sol·licitud l'informe GEH de ILS</button>       
 		  <?php }?>
 
 
@@ -14,12 +14,12 @@
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Sol·licitud de l'informe GEI de ILS</strong></label>
+						<label for="cerrarModalActaCierre"><strong>Sol·licitud de l'informe GEH de ILS</strong></label>
         				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè ens faci arribar l'informe GEI?</span>
+							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè ens faci arribar l'informe GEH?</span>
 						</div>	
 						<div class="form-group">
            				    <button type="button" onclick = "javaScript: enviaMailInformeGEI_click();" id="enviaMailInformeGEI" class="btn-itramits btn-success-itramits">Enviar
