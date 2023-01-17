@@ -47,7 +47,7 @@ section {
   }
 header .logo {
     float: left;
-    width: 60%;
+    width: 70%;
     height: auto;
     padding: .4rem .5rem;
 }
@@ -302,9 +302,18 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-/*     background-color: rgba(221, 72, 20, .8);
-    background-color: rgba(163, 212, 219, 1); */
     text-align: center;
+}
+
+.alert-info, .btn-success {
+  background-color: #365446;
+  border: none;
+  border-radius: 0;
+}
+
+.panel-justificacion {
+  border: 1px solid #365446!important;
+  border-radius: 0;
 }
 
 /* The Modal (styling) */
