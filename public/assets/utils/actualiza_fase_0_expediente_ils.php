@@ -11,6 +11,7 @@ $nombre_rep = mysqli_real_escape_string($conn, $_POST["nombre_rep"]);
 $nif_rep = mysqli_real_escape_string($conn, $_POST["nif_rep"]);
 $tecnicoAsignado = mysqli_real_escape_string($conn, $_POST["tecnicoAsignado"]);
 $situacion_exped = mysqli_real_escape_string($conn, $_POST["situacion_exped"]);
+$sitio_web_empresa = mysqli_real_escape_string($conn, $_POST["sitio_web_empresa"]);
 
 $query = "UPDATE pindust_expediente 
     SET  
@@ -21,7 +22,8 @@ $query = "UPDATE pindust_expediente
     nombre_rep = '" . mb_strtoupper($nombre_rep) . "',
     nif_rep = '" . mb_strtoupper($nif_rep) . "',
     tecnicoAsignado = '" . mb_strtoupper($tecnicoAsignado) . "',
-    situacion = '" . $situacion_exped . "'
+    situacion = '" . $situacion_exped . "',
+    sitio_web_empresa = '" . $sitio_web_empresa . "'
 
     WHERE  id = " . $id;
 $result = mysqli_query($conn, $query);

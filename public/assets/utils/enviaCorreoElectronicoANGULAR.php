@@ -31,7 +31,7 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 $mail->Username = "notificacion@idi.es";  // SMTP username
-$mail->Password = "x5L4Sx@58"; // SMTP password
+$mail->Password = "Q6AaCuQmLguV2uL%"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "notificacion@idi.es";

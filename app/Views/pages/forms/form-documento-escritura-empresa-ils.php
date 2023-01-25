@@ -24,10 +24,10 @@
 <article>
 
   <div class="alert alert-info">
-		<h3><strong><?php echo lang('message_lang.solicitud_doc_informe_gei_ils_titulo');?></strong></h3>
+		<h3><strong><?php echo lang('message_lang.solicitud_doc_escritura_empresa_ils_titulo');?></strong></h3>
   </div>
 
-  <form action="<?php echo base_url('/public/index.php/expedientes/do_doc_informe_gei_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_informeGEI" id="form_informeGEI" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+  <form action="<?php echo base_url('/public/index.php/expedientes/do_doc_escritura_empresa_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_informeGEH" id="form_informeGEH" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
   <input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
 	<input type = "hidden" name="empresa" id="empresa" value = "<?php echo $data['expedientes']['empresa'];?>">
@@ -40,19 +40,19 @@
       <h3><strong><?php echo $data['expedientes']['empresa'];?></strong></h3><br>					
 				<h3><?php echo lang('message_lang.solicitante_adhesion_ils');?>
           <?php 
-	          echo lang('message_lang.informe_gei');
+	          echo lang('message_lang.escritura_empresa');
           ?>
         </h3>
     </div>
   </fieldset> 
 
   <fieldset>  
-  	<legend><h4><strong><?php echo lang('message_lang.documento_informe_gei_ils');?></strong></h4> </legend>
+  	<legend><h4><strong><?php echo lang('message_lang.documento_escritura_empresa_ils');?></strong></h4> </legend>
 	  <section class="panel-justificacion">
 		  <div class = "content-file-upload">
   			<h5>[.pdf, .jpg, .png, .webp] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</h5>
 	  		  <div>
-					  <input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_informeInventarioIls" name="file_informeInventarioIls[]" required size="20" accept=".pdf, .jpg, .png, .webp"/>
+					  <input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_escritura_empresa" name="file_escritura_empresa[]" required size="20" accept=".pdf, .jpg, .png, .webp"/>
 				  </div>
 		  </div>
 	  </section>
@@ -67,9 +67,9 @@
 </article>
 
 <script>
-	$('#form_informeGEI').submit(function(){
+	$('#form_informeGEH').submit(function(){
 
-			let theForm = document.getElementById("form_informeGEI");
+			let theForm = document.getElementById("form_informeGEH");
 			theForm.style.cursor = "progress";
   			theForm.disabled = true;
   			theForm.style.opacity =".2";

@@ -25,8 +25,8 @@ $mail->IsSMTP();
 
 // As this email.php script lives on the same server as our email server
 // we are setting the HOST to localhost
-$mail->SMTPSecure = 'tls';
-$mail->Host = "smtp.gmail.com";  // specify main and backup server
+//$mail->SMTPSecure = 'ssl';
+$mail->Host = "localhost";  // specify main and backup server
 $mail->CharSet = 'UTF-8';
 $mail->XMailer = 'IDI';
 $mail->SMTPAuth = true;     // turn on SMTP authentication
@@ -34,11 +34,11 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // In this case, we setup a test email account with the following credentials:
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
-$mail->Username = "notificacion@idi.es";  // SMTP username
-$mail->Password = "x5L4Sx@58"; // SMTP password
+$mail->Username = "tramits@tramits.idi.es";  // SMTP username
+$mail->Password = "aWnpg9:?;813"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
-$mail->From = "notificacion@idi.es";
+$mail->From = "tramits@tramits.idi.es";
 $mail->FromName = "IDI";
 // Lo que verá del remitente el destinatario
 $mail->SetFrom("noreply@idi.es","IDI");
@@ -95,8 +95,8 @@ $email_message .= "</table>";
 $email_message .= "<br>";
 $email_message .= "<br>";
 $email_message .= "<br>";	
-$email_message .= $firma;
-$email_message .= $notalegal;
+/* $email_message .= $firma;
+$email_message .= $notalegal; */
 $email_message .= "</div>";
 $email_message .= "</body>";
 $email_message .= "</html>";

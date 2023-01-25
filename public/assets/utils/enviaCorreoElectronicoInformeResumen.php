@@ -6,8 +6,6 @@ require_once 'conectar_a_bbdd.php';
 $id_doc = $_POST["id_doc"];
 $query = "SELECT email_rep, empresa, nif, tipo_tramite, convocatoria FROM pindust_expediente WHERE  id = " . $_POST["id"];
 
-//echo "#".$query."#";
-
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
@@ -37,10 +35,12 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 $mail->Username = "tramits@tramits.idi.es";  // SMTP username
+
 $mail->Password = "aWnpg9:?;813"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
+
 $mail->FromName = "IDI";
 // Lo que verá del remitente el destinatario
 $mail->SetFrom("noreply@idi.es","IDI");
@@ -54,7 +54,7 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
-$mail->Subject = "Solicitam el document: itinerari formatiu sobre la petjada de carboni - ILS";
+$mail->Subject = "Solicitam l\'Informe resum de la petjada de carboni - ILS";
 $email_message = "<!DOCTYPE html>";
 $email_message .= "<html lang='es'>";
 $email_message .= "<html>";
@@ -69,15 +69,15 @@ $email_message .= "<table data-toggle='table'";
 $email_message .= "<tbody>";
 $email_message .= "<tr style='width:100%;text-align:left;'><td style='font-size: 14px;'>";
 $email_message .= "<div>Benvolgut senyor / senyora,</div>";
-$email_message .= "<br><div>Per completar l'adhesió al nostre programa ILS (Indústria Local Sostenible) ens fa falta l'itinerari formatiu sobre la petjada de carboni 
-. <br><br>Per a això necessitem que ens el faci arribar per mitjà del següent formulari:</div>";
-$email_message .= "<div><a title='Obrir el formulari per fer-nos arribar l´itinerari formatiu de la seva empresa' href = 'https://tramits.idi.es/public/index.php/home/itinerario_formativo_ils/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment de l'itinerari formatiu petjada de carboni</a></div>";
+$email_message .= "<br><div>Per completar l'adhesió al nostre programa ILS (Indústria Local Sostenible) ens fa falta l'Informe resum de la petjada de carboni. 
+<br><br>Per a això necessitem que ens el faci arribar per mitjà del següent formulari:</div>";
+$email_message .= "<div><a title='Obrir el formulari per fer-nos arribar l´Informe resum de la petjada de carboni' href = 'https://tramits.idi.es/public/index.php/home/informe_resum_ils/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment de l'Informe resum de la petjada de carboni</a></div>";
 
 $email_message .= "<br><div>Salutacions,</div>";
 $email_message .= "<br><div>Industria Local Sostenible</div>";
 $email_message .= "<div>Equip del servei de Política Industrial de l'IDI</div>";
 $email_message .= "<div><strong>Institut d'Innovació Empresarial de les Illes Balears</strong></div>";
-$email_message .= "<div><strong>Vicepresidència de Transició Energètica, Sectors Productius i Memòria Democràtica</strong></div>";
+$email_message .= "<div><strong>Vicepresidència de Transició Energètica, Sectors Productius i Memòria Democràtica</strong></div>";
 $email_message .= "<div>Telèfon 971 176161 + 62891</div>";
 $email_message .= "<div>Plaça de Son Castelló, 1</div>";
 $email_message .= "<div>07009 Palma</div></td></tr>";
@@ -110,7 +110,8 @@ else
     VALUES ($id_doc, '$correoDestino')";
 
     $result = mysqli_query($conn, $query);
-	$result = "<strong>Sol·licitud de l'itinerari formatiu enviat a la adreça de notificació " .$correoDestino."</strong>";
+
+	$result = "<strong>Sol·licitud de l'escriptura de l'empresa a la adreça de notificació " .$correoDestino."</strong>";
 }
 
 

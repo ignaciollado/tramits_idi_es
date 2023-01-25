@@ -5,7 +5,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
         else {?>
-			  <button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myEnviarManualYLogotipo" id="myBtnEnviarManualYLogotipo">PENDING -> Enviar al sol·licitant el manual d'ús i els logotips ILS</button>       
+			  <button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myEnviarManualYLogotipo" id="myBtnEnviarManualYLogotipo">Enviar al sol·licitant el manual d'ús i els logotips ILS</button>       
 		  <?php }?>
 
 
@@ -35,23 +35,23 @@
 
   <script>
   // Get the modal
-  let modal_17ils_1 = document.getElementById("myEnviarManualYLogotipo");
+  let modal_17ils_Logos = document.getElementById("myEnviarManualYLogotipo");
 	// Get the button that opens the modal
-	let btn_17ils_1 = document.getElementById("myBtnEnviarManualYLogotipo");
+	let btn_17ils_Logos = document.getElementById("myBtnEnviarManualYLogotipo");
 	// Get the <span> element that closes the modal
-	let span_17ils_1 = document.getElementsByClassName("close")[0];
+	let span_17ils_Logos = document.getElementsByClassName("close")[0];
 	// When the user clicks the button, open the modal 
-	btn_17ils_1.onclick = function() {
-    modal_17ils_1.style.display = "block";
+	btn_17ils_Logos.onclick = function() {
+    modal_17ils_Logos.style.display = "block";
 	}
 	// When the user clicks on <span> (x), close the modal
-	span_17ils_1.onclick = function() {
-    modal_17ils_1.style.display = "none";
+	span_17ils_Logos.onclick = function() {
+    modal_17ils_Logos.style.display = "none";
 	}
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-  	if (event.target == modal_17ils_1) {
-      modal_17ils_1.style.display = "none";
+  	if (event.target == modal_17ils_Logos) {
+      modal_17ils_Logos.style.display = "none";
   	}
 	}
   </script>

@@ -274,7 +274,7 @@ class Expedientes extends Controller
 		$modelConfig = new ConfiguracionModel();
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();		
 		$data['importeAyuda'] = $data['configuracion']['programa'];
-        $data['abrirPanel'] = 0;
+    $data['abrirPanel'] = 0;
 		
 		$modelExp = new ExpedientesModel();
 		$db = \Config\Database::connect();
@@ -1687,6 +1687,162 @@ class Expedientes extends Controller
 		echo view('templates/footer/footer_form');
 	}
 
+	public function do_doc_informe_resumen_upload( $id, $nif, $idioma, $convocatoria )
+	{
+
+		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Informe resumen
+		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
+
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Informe resum de la petjada de carboni per adherir-se a ILS"
+			];
+
+		$db = \Config\Database::connect();
+		$documentos = $db->table('pindust_documentos');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = 'ILS';
+
+		// Sube el itinerario formativo de la empresa
+		$documentosfile = $this->request->getFiles();
+		foreach($documentosfile['file_informeResumenIls'] as $lotogtipo)
+				{
+					if ($lotogtipo->isValid() && ! $lotogtipo->hasMoved())
+					{
+						$newName = $lotogtipo->getRandomName();
+						$lotogtipo->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $newName);
+						$data_file = [
+							'name' => $newName,
+							'type' => $lotogtipo->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+							'corresponde_documento' => 'file_informeResumenIls',
+							'datetime_uploaded' => time(),
+							'convocatoria' 		=> $convocatoria,
+							'created_at'  		=> $lotogtipo->getTempName(),
+							'selloDeTiempo'  	=> $selloTiempo,
+							'docRequerido' 		=> 'SI',
+							'id_sol'         	=> $id
+						];
+						$save = $documentos->insert($data_file);
+						$last_insert_id = $save->connID->insert_id;
+					}
+				}
+		/* ------------------ actualiza el estado del expediente a 'file_informeInventarioIls a cargado SI' ---------------*/
+		$sql = "UPDATE pindust_expediente 
+		
+			SET file_informeResumenIls = 'SI' WHERE id =" . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+	
+		$data['titulo'] = "Expedient: " . $id ." / ". $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach($expediente as $exped_item):
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		echo view('templates/header/header_form_ils', $data);
+		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);	
+		echo view('templates/footer/footer_form');
+	}
+
+	public function do_doc_compromiso_reduccion_upload( $id, $nif, $idioma, $convocatoria )
+	{
+
+		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Informe resumen
+		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
+
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Compromís de reducció de les emissions de gasos d'efecte hivernacle per adherir-se a ILS"
+			];
+
+		$db = \Config\Database::connect();
+		$documentos = $db->table('pindust_documentos');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = 'ILS';
+
+		// Sube el itinerario formativo de la empresa
+		$documentosfile = $this->request->getFiles();
+		foreach($documentosfile['file_modeloEjemploIls'] as $lotogtipo)
+				{
+					if ($lotogtipo->isValid() && ! $lotogtipo->hasMoved())
+					{
+						$newName = $lotogtipo->getRandomName();
+						$lotogtipo->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $newName);
+						$data_file = [
+							'name' => $newName,
+							'type' => $lotogtipo->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+							'corresponde_documento' => 'file_modeloEjemploIls',
+							'datetime_uploaded' => time(),
+							'convocatoria' 		=> $convocatoria,
+							'created_at'  		=> $lotogtipo->getTempName(),
+							'selloDeTiempo'  	=> $selloTiempo,
+							'docRequerido' 		=> 'SI',
+							'id_sol'         	=> $id
+						];
+						$save = $documentos->insert($data_file);
+						$last_insert_id = $save->connID->insert_id;
+					}
+				}
+		/* ------------------ actualiza el estado del expediente a 'file_informeInventarioIls a cargado SI' ---------------*/
+		$sql = "UPDATE pindust_expediente 
+		
+			SET file_modeloEjemploIls = 'SI' WHERE id =" . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+	
+		$data['titulo'] = "Expedient: " . $id ." / ". $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach($expediente as $exped_item):
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		echo view('templates/header/header_form_ils', $data);
+		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);	
+		echo view('templates/footer/footer_form');
+	}
+
 	public function do_doc_itinerario_formativo_upload( $id, $nif, $idioma, $convocatoria )
 	{
 
@@ -1843,4 +1999,159 @@ class Expedientes extends Controller
 		echo view('templates/footer/footer_form');
 	}
 
+	public function do_doc_escritura_empresa_upload( $id, $nif, $idioma, $convocatoria )
+	{
+
+		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado una Escritura de la Empresa
+		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
+
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Escriptura Empresa per adherir-se a ILS"
+			];
+
+		$db = \Config\Database::connect();
+		$documentos = $db->table('pindust_documentos');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = 'ILS';
+
+		// Sube el itinerario formativo de la empresa
+		$documentosfile = $this->request->getFiles();
+		foreach($documentosfile['file_escritura_empresa'] as $lotogtipo)
+				{
+					if ($lotogtipo->isValid() && ! $lotogtipo->hasMoved())
+					{
+						$newName = $lotogtipo->getRandomName();
+						$lotogtipo->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $newName);
+						$data_file = [
+							'name' => $newName,
+							'type' => $lotogtipo->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+							'corresponde_documento' => 'file_escritura_empresa',
+							'datetime_uploaded' => time(),
+							'convocatoria' 		=> $convocatoria,
+							'created_at'  		=> $lotogtipo->getTempName(),
+							'selloDeTiempo'  	=> $selloTiempo,
+							'docRequerido' 		=> 'SI',
+							'id_sol'         	=> $id
+						];
+						$save = $documentos->insert($data_file);
+						$last_insert_id = $save->connID->insert_id;
+					}
+				}
+		/* ------------------ actualiza el estado del expediente a 'file_informeInventarioIls a cargado SI' ---------------*/
+		$sql = "UPDATE pindust_expediente 
+		
+			SET file_escritura_empresa = 'SI' WHERE id =" . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+	
+		$data['titulo'] = "Expedient: " . $id ." / ". $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach($expediente as $exped_item):
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		echo view('templates/header/header_form_ils', $data);
+		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);	
+		echo view('templates/footer/footer_form');
+	}
+
+	public function do_doc_certificado_iae_upload( $id, $nif, $idioma, $convocatoria )
+	{
+
+		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Certificado IAE
+		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
+
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Certificat IAE per adherir-se a ILS"
+			];
+
+		$db = \Config\Database::connect();
+		$documentos = $db->table('pindust_documentos');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = 'ILS';
+
+		// Sube el itinerario formativo de la empresa
+		$documentosfile = $this->request->getFiles();
+		foreach($documentosfile['file_certificadoIAE'] as $lotogtipo)
+				{
+					if ($lotogtipo->isValid() && ! $lotogtipo->hasMoved())
+					{
+						$newName = $lotogtipo->getRandomName();
+						$lotogtipo->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $newName);
+						$data_file = [
+							'name' => $newName,
+							'type' => $lotogtipo->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+							'corresponde_documento' => 'file_certificadoIAE',
+							'datetime_uploaded' => time(),
+							'convocatoria' 		=> $convocatoria,
+							'created_at'  		=> $lotogtipo->getTempName(),
+							'selloDeTiempo'  	=> $selloTiempo,
+							'docRequerido' 		=> 'SI',
+							'id_sol'         	=> $id
+						];
+						$save = $documentos->insert($data_file);
+						$last_insert_id = $save->connID->insert_id;
+					}
+				}
+		/* ------------------ actualiza el estado del expediente a 'file_informeInventarioIls a cargado SI' ---------------*/
+		$sql = "UPDATE pindust_expediente 
+		
+			SET file_certificadoIAE = 'SI' WHERE id =" . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+	
+		$data['titulo'] = "Expedient: " . $id ." / ". $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach($expediente as $exped_item):
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		echo view('templates/header/header_form_ils', $data);
+		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);	
+		echo view('templates/footer/footer_form');
+	}
 }

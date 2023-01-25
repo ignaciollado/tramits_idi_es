@@ -202,7 +202,6 @@ class Home extends BaseController
 		echo view('templates/footer/footer_form');
 	}	
 	
-
 	public function dec_resp_consul($page = 'forms/form-dec-resp-consultor-idigital')
 	{
 		helper('form');
@@ -212,7 +211,6 @@ class Home extends BaseController
 		echo view('pages/forms/form-dec-resp-consultor-ayuda');
 		echo view('templates/footer/footer');
 	}
-
 
 	public function set_lang_pindust_form_consul ()
 	{
@@ -245,7 +243,7 @@ class Home extends BaseController
 			);
    		set_cookie($cookie);
 		
-		echo view('templates/header/header_form_ils');
+		echo view('templates/header/header_form_adhesion_ils');
 		echo view('pages/forms/form-adhesion-ils');
 	}
 
@@ -264,7 +262,7 @@ class Home extends BaseController
 			);
    		set_cookie($cookie);
 
-		echo view('templates/header/header_form_ils');
+		echo view('templates/header/header_form_adhesion_ils');
 		echo view('pages/forms/form-adhesion-ils');
 	}
 
@@ -293,6 +291,130 @@ class Home extends BaseController
 		echo view('templates/footer/footer_form');
 	}
 
+	public function datos_empresa_ils_es( $id )
+	{
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		$language = \Config\Services::language();
+		$language->setLocale('es'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'es',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+			'id' => $id,
+			'idioma' => 'es',
+			'titulo' => "Datos de la empresa para publicar en la web ILS"
+		];
+		echo view('templates/header/header_form_ils', $data);
+		echo view('pages/forms/form-datos-empresa-ils', $data);
+		echo view('templates/footer/footer_form');
+	}
+
+	public function escritura_empresa_ils( $id )
+	{
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Sol·licitud del document Escriptura de l´empresa per a ILS"
+			];
+		echo view('templates/header/header_form_ils', $data);
+		echo view('pages/forms/form-documento-escritura-empresa-ils', $data);
+		echo view('templates/footer/footer_form');
+	}
+
+	public function informe_resum_ils( $id )
+	{
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Sol·licitud del document Informe resum de la petjada de carboni per a ILS"
+			];
+		echo view('templates/header/header_form_ils', $data);
+		echo view('pages/forms/form-documento-informe-resum-ils', $data);
+		echo view('templates/footer/footer_form');
+	}
+
+	public function compromiso_reduccion_ils( $id )
+	{
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Sol·licitud del document  Compromís de reducció de les emissions de gasos d'efecte hivernacle per a ILS"
+			];
+		echo view('templates/header/header_form_ils', $data);
+		echo view('pages/forms/form-documento-compromiso-reduccion-ils', $data);
+		echo view('templates/footer/footer_form');
+	}
+
+	public function certificado_IAE_ils( $id )
+	{
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		$data = [
+				'id' => $id,
+				'idioma' => 'ca',
+				'titulo' => "Sol·licitud del document Certificat d'alta d'IAE per a ILS"
+			];
+		echo view('templates/header/header_form_ils', $data);
+		echo view('pages/forms/form-documento-certificado-iae-ils', $data);
+		echo view('templates/footer/footer_form');
+	}
+
 	public function itinerario_formativo_ils( $id )
 	{
 		helper('form');
@@ -318,7 +440,7 @@ class Home extends BaseController
 		echo view('templates/footer/footer_form');
 	}
 
-	public function informe_gei_ils( $id )
+	public function informe_GEH_ils( $id )
 	{
 		helper('form');
 		helper('filesystem');
@@ -342,30 +464,6 @@ class Home extends BaseController
 		echo view('pages/forms/form-documento-informe-gei-ils', $data);
 		echo view('templates/footer/footer_form');
 	}
-
-	public function datos_empresa_ils_es( $id )
-	{
-		helper('form');
-		helper('filesystem');
-		helper('cookie');
-		$language = \Config\Services::language();
-		$language->setLocale('es'); 
-		$cookie = array(
-			'name'   => 'CurrentLanguage',
-			'value'  => 'es',                            
-			'expire' => '7200',                                                                                   
-			'secure' => true
-			);
-   	set_cookie($cookie);
-		$data = [
-			'id' => $id,
-			'idioma' => 'es',
-			'titulo' => "Datos de la empresa para publicar en la web ILS"
-		];
-		echo view('templates/header/header_form_ils', $data);
-		echo view('pages/forms/form-datos-empresa-ils', $data);
-		echo view('templates/footer/footer_form');
-	}	
 
 	public function empresas_adheridas_ils () 
 	{

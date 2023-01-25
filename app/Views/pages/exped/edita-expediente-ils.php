@@ -160,7 +160,14 @@
                            	<option <?php if ($expedientes['situacion'] === "empresaDenegada") { echo "selected";}?> value = "empresaDenegada" class="sitEjecucion_ils"> Empresa denegada</option>
                         </optgroup>
 			        </select>
-		        </div>                        
+		        </div>
+                
+                
+		        <div class="form-group general">
+                    <label for="sitio_web_empresa">Lloc web de l'empresa (<span class="alert-info">no poner el prefijo https:// ni http://</span>):</label>
+                    <input type="text" name="sitio_web_empresa" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "sitio_web_empresa" placeholder = "Lloc web de l'empresa" value = "<?php echo $expedientes['sitio_web_empresa']; ?>">
+                </div>
+                
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -180,14 +187,16 @@
             <h3>Documentació <strong>requerida</strong> de l'expedient:</h3>
             <div class="docsExpediente">
   	            <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-        	        <div >Rebut el</div>
-			        <div >Document</div>
-    		        <div >Tràmit</div>
-			        <div >Estat</div>
+        	        <div>Rebut el</div>
+			        <div>Document</div>
+    		        <div>Tràmit</div>
+			        <div>Estat</div>
+			        <div>Acció</div>
   		        </div>
                 <?php if($documentos){ ?>
                 <?php foreach($documentos as $docs_item): 
 			            $path = $docs_item->created_at;
+                        $id_doc = $docs_item->id;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
 
@@ -288,25 +297,48 @@
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
       			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite; ?></span>
-                            <!-- <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docs_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span class="detail-wrapper-docs-col">
+                            <?php 
+                            switch ($docs_item->corresponde_documento) {
+                                case 'file_escritura_empresa':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
+                                    break;
+    				            case 'file_certificadoIAE':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
+                                    break;
+                                case 'file_informeResumenIls':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-resumen-ils.php'; 
+                                    break;
+                                case 'file_informeInventarioIls':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-geh-ils.php';
+                                    break;
+                                case 'file_certificado_itinerario_formativo':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-itinerario-formativo-ils.php';
+	    				            break;
+                                case 'file_modeloEjemploIls':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-compromiso-reduccion-ils.php';
+	    				            break;
+                            } 
+                            ?>
+                            </span>
   			            </div>
-                          <?php }?>
+                    <?php }?>
                 <?php endforeach; ?>
                         <div >
                             <button class='hide-button' id="requeriment-button" onclick = "javaScript: generaRequerimiento(<?php echo $expedientes['id']; ?>);">Generar el requeriment</button>
@@ -326,6 +358,7 @@
 			            <div >Document</div>
     		            <div >Tràmit</div>
 			            <div >Estat</div>
+                        <div>Acció</div>
   		            </div>
                     <?php if($documentos){ ?>
                     <?php foreach($documentos as $docs_opc_item): 
@@ -362,7 +395,6 @@
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_opc_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_opc_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
       			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_opc_item->tipo_tramite; ?></span>
-                            <!-- <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docs_opc_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docs_opc_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
                             <?php
                             switch ($docs_opc_item->estado) {
 				                case 'Pendent':
@@ -378,7 +410,8 @@
     					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                                 }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocNoRequerido"><strong>Elimina</strong></button>';?></span>
   			            </div>
                     <?php }?>
                     <?php endforeach; ?>
@@ -388,9 +421,62 @@
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
+            <div id="myModalDocNoRequerido" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-header">
+        		            Aquesta acció no es podrá desfer.
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+    			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
+                            <div class="modal-footer">
+    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  	
+            <script>
+                function docNoRequerido_click (id, nombre) {
+    	        document.cookie = "documento_actual = " + id;
+	            console.log (id);
+                }
+                function opcion_seleccionada_click(respuesta) {
+    	        document.cookie = "respuesta = " + respuesta;
+	            console.log (respuesta);
+                }
+                function eliminaDocNoRequerido_click() {
+    	        console.log (getCookie("documento_actual"));
+	            let id = getCookie("documento_actual");
+	            console.log (getCookie("nuevo_estado"));
+	            let corresponde_documento = 'file_resguardoREC';
+	            $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+    			    location.reload();
+			    });	
+                }
+                function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+                }
+                return "";
+                }
+            </script> 
+
 
             <br>
-            <div class="alert alert-info">
+            <div>
                 <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
                 <?php //Compruebo el estado de la firma del documento.
 	            $db = \Config\Database::connect();
@@ -429,16 +515,10 @@
                 <br><a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud_ils.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><span class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'><small>La declaració responsable i sol·licitud sense signar</small></span></a>
             </div>
             <div class="btn-group" role="group">
-                <!-----------------------------------------1.-noviembre_Envía formulario solicitud datos adicionales de la empresa ----------------->
+                <!-----------------------------------------Envía formulario solicitud datos adicionales de la empresa ----------------->
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-datos-empresa.php';?>
                 <!------------------------------------------------------------------------------------------------------>
-                <!-----------------------------------------1.-enero_Envía formulario formulario solicitud itinerario formativo ----------------->
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-itinerario-formativo-ils.php';?>
-                <!------------------------------------------------------------------------------------------------------>
-                <!-----------------------------------------1.-enero_Envía formulario solicitud informe GEH ----------------->
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-gei-ils.php';?>
-                <!------------------------------------------------------------------------------------------------------>
-                <!-----------------------------------------1.-enero_Envía manual y logotipos ILS ----------------->
+                <!-----------------------------------------Envía manual y logotipos ILS ----------------->
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-manual-logotipos-ils.php';?>
                 <!------------------------------------------------------------------------------------------------------>
 
@@ -770,6 +850,7 @@
                 endforeach; ?>
                 <?php endif; ?>
             </div>
+
             <div id="myModalDocValidacion" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->

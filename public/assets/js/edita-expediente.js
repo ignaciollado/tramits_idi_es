@@ -170,39 +170,68 @@ function logSubmit(btnID) {
 }
 
 function cambiaEstadoDoc(id) {
+
 	let element = document.getElementById(id)
-	let tipoDocumento = document.getElementById("tipoTramite")
-	/* alert (tipoDocumento.innerHTML) */
+	let buttonID = id.split("#")[3]
+	switch (buttonID) {
+		case 'file_escritura_empresa':
+			buttonID = "myBtnEnviarFormularioEscrituraEmpresa"
+			break
+		case 'file_certificadoIAE':
+			buttonID = "myBtnEnviarFormularioCertificadoIAE"
+			break
+		case 'file_informeResumenIls':
+			buttonID = "myBtnEnviarFormularioInformeResumen"
+			break
+		case 'file_informeInventarioIls':
+			buttonID = "myBtnEnviarInformeGEH"
+			break
+		case 'file_certificado_itinerario_formativo':
+			buttonID = "myBtnEnviarFormularioItinerarioFormativo"
+			break
+		case 'file_modeloEjemploIls':
+			buttonID = "myBtnEnviarFormularioCompromisoReduccion"
+			break
+	}
+	let button = document.getElementById(buttonID)
 
 	element.style.color = "yellow";
 	let estado = '';
 	let stateChanged = false;
 	if (element.innerHTML === 'Desconegut' && !stateChanged) {
-		element.classList.remove("isa_caducado");
-		element.classList.add("isa_info"); 
-		element.innerHTML = "Pendent";
-		estado = 'Pendent';
-		stateChanged = true;
+		element.classList.remove("isa_caducado")
+		element.classList.add("isa_info")
+		element.innerHTML = "Pendent"
+		button.style.display = 'none'
+		button.classList.remove("btn-primary")
+		estado = 'Pendent'
+		stateChanged = true
 	}
 	if (element.innerHTML === 'Pendent' && !stateChanged) {
-		element.classList.remove("isa_info");
-		element.classList.add("isa_success"); 
-		element.innerHTML = "Aprovat";
-		estado = 'Aprovat';
-		stateChanged = true;
+		element.classList.remove("isa_info")
+		element.classList.add("isa_success")
+		element.innerHTML = "Aprovat"
+ 		button.style.display = 'none'
+		button.classList.remove("btn-primary")
+		estado = 'Aprovat'
+		stateChanged = true
 	}
 	if (element.innerHTML === 'Aprovat' && !stateChanged) {
-		element.classList.remove("isa_success");
-		element.classList.add("isa_error"); 
-		element.innerHTML = "Rebutjat";
-		estado = 'Rebutjat';
-		stateChanged = true;
+		element.classList.remove("isa_success")
+		element.classList.add("isa_error")
+		element.innerHTML = "Rebutjat"
+		button.style.display = 'block'
+		button.classList.add("btn-primary")
+		estado = 'Rebutjat'
+		stateChanged = true
 		actualizaMotivoRequerimientoIls_click()
 	}
 	if (element.innerHTML === 'Rebutjat' && !stateChanged) {
-		element.classList.remove("isa_error");
-		element.classList.add("isa_info"); 
-		element.innerHTML = "Pendent";
+		element.classList.remove("isa_error")
+		element.classList.add("isa_info")
+		element.innerHTML = "Pendent"
+		button.style.display = 'none'
+		button.classList.remove("btn-primary")
 		estado = 'Pendent';
 		stateChanged = true;
 	}
@@ -266,23 +295,6 @@ function cambiaEstadoDocIls(id) {
 	stateChanged = false;
 	
 	urlUpdateDocState = "/public/assets/utils/actualiza_estado_documento.php"
-/* 	$.post(
-		urlUpdateDocState,
-		{ id:  id.split("#")[0], estado: estado },
-		
-		function (data) {
-			$(".result").html(data);
-
-			if ( data ) {
-				
-				send_fase_0.innerHTML = "Actualitzar";
-				send_fase_0.className = "btn-itramits btn-success-itramits";
-				send_fase_0.disabled = false;
-				compruebaEstadoDocumentosRequeridos (id.split("#")[2]);
-			
-			}
-		}
-	); */
 
 	fetch ( `${urlUpdateDocState}?id=${id.split("#")[0]}&estado=${estado}`, {
 		method: 'POST',
@@ -382,26 +394,6 @@ function generaResolucionAdhesion(idExp) {
 	}
 
 }
-
-/* async function getEstadoValidacionDocumentos(id) {
-	let motivoRequerimiento = document.getElementById("motivoRequerimiento")
-	const url = `https://pre-tramits.idi.es/public/assets/utils/verifica_estado_documento.php?id=${id}`
-
-	fetch(url, { method: "POST" })
-	.then(res => res.text())
-	.then((res) => {
-		if ( res != 'ok' ) {
-			if (motivoRequerimiento.innerHTML === '') {
-				motivoRequerimiento.innerHTML = `La documentació:\n ${ res } \nno és la correcta.\n`
-			}
-		}
-	})
-	.catch((err) => { 
-		console.error(err); 
-		return err;
-		});
-
-} */
 
 function cambiaEstadoDocJustificacion(id) {
 	
@@ -526,8 +518,9 @@ function actualiza_fase_0_expediente_ils(formName) {  //SE EMPLEA
 	let nif_rep = document.getElementById("nif_rep").value; // Representant legal NIF
 	let tecnicoAsignado = document.getElementById("tecnicoAsignado").value; // Tècnica asignada
 	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
+	let sitio_web_empresa = document.getElementById("sitio_web_empresa").value; // Situació
 
-	for (let step = 0; step < 15; step++) {
+	for (let step = 0; step < 16; step++) {
 		document.getElementsByClassName("form-group general")[step].style.opacity = "0.5";
 	}
 	
@@ -541,7 +534,7 @@ function actualiza_fase_0_expediente_ils(formName) {  //SE EMPLEA
 		"/public/assets/utils/actualiza_fase_0_expediente_ils.php",
 		{ id: id, empresa: empresa, publicar_en_web: publicar_en_web, telefono_rep: telefono_rep, email_rep: email_rep,
 			nombre_rep: nombre_rep, nif_rep, nif_rep, tecnicoAsignado: tecnicoAsignado, 
-			situacion_exped: situacion_exped },
+			situacion_exped: situacion_exped, sitio_web_empresa: sitio_web_empresa },
 		
 		function (data) {
 			$(".result").html(data);
@@ -791,11 +784,6 @@ function actualiza_fase_3_ejecucion_expediente_ils(formName) {  //SE EMPLEA
 	send_fase_3.className = "btn-itramits warning-msg";
 	send_fase_3.disabled = true;
 
-/* 	document.getElementById("fecha_kick_off_modal").value = document.getElementById("fecha_kick_off").value;
-	document.getElementById("fecha_HastaRealizacionPlan").value = document.getElementById("fecha_limite_consultoria").value;
-	document.getElementById("fecha_reunion_cierre_modal").value = document.getElementById("fecha_reunion_cierre").value;
-	document.getElementById("fecha_limite_justificacion_modal").value = document.getElementById("fecha_limite_justificacion").value; */
-
 	$.post(
 		"/public/assets/utils/actualiza_fase_3_ejecucion_expediente_ils.php",
 		{ id: id, fecha_adhesion_ils: fecha_adhesion_ils, fecha_seguimiento_adhesion_ils: fecha_seguimiento_adhesion_ils,
@@ -913,17 +901,6 @@ function validateForm(formName) {
 
 function avisarCambiosEnFormulario(fase, elemento) {
 	let respuesta = false;
-	//if (elemento === "fecha_resolucion") {
-	//	respuesta = window.confirm("Vols marcar aquesta sol·licitud per enviar a pagament? ");
-	//	if(respuesta) {
-	//		let actualizaordenDePago = "/public/assets/utils/actualiza_orden_de_pago.php?SI/"+document.getElementById("id").value;
-	//		fetch(actualizaordenDePago)
-	//			.then((response) => response.text())
-	//			.then((data) => {
-	//				document.getElementById("ordenDePago").value = "SI";
-	//			});
-	//	}
-	//}
 
 	if (elemento === "porcentajeConcedido") {
 			let actualizaimporteAyuda = "/public/assets/utils/actualiza_importe_ayuda.php?"+document.getElementById("programa").value+"/"+document.getElementById("porcentajeConcedido").value+"/"+document.getElementById("id").value;
@@ -1046,40 +1023,7 @@ function actualizaFechas(fechaCierre, dias) {
 		});
 }
 function actualizaRequired(valor) {
-/* 	console.log("+"+valor+"+");
-	if (
-		document.getElementById("situacion_exped").value == "Pendiente" ||
-		document.getElementById("situacion_exped").value == "Denegado"
-	) {
-		document.getElementById("fecha_kick_off").required = false;
-		document.getElementById("fecha_kick_off").innerHTML = "";
-		if (document.getElementById("situacion_exped").value == "Denegado") {
-			console.log("-" + document.getElementById("situacion_exped").value + "-");
-			document.getElementById("wrapper_motivoDenegacion").remove = "ocultar";
-			document.getElementById("wrapper_motivoDenegacion").className =
-				"enviararchivo_ver";
-			document.getElementById("wrapper_motivoDenegacion").focus();
-		} else {
-			document.getElementById("wrapper_motivoDenegacion").remove =
-				"enviararchivo_ver";
-			document.getElementById("wrapper_motivoDenegacion").className = "ocultar";
-		}
-	} else {
-		document.getElementById("fecha_kick_off").style.backgroundColor = "#fda500";
-		document.getElementById("fecha_kick_off").style.color = "#fff";
-	}
 
-	if (document.getElementById("nombre_rep").value == "") {
-		document.getElementById("nombre_rep").required = false;
-		document.getElementById("nif_rep").required = false;
-		document.getElementById("telefono_rep").required = false;
-		document.getElementById("email_rep").required = false;
-	} else {
-		document.getElementById("nombre_rep").required = true;
-		document.getElementById("nif_rep").required = true;
-		document.getElementById("telefono_rep").required = true;
-		document.getElementById("email_rep").required = true;
-	} */
 }
 function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimiento").value;
@@ -1417,14 +1361,106 @@ function enviaMailFormEmpresa_click() {
 	);
 }
 
+function enviaMailEscrituraEmpresa_click() {
+	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
+
+	var modal = document.getElementById("myEnviarFormularioEscrituraEmpresa");
+	document.getElementById("spinner_EscrituraEmpresa").classList.remove("ocultar");
+	document.getElementById("enviaMailEscrituraEmpresa").disabled.true;
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoEscrituraEmpresa.php",
+		{ id: id, id_doc:id_doc },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_EscrituraEmpresa").classList.add("ocultar");
+				document.getElementById("enviaMailEscrituraEmpresa").style.display = "none";
+				document.getElementById("mensajeEscrituraEmpresa").classList.remove("ocultar");
+				document.getElementById("mensajeEscrituraEmpresa").innerHTML = data;
+			}
+		}
+	);
+}
+
+function enviaMailCertificadoIAE_click() {
+	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_IAE").value;
+
+	var modal = document.getElementById("myEnviarFormularioCertificadoIAE");
+	document.getElementById("spinner_CertificadoIAE").classList.remove("ocultar");
+	document.getElementById("enviaMailCertificadoIAE").disabled.true;
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoCartificadoIAE.php",
+		{ id: id, id_doc:id_doc },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_CertificadoIAE").classList.add("ocultar");
+				document.getElementById("enviaMailCertificadoIAE").style.display = "none";
+				document.getElementById("mensajeCertificadoIAE").classList.remove("ocultar");
+				document.getElementById("mensajeCertificadoIAE").innerHTML = data;
+			}
+		}
+	);
+}
+
+function enviaMailInformeResumen_click() {
+	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_RESUMEN").value;
+
+	var modal = document.getElementById("myEnviarFormularioInformeResumen");
+	document.getElementById("spinner_InformeResumen").classList.remove("ocultar");
+	document.getElementById("enviaMailInformeResumen").disabled.true;
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoInformeResumen.php",
+		{ id: id, id_doc:id_doc },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_InformeResumen").classList.add("ocultar");
+				document.getElementById("enviaMailInformeResumen").style.display = "none";
+				document.getElementById("mensajeInformeResumen").classList.remove("ocultar");
+				document.getElementById("mensajeInformeResumen").innerHTML = data;
+			}
+		}
+	);
+}
+
+function enviaMailCompromisoReduccion_click() {
+	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_REDUCCION").value;
+
+	var modal = document.getElementById("myEnviarFormularioCompromisoReduccion");
+	//document.getElementById("enviaMailCompromisoReduccion").innerText = "Enviant...";
+	document.getElementById("spinner_CompromisoReduccion").classList.remove("ocultar");
+	document.getElementById("enviaMailCompromisoReduccion").disabled = true;
+
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoCompromisoReduccion.php",
+		{ id: id, id_doc:id_doc },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_CompromisoReduccion").classList.add("ocultar");
+				document.getElementById("enviaMailCompromisoReduccion").style.display = "none";
+				document.getElementById("mensajeCompromisoReduccion").classList.remove("ocultar");
+				document.getElementById("mensajeCompromisoReduccion").innerHTML = data;
+			}
+		}
+	);
+}
+
 function enviaMailItinerarioFormativo_click() {
 	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_ITINERARIO").value;
+
 	var modal = document.getElementById("myEnviarFormularioItinerarioFormativo");
 	document.getElementById("spinner_ItinerarioFormativo").classList.remove("ocultar");
 	document.getElementById("enviaMailItinerarioFormativo").disabled.true;
 	$.post(
 		"/public/assets/utils/enviaCorreoElectronicoItinerarioFormativo.php",
-		{ id: id },
+		{ id: id, id_doc:id_doc },
 		function (data) {
 			console.log(data);
 			if (data) {
@@ -1437,21 +1473,23 @@ function enviaMailItinerarioFormativo_click() {
 	);
 }
 
-function enviaMailInformeGEI_click() {
+function enviaMailInformeGEH_click() {
 	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarInformeGEI");
-	document.getElementById("spinner_InformeGEI").classList.remove("ocultar");
-	document.getElementById("enviaMailInformeGEI").disabled.true;
+	let id_doc = document.getElementById("id_doc_GEH").value;
+
+	var modal = document.getElementById("myEnviarInformeGEH");
+	document.getElementById("spinner_InformeGEH").classList.remove("ocultar");
+	document.getElementById("enviaMailInformeGEH").disabled.true;
 	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoInformeGEI.php",
-		{ id: id },
+		"/public/assets/utils/enviaCorreoElectronicoInformeGEH.php",
+		{ id: id, id_doc:id_doc },
 		function (data) {
 			console.log(data);
 			if (data) {
-				document.getElementById("spinner_InformeGEI").classList.add("ocultar");
-				document.getElementById("enviaMailInformeGEI").style.display = "none";
-				document.getElementById("mensajeInformeGEI").classList.remove("ocultar");
-				document.getElementById("mensajeInformeGEI").innerHTML = data;
+				document.getElementById("spinner_InformeGEH").classList.add("ocultar");
+				document.getElementById("enviaMailInformeGEH").style.display = "none";
+				document.getElementById("mensajeInformeGEH").classList.remove("ocultar");
+				document.getElementById("mensajeInformeGEH").innerHTML = data;
 			}
 		}
 	);
@@ -1569,42 +1607,7 @@ async function configuraDetalle_OnLoad () {
 	let obtieneSello, estadoFirma;
 	let i=0, src, publicId;
 	console.log ("estoy en onload")
-/* 	src = Array.prototype.slice.call(document.querySelectorAll('.verSello'));
 	
-	[].forEach.call(src, (e) => {
-		publicId = src[i].id;
-		console.log (`xxx ${publicId} xxx`);
-		if (publicId){
-			obtieneSello = obtieneEstadoDelSello (publicId);
-			let etiquetaPadre = document.getElementById (publicId);
-			//var etiqueta = document.createElement("span");
-			switch (obtieneSello)
-			{
-			case 'NOT_STARTED':
-				estadoFirma = "<div class='info-msg'><i class='fa fa-info-circle'></i> Document Pendent de custodiar</div>";				
-				break;
-			case 'REJECTED':
-				estadoFirma = "<div class = 'warning-msg'><i class='fa fa-warning'></i> Completada-rebutjada</div>";			
-				break;
-			case 'COMPLETED':
-				estadoFirma = "<div class='success-msg'><i class='fa fa-check'></i> Completada-signada</div>";						
-				break;
-			case 'IN_PROCESS':
-				estadoFirma = "<div class='info-msg'><i class='fa fa-info-circle'></i> En curs</div>";
-				break;					
-			default:
-				estadoFirma = "<div class='info-msg'><i class='fa fa-info-circle'></i> Desconegut</div>";
-			}
-			etiquetaPadre.innerHTML = estadoFirma;
-			console.log(">>> " + publicId +" - "+ estadoFirma +" - "+ obtieneSello)
-			i++;
-		}
-		}); */
-	
-	/**
-	 * Establezco, por defecto al recargar la página, el tab que se había seleccionado.
-	 */
-	/* console.log("On load: " + localStorage.getItem("currentTab")) */
 	tabcontent = document.getElementsByClassName("tab_fase_exp_content");
 	for (i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = "none";
@@ -1619,19 +1622,19 @@ async function configuraDetalle_OnLoad () {
 	switch(localStorage.getItem("currentTab")) {
 		case 'solicitud_tab':
 			document.getElementById('solicitud_tab_selector').className += " solicitud_tab";
-		break;
+			break;
 		case 'validacion_tab':
 			document.getElementById('validacion_tab_selector').className += " validacion_tab";
-		break;
+			break;
 		case 'ejecucion_tab':
 			document.getElementById('ejecucion_tab_selector').className += " ejecucion_tab";
-		break;
+			break;
 		case 'justificacion_tab':
 			document.getElementById('justifiacion_tab_selector').className += " justificacion_tab";
-		break;
+			break;
 		case 'deses_ren_tab':
 			document.getElementById('deses_ren_tab_selector').className += " deses_ren_tab";
-		break;
+			break;
 		default:
 			document.getElementById('detall_tab_selector').className += " detall_tab";
 	}

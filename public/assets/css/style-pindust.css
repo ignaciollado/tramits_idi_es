@@ -1314,8 +1314,8 @@ span.export {
     padding: .45rem;
 }
 .header-wrapper-docs {
-	display: inline-grid;
-	grid-template-columns: 20% 40% 20% 20%;
+	display: grid;
+	grid-template-columns: 20% 40% 10% 10% 20%;
 	padding: .4rem;
 	width: 100%;
 	color: #fff;
@@ -1363,8 +1363,8 @@ span.export {
 
 .detail-wrapper-docs {
 	display: grid;
-  	grid-template-columns: 20% 40% 20% 20%;
-  	padding: .4rem;
+  grid-template-columns: 20% 40% 10% 10% 20%;
+  padding: .4rem;
 	width: 100%;
 }
 

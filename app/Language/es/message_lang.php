@@ -393,11 +393,25 @@ return [
 
    'declaracion_responsable_ils_ix'            => "V) Que los datos consignados en este documento son ciertas, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
 
-   'solicitud_doc_itinerario_formativo_ils_titulo' => "Sollicitud del documento: Itinerario formativo sobre la huella de carbono",
-   'doc_itinerario_formativo_ils'     => "Para poder continuar con la tramitación para adherirse al programa ILS (Industria Local Sostenible) necesitaríamos que nos hiciera llegar la siguiente documentación: Itinerario formativo sobre la huella de carbono.",
-   'documento_itinerario_formativo' => "Por favor, seleccione el archivo o los archivos que contienen el Itinerario formativo:",
+   'solicitud_doc_itinerario_formativo_ils_titulo' => "Solicitud del documento: Itinerario formativo sobre la huella de carbono",
+   'solicitud_doc_escritura_empresa_ils_titulo' => "Solicitud del documento: Escritura de la Empresa",
+   'solicitud_doc_certificado_iae_ils_titulo' => "Solicitud del documento: Certificado de alta IAE",
+   'solicitud_doc_informe_resumen_ils_titulo' => "Solicitud del documento: Informe resúmen de la huella de carbono",
+   'solicitud_doc_compromiso_reduccion_ils_titulo' => "Solicitud del documento: Compromiso de reducción de las emisiones de gases de efecto invernadero",
 
-   'consentimiento_identificacion_solicitante'	=> "doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears (IDI) pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa. En caso contrario, adjunto declaración de no consentimiento y adjunto el nif del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.",
+   'doc_itinerario_formativo_ils' => "Para poder continuar con la tramitación para adherirse al programa ILS (Industria Local Sostenible) necesitaríamos que nos hiciera llegar la siguiente documentación: Itinerario formativo sobre la huella de carbono.",
+   'documento_itinerario_formativo' => "Por favor, seleccione el archivo o los archivos que contienen el Itinerario formativo:",
+   'certificado_iae' => "Para poder continuar con la tramitación para a adherirse al programa ILS (Indústria Local Sostenible) necesitamos que nos haga llegar la siguiente documentación: certificado de alta IAE.",
+   'escritura_empresa' => "Para poder continuar con la tramitación para a adherirse al programa ILS (Indústria Local Sostenible) necesitamos que nos haga llegar la siguiente documentación: Escritura de la empresa.",
+   'informe_resumen' => "Para poder continuar con la tramitación para a adherirse al programa ILS (Indústria Local Sostenible) necesitamos que nos haga llegar la siguiente documentación: Informe resúmen de la huella de carbono.",
+   'compromiso_reduccion' => "Para poder continuar con la tramitación para a adherirse al programa ILS (Indústria Local Sostenible) necesitamos que nos haga llegar la siguiente documentación: Compromiso de reducción de las emisiones de gases de efecto invernadero.",
+
+   'documento_informe_gei_ils' => "Por favor, seleccione el archivo o los archivos que contienen el Informe de Inventario de GEI según la norma ISO 14.064-1:",
+   'documento_certificado_iae_ils' => "Por favor, seleccione el archivo o los archivos que contienen el certificado de alta IAE:",
+   'documento_informe_resumen_ils' => "Por favor, seleccione el archivo o los archivos que contienen el Informe resúmen de la huella de carbono:",
+   'documento_compromiso_reduccion_ils' => "Por favor, seleccione el archivo o los archivos que contienen el Compromiso de reducción de las emisiones de gases de efecto invernadero:",
+
+   'consentimiento_identificacion_solicitante' => "doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears (IDI) pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa. En caso contrario, adjunto declaración de no consentimiento y adjunto el nif del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.",
    'consentimiento_identificacion_solicitante_pdf'	=> " doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa.",
 
 'declaracion_responsable_iii'      => "III) Que no he recibido ninguna subvención otorgada por alguna entidad, pública o privada, nacional o extranjera, relacionada con la realización de planes de transformación digital, planes  de internacionalización, o bien con la realización de informes de la huella de carbono corporativa.",
@@ -860,7 +874,7 @@ Tal com estableix l’article 11 del Reglament de la marca, la renovació de la 
 'doc_ils_resolucion_concesion_con_req_p1' => "La  Marca de Garantia núm. 4113843 ILS INDÚSTRIA LOCAL SOSTENIBLE (figurativa), en classes 35 i 42, va ser aprovada per l’Oficina Espanyola de Patents i Marques el 20 de desembre de 2021 i publicada la F. de concessió el 28 de desembre de 2021.",
 'doc_ils_resolucion_concesion_con_req_p2' => "En data %FECHAREC%, l'IDI va rebre la sol·licitud d'adhesió al programa ILS de l'empresa %SOLICITANTE%, amb NIF %NIF% i amb registre d’entrada núm. %NUMREC%.",
 'doc_ils_resolucion_concesion_con_req_p3' => "En data %FECHANOTIFIC% es va notificar al beneficiari un requeriment d’esmena de la documentació justificativa per a l’adjudicació de la marca.",
-'doc_ils_resolucion_concesion_con_req_p4' => "En data %FECHAENMIENDA% amb núm. de registre d’entrada %NUMRECENMIENDA%, l’IDI va rebre l’esmena de la documentació justificativa de la subvenció.",
+'doc_ils_resolucion_concesion_con_req_p4' => "En data %FECHAENMIENDA%, l’IDI va rebre l’esmena de la documentació requerida.",
 'doc_ils_resolucion_concesion_con_req_p5' => "Una vegada revisada la documentació aportada, el personal tècnic va emetre un informe favorable en data %FECHAINFORMEFAV% per a l’adhesió a la marca.",
 'doc_ils_resolucion_concesion_con_req_resolucion' => "<b>Resolució</b>",
 'doc_ils_resolucion_concesion_con_req_resolucion_1' => "Atorgar la marca de Indústria Local Sostenible, a favor de l’empresa %SOLICITANTE%, amb NIF %NIF%, des de data %FECHADESDECONCESION% fins a %FECHAHASTACONCESION%.",
