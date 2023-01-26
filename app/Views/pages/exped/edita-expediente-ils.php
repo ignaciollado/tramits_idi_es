@@ -366,7 +366,7 @@
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_opc_item->type;
                         
-                    if ($convocatoria === '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_opc_item->corresponde_documento) {
 			    	        case 'file_memoriaTecnica':
 					            $nom_doc = "La memòria tècnica";

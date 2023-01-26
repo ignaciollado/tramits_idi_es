@@ -1,7 +1,6 @@
 <!----------------------------------------- Enviar formulario solicitud de certificado IAE ILS -->
 <!-- <div class="card-itramits"> -->
 <?php
-
 $totalNotifications = 0;
 
 $db = \Config\Database::connect();

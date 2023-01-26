@@ -413,7 +413,7 @@
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_opc_item->type;
                         
-                    if ($convocatoria === '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_opc_item->corresponde_documento) {
 			    	        case 'file_memoriaTecnica':
 					            $nom_doc = "La memòria tècnica";
@@ -996,13 +996,16 @@
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
             <ol start="14">
-            <!-----------------------------------------14.-abril_Acta Kick off ------------------------------------>
+            <!-----------------------------------------15.-abril_Acta Kick off ------------------------------------>
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-kickoff.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------15.-mayo_Acta de cierre ---->
+            <!-----------------------------------------17.-mayo_Acta de cierre ---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-cierre.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------16.-resolución ampliación plazo ------------------------------------>
+            <!-----------------------------------------18.-mayo_Acord de confidencialitat ------------------------------------>
+            <!--<li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acuerdo-de-confidencialidad.php';?></li>-->
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------19.-resolución ampliación plazo ------------------------------------>
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-ampliacion-plazo.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             </ol>

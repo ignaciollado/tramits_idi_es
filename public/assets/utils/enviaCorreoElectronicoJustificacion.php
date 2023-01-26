@@ -35,7 +35,7 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 $mail->Username = "tramits@tramits.idi.es";  // SMTP username
-$mail->Password = "aWnpg9:?;813"; // SMTP password
+$mail->Password = "RYrzz1254w@)"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
@@ -65,7 +65,7 @@ $email_message .= "<body>";
 $email_message .= "<div class='container'>";
 $email_message .= "<table data-toggle='table'";
 $email_message .= "<tbody>";
-$email_message .= "<tr style='width:100%;text-align:left;'><td style='font-size: 14px;'>";
+$email_message .= "<tr style='width:100%;text-align:left;'>Benvolgut senyor / Benvolguda senyora,<td style='font-size: 14px;'>";
 $email_message .= "<div>Recordau que a partir de la reunió de tancament teniu 20 dies naturals per realitzar la justificació de la convocatòria de Xecs de consultoria.
 Aquí teniu l'enllaç:</div>";
 $email_message .= "<div><a title='Obrir el formulari per fer la justificació dels xecs de consultoria' href = 'https://tramits.idi.es/public/index.php/home/justificacion_cheques/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment de justificació</a></div>";

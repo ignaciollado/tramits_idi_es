@@ -3,11 +3,6 @@
 <script type="text/javascript" src="/public/assets/js/content.js"></script>
 <div class="container">
 
-
-<!-------------------------------------------------------------------------------------------------------------------------->
-<!------------------------------------------------------2022---------------------------------------------------------------->
-<button class="accordion"><h1>Convocatòria 2022</h1></button>
-<div class="panel" style="display:block;">
 <section id="sectionILS">
     <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ILS/2022');?>" target="_self">ILS</a></h2>
 	  <fieldset>
@@ -25,6 +20,11 @@
       </div>
 	  </fieldset>
   </section>
+<!-------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------2022---------------------------------------------------------------->
+<button class="accordion"><h1>Convocatòria 2022</h1></button>
+<div class="panel" style="display:block;">
+
   <section id="sectionProgramaI">
     <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2022');?>" target="_self">Programa I</a></h2>
 	  <fieldset>

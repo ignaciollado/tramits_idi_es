@@ -36,7 +36,7 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // pass: password
 $mail->Username = "tramits@tramits.idi.es";  // SMTP username
 
-$mail->Password = "aWnpg9:?;813"; // SMTP password
+$mail->Password = "RYrzz1254w@)"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
@@ -68,21 +68,19 @@ $email_message .= "<div class='container'>";
 $email_message .= "<table data-toggle='table'";
 $email_message .= "<tbody>";
 $email_message .= "<tr style='width:100%;text-align:left;'><td style='font-size: 14px;'>";
-$email_message .= "<div>Benvolgut senyor / senyora,</div>";
-$email_message .= "<br><div>Per completar l'adhesió al nostre programa ILS (Indústria Local Sostenible) ens fa falta l'Escriptura de l'Empresa. 
-<br><br>Per a això necessitem que ens el faci arribar per mitjà del següent formulari:</div>";
+$email_message .= "<div>Benvolgut senyor / Benvolguda senyora,</div>";
+$email_message .= "<br><div>Per poder completar la vostra adhesió al programa Indústria Local Sostenible (ILS) necessitam l'Escriptura de l'Empresa. 
+<br><br>Per a això, us demanam que ens faceu arribar aquest informe a través del següent formulari:</div>";
 $email_message .= "<div><a title='Obrir el formulari per fer-nos arribar l´Escriptura de la seva empresa' href = 'https://tramits.idi.es/public/index.php/home/escritura_empresa_ils/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment de l'Escriptura de l'Empresa</a></div>";
 
-$email_message .= "<br><div>Salutacions,</div>";
-$email_message .= "<br><div>Industria Local Sostenible</div>";
-$email_message .= "<div>Equip del servei de Política Industrial de l'IDI</div>";
-$email_message .= "<div><strong>Institut d'Innovació Empresarial de les Illes Balears</strong></div>";
-$email_message .= "<div><strong>Vicepresidència de Transició Energètica, Sectors Productius i Memòria Democràtica</strong></div>";
-$email_message .= "<div>Telèfon 971 176161 + 62891</div>";
-$email_message .= "<div>Plaça de Son Castelló, 1</div>";
-$email_message .= "<div>07009 Palma</div></td></tr>";
-$email_message .= "<tr style='width:100%;text-align:left;'><td>www.idi.es</td></tr>";
-$email_message .= "<tr style='width:100%;text-align:left;'><td>www.industrialocalsostenible.es</td></tr>";
+    $email_message .= "<br><div>Pilar Jordi Amorós</div>";
+    $email_message .= "<br><div>Cap de Servei de Política Industrial</div>";
+    $email_message .= "<div><strong>Institut d'Innovació Empresarial de les Illes Balears</strong></div>";
+    $email_message .= "<div><strong>Vicepresidència de Transició Energètica, Sectors Productius i Memòria Democràtica</strong></div>";
+    $email_message .= "<div>Telèfon 971 176161 + 62891</div>";
+    $email_message .= "<div>Plaça de Son Castelló, 1</div>";
+    $email_message .= "<div>07009 Palma</div></td></tr>";
+    $email_message .= "<tr style='width:100%;text-align:left;'><td>www.idi.es</td></tr>";
 $email_message .= "</tbody>";
 $email_message .= "</table>";
 $email_message .= "<br>";

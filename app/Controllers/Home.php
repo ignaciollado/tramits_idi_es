@@ -49,7 +49,6 @@ class Home extends BaseController
 		echo view('templates/footer/footer');
 	}
 	
-
 	public function expedientes ($page = 'forms/form-solicitud-ayuda')
 	{
 		$data['titulo'] = lang('message_lang.titulo_exped');
@@ -58,8 +57,6 @@ class Home extends BaseController
 		echo view('templates/footer/footer');
 	}
 	
-
-
 	public function solicitud_ayuda($page = 'forms/form-solicitud-ayuda')
 	{
 		helper('form');
@@ -79,10 +76,10 @@ class Home extends BaseController
 		} else {
 			$data['aviso'] = $data['configuracion']['convocatoria_aviso_ca'];
 			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
+			echo view('templates/footer/footer_form');
 		}
 	}
 	
-
 	public function justificacion_cheques($id, $nif, $tipoTramite)
 	{
 		helper('form');
@@ -112,7 +109,6 @@ class Home extends BaseController
 		echo view('templates/footer/footer_form');
 	}
 
-
 	public function subsanacion_idigital($page = 'forms/form-subsanacion-idigital')
 	{
 		helper('form');
@@ -123,7 +119,6 @@ class Home extends BaseController
 		echo view('templates/footer/footer');
 	}	
 	
-
 	public function set_lang () 
 	{
 		helper('cookie');
@@ -160,7 +155,6 @@ class Home extends BaseController
 		echo view('templates/footer/footer_form'); */
 	}
 	
-
 	public function set_lang_req ()
 	{
 		$uri = new \CodeIgniter\HTTP\URI();	
@@ -175,7 +169,6 @@ class Home extends BaseController
 		echo view('pages/forms/form-requerimiento-idigital');
 		echo view('templates/footer/footer');
 	}
-
 
 	public function set_lang_justific ($idioma, $id, $nif, $tipoTramite)
 	{

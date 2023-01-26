@@ -1,7 +1,6 @@
 <!----------------------------------------- Enviar formulario solicitud de escritura emrpesa ILS -->
 <!-- <div class="card-itramits"> -->
 <?php
-
 $totalNotifications = 0;
 
 $db = \Config\Database::connect();
@@ -12,7 +11,6 @@ foreach ($query->getResult('array') as $row)
 		}
 ?>
 <input type='hidden' class='text' id="id_doc_ESCRITURA" value="<?php echo $id_doc;?>"></input>
-
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }

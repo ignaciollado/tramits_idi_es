@@ -25,7 +25,7 @@
         <p class="card-text"><?php echo  $row->domicilio;?></p>
         <p class="card-text"><?php echo  $row->localidad;?></p>
         <p class="card-text"><?php echo  $row->telefono;?></p>
-        <p class="card-text"><a href="<?php echo  $row->sitio_web_empresa;?>"><?php echo  $row->sitio_web_empresa;?></a></p>
+        <p class="card-text"><a target="_blank" href="<?php echo "https://". $row->sitio_web_empresa;?>"><?php echo  $row->sitio_web_empresa;?></a></p>
         <p class="card-text"><?php echo  $row->video_empresa;?></p>
         <p class="card-text"><?php echo  $row->fecha_creacion_empresa;?></p>
         <p class="card-text"><?php echo  $row->canales_comercializacion_empresa;?></p>

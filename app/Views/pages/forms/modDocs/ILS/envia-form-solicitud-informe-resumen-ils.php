@@ -1,4 +1,4 @@
-<!----------------------------------------- Enviar formulario solicitud de datos adicionales de la emrpesa ILS -->
+<!----------------------------------------- Enviar formulario solicitud del informe resumen ILS -->
 <!-- <div class="card-itramits"> -->
 <?php
 

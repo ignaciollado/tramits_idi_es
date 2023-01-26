@@ -165,7 +165,7 @@ return [
 
    'datos_empresa_ils_titulo'          => "Formulari per a la recollida de dades addicionals de l'empresa",
    'intro_sol_datos_empresa_ils'       => "ILS - Sol·licitud de dades adicionals de la seva empresa",
-   'solicitante_adhesion_ils'          => "Benvolgut senyor / senyora,<br><br>",
+   'solicitante_adhesion_ils'          => "Benvolgut senyor / Benvolguda senyora,<br><br>",
    'datos_empresa_ils_recibidos'       => "Benvolgut senyor/senyora,<br><br>hem rebut correctament les dades sol·licitades.<br>Li quedem molt agraïts.<br><br>Rebi una salutació cordial.",
    'datos_empresa_ils_adicionales'     => "Ara que s'ha adherit al nostre programa ILS (Indústria Local Sostenible) ens agradaria publicar una fitxa de la seva empresa en la nostra web 
    <a href='https://>www.industrialocalsostenible.es'>www.industrialocalsostenible.es</a>. <br><br>Per a això necessitem que ens faci arribar aquestes dades addicionals:",
@@ -403,7 +403,7 @@ return [
 
 
 
-   'doc_itinerario_formativo_ils'     => "Per a poder continuar amb la tramitació per a adherir-se al programa ILS (Indústria Local Sostenible) necessitaríem que ens fes arribar la següent documentació: Itinerari formatiu sobre petjada de carboni.",
+   'doc_itinerario_formativo_ils'     => "Per poder completar la vostra adhesió al programa Indústria Local Sostenible (ILS) necessitam la següent documentació: Itinerari formatiu sobre petjada de carboni.",
    'documento_itinerario_formativo' => "Per favor, seleccioni l'arxiu o els arxius que contenen l'Itinerari formatiu:",
 
    'solicitud_doc_informe_gei_ils_titulo' => "Sol·licitud del document: Informe d’Inventari de GEH segons la norma ISO 14.064-1",
