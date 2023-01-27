@@ -225,7 +225,7 @@ header {
 		footer {
 			display: grid!important;
 			grid-template-columns: auto;
-			position: fixed;
+			position: sticky;
     		left: 0;
     		bottom: 0;
     		width: 100%;
@@ -1469,7 +1469,7 @@ span.export {
 
 /* --------------------------- Accordion ---------------------------------------------*/
 .accordion {
-  background-color: #eee;
+  background-color: #dcdcdc;
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -1480,6 +1480,10 @@ span.export {
   font-size: 15px;
   transition: 1.4s;
   margin-bottom: 0.2rem;
+}
+
+.accordion--convo {
+	background-color: #2f4f4f;
 }
 
 .active, .accordion:hover {
