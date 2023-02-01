@@ -259,6 +259,44 @@ class Home extends BaseController
 		echo view('pages/forms/form-adhesion-ils');
 	}
 
+	public function solicitud_linea_idi_isba($page = 'forms/linea-idi-isba') {
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+		
+		echo view('templates/header/header_form_linea_idi_isba');
+		echo view('pages/forms/form-linea-idi-isba');
+		echo view('templates/footer/footer_form');
+	}
+
+	public function solicitud_linea_idi_isba_es($page = 'forms/linea-idi-isba') {
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		$language = \Config\Services::language();
+		$language->setLocale('es'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'es',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   	set_cookie($cookie);
+
+		echo view('templates/header/header_form_linea_idi_isba');
+		echo view('pages/forms/form-linea-idi-isba');
+		echo view('templates/footer/footer_form');
+	}
+
 	public function datos_empresa_ils( $id )
 	{
 		helper('form');

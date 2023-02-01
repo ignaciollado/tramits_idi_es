@@ -1,0 +1,49 @@
+.header__formlineaidiisba {
+  display: grid;
+  grid-template-areas: 'idioma' 'logotipos' 'titulo' 'codigosia' 'solicitud';
+  gap: .5rem;
+}
+
+.langtoggle {
+  grid-area: idioma;
+  border: 1px solid green;
+}
+
+.logoarea {
+  grid-area: logotipos;
+}
+
+.titleform {
+  grid-area: titulo;
+  border: 1px solid indigo;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.siacode {
+  grid-area: codigosia;
+  border: 1px solid rgb(87, 107, 91);
+  text-align: right;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-right: .5rem;
+}
+
+.formspecifications {
+  grid-area: solicitud;
+  border: 1px solid blue;
+  display: grid;
+  row-gap: 15px;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.formspecifications_row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding-left: .5rem;
+}
+
+.formspecifications_col {
+  column-gap: 10px;
+}

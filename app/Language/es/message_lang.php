@@ -49,6 +49,8 @@ return [
    'resol_expediente_menu'			=> 'Resoluciones',
    'expediente_justificacion_menu'	  => 'Justificación',
    'sol_idigital_menu'                => 'Solicitud Cheques consultoría',
+   'sol_adhesion_ils_menu'             => 'Solicitud adhesión a ILS',
+   'sol_linea_idi_isba_menu'             => 'Solicitud línea IDI-ISBA',
    'asistente_de_tramitacion'         => 'Asistente de tramitación', 
    'btn_next'                      => 'Siguiente',
    'btn_previous'                  => 'Anterior',    
@@ -66,6 +68,10 @@ return [
 
    'titulo_sol_idigital'			  => "Solicitud de ayuda y/o subvención",
    'titulo_adhesion_ils'			  => "Solicitud de adhesión a ILS",
+   'titulo_solicitud_idi_isba'     => "Solicitud línea IDI-ISBA",
+   'Codi_SIA'                       => "Código SIA",
+   'tramite_procedimiento'          => "Trámite o procedimiento",
+   'tramite_procedimiento_texto'    => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratégico Industrial 2018-2025",
 
    'titulo_justificacion_idigital'	  => "Cheques consultoría industria Islas Baleares. Requerimiento de justificación.",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",

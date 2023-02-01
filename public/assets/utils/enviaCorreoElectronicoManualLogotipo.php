@@ -35,6 +35,7 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 $mail->Username = "tramits@tramits.idi.es";  // SMTP username
+
 $mail->Password = "RYrzz1254w@)"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
@@ -67,7 +68,7 @@ $email_message .= "<table data-toggle='table'";
 $email_message .= "<tbody>";
 $email_message .= "<tr style='width:100%;text-align:left;'><td style='font-size: 14px;'>";
 $email_message .= "<div>Bon dia,</div>";
-$email_message .= "<br><div>com a empresa ja adherida al programa ILS,  adjuntam el Manual d'ús de la marca (castellà i català), així com distintes versions del logotip en format PDF i PNG: 
+$email_message .= "<br><div>com a empresa ja adherida al programa ILS,  adjuntam el Manual d'ús de la marca (castellà i català), així com un ZIP amb distintes versions del logotip en format .png. 
 <br><br></div>";
 $email_message .= "<ol style='list-style-type: upper-roman;'>
 <li><a title='Manual d´us de la marca (castellà i català) ILS' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/manual_uso_marca_garantia_ils_20221228.pdf'>Manual d´us de la marca (castellà i català) ILS</a></li>
@@ -79,7 +80,7 @@ $email_message .= "<ol style='list-style-type: upper-roman;'>
 <li><a title='Logotip ILS format PNG' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/ils-logo-05.png'>ils-logo-05 (PNG)</a></li>
 <li><a title='Logotip ILS format PNG' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/ils-logo-06.png'>ils-logo-06 (PNG)</a></li>
 </ol>";
-$email_message .= "<br><div><br>No dubteu en telefonar per a qualsevol dubte, informació addicional o format que necessiteu</div>";
+$email_message .= "<br><div><br>No dubteu en telefonar per a qualsevol dubte, informació addicional o format que necessiteu.</div>";
 $email_message .= "<br><div>Salutacions,</div>";
 $email_message .= "<br><div>Industria Local Sostenible</div>";
 $email_message .= "<div>Equip del servei de Política Industrial de l'IDI</div>";
