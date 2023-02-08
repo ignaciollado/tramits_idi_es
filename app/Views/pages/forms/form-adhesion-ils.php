@@ -18,9 +18,9 @@
 <div class="stepContainer">
 	<span class="step">1</span>
 	<span class="step">2</span>
-  	<span class="step">3</span>
-  	<span class="step">4</span>
-  	<span class="step">5</span>
+  <span class="step">3</span>
+  <span class="step">4</span>
+  <span class="step">5</span>
 	
 	<div  class="buttonContainer">
     	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
@@ -34,7 +34,7 @@
 		<div>
 		<fieldset>
 			<label for = "rgpd" class="main" >
-				<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#"  data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
+				<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#" data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 				<span class="w3docs"></span>
 			</label>

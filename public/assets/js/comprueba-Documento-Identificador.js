@@ -4,12 +4,11 @@ function averiguaTipoDocumento (valor) {
 		{
 		document.getElementById("info_lbl").innerHTML = "La longitud del número del documento identificador tiene que ser de 9 dígitos.";
 		document.getElementById("nif").value = "";
+		document.getElementById("nif").classList.remove("valid");
+		document.getElementById("nif").classList.add("invalid");
 		return;
 		}
-	if(document.getElementsByName("tipo_solicitante")[0].checked) formaJuridica = "autonomo"
-	if(document.getElementsByName("tipo_solicitante")[1].checked) formaJuridica = "pequenya"
-	if(document.getElementsByName("tipo_solicitante")[2].checked) formaJuridica = "mediana"
-	//if(document.getElementsByName("tipo_solicitante")[3].checked) formaJuridica = "cluster_ct"
+
 	if (formaJuridica==="autonomo") {
 		analizaDNINIE(valor)
 	} else {
@@ -28,14 +27,15 @@ function analizaCIF (cif)
 	/* C: dígito de control */
 	// Letras de control: letraControl = ["K", "P", "Q", "S"];
 	// Números de control: numeroControl = ["A", "B", "E", "H"];
-	var cif = cif.toUpperCase();
+	cif = cif.toUpperCase();
 	console.log("Valor tecleado: "+cif)
-	var motivo = "";
+	let motivo = "";
 	// De entrada, supongo que todos los códigos son erróneos.
-	var organizacion_OK = false;
-	var provincia_OK = false;
-	var numeracion_OK = false;
-	var dControl_OK = false;
+	let organizacion_OK = false;
+	let provincia_OK = false;
+	let numeracion_OK = false;
+	let dControl_OK = false;
+	let esCIF_OK = false;
 
 	// Mostraré el resultado en el elemento HTML con id = info_lbl
 	document.getElementById("info_lbl").innerHTML = "";
@@ -115,16 +115,23 @@ function analizaCIF (cif)
 	}
 	// Muestro el valor entrado en el elemento HTML con id = info_lbl
 	document.getElementById("info_lbl").innerHTML = document.getElementById("info_lbl").innerHTML + motivo;
-	if (motivo == "") 
+
+	console.log (`Motivo: ${motivo}`, esCIF_OK)
+
+	if (esCIF_OK) 
 	{
+		console.log (`Sí Motivo: ${motivo}`, esCIF_OK)
 		document.getElementById("nif").value = cif;
-		document.getElementById("nif").setAttribute ('class','valid');
+		document.getElementById("nif").classList.remove("invalid");
+		document.getElementById("nif").classList.add("valid");
 	}
 	else 
 	{
+		console.log (`No Motivo: ${motivo}`, esCIF_OK)
 		document.getElementById("nif").focus();
 		document.getElementById("nif").value = "";
-		document.getElementById("nif").setAttribute ('class','invalid');
+		document.getElementById("nif").classList.remove("valid");
+		document.getElementById("nif").classList.add("invalid");
 		document.getElementById("info_lbl").value = motivo;
 	}
 	}

@@ -69,7 +69,7 @@ return [
 
    'titulo_sol_idigital'			   => "Sol·licitud ajut i/o subvenció",
    'titulo_adhesion_ils'			   => "Sol·licitud d'adhesió a ILS",
-   'titulo_solicitud_idi_isba'      => "Sol.licitud linia IDI-ISBA",
+   'titulo_solicitud_idi_isba'      => "Ajuts a les despeses financeres a través de l'aval d'ISBA",
    'Codi_SIA'                       => "Codi SIA",
    'tramite_procedimiento'          => "Tràmit o procediment",
    'tramite_procedimiento_texto'    => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
@@ -85,6 +85,7 @@ return [
    SI NO PASSA PER LA SEU ELECTRÒNICA CAIB S'ENTENDRÀ QUE LA SOL·LICITUD NO HA ESTAT PRESENTADA.
    Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i/o per telèfon: 971 17 61 61 + 62891",
 
+   'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses per cobrir despeses financeres d'operacions de finançament d'inversions productives previstes al Pla Estratègic Industrial 2018-2023",
    'subtitulo_justificacion_idigital'	 => "<div style='color:red;'><p>RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE</p><p>DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DEL REGISTRE ELECTRÒNIC COMÚ (REC) AL SEGÜENT ENLLAÇ:</p><p> https://rec.redsara.es/registro/action/are/acceso.do</p><p>SI NO PASSA PEL <strong>REC</strong> S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.</p></div>",     
    'enviado_correo_electron'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_ils'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'adhesió a ILS</strong> perquè la signeu electrònicament.",
@@ -94,19 +95,19 @@ return [
    'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebrà un correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar al IDI per mitjà de la <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/201/empreses/tramites/tramite/5400391' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB ('Accés al tràmit telemàtic')</a>. En cas de no fer-ho, no la podrem processar.",
    'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà del <a target = '_blank' href = 'https://rec.redsara.es/' title = 'Registro electrónico común'>REGISTRO ELECTRÓNICO COMÚN (<strong>REC</strong>)</a>. En cas de no fer-ho, no el podrem processar.",
   
-   'contacto_idi_pindust'             => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
+   'contacto_idi_pindust'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
    'contacto_idi_ils'                  => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pjordi@idi.es i per telèfon: 971 17 61 61 + 62891 ",   
   
-   'enviado_correo_ok'                => "Hem enviat un correu electrònic a la adreça ",
-   'una_vez_firmado'                  => "Una vegada la rebem, procedirem a tramitar-la.",
-   'intro_sol_idigital'			      => "Convocatòria per a la concessió d'ajuts de xecs de consultoria per impulsar la indústria de Balears en matèria de digitalització, internacionalització i sostenibilitat.",
-   'intro_ils'			                 => "Les indústries interessades a adherir-se al programa han d'emplenar el següent formulari de sol·licitud d'adhesió",
-   'intro_ils_solicitud'			     => "Sol·licitud per a la concessió de la marca Indústria Local Sostenible",
+   'enviado_correo_ok'                 => "Hem enviat un correu electrònic a la adreça ",
+   'una_vez_firmado'                   => "Una vegada la rebem, procedirem a tramitar-la.",
+   'intro_sol_idigital'			         => "Convocatòria per a la concessió d'ajuts de xecs de consultoria per impulsar la indústria de Balears en matèria de digitalització, internacionalització i sostenibilitat.",
+   'intro_ils'			                  => "Les indústries interessades a adherir-se al programa han d'emplenar el següent formulari de sol·licitud d'adhesió",
+   'intro_ils_solicitud'			      => "Sol·licitud per a la concessió de la marca Indústria Local Sostenible",
 
    'convocatoria_sol_idigital'	      => "Convocatòria ",
    'titulo_sol_idigital_consul'       => "Declaració responsable del consultor per al programa de transformació digital<br>en el marc del programa 'Idigital'",
    'titulo_rep_legal'                 => "REPRESENTANT LEGAL",
-   'titulo_notificiaciones'           => "4. NOTIFICACIÓ (en aquesta adreça electrònica rebreu els avisos de les notificacions corresponents al procediment)",
+   'titulo_notificiaciones'           => "NOTIFICACIÓ (en aquesta adreça electrònica rebreu els avisos de les notificacions corresponents al procediment)",
    'titulo_dec_resp_consul'           => "DECLARACIÓ RESPONSABLE DEL CONSULTOR",
    'select_poblacion'                 => "Seleccionau una població",
    'select_iae'                       => "Epígraf IAE",
@@ -149,11 +150,14 @@ return [
    'programaiDigital'      => "<code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2022.",
    'programaiExporta'      => "<code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2022.",
    'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible», per a l'any 2022.",
+   'programaIDIISBA'       => "Línia de finançament industrial IDI-ISBA",
    'info_tipo_empresa'                => "<ol>
    <li><code>Petita empresa:</code> Es considera petita empresa la que té menys de 50 treballadors i/o treballadores, un volum de negoci anual o un balanç general anual que no superi els 10 milions d’euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits per ser considerada PIME d’acord amb l’annex I del Reglament (CE) núm. 800/2008 de la Comissió Europea.</li>
    <li><code>Mitjana empresa:</code> Es considera mitjana empresa la que té entre 50 i 250 treballadors i/o treballadores, un volum de negoci anual entre 10 i 50 milions d'euros o un balanç general anual entre 10 i 43 milions d'euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits anteriors.</li></ol>",
    'nom_rep_legal_sol_idigital'       => "Nom del representant legal", 
    'nif_rep_legal_sol_idigital'       => "NIF del representant legal",
+   'condicion_rep_admin'              => "Administrador",
+   'condicion_rep_apoderado'          => "Apoderat",
    'conCIF'							        => " amb NIF ",   
    'direccion_rep_legal_sol_idigital' => "Adreça",
    'tel_rep_legal_sol_idigital' 	     => "Telèfon mòbil a efectes de notificacions",
@@ -357,7 +361,7 @@ return [
    'autorizaciones_personas_fisicas'   => "Per a persones físiques (autònoms):
                                              autorització perquè l’IDI pugui comprovar d’ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa, excepte en el cas de denegació expressa del consentiment. En aquest cas, la persona o l’entitat ha d’aportar una còpia del DNI del sol·licitant i de la persona autoritzada, si escau, en format PDF.
                                              ",
-   'copia_dni'                          => "Una còpia del document nacional d’identitat del sol·licitant i de la persona autoritzada, si s’escau, i el seu poder corresponent",
+   'copia_dni'                          => "Una còpia del document nacional d’identitat del sol·licitant o de la persona autoritzada, si s’escau, i el seu poder corresponent",
    'documento'                          => "Document",
    'documento_copiaNIF'                 => "Al no donar consentiment, per favor, adjunti una còpia del seu NIF",
    'personas_juridicas'                 => "En el cas de persones jurídiques",
@@ -432,11 +436,14 @@ return [
    'declaracion_responsable_iii'      => "III) Que no he rebut cap subvenció atorgada per alguna entitat, pública o privada, nacional o estrangera, relacionada amb la realització de plans de transformació digital, plans  d’internacionalització, o bé amb la realització d’informes de la petjada de carboni corporativa.",
    'declaracion_responsable_iv'      => "IV) Que no he rebut ajuts os subvencions d’altres administracions públiques, o d’altres ens públics o privats, nacionals o internacionals que, aïlladament o en concurrència, superi el 100 % del cost de l’activitat que hagi de desenvolupar l’empresa beneficiària.",
 
-   'declaracion_responsable_x'            => "X) Que el consultor compleix amb el punt 7 de la convocatòria.",
+   'declaracion_responsable_x'         => "X) Que el consultor compleix amb el punt 7 de la convocatòria.",
 // 'doy_mi_consentimiento'          => "Que don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment adjunto el NIF del sol·licitant i de la persona autoritzada, si s'escau.",
-   'doy_mi_consentimiento_aeat_atib'          => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries (AEAT i de l’ATIB) i amb la TGSS. En cas contrari, adjunt declaració de no consentiment i adjunt els certificats i la documentació corresponent.",
+   'doy_mi_consentimiento_aeat_atib'   => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries (AEAT i de l’ATIB). En cas contrari, adjunt declaració de no consentiment i adjunt els certificats i la documentació corresponent.",
+   'certificado_corriente_pago_aeat'   => "Certificat d'estar al corrent de pagaments amb l'Agència Tributària",
+   'certificado_corriente_pago_ttss'   => "Certificat d'estar al corrent de pagaments amb la Tresoreria de la Seguretat Social",
+   'documentos_opcionales_si_ya_los_tiene_admin' => "Els documents anteriors no s'hauran d'aportar quan ja constin en l'altre expedient, o l'Administració els pugui sol·licitar directament.",
    'doy_mi_consentimiento_seg_soc'     =>"Respecte de l'acreditació del requisit d'estar al corrent de les obligacions amb la Seguretat Social, la sol·licitud dels ajuts implica l'autorització perquè l’IDI pugui obtenir de la Tresoreria General de la Seguretat Social la informació acreditativa del compliment d'aquesta obligació, tret del cas de denegació expressa del consentiment, supòsit en què la persona o l'entitat sol·licitant ha d'aportar el certificat corresponent, juntament amb la sol·licitud dels ajuts en format PDF",
-   'doy_mi_consentimiento_pdf'          => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries (<abbr title='Agència Estatal de l´Administració Tributària'>AEAT</abbr> i de l’<abbr title='Agència Tributària de les Illes Balears'>ATIB</abbr>) i amb la <abbr title='Tressoreria General de la Seguretat Social'>TGSS</abbr>. En cas contrari, adjunt declaració de no consentiment i adjunt
+   'doy_mi_consentimiento_pdf'         => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries (<abbr title='Agència Estatal de l´Administració Tributària'>AEAT</abbr> i de l’<abbr title='Agència Tributària de les Illes Balears'>ATIB</abbr>) i amb la <abbr title='Tressoreria General de la Seguretat Social'>TGSS</abbr>. En cas contrari, adjunt declaració de no consentiment i adjunt
    els certificats i la documentació corresponent.",
 
    'declaracion_no_consentimiento'  => "Al no donar consentiment, per favor, adjunti certificat de compliment de les meves obligacions tributàries i amb la Tresoreria de la Seguretat Social.",
@@ -466,6 +473,66 @@ return [
 'fecha_ils'     => "Data",
 'doc_info_favorable_cabecera' => "Informe favorable sobre la sol·licitud de l’ajut per al disseny d’un pla de transformació digital per a %SOLICITANTE%, amb NIF %NIF%",
 'doc_expediente'     => "Expedient",
+
+'intro_idi_isba_solicitud'			         => "Solicitud de ayudas a microempresas, pequeñas y medianas para cubrir gastos financieros",
+'avisos_idi_isba'                         => "ok",
+'documentacion_necesaria_idi_isba'        => "Documentació necessaria a adjuntar",
+'documentacion_identificativa_idi_isba'   => "Documents de identificatius de la persona sol·licitant i/o la persona autoritzada per l’empresa.",
+'documentacion_necesaria_pymes_idi_isba'  => "<h3>Antes de empezar, es recomendable tener preparada la siguiente documentación:</h3>
+   <ol class='formbox'>
+      <li>Copia del DNI del solicitante o de su representante.</li>
+      <li>Escrituras o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil.</li>
+      <li>El certificado de la Agencia Tributaria de alta en el Censo de Empresarios, Profesionales y Retenedores y al <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
+      <li>En el caso de ayudas superiores a 3.000 euros:
+         <ol>
+            <li>Certificado de estar al corriente de pagos con la Agencia Tributaria.</li>
+            <li>Certificado de estar al corriente de pagos con la Tesorería de la Seguridad Social.</li>
+         </ol>
+      </li>
+
+   </ol>
+   <h3><strong>Los documentos anteriores no se deberán aportar cuando ya consten en otro expediente, o la Adminstración los pueda solicitar directamente.</strong></h3>",
+'documentacion_resultante_cabecera_idi_isba' => "Al finalizar este trámite, recibirá por correo electrónico un documento pdf que contendrá:",
+'documentacion_resultante_idi_isba' => '<ol class="formbox">
+                                             <li>La solicitud de ayuda.</li>
+                                             <li>Una declaración responsable justificativa de cumplimiento de requisitos.</li>
+                                       </ol>',
+'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
+'operacion_financiera_idi_isba'  => "OPERACIÓ FINANÇERA",
+'entidad_financiera_idi_isba'    => "Nom entitat finançera",
+'importe_prestamo_entidad_idi_isba' => "Import prèstec entitat finançera (€)",
+'plazo_prestamo_entidad_idi_isba' => "Termini prèstec entitat finançera",
+'carencia_prestamo_entidad_idi_isba'     => "Carència prèstec entitat finançera (si escau) en anys",
+
+'cuantia_prestamo_idi_isba'      => "Quantia aval de ISBA, SGR (€)",
+'plazo_prestamo_idi_isba'        => "Termini aval de ISBA, SGR (en anys)",
+'fecha_del_aval_idi_isba'        => "Data de l' aval de ISBA, SGR",
+'proyecto_de_inversion_idi_isba' => "PROJECTE D'INVERSIÓ",
+'proyecto_de_inversion_idi_isba_finalidad' => "Finalitat de la inversió",
+'presupuesto_proyecto_de_inversion_idi_isba' => "PRESSUPOST DEL PROJECTE D'INVERSIÓ",
+'importe_del_presupuesto_idi_isba'  => "Import del pressupost (IVA inclós)",
+'detalle_importe_ayuda_solicitado_idi_isba' => "Amb el següent detall:",
+'declaro_idi_isba_que_cumple'    => "Que el/la sol·licitant cumpleix amb els requisits de la petita i mitjana empresa.",
+'declaro_idi_isba_que_cumple_no_mas_25' => "Que el/la solicitante cumple con el requisito  relativo a la <strong>no participación superior al 25%</strong> por una o varias empresas que, a nivel consolidado, incumplen los límites del punto 1) anterior.",
+'declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad'   => "Que el/la solicitante <strong>no incurre en ninguna causa de prohibición o de incompatibilidad</strong>
+para recibir la subvención según la legislación vigente.",
+'declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'   => "Que NO / SÍ <strong>tiene ayudas o subvenciones solicitadas o condedidas</strong> por alguna entidad, pública
+ o privada, nacional o extranjera, relacionadas tanto con el proyecto de inversión como con la operación financiera:",
+'direccion_general_politica_industrial_idi_isba'   => "De la Direcció General de Politica Indústrial",
+'otros_declaro_idi_isba'   => "Altres",
+'documentacion_adjunta_requerida_idi_isba' => "Documentació que ens pot adjuntar",
+'escritura_empresa_idi_isba' => "Escriptura o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil.",
+'ayuda_superior_3000' => "En el cas d'ajudes superiors als 3000 €:",
+
+'adherido_a_ils_si_no'  => "Participa o està adherit a alguna mena de programa per a reduir la petjada de carboni",
+'no_adherido_a_ils'     => "NO",
+'adherido_a_ils'        => "SI",
+'documentacion_adjuntada_idi_isba' => "Documentació adjuntada",
+'solicita_ayuda_idi_isba'  => "Sol·licito una ajuda per import de",
+'solicita_ayuda_importe_idi_isba' => "Importe (€) de la cantidad que solicita",
+'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvención de intereses de 2 puntos, consistente en la cuantía de",
+'solicita_ayuda_coste_aval_isba_idi_isba' => "Una subvención al coste del aval de ISBA, consistente en la cuantía de",
+'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvención a los gastos de apertura y de estudio, consistente en la cuantía de",
 
 'doc_requerimiento_asunto'         => "Assumpte: requeriment de documentació relativa a l’expedient de subvenció",
 'doc_requerimiento_p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la resolució del President de l’IDI per la qual s'aprova la convocatòria per a la concessió d’ajuts de xecs de consultoria  per  a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat (BOIB núm. %BOIBNUM%), us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",
