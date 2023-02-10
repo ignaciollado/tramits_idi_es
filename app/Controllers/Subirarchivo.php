@@ -1249,53 +1249,67 @@ public function store_idi_isba()
 		/* -------------------------------6. DECLARO-------------------------------------------- */
 
 		//6. DECLARO: si/no da el consentimiento para comprobar la identificación de la persona solicitante
-		if ($this->request->getVar('consentimiento_identificacion') === 'on'){ /* OK */
-			$file_enviardocumentoIdentificacion = "SI "; /* OK */
+
+		if ($this->request->getVar('declaro_idi_isba_que_cumple') === 'on'){ /* OK */
+			$declaro_idi_isba_que_cumple = "SI "; /* OK */
 		} else {
-			$file_enviardocumentoIdentificacion = "NO "; /* OK */
+			$declaro_idi_isba_que_cumple = "NO "; /* OK */
+		}
+		//6. DECLARO: si/no da el consentimiento comprobar cumplimiento obligaciones tributarias
+		if ($this->request->getVar('declaro_idi_isba_que_cumple_no_mas_25') === 'on'){
+			$declaro_idi_isba_que_cumple_no_mas_25 = "SI ";
+		} else {
+			$declaro_idi_isba_que_cumple_no_mas_25 = "NO ";
+		}
+
+		//6. DECLARO: si/no da el consentimiento comprobar cumplimiento obligaciones tributarias
+		if ($this->request->getVar('declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom') === 'on'){
+			$declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom = "SI";
+		} else {
+			$declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom = "NO";
+		}
+
+		if ($this->request->getVar('consentimiento_identificacion') === 'on'){ /* OK */
+			$file_enviardocumentoIdentificacion = "SI"; 
+		} else {
+			$file_enviardocumentoIdentificacion = "NO"; /* OK */
 		}
 		//6. DECLARO: si/no da el consentimiento comprobar cumplimiento obligaciones tributarias
 		if ($this->request->getVar('consentimiento_certificadoATIB') === 'on'){
-			$file_certificadoATIB = "SI ";
+			$file_certificadoATIB = "SI"; 
 		} else {
-			$file_certificadoATIB = "NO ";
+			$file_certificadoATIB = "NO";
 		}
 
 		//6. DECLARO: si/no da el consentimiento comprobar cumplimiento obligaciones tributarias
 		if ($this->request->getVar('consentimiento_TesoreriaSegSoc') === 'on'){
-			$file_certificadoSegSoc = "SI ";
+			$file_certificadoSegSoc = "SI";
 		} else {
-			$file_certificadoSegSoc = "NO ";
+			$file_certificadoSegSoc = "NO";
 		}
-	
-		/* ---------------------------DECLARACIÓN RESPONSABLE---------------------------------------- */
-	
-		$declaracion_responsable_v = "SI ";
-
-		$declaracion_responsable_vii = "SI ";
-
-		$declaracion_responsable_viii = "SI ";
-
-		$declaracion_responsable_ix = "SI ";
-
-		$declaracion_responsable_xi = "SI ";
 
  		/* -------------------------------7. DOCUMENTACIÓN QUE NOS PUEDE ADJUNTAR--------------------------------------------- */
  		$documentosfile = $this->request->getFiles();
+
+		 if ( !$documentosfile['file_copiaNIF'][0]->getName() ){
+			$file_copiaNIF = "NO";
+	 	} else {
+			$file_copiaNIF = "SI";
+	 	}
 	 
 		if ( !$documentosfile['file_escritura_empresa'][0]->getName() ){
-			$file_escritura_empresa = "NO ";
+			$file_escritura_empresa = "NO";
 	 	} else {
-			$file_escritura_empresa = "SI ";
+			$file_escritura_empresa = "SI";
 	 	}
  
 		if ( !$documentosfile['file_certificadoIAE'][0]->getName() ){
-			$file_certificadoIAE = "NO ";
+			$file_certificadoIAE = "NO";
 	 	} else {
-			$file_certificadoIAE = "SI ";
+			$file_certificadoIAE = "SI";
 	 	}
- 
-		$nif = $this->request->getVar('nif');
+
+ 		$nif = $this->request->getVar('nif');
 		$empresa = $this->request->getVar('denom_interesado');
 		$domicilio = $this->request->getVar('domicilio');
 		$localidad = $this->request->getVar('localidad');
@@ -1305,13 +1319,14 @@ public function store_idi_isba()
 		$nif_representante = $this->request->getVar('nif_representante');
 		$domicilio_rep = $this->request->getVar('domicilio_rep');
 		$telefono_rep = $this->request->getVar('telefono_rep');
+
 		$condicion_rep = $this->request->getVar('condicion_rep');
 
 		/*** se usarán estos dos campos para notificar al beneficiario ***/
 		$tel_representante = $this->request->getVar('tel_representante');
 		$mail_representante = $this->request->getVar('mail_representante');
 		/*****************************************************************/
-		$entidad_financiera = ucwords($this->request->getVar('entidad_financiera'));
+		$nom_entidad = ucwords($this->request->getVar('nom_entidad'));
 		$importe_prestamo = $this->request->getVar('importe_prestamo');
 		$plazo_prestamo = $this->request->getVar('plazo_prestamo');
 		$carencia_prestamo = $this->request->getVar('carencia_prestamo');
@@ -1319,18 +1334,22 @@ public function store_idi_isba()
 		$plazo_aval_isba = $this->request->getVar('plazo_aval_isba');
 		$fecha_aval_isba = $this->request->getVar('fecha_aval_isba');
 		$finalidad_inversion_idi_isba = ucwords($this->request->getVar('finalidad_inversion_idi_isba'));
-	
-		if ($this->request->getVar('empresa_eco_idi_isba') === 'on'){
-			$empresa_eco_idi_isba = "SI ";
-		} else {
-			$empresa_eco_idi_isba = "NO ";
-		}
+
+		$empresa_eco_idi_isba = $this->request->getVar('empresa_eco_idi_isba');
 
 		$importe_presupuesto_idi_isba = $this->request->getVar('importe_presupuesto_idi_isba');
 		$importe_ayuda_solicita_idi_isba = $this->request->getVar('importe_ayuda_solicita_idi_isba');
 		$intereses_ayuda_solicita_idi_isba = $this->request->getVar('intereses_ayuda_solicita_idi_isba');
 		$coste_aval_solicita_idi_isba = $this->request->getVar('coste_aval_solicita_idi_isba');
 		$gastos_aval_solicita_idi_isba = $this->request->getVar('gastos_aval_solicita_idi_isba');
+
+		$tiene_ayudas_subv = $this->request->getVar('tiene_ayudas_subv');
+
+		$ayuda_subv_de = $this->request->getVar('ayuda_subv_de');
+
+		if ( $this->request->getVar('ayuda_subv_de') === 'otros') {
+			$ayuda_subv_otros_detalle = $this->request->getVar('ayuda_subv_otros_detalle');
+		}
 
 		$data_exp = [
 			 'idExp' => $idExp,
@@ -1355,10 +1374,11 @@ public function store_idi_isba()
 			 'telefono_rep' 	=> $telefono_rep,
 			 'condicion_rep' 	=> $condicion_rep,
 
-			 'cumpleRequisitos_dec_resp' => $declaracion_responsable_v,
-			 'epigrafeIAE_dec_resp' => $declaracion_responsable_vii,
+			 'declaro_idi_isba_que_cumple' => $declaro_idi_isba_que_cumple,
+			 'declaro_idi_isba_que_cumple_no_mas_25' 	=> $declaro_idi_isba_que_cumple_no_mas_25,
+			 'declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom' 	=> $declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom,
 
-			 'entidad_financiera' => $entidad_financiera,
+			 'nom_entidad' => $nom_entidad,
 			 'importe_prestamo' => $importe_prestamo,
 			 'plazo_prestamo' => $plazo_prestamo,
 			 'carencia_prestamo' => $carencia_prestamo,
@@ -1372,10 +1392,14 @@ public function store_idi_isba()
 			 'intereses_ayuda_solicita_idi_isba' => $intereses_ayuda_solicita_idi_isba,
 			 'coste_aval_solicita_idi_isba' => $coste_aval_solicita_idi_isba,
 			 'gastos_aval_solicita_idi_isba' => $gastos_aval_solicita_idi_isba,
-	 
+			 'tiene_ayudas_subv' => $tiene_ayudas_subv,
+			 'ayuda_subv_de' => $ayuda_subv_de,
+			 'ayuda_subv_otros_detalle' => $ayuda_subv_otros_detalle,
+
 			 'file_enviardocumentoIdentificacion'   => $file_enviardocumentoIdentificacion,
 			 'file_certificadoATIB' => $file_certificadoATIB,
 			 'file_certificadoSegSoc' => $file_certificadoSegSoc,
+			 'file_copiaNIF' => $file_copiaNIF,
 			 'file_escritura_empresa' => $file_escritura_empresa,
 			 'file_certificadoIAE' => $file_certificadoIAE,
 
@@ -1385,6 +1409,7 @@ public function store_idi_isba()
 			];
 	
 	 	$save_exp = $expediente->insert($data_exp);
+
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
@@ -1418,8 +1443,8 @@ public function store_idi_isba()
 		/* ----------------------------------------------------------------------------------------------------- */
 		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
 		if (isset($documentosfile['file_certificadoATIB'])) {
-			foreach($documentosfile['file_certificadoATIB'] as $corrientePagoATIB)
-				{
+		foreach($documentosfile['file_certificadoATIB'] as $corrientePagoATIB)
+			{
 				if ($corrientePagoATIB->isValid() && ! $corrientePagoATIB->hasMoved())
 					{
 						$corrientePagoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $corrientePagoATIB->getRandomName());
@@ -1438,7 +1463,7 @@ public function store_idi_isba()
 						];
 					$save = $documentos->insert($data_file);
 					}
-				}
+			}
 		}
 
  		/* ------------------------------------------------------------------------------------------------------------ */	
@@ -1447,7 +1472,7 @@ public function store_idi_isba()
  		if (isset($documentosfile['file_certificadoSegSoc' ])) {
 		foreach($documentosfile['file_certificadoSegSoc' ] as $sedeSocial)
 			{
-			if ($sedeSocial->isValid() && ! $sedeSocial->hasMoved())
+				if ($sedeSocial->isValid() && ! $sedeSocial->hasMoved())
 				{
 					$sedeSocial->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $sedeSocial->getRandomName());
 					$data_file = [

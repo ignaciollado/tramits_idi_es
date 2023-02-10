@@ -14,7 +14,7 @@ class MYPDF extends TCPDF {
     public function Header() {
         // Logo
         $image_file = K_PATH_IMAGES.'logo_institut_dinnovacio_empresaria_col_vertical.png';
-        $this->Image($image_file, 30, 10, 100, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 20, 10, 25, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
@@ -57,127 +57,55 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 12);
+$pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 // --------------------------------------------------------------CABECERA Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
-$html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi')."</b>";
-$html1 .= "<br>";
-$html1 .= lang('message_lang.codigo_dir3')." <b>".$data['configuracion']['emisorDIR3']."</b>";
+$html1 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.destino_solicitud').": <b>".lang('message_lang.idi')."</b></td></tr>";
+$html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.codigo_dir3').": <b>".$data['configuracion']['emisorDIR3']."</b></td></tr>";
+$html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><h4>". lang('message_lang.subtitulo_solicitud_ayudas_idi_isba')."</h4></td></tr>";
+$html1 .= "</table>";
+
 // set color for background
 $pdf->SetFillColor(54, 84, 70);
 // set color for text
 $pdf->SetTextColor(255, 255, 255);
-$pdf->writeHTMLCell(90, '', 105, 40, $html1, 1, 1, 1, true, 'J', true);
+// writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
+$pdf->writeHTMLCell(90, '', 105, 10, $html1, 1, 1, 1, true, 'L', true);
 
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 15);
-$pdf->setX($currentX - 10);
 $pdf->SetTextColor(0, 0, 0);
-$html2 = lang('message_lang.subtitulo_solicitud_ayudas_idi_isba');
-$pdf->writeHTML($html2, true, false, true, false, '');
-
-// --------------------------------------------------1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA-------------------------------------- //
-// --------------------------------------------------------------------------------------------------------------------------------------- //
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$html3 = lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']; // El año de la convocatoria de las ayudas
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$html4 =  lang('message_lang.programa'); // el programa de ayudas seleccionado
+$pdf->setY($currentY + 10);
+$pdf->setX($currentX - 20);
+$html8 ="1. ". lang('message_lang.identificacion_sol_idi_isba');
 
-if ($tipo_tramite == "iDigital") {
-	$tipo_tramite = lang('message_lang.programaiDigital');
-}
-else if ($tipo_tramite == "ILS") {
-	$tipo_tramite = lang('message_lang.programaILS');
-}
-else if ($tipo_tramite == "iExporta") {
-	$tipo_tramite = lang('message_lang.programaiExporta');
-}
-else if ($tipo_tramite == "IDI-ISBA") {
-	$tipo_tramite = lang('message_lang.programaIDIISBA');
-}
-
-$html5 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html5 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $tipo_tramite ."</b></td></tr>";
-$html5 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-//$pdf->writeHTML($html5, true, false, true, false, '');
-
-// ------------------------------------------------------------------0. TIPO DE EMPRESA------------------------------------------------------------ //
-// ------------------------------------------------------------------------------------------------------------------------------------------------ //
-/* $currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5); */
-/*  $pdf->setX($currentX - 10); */
-/* $html6 =  lang('message_lang.solicitante_tipo_ils'); // TIPO DE EMPRESA
-$pdf->Cell(0, 10, $html6, 1, 1, 'C');
-
-if ($tipo_solicitante == "autonomo") {
-	$tipo_solicitante = lang('message_lang.solicitante_tipo_autonomo');
-	}
-else if ($tipo_solicitante == "pequenya") {
-	$tipo_solicitante = lang('message_lang.solicitante_tipo_pequenya');
-	}
-else if ($tipo_solicitante == "mediana") {
-	$tipo_solicitante = lang('message_lang.solicitante_tipo_mediana');
-}
-else if ($tipo_solicitante == "cluster_ct") {
-	$tipo_solicitante = lang('message_lang.solicitante_tipo_cluster_ct');
-}
-
-$html7 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $tipo_solicitante ."</b></td></tr>";
-$html7 .= "</table>"; */
-
-/* $currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html7, true, false, true, false, ''); */
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$html8 = lang('message_lang.identificacion_sol_idi_isba');
-$pdf->Cell(0, 10, $html8, 1, 1, 'C');
+$pdf->writeHTMLCell('', '', '', '', $html8, 1, 1, 0, true, 'C', true);
 
 // ------------------------------------------------------------------1. DATOS EMPRESA---------------------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-/* $pdf->setX($currentX - 10); */
+$pdf->setY($currentY + 10);
+$pdf->setX($currentX - 20);
 $html9 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicitante_sol_idigital').": <b>".$empresa."</b></td></tr>"; 
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF: <b>".$nif."</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Domicili: <b>".$domicilio."</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Localitat: <b>".$cpostal." ".$localidad."</b></td></tr>";
-$html9 .= "<tr><td></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.nom_rep_legal_sol_idigital')." :  <b>". $nombre_rep ."</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF :  <b>".  $nif_rep . "</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.direccion_rep_legal_sol_idigital')." :  <b>". $domicilio_rep ."</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.tel_rep_legal_sol_idigital')." :  <b>". $telefono_rep ."</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.condicion_rep_admin').lang('message_lang.condicion_rep_apoderado')." :  <b>".  $condicion_rep_admin . "</b></td></tr>";
+
+$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.condicion_rep')." :  <b>".  $condicion_rep . "</b></td></tr>";
 $html9 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
+
 $pdf->writeHTML($html9, true, false, true, false, '');
 
 // ------------------------------------------------------------------2. NOTIFICACIÓN----------------------------------------------------------------- //
@@ -185,233 +113,184 @@ $pdf->writeHTML($html9, true, false, true, false, '');
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$html10 = "3. ". lang('message_lang.notificacion_corto'); // "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)";
-$pdf->Cell(0, 10, $html10, 1, 1, 'C');
+$pdf->setX($currentX - 20);
+$html10 = "2. ". lang('message_lang.notificacion_corto'); // "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)";
 
-$html11 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.mail_rep_legal_sol_idigital')." :  <b>". $email_rep . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.tel_rep_legal_sol_idigital')." :  <b>" . $telefono_rep . "</b></td></tr>";
-$html11 .= "</table>";
+$pdf->writeHTMLCell('', '', '', '', $html10, 1, 1, 0, true, 'C', true);
+
+$html10 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html10 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.notificacion_idi_isba').":</td></tr>";
+$html10 .= "<tr><td></td></tr>";
+$html10 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.mail_rep_legal_sol_idigital')." :  <b>". $email_rep . "</b></td></tr>";
+$html10 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.tel_rep_legal_sol_idigital')." :  <b>" . $telefono_rep . "</b></td></tr>";
+$html10 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html11, true, false, true, false, '');
+$pdf->setX($currentX - 20);
+
+$pdf->writeHTML($html10, true, false, true, false, '');
 
 // ------------------------------------------------------------------3. OPERACIÓN FINANCIERA--------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$html10 = "3. ". lang('message_lang.operacion_financiera_idi_isba');
-$pdf->Cell(0, 10, $html10, 1, 1, 'C');
+$pdf->setX($currentX - 20);
+$html11 = "3. ". lang('message_lang.operacion_financiera_idi_isba');
+
+$pdf->writeHTMLCell('', '', '', '', $html11, 1, 1, 0, true, 'C', true);
 
 $html11 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.entidad_financiera_idi_isba')." :  <b>". $entidad_financiera . "</b></td></tr>";
+$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('message_lang.operacion_financiera_prestamo_idi_isba').":</b></td></tr>";
+$html11 .= "<tr><td></td></tr>";
+$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.entidad_financiera_idi_isba')." :  <b>". $nom_entidad . "</b></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_prestamo_entidad_idi_isba')." :  <b>" . $importe_prestamo . "</b></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_entidad_idi_isba')." :  <b>" . $plazo_prestamo . "</b></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.carencia_prestamo_entidad_idi_isba')." :  <b>" . $carencia_prestamo . "</b></td></tr>";
+$html11 .= "<tr><td></td></tr>";
+$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('message_lang.operacion_financiera_aval_idi_isba').":</b></td></tr>";
+$html11 .= "<tr><td></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.cuantia_prestamo_idi_isba')." :  <b>" . $cuantia_aval_isba . "</b></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_idi_isba')." :  <b>" . $plazo_aval_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.fecha_del_aval_idi_isba')." :  <b>" . $fecha_aval_isba . "</b></td></tr>";
-
+$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.fecha_del_aval_idi_isba')." :  <b>" . date_format(date_create($fecha_aval_isba),"d/m/Y") . "</b></td></tr>";
 $html11 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
+$pdf->setX($currentX - 20);
+
 $pdf->writeHTML($html11, true, false, true, false, '');
 
 // ------------------------------------------------------------------4. PROYECTO DE INVERSIÓN-------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
+$pdf->AddPage();
+
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 20);
+$pdf->setX($currentX - 20);
+$html12 = "4. ". lang('message_lang.proyecto_de_inversion_idi_isba');
+
+$pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
+
+$html12 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.proyecto_de_inversion_idi_isba_finalidad')." :  <b>". $finalidad_inversion_idi_isba . "</b></td></tr>";
+$html12 .= "</table>";
+
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$html10 = "3. ". lang('message_lang.proyecto_de_inversion_idi_isba');
-$pdf->Cell(0, 10, $html10, 1, 1, 'C');
+$pdf->setX($currentX - 20);
+$pdf->writeHTML($html12, true, false, true, false, '');
 
-$html11 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.proyecto_de_inversion_idi_isba_finalidad')." :  <b>". $finalidad_inversion_idi_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.adherido_a_ils_si_no')." :  <b>". $empresa_eco_idi_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_del_presupuesto_idi_isba')." :  <b>" . $importe_presupuesto_idi_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_importe_idi_isba')." :  <b>" . $importe_ayuda_solicita_idi_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba')." :  <b>" . $intereses_ayuda_solicita_idi_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba')." :  <b>" . $coste_aval_solicita_idi_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba')." :  <b>" . $gastos_aval_solicita_idi_isba . "</b></td></tr>";
+// ------------------------------------------------------------------5. PRESUPUESTO DEL PROYECTO DE INVERSIÓN--------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------------------------------------------- //
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 5);
+$pdf->setX($currentX - 20);
+$html12 = "5. ". lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');
 
-$html11 .= "</table>";
+$pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
+
+$html12 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.adherido_a_ils_si_no')." :  <b>". $empresa_eco_idi_isba . "</b></td></tr>";
+$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_del_presupuesto_idi_isba')." :  <b>" . $importe_presupuesto_idi_isba . "</b></td></tr>";
+$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_importe_idi_isba')." :  <b>" . $importe_ayuda_solicita_idi_isba . "</b></td></tr>";
+$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba')." :  <b>" . $intereses_ayuda_solicita_idi_isba . "</b></td></tr>";
+$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba')." :  <b>" . $coste_aval_solicita_idi_isba . "</b></td></tr>";
+$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba')." :  <b>" . $gastos_aval_solicita_idi_isba . "</b></td></tr>";
+$html12 .= "</table>";
+
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html11, true, false, true, false, '');
+$pdf->setX($currentX - 20);
+$pdf->writeHTML($html12, true, false, true, false, '');
 
-
-// ----------------------------------------------5. DECLARO-------------------------------------------------------------------------------- //
+// ----------------------------------------------6. DECLARO-------------------------------------------------------------------------------- //
 // ---------------------------------------------------------------------------------------------------------------------------------------- //
-$pdf->AddPage();
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 10);
+$pdf->setX($currentX - 20);
+$html13 = "6. ".lang('message_lang.declaro');
+
+$pdf->writeHTMLCell('', '', '', '', $html13, 1, 1, 0, true, 'C', true);
+
+$html13 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html13 .= "<tr><td><ol>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_no_mas_25')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad')."</li>";
+$html13 .= "<li>Que ".$tiene_ayudas_subv.lang('message_lang.declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas')."<br>";
+
+if ($tiene_ayudas_subv === "SI") {
+
+ 	if ($ayuda_subv_de === "dg_pol_ind") {
+		$html13 .="<b>". lang('message_lang.direccion_general_politica_industrial_idi_isba') ."</b>";
+	} else {
+		$html13 .= $ayuda_subv_otros_detalle;
+	}
+
+}
+
+$html13 .= "</li>";
+$html13 .= "<li><b>".$file_enviardocumentoIdentificacion."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";
+$html13 .= "<li><b>".$file_certificadoATIB."</b> ".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";
+$html13 .= "<li><b>".$file_certificadoSegSoc."</b> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";
+
+$html13 .= "</ol></td></tr>";
+$html13 .= "</table>";
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$html15 = lang('message_lang.proyecto_de_inversion_idi_isba');
-$pdf->Cell(0, 10, $html15, 1, 1, 'C');
+$pdf->setX($currentX - 20);
+$pdf->writeHTML($html13, true, false, true, false, '');
 
-$html16 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html16 .= "<tr><td></td></tr>";
-$html16 .= "<tr><td></td></tr>";
-$html16 .= "<tr><td><ol>";
-
-if ( $file_enviardocumentoIdentificacion == "SI ") {
-	$html16 .= "<li>".lang('message_lang.documentacion_identificativa_idi_isba')."-". $file_enviardocumentoIdentificacion."-"."</li>";		
-}
-if ( $file_certificadoATIB  == "SI ") {
-	$html16 .= "<li>".lang('message_lang.certificado_corriente_pago_aeat')."</li>";		
-}
-if ( $file_certificadoIAE == "SI ") {
-	$html16 .= "<li>".lang('message_lang.doc_certificado_IAE')."</li>";		
-}
-if ( $file_certificadoSegSoc == "SI ") {
-	$html16 .= "<li>".lang('message_lang.certificado_corriente_pago_ttss')."</li>";		
-}
-if ( $file_escritura_empresa == "SI ") {
-	$html16 .= "<li>".lang('message_lang.escritura_empresa_idi_isba')."</li>";		
-}
-
-$html16 .= "</ol></td></tr>";
-$html16 .= "<tr><td></td></tr>";
-$html16 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html16, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$html155 = lang('message_lang.documentacion_adjuntada_opcional_ils');
-$pdf->Cell(0, 10, $html155, 1, 1, 'C');
-
-$html166 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html166 .= "<tr><td></td></tr>";
-$html166 .= "<tr><td></td></tr>";
-$html166 .= "<tr><td><ol>";
-if ( $file_memoriaTecnica == "SI ") {
-	$html166 .= "<li>".lang('message_lang.doc_Memoria_Tecnica')."</li>";		
-}
-if ( $file_nifEmpresa == "SI ") {
-	$html166 .= "<li>".lang('message_lang.cif_empresa')."</li>";		
-}
-if ( $file_logotipoEmpresaIls == "SI ") {
-	$html166 .= "<li>".lang('message_lang.doc_Logo_Empresa')."</li>";		
-}
-$html166 .= "</ol></td></tr>";
-$html166 .= "<tr><td></td></tr>";
-$html166 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html166, true, false, true, false, '');
-
-// ---------------------------------------------------------------------------------------------------------------------------- //
-// ----------------------------------------------5. AUTORIZACIONES------------------------------------------------------------- //
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$html17 = lang('message_lang.autorizaciones_solicitud_ils'); // AUTORIZACIONES
-$pdf->Cell(0, 10, $html17, 1, 1, 'C');
-
-$html18 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html18 .= "<tr><td></td></tr>";
-$html18 .= "<tr><td><ul>";
-	
-$html18 .= "<li><b>".$file_enviardocumentoIdentificacion."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";		
-$html18 .= "<li><b>".$file_certificadoATIB."</b> ".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
-	
-$html18 .= "</ul></td></tr>";
-$html18 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html18, true, false, true, false, '');
-
-// ----------------------------------------------------------------------------------------------------------------------------------------------------- //
-// ----------------------------------------------6. DECLARACIÓN RESPONSABLE------------------------------------------------------------- //
 $pdf->AddPage();
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
+$pdf->setY($currentY + 20);
+$pdf->setX($currentX - 20);
+$html15 = "6. ".lang('message_lang.documentacion_adjuntada_idi_isba');
 
-$html20 = "6. ". lang('message_lang.declaracion_responsable_cabecera_ils'); //."DECLARACIÓ RESPONSABLE</h5>";
-$localidad = explode ("#", $localidad);
-$pdf->Cell(0, 10, $html20, 1, 1, 'C');
+$pdf->writeHTMLCell('', '', '', '', $html15, 1, 1, 0, true, 'C', true);
 
-$html21 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html21 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>" . $empresa . ",".  lang('message_lang.domicilio_notifica_dec_resp') . $domicilio . " de " . $localidad[1] . "</td></tr><br>";
-$html21 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html21, true, false, true, false, '');
-
-$html23 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html23 .= "<tr><td>".lang('message_lang.declaro');
-$html23 .= "<p>".lang('message_lang.declaracion_responsable_ils')."</p>";
-
-if ( $cumpleRequisitos_dec_resp == "SI ") {
-	$html23 .= "<p>".lang('message_lang.declaracion_responsable_ils_v')."</p>";
+$html15 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html15 .= "<tr><td></td></tr>";
+$html15 .= "<tr><td><ol>";
+if ( $file_enviardocumentoIdentificacion == "NO") {
+	$html15 .= "<li>".lang('message_lang.documentacion_identificativa_idi_isba')."</li>";		
+}
+if ( $file_certificadoATIB  == "NO") {
+	$html15 .= "<li>".lang('message_lang.certificado_corriente_pago_aeat')."</li>";		
+}
+if ( $file_certificadoSegSoc == "NO") {
+	$html15 .= "<li>".lang('message_lang.certificado_corriente_pago_ttss')."</li>";		
+}
+if ( $file_copiaNIF == "SI") {
+	$html15 .= "<li>".lang('message_lang.copia_dni_representante')."</li>";		
+}
+if ( $file_escritura_empresa == "SI") {
+	$html15 .= "<li>".lang('message_lang.escritura_empresa_idi_isba')."</li>";		
 }
 
-if ( $epigrafeIAE_dec_resp == "SI ") {
-	$html23 .= "<p>".lang('message_lang.declaracion_responsable_ils_vii')."</p>";
+if ( $file_certificadoIAE == "SI") {
+	$html15 .= "<li>".lang('message_lang.certificado_IAE')."</li>";		
 }
-
-$html23 .= "<p>IV) ".lang('message_lang.datos_consignados')."</p>";
-$html23 .= "</td></tr>";
-$html23 .= "</table>";
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html23, true, false, true, false, '');
-
-
-// ---------------------------------------------------------------------------------------------------------------------------- //
-// ----------------------------------------------7. SOLICITO------------------------------------------------------------------- //
-$pdf->AddPage();
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-
-$html20 = "7. ". lang('message_lang.solicito_cabecera_ils');
-$pdf->Cell(0, 10, $html20, 1, 1, 'C');
-
-$html18 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html18 .= "<tr><td></td></tr>";
-$html18 .= "<tr><td></td></tr>";
-$html18 .= "<tr><td>".lang('message_lang.expongo_ils')."</td></tr>";
-$html18 .= "<tr><td></td></tr>";
-$html18 .= "<tr><td>".lang('message_lang.solicito_ils')."</td></tr>";
-$html18 .= "</table>";
+$html15 .= "</ol></td></tr>";
+$html15 .= "<tr><td></td></tr>";
+$html15 .= "</table>";
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html18, true, false, true, false, '');
+$pdf->setX($currentX - 20);
+
+$pdf->writeHTML($html15, true, false, true, false, '');
 
 // ---------------------------------------------------------FECHA y FIRMA----------------------------------------------------- //
 
@@ -440,10 +319,10 @@ $html29 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
+$pdf->setX($currentX - 40);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_ils.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_idi_isba.pdf', 'F');
 
 ?>
 
@@ -453,7 +332,7 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 	<div><?php echo $html2;?></div>
 
 	<!-- <div class="cabecera-apartado"><?php //echo $html4;?></div> -->
-	<!-- <div ><?php //echo $html5;?></div> -->
+
 	<div class="cabecera-apartado"><?php echo $html6;?></div>
 	<div ><?php echo $html7;?></div>
 	<div class="cabecera-apartado"><?php echo $html8;?></div>
@@ -462,28 +341,31 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 	<div ><?php echo $html11;?></div>
 	<div class="cabecera-apartado"><?php echo $html12;?></div>
 	<div ><?php echo $html13;?></div>
-	<!--<div><?php echo $html14;?></div>-->
+
 	<div class="cabecera-apartado"><?php echo $html15;?></div>
 	<div ><?php echo $html16;?></div>
 	<div class="cabecera-apartado"><?php echo $html155;?></div>
 	<div ><?php echo $html166;?></div>
 	<div ><?php echo $html17;?></div>
 	<div ><?php echo $html18;?></div>
-	<!--<div><?php echo $html19;?></div>-->
+
 	<div ><?php echo $html20;?></div>
 	<div ><?php echo $html21;?></div>
 	<div class="cabecera-apartado"><?php echo $html22;?></div>
 	<div ><?php echo $html23;?></div>
 	<div ><?php echo $html24;?></div>
 	<div ><?php echo $html25;?></div>
-	<!--<div><?php echo $html26;?></div>-->
+
 	<div ><?php echo $html27;?></div>
 	<div ><?php echo $html28;?></div>
-	<!-- <div ><?php echo $html29;?></div> -->
-</div>
+	<div ><?php echo $html29;?></div>
 <style>
 	html, body {
 		font-size: 14px!important;
+	}
+	body {
+		margin: auto;
+		max-width: 1200px;
 	}
 	table, li {
 		font-size: 1rem!important;

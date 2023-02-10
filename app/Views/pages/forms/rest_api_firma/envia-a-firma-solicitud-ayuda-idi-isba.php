@@ -59,7 +59,7 @@
 		$request->subject = lang('message_lang.titulo_solicitud_idi_isba'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
 		$request->message = lang('message_lang.subtitulo_solicitud_ayudas_idi_isba'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 		$request->senderNotificationLevel = "ALL";
-		$request->signatureLevel = "ALL";
+		$request->signatureLevel = "CERTIFICATE_OTP_SMS";
 		// $request->stampName = "qr_code";
 		// URL para los callbacks tras realizar una acción con la petición. Será un GET con los parámetros:
 		// action (String con el tipo de acción), label (String con la public access id de la petición) y finished=ok (si está finalizada la petición. En caso contrario, no se incluirá).
@@ -132,12 +132,13 @@
         'PublicAccessId' => $respuesta['publicAccessId'],
 		];
 		$builder->where('id', $last_insert_id);
-		$builder->update($data);	
+		$builder->update($data);
 
-		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_ils')."</div>";
+		echo "<div class='container container-info'>";
+		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_idi_isba')."</div>";
 		echo "<div class='alert alert-warning'>".lang('message_lang.nota_info_rec')."</div>";
 		echo "<div class='alert alert-info'>".lang('message_lang.una_vez_firmado')."</div>";
     echo "<div class='alert alert-info'>".lang('message_lang.contacto_idi_ils')."</div>";		
-
+		echo "</div>";
 	}
 ?>

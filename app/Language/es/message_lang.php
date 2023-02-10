@@ -91,6 +91,7 @@ return [
    'subtitulo_justificacion_idigital'	 => "<div style='color:red;'><p>RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE</p><p>DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DEL REGISTRO ELECTRÓNICO COMÚN (REC) EN EL SIGUIENTE ENLACE:</p><p> https://rec.redsara.es/registro/action/are/acceso.do</p><p>SI NO PASSA PEL <strong>REC</strong> S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.</p></div>",     
    'enviado_correo_electron'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_ils'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de adhesión a ILS</strong> para que la firme electrónicamente.",
+   'enviado_correo_electron_idi_isba' => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda IDI-ISBA</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_justif'   => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_con_dec_res' => "Le hemos enviado un correo electrónico a la dirección que nos ha facilitado en la declaración responsable para que la firme electrónicamente.",
    'enviado_correo_electron_con'      => "Si en la solicitud marcó la opción <strong>'Ya tengo habilitador digital homologado, no necesito que el IDI me asigne uno'</strong>, hemos enviado un correo electrónico al facilitador digital que nos ha indicado para que rellene y firme su declaración responsable.",
@@ -161,6 +162,7 @@ return [
    <li><code>Mediana empresa:</code> Se considera mediana empresa la que tiene entre 50 y 250 trabajadores y/o trabajadoras, un volumen de negocio entre 10 y 50 millones de euros o un balance general anual entre 10 y 43 millones de euros, y no participa en un 25% o más de su capital o de sus derechos de voto en otras empresa que no cumplen con los requisitos anteriores.</li></ol>",
    'nom_rep_legal_sol_idigital'       => "Nombre del representante legal",
    'nif_rep_legal_sol_idigital'       => "NIF del representante legal",
+   'condicion_rep'                    => "Condición que alega",
    'condicion_rep_admin'              => "Administrador",
    'condicion_rep_apoderado'          => "Apoderado",
    'conCIF'							  => " con NIF ",
@@ -464,7 +466,8 @@ return [
 'doc_expediente'     => "Expediente",
 
 'avisos_idi_isba'                         => "ok",
-'intro_idi_isba_solicitud'			         => "Sol·licitud d'ajuts a microempreses, petites i mitjanes per cobrir despeses financeres",
+'notificacion_idi_isba'		            => "En este correo y movil recibirá los avisos de las notificaciones corresponentes al procedimiento",
+'intro_idi_isba_solicitud'		         => "Solicitud de ayudas a microempresas, pequeñas y medianas para cubrir gastos financieros",
 'documentacion_necesaria_idi_isba'        => "Documentación necesaria a adjuntar",
 'documentacion_identificativa_idi_isba'   => "Documentos de identificación de la persona solicitante y/o la persona autorizada por la empresa.",
 'documentacion_necesaria_pymes_idi_isba'  => "<h3>Antes de empezar, es recomendable tener preparada la siguiente documentación:</h3>
@@ -488,11 +491,13 @@ return [
                                        </ol>',
 'identificacion_sol_idi_isba' => "Identificación del SOLICITANTE",
 'operacion_financiera_idi_isba'  => "OPERACIÓN FINANCIERA",
+'operacion_financiera_prestamo_idi_isba'  => "PRÉSTAMO",
 'entidad_financiera_idi_isba'    => "Entidad financiera",
 'importe_prestamo_entidad_idi_isba' => "Importe préstamo entidad financiera (€)",
 'plazo_prestamo_entidad_idi_isba' => "Plazo préstamo entidad financiera",
 'carencia_prestamo_entidad_idi_isba'     => "Carencia préstamo entidad financiera (si procedeix) en anys",
 
+'operacion_financiera_aval_idi_isba'  => "AVAL DE ISBA, SGR",
 'cuantia_prestamo_idi_isba'      => "Cuantía aval de ISBA, SGR (€)",
 'plazo_prestamo_idi_isba'        => "Plazo aval de ISBA, SGR (en años)",
 'fecha_del_aval_idi_isba'        => "Fecha del aval de ISBA, SGR",
@@ -505,12 +510,14 @@ return [
 'declaro_idi_isba_que_cumple_no_mas_25' => "Que el/la solicitante cumple con el requisito  relativo a la <strong>no participación superior al 25%</strong> por una o varias empresas que, a nivel consolidado, incumplen los límites del punto 1) anterior.",
 'declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad'   => "Que el/la solicitante <strong>no incurre en ninguna causa de prohibición o de incompatibilidad</strong>
 para recibir la subvención según la legislación vigente.",
-'declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'   => "Que NO / SÍ <strong>tiene ayudas o subvenciones solicitadas o condedidas</strong> por alguna entidad, pública
+'declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'   => " <strong>tiene ayudas o subvenciones solicitadas o condedidas</strong> por alguna entidad, pública
  o privada, nacional o extranjera, relacionadas tanto con el proyecto de inversión como con la operación financiera:",
 'direccion_general_politica_industrial_idi_isba'   => "De la Dirección General de Politica Industrial",
 'otros_declaro_idi_isba'   => "Otros",
 'documentacion_adjunta_requerida_idi_isba' => "Documentación que nos puede adjuntar",
 'escritura_empresa_idi_isba' => "Escritura o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil.",
+
+'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓN ADJUNTA",
 
 'adherido_a_ils_si_no' => "Participa o está adherido a algún tipo de programa para reducir la huella de carbono",
 'no_adherido_a_ils'     => "NO",

@@ -88,7 +88,8 @@ return [
    'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses per cobrir despeses financeres d'operacions de finançament d'inversions productives previstes al Pla Estratègic Industrial 2018-2023",
    'subtitulo_justificacion_idigital'	 => "<div style='color:red;'><p>RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE</p><p>DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DEL REGISTRE ELECTRÒNIC COMÚ (REC) AL SEGÜENT ENLLAÇ:</p><p> https://rec.redsara.es/registro/action/are/acceso.do</p><p>SI NO PASSA PEL <strong>REC</strong> S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.</p></div>",     
    'enviado_correo_electron'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
-   'enviado_correo_electron_ils'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'adhesió a ILS</strong> perquè la signeu electrònicament.",
+   'enviado_correo_electron_ils'      => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'adhesió a ILS</strong> perquè la signeu electrònicament.",
+   'enviado_correo_electron_idi_isba' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut IDI-ISBA</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_justif'   => "Us hem enviat un correu electrònic a l'adreça que ens va facilitar amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_con_dec_res' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la declaració responsable perquè la signeu electrònicament.",
    'enviado_correo_electron_con'      => "Si en la sol·licitud va marcar l'opció <strong>'Ja tinc CONSULTOR digital homologat, no necessito que el IDI m'assigni un'</strong>, hem enviat un correu electrònic al facilitador digital que ens heu indicat perquè empleni i ferm la seva declaració responsable.",
@@ -156,6 +157,7 @@ return [
    <li><code>Mitjana empresa:</code> Es considera mitjana empresa la que té entre 50 i 250 treballadors i/o treballadores, un volum de negoci anual entre 10 i 50 milions d'euros o un balanç general anual entre 10 i 43 milions d'euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits anteriors.</li></ol>",
    'nom_rep_legal_sol_idigital'       => "Nom del representant legal", 
    'nif_rep_legal_sol_idigital'       => "NIF del representant legal",
+   'condicion_rep'                    => "Condició que al·lega",
    'condicion_rep_admin'              => "Administrador",
    'condicion_rep_apoderado'          => "Apoderat",
    'conCIF'							        => " amb NIF ",   
@@ -474,8 +476,9 @@ return [
 'doc_info_favorable_cabecera' => "Informe favorable sobre la sol·licitud de l’ajut per al disseny d’un pla de transformació digital per a %SOLICITANTE%, amb NIF %NIF%",
 'doc_expediente'     => "Expedient",
 
-'intro_idi_isba_solicitud'			         => "Solicitud de ayudas a microempresas, pequeñas y medianas para cubrir gastos financieros",
-'avisos_idi_isba'                         => "ok",
+'avisos_idi_isba'                      => "ok",
+'notificacion_idi_isba'		            => "En aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment",
+'intro_idi_isba_solicitud'			         => "Sol·licitud d'ajuts a microempreses, petites i mitjanes per cobrir despeses financeres",
 'documentacion_necesaria_idi_isba'        => "Documentació necessaria a adjuntar",
 'documentacion_identificativa_idi_isba'   => "Documents de identificatius de la persona sol·licitant i/o la persona autoritzada per l’empresa.",
 'documentacion_necesaria_pymes_idi_isba'  => "<h3>Antes de empezar, es recomendable tener preparada la siguiente documentación:</h3>
@@ -499,11 +502,14 @@ return [
                                        </ol>',
 'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
 'operacion_financiera_idi_isba'  => "OPERACIÓ FINANÇERA",
+'operacion_financiera_prestamo_idi_isba'  => "PRÉSTEC",
+
 'entidad_financiera_idi_isba'    => "Nom entitat finançera",
 'importe_prestamo_entidad_idi_isba' => "Import prèstec entitat finançera (€)",
 'plazo_prestamo_entidad_idi_isba' => "Termini prèstec entitat finançera",
 'carencia_prestamo_entidad_idi_isba'     => "Carència prèstec entitat finançera (si escau) en anys",
 
+'operacion_financiera_aval_idi_isba'  => "AVAL d'ISBA, SGR",
 'cuantia_prestamo_idi_isba'      => "Quantia aval de ISBA, SGR (€)",
 'plazo_prestamo_idi_isba'        => "Termini aval de ISBA, SGR (en anys)",
 'fecha_del_aval_idi_isba'        => "Data de l' aval de ISBA, SGR",
@@ -516,13 +522,15 @@ return [
 'declaro_idi_isba_que_cumple_no_mas_25' => "Que el/la solicitante cumple con el requisito  relativo a la <strong>no participación superior al 25%</strong> por una o varias empresas que, a nivel consolidado, incumplen los límites del punto 1) anterior.",
 'declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad'   => "Que el/la solicitante <strong>no incurre en ninguna causa de prohibición o de incompatibilidad</strong>
 para recibir la subvención según la legislación vigente.",
-'declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'   => "Que NO / SÍ <strong>tiene ayudas o subvenciones solicitadas o condedidas</strong> por alguna entidad, pública
+'declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'   => " <strong>tiene ayudas o subvenciones solicitadas o concedidas</strong> por alguna entidad, pública
  o privada, nacional o extranjera, relacionadas tanto con el proyecto de inversión como con la operación financiera:",
 'direccion_general_politica_industrial_idi_isba'   => "De la Direcció General de Politica Indústrial",
 'otros_declaro_idi_isba'   => "Altres",
 'documentacion_adjunta_requerida_idi_isba' => "Documentació que ens pot adjuntar",
 'escritura_empresa_idi_isba' => "Escriptura o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil.",
 'ayuda_superior_3000' => "En el cas d'ajudes superiors als 3000 €:",
+
+'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓ ADJUNTA",
 
 'adherido_a_ils_si_no'  => "Participa o està adherit a alguna mena de programa per a reduir la petjada de carboni",
 'no_adherido_a_ils'     => "NO",

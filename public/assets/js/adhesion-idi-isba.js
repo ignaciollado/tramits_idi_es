@@ -15,6 +15,9 @@ function activaDesactivaFormulario (valor) {
       } else {
         allElements[i].disabled=false;
         allElements[i].style.opacity = "1.0"
+				document.getElementById("declaro_idi_isba_que_cumple").disabled = true;
+				document.getElementById("declaro_idi_isba_que_cumple_no_mas_25").disabled = true;
+				document.getElementById("declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom").disabled = true;
       }
   }
 }
@@ -131,7 +134,7 @@ function selectorNoSi(field) {
   let empresa_eco_lbl = document.getElementById("empresa_eco")
 
   if (inputElement.name === 'tiene_ayudas_subv') {
-    if (inputElement.value === 'si') { 
+    if (inputElement.value === 'SI') { 
       document.getElementById("tiene_ayudas_subv_si_no").classList.remove("ocultar")
     } else {
       document.getElementById("tiene_ayudas_subv_si_no").classList.add("ocultar")
@@ -144,7 +147,7 @@ function selectorNoSi(field) {
   }
 
   if (inputElement.name === 'empresa_eco_idi_isba') {
-    if (inputElement.value === 'si') {
+    if (inputElement.value === 'SI') {
       empresa_eco_lbl.innerHTML = "¡¡¡ Tiene una bofificación por ser ECO !!!"
       empresa_eco_lbl.classList.add("valid")
       empresa_eco_lbl.classList.remove("invalid")
@@ -215,6 +218,7 @@ function muestraSubeArchivo (id)
 		if (id == "docConstitutivoCluster")
 		{
 			bChild.setAttribute("aria-required", true)
+			bChild.setAttribute("required", true)
 			bChild.setAttribute("size" ,"20")
 			bChild.setAttribute("type", "file")
 			bChild.setAttribute("accept", ".pdf, .jpeg, .png")
@@ -242,6 +246,7 @@ function muestraSubeArchivo (id)
 				let elementCopiaNIF = document.getElementById("enviarcopiaNIF")
 				let copiaNIFChild = document.createElement('input')
 				copiaNIFChild.setAttribute("aria-required", true)
+				copiaNIFChild.setAttribute("required", true)
 				copiaNIFChild.setAttribute("size" ,"20")
 				copiaNIFChild.setAttribute("type", "file")
 				copiaNIFChild.setAttribute("accept", ".pdf, .jpeg, .png")
@@ -268,6 +273,7 @@ function muestraSubeArchivo (id)
 				let elementConsentId = document.getElementById("enviardocumentoIdentificacion")
 				let consentId = document.createElement('input')
 				consentId.setAttribute("aria-required", true)
+				consentId.setAttribute("required", true)
 				consentId.setAttribute("size" ,"20")
 				consentId.setAttribute("type", "file")
 				consentId.setAttribute("accept", ".pdf, .jpeg, .png")
@@ -294,6 +300,7 @@ function muestraSubeArchivo (id)
 				let elementConsentATIB = document.getElementById("enviarcertificadoATIB")
 				let consentATIB = document.createElement('input')
 				consentATIB.setAttribute("aria-required", true)
+				consentATIB.setAttribute("required", true)
 				consentATIB.setAttribute("size" ,"20")
 				consentATIB.setAttribute("type", "file")
 				consentATIB.setAttribute("accept", ".pdf, .jpeg, .png")
@@ -320,6 +327,7 @@ function muestraSubeArchivo (id)
 				let elemntConsentSegSoc = document.getElementById("enviarcertificadoSecSoc")
 				let consentSegSoc = document.createElement('input')
 				consentSegSoc.setAttribute("aria-required", true)
+				consentSegSoc.setAttribute("required", true)
 				consentSegSoc.setAttribute("size" ,"20")
 				consentSegSoc.setAttribute("type", "file")
 				consentSegSoc.setAttribute("accept", ".pdf, .jpeg, .png")
@@ -350,6 +358,7 @@ function muestraSubeArchivo (id)
 				let elementConsentSS = document.getElementById("enviarcertificadosegSoc")
 				let consentSS = document.createElement('input')
 				consentSS.setAttribute("aria-required", true)
+				consentSS.setAttribute("required", true)
 				consentSS.setAttribute("size" ,"20")
 				consentSS.setAttribute("type", "file")
 				consentSS.setAttribute("accept", ".pdf, .jpeg, .png")
@@ -375,6 +384,7 @@ function muestraSubeArchivo (id)
 				let elementContenedorImporte = document.getElementById("contenedor_importe_minimis")
 				let contenedorImporte = document.createElement('input')
 				contenedorImporte.setAttribute("aria-required", true)
+				contenedorImporte.setAttribute("required", true)
 				contenedorImporte.setAttribute("placeholder" ,"10000.0")
 				contenedorImporte.setAttribute("minlength" ,"1")
 				contenedorImporte.setAttribute("maxlength" ,"6")

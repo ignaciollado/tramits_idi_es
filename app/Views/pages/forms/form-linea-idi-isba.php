@@ -98,13 +98,13 @@
 	<div id="formbox">
     <fieldset>
 			<h2>3. <?php echo lang('message_lang.operacion_financiera_idi_isba');?></h2>
-			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" data-error = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" aria-required="true" name = "entidad_financiera" id="entidad_financiera" size="220">
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-type="currency" aria-required="true" name = "importe_prestamo" id="importe_prestamo">
-			<input type = "number" min="0" max="12" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" aria-required="true" name = "plazo_prestamo" id="plazo_prestamo">
-			<input type = "number" min="0" max="12" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" name = "carencia_prestamo" id="carencia_prestamo">
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-type="currency" aria-required="true" name = "cuantia_aval_isba" id="cuantia_aval_isba">
-			<input type = "number" min="0" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" aria-required="true" name = "plazo_aval_isba" id="plazo_aval_isba">
-			<input type = "date" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" aria-required="true" name = "fecha_aval_isba" id="fecha_aval_isba">
+			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" data-error = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" aria-required="true" name = "nom_entidad" id="nom_entidad" size="220" required>
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-type="currency" aria-required="true" name = "importe_prestamo" id="importe_prestamo" required>
+			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" aria-required="true" name = "plazo_prestamo" id="plazo_prestamo" required>
+			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" name = "carencia_prestamo" id="carencia_prestamo" value="0" required>
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-type="currency" aria-required="true" name = "cuantia_aval_isba" id="cuantia_aval_isba" required>
+			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" aria-required="true" name = "plazo_aval_isba" id="plazo_aval_isba" required>
+			<input type = "date" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" aria-required="true" name = "fecha_aval_isba" id="fecha_aval_isba" required>
 		</fieldset>
 	</div>
 
@@ -112,22 +112,19 @@
 	<div id="formbox">
     <fieldset>
 			<h2>4. <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
-			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" required aria-required="true" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220" >
+			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" required aria-required="true" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220" required>
 		</fieldset>
-
-
 <!-------------------------- SOLICITA AYUDA  ---------------------------------------------------------------------------------------->
-
 		<fieldset>
 			<h2>5. <?php echo lang('message_lang.adherido_a_ils_si_no');?></h2>
 			<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_no" onchange="javaScript: selectorNoSi(this);" value="no">
+  			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_no" onchange="javaScript: selectorNoSi(this);" value="NO">
   			<label class="form-check-label" for="empresa_eco_idi_isba_no">
 					NO
 			  </label>
 			</div>
 			<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_si" onchange="javaScript: selectorNoSi(this);" value="si">
+  			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_si" onchange="javaScript: selectorNoSi(this);" value="SI">
   			<label class="form-check-label" for="empresa_eco_idi_isba_si">
 					SI
   			</label>
@@ -136,15 +133,15 @@
 		</fieldset>
 		<fieldset>
 			<h2><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');?></h2>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" required aria-required="true" name = "importe_presupuesto_idi_isba" id="importe_presupuesto_idi_isba">
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" required aria-required="true" name = "importe_presupuesto_idi_isba" id="importe_presupuesto_idi_isba" maxlength = "9" size="9" required>
 		</fieldset>
     <fieldset>
 			<h2><?php echo lang('message_lang.solicita_ayuda_idi_isba');?></h2>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" required aria-required="true" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9">
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" required aria-required="true" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9" required>
 			<h3 for=''><?php echo lang('message_lang.detalle_importe_ayuda_solicitado_idi_isba');?></h3>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" aria-required="true" name = "intereses_ayuda_solicita_idi_isba" id="intereses_ayuda_solicita_idi_isba" maxlength = "9" size="9" >
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" aria-required="true" name = "intereses_ayuda_solicita_idi_isba" id="intereses_ayuda_solicita_idi_isba" maxlength = "9" size="9" required>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" aria-required="true" name = "coste_aval_solicita_idi_isba" id="coste_aval_solicita_idi_isba" maxlength = "9" size="9" >
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" aria-required="true" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9" >
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" aria-required="true" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9" required>
 		</fieldset>
 	</div>
 	<!------------------------------------- 6. DECLARO ------------------------------------------------------------------------->
@@ -154,31 +151,40 @@
 		<ol>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple');?>" checked value="" name="declaro_idi_isba_que_cumple" id="declaro_idi_isba_que_cumple" disabled>
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple');?>" checked name="declaro_idi_isba_que_cumple" id="declaro_idi_isba_que_cumple">
   					<label class="form-check-label" for="declaro_idi_isba_que_cumple">
 							<?php echo lang('message_lang.declaro_idi_isba_que_cumple');?>
   					</label>
 				</div>
-				<!-- <?php echo lang('message_lang.declaro_idi_isba_que_cumple');?> -->
 			</li>
 			<li>
-				<?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_mas_25');?>
+				<div class="form-check">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_mas_25');?>" checked name="declaro_idi_isba_que_cumple_no_mas_25" id="declaro_idi_isba_que_cumple_no_mas_25">
+  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_no_mas_25">
+							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_mas_25');?>
+  					</label>
+					</div>
 			</li>
 			<li>
-				<?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad');?>
+				<div class="form-check">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad');?>" checked name="declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom" id="declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom">
+  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad">
+							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad');?>
+  					</label>
+				</div>					
 			</li>
 			<li>
-				<?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas');?>
+				<?php echo ucfirst(lang('message_lang.declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'));?>
 							<ul>
 								<li>
 									<div class="form-check form-check-inline">
-  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" onchange="javaScript: selectorNoSi(this);" id="tiene_ayudas_subv_no" value="no">
+  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" onchange="javaScript: selectorNoSi(this);" id="tiene_ayudas_subv_no" value="NO">
   									<label class="form-check-label" for="tiene_ayudas_subv_no">
 											NO
 			  						</label>
 									</div>
 									<div class="form-check form-check-inline">
-  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" onchange="javaScript: selectorNoSi(this);" id="tiene_ayudas_subv_si" value="si">
+  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" onchange="javaScript: selectorNoSi(this);" id="tiene_ayudas_subv_si" value="SI">
   									<label class="form-check-label" for="tiene_ayudas_subv_si">
 											SI
   									</label>
@@ -205,7 +211,7 @@
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked value="" name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked readonly name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
   					<label class="form-check-label" for="consentimiento_identificacion">
 							<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>
   					</label>
@@ -217,7 +223,7 @@
 
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.doy_mi_consentimiento_aeat_atib');?>" checked value="" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.doy_mi_consentimiento_aeat_atib');?>" checked readonly name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
   					<label class="form-check-label" for="consentimiento_certificadoATIB">
 							<?php echo lang('message_lang.doy_mi_consentimiento_aeat_atib');?>
   					</label>
@@ -229,7 +235,7 @@
 
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.doy_mi_consentimiento_seg_soc');?>" checked value="" name="consentimiento_TesoreriaSegSoc" id="consentimiento_TesoreriaSegSoc" onchange = "javaScript: muestraSubeArchivo(this.id);">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.doy_mi_consentimiento_seg_soc');?>" checked readonly name="consentimiento_TesoreriaSegSoc" id="consentimiento_TesoreriaSegSoc" onchange = "javaScript: muestraSubeArchivo(this.id);">
   					<label class="form-check-label" for="consentimiento_TesoreriaSegSoc">
 							<?php echo lang('message_lang.doy_mi_consentimiento_seg_soc');?>
   					</label>

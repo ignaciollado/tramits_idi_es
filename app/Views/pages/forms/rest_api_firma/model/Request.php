@@ -57,6 +57,9 @@ class Request {
 	
 	//Enum (String) = [FINISH, MEDIUM, ALL, NO]
 	public $senderNotificationLevel;
+
+	//Enum (String) = [ALL, CERTIFICATE_OTP_SMS, CERTIFICATE_ONLY]
+	public $signatureLevel;
 	
 	//Array of Item
 	public $metadatas;
