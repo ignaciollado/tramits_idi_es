@@ -2,12 +2,12 @@ body {
   background: transparent;
 }
 
-.card--hiden {
+.card--hidden {
   display: none;
 }
 
 .card-logo {
-    max-height: 40rem;
+    max-height: 18rem;
 }
 
 .card__empresas {

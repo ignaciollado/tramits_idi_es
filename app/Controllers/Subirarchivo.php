@@ -176,7 +176,7 @@ use App\Models\ConfiguracionModel;
 		} else {
 			$declaracion_responsable_xiii = "NO ";
 		}
-	//echo "xiv ".$this->request->getVar('declaracion_responsable_xiv')."<br>";		
+		//echo "xiv ".$this->request->getVar('declaracion_responsable_xiv')."<br>";		
 		if ($this->request->getVar('declaracion_responsable_xiv') == 'on'){
 			$declaracion_responsable_xiv = "SI ";
 		} else {
@@ -354,12 +354,12 @@ use App\Models\ConfiguracionModel;
 				}
 				}
 		}
-	/* --------------------------------------------------------------------------------------------------------------- */
-	/* --------------------------------documento constitutivo de la entidad - cluster, múltiples documentos----------- */
-	if (isset($documentosfile['file_docConstitutivoCluster'])) {
-	foreach($documentosfile['file_docConstitutivoCluster'] as $documentoConstitutivoCluster)
-		{
-		if ($documentoConstitutivoCluster->isValid() && ! $documentoConstitutivoCluster->hasMoved())
+		/* --------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------documento constitutivo de la entidad - cluster, múltiples documentos----------- */
+		if (isset($documentosfile['file_docConstitutivoCluster'])) {
+			foreach($documentosfile['file_docConstitutivoCluster'] as $documentoConstitutivoCluster)
+			{
+			if ($documentoConstitutivoCluster->isValid() && ! $documentoConstitutivoCluster->hasMoved())
 			{
 				$documentoConstitutivoCluster->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documentoConstitutivoCluster->getRandomName());
 				$data_file = [
@@ -376,12 +376,12 @@ use App\Models\ConfiguracionModel;
 				];
 			$save = $documentos->insert($data_file);
 			}
+			}
 		}
-	}
-	/* --------------------------------------------------------------------------------------------------------------- */
-	/* --------------------------------alta autónomos, múltiples documentos------------------------------------------- */
-	if (isset($documentosfile['file_altaAutonomos'])) {
-	foreach($documentosfile['file_altaAutonomos'] as $altaAutonomos)
+		/* --------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------alta autónomos, múltiples documentos------------------------------------------- */
+		if (isset($documentosfile['file_altaAutonomos'])) {
+		foreach($documentosfile['file_altaAutonomos'] as $altaAutonomos)
 		{
 		if ($altaAutonomos->isValid() && ! $altaAutonomos->hasMoved())
 			{
@@ -401,11 +401,11 @@ use App\Models\ConfiguracionModel;
 			$save = $documentos->insert($data_file);
 			}
 		}
-	}
-	/* --------------------------------------------------------------------------------------------------------------- */
-	/* --------------------------------sube certificado IAE, múltiples documentos----------------OK--------------------- */
-	if (isset($documentosfile['file_certificadoIAE'])) {
-	foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
+		}
+		/* --------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------sube certificado IAE, múltiples documentos----------------OK--------------------- */
+		if (isset($documentosfile['file_certificadoIAE'])) {
+		foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
 		{
 		if ($certificadoIAE->isValid() && ! $certificadoIAE->hasMoved())
 			{
@@ -425,11 +425,11 @@ use App\Models\ConfiguracionModel;
 			$save = $documentos->insert($data_file);
 			}
 		}
-	}
-	/* ----------------------------------------------------------------------------------------------------------- */
-	/* --------------------------------nif empresa, múltiples documentos------------------------------------------ */
-	if (isset($documentosfile['file_nifEmpresa'])) {
-	foreach($documentosfile['file_nifEmpresa'] as $nifEmpresa)
+		}
+		/* ----------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------nif empresa, múltiples documentos------------------------------------------ */
+		if (isset($documentosfile['file_nifEmpresa'])) {
+		foreach($documentosfile['file_nifEmpresa'] as $nifEmpresa)
 		{
 			if ($nifEmpresa->isValid() && ! $nifEmpresa->hasMoved())
 			{
@@ -450,11 +450,11 @@ use App\Models\ConfiguracionModel;
 			$save = $documentos->insert($data_file);
 		}
 		}
-	}
-	/* ------------------------------------------------------------------------------------------------------- */
-	/* -------- copia nif SI AUTÓNOMO al NO autorización a IDI comprobar dni, múltiples documentos------------ */
-	if (isset($documentosfile['file_copiaNIF'])) {
-	foreach($documentosfile['file_copiaNIF'] as $autorizacionComprobarDNI)
+		}
+		/* ------------------------------------------------------------------------------------------------------- */
+		/* -------- copia nif SI AUTÓNOMO al NO autorización a IDI comprobar dni, múltiples documentos------------ */
+		if (isset($documentosfile['file_copiaNIF'])) {
+		foreach($documentosfile['file_copiaNIF'] as $autorizacionComprobarDNI)
 		{
 			if ($autorizacionComprobarDNI->isValid() && ! $autorizacionComprobarDNI->hasMoved())
 				{
@@ -474,11 +474,11 @@ use App\Models\ConfiguracionModel;
 				$save = $documentos->insert($data_file);
 				}
 		}
-	}
-	/* ---------------------------------------------------------------------------------------------OK-------- */
-	/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos---------- */
-	if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
-	foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
+		}
+		/* ---------------------------------------------------------------------------------------------OK-------- */
+		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos---------- */
+		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
+		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
 		{
 			if ($copiaDocumentoIdentificacion->isValid() && ! $copiaDocumentoIdentificacion->hasMoved())
 				{
@@ -499,11 +499,11 @@ use App\Models\ConfiguracionModel;
 				$save = $documentos->insert($data_file);
 				}
 		}
-	}
-	/* ----------------------------------------------------------------------------------------------------- */
-	/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
-	if (isset($documentosfile['file_certificadoATIB'])) {
-	foreach($documentosfile['file_certificadoATIB'] as $corrientePagoATIB)
+		}
+		/* ----------------------------------------------------------------------------------------------------- */
+		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
+		if (isset($documentosfile['file_certificadoATIB'])) {
+		foreach($documentosfile['file_certificadoATIB'] as $corrientePagoATIB)
 		{
 			if ($corrientePagoATIB->isValid() && ! $corrientePagoATIB->hasMoved())
 				{
@@ -524,11 +524,11 @@ use App\Models\ConfiguracionModel;
 				$save = $documentos->insert($data_file);
 				}
 		}
-	}
-	/* ----------------------------------------------------------------------------------------------------- */
-	/* ---------- corriente pago obligaciones Seg. SOCIAL NO autoriza a IDI comprobarlo, múltiples documentos------ */
-	if (isset($documentosfile['file_certificadoSegSoc'])) {
-	foreach($documentosfile['file_certificadoSegSoc'] as $corrientePagoSegSoc)
+		}
+		/* ----------------------------------------------------------------------------------------------------- */
+		/* ---------- corriente pago obligaciones Seg. SOCIAL NO autoriza a IDI comprobarlo, múltiples documentos------ */
+		if (isset($documentosfile['file_certificadoSegSoc'])) {
+		foreach($documentosfile['file_certificadoSegSoc'] as $corrientePagoSegSoc)
 		{
 			if ($corrientePagoSegSoc->isValid() && ! $corrientePagoSegSoc->hasMoved())
 				{
@@ -548,48 +548,47 @@ use App\Models\ConfiguracionModel;
 				$save = $documentos->insert($data_file);
 				}
 		}
-	}
-	/* ----------------------------------------------------------------------------------------------------- */
-	/* ------------------------------sube datos bancarios--------------------------------------------------- */
-	if (strlen ($this->request->getFile('file_datosBancarios')) > 0) {
+		}
+		/* ----------------------------------------------------------------------------------------------------- */
+		/* ------------------------------sube datos bancarios--------------------------------------------------- */
+		if (strlen ($this->request->getFile('file_datosBancarios')) > 0) {
 		$data = [
             'name' 	=> $this->request->getVar('denom_interesado'),
             'nif'  	=> $this->request->getVar('nif'),
 			'file' 	=> $this->request->getFile('file_datosBancarios')
             ];
-    	$data['file']->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $data['file']->getName());
+    $data['file']->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $data['file']->getName());
 		$data_file = [
-            'name' 	=> $data['file']->getName(),
-            'type'  => $data['file']->getClientMimeType(),
-			'cifnif_propietario' => $nif,
-			'tipo_tramite' => $tipoTramite,
-			'corresponde_documento' => 'file_datosBancarios',
-			'datetime_uploaded' => time(),
-			'convocatoria' => $convocatoria,
-			'created_at'  => $data['file']->getTempName(),
-			'selloDeTiempo'  => $selloTiempo,
-			'id_sol'         => $last_insert_id
+          'name' 	=> $data['file']->getName(),
+          'type'  => $data['file']->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipoTramite,
+					'corresponde_documento' => 'file_datosBancarios',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $data['file']->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
           ];	  
-	$save = $documentos->insert($data_file);
+		$save = $documentos->insert($data_file);
+		}	
+		/* ----------------------------------------------------------------------------------------------------- */	
 
-	}	
-	/* ----------------------------------------------------------------------------------------------------- */	
+		$data_file['titulo'] = "Resumen de la solicitud de ayuda/subvención";
+		echo view('templates/header/header_form_solicitud_resultado', $data_file);
+		echo view('pages/forms/dec-resp-solicitud-ayuda', $data_exp);
+		if (strpos($viaSolicitud,"manual") !== false ) {
+			//echo "0";
+		} else {
+			//echo "1";
+			echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
+			echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud', $data_exp);
+		}
+		echo view('templates/footer/footer_form');
+   }
 
-	$data_file['titulo'] = "Resumen de la solicitud de ayuda/subvención";
-	echo view('templates/header/header_form_solicitud_resultado', $data_file);
-	echo view('pages/forms/dec-resp-solicitud-ayuda', $data_exp);
-	if (strpos($viaSolicitud,"manual") !== false ) {
-		//echo "0";
-	} else {
-		//echo "1";
-		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
-		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud', $data_exp);
-	}
-	echo view('templates/footer/footer_form');
-    }
-
-public function store_ils()
-	{
+	public function store_ils()
+	 {
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -1121,10 +1120,10 @@ public function store_ils()
 	 	echo view('pages/forms/solicitud-concesion-marca-ils', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-ils', $data_exp);
-	}
+	 }
 
-public function envia_dec_resp_con ()
-	{
+	public function envia_dec_resp_con ()
+	 {
 		helper('filesystem');	
 		helper(['form', 'url']); 
 		$request = \Config\Services::request();
@@ -1209,10 +1208,10 @@ public function envia_dec_resp_con ()
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_consultor);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-dec-resp-con', $data_consultor);	
 		echo view('templates/footer/footer');
-	}	
+	 }	
 
 public function store_idi_isba()
-	{
+	 {
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -1549,5 +1548,5 @@ public function store_idi_isba()
 	 	echo view('pages/forms/solicitud-ayuda-idi-isba', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-ayuda-idi-isba', $data_exp);
-}	
+   }	
 }

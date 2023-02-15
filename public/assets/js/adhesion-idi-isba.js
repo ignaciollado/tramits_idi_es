@@ -1,14 +1,40 @@
+const btn = document.querySelector('#rest-to-isba');
+const btnIDI = document.querySelector('#rest-to-idi');
+
+
+btn.addEventListener("click", () => {
+	const isba_end_point = "https://catalegdades.caib.cat/resource/6twn-xrax.json"
+	let spinnerIsba = document.querySelector('#spinner-isba');
+	let textIsba = document.querySelector('#text-isba');
+	let restResult = document.querySelector('#rest-result');
+	let dniniecif = document.querySelector('#nif').value;
+
+	dniniecif = '7040003'
+
+	spinnerIsba.classList.remove("ocultar")
+	textIsba.classList.add("ocultar")
+	restResult.innerHTML = ""
+
+	fetch(`${isba_end_point+'?codi_local_estaci='+dniniecif}`)
+  .then(response => response.json())
+  .then(data => {
+		spinnerIsba.classList.add("ocultar")
+		textIsba.classList.remove("ocultar")
+		document.getElementById("rest-to-isba").classList.add("ocultar");
+		restResult.innerHTML = JSON.stringify(data)
+	}).catch(function(error) {
+		console.log('Hubo un problema con la petición Fetch:' + error.message);
+	});
+
+	})
 
 activaDesactivaFormulario (false)
-tipoSolicitante ("mediana")
 
 function activaDesactivaFormulario (valor) {
   console.log ( valor )
   var form  = document.getElementById("adhesion_idi_isba")
   var allElements = form.elements
   for (var i = 0, l = allElements.length; i < l; ++i) {
-      // allElements[i].readOnly = true;
-
       if (valor === false) {
         allElements[i].disabled=true;
         allElements[i].style.opacity = "0.5"
@@ -27,23 +53,19 @@ function limpiaInfo_lbl (valor) {
 }
 
 function tipoSolicitante (valor)	{
-		let element = document.getElementById("interesado")
 		console.log (valor)
 		document.getElementById("nif").value=""
 		switch (valor) {
 			case 'autonomo':
-				document.getElementById("pFisica").classList.remove('ocultar')
 				document.getElementById("nif").placeholder = 'DNI / NIE';
 				document.getElementById("nif").title = 'DNI / NIE';
 				document.getElementById("denom_interesado").setAttribute("placeholder", "Nom");
 				document.getElementById("denom_interesado").setAttribute("title", "Nom");
 				break;
-
 			case 'pequenya':
-        /* 			document.getElementById("nif").placeholder = 'CIF [Código de Identificación Fiscal]';
-				document.getElementById("nif").title = 'CIF [Código de Identificación Fiscal]'; */
+       	document.getElementById("nif").placeholder = 'CIF [Código de Identificación Fiscal]';
+				document.getElementById("nif").title = 'CIF [Código de Identificación Fiscal]'; 
 				break;
-
 			case 'mediana':
 				if (document.contains(document.getElementById("file_altaAutonomos"))) {
 					document.getElementById("file_altaAutonomos").remove();
@@ -51,7 +73,6 @@ function tipoSolicitante (valor)	{
 				if (document.contains(document.getElementById("docConstitutivoCluster"))) {
 					document.getElementById("docConstitutivoCluster").remove();
 				}
-
         document.getElementById("nif").placeholder = 'CIF [Código de Identificación Fiscal]';
 				document.getElementById("nif").title = 'CIF [Código de Identificación Fiscal]';
 				break;
@@ -476,6 +497,3 @@ function muestraSubeArchivo (id)
 				}
 				}
 	}
-
-
-

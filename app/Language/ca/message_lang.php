@@ -120,7 +120,7 @@ return [
 
    'nif_solicitante'                  => "NIF del sol·licitant",
    'solicitante_sol_idigital'         => "Nom o raó social",    
-   'direccion_sol_idigital'           => "Domicili",
+   'direccion_sol_idigital'           => "Adrça postal",
    'localidad_sol_idigital'           => "Localitat",
    'cp_sol_idigital'                  => "Codi postal [cinc dígits]",
    'movil_sol_idigital'      		     => "Telèfon de contacte",   
@@ -191,7 +191,7 @@ return [
    'opc_iExporta'                     => "Programa II",
    'opc_iLs'                          => "Programa III",
 
-   'solicitante_tipo'                 => "2. TIPUS D'EMPRESA",
+   'solicitante_tipo'                 => "2. TIPUS DE SOL·LICITANT",
    'solicitante_tipo_ils'                 => "1. TIPUS D'EMPRESA",
 
    'solicitante_tipo_autonomo'        => "Autònom",
@@ -481,24 +481,25 @@ return [
 'intro_idi_isba_solicitud'			         => "Sol·licitud d'ajuts a microempreses, petites i mitjanes per cobrir despeses financeres",
 'documentacion_necesaria_idi_isba'        => "Documentació necessaria a adjuntar",
 'documentacion_identificativa_idi_isba'   => "Documents de identificatius de la persona sol·licitant i/o la persona autoritzada per l’empresa.",
-'documentacion_necesaria_pymes_idi_isba'  => "<h3>Antes de empezar, es recomendable tener preparada la siguiente documentación:</h3>
+'documentacion_necesaria_pymes_idi_isba'  => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació:</h3>
    <ol class='formbox'>
-      <li>Copia del DNI del solicitante o de su representante.</li>
-      <li>Escrituras o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil.</li>
-      <li>El certificado de la Agencia Tributaria de alta en el Censo de Empresarios, Profesionales y Retenedores y al <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
-      <li>En el caso de ayudas superiores a 3.000 euros:
+      <li>Còpia del DNI del sol·licitant o del seu representant.</li>
+      <li>Escriptures o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil.</li>
+      <li>El certificat de l'Agència Tributària d'alta en el Cens d'Empresaris, Professionals i Retenidors i l' <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
+      <li>En el cas d'ajudes superiors a 3.000 euros:
          <ol>
-            <li>Certificado de estar al corriente de pagos con la Agencia Tributaria.</li>
-            <li>Certificado de estar al corriente de pagos con la Tesorería de la Seguridad Social.</li>
+            <li>Certificat d'estar al corrent de pagaments amb l'Agència Tributària.</li>
+            <li>Certificat d'estar al corrent de pagaments amb la Tresoreria de la Seguretat Social.</li>
          </ol>
       </li>
 
    </ol>
-   <h3><strong>Los documentos anteriores no se deberán aportar cuando ya consten en otro expediente, o la Adminstración los pueda solicitar directamente.</strong></h3>",
-'documentacion_resultante_cabecera_idi_isba' => "Al finalizar este trámite, recibirá por correo electrónico un documento pdf que contendrá:",
+   <h3><strong>
+   Els documents anteriors no s'hauran d'aportar quan ja constin en un altre expedient, o l'Administració els pugui sol·licitar directament.</strong></h3>",
+'documentacion_resultante_cabecera_idi_isba' => "En finalitzar aquest tràmit, rebrà per correu electrònic un document pdf que contindrà:",
 'documentacion_resultante_idi_isba' => '<ol class="formbox">
-                                             <li>La solicitud de ayuda.</li>
-                                             <li>Una declaración responsable justificativa de cumplimiento de requisitos.</li>
+                                             <li>La sol·licitud d´ajuda.</li>
+                                             <li>Una declaració responsable justificativa de compliment de requisits.</li>
                                        </ol>',
 'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
 'operacion_financiera_idi_isba'  => "OPERACIÓ FINANÇERA",
@@ -537,7 +538,7 @@ para recibir la subvención según la legislación vigente.",
 'adherido_a_ils'        => "SI",
 'documentacion_adjuntada_idi_isba' => "Documentació adjuntada",
 'solicita_ayuda_idi_isba'  => "Sol·licito una ajuda per import de",
-'solicita_ayuda_importe_idi_isba' => "Importe (€) de la cantidad que solicita",
+'solicita_ayuda_importe_idi_isba' => "Import (€) de la quantitat que sol·licita",
 'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvención de intereses de 2 puntos, consistente en la cuantía de",
 'solicita_ayuda_coste_aval_isba_idi_isba' => "Una subvención al coste del aval de ISBA, consistente en la cuantía de",
 'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvención a los gastos de apertura y de estudio, consistente en la cuantía de",

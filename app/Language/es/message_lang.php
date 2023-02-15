@@ -124,7 +124,7 @@ return [
    'solicitante_sol_idigital'         => "Nombre ó razón social",
    'nif_solicitante'                  => "NIF del solicitante",
 
-   'direccion_sol_idigital'           => "Domicilio",
+   'direccion_sol_idigital'           => "Dirección postal",
    'localidad_sol_idigital'           => "Localidad",   
    'cp_sol_idigital'                  => "Código postal [cinco dígitos]",
    'movil_sol_idigital'      		     => "Teléfono de contacto",   
@@ -195,7 +195,7 @@ return [
    'opc_iExporta'                     => "Programa II",
    'opc_iLs'                          => "Programa III",
 
-   'solicitante_tipo'                 => "2. TIPO DE EMPRESA",
+   'solicitante_tipo'                 => "2. TIPO DE SOLICITANTE",
    'solicitante_tipo_ils'                 => "1. TIPO DE EMPRESA",
 
    'solicitante_tipo_autonomo'             => "Autónomo",
@@ -474,7 +474,7 @@ return [
    <ol class='formbox'>
       <li>Copia del DNI del solicitante o de su representante.</li>
       <li>Escrituras o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil.</li>
-      <li>El certificado de la Agencia Tributaria de alta en el Censo de Empresarios, Profesionales y Retenedores y al <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
+      <li>El certificado de la Agencia Tributaria de alta en el Censo de Empresarios, Profesionales y Retenedores y el <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
       <li>En el caso de ayudas superiores a 3.000 euros:
          <ol>
             <li>Certificado de estar al corriente de pagos con la Agencia Tributaria.</li>
@@ -483,7 +483,7 @@ return [
       </li>
 
    </ol>
-   <h3><strong>Los documentos anteriores no se deberán aportar cuando ya consten en otro expediente, o la Adminstración los pueda solicitar directamente.</strong></h3>",
+   <h3><strong>Los documentos anteriores no se deberán aportar cuando ya consten en otro expediente, o la Administración los pueda solicitar directamente.</strong></h3>",
 'documentacion_resultante_cabecera_idi_isba' => "Al finalizar este trámite, recibirá por correo electrónico un documento pdf que contendrá:",
 'documentacion_resultante_idi_isba' => '<ol class="formbox">
                                              <li>La solicitud de ayuda.</li>

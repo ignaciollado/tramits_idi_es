@@ -224,7 +224,7 @@ class Expedientes extends Controller
 
 		echo view('templates/header/header', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-	   	echo view('pages/exped/listado-expediente', $data);
+	  echo view('pages/exped/listado-expediente', $data);
 		echo view('templates/footer/footer');
 	}
 	
@@ -350,6 +350,8 @@ class Expedientes extends Controller
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);	
 		if ( $tipo_tramite === 'ILS') {
 			echo view('pages/exped/edita-expediente-ils', $data);
+		} else if ( $tipo_tramite === 'IDI-ISBA') {
+				echo view('pages/exped/edita-expediente-idi-isba', $data);
 		} else {
 			echo view('pages/exped/edita-expediente', $data);
 		}

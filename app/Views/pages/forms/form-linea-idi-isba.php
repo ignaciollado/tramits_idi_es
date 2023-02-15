@@ -5,26 +5,12 @@
   	$locale = $language->getLocale();
   ?>
 
-<div>
-		<fieldset>
-
-				<div class="form-check"> 
-  				<input class="form-check-input" type="checkbox"  onChange="javaScript: activaDesactivaFormulario (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
-  				<label class="form-check-label" for="flexCheckDefault">
-					<?php echo lang('message_lang.rgpd_leido');?><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#rgpdModal">RGPD</button>
-  				</label>
-				</div>
-				<span id='aviso'></span>
-		</fieldset>
-	</div>	
-
-  <form name="adhesion_idi_isba" id="adhesion_idi_isba" action="<?php echo base_url('/public/index.php/subirarchivo/store_idi_isba/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
   <fieldset>
 			<?php echo lang('message_lang.documentacion_necesaria_pymes_idi_isba');?>
 			<h3><?php echo lang('message_lang.documentacion_resultante_cabecera_idi_isba');?></h3>
 			<?php echo lang('message_lang.documentacion_resultante_idi_isba');?>
-			<input type='hidden' id="tipo_solicitante" name="tipo_solicitante" value="mediana">
+			<!-- <input type='hidden' id="tipo_solicitante" name="tipo_solicitante" value="mediana"> -->
 	</fieldset>
 
 <!-- Modal -->
@@ -52,19 +38,74 @@
   </div>
 </div>
 
+		<div id="formbox">
+			<fieldset>
+				<div class="form-check"> 
+  				<input class="form-check-input" type="checkbox"  onChange="javaScript: activaDesactivaFormulario (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
+  				<label class="form-check-label" for="flexCheckDefault">
+					<?php echo lang('message_lang.rgpd_leido');?><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#rgpdModal">RGPD</button>
+  				</label>
+				</div>
+				<span id='aviso'></span>
+			</fieldset>
+		</div>	
+
+<form name="adhesion_idi_isba" id="adhesion_idi_isba" action="<?php echo base_url('/public/index.php/subirarchivo/store_idi_isba/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<!-------------------------- 0. TIPO DE SOLICITANTE --------------------------------------------------------------------->
+  	<div id="formbox">
+    	<fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
+		 		<h2><?php echo lang('message_lang.solicitante_tipo');?></h2>
+				<div class="form-check form-check-inline">
+  				<input class="form-check-input" type="radio" name="tipo_solicitante" checked id="autonomo" value="autonomo" onchange = "javaScript: tipoSolicitante (this.id);">
+  				<label class="form-check-label" for="condicion_rep_admin">
+						<?php echo lang('message_lang.solicitante_tipo_autonomo');?>
+			  	</label>
+				</div>
+				<div class="form-check form-check-inline">
+  				<input class="form-check-input" type="radio" name="tipo_solicitante" id="pequenya" value="pequenya" onchange = "javaScript: tipoSolicitante (this.id);">
+  				<label class="form-check-label" for="condicion_rep_apoderado">
+						<?php echo lang('message_lang.solicitante_tipo_pequenya');?>
+  				</label>
+				</div>
+				<div class="form-check form-check-inline">
+  				<input class="form-check-input" type="radio" name="tipo_solicitante" id="mediana" value="mediana" onchange = "javaScript: tipoSolicitante (this.id);">
+  				<label class="form-check-label" for="condicion_rep_apoderado">
+						<?php echo lang('message_lang.solicitante_tipo_mediana');?>
+  				</label>
+				</div>
+   		</fieldset>
+	</div>
 <!-------------------------- 1. IDENTIFICACIÓN DEL SOLICITANTE --------------------------------------------------------------------->
 	<div id="formbox">
 		<fieldset id="interesado">
 			<h2>1. <?php echo lang('message_lang.identificacion_sol_idi_isba');?></h2>
 
-			<input type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" name = "nif" id = "nif" minlength = "9" maxlength = "9" aria-required="true"><span id = "info_lbl"></span>
+			<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+				<div class="input-group">
+						<input type = "text" aria-label="Input group example" aria-describedby="btnGroupAddon" onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" name = "nif" id = "nif" minlength = "9" maxlength = "9" aria-required="true"><small id = "info_lbl" class="alert alert-danger ocultar" role="alert"></small>
+  			</div>
+   			<button title="Obtener los datos desde ISBA,SGR" type="button" class="btn btn-outline-secondary ocultar" id="rest-to-isba">
+					<div id ="spinner-idi-isba" class="spinner-border text-primary ocultar" role="status">
+ 						<span id ="text-isba" class="visually-hidden">Getting data...</span>
+					</div>
+					<span>Obtener datos desde ISBA,SGR</span>
+				</button>
+				<button title="Obtener los datos desde IDI" type="button" class="btn btn-outline-secondary ocultar" id="rest-to-idi">
+					<div id ="spinner-idi-isba" class="spinner-border text-primary ocultar" role="status">
+ 						<span id ="text-idi" class="visually-hidden">Getting data...</span>
+					</div>
+					<span>Obtener datos desde IDI</span>
+				</button>
+				<span id='rest-result'></span>
+
+			</div>
+
 			<input type = "text" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" name = "denom_interesado" id = "denom_interesado" size="220" aria-required="true">
 			<input type = "text" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.direccion_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_sol_idigital');?>" name="domicilio" id="domicilio" aria-required="true">
 			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/municipios.php';?>
 			<input type = "text" onblur="javaScript: validateFormField(this);" required title="<?php echo lang('message_lang.cp_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_idigital');?>" name="cpostal" id="cpostal" pattern="[0-9]{5}" minlength = "5" maxlength = "5" size="9" aria-required="true">  
     	<input type = "tel" onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.movil_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_sol_idigital');?>" name = "telefono_cont" id="telefono_cont" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" aria-required="true"><p id="mensaje_tel"></p>
-			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/epigrafeIAE_ils.php';?>
-	
+			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/epigrafeIAE_idi_isba.php';?>
 			<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 			<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
 			<input type="text" aria-required="true" name = "domicilio_rep" id = "domicilio_rep" title="<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">

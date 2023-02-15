@@ -12,7 +12,7 @@
 					 foreach ($empresas as $row) {
 ?>
 
-    <article class='card card--hiden' id="card">
+    <article class='card card--hidden' id="card">
         <div class="card-body">
           <a href="<?php echo base_url('/public/index.php/home/empresas_adheridas_ils_detail/'.$row->id);?>" class="btn btn-primary">+ info</a>
           <h5 class="card-title"><?php echo  $row->empresa;?></h5>
@@ -80,7 +80,7 @@ function placeHolderOff() {
 
   /* memberAndrew.classList.remove('card--hiden'); */
   memberAndrew.forEach(function( itemCard ) {
-    itemCard.classList.remove('card--hiden');
+    itemCard.classList.remove('card--hidden');
   });
 }
 

@@ -64,18 +64,23 @@ $pdf->setFontSubsetting(false);
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 25);
+$pdf->setX($currentX - 20);
+
 $html1 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.destino_solicitud').": <b>".lang('message_lang.idi')."</b></td></tr>";
 $html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.codigo_dir3').": <b>".$data['configuracion']['emisorDIR3']."</b></td></tr>";
-$html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><h4>". lang('message_lang.subtitulo_solicitud_ayudas_idi_isba')."</h4></td></tr>";
+$html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.tramite_procedimiento').": <b>". lang('message_lang.subtitulo_solicitud_ayudas_idi_isba')."</b></td></tr>";
 $html1 .= "</table>";
 
 // set color for background
-$pdf->SetFillColor(54, 84, 70);
+$pdf->SetFillColor(255, 255, 255);
 // set color for text
-$pdf->SetTextColor(255, 255, 255);
+$pdf->SetTextColor(0, 0, 0);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
-$pdf->writeHTMLCell(90, '', 105, 10, $html1, 1, 1, 1, true, 'L', true);
+$pdf->writeHTMLCell('', '', '', '', $html1, 1, 1, 0, true, 'L', true);
 
 $pdf->SetTextColor(0, 0, 0);
 
@@ -101,7 +106,7 @@ $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>L
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.nom_rep_legal_sol_idigital')." :  <b>". $nombre_rep ."</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF :  <b>".  $nif_rep . "</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.direccion_rep_legal_sol_idigital')." :  <b>". $domicilio_rep ."</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.tel_rep_legal_sol_idigital')." :  <b>". $telefono_rep ."</b></td></tr>";
+$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.movil_sol_idigital')." :  <b>". $telefono_rep ."</b></td></tr>";
 
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.condicion_rep')." :  <b>".  $condicion_rep . "</b></td></tr>";
 $html9 .= "</table>";

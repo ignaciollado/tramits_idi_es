@@ -31,6 +31,19 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
+
+$routes->resource('apicontroller', ['websafe' => 1]);
+/* $routes->get('photos/new', 'Photos::new');
+$routes->post('photos', 'Photos::create'); */
+$routes->get('expediente', 'ApiController::index');
+$routes->get('expediente/(:segment)/(:segment)/(:segment)', 'ApiController::getExpediente/$1/$2/$3');
+$routes->get('nifExpediente/(:segment)', 'ApiController::getExpedientebyNIF/$1');
+
+/* $routes->get('photos/(:segment)/edit', 'Photos::edit/$1');
+$routes->put('photos/(:segment)', 'Photos::update/$1');
+$routes->patch('photos/(:segment)', 'Photos::update/$1');
+$routes->delete('photos/(:segment)', 'Photos::delete/$1'); */
+
 $routes->get('/', 'LoginController::index');
 $routes->post('login', 'LoginController::login');
 $routes->post('loginGoogle', 'LoginController::loginGoogle');
@@ -45,6 +58,7 @@ $routes->get('/expedientes/filtrarexpedientes', 'Expedientes::filtrarexpedientes
 $routes->get('/custodia', 'Custodia::index',['filter' => 'auth']);
 //$routes->get('/home/sol_idigital', 'Home::sol_idigital',['filter' => 'auth']);
 $routes->get('logout', 'LoginController::logout');
+
 //$routes->get('(:any)', 'LoginController::login');
 /**
  * --------------------------------------------------------------------

@@ -1,15 +1,24 @@
 function averiguaTipoDocumento (valor) {
-	let formaJuridica = '';
-	if(valor.length != 9)
-		{
+	let formasJuridicas = document.querySelectorAll('input[name="tipo_solicitante"]');
+	let formaJuridaSelected
+
+	for (const formaJuridica of formasJuridicas) {
+		if (formaJuridica.checked) {
+			formaJuridaSelected = formaJuridica.value;
+			console.log ( `${formaJuridaSelected}`)
+				break;
+		}
+	}
+
+	if(valor.length != 9)	{
 		document.getElementById("info_lbl").innerHTML = "La longitud del número del documento identificador tiene que ser de 9 dígitos.";
 		document.getElementById("nif").value = "";
 		document.getElementById("nif").classList.remove("valid");
 		document.getElementById("nif").classList.add("invalid");
 		return;
-		}
+	}
 
-	if (formaJuridica==="autonomo") {
+	if (formaJuridaSelected === "autonomo") {
 		analizaDNINIE(valor)
 	} else {
 		analizaCIF(valor)
@@ -27,32 +36,31 @@ function analizaCIF (cif)
 	/* C: dígito de control */
 	// Letras de control: letraControl = ["K", "P", "Q", "S"];
 	// Números de control: numeroControl = ["A", "B", "E", "H"];
-	cif = cif.toUpperCase();
-	console.log("Valor tecleado: "+cif)
-	let motivo = "";
+	cif = cif.toUpperCase()
+	let motivo = ""
 	// De entrada, supongo que todos los códigos son erróneos.
-	let organizacion_OK = false;
-	let provincia_OK = false;
-	let numeracion_OK = false;
-	let dControl_OK = false;
-	let esCIF_OK = false;
+	let organizacion_OK = false
+	let provincia_OK = false
+	let numeracion_OK = false
+	let dControl_OK = false
+	let esCIF_OK = false
 
 	// Mostraré el resultado en el elemento HTML con id = info_lbl
 	document.getElementById("info_lbl").innerHTML = "";
 	// Creo los arrays con todos los posibles valores de organización, provincia y letras y números de control
-	var organizacionCodigo = ["A","B","C","D","E","F","G","J","H","K","L","M","N","P","Q","R","S","U","V","W"];
+	let organizacionCodigo = ["A","B","C","D","E","F","G","J","H","K","L","M","N","P","Q","R","S","U","V","W"];
 	// Los códigos de provincia, los separo en varios arrays por comodidad de lectura
-	var provinciaCodigo_1 = ["00", "01", "02", "03", "53", "54", "04", "05", "06", "07", "57", "08"];
-	var provinciaCodigo_2 = ["58", "59", "60", "61", "62", "63", "64", "65", "66", "68", "09", "10", "11", "72"];
-	var provinciaCodigo_3 = ["12", "13", "14", "56", "15", "70", "16", "17", "55", "67", "18"];
-	var provinciaCodigo_4 = ["19", "20", "71", "21", "22", "23", "24", "25", "26", "27"];
-	var provinciaCodigo_5 = ["28", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "29", "92"];
-	var provinciaCodigo_6 = ["93", "30", "73", "31", "71", "32", "33", "74", "34", "35", "75"];
-	var provinciaCodigo_7 = ["36", "37", "94", "38", "76", "75", "39", "40", "41", "90", "91", "42"];
-	var provinciaCodigo_8 = ["43", "77", "44", "45", "46", "96", "97", "98", "47", "48"];
-	var provinciaCodigo_9 = ["49", "50", "99", "51", "52"];
+	let provinciaCodigo_1 = ["00", "01", "02", "03", "53", "54", "04", "05", "06", "07", "57", "08"];
+	let provinciaCodigo_2 = ["58", "59", "60", "61", "62", "63", "64", "65", "66", "68", "09", "10", "11", "72"];
+	let provinciaCodigo_3 = ["12", "13", "14", "56", "15", "70", "16", "17", "55", "67", "18"];
+	let provinciaCodigo_4 = ["19", "20", "71", "21", "22", "23", "24", "25", "26", "27"];
+	let provinciaCodigo_5 = ["28", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "29", "92"];
+	let provinciaCodigo_6 = ["93", "30", "73", "31", "71", "32", "33", "74", "34", "35", "75"];
+	let provinciaCodigo_7 = ["36", "37", "94", "38", "76", "75", "39", "40", "41", "90", "91", "42"];
+	let provinciaCodigo_8 = ["43", "77", "44", "45", "46", "96", "97", "98", "47", "48"];
+	let provinciaCodigo_9 = ["49", "50", "99", "51", "52"];
 	// Los concatenaré en un único array al que llamo provinciaCodigo, 
-	var provinciaCodigo = provinciaCodigo_1.concat(provinciaCodigo_2);
+	let provinciaCodigo = provinciaCodigo_1.concat(provinciaCodigo_2);
 	provinciaCodigo = provinciaCodigo.concat(provinciaCodigo_3);
 	provinciaCodigo = provinciaCodigo.concat(provinciaCodigo_4);
 	provinciaCodigo = provinciaCodigo.concat(provinciaCodigo_5);
@@ -62,14 +70,14 @@ function analizaCIF (cif)
 	provinciaCodigo = provinciaCodigo.concat(provinciaCodigo_9);
 	
 	// Separo la parte que corresponde a la Organización y lo convierto todo a mayúsculas	
-	var organizacion = cif.substring(0, 1);
+	let organizacion = cif.substring(0, 1);
 	// Separo la parte que corresponde a la provincia
-	var provincia = cif.substring(1, 3);
+	let provincia = cif.substring(1, 3);
 	// Separo la parte correspondiente a la numeración secuencial
-	var numeracion = cif.substring(3, 8);
+	let numeracion = cif.substring(3, 8);
 	// Separo la parte correspondiente al dígito de control
-	var dControl = cif.substring(8, 9);
-	console.log(organizacion, provincia, numeracion, dControl)
+	let dControl = cif.substring(8, 9);
+
 	// Verifico que el código de la organización sea un valor correcto, si es así, asigno el valor verdadero
 	if (organizacionCodigo.indexOf( organizacion ) != -1) {
 		organizacion_OK = true;
@@ -99,7 +107,7 @@ function analizaCIF (cif)
 	}
 	// En otro caso, indico en que códigos está el error
 	if (!organizacion_OK ||  !provincia_OK || !numeracion_OK  || !dControl_OK ) {
-		motivo = "Alguna part del CIF no està correcte:\n";
+		motivo = "Alguna part del CIF no està correcta:\n";
 	}
 	if (!organizacion_OK) {
 		motivo = motivo + "<li>Organización equivocada</li>";
@@ -116,22 +124,27 @@ function analizaCIF (cif)
 	// Muestro el valor entrado en el elemento HTML con id = info_lbl
 	document.getElementById("info_lbl").innerHTML = document.getElementById("info_lbl").innerHTML + motivo;
 
-	console.log (`Motivo: ${motivo}`, esCIF_OK)
-
 	if (esCIF_OK) 
 	{
 		console.log (`Sí Motivo: ${motivo}`, esCIF_OK)
+		document.getElementById("rest-to-isba").classList.remove("ocultar");
+		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").value = cif;
 		document.getElementById("nif").classList.remove("invalid");
 		document.getElementById("nif").classList.add("valid");
+		document.getElementById("info_lbl").classList.add("ocultar");
+		document.getElementById("info_lbl").value = "";
 	}
 	else 
 	{
 		console.log (`No Motivo: ${motivo}`, esCIF_OK)
+		document.getElementById("rest-to-isba").classList.add("ocultar");
+		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").focus();
 		document.getElementById("nif").value = "";
 		document.getElementById("nif").classList.remove("valid");
 		document.getElementById("nif").classList.add("invalid");
+		document.getElementById("info_lbl").classList.remove("ocultar");
 		document.getElementById("info_lbl").value = motivo;
 	}
 	}
@@ -155,6 +168,7 @@ function analizaDNINIE (dninie)
 	// coincide el último dígito con el resultado de la operación de comprobación.
 
 	let currentDNINIE = dninie.toUpperCase();
+
 	// primer dígito numérico
 	let primerDigitoDNINIE = currentDNINIE.slice(0, 1);
 
@@ -168,17 +182,20 @@ function analizaDNINIE (dninie)
 	let resultante
 	const posiblesLetrasDNINIE = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];		
 	if (isNaN(primerDigitoDNINIE) ) // si el primer dígito no és un número, se trata de un NIE: ADDDDDDDB, A={X,Y,Z}	
-		{
+	{
 		if (primerDigitoDNINIE!='X' && primerDigitoDNINIE!='Y' && primerDigitoDNINIE!='Z') // y tiene que ser X,Y,Z
 			{
-			document.getElementById("info_lbl").innerHTML = "El primer dígito tiene que ser una X, Y o Z.";
+			document.getElementById("info_lbl").innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z.";
 			document.getElementById("nif").value = ""
+			document.getElementById("nif").classList.remove("valid");
+			document.getElementById("nif").classList.add("invalid");
+			document.getElementById("rest-to-isba").classList.add("ocultar");
 			// Para hacer que funcione el focus() en Firefox
 			// setTimeout("document.getElementById('nif').focus();",0);
-			return;	
+			return;
 			}
 		else 
-		{
+			{
 			switch (primerDigitoDNINIE) 
 			{
 				case 'X':
@@ -191,23 +208,27 @@ function analizaDNINIE (dninie)
 					resultante = 2+digitosIntermedio	 
 				break
 			}
-		}
-		} else {
-			resultante = primerDigitoDNINIE+digitosIntermedio
-		}
+			}
+		document.getElementById("nif").classList.remove("valid");
+		document.getElementById("nif").classList.add("invalid");
+		document.getElementById("rest-to-isba").classList.add("ocultar");
+	} else {
+		resultante = primerDigitoDNINIE+digitosIntermedio
+		document.getElementById("nif").classList.add("valid");
+		document.getElementById("nif").classList.remove("invalid");
+		document.getElementById("rest-to-isba").classList.remove("ocultar");
+		document.querySelector('#rest-result').innerHTML = "";
+	}
 		
-		console.log ("Resultante: " + resultante)
-		var i = resultante % 23;
-		console.log("Índice del array: " + i)
-		var letraDNINIE = posiblesLetrasDNINIE[i];
-		console.log ("Carácter de verificación: " + caracterVerificacionAlfabetico + " Letra:" + letraDNINIE);
+		let i = resultante % 23;
+		let letraDNINIE = posiblesLetrasDNINIE[i];
 		document.getElementById("nif").value = primerDigitoDNINIE+digitosIntermedio+letraDNINIE;
 	}
 
 function tenemosDatosSolicitante(documentoIdentificativo) {
 	//let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
 	let nif = documentoIdentificativo;
-	var modal = document.getElementById("myModal");
+	let modal = document.getElementById("myModal");
 	let response = false;
 	$.post(
 		"/public/assets/utils/buscarSolicitudPorNIF.php",
