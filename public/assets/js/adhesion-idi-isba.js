@@ -1,32 +1,6 @@
 const btn = document.querySelector('#rest-to-isba');
 const btnIDI = document.querySelector('#rest-to-idi');
-
-
-btn.addEventListener("click", () => {
-	const isba_end_point = "https://catalegdades.caib.cat/resource/6twn-xrax.json"
-	let spinnerIsba = document.querySelector('#spinner-isba');
-	let textIsba = document.querySelector('#text-isba');
-	let restResult = document.querySelector('#rest-result');
-	let dniniecif = document.querySelector('#nif').value;
-
-	dniniecif = '7040003'
-
-	spinnerIsba.classList.remove("ocultar")
-	textIsba.classList.add("ocultar")
-	restResult.innerHTML = ""
-
-	fetch(`${isba_end_point+'?codi_local_estaci='+dniniecif}`)
-  .then(response => response.json())
-  .then(data => {
-		spinnerIsba.classList.add("ocultar")
-		textIsba.classList.remove("ocultar")
-		document.getElementById("rest-to-isba").classList.add("ocultar");
-		restResult.innerHTML = JSON.stringify(data)
-	}).catch(function(error) {
-		console.log('Hubo un problema con la petición Fetch:' + error.message);
-	});
-
-	})
+let empresa_eco_lbl = document.getElementById("empresa_eco")
 
 activaDesactivaFormulario (false)
 
@@ -152,7 +126,7 @@ function validateFormField(field, step=0) {
 
 function selectorNoSi(field) {
   let inputElement = document.getElementById (field.id)
-  let empresa_eco_lbl = document.getElementById("empresa_eco")
+  
 
   if (inputElement.name === 'tiene_ayudas_subv') {
     if (inputElement.value === 'SI') { 
@@ -496,4 +470,116 @@ function muestraSubeArchivo (id)
 					document.getElementsByName("file_nifRepresentante").value = "";				
 				}
 				}
+}
+
+function consultaExpediente ( buscaPor, identificador ) {
+	let end_point = ""
+
+	if (buscaPor === 'expediente') {
+		end_point = `https://pre-tramits.idi.es/public/index.php/numExpediente/${identificador}`
+	}
+	if (buscaPor === 'nif') {
+		end_point = `https://pre-tramits.idi.es/public/index.php/nifExpediente/${identificador}`
+	}
+
+	let spinner = document.querySelector('#spinner-idi-isba');
+	let textIsba = document.querySelector('#text-isba');
+	let restResultDialog = document.querySelector('#theDialog');
+	let restResult = document.querySelector('#resultContainer');
+
+	spinner.classList.remove("ocultar")
+	textIsba.classList.add("ocultar")
+	restResult.innerHTML = ""
+
+	fetch(`${end_point}`)
+	.then(response => response.json())
+	.then(data => {
+		spinner.classList.add("ocultar")
+		textIsba.classList.remove("ocultar")
+		console.log (data, data.length)
+		data.forEach( solicitante => {
+			console.log(solicitante.id, solicitante.nif, solicitante.empresa)
+			restResult.innerHTML += `<button class='btn btn-outline-primary btn-sm' title='click to select this item' onclick="javaScript: rellenaElFormulario(${solicitante.id});"> ${solicitante.id} </button> ${solicitante.nif} ${solicitante.empresa}<br>`
+			if ( buscaPor === 'expediente' ) {
+				document.getElementById("nif").value = solicitante.nif
+				document.getElementById("nif").readOnly = true
+			} else {
+				document.getElementById("idExpISBA").value =solicitante.idExpISBA
+			}
+			document.getElementById("denom_interesado").value = solicitante.empresa
+			document.getElementById("domicilio").value = solicitante.domicilio
+			document.getElementById("localidad").value = solicitante.localidad
+			document.getElementById("codigoIAE").value = solicitante.iae
+			document.getElementById("telefono_cont").value = solicitante.telefono
+			document.getElementById("cpostal").value = solicitante.cpostal
+
+			document.getElementById("nif_representante").value = solicitante. nif_rep
+			document.getElementById("domicilio_rep").value = solicitante. domicilio_rep
+			document.getElementById("telefono_contacto_rep").value = solicitante.telefono_contacto_rep
+			document.getElementById("nom_representante").value = solicitante.nombre_rep
+			console.log ( `es : ${solicitante.condicion_rep} --` )
+			if ( solicitante.condicion_rep === 'administrador' ) {
+				document.getElementById("condicion_rep_admin").checked =true
+			} else {
+				document.getElementById("condicion_rep_apoderado").checked =true	
+			}
+
+			document.getElementById("mail_representante").value = solicitante.email_rep
+			document.getElementById("tel_representante").value = solicitante.telefono_rep
+
+			if ( solicitante.tipo_tramite === 'IDI-ISBA' ) {
+				
+				document.getElementById("nom_entidad").value = solicitante.nom_entidad
+				document.getElementById("importe_prestamo").value = solicitante.importe_prestamo
+				document.getElementById("plazo_prestamo").value = solicitante.plazo_prestamo
+				document.getElementById("carencia_prestamo").value = solicitante.carencia_prestamo
+				document.getElementById("cuantia_aval_isba").value = solicitante.cuantia_aval_isba
+				document.getElementById("plazo_aval_isba").value = solicitante.plazo_aval_isba
+				document.getElementById("fecha_aval_isba").value = solicitante.fecha_aval_isba
+				document.getElementById("finalidad_inversion_idi_isba").value = solicitante.finalidad_inversion_idi_isba
+				console.log ( `es empresa eco: ${solicitante.empresa_eco_idi_isba} --` )
+				if ( solicitante.empresa_eco_idi_isba === 'NO' ) {
+					document.getElementById("empresa_eco_idi_isba_no").checked =true
+					empresa_eco_lbl.innerHTML = "No tiene bonificación ECO"
+					empresa_eco_lbl.classList.add("invalid")
+					empresa_eco_lbl.classList.remove("valid")
+				} else {
+					document.getElementById("empresa_eco_idi_isba_si").checked =true
+					empresa_eco_lbl.innerHTML = "¡¡¡ Tiene una bofificación por ser ECO !!!"
+					empresa_eco_lbl.classList.add("valid")
+					empresa_eco_lbl.classList.remove("invalid")
+				}
+				document.getElementById("importe_presupuesto_idi_isba").value = solicitante.importe_presupuesto_idi_isba
+				document.getElementById("importe_ayuda_solicita_idi_isba").value = solicitante.importe_ayuda_solicita_idi_isba
+				document.getElementById("intereses_ayuda_solicita_idi_isba").value = solicitante.intereses_ayuda_solicita_idi_isba
+				document.getElementById("coste_aval_solicita_idi_isba").value = solicitante.coste_aval_solicita_idi_isba
+				document.getElementById("gastos_aval_solicita_idi_isba").value = solicitante.gastos_aval_solicita_idi_isba
+				if ( solicitante.tiene_ayudas_subv === 'NO' ) {
+					document.getElementById("tiene_ayudas_subv_no").checked =true
+				} else {
+					document.getElementById("tiene_ayudas_subv_si").checked =true
+					document.getElementById("tiene_ayudas_subv_si_no").classList.remove("ocultar")
+					if ( solicitante.ayuda_subv_de === 'dg') {
+						console.log ( `es dir general : ${solicitante.tiene_ayudas_subv} --` )
+						document.getElementById("ayuda_subv_dg_pol_ind").checked =true
+						document.getElementById("ayuda_subv_otros_detalle").value = ""
+						document.getElementById("ayuda_subv_otros_detalle").classList.add("ocultar")
+					} else  {
+						document.getElementById("ayuda_subv_otros").checked =true
+						document.getElementById("ayuda_subv_otros_detalle").classList.remove("ocultar")
+						document.getElementById("ayuda_subv_otros_detalle").value = solicitante.ayuda_subv_otros_detalle
+					}
+
+				}
+
+			}
+
+	})
+	if (buscaPor === 'nif') {
+		restResultDialog.open = true
+	}
+	}).catch(function(error) {
+		console.log('Hubo un problema con la petición Fetch:' + error.message)
+	});
+
 	}

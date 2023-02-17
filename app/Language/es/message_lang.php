@@ -123,6 +123,7 @@ return [
 
    'solicitante_sol_idigital'         => "Nombre ó razón social",
    'nif_solicitante'                  => "NIF del solicitante",
+   'idExpISBA'                        => "Expediente ISBA",
 
    'direccion_sol_idigital'           => "Dirección postal",
    'localidad_sol_idigital'           => "Localidad",   

@@ -38,6 +38,12 @@
   </div>
 </div>
 
+<!-- Dialog listado solicitantes ya constan en otros expedientes -->
+<dialog id="theDialog">
+	<div id='resultContainer'>Those are the founded files</div>
+	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javaScript: let restResultDialog = document.querySelector('#theDialog'); restResultDialog.close()">Close</button>
+</dialog>
+
 		<div id="formbox">
 			<fieldset>
 				<div class="form-check"> 
@@ -82,22 +88,15 @@
 
 			<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 				<div class="input-group">
-						<input type = "text" aria-label="Input group example" aria-describedby="btnGroupAddon" onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" name = "nif" id = "nif" minlength = "9" maxlength = "9" aria-required="true"><small id = "info_lbl" class="alert alert-danger ocultar" role="alert"></small>
+					<input type = "text" name = "idExpISBA" id = "idExpISBA" aria-label="Input group idExpISBA" aria-describedby="btnGroupAddon" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: consultaExpediente ( 'expediente', this.value );" title="<?php echo lang('message_lang.idExpISBA');?>" placeholder = "<?php echo lang('message_lang.idExpISBA');?>">
   			</div>
-   			<button title="Obtener los datos desde ISBA,SGR" type="button" class="btn btn-outline-secondary ocultar" id="rest-to-isba">
-					<div id ="spinner-idi-isba" class="spinner-border text-primary ocultar" role="status">
- 						<span id ="text-isba" class="visually-hidden">Getting data...</span>
-					</div>
-					<span>Obtener datos desde ISBA,SGR</span>
-				</button>
-				<button title="Obtener los datos desde IDI" type="button" class="btn btn-outline-secondary ocultar" id="rest-to-idi">
-					<div id ="spinner-idi-isba" class="spinner-border text-primary ocultar" role="status">
- 						<span id ="text-idi" class="visually-hidden">Getting data...</span>
-					</div>
-					<span>Obtener datos desde IDI</span>
-				</button>
+				<div class="input-group">
+					<input type = "text" name = "nif" id = "nif" aria-label="Input group nif" aria-describedby="btnGroupAddon" onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" minlength = "9" maxlength = "9" aria-required="true"><small id = "info_lbl" class="alert alert-danger ocultar" role="alert"></small>
+  			</div>
 				<span id='rest-result'></span>
-
+				<div id ="spinner-idi-isba" class="spinner-border text-warning ocultar" role="status">
+ 						<span id ="text-isba" class="visually-hidden">Getting data from ISBA...</span>
+				</div>
 			</div>
 
 			<input type = "text" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" name = "denom_interesado" id = "denom_interesado" size="220" aria-required="true">
@@ -109,7 +108,7 @@
 			<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 			<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
 			<input type="text" aria-required="true" name = "domicilio_rep" id = "domicilio_rep" title="<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
-			<input type="text" aria-required="true" name = "telefono_rep" id = "telefono_rep" title="<?php echo lang('message_lang.movil_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
+			<input type="text" aria-required="true" name = "telefono_contacto_rep" id = "telefono_contacto_rep" title="<?php echo lang('message_lang.movil_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
 
 			<div class="form-check form-check-inline">
   			<input class="form-check-input" type="radio" name="condicion_rep" id="condicion_rep_admin" value="administrador">

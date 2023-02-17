@@ -24,6 +24,14 @@ section {
    /*  padding: .5rem .75rem .5rem .75rem; */
 }
 
+dialog {
+  background-color: #c4c4c4;
+  max-width: 90%;
+  padding: 1rem;
+  margin: auto;
+  z-index: 9999;
+}
+
 #regForm {
     background-color: rgba(255, 255, 255, 1);
     padding: 3rem;

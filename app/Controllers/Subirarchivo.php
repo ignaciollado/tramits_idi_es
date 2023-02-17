@@ -35,7 +35,7 @@ use App\Models\ConfiguracionModel;
 
 		date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
-		/* ---------------------------------------------------------------------------- */
+		/* -----------------------------DOCUMENTACIÓN XECS----------------------------------------------- */
 		$documentosfile = $this->request->getFiles();
 		if (isset($documentosfile['file_memoriaTecnica']) == 0){
 			$file_memoriaTecnica = "NO ";
@@ -305,8 +305,7 @@ use App\Models\ConfiguracionModel;
 		$data_exp ['last_insert_id'] = $last_insert_id;
 
 		/* ------------------------------------------------------------------------------------------------------------ */	
-		// $documentosfile = $this->request->getFiles();
-		/* --------------------------------memoria técnica, múltiples documentos------------------OK--------------------- */
+		/* --------------------------------memoria técnica, múltiples documentos------------------OK------------------- */
 		if (isset($documentosfile['file_memoriaTecnica'])) {
 			foreach($documentosfile['file_memoriaTecnica'] as $memoriaTecnica)
 				{
@@ -648,7 +647,7 @@ use App\Models\ConfiguracionModel;
 
 		$declaracion_responsable_xi = "SI ";
 
- 		/* -------------------------------DOCUMENTACIÓN--------------------------------------------- */
+ 		/* -------------------------------DOCUMENTACIÓN ILS--------------------------------------------- */
  		$documentosfile = $this->request->getFiles();
 		if ( !$documentosfile['file_memoriaTecnica'][0]->getName() ){
 			$file_memoriaTecnica = "NO ";
@@ -843,7 +842,6 @@ use App\Models\ConfiguracionModel;
 		}
 
  		/* ------------------------------------------------------------------------------------------------------------ */	
- 		// $documentosfile = $this->request->getFiles();
  		/* --------------------------------sede social, múltiples documentos--------------------OK--------------------- */
  		if (isset($documentosfile['file_escritura_empresa' ])) {
 		foreach($documentosfile['file_escritura_empresa' ] as $sedeSocial)
@@ -869,7 +867,6 @@ use App\Models\ConfiguracionModel;
 		}
 
  		/* ------------------------------------------------------------------------------------------------------------ */	
- 		// $documentosfile = $this->request->getFiles();
  		/* --------------------------------memoria técnica, múltiples documentos------------------OK--------------------- */
  		if (isset($documentosfile['file_memoriaTecnica'])) {
 	 	foreach($documentosfile['file_memoriaTecnica'] as $memoriaTecnica)
@@ -1286,11 +1283,12 @@ public function store_idi_isba()
 		} else {
 			$file_certificadoSegSoc = "NO";
 		}
-
+		
+		/* ----------------------------------------DOCUMENTACIÓN IDI-ISBA----------------------------------------------------- */
  		/* -------------------------------7. DOCUMENTACIÓN QUE NOS PUEDE ADJUNTAR--------------------------------------------- */
  		$documentosfile = $this->request->getFiles();
 
-		 if ( !$documentosfile['file_copiaNIF'][0]->getName() ){
+		if ( !$documentosfile['file_copiaNIF'][0]->getName() ){
 			$file_copiaNIF = "NO";
 	 	} else {
 			$file_copiaNIF = "SI";
@@ -1317,13 +1315,13 @@ public function store_idi_isba()
 		$nom_representante = $this->request->getVar('nom_representante');
 		$nif_representante = $this->request->getVar('nif_representante');
 		$domicilio_rep = $this->request->getVar('domicilio_rep');
-		$telefono_rep = $this->request->getVar('telefono_rep');
+		$telefono_contacto_rep = $this->request->getVar('telefono_contacto_rep');
 
 		$condicion_rep = $this->request->getVar('condicion_rep');
 
 		/*** se usarán estos dos campos para notificar al beneficiario ***/
-		$tel_representante = $this->request->getVar('tel_representante');
-		$mail_representante = $this->request->getVar('mail_representante');
+		$tel_notificacion = $this->request->getVar('tel_representante');
+		$mail_notificacion = $this->request->getVar('mail_representante');
 		/*****************************************************************/
 		$nom_entidad = ucwords($this->request->getVar('nom_entidad'));
 		$importe_prestamo = $this->request->getVar('importe_prestamo');
@@ -1360,17 +1358,15 @@ public function store_idi_isba()
 			 'localidad' => $localidad,
 			 'cpostal' => $cpostal,
 			 'telefono' => $this->request->getVar('telefono_cont'),
-			 'telefono_rep' => $tel_representante,  // se usa para notificar
-			 'email_rep' => $mail_representante,	// se usa para notificar
+			 'telefono_rep' => $tel_notificacion,  // se usa para notificar
+			 'email_rep' => $mail_notificacion,	// se usa para notificar
 			 'tipo_tramite' => $tipo_tramite,
 			 'iae' => $codigoIAE,
 
 			 'nombre_rep' 		=> $nom_representante,
 			 'nif_rep' 				=> $nif_representante,
 			 'domicilio_rep' 	=> $domicilio_rep,
-			 'telefono_rep' 	=> $telefono_rep,
-			 'condicion_rep' 	=> $condicion_rep,
-			 'telefono_rep' 	=> $telefono_rep,
+			 'telefono_contacto_rep' 	=> $telefono_contacto_rep, //uso este otro ya que en IDI-ISBA necesitan un teléfono de contacto
 			 'condicion_rep' 	=> $condicion_rep,
 
 			 'declaro_idi_isba_que_cumple' => $declaro_idi_isba_que_cumple,
@@ -1408,7 +1404,6 @@ public function store_idi_isba()
 			];
 	
 	 	$save_exp = $expediente->insert($data_exp);
-
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
@@ -1417,21 +1412,21 @@ public function store_idi_isba()
 		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos------------ */
 
 		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
-		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
+		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $documentoIdentificacion)
 			{
-				if ($copiaDocumentoIdentificacion->isValid() && ! $copiaDocumentoIdentificacion->hasMoved())
+				if ($documentoIdentificacion->isValid() && ! $documentoIdentificacion->hasMoved())
 					{
-						$copiaDocumentoIdentificacion->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $copiaDocumentoIdentificacion->getRandomName());
+						$documentoIdentificacion->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documentoIdentificacion->getRandomName());
 						$data_file = [
-						'name' => $copiaDocumentoIdentificacion->getName(),
-						'type' => $copiaDocumentoIdentificacion->getClientMimeType(),
+						'name' => $documentoIdentificacion->getName(),
+						'type' => $documentoIdentificacion->getClientMimeType(),
 						'cifnif_propietario' => $nif,
 						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_enviardocumentoIdentificacion',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
 						'docRequerido' => 'NO',
-						'created_at'  => $copiaDocumentoIdentificacion->getTempName(),
+						'created_at'  => $documentoIdentificacion->getTempName(),
 						'selloDeTiempo'  => $selloTiempo,
 						'id_sol'         => $last_insert_id
 						];
@@ -1440,84 +1435,106 @@ public function store_idi_isba()
 			}
 		}
 		/* ----------------------------------------------------------------------------------------------------- */
+
 		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
 		if (isset($documentosfile['file_certificadoATIB'])) {
-		foreach($documentosfile['file_certificadoATIB'] as $corrientePagoATIB)
+		foreach($documentosfile['file_certificadoATIB'] as $certificadoATIB)
 			{
-				if ($corrientePagoATIB->isValid() && ! $corrientePagoATIB->hasMoved())
+				if ($certificadoATIB->isValid() && ! $certificadoATIB->hasMoved())
 					{
-						$corrientePagoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $corrientePagoATIB->getRandomName());
+						$certificadoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoATIB->getRandomName());
 						$data_file = [
-						'name' => $corrientePagoATIB->getName(),
-						'type' => $corrientePagoATIB->getClientMimeType(),
+						'name' => $certificadoATIB->getName(),
+						'type' => $certificadoATIB->getClientMimeType(),
 						'cifnif_propietario' => $nif,
 						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_certificadoATIB',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
 						'docRequerido' => 'NO',
-						'created_at'  => $corrientePagoATIB->getTempName(),
+						'created_at'  => $certificadoATIB->getTempName(),
 						'selloDeTiempo'  => $selloTiempo,
 						'id_sol'         => $last_insert_id
 						];
-					$save = $documentos->insert($data_file);
+						$save = $documentos->insert($data_file);
 					}
 			}
 		}
+ 		/* ------------------------------------------------------------------------------------------------------------ */
 
- 		/* ------------------------------------------------------------------------------------------------------------ */	
- 		// $documentosfile = $this->request->getFiles();
  		/* --------------------------------certificados Tes. Seg. Soc.------------------------------------------------- */
  		if (isset($documentosfile['file_certificadoSegSoc' ])) {
-		foreach($documentosfile['file_certificadoSegSoc' ] as $sedeSocial)
+		foreach($documentosfile['file_certificadoSegSoc' ] as $certificadoSegSoc)
 			{
-				if ($sedeSocial->isValid() && ! $sedeSocial->hasMoved())
+				if ($certificadoSegSoc->isValid() && ! $certificadoSegSoc->hasMoved())
 				{
-					$sedeSocial->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $sedeSocial->getRandomName());
+					$certificadoSegSoc->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoSegSoc->getRandomName());
 					$data_file = [
-					'name' => $sedeSocial->getName(),					
-					'type' => $sedeSocial->getClientMimeType(),
+					'name' => $certificadoSegSoc->getName(),					
+					'type' => $certificadoSegSoc->getClientMimeType(),
 					'cifnif_propietario' => $nif,
 					'tipo_tramite' =>$tipo_tramite,
 					'corresponde_documento' => 'file_certificadoSegSoc',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
-					'created_at'  => $sedeSocial->getTempName(),
+					'created_at'  => $certificadoSegSoc->getTempName(),
 					'selloDeTiempo'  => $selloTiempo,
 					'id_sol'         => $last_insert_id
 					];
-				$save = $documentos->insert($data_file);
+					$save = $documentos->insert($data_file);
 				}
 			}
 		}
-
- 		/* ------------------------------------------------------------------------------------------------------------ */	
- 		// $documentosfile = $this->request->getFiles();
+ 		/* ----------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------sube file_copiaNIF, múltiples documentos------------------------------------------ */
+		if (isset($documentosfile['file_copiaNIF'])) {
+		foreach($documentosfile['file_copiaNIF'] as $copiaNIF)
+		{
+		if ($copiaNIF->isValid() && ! $copiaNIF->hasMoved())
+			{
+				$copiaNIF->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $copiaNIF->getRandomName());
+				$data_file = [
+				'name' => $copiaNIF->getName(),					
+				'type' => $copiaNIF->getClientMimeType(),
+				'cifnif_propietario' => $nif,
+				'tipo_tramite' =>$tipo_tramite,
+				'corresponde_documento' => 'file_copiaNIF',
+				'datetime_uploaded' => time(),
+				'convocatoria' => $convocatoria,
+				'created_at'  => $copiaNIF->getTempName(),
+				'selloDeTiempo'  => $selloTiempo,
+				'id_sol'         => $last_insert_id
+				];
+			$save = $documentos->insert($data_file);
+			}
+		}
+		}
+		/* -------------------------------------------------------------------------------------------------------------- */	
  		/* --------------------------------Escritura de la empresa---------------------------OK-------------------------- */
  		if (isset($documentosfile['file_escritura_empresa'])) {
-	 	foreach($documentosfile['file_escritura_empresa'] as $memoriaTecnica)
+	 	foreach($documentosfile['file_escritura_empresa'] as $escrituraEmpresa)
 		 {
-		 if ($memoriaTecnica->isValid() && ! $memoriaTecnica->hasMoved())
+		 if ($escrituraEmpresa->isValid() && ! $escrituraEmpresa->hasMoved())
 			 {
-				 $memoriaTecnica->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $memoriaTecnica->getRandomName());
+				 $escrituraEmpresa->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $escrituraEmpresa->getRandomName());
 				 $data_file = [
-				 'name' => $memoriaTecnica->getName(),					
-				 'type' => $memoriaTecnica->getClientMimeType(),
+				 'name' => $escrituraEmpresa->getName(),					
+				 'type' => $escrituraEmpresa->getClientMimeType(),
 				 'cifnif_propietario' => $nif,
 				 'tipo_tramite' =>$tipo_tramite,
 				 'corresponde_documento' => 'file_escritura_empresa',
 				 'datetime_uploaded' => time(),
 				 'convocatoria' => $convocatoria,
 				 'docRequerido' => 'NO',
-				 'created_at'  => $memoriaTecnica->getTempName(),
+				 'created_at'  => $escrituraEmpresa->getTempName(),
 				 'selloDeTiempo'  => $selloTiempo,
 				 'id_sol'         => $last_insert_id
 				 ];
-			 $save = $documentos->insert($data_file);
+			 	$save = $documentos->insert($data_file);
 			 }
 		 }
 	 	}
-		/* --------------------------------------------------------------------------------------------------------------- */
+		/* ----------------------------------------------------------------------------------------------------------------- */
  		/* --------------------------------sube certificado IAE, múltiples documentos----------------OK--------------------- */
  		if (isset($documentosfile['file_certificadoIAE'])) {
 		foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
@@ -1540,9 +1557,9 @@ public function store_idi_isba()
 				$save = $documentos->insert($data_file);
 				}
 			}
-			}
+		}
  		/* ----------------------------------------------------------------------------------------------------- */	
- 
+  	
 		$data_file['titulo'] = "Resumen de la solicitud de ayuda IDI-ISBA";
 
 	 	echo view('pages/forms/solicitud-ayuda-idi-isba', $data_exp);

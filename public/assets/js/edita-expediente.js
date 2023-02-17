@@ -549,6 +549,52 @@ function actualiza_fase_0_expediente_ils(formName) {  //SE EMPLEA
 		}
 	);
 }
+
+function actualiza_fase_0_expediente_idi_isba(formName) {  //SE EMPLEA
+	console.log("fase_0_idi_isba")
+	if (!validateForm(formName)) {
+		return;
+	}
+
+	let id = document.getElementById("id").value;
+
+	let telefono_rep = document.getElementById("telefono_rep").value; // Mòbil a efectes de notificacions
+	let email_rep = document.getElementById("email_rep").value; // Adreça electrònica a efectes de notificacions
+
+	let tecnicoAsignado = document.getElementById("tecnicoAsignado").value; // Tècnica asignada
+	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
+
+
+	for (let step = 0; step < 30; step++) {
+		document.getElementsByClassName("form-group general")[step].style.opacity = "0.5";
+	}
+	
+	let send_fase_0 = document.getElementById("send_fase_0");
+	send_fase_0.innerHTML = "Un moment ...";
+	send_fase_0.className = "btn-itramits warning-msg";
+	send_fase_0.disabled = true;
+	send_fase_0.ariaReadOnly = true;
+
+	$.post(
+		"/public/assets/utils/actualiza_fase_0_expediente_idi_isba.php",
+		{ id: id, telefono_rep: telefono_rep, email_rep: email_rep,
+			tecnicoAsignado: tecnicoAsignado, 
+			situacion_exped: situacion_exped },
+		
+		function (data) {
+			$(".result").html(data);
+			if (data == 1) {
+				send_fase_0.innerHTML = "Actualitzar";
+				send_fase_0.className = "btn-itramits btn-success-itramits";
+				send_fase_0.disabled = false;
+			}
+			for (let step = 0; step < 15; step++) {
+				document.getElementsByClassName("form-group general")[step].style.opacity = "1.0";
+			}
+		}
+	);
+}
+
 function actualiza_fase_1_solicitud_expediente(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;

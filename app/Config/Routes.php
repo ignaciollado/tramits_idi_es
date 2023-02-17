@@ -38,6 +38,7 @@ $routes->post('photos', 'Photos::create'); */
 $routes->get('expediente', 'ApiController::index');
 $routes->get('expediente/(:segment)/(:segment)/(:segment)', 'ApiController::getExpediente/$1/$2/$3');
 $routes->get('nifExpediente/(:segment)', 'ApiController::getExpedientebyNIF/$1');
+$routes->get('numExpediente/(:segment)/(:segment)', 'ApiController::getExpedientebyExp/$1/$2');
 
 /* $routes->get('photos/(:segment)/edit', 'Photos::edit/$1');
 $routes->put('photos/(:segment)', 'Photos::update/$1');

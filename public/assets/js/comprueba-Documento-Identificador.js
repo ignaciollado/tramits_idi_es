@@ -5,8 +5,7 @@ function averiguaTipoDocumento (valor) {
 	for (const formaJuridica of formasJuridicas) {
 		if (formaJuridica.checked) {
 			formaJuridaSelected = formaJuridica.value;
-			console.log ( `${formaJuridaSelected}`)
-				break;
+			break;
 		}
 	}
 
@@ -127,18 +126,17 @@ function analizaCIF (cif)
 	if (esCIF_OK) 
 	{
 		console.log (`Sí Motivo: ${motivo}`, esCIF_OK)
-		document.getElementById("rest-to-isba").classList.remove("ocultar");
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").value = cif;
 		document.getElementById("nif").classList.remove("invalid");
 		document.getElementById("nif").classList.add("valid");
 		document.getElementById("info_lbl").classList.add("ocultar");
 		document.getElementById("info_lbl").value = "";
+		consultaExpediente ( 'nif', cif )
 	}
 	else 
 	{
 		console.log (`No Motivo: ${motivo}`, esCIF_OK)
-		document.getElementById("rest-to-isba").classList.add("ocultar");
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").focus();
 		document.getElementById("nif").value = "";
@@ -322,3 +320,4 @@ function actualizoFormConDatosSolicitante () {
 
 	cierraModal()
 }
+

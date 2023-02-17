@@ -61,8 +61,8 @@ class ApiController extends ResourceController
         }
     }
 
-        // single by NIF
-        public function getExpedientebyNIF($nif = null, $program = null, $convo = null) {
+    // single by NIF
+    public function getExpedientebyNIF($nif = null, $program = null, $convo = null) {
           $apiModel = new ApiModel();
   
           $program = str_replace("%20", " ", $program);
@@ -75,8 +75,23 @@ class ApiController extends ResourceController
           if($data){
               return $this->respond($data);
           }else{
-              return $this->failNotFound('Expediente does not exist.');
+              return $this->failNotFound('Expediente with this NIF does not exist.');
           }
+    }
+
+    // single by expediente IDI
+    public function getExpedientebyExp($idExp = null, $convo = null) {
+            $apiModel = new ApiModel();
+    
+            $where = "idExp = '" . $idExp ."'";
+            $where .= " AND convocatoria = '" . $convo ."'";
+            $data = $apiModel->where( $where )->findAll();
+    
+            if($data){
+                return $this->respond($data);
+            }else{
+                return $this->failNotFound('Expediente with this NIF does not exist.');
+            }
       }
 
     // update

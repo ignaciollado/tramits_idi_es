@@ -1,8 +1,8 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">  -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
 
@@ -49,17 +49,9 @@
                     
      			    <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $expedientes['id']; ?>">
      			    <input type="hidden" name="convocatoria" class="form-control" id="convocatoria" value="<?php echo $expedientes['convocatoria']; ?>">
-
-<!--                      <div class="form-group form-check form-switch general">
-                        <label for = "publicar_en_web" class="main" >
-				            <span>Publicat en la web de ILS</ºspan>
-					            <input type="checkbox" class="form-control send_fase_0" <?php if ($expedientes['publicar_en_web'] == 1) { echo 'checked';} ?> value="<?php echo $expedientes['publicar_en_web']; ?>" name = "publicar_en_web" id = "publicar_en_web">
-				            <span class="w3docs"></span>
-			            </label>
-                    </div> -->
                     <div class="form-group general">
                         <label for="empresa">Nom o raó social:</label>
-                        <input type="text" name="empresa" class="form-control send_fase_0" id = "empresa" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> placeholder="Nom del sol·licitant" value="<?php echo $expedientes['empresa']; ?>">
+                        <input type="text" name="empresa" class="form-control" id = "empresa" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> readonly disabled placeholder="Nom del sol·licitant" value="<?php echo $expedientes['empresa']; ?>">
                     </div>
                     <div class="form-group general">
                         <label for="nif">NIF:</label>
@@ -94,18 +86,18 @@
                         <label for="domicilio">Adreça:</label>
                         <input type="text" name="domicilio" class="form-control" readonly disabled id = "domicilio" required placeholder="Adreça del sol·licitant" value="<?php echo $expedientes['domicilio']; ?>">
                     </div>
-		              <div class="form-group general">
+		            <div class="form-group general">
                         <label for="localidad">Població:</label>
 				            <?php
     					        $localidad = explode ("#", $expedientes['localidad']);		
 				            ?>
-			              <input type="text" name="Poblacio" class="form-control" readonly disabled id = "Poblacio" placeholder="Població" value="<?php echo $localidad[1].' ('.$localidad[0].')';?>">
-                  </div>
-                  <div class="form-group general">
-                    <label for="cpostal">Codi postal:</label>
-                    <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal']; ?>">
-                  </div>   
-                  <div class="form-group general">
+			            <input type="text" name="Poblacio" class="form-control" readonly disabled id = "Poblacio" placeholder="Població" value="<?php echo $localidad[1].' ('.$localidad[0].')';?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="cpostal">Codi postal:</label>
+                        <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal']; ?>">
+                    </div>   
+                <div class="form-group general">
                     <label for="telefono">Telèfon de contacte:</label>
                     <input type="tel" name="telefono" class="form-control" readonly disabled id = "telefono" required placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono']; ?>">
                 </div> 
@@ -115,15 +107,23 @@
                 </div>
                 <div class="form-group general">
                     <label for="nombre_rep">Representant legal:</label>
-                    <input type="text" name="nombre_rep" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nombre_rep" placeholder = "Nom del representant" value = "<?php echo $expedientes['nombre_rep']; ?>">
+                    <input type="text" name="nombre_rep" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nombre_rep" placeholder = "Nom del representant" value = "<?php echo $expedientes['nombre_rep']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="nif_rep">NIF representant legal:</label>
-                    <input type="text" name="nif_rep" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
+                    <input type="text" name="nif_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
+                </div>
+                <div class="form-group general">
+                    <label for="nif_rep">Adreça representant legal:</label>
+                    <input type="text" name="domicilio_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "domicilio_rep" minlength = "9" maxlength = "9" placeholder = "Adreça del representant" value = "<?php echo $expedientes['domicilio_rep']; ?>">
+                </div>
+                <div class="form-group general">
+                    <label for="nif_rep">Telèfon representant legal:</label>
+                    <input type="text" name="telefono_contacto_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_contacto_rep" minlength = "9" maxlength = "9" placeholder = "Telèfon del representant" value = "<?php echo $expedientes['telefono_contacto_rep']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="condicion_rep">Condió que al·lega:</label>
-                    <input type="text" name="condicion_rep" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "condicion_rep" placeholder = "Condició que al·lega" value = "<?php echo $expedientes['condicion_rep']; ?>">
+                    <input type="text" name="condicion_rep" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "condicion_rep" placeholder = "Condició que al·lega" value = "<?php echo $expedientes['condicion_rep']; ?>">
                 </div>
             </div>
             <div class="col">
@@ -133,76 +133,90 @@
       <label for=''><u><?php echo lang('message_lang.operacion_financiera_prestamo_idi_isba') ?></u></label>
                 <div class="form-group general">
                     <label for="nom_entidad"><?php echo lang('message_lang.entidad_financiera_idi_isba') ?>:</label>
-                    <input type="text" name="nom_entidad" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "nom_entidad" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['nom_entidad']; ?>">
+                    <input type="text" name="nom_entidad" class="form-control"readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "nom_entidad" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba') ?>" value = "<?php echo $expedientes['nom_entidad']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="importe_prestamo"><?php echo lang('message_lang.importe_prestamo_entidad_idi_isba') ?>:</label>
-                    <input type="text" name="importe_prestamo" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_prestamo" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['importe_prestamo']; ?>">
+                    <input type="text" name="importe_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_prestamo" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['importe_prestamo']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="plazo_prestamo"><?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>:</label>
-                    <input type="text" name="plazo_prestamo" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_prestamo" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['plazo_prestamo']; ?>">
+                    <input type="text" name="plazo_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_prestamo" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['plazo_prestamo']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="carencia_prestamo"><?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>:</label>
-                    <input type="text" name="carencia_prestamo" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "carencia_prestamo" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['carencia_prestamo']; ?>">
+                    <input type="text" name="carencia_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "carencia_prestamo" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['carencia_prestamo']; ?>">
                 </div>
       <label for=''><u><?php echo lang('message_lang.operacion_financiera_aval_idi_isba') ?></u></label>
                 <div class="form-group general">
                     <label for="cuantia_aval_isba"><?php echo lang('message_lang.cuantia_prestamo_idi_isba') ?>:</label>
-                    <input type="text" name="cuantia_aval_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "cuantia_aval_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['cuantia_aval_isba']; ?>">
+                    <input type="text" name="cuantia_aval_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "cuantia_aval_isba" placeholder = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba') ?>" value = "<?php echo $expedientes['cuantia_aval_isba']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="plazo_aval_isba"><?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>:</label>
-                    <input type="text" name="plazo_aval_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_aval_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['plazo_aval_isba']; ?>">
+                    <input type="text" name="plazo_aval_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_aval_isba" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>" value = "<?php echo $expedientes['plazo_aval_isba']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="fecha_aval_isba"><?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>:</label>
-                    <input type="text" name="fecha_aval_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "fecha_aval_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['fecha_aval_isba']; ?>">
+                    <input type="text" name="fecha_aval_isba" class="form-control" readonly disabled  oninput = "javaScript: actualizaRequired(this.value);" readonly id = "fecha_aval_isba" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>" value = "<?php echo $expedientes['fecha_aval_isba']; ?>">
                 </div>
 
       <label for=''><?php echo lang('message_lang.proyecto_de_inversion_idi_isba') ?></label>
                 <div class="form-group general">
-                    <label for="finalidad_inversion_idi_isba"><?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>:</label>
-                    <input type="text" name="finalidad_inversion_idi_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "finalidad_inversion_idi_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['finalidad_inversion_idi_isba']; ?>">
+                    <label for="finalidad_inversion_idi_isba"><?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>:</label>
+                    <input type="text" name="finalidad_inversion_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "finalidad_inversion_idi_isba" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>" value = "<?php echo $expedientes['finalidad_inversion_idi_isba']; ?>">
                 </div>
       <label for=''><u><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba') ?></u></label>
                 <div class="form-group general">
                     <label for="empresa_eco_idi_isba"><?php echo lang('message_lang.adherido_a_ils_si_no') ?>:</label>
-                    <input type="text" name="empresa_eco_idi_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "empresa_eco_idi_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['empresa_eco_idi_isba']; ?>">
+                    <input type="text" name="empresa_eco_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "empresa_eco_idi_isba" placeholder = "<?php echo lang('message_lang.adherido_a_ils_si_no') ?>" value = "<?php echo $expedientes['empresa_eco_idi_isba']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="importe_presupuesto_idi_isba"><?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>:</label>
-                    <input type="text" name="importe_presupuesto_idi_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_presupuesto_idi_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['importe_presupuesto_idi_isba']; ?>">
+                    <input type="text" name="importe_presupuesto_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_presupuesto_idi_isba" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>" value = "<?php echo $expedientes['importe_presupuesto_idi_isba']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="importe_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>:</label>
-                    <input type="text" name="importe_ayuda_solicita_idi_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_ayuda_solicita_idi_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['importe_ayuda_solicita_idi_isba']; ?>">
+                    <input type="text" name="importe_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>" value = "<?php echo $expedientes['importe_ayuda_solicita_idi_isba']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="intereses_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>:</label>
-                    <input type="text" name="intereses_ayuda_solicita_idi_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "intereses_ayuda_solicita_idi_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['intereses_ayuda_solicita_idi_isba']; ?>">
+                    <input type="text" name="intereses_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "intereses_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>" value = "<?php echo $expedientes['intereses_ayuda_solicita_idi_isba']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="coste_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>:</label>
-                    <input type="text" name="coste_aval_solicita_idi_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "coste_aval_solicita_idi_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['coste_aval_solicita_idi_isba']; ?>">
+                    <input type="text" name="coste_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "coste_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>" value = "<?php echo $expedientes['coste_aval_solicita_idi_isba']; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="gastos_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>:</label>
-                    <input type="text" name="gastos_aval_solicita_idi_isba" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" readonly id = "gastos_aval_solicita_idi_isba" placeholder = "Nom entitat finaçera" value = "<?php echo $expedientes['gastos_aval_solicita_idi_isba']; ?>">
-                </div>                                                                                
+                    <input type="text" name="gastos_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "gastos_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>" value = "<?php echo $expedientes['gastos_aval_solicita_idi_isba']; ?>">
+                </div>
+        
+        <label for=''><u><?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas') ?></u></label>           
+        <div class="form-check form-check-inline">
+  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_no" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
+  									<label class="form-check-label" for="tiene_ayudas_subv_no">
+											NO
+			  						</label>
+									</div>
+									<div class="form-check form-check-inline">
+  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_si" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
+  									<label class="form-check-label" for="tiene_ayudas_subv_si">
+											SI
+  									</label>
+									</div>
 
-    		        <div class="form-group general">
-                  <label for="tecnicoAsignado">Tècnica asignada:</label>
-                  <input type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
+    		    <div class="form-group general">
+                    <label for="tecnicoAsignado">Tècnica asignada:</label>
+                    <input type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
 			            <datalist id="listaTecnicos">
-    			          <option value="Vittoria">
+    			            <option value="Vittoria">
 				            <option value="Caterina Mas">
 				            <option value="María del Carmen Muñoz Adrover">
 				            <option value="Marta Riutord">
 				            <option value="Pilar Jordi Amorós">
-  			          </datalist>
-		            </div>
+  			            </datalist>
+		        </div>
 
 		        <div class="form-group general">
                     <label for = "situacion_exped"><strong>Situació:</strong></label>
@@ -234,7 +248,7 @@
                 <?php }
                 else {?>
                     <div class="form-group">
-                        <button type="button" onclick = "javaScript: actualiza_fase_0_expediente_ils('exped-fase-0');" id="send_fase_0" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button type="button" onclick = "javaScript: actualiza_fase_0_expediente_idi_isba('exped-fase-0');" id="send_fase_0" class="btn-itramits btn-success-itramits">Actualitzar</button>
                     </div>
                 <?php }?>
 

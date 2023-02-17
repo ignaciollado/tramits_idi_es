@@ -119,6 +119,8 @@ return [
    'identificacion_empresa_ils'           => "2. DADES DE L'EMPRESA",   
 
    'nif_solicitante'                  => "NIF del sol·licitant",
+   'idExpISBA'                        => "Expedient ISBA",
+
    'solicitante_sol_idigital'         => "Nom o raó social",    
    'direccion_sol_idigital'           => "Adrça postal",
    'localidad_sol_idigital'           => "Localitat",
