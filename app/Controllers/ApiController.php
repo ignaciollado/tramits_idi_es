@@ -61,7 +61,7 @@ class ApiController extends ResourceController
         }
     }
 
-    // single by NIF
+    // single by NIF (DNI, CIF, NIE)
     public function getExpedientebyNIF($nif = null, $program = null, $convo = null) {
           $apiModel = new ApiModel();
   
@@ -77,7 +77,7 @@ class ApiController extends ResourceController
           }
     }
 
-    // single by expediente IDI
+    // single by expediente IDI (nnnn/AAAA)
     public function getExpedientebyExp($idExp = null, $convo = null) {
             $apiModel = new ApiModel();
     
