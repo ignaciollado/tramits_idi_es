@@ -44,12 +44,12 @@ class ApiController extends ResourceController
     }
 
     // single by IdExp
-    public function getExpediente($id = null, $program = null, $convo = null) {
+    public function getExpediente($idExp = null, $program = null, $convo = null) {
         $apiModel = new ApiModel();
 
         $program = str_replace("%20", " ", $program);
 
-        $where = "idExp = " . $id;
+        $where = "idExp = " . $idExp;
         $where .= " AND tipo_tramite = '" . $program ."'";
         $where .= " AND convocatoria = '" . $convo ."'";
         $data = $apiModel->where( $where )->findAll();
@@ -68,8 +68,6 @@ class ApiController extends ResourceController
           $program = str_replace("%20", " ", $program);
   
           $where = "nif = '" . $nif ."'";
-         /*  $where .= " AND tipo_tramite = '" . $program ."'";
-          $where .= " AND convocatoria = '" . $convo ."'"; */
           $data = $apiModel->where( $where )->findAll();
   
           if($data){
