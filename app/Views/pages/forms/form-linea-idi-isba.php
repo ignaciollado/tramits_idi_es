@@ -21,15 +21,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-			<p>
-						<?php
+				<p>
+					<?php
 						if (get_cookie('CurrentLanguage')==="ca") {
 							include 'includes/clausulaProteccionDatos.html';
 						} else {
 							include 'includes/clausulaProteccionDatos-es.html';
 						}
-						?>
-					</p>
+					?>
+				</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -141,9 +141,11 @@
 			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" data-error = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" aria-required="true" name = "nom_entidad" id="nom_entidad" size="220" required>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-type="currency" aria-required="true" name = "importe_prestamo" id="importe_prestamo" required>
 			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" aria-required="true" name = "plazo_prestamo" id="plazo_prestamo" required>
-			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" name = "carencia_prestamo" id="carencia_prestamo" value="0" required>
+			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" name = "carencia_prestamo" id="carencia_prestamo" required>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-type="currency" aria-required="true" name = "cuantia_aval_isba" id="cuantia_aval_isba" required>
 			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" aria-required="true" name = "plazo_aval_isba" id="plazo_aval_isba" required>
+			<input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_idi_isba');?>" name = "carencia_idi_isba" id="carencia_idi_isba" required>
+
 			<input type = "date" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" aria-required="true" name = "fecha_aval_isba" id="fecha_aval_isba" required>
 		</fieldset>
 	</div>
@@ -295,20 +297,20 @@
 		<fieldset>
 			<h2>7. <?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba');?></h2>
 
-			<h3><strong><?php echo lang('message_lang.copia_dni');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
+<!-- 			<h3><strong><?php echo lang('message_lang.copia_dni');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
 			<div>
 				<input type = "file" id="file_copiaNIF" name="file_copiaNIF[]" title="<?php echo lang('message_lang.copia_dni');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
-			</div>
+			</div> -->
 
-			<h3><strong><?php echo lang('message_lang.escritura_empresa_idi_isba');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
+ 			<h3><strong><?php echo lang('message_lang.escritura_empresa_idi_isba');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
 			<div>
 				<input type = "file" id="file_escritura_empresa" name="file_escritura_empresa[]" title="<?php echo lang('message_lang.escritura_empresa_idi_isba');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 			</div>
 
-			<h3><strong><?php echo lang('message_lang.certificado_IAE');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
+<!-- 			<h3><strong><?php echo lang('message_lang.certificado_alta_censo_AEAT');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
 			<div>
-				<input type = "file" id="file_certificadoIAE" name="file_certificadoIAE[]" title="<?php echo lang('message_lang.certificado_IAE');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
-			</div>						
+				<input type = "file" id="file_certificadoIAE" name="file_certificadoIAE[]" title="<?php echo lang('message_lang.certificado_alta_censo_AEAT');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+			</div>		 -->				
 					
 		</fieldset>
 

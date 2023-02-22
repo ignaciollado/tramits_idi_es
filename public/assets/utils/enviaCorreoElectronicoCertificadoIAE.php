@@ -6,8 +6,6 @@ require_once 'conectar_a_bbdd.php';
 $id_doc = $_POST["id_doc"];
 $query = "SELECT email_rep, empresa, nif, tipo_tramite, convocatoria FROM pindust_expediente WHERE  id = " . $_POST["id"];
 
-//echo "#".$query."#";
-
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
@@ -37,10 +35,12 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 $mail->Username = "tramits@tramits.idi.es";  // SMTP username
+
 $mail->Password = "RYrzz1254w@)"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
+
 $mail->FromName = "IDI";
 // Lo que verá del remitente el destinatario
 $mail->SetFrom("noreply@idi.es","IDI");
@@ -54,7 +54,7 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
-$mail->Subject = "Solicitam el document: itinerari formatiu sobre la petjada de carboni - ILS";
+$mail->Subject = "Solicitam Certificat alta IAE - ILS";
 $email_message = "<!DOCTYPE html>";
 $email_message .= "<html lang='es'>";
 $email_message .= "<html>";
@@ -69,9 +69,9 @@ $email_message .= "<table data-toggle='table'";
 $email_message .= "<tbody>";
 $email_message .= "<tr style='width:100%;text-align:left;'><td style='font-size: 14px;'>";
 $email_message .= "<div>Benvolgut senyor / Benvolguda senyora,</div>";
-$email_message .= "<br><div>Per poder completar la vostra adhesió al programa Indústria Local Sostenible (ILS) necessitam l'itinerari formatiu sobre la petjada de carboni 
-. <br><br>Per a això, us demanam que ens faceu arribar aquest informe a través del següent formulari:</div>";
-$email_message .= "<div><a title='Obrir el formulari per fer-nos arribar l´itinerari formatiu de la seva empresa' href = 'https://tramits.idi.es/public/index.php/home/itinerario_formativo_ils/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment de l'itinerari formatiu petjada de carboni</a></div>";
+$email_message .= "<br><div>Per poder completar la vostra adhesió al programa Indústria Local Sostenible (ILS) necessitam el Certificat d'alta d'IAE. 
+<br><br>Per a això, us demanam que ens faceu arribar aquest informe a través del següent formulari:</div>";
+$email_message .= "<div><a title='Obrir el formulari per fer-nos arribar el Certificat d´alta d´IAE de la seva empresa' href = 'https://tramits.idi.es/public/index.php/home/certificado_IAE_ils/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment del Certificat d´alta d´IAE</a></div>";
 
     $email_message .= "<br><div>Pilar Jordi Amorós</div>";
     $email_message .= "<br><div>Cap de Servei de Política Industrial</div>";
@@ -108,7 +108,8 @@ else
     VALUES ($id_doc, '$correoDestino')";
 
     $result = mysqli_query($conn, $query);
-	$result = "<strong>Sol·licitud de l'itinerari formatiu enviada a la adreça de notificació " .$correoDestino."</strong>";
+
+	$result = "<strong>Sol·licitud del Certificat d'alta d'IAE enviada a la adreça de notificació " .$correoDestino."</strong>";
 }
 
 

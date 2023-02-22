@@ -192,6 +192,15 @@ function cambiaEstadoDoc(id) {
 		case 'file_modeloEjemploIls':
 			buttonID = "myBtnEnviarFormularioCompromisoReduccion"
 			break
+		case 	'file_enviardocumentoIdentificacion':
+			buttonID = "myBtnEnviarFormularioDocumentoIdentificacion"
+			break			
+		case 	'file_certificadoATIB':
+			buttonID = "myBtnEnviarFormularioCertificadoATIB"
+			break			
+		case 	'file_certificadoSegSoc':
+			buttonID = "myBtnEnviarFormularioCertificadoSegSoc"
+			break		
 	}
 	let button = document.getElementById(buttonID)
 
@@ -238,7 +247,6 @@ function cambiaEstadoDoc(id) {
 	stateChanged = false;
 	
 	urlUpdateDocState = "/public/assets/utils/actualiza_estado_documento.php"
-
 
 	fetch ( `${urlUpdateDocState}?id=${id.split("#")[0]}&estado=${estado}`, {
 		method: 'POST',
@@ -1437,7 +1445,7 @@ function enviaMailCertificadoIAE_click() {
 	document.getElementById("spinner_CertificadoIAE").classList.remove("ocultar");
 	document.getElementById("enviaMailCertificadoIAE").disabled.true;
 	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoCartificadoIAE.php",
+		"/public/assets/utils/enviaCorreoElectronicoCertificadoIAE.php",
 		{ id: id, id_doc:id_doc },
 		function (data) {
 			console.log(data);
@@ -1446,6 +1454,72 @@ function enviaMailCertificadoIAE_click() {
 				document.getElementById("enviaMailCertificadoIAE").style.display = "none";
 				document.getElementById("mensajeCertificadoIAE").classList.remove("ocultar");
 				document.getElementById("mensajeCertificadoIAE").innerHTML = data;
+			}
+		}
+	);
+}
+
+function enviaMailDocumentoIdentificacion_click() {
+	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_IDSOL").value;
+
+	var modal = document.getElementById("myEnviarFormularioDocumentoIdentificacion");
+	document.getElementById("spinner_DocumentoIdentificacion").classList.remove("ocultar");
+	document.getElementById("enviaMailDocumentoIdentificacion").disabled.true;
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoDocumentoIdentificacion.php",
+		{ id: id, id_doc:id_doc },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_DocumentoIdentificacion").classList.add("ocultar");
+				document.getElementById("enviaMailDocumentoIdentificacion").style.display = "none";
+				document.getElementById("mensajeDocumentoIdentificacion").classList.remove("ocultar");
+				document.getElementById("mensajeDocumentoIdentificacion").innerHTML = data;
+			}
+		}
+	);
+}
+
+function enviaMailCertificadoSegSoc_click() {
+	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_TGSS").value;
+
+	var modal = document.getElementById("myEnviarFormularioCertificadoSegSoc");
+	document.getElementById("spinner_CertificadoSegSoc").classList.remove("ocultar");
+	document.getElementById("enviaMailCertificadoSegSoc").disabled.true;
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoCertificadoSegSoc.php",
+		{ id: id, id_doc:id_doc },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_CertificadoSegSoc").classList.add("ocultar");
+				document.getElementById("enviaMailCertificadoSegSoc").style.display = "none";
+				document.getElementById("mensajeCertificadoSegSoc").classList.remove("ocultar");
+				document.getElementById("mensajeCertificadoSegSoc").innerHTML = data;
+			}
+		}
+	);
+}
+
+function enviaMailCertificadoATIB_click() {
+	let id = document.getElementById("id").value;
+	let id_doc = document.getElementById("id_doc_ATIB").value;
+
+	var modal = document.getElementById("myEnviarFormularioCertificadoATIB");
+	document.getElementById("spinner_CertificadoATIB").classList.remove("ocultar");
+	document.getElementById("enviaMailCertificadoATIB").disabled.true;
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoCertificadoATIB.php",
+		{ id: id, id_doc:id_doc },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_CertificadoATIB").classList.add("ocultar");
+				document.getElementById("enviaMailCertificadoATIB").style.display = "none";
+				document.getElementById("mensajeCertificadoATIB").classList.remove("ocultar");
+				document.getElementById("mensajeCertificadoATIB").innerHTML = data;
 			}
 		}
 	);

@@ -24,8 +24,7 @@ function averiguaTipoDocumento (valor) {
 	}
 }
 
-function analizaCIF (cif)
-	{
+function analizaCIF (cif) {
 	/* Esta función comprueba que la estructura de un CIF sea correcta */
 	/* La estructura correcta de un CIF es: */
 	/* OPPNNNNNC, donde: */
@@ -147,8 +146,7 @@ function analizaCIF (cif)
 	}
 	}
 
-function analizaDNINIE (dninie)
-	{
+function analizaDNINIE (dninie) {
 	// Primero averiguar si se trata de DNI o de NIE
 	// ---------NIE--------------------------------------------------
 	// Estructura del NIE: ADDDDDDDB
@@ -187,7 +185,7 @@ function analizaDNINIE (dninie)
 			document.getElementById("nif").value = ""
 			document.getElementById("nif").classList.remove("valid");
 			document.getElementById("nif").classList.add("invalid");
-			document.getElementById("rest-to-isba").classList.add("ocultar");
+			/* document.getElementById("rest-to-isba").classList.add("ocultar"); */
 			// Para hacer que funcione el focus() en Firefox
 			// setTimeout("document.getElementById('nif').focus();",0);
 			return;
@@ -209,12 +207,12 @@ function analizaDNINIE (dninie)
 			}
 		document.getElementById("nif").classList.remove("valid");
 		document.getElementById("nif").classList.add("invalid");
-		document.getElementById("rest-to-isba").classList.add("ocultar");
+		/* document.getElementById("rest-to-isba").classList.add("ocultar"); */
 	} else {
 		resultante = primerDigitoDNINIE+digitosIntermedio
 		document.getElementById("nif").classList.add("valid");
 		document.getElementById("nif").classList.remove("invalid");
-		document.getElementById("rest-to-isba").classList.remove("ocultar");
+		/* document.getElementById("rest-to-isba").classList.remove("ocultar"); */
 		document.querySelector('#rest-result').innerHTML = "";
 	}
 		

@@ -1,8 +1,12 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
 
@@ -42,7 +46,7 @@
 
     <div class="row">
         <div class="col docsExpediente">
-        <form action="<?php echo base_url('public/index.php/expedientes/update');?>" name="exped-fase-0" id="exped-fase-0" method="post" accept-charset="utf-8">
+            <form action="<?php echo base_url('public/index.php/expedientes/update');?>" name="exped-fase-0" id="exped-fase-0" method="post" accept-charset="utf-8">
 	        <div class = "row">	
 	            <div class="col">
                     <h3>Detall:</h3>
@@ -103,8 +107,8 @@
                     </div> 
             </div>
             <div class="col">
-            <div style="margin-top:5.5rem;"></div>
-            <div class="form-group general">
+                <div style="margin-top:5.5rem;"></div>
+                <div class="form-group general">
                     <label for="cpostal">Codi postal:</label>
                     <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal']; ?>">
                 </div>      	  		            	  
@@ -200,7 +204,7 @@
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
 
-                    if ($convocatoria == '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_item->corresponde_documento) {
 				            case 'file_infoautodiagnostico':
 					            $nom_doc = "Informe autodiagnosi digital";

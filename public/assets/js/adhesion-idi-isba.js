@@ -474,12 +474,14 @@ function muestraSubeArchivo (id)
 
 function consultaExpediente ( buscaPor, identificador ) {
 	let end_point = ""
+	let baseUrl = window.location
+	identificador = identificador.split(" ").join("")
 
 	if (buscaPor === 'expediente') {
-		end_point = `https://pre-tramits.idi.es/public/index.php/numExpediente/${identificador}`
+		end_point = `https://${baseUrl.hostname}/public/index.php/numExpediente/${identificador}`
 	}
 	if (buscaPor === 'nif') {
-		end_point = `https://pre-tramits.idi.es/public/index.php/nifExpediente/${identificador}`
+		end_point = `https://${baseUrl.hostname}/public/index.php/nifExpediente/${identificador}`
 	}
 
 	let spinner = document.querySelector('#spinner-idi-isba');
@@ -496,7 +498,7 @@ function consultaExpediente ( buscaPor, identificador ) {
 	.then(data => {
 		spinner.classList.add("ocultar")
 		textIsba.classList.remove("ocultar")
-		console.log (data, data.length)
+
 		data.forEach( solicitante => {
 			console.log(solicitante.id, solicitante.nif, solicitante.empresa)
 			restResult.innerHTML += `<button class='btn btn-outline-primary btn-sm' title='click to select this item' onclick="javaScript: rellenaElFormulario(${solicitante.id});"> ${solicitante.id} </button> ${solicitante.nif} ${solicitante.empresa}<br>`
@@ -517,7 +519,7 @@ function consultaExpediente ( buscaPor, identificador ) {
 			document.getElementById("domicilio_rep").value = solicitante. domicilio_rep
 			document.getElementById("telefono_contacto_rep").value = solicitante.telefono_contacto_rep
 			document.getElementById("nom_representante").value = solicitante.nombre_rep
-			console.log ( `es : ${solicitante.condicion_rep} --` )
+
 			if ( solicitante.condicion_rep === 'administrador' ) {
 				document.getElementById("condicion_rep_admin").checked =true
 			} else {
@@ -575,11 +577,14 @@ function consultaExpediente ( buscaPor, identificador ) {
 			}
 
 	})
+
 	if (buscaPor === 'nif') {
 		restResultDialog.open = true
 	}
 	}).catch(function(error) {
-		console.log('Hubo un problema con la petición Fetch:' + error.message)
+		console.log('Hubo un problema con la petición:' + error.message, baseUrl.hostname)
+		document.getElementById('adhesion_idi_isba').reset()
+		spinner.classList.add("ocultar")
 	});
 
 	}

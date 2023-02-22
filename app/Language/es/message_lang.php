@@ -474,7 +474,7 @@ return [
 'documentacion_necesaria_pymes_idi_isba'  => "<h3>Antes de empezar, es recomendable tener preparada la siguiente documentación:</h3>
    <ol class='formbox'>
       <li>Copia del DNI del solicitante o de su representante.</li>
-      <li>Escrituras o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil.</li>
+      <li>Escrituras o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil y, si procede, documento acreditativo de representación.</li>
       <li>El certificado de la Agencia Tributaria de alta en el Censo de Empresarios, Profesionales y Retenedores y el <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
       <li>En el caso de ayudas superiores a 3.000 euros:
          <ol>
@@ -501,6 +501,7 @@ return [
 'operacion_financiera_aval_idi_isba'  => "AVAL DE ISBA, SGR",
 'cuantia_prestamo_idi_isba'      => "Cuantía aval de ISBA, SGR (€)",
 'plazo_prestamo_idi_isba'        => "Plazo aval de ISBA, SGR (en años)",
+'carencia_idi_isba'              => "Carencia aval de ISBA, SGR (en años)",
 'fecha_del_aval_idi_isba'        => "Fecha del aval de ISBA, SGR",
 'proyecto_de_inversion_idi_isba' => "PROYECTO DE INVERSIÓN",
 'proyecto_de_inversion_idi_isba_finalidad' => "Finalidad de la inversión",
@@ -516,9 +517,10 @@ para recibir la subvención según la legislación vigente.",
 'direccion_general_politica_industrial_idi_isba'   => "De la Dirección General de Politica Industrial",
 'otros_declaro_idi_isba'   => "Otros",
 'documentacion_adjunta_requerida_idi_isba' => "Documentación que nos puede adjuntar",
-'escritura_empresa_idi_isba' => "Escritura o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil.",
+'escritura_empresa_idi_isba' => "Escritura o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil y si procede documento acreditativo de representación.",
 
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓN ADJUNTA",
+'certificado_alta_censo_AEAT'            => "Certificado de estar de alta en el censo de la AEAT",
 
 'adherido_a_ils_si_no' => "Participa o está adherido a algún tipo de programa para reducir la huella de carbono",
 'no_adherido_a_ils'     => "NO",

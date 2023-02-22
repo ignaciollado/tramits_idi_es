@@ -54,14 +54,14 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
-$mail->Subject = "Solicitam Certificat alta IAE - ILS";
+$mail->Subject = "Solicitam document identificatiu";
 $email_message = "<!DOCTYPE html>";
 $email_message .= "<html lang='es'>";
 $email_message .= "<html>";
 $email_message .= "<head>";
 $email_message .= "<meta charset = 'utf-8'>";
 $email_message .= "<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>";
-$email_message .= "<title>Adhesió al programa Industria Local Sostenible Illes Balears - IDI</title>";
+$email_message .= "<title>Linia IDI-ISBA Illes Balears</title>";
 $email_message .= "</head>";
 $email_message .= "<body>";
 $email_message .= "<div class='container'>";
@@ -69,9 +69,9 @@ $email_message .= "<table data-toggle='table'";
 $email_message .= "<tbody>";
 $email_message .= "<tr style='width:100%;text-align:left;'><td style='font-size: 14px;'>";
 $email_message .= "<div>Benvolgut senyor / Benvolguda senyora,</div>";
-$email_message .= "<br><div>Per poder completar la vostra adhesió al programa Indústria Local Sostenible (ILS) necessitam el Certificat d'alta d'IAE. 
-<br><br>Per a això, us demanam que ens faceu arribar aquest informe a través del següent formulari:</div>";
-$email_message .= "<div><a title='Obrir el formulari per fer-nos arribar el Certificat d´alta d´IAE de la seva empresa' href = 'https://tramits.idi.es/public/index.php/home/certificado_IAE_ils/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment del Certificat d´alta d´IAE</a></div>";
+$email_message .= "<br><div>Per poder completar la vostra sol·licitud d'ajut necessitam el Document identificatiu. 
+<br><br>Per a això, us demanam que ens faceu arribar aquest document a través del següent formulari:</div>";
+$email_message .= "<div><a title='Obrir el formulari per fer-nos arribar el Document idenfiticatio' href = 'https://tramits.idi.es/public/index.php/home/documento_identificativo_idiisba/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment del Document identificatiu</a></div>";
 
     $email_message .= "<br><div>Pilar Jordi Amorós</div>";
     $email_message .= "<br><div>Cap de Servei de Política Industrial</div>";
@@ -109,7 +109,7 @@ else
 
     $result = mysqli_query($conn, $query);
 
-	$result = "<strong>Sol·licitud del Certificat d'alta d'IAE a la adreça de notificació " .$correoDestino."</strong>";
+	$result = "<strong>Sol·licitud del document d'identificació enviat a la adreça de notificació " .$correoDestino."</strong>";
 }
 
 

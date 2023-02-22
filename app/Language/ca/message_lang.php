@@ -486,7 +486,7 @@ return [
 'documentacion_necesaria_pymes_idi_isba'  => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació:</h3>
    <ol class='formbox'>
       <li>Còpia del DNI del sol·licitant o del seu representant.</li>
-      <li>Escriptures o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil.</li>
+      <li>Escriptures o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil i, si escau, document acreditatiu de representació.</li>
       <li>El certificat de l'Agència Tributària d'alta en el Cens d'Empresaris, Professionals i Retenidors i l' <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
       <li>En el cas d'ajudes superiors a 3.000 euros:
          <ol>
@@ -515,6 +515,7 @@ return [
 'operacion_financiera_aval_idi_isba'  => "AVAL d'ISBA, SGR",
 'cuantia_prestamo_idi_isba'      => "Quantia aval de ISBA, SGR (€)",
 'plazo_prestamo_idi_isba'        => "Termini aval de ISBA, SGR (en anys)",
+'carencia_idi_isba'              => "Carència aval de ISBA, SGR (en anys)",
 'fecha_del_aval_idi_isba'        => "Data de l' aval de ISBA, SGR",
 'proyecto_de_inversion_idi_isba' => "PROJECTE D'INVERSIÓ",
 'proyecto_de_inversion_idi_isba_finalidad' => "Finalitat de la inversió",
@@ -530,10 +531,11 @@ para recibir la subvención según la legislación vigente.",
 'direccion_general_politica_industrial_idi_isba'   => "De la Direcció General de Politica Indústrial",
 'otros_declaro_idi_isba'   => "Altres",
 'documentacion_adjunta_requerida_idi_isba' => "Documentació que ens pot adjuntar",
-'escritura_empresa_idi_isba' => "Escriptura o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil.",
+'escritura_empresa_idi_isba' => "Escriptura o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil i si escau, document acreditatiu de representació.",
 'ayuda_superior_3000' => "En el cas d'ajudes superiors als 3000 €:",
 
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓ ADJUNTA",
+'certificado_alta_censo_AEAT'            => "Certificat d´estar d´alta en el cens de la AEAT",
 
 'adherido_a_ils_si_no'  => "Participa o està adherit a alguna mena de programa per a reduir la petjada de carboni",
 'no_adherido_a_ils'     => "NO",

@@ -16,7 +16,9 @@ foreach ($query->getResult('array') as $row)
       <?php }
         else {?>
 				<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
-				data-toggle = "modal" data-target = "#myEnviarFormularioCertificadoIAE" 
+				data-bs-toggle="modal" data-bs-target = "#myEnviarFormularioCertificadoIAE"
+				data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myBtnEnviarFormularioCertificadoIAE" aria-hidden="true"
+				
 				id="myBtnEnviarFormularioCertificadoIAE"
 				title="Torna a sol·licitar el document">
 				Notifica <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary"><?php echo $totalNotifications;?></span>
@@ -25,12 +27,12 @@ foreach ($query->getResult('array') as $row)
 
 
   <!-- The Modal para generar el correo -->
-  <div id="myEnviarFormularioCertificadoIAE" class="modal fade" role="dialog">
+  <div id="myEnviarFormularioCertificadoIAE" class="modal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
 						<label for="cerrarModalActaCierre"><strong>Sol·licitud del certificat IAE ILS</strong></label>
-        				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">

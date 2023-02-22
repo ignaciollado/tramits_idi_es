@@ -109,7 +109,7 @@ else
 
     $result = mysqli_query($conn, $query);
 
-	$result = "<strong>Sol·licitud de l'escriptura de l'empresa a la adreça de notificació " .$correoDestino."</strong>";
+	$result = "<strong>Sol·licitud del Compromís de reducció de les emissions de gasos enviada a la adreça de notificació " .$correoDestino."</strong>";
 }
 
 

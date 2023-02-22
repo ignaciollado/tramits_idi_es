@@ -5,7 +5,9 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
         else {?>
-			  <button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myEnviarFormularioEmpresa" id="myBtnEnviarFormEmpresa">Enviar al sol·licitant el formulari de sol·licitud de dades per a la web de ILS</button>       
+			  <button type = "button" class = "btn-primary-itramits" 
+				data-toggle = "modal" data-target = "#myEnviarFormularioEmpresa" 
+				id="myBtnEnviarFormEmpresa">Enviar al sol·licitant el formulari de sol·licitud de dades per a la web de ILS</button>       
 		  <?php }?>
 
 

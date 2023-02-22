@@ -17,7 +17,7 @@ foreach ($query->getResult('array') as $row)
       <?php }
         else {?>
 				<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
-				data-toggle = "modal" data-target = "#myEnviarFormularioCompromisoReduccion" 
+				data-toggle = "modal" data-target = "#myEnviarFormularioCompromisoReduccion"
 				id="myBtnEnviarFormularioCompromisoReduccion" title="Torna a sol·licitar el document">Notifica 
 				<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary">0</span>
                                                 </button>    

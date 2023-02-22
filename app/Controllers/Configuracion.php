@@ -9,14 +9,17 @@ class Configuracion extends Controller
     {
 		$language = \Config\Services::language();
 		$language->setLocale('ca');
-		$modelConfig = new ConfiguracionModel();
 		$db = \Config\Database::connect();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
+		$query   = $db->query('SELECT * FROM pindust_configuracion');
+		$data['convos'] = $query->getResult();
 		$data['titulo'] = "Configuració del gestor d'ajuts i de subvencions";
-		//echo $db->getPlatform()." ";
-		//echo $db->getVersion();
+		echo $db->getLastQuery();
+		echo $db->affectedRows();
+		echo $db->getPlatform();
+		echo $db->getVersion();
+		
 		echo view('templates/header/header', $data);	
-        echo view('pages/exped/configurador-gestor');
+    echo view('pages/exped/configurador-gestor', $data);
 		echo view('templates/footer/footer');	
     }  
 	

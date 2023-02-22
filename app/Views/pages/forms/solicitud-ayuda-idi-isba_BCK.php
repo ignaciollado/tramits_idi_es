@@ -67,9 +67,9 @@ $pdf->AddPage();
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 25);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 
-$html1 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html1 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>xxxxxxxxxx";
 $html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.destino_solicitud').": <b>".lang('message_lang.idi')."</b></td></tr>";
 $html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.codigo_dir3').": <b>A04003714</b></td></tr>";
 $html1 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('message_lang.tramite_procedimiento').": <b>". lang('message_lang.subtitulo_solicitud_ayudas_idi_isba')."</b></td></tr>";
@@ -79,14 +79,13 @@ $html1 .= "</table>";
 $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
-
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 $pdf->writeHTMLCell('', '', '', '', $html1, 1, 1, 0, true, 'L', true);
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY+10);
-$pdf->setX($currentX);
+$pdf->setY($currentY + 10);
+$pdf->setX($currentX - 20);
 $html8 ="1. ". lang('message_lang.identificacion_sol_idi_isba');
 
 $pdf->writeHTMLCell('', '', '', '', $html8, 1, 1, 0, true, 'C', true);
@@ -96,7 +95,7 @@ $pdf->writeHTMLCell('', '', '', '', $html8, 1, 1, 0, true, 'C', true);
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $html9 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicitante_sol_idigital').": <b>".$empresa."</b></td></tr>"; 
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF: <b>".$nif."</b></td></tr>";
@@ -117,7 +116,7 @@ $pdf->writeHTML($html9, true, false, true, false, '');
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $html10 = "2. ". lang('message_lang.notificacion_corto'); // "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)";
 
 $pdf->writeHTMLCell('', '', '', '', $html10, 1, 1, 0, true, 'C', true);
@@ -131,7 +130,7 @@ $html10 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 
 $pdf->writeHTML($html10, true, false, true, false, '');
 
@@ -140,7 +139,7 @@ $pdf->writeHTML($html10, true, false, true, false, '');
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $html11 = "3. ". lang('message_lang.operacion_financiera_idi_isba');
 
 $pdf->writeHTMLCell('', '', '', '', $html11, 1, 1, 0, true, 'C', true);
@@ -158,13 +157,11 @@ $html11 .= "<tr><td></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.cuantia_prestamo_idi_isba')." :  <b>" . $cuantia_aval_isba . "</b></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_idi_isba')." :  <b>" . $plazo_aval_isba . "</b></td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.fecha_del_aval_idi_isba')." :  <b>" . date_format(date_create($fecha_aval_isba),"d/m/Y") . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.carencia_idi_isba')." :  <b>" . $carencia_idi_isba . "</b></td></tr>";
-
 $html11 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 
 $pdf->writeHTML($html11, true, false, true, false, '');
 
@@ -175,7 +172,7 @@ $pdf->AddPage();
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 20);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $html12 = "4. ". lang('message_lang.proyecto_de_inversion_idi_isba');
 
 $pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
@@ -187,7 +184,7 @@ $html12 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $pdf->writeHTML($html12, true, false, true, false, '');
 
 // ------------------------------------------------------------------5. PRESUPUESTO DEL PROYECTO DE INVERSIÓN--------------------------------------- //
@@ -195,7 +192,7 @@ $pdf->writeHTML($html12, true, false, true, false, '');
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $html12 = "5. ". lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');
 
 $pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
@@ -212,7 +209,7 @@ $html12 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $pdf->writeHTML($html12, true, false, true, false, '');
 
 // ----------------------------------------------6. DECLARO-------------------------------------------------------------------------------- //
@@ -220,7 +217,7 @@ $pdf->writeHTML($html12, true, false, true, false, '');
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $html13 = "6. ".lang('message_lang.declaro');
 
 $pdf->writeHTMLCell('', '', '', '', $html13, 1, 1, 0, true, 'C', true);
@@ -253,14 +250,14 @@ $html13 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $pdf->writeHTML($html13, true, false, true, false, '');
 
 $pdf->AddPage();
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 20);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 $html15 = "6. ".lang('message_lang.documentacion_adjuntada_idi_isba');
 
 $pdf->writeHTMLCell('', '', '', '', $html15, 1, 1, 0, true, 'C', true);
@@ -288,7 +285,7 @@ $html15 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX);
+$pdf->setX($currentX - 20);
 
 $pdf->writeHTML($html15, true, false, true, false, '');
 
@@ -321,7 +318,6 @@ $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
 $pdf->setX($currentX - 40);
 $pdf->WriteHTML($html29, true, false, true, false, '');
-
 
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_idi_isba.pdf', 'F');
 

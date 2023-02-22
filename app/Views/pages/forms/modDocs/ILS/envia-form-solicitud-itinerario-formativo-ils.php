@@ -17,7 +17,9 @@ foreach ($query->getResult('array') as $row)
   else {?>
 
 		<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
-			data-toggle = "modal" data-target = "#myEnviarFormularioItinerarioFormativo" 
+			data-bs-toggle="modal" data-bs-target = "#myEnviarFormularioItinerarioFormativo"
+			data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myBtnEnviarFormularioItinerarioFormativo" aria-hidden="true"
+				
 			id="myBtnEnviarFormularioItinerarioFormativo" 
 			title="Torna a sol·licitar el document">
       	Notifica <span class="badge text-bg-secondary"><?php echo $totalNotifications;?></span>
@@ -26,12 +28,12 @@ foreach ($query->getResult('array') as $row)
 <?php  }?>
 
   <!-- The Modal para generar el correo de justificación -->
-  <div id="myEnviarFormularioItinerarioFormativo" class="modal fade" role="dialog">
+  <div id="myEnviarFormularioItinerarioFormativo" class="modal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
 						<label for="cerrarModalActaCierre"><strong>Sol·licitud del certificat itinerari formatiu ILS</strong></label>
-        				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
@@ -55,15 +57,15 @@ foreach ($query->getResult('array') as $row)
 	// Get the button that opens the modal
 	let btn_17ils_Itinerario = document.getElementById("myBtnEnviarFormularioItinerarioFormativo");
 	// Get the <span> element that closes the modal
-	let span_17ils_Itinerario = document.getElementsByClassName("close")[0];
+	/* let span_17ils_Itinerario = document.getElementsByClassName("close")[0]; */
 	// When the user clicks the button, open the modal 
 	btn_17ils_Itinerario.onclick = function() {
     modal_17ils_Itinerario.style.display = "block";
 	}
 	// When the user clicks on <span> (x), close the modal
-	span_17ils_Itinerario.onclick = function() {
+	/* span_17ils_Itinerario.onclick = function() {
     modal_17ils_Itinerario.style.display = "none";
-	}
+	} */
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
   	if (event.target == modal_17ils_Itinerario) {

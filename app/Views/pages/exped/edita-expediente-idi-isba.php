@@ -97,118 +97,122 @@
                         <label for="cpostal">Codi postal:</label>
                         <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal']; ?>">
                     </div>   
-                <div class="form-group general">
-                    <label for="telefono">Telèfon de contacte:</label>
-                    <input type="tel" name="telefono" class="form-control" readonly disabled id = "telefono" required placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono']; ?>">
-                </div> 
-                <div class="form-group general">
-                    <label for="iae">Activitat econòmica (IAE):</label>
-                    <input type="text" name="iae" class="form-control" readonly disabled id = "iae" maxlength = "4" size="4" placeholder="IAE" value="<?php echo $expedientes['iae']; ?>">
+                    <div class="form-group general">
+                        <label for="telefono">Telèfon de contacte:</label>
+                        <input type="tel" name="telefono" class="form-control" readonly disabled id = "telefono" required placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono']; ?>">
+                    </div> 
+                    <div class="form-group general">
+                        <label for="iae">Activitat econòmica (IAE):</label>
+                        <input type="text" name="iae" class="form-control" readonly disabled id = "iae" maxlength = "4" size="4" placeholder="IAE" value="<?php echo $expedientes['iae']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="nombre_rep">Representant legal:</label>
+                        <input type="text" name="nombre_rep" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nombre_rep" placeholder = "Nom del representant" value = "<?php echo $expedientes['nombre_rep']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="nif_rep">NIF representant legal:</label>
+                        <input type="text" name="nif_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="nif_rep">Adreça representant legal:</label>
+                        <input type="text" name="domicilio_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "domicilio_rep" minlength = "9" maxlength = "9" placeholder = "Adreça del representant" value = "<?php echo $expedientes['domicilio_rep']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="nif_rep">Telèfon representant legal:</label>
+                        <input type="text" name="telefono_contacto_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_contacto_rep" minlength = "9" maxlength = "9" placeholder = "Telèfon del representant" value = "<?php echo $expedientes['telefono_contacto_rep']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="condicion_rep">Condió que al·lega:</label>
+                        <input type="text" name="condicion_rep" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "condicion_rep" placeholder = "Condició que al·lega" value = "<?php echo $expedientes['condicion_rep']; ?>">
+                    </div>
                 </div>
-                <div class="form-group general">
-                    <label for="nombre_rep">Representant legal:</label>
-                    <input type="text" name="nombre_rep" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nombre_rep" placeholder = "Nom del representant" value = "<?php echo $expedientes['nombre_rep']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="nif_rep">NIF representant legal:</label>
-                    <input type="text" name="nif_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="nif_rep">Adreça representant legal:</label>
-                    <input type="text" name="domicilio_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "domicilio_rep" minlength = "9" maxlength = "9" placeholder = "Adreça del representant" value = "<?php echo $expedientes['domicilio_rep']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="nif_rep">Telèfon representant legal:</label>
-                    <input type="text" name="telefono_contacto_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_contacto_rep" minlength = "9" maxlength = "9" placeholder = "Telèfon del representant" value = "<?php echo $expedientes['telefono_contacto_rep']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="condicion_rep">Condió que al·lega:</label>
-                    <input type="text" name="condicion_rep" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "condicion_rep" placeholder = "Condició que al·lega" value = "<?php echo $expedientes['condicion_rep']; ?>">
-                </div>
-            </div>
-            <div class="col">
-              <div style="margin-top:5.5rem;"></div>       	     
-		           
-      <label for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?></label><br>
-      <label for=''><u><?php echo lang('message_lang.operacion_financiera_prestamo_idi_isba') ?></u></label>
-                <div class="form-group general">
-                    <label for="nom_entidad"><?php echo lang('message_lang.entidad_financiera_idi_isba') ?>:</label>
-                    <input type="text" name="nom_entidad" class="form-control"readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "nom_entidad" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba') ?>" value = "<?php echo $expedientes['nom_entidad']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="importe_prestamo"><?php echo lang('message_lang.importe_prestamo_entidad_idi_isba') ?>:</label>
-                    <input type="text" name="importe_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_prestamo" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['importe_prestamo']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="plazo_prestamo"><?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>:</label>
-                    <input type="text" name="plazo_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_prestamo" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['plazo_prestamo']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="carencia_prestamo"><?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>:</label>
-                    <input type="text" name="carencia_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "carencia_prestamo" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['carencia_prestamo']; ?>">
-                </div>
-      <label for=''><u><?php echo lang('message_lang.operacion_financiera_aval_idi_isba') ?></u></label>
-                <div class="form-group general">
-                    <label for="cuantia_aval_isba"><?php echo lang('message_lang.cuantia_prestamo_idi_isba') ?>:</label>
-                    <input type="text" name="cuantia_aval_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "cuantia_aval_isba" placeholder = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba') ?>" value = "<?php echo $expedientes['cuantia_aval_isba']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="plazo_aval_isba"><?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>:</label>
-                    <input type="text" name="plazo_aval_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_aval_isba" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>" value = "<?php echo $expedientes['plazo_aval_isba']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="fecha_aval_isba"><?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>:</label>
-                    <input type="text" name="fecha_aval_isba" class="form-control" readonly disabled  oninput = "javaScript: actualizaRequired(this.value);" readonly id = "fecha_aval_isba" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>" value = "<?php echo $expedientes['fecha_aval_isba']; ?>">
-                </div>
+                <div class="col">
+                    <div style="margin-top:5.5rem;"></div>       	     
 
-      <label for=''><?php echo lang('message_lang.proyecto_de_inversion_idi_isba') ?></label>
-                <div class="form-group general">
-                    <label for="finalidad_inversion_idi_isba"><?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>:</label>
-                    <input type="text" name="finalidad_inversion_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "finalidad_inversion_idi_isba" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>" value = "<?php echo $expedientes['finalidad_inversion_idi_isba']; ?>">
-                </div>
-      <label for=''><u><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba') ?></u></label>
-                <div class="form-group general">
-                    <label for="empresa_eco_idi_isba"><?php echo lang('message_lang.adherido_a_ils_si_no') ?>:</label>
-                    <input type="text" name="empresa_eco_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "empresa_eco_idi_isba" placeholder = "<?php echo lang('message_lang.adherido_a_ils_si_no') ?>" value = "<?php echo $expedientes['empresa_eco_idi_isba']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="importe_presupuesto_idi_isba"><?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>:</label>
-                    <input type="text" name="importe_presupuesto_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_presupuesto_idi_isba" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>" value = "<?php echo $expedientes['importe_presupuesto_idi_isba']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="importe_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>:</label>
-                    <input type="text" name="importe_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>" value = "<?php echo $expedientes['importe_ayuda_solicita_idi_isba']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="intereses_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>:</label>
-                    <input type="text" name="intereses_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "intereses_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>" value = "<?php echo $expedientes['intereses_ayuda_solicita_idi_isba']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="coste_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>:</label>
-                    <input type="text" name="coste_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "coste_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>" value = "<?php echo $expedientes['coste_aval_solicita_idi_isba']; ?>">
-                </div>
-                <div class="form-group general">
-                    <label for="gastos_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>:</label>
-                    <input type="text" name="gastos_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "gastos_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>" value = "<?php echo $expedientes['gastos_aval_solicita_idi_isba']; ?>">
-                </div>
+                    <label for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?></label><br>
+                    <label for=''><u><?php echo lang('message_lang.operacion_financiera_prestamo_idi_isba') ?></u></label>
+                    <div class="form-group general">
+                        <label for="nom_entidad"><?php echo lang('message_lang.entidad_financiera_idi_isba') ?>:</label>
+                        <input type="text" name="nom_entidad" class="form-control"readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "nom_entidad" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba') ?>" value = "<?php echo $expedientes['nom_entidad']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="importe_prestamo"><?php echo lang('message_lang.importe_prestamo_entidad_idi_isba') ?>:</label>
+                        <input type="text" name="importe_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_prestamo" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['importe_prestamo']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="plazo_prestamo"><?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>:</label>
+                        <input type="text" name="plazo_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_prestamo" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['plazo_prestamo']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="carencia_prestamo"><?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>:</label>
+                        <input type="text" name="carencia_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "carencia_prestamo" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['carencia_prestamo']; ?>">
+                    </div>
+                    <label for=''><u><?php echo lang('message_lang.operacion_financiera_aval_idi_isba') ?></u></label>
+                    <div class="form-group general">
+                        <label for="cuantia_aval_isba"><?php echo lang('message_lang.cuantia_prestamo_idi_isba') ?>:</label>
+                        <input type="text" name="cuantia_aval_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "cuantia_aval_isba" placeholder = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba') ?>" value = "<?php echo $expedientes['cuantia_aval_isba']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="plazo_aval_isba"><?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>:</label>
+                        <input type="text" name="plazo_aval_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_aval_isba" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>" value = "<?php echo $expedientes['plazo_aval_isba']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="carencia_idi_isba"><?php echo lang('message_lang.carencia_idi_isba') ?>:</label>
+                        <input type="text" name="carencia_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "carencia_idi_isba" placeholder = "<?php echo lang('message_lang.carencia_idi_isba') ?>" value = "<?php echo $expedientes['carencia_idi_isba']; ?>">
+                    </div>                    
+                    <div class="form-group general">
+                        <label for="fecha_aval_isba"><?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>:</label>
+                        <input type="text" name="fecha_aval_isba" class="form-control" readonly disabled  oninput = "javaScript: actualizaRequired(this.value);" readonly id = "fecha_aval_isba" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>" value = "<?php echo $expedientes['fecha_aval_isba']; ?>">
+                    </div>
+
+                    <label for=''><?php echo lang('message_lang.proyecto_de_inversion_idi_isba') ?></label>
+                    <div class="form-group general">
+                        <label for="finalidad_inversion_idi_isba"><?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>:</label>
+                        <input type="text" name="finalidad_inversion_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "finalidad_inversion_idi_isba" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>" value = "<?php echo $expedientes['finalidad_inversion_idi_isba']; ?>">
+                    </div>
+                    <label for=''><u><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba') ?></u></label>
+                    <div class="form-group general">
+                        <label for="empresa_eco_idi_isba"><?php echo lang('message_lang.adherido_a_ils_si_no') ?>:</label>
+                        <input type="text" name="empresa_eco_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "empresa_eco_idi_isba" placeholder = "<?php echo lang('message_lang.adherido_a_ils_si_no') ?>" value = "<?php echo $expedientes['empresa_eco_idi_isba']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="importe_presupuesto_idi_isba"><?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>:</label>
+                        <input type="text" name="importe_presupuesto_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_presupuesto_idi_isba" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>" value = "<?php echo $expedientes['importe_presupuesto_idi_isba']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="importe_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>:</label>
+                        <input type="text" name="importe_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>" value = "<?php echo $expedientes['importe_ayuda_solicita_idi_isba']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="intereses_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>:</label>
+                        <input type="text" name="intereses_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "intereses_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>" value = "<?php echo $expedientes['intereses_ayuda_solicita_idi_isba']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="coste_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>:</label>
+                        <input type="text" name="coste_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "coste_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>" value = "<?php echo $expedientes['coste_aval_solicita_idi_isba']; ?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="gastos_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>:</label>
+                        <input type="text" name="gastos_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "gastos_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>" value = "<?php echo $expedientes['gastos_aval_solicita_idi_isba']; ?>">
+                    </div>
         
-        <label for=''><u><?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas') ?></u></label>           
-        <div class="form-check form-check-inline">
-  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_no" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
-  									<label class="form-check-label" for="tiene_ayudas_subv_no">
-											NO
-			  						</label>
-									</div>
-									<div class="form-check form-check-inline">
-  									<input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_si" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
-  									<label class="form-check-label" for="tiene_ayudas_subv_si">
-											SI
-  									</label>
-									</div>
+                    <label for=''><u><?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas') ?></u></label>           
+                    <div class="form-check form-check-inline">
+  					    <input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_no" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
+  						    <label class="form-check-label" for="tiene_ayudas_subv_no">
+							    NO
+                            </label>
+					</div>
+					<div class="form-check form-check-inline">
+  						<input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_si" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
+  							<label class="form-check-label" for="tiene_ayudas_subv_si">
+								SI
+  							</label>
+					</div>
 
-    		    <div class="form-group general">
-                    <label for="tecnicoAsignado">Tècnica asignada:</label>
-                    <input type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
+    		        <div class="form-group general">
+                        <label for="tecnicoAsignado">Tècnica asignada:</label>
+                        <input type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
 			            <datalist id="listaTecnicos">
     			            <option value="Vittoria">
 				            <option value="Caterina Mas">
@@ -216,45 +220,44 @@
 				            <option value="Marta Riutord">
 				            <option value="Pilar Jordi Amorós">
   			            </datalist>
-		        </div>
+		            </div>
 
-		        <div class="form-group general">
-                    <label for = "situacion_exped"><strong>Situació:</strong></label>
-	    		    <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onChange="avisarCambiosEnFormulario('send_fase_0', this.id)">
-    		    		<option disabled <?php if ($expedientes['situacion'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
-                        <optgroup class="sitSolicitud_cab_ils" label="Fase sol·licitud:">
-                           	<option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud_ils"> No ha passat pel REC</option>
-                           	<option <?php if ($expedientes['situacion'] === "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud_ils"> Pendent de validar</option>
-                           	<option <?php if ($expedientes['situacion'] === "reqFirmado") { echo "selected";}?> value = "reqFirmado" class="sitSolicitud_ils"> Requeriment signat</option>
-                           	<option <?php if ($expedientes['situacion'] === "reqNotificado") { echo "selected";}?> value = "reqNotificado" class="sitSolicitud_ils"> Requeriment notificat + 30 dies per subsanar</option>
-                        </optgroup>
-						<optgroup class="sitAdhesion_cab_ils" label="Fase adhesió:">
-                           	<option <?php if ($expedientes['situacion'] === "ifResolucionEmitida") { echo "selected";}?> value = "ifResolucionEmitida" class="sitAdhesion_ils"> IF + resolució emesa</option>
-                           	<option <?php if ($expedientes['situacion'] === "ifResolucionEnviada") { echo "selected";}?> value = "ifResolucionEnviada" class="sitAdhesion_ils"> IF + resolució enviada</option>
-                           	<option <?php if ($expedientes['situacion'] === "ifResolucionNotificada") { echo "selected";}?> value = "ifResolucionNotificada" class="sitAdhesion_ils"> IF + resolución notificada</option>
-                           	<option <?php if ($expedientes['situacion'] === "empresaAdherida") { echo "selected";}?> value = "empresaAdherida" class="sitAdhesion_ils"> Empresa adherida</option>
-                        </optgroup>
-						<optgroup class="sitEjecucion_cab_ils" label="Fase seguiment:">
-                           	<option <?php if ($expedientes['situacion'] === "idResolucionDenegacionEmitida") { echo "selected";}?> value = "idResolucionDenegacionEmitida" class="sitEjecucion_ils"> ID + resolució denegació emesa</option>
-                           	<option <?php if ($expedientes['situacion'] === "idResolucionDenegacionEnviada") { echo "selected";}?> value = "idResolucionDenegacionEnviada" class="sitEjecucion_ils"> ID + resolución denegació enviada</option>
-                           	<option <?php if ($expedientes['situacion'] === "idResolucionDenegacionNotificada") { echo "selected";}?> value = "idResolucionDenegacionNotificada" class="sitEjecucion_ils"> ID + resolució denegació notificada</option>
-                           	<option <?php if ($expedientes['situacion'] === "empresaDenegada") { echo "selected";}?> value = "empresaDenegada" class="sitEjecucion_ils"> Empresa denegada</option>
-                        </optgroup>
-			        </select>
-		        </div>
+		            <div class="form-group general">
+                        <label for = "situacion_exped"><strong>Situació:</strong></label>
+	    		        <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onChange="avisarCambiosEnFormulario('send_fase_0', this.id)">
+    		    		    <option disabled <?php if ($expedientes['situacion'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
+                                <optgroup class="sitSolicitud_cab_ils" label="Fase sol·licitud:">
+                           	        <option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud_ils"> No ha passat pel REC</option>
+                           	        <option <?php if ($expedientes['situacion'] === "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud_ils"> Pendent de validar</option>
+                           	        <option <?php if ($expedientes['situacion'] === "reqFirmado") { echo "selected";}?> value = "reqFirmado" class="sitSolicitud_ils"> Requeriment signat</option>
+                           	        <option <?php if ($expedientes['situacion'] === "reqNotificado") { echo "selected";}?> value = "reqNotificado" class="sitSolicitud_ils"> Requeriment notificat + 30 dies per subsanar</option>
+                                </optgroup>
+						        <optgroup class="sitAdhesion_cab_ils" label="Fase adhesió:">
+                           	        <option <?php if ($expedientes['situacion'] === "ifResolucionEmitida") { echo "selected";}?> value = "ifResolucionEmitida" class="sitAdhesion_ils"> IF + resolució emesa</option>
+                           	        <option <?php if ($expedientes['situacion'] === "ifResolucionEnviada") { echo "selected";}?> value = "ifResolucionEnviada" class="sitAdhesion_ils"> IF + resolució enviada</option>
+                           	        <option <?php if ($expedientes['situacion'] === "ifResolucionNotificada") { echo "selected";}?> value = "ifResolucionNotificada" class="sitAdhesion_ils"> IF + resolución notificada</option>
+                           	        <option <?php if ($expedientes['situacion'] === "empresaAdherida") { echo "selected";}?> value = "empresaAdherida" class="sitAdhesion_ils"> Empresa adherida</option>
+                                </optgroup>
+						        <optgroup class="sitEjecucion_cab_ils" label="Fase seguiment:">
+                           	        <option <?php if ($expedientes['situacion'] === "idResolucionDenegacionEmitida") { echo "selected";}?> value = "idResolucionDenegacionEmitida" class="sitEjecucion_ils"> ID + resolució denegació emesa</option>
+                           	        <option <?php if ($expedientes['situacion'] === "idResolucionDenegacionEnviada") { echo "selected";}?> value = "idResolucionDenegacionEnviada" class="sitEjecucion_ils"> ID + resolución denegació enviada</option>
+                           	        <option <?php if ($expedientes['situacion'] === "idResolucionDenegacionNotificada") { echo "selected";}?> value = "idResolucionDenegacionNotificada" class="sitEjecucion_ils"> ID + resolució denegació notificada</option>
+                           	        <option <?php if ($expedientes['situacion'] === "empresaDenegada") { echo "selected";}?> value = "empresaDenegada" class="sitEjecucion_ils"> Empresa denegada</option>
+                                </optgroup>
+			            </select>
+		            </div>
                 
-                <?php
-                if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                else {?>
-                    <div class="form-group">
-                        <button type="button" onclick = "javaScript: actualiza_fase_0_expediente_idi_isba('exped-fase-0');" id="send_fase_0" class="btn-itramits btn-success-itramits">Actualitzar</button>
-                    </div>
-                <?php }?>
-
+                    <?php
+                    if ( !$esAdmin && !$esConvoActual ) {?>
+                    <?php }
+                    else {?>
+                        <div class="form-group">
+                            <button type="button" onclick = "javaScript: actualiza_fase_0_expediente_idi_isba('exped-fase-0');" id="send_fase_0" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        </div>
+                    <?php }?>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
     </div>    
     <div class="col docsExpediente">
         <div class="col">  
@@ -274,99 +277,29 @@
                         $id_doc = $docs_item->id;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
-
-                    if ($convocatoria == '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_item->corresponde_documento) {
-				            case 'file_infoautodiagnostico':
-					            $nom_doc = "Informe autodiagnosi digital";
-					            break;
-    				        case 'file_certificadoIAE':
-					            $nom_doc = "Certificat d'alta d'IAE";
-					            break;
-	    			        case 'file_declaracionResponsable':
-					            $nom_doc = "Declaració responsable de l'empresa";
-					            break;
-		    		        case 'file_declaracionResponsableConsultor':
-					            $nom_doc = "Declaració responsable del consultor";
-					            break;
-			    	        case 'file_memoriaTecnica':
-					            $nom_doc = "La memòria tècnica";
-					            break;
-                            case 'file_document_acred_como_repres':
-                                $nom_doc = "Documentació acreditativa de les facultats de representació de la persona que firma la sol·licitud d'ajut";
-                                break;
-				            case 'file_docConstitutivoCluster':	
-					            $nom_doc = "Document constitutiu clústers i/o centres tecnològics";
-					            break;    					
-				            case 'file_certigicadoSegSoc':
-					            $nom_doc = "Certificat de la Seguretat Social";
-					            break;
-				            case 'file_certificadoATIB':
-					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
-					            break;				
-				            case 'file_copiaNIF':
-					            $nom_doc = "Còpia del NIF al no autoritzar a IDI per comprobar";
-					            break;				
-				            case 'file_altaAutonomos':	
-					            $nom_doc = "Còpia documentació acreditativa alta d'autònoms";
-					            break;	
-				            case 'file_escrituraConstitucion':	
-					            $nom_doc = "Còpia escriptura de constitució de l'entitat";
-					            break;
-				            case 'file_nifEmpresa':	
-					            $nom_doc = "Còpia del NIF de l'empresa";
-					            break;
-				            case 'file_nifRepresentante':	
-					            $nom_doc = "Còpia del NIF del representant de la societat";
-					            break;
-				            case 'file_certificadoDocumentacion':	
-					            $nom_doc = "Certificats i documentació corresponent (al no donar consentiment a l'IDI)";
-					            break;
-				            case 'file_declNoConsentimiento':	
-					            $nom_doc = "Declaració de no consentiment";
-          			            break;
-				            case 'file_enviardocumentoIdentificacion':	
-					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
-					            break;
-                            case 'file_certificadoSegSoc':	
-                                $nom_doc = "Certificat estar al corrent obligacions amb la Tesoreria de la Seguridad Social";
-                                break;
                             case 'file_resguardoREC':	
                                 $nom_doc = "Justificant de presentació pel REC";
                                 break;
                             case 'file_DocumentoIDI':	
                                 $nom_doc = "Document pujat des-de l'IDI";
                                 break;
-                            case 'file_escritura_empresa':	
-                                $nom_doc = "Escriptures del registre Mercantil";
+                            case 'file_enviardocumentoIdentificacion':
+                                $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
                                 break;
-                            case 'file_logotipoEmpresaIls':	
-                                $nom_doc = "Logotip de l'empresa";
-                                break; 
-                            case 'file_informeResumenIls':	
-                                $nom_doc = "Informe resum de la petjada de carboni";
+                            case 'file_certificadoATIB':
+                                $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
                                 break;
-                            case 'file_informeInventarioIls':	
-                                $nom_doc = "Informe d'Inventari de GEH segons la norma ISO 14.064-1";
+                            case 'file_certificadoSegSoc':	
+                                $nom_doc = "Certificat estar al corrent obligacions amb la TGSS";
                                 break;
-                            case 'file_modeloEjemploIls':	
-                                $nom_doc = "Compromís de reducció de les emissions de gasos d'efecte hivernacle";
-                                break;
-                            case 'file_lineaProduccionBalearesIls':	
-                                $nom_doc = "Declaració responsable de que l'empresa compta amb una línia de producció activa a les Illes Balears";
-                                break;
-                            case 'file_certificado_itinerario_formativo':	
-                                $nom_doc = "Certificat itinerari formatiu";
-                                break;
-                            case 'file_certificado_verificacion_ISO':	
-                                $nom_doc = "Certificat verificación ISO";
-                                break;    
 			                default:
-					        $nom_doc = $docs_item->corresponde_documento; 
+					            $nom_doc = "..".$docs_item->corresponde_documento.".."; 
 			            } 
-                        } else {
+                    } else {
                             $nom_doc = $docs_item->name;
-                        }?>
+                    }?>
                     <?php if ($docs_item->docRequerido !== 'NO') {?>
   			            <div id ="fila" class = "detail-wrapper-docs general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_item->selloDeTiempo); ?></span>
@@ -391,24 +324,20 @@
                             <span class="detail-wrapper-docs-col">
                             <?php 
                             switch ($docs_item->corresponde_documento) {
-                                case 'file_escritura_empresa':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
+                                case 'file_enviardocumentoIdentificacion':	
+                                    $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-identifica-solicitante.php'; 
                                     break;
-    				            case 'file_certificadoIAE':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
+                                case 'file_certificadoATIB':
+                                    $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-atib.php'; 
                                     break;
-                                case 'file_informeResumenIls':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-resumen-ils.php'; 
-                                    break;
-                                case 'file_informeInventarioIls':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-geh-ils.php';
-                                    break;
-                                case 'file_certificado_itinerario_formativo':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-itinerario-formativo-ils.php';
-	    				            break;
-                                case 'file_modeloEjemploIls':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-compromiso-reduccion-ils.php';
-	    				            break;
+                                case 'file_certificadoSegSoc':	
+                                    $nom_doc = "Certificat estar al corrent obligacions amb la TGSS";
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-tgss.php'; 
+                                    break;     
+                                default:
+                                    $nom_doc = ">>".$docs_opc_item->corresponde_documento."<<";  
                             } 
                             ?>
                             </span>
@@ -440,26 +369,27 @@
 			            $path = $docs_opc_item->created_at;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_opc_item->type;
-                        
                     if ($convocatoria >= '2022') {
 			            switch ($docs_opc_item->corresponde_documento) {
-			    	        case 'file_memoriaTecnica':
-					            $nom_doc = "La memòria tècnica";
+				            case 'file_copiaNIF':
+					            $nom_doc = "Còpia del NIF al no autoritzar a IDI per comprobar";
 					            break;
-				            case 'file_certificadoATIB':
-					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
-					            break;
-				            case 'file_nifEmpresa':	
-					            $nom_doc = "Còpia del NIF de l'empresa";
-					            break;
-				            case 'file_enviardocumentoIdentificacion':	
-					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
-					            break;
-                            case 'file_logotipoEmpresaIls':	
-                                $nom_doc = "Logotip de l'empresa";
+                            case 'file_escritura_empresa':
+                                $nom_doc = "Escritura o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil y si procede documento acreditativo de representación.";
+                                //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
                                 break;
+                            case 'file_certificadoIAE':
+                                $nom_doc = "Justificant de presentació pel REC";
+                                //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
+                                break;
+                            case 'file_resguardoREC':	
+                                $nom_doc = "Justificant de presentació pel REC";
+                                break;
+                            case 'file_DocumentoIDI':	
+                                $nom_doc = "Document pujat des-de l'IDI";
+                                break;                                  
 			                default:
-					        $nom_doc = $docs_opc_item->corresponde_documento; 
+					        $nom_doc = $docs_opc_item->corresponde_documento;
 			            } 
                     } else {
                         $nom_doc = $docs_opc_item->name;
@@ -587,18 +517,9 @@
 				    }
 			        echo $estado_firma;
 		        }?>
-                <br><a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud_ils.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><span class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'><small>La declaració responsable i sol·licitud sense signar</small></span></a>
+                <br><a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud_idi_isba.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><span class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'><small>La declaració responsable i sol·licitud sense signar</small></span></a>
             </div>
-            <div class="btn-group" role="group">
-                <!-----------------------------------------Envía formulario solicitud datos adicionales de la empresa ----------------->
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-datos-empresa.php';?>
-                <!------------------------------------------------------------------------------------------------------>
-                <!-----------------------------------------Envía manual y logotipos ILS ----------------->
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-manual-logotipos-ils.php';?>
-                <!------------------------------------------------------------------------------------------------------>
 
-                <br><a target="_blank" class = "btn btn-warning" href="<?php echo base_url('/public/index.php/home/datos_empresa_ils/'.$id.'/'.$expedientes['nif'].$programa.$convocatoria);?>"><small>Sol·licitud de dades adicionals per a la web de ILS (ús intern IDI)</small></span></a>
-            </div>
         </div>
     </div>
     </div> <!-- Cierre fila Detalle -->
@@ -644,7 +565,7 @@
                 <?php }
                 else {?>
                     <div class="form-group">
-                        <button type="button" onclick = "javaScript: actualiza_fase_1_solicitud_expediente_ils('exped-fase-1');" id="send_fase_1" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button type="button" onclick = "javaScript: actualiza_fase_1_solicitud_expediente_idi_isba('exped-fase-1');" id="send_fase_1" class="btn-itramits btn-success-itramits">Actualitzar</button>
                     </div>
                 <?php }?>    
             </form>
@@ -820,10 +741,7 @@
                 <?php }?>                  
         </form>
         </div>        
-    	    <script>
-		        $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
-		        $('#tel_consultor').mask('999999999');
-	        </script>
+    	    
 
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
