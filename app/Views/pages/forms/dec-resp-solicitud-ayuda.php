@@ -189,27 +189,33 @@ $pdf->writeHTMLCell(90, '', 105, 20, $html14, 1, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-$html15 = lang('message_lang.documentacion_adjunta'); // 6. DOCUMENTACIÓN ADJUNTA
+$html15 = lang('message_lang.documentacion_adjunta'); // 6. DOCUMENTACIÓN ADJUNTA CABECERA
 $pdf->Cell(0, 10, $html15, 1, 1, 'C');
 
 $html16 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html16 .= "<tr><td></td></tr>";
 $html16 .= "<tr><td><ol>";
-if ( $file_memoriaTecnica == "SI ") {
+if ( trim($file_memoriaTecnica) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.doc_Memoria_Tecnica')."</li>";		
 }
-if ( $file_altaAutonomos == "SI ") {
+if (trim( $file_altaAutonomos) === "SI") {
 	$html16 .= "<li>".lang('message_lang.doc_alta_RETA')."</li>";		
 }
-if ( $file_certificadoIAE == "SI ") {
+if ( trim($file_certificadoIAE) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.doc_certificado_IAE')."</li>";		
 }
-if ( $file_document_acred_como_repres == "SI ") {
+if ( trim($file_document_acred_como_repres) === "SI") { /* FAIL */
 	$html16 .= "<li>".lang('message_lang.doc_Acreditativa_Repres')."</li>";		
 }
-if ( $file_docConstitutivoCluster == "SI ") {
-	$html16 .= "<li>".lang('message_lang.doc_Constitutivo_cluster')."</li>";		
+if ( trim($file_nifEmpresa) === "SI") { /* OK */
+	$html16 .= "<li>".lang('message_lang.eres_persona_juridica_nif_empresa')."</li>";		
 }
+/* if ( trim($file_enviardocumentoIdentificacion) === "SI") {
+	$html16 .= "<li>".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";		
+}
+if ( trim($file_certificadoATIB) === "SI") {
+	$html16 .= "<li>".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
+} */
 $html16 .= "</ol></td></tr>";
 $html16 .= "</table>";
 $currentY = $pdf->getY();

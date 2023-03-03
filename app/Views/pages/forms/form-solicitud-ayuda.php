@@ -238,7 +238,6 @@
 			<script>
 				$('#cc').mask('SS ES 9999 9999 99 9999999999');
 				$('#cc2').mask('999999999999999999999999');
-				//$("#codigo_BIC_SWIFT").mask('SSSS-SS-SS-AAA');
 				$("#codigo_BIC_SWIFT").mask('AAAA-AA-AA-AAA');
 			</script>
 

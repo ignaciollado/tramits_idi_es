@@ -68,34 +68,28 @@ use App\Models\ConfiguracionModel;
 	 		}
 		}
 
-		if ($this->request->getVar('memoriaTecnicaEnIDI') == 'on') {
+		if ($this->request->getPost('memoriaTecnicaEnIDI') === 'on') {
 				$memoriaTecnicaEnIDI = 'SI';
 		} else {
 				$memoriaTecnicaEnIDI = 'NO';
 		}
-		if ($this->request->getVar('certificadoIAEEnIDI') == 'on'){
+		if ($this->request->getPost('certificadoIAEEnIDI') === 'on'){
 			$certificadoIAEEnIDI = 'SI';
 		} else {
 			$certificadoIAEEnIDI = 'NO';
 		}
 		if ($tipoSolicitante != 'autonomo'){
-			if ($this->request->getVar('copiaNIFSociedadEnIDI') == 'on'){
+			if ($request->getVar('copiaNIFSociedadEnIDI') === 'on'){
 				$copiaNIFSociedadEnIDI = 'SI';
 			} else {
 				$copiaNIFSociedadEnIDI = 'NO';
 			}
-			if ($this->request->getVar('pJuridicaDocAcreditativaEnIDI') == 'on'){
+			if ($this->request->getPost('pJuridicaDocAcreditativaEnIDI') == 'on'){
 				$pJuridicaDocAcreditativaEnIDI = 'SI';
 			} else {
 				$pJuridicaDocAcreditativaEnIDI = 'NO';
 			}
 		}
-		echo "#".$this->request->getGetPost('memoriaTecnicaEnIDI')."#"
-		.$this->request->getGetPost('certificadoIAEEnIDI')."#"
-		.$this->request->getGetPost('copiaNIFSociedadEnIDI')."#"
-		.$this->request->getGetPost('pJuridicaDocAcreditativaEnIDI')."#";
-
-		return;
 		
 		if ($tipoSolicitante != 'autonomo'){		
 			if ( !$documentosfile['file_document_acred_como_repres'][0]->getName() ){
@@ -107,13 +101,13 @@ use App\Models\ConfiguracionModel;
 
 		$cumpleRequisitos_dec_resp = "";	
 		//7. AUTORIZACIONES: si/no da el consentimiento para comprobar la identificación de la persona solicitante
-		if ($this->request->getVar('consentimiento_identificacion') == 'on'){
+		if ($this->request->getPost('consentimiento_identificacion') == 'on'){
 			$file_enviardocumentoIdentificacion = "SI ";
 		} else {
 			$file_enviardocumentoIdentificacion = "NO ";
 		}
 		//7. AUTORIZACIONES: si/no da el consentimiento cumplimiento obligaciones tributarias
-		if ($this->request->getVar('consentimiento_certificadoATIB') == 'on'){
+		if ($this->request->getPost('consentimiento_certificadoATIB') == 'on'){
 			$file_certificadoATIB = "SI ";
 		} else {
 			$file_certificadoATIB = "NO ";

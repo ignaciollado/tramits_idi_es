@@ -470,8 +470,8 @@ return [
 'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, en IDI",
 'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, en IDI",
 'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, en IDI.",
-'eres_persona_juridica_nif_empresa_sinCambios' => "NIF empresa, en IDI.",
-'documentacion_acreditativa_sinCambios' => "Document acreditatiu de representació, en IDI.",
+'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, en IDI.",
+'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació, en IDI.",
 
 'clausula_idi'  => "CLÀUSULA USUARI IDI",
 'texto_mail_intro_1' => "Hem rebut una sol·licitud d'ajudes per al disseny de plans de transformació digital de",

@@ -211,12 +211,6 @@
 					<span class="w3docs"></span>
 				</label>
 
-                <label for = "altaRETA_docAcredEnIDI" class="main" >
-					<span ><?php echo lang('message_lang.altaRetaDocAcredEnIDI_sinCambios');?> </span>
-						<input type="checkbox" <?php if ($expedientes['altaRETA_docAcredEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "altaRETA_docAcredEnIDI" id = "altaRETA_docAcredEnIDI">
-					<span class="w3docs"></span>
-				</label>
-
                 <label for = "certificadoIAEEnIDI" class="main" >
 					<span ><?php echo lang('message_lang.certificadoIAEEnIDI_sinCambios');?> </span>
 						<input type="checkbox" <?php if ($expedientes['certificadoIAEEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "certificadoIAEEnIDI" id = "certificadoIAEEnIDI">
@@ -276,7 +270,6 @@
                     <input type = "date" name = "fecha_de_pago" class = "form-control send_fase_0" id = "fecha_de_pago" value = "<?php echo date_format(date_create($expedientes['fecha_de_pago']), 'Y-m-d');?>">
                 </div>  
 
-                       
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -306,7 +299,7 @@
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
 
-                    if ($convocatoria == '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_item->corresponde_documento) {
 				            case 'file_infoautodiagnostico':
 					            $nom_doc = "Informe autodiagnosi digital";

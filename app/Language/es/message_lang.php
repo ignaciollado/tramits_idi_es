@@ -354,9 +354,8 @@ return [
    'presentar_certificado_verificacion_ISO' => "Presentar certificado de verificación ISO 14064-1",   
    'certificado_verificacion_ISO' => "Certificado de verificación ISO 14064-1",
    'certificado_itinerario_formativo' => "Certificado de haber realizado el itinerario formativo",
-   'eres_persona_juridica'              => "6.4. <strong>Si eres persona jurídica</strong>, adjuntar:<ul>
-                                                <li>Documentación acreditativa de las facultades de representación de la persona que firma la solicitud de ayuda como representante de la empresa beneficiaria, como puede ser la escritura de poderes de representación, la firma de la solicitud con el certificado digital de representación de la empresa o documentos similares.</li>
-                                                </ul>",
+   'eres_persona_juridica'              => "6.4. <strong>Si eres persona jurídica</strong>, adjuntar:",
+   'eres_persona_juridica_nif_empresa'  =>   "Cópia del número de identificación fiscal de la sociedad.",                                             
    'eres_cluster_o_ct'                  => "6.5. <strong>Si eres un clusters y/o centro tecnológico</strong>, adjuntar:<ul>
                                                 <li>Adjuntar en PDF el documento constitutivo de la entidad inscrita adecuadamente en el registro correspondiente, con las modificaciones necesarias, si procede, para la acreditación de la personalidad jurídica del solicitante, así como poder suficiente a favor del firmante, en caso de que éste no figure acreditado en la escritura, o certificado actualizado del registro correspondiente, en el que se especifiquen, en los supuestos en que sea procedente, la fecha de constitución, el objeto, el capital y la sede social, la composición del consejo de administración o la junta directiva, los apoderados y los socios que dispongan de más de un 10% y las participaciones.	</li>
                                                 </ul>",
@@ -457,8 +456,8 @@ return [
 'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, en IDI",
 'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, en IDI",
 'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, en IDI.",
-'eres_persona_juridica_nif_empresa_sinCambios' => "NIF empresa, en IDI.",
-'documentacion_acreditativa_sinCambios' => "Document acreditatiu de representació, en IDI.",
+'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, en IDI.",
+'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació, en IDI.",
 
 'clausula_idi'   => "CLÁUSULA USUARIO IDI",
 'texto_mail_intro_1' => "Hemos recibido una solicitud de ayudas para el diseño de planes de transformación digital de",
