@@ -4,6 +4,8 @@
 
 <?php
 	//defined('BASEPATH') OR exit('No direct script access allowed');
+	$sort_by = "";
+	$sort_order = "";
 	$session = session();
 	?>
 

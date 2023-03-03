@@ -11,6 +11,11 @@ class ApiModel extends Model
       'idExp', 
       'tipo_solicitante',
       'empresa',
-      'nif'
+      'nif',
+      'telefono_rep', //Teléfono de notificaciones
+      'email_rep', //Correo electrónico de notificaciones
+      'tipo_tramite',
+      'convocatoria',
+      'fecha_completado' //0000-00-00 00:00:00
     ];
 }

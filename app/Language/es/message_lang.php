@@ -149,13 +149,13 @@ return [
    'select_programa'                  => "Seleccione un programa",
    'info_programa'              => "El objeto de la convocatoria de ayudas de cheques de consultoría para la elaboración y diseño de:<ol>
 
-                              <li><code>Programa I:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2022.
-                              <li><code>Programa II:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2022.
-                              <li><code>Programa III:</code> informes de la huella de carbono corporativa, dentro del marco del programa «Isostenibilitat», para el año 2022.</ol>",
+                              <li><code>Programa I, «IDigital»:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.
+                              <li><code>Programa II, «IExporta»:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2023.
+                              <li><code>Programa III, «ISostenibilitat»:</code> informes de la huella de carbono corporativa, dentro del marco del programa «Isostenibilitat», para el año 2023.</ol>",
    
-   'programaiDigital'       => "<code>Programa I:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2022.",
-   'programaiExporta'       => "<code>Programa II:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2022.",
-   'programaILS'            => "<code>Programa III:</code> informes de la huella de carbono corporativa, dentro del marco del programa «isostenibilitat, industria local sostenible», para el año 2022.",
+   'programaiDigital'       => "<code>Programa I:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.",
+   'programaiExporta'       => "<code>Programa II:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2023.",
+   'programaILS'            => "<code>Programa III:</code> informes de la huella de carbono corporativa, dentro del marco del programa «isostenibilitat, industria local sostenible», para el año 2023.",
    'programaIDIISBA'        => "Línea de financiación industrial IDI-ISBA",
    
    'info_tipo_empresa'                => "<ol>
@@ -297,7 +297,7 @@ return [
    'declaracion_datos_bancarios_1'      => "a) La titularidad de la cuenta bancaria correspondiente a los siguientes datos, a efectos del ingreso derivado del procedimiento citado al inicio de la presente declaración:",
    'declaracion_datos_bancarios_2'      => "Opción 1 - IBAN de la cuenta para España (ES9999999999999999999999)",
    'declaracion_datos_bancarios_3'      => "Opción 2 - Numeración de la cuenta de otros países (9999999999999999999999)",
-   'declaracion_datos_bancarios_4'      => "b) La posibilidad de acreditar documentalmente los datos que se mencionan en el punto (a), en caso de que se me exija.",
+   'declaracion_datos_bancarios_4'      => "b) La posibilidad de acreditar documentalmente los datos que se mencionan en el punto (a) de esta declaración, queda eximida de responsabilidad por las actuaciones que se deriven de errores en los datos indicados por el declarante.",
    'declaracion_datos_bancarios_5'      => "c) Que el IDI, una vez hechos los ingresos en la cuenta indicada en el punto (a) de esta declaración, queda eximida de responsabilidad por las actuaciones que se deriven de errores en los datos indicados por el declarante.",
    'descripcion_empresa_ils'            => "Descripción de la empresa",
    'fecha_creacion_empresa_ils'        => "Fecha de creación de la empresa",
@@ -327,7 +327,7 @@ return [
    ",
    'declaracion_datos_bancarios'        => "6.2. <strong>La veracidad de los datos bancarios</strong>. De conformidad con el Decreto 6/2013, de 8 de febrero, de medidas de simplificación documental de los procedimientos administrativos, y la relación de documentos del Catálogo de Simplificación Documental sustituibles por la presentación de esta declaración,
    DECLARO:",   
-   'eres_persona_fisica'                => "6.3. <strong>Si eres una persona física</strong>, adjuntar:<ul>
+   'eres_persona_fisica'                => "6.4. <strong>Si eres una persona física</strong>, adjuntar:<ul>
                                                 <li>El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.</li>
                                                </ul>",
    'certificado_IAE'                    => "Certificado del IAE.",
@@ -452,6 +452,13 @@ return [
 <p><strong>Ejercicio de derechos y reclamaciones</strong>: la persona afectada por el tratamiento de datos personales puede ejercer sus derechos de información, de acceso, de rectificación, de supresión, de limitación, de portabilidad, de oposición y de no inclusión en tratamientos automatizados (y, incluso, de retirar el consentimiento, si procede, en los términos que establece la normativa vigente) ante el responsable del tratamiento, mediante un mensaje de correo electrónico a la dirección electrónica dpd@idi.es.</p>
 <p>Una vez recibida la respuesta del responsable o en el supuesto de que no haya respondido en el plazo de un mes, la persona afectada por el tratamiento de los datos personales puede presentar la «Reclamación de tutela de derechos» ante la Agencia Española de Protección de Datos.</p>
 <p><strong>Delegación de Protección de Datos</strong>: la Delegación de Protección de Datos del IDI tiene la sede en la Plaça de Son Castelló, 1. 07009 Palma. Dirección electrónica: dpd@idi.es.</p>",
+
+'documentoEnIDI' => "este documento ya se encuentra en el IDI y no ha sufrido modificacioness <strong>(en este caso no hace falta aportarlo)</strong>.",
+'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, en IDI",
+'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, en IDI",
+'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, en IDI.",
+'eres_persona_juridica_nif_empresa_sinCambios' => "NIF empresa, en IDI.",
+'documentacion_acreditativa_sinCambios' => "Document acreditatiu de representació, en IDI.",
 
 'clausula_idi'   => "CLÁUSULA USUARIO IDI",
 'texto_mail_intro_1' => "Hemos recibido una solicitud de ayudas para el diseño de planes de transformación digital de",

@@ -146,13 +146,13 @@ return [
    'select_programa'                  => "Seleccionau un programa",
    'info_programa'              => "L'objecte de la convocatòria d'ajuts de xecs de consultoria per a l'elaboració i disseny de:
 											<ol>
-											<li><code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2022.</li>
-											<li><code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2022.</li>
-    										<li><code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «Isostenibilitat», per a l'any 2022.</li>                           
+											<li><code>Programa I, «IDigital»:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2023.</li>
+											<li><code>Programa II, «IExporta»:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2023.</li>
+    										<li><code>Programa III, «ISostenibilitat»:</code> informes de la petjada de carboni corporativa, dins el marc del programa «Isostenibilitat», per a l'any 2023.</li>                           
                                  </ol>",                            
-   'programaiDigital'      => "<code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2022.",
-   'programaiExporta'      => "<code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2022.",
-   'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible», per a l'any 2022.",
+   'programaiDigital'      => "<code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2023.",
+   'programaiExporta'      => "<code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2023.",
+   'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible», per a l'any 2023.",
    'programaIDIISBA'       => "Línia de finançament industrial IDI-ISBA",
    'info_tipo_empresa'                => "<ol>
    <li><code>Petita empresa:</code> Es considera petita empresa la que té menys de 50 treballadors i/o treballadores, un volum de negoci anual o un balanç general anual que no superi els 10 milions d’euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits per ser considerada PIME d’acord amb l’annex I del Reglament (CE) núm. 800/2008 de la Comissió Europea.</li>
@@ -297,7 +297,7 @@ return [
    'declaracion_datos_bancarios_1'      => "a) La titularitat del compte bancari corresponent a les següents dades, a l'efecte de l'ingrés derivat del procediment citat a l'inici de la present declaració:",
    'declaracion_datos_bancarios_2'      => "Opció 1 - IBAN del compte per a Espanya (ES9999999999999999999999)",
    'declaracion_datos_bancarios_3'      => "Opció 2 - Numeració del compte d'altres països (9999999999999999999999)",
-   'declaracion_datos_bancarios_4'      => "b) La possibilitat d'acreditar documentalment les dades que s'ensmenten en el punt (a), en cas que se m'exeigeixin.",
+   'declaracion_datos_bancarios_4'      => "b) La possibilitat d'acreditar documentalment les dades que s'esmenten en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel delcarant.",
    'declaracion_datos_bancarios_5'      => "c) Que l'IDI, una vegada fets els ingressos en el compte indicat en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
    'descripcion_empresa_ils'            => "Descripció de l'empresa",
    'fecha_creacion_empresa_ils'        => "Data creació empresa",
@@ -327,7 +327,7 @@ return [
    ",
    'declaracion_datos_bancarios'      => "6.2. <strong>La veracitat de les dades bancàries</strong>. De conformitat amb el Decret 6/2013, de 8 de febrer, de mesures de simplificació documental dels procediments administratius, i la relació de documents del Catàleg de Simplificació Documental substituïbles per la presentació d'aquesta declaració,
    DECLAR:",
-   'eres_persona_fisica'                => "6.3. <strong>Si ets una persona física</strong>, adjuntar:<ul>
+   'eres_persona_fisica'                => "6.4. <strong>Si ets una persona física</strong>, adjuntar:<ul>
                                                 <li>El certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.</li>
                                                </ul>",
    
@@ -355,9 +355,10 @@ return [
    'solicito_cabecera_ils'              => "SOL·LICIT",
    'solicito_ils'                       => "Sol·licit la tramitació de la sol·licitud i la concessió de la marca ILS de l'empresa que represent.",
 
-   'eres_persona_juridica'              => "6.4. <strong>Si ets persona jurídica</strong>, adjuntar:<ul>
-                                                <li>Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d'ajuda com a representant de l'empresa beneficiària, com pot ser l'escriptura de poders de representació, la signatura de la sol·licitud amb el certificat digital de representació de l'empresa o documents similars.</li>
-                                                </ul>",
+   'eres_persona_juridica'              => "6.4. <strong>Si ets persona jurídica</strong>, adjuntar:",
+   'eres_persona_juridica_nif_empresa'  =>   "Còpia del nùmero d'identificació fiscal de la societat.",
+   'eres_persona_juridica_doc_acreditativa'  =>   "Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d'ajuda com a representant de l'empresa beneficiària, com pot ser l'escriptura de poders de representació, la signatura de la sol·licitud amb el certificat digital de representació de l'empresa o documents similars.",   
+
    'eres_cluster_o_ct'                  => "6.5. <strong>Si ets un clústers i/o centre tecnològic</strong>, adjuntar:<ul>
                                                 <li>Adjuntar en PDF el document constitutiu de l'entitat inscrita adequadament en el registre corresponent, amb les modificacions necessàries, si escau, per a l'acreditació de la personalitat jurídica del sol·licitant, així com poder suficient a favor del signant, en cas que aquest no figuri acreditat en l'escriptura, o certificat actualitzat del registre corresponent, en el qual s'especifiquin, en els supòsits en què sigui procedent, la data de constitució, l'objecte, el capital i la seu social, la composició del consell d'administració o la junta directiva, els apoderats i els socis que disposin de més d'un 10% i les participacions.	</li>
                                                 </ul>",
@@ -464,6 +465,13 @@ return [
 <p><strong>Exercici de drets i reclamacions</strong>: la persona afectada pel tractament de dades personals pot exercir els seus drets d’informació, d’accés, de rectificació, de supressió, de limitació, de portabilitat, d’oposició i de no inclusió en tractaments automatitzats (i, fins i tot, de retirar el consentiment, si escau, en els termes que estableix la normativa vigent) davant el responsable del tractament, mitjançant un missatge de correu electrònic a l’adreça electrònica dpd@idi.es.</p>
 <p>Una vegada rebuda la resposta del responsable o en el cas que no hi hagi resposta en el termini d’un mes, la persona afectada pel tractament de les dades personals pot presentar la «Reclamació de tutela de drets» davant l’Agència Espanyola de Protecció de Dades.</p>
 <p><strong>Delegació de Protecció de Dades</strong>: la Delegació de Protecció de Dades de l’IDI té la seu a la plaça de Son Castelló, 1. 07009 Palma. Adreça electrònica: dpd@idi.es.</p>",
+
+'documentoEnIDI' => "aquest document ja es troba enpoder de l'IDI i no ha sofert modificacions <strong>(en aquest cas no cal aportar-ho)</strong>.",
+'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, en IDI",
+'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, en IDI",
+'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, en IDI.",
+'eres_persona_juridica_nif_empresa_sinCambios' => "NIF empresa, en IDI.",
+'documentacion_acreditativa_sinCambios' => "Document acreditatiu de representació, en IDI.",
 
 'clausula_idi'  => "CLÀUSULA USUARI IDI",
 'texto_mail_intro_1' => "Hem rebut una sol·licitud d'ajudes per al disseny de plans de transformació digital de",

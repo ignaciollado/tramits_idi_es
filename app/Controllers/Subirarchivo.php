@@ -24,11 +24,12 @@ use App\Models\ConfiguracionModel;
 		$expediente = $db->table('pindust_expediente');
 		$sql= "SELECT idExp FROM pindust_expediente WHERE convocatoria = '".$convocatoria."' ORDER BY idExp DESC Limit 1";
 		$query = $db->query($sql);
+
 		foreach ($query->getResult() as $row)
-		{
+			{
     	$idExp = $row->idExp;
 			$idExp++;
-		}
+			}
 
 		$tipoTramite = $this->request->getVar('opc_programa');
 		$tipoSolicitante = $this->request->getVar('tipo_solicitante');
@@ -36,44 +37,75 @@ use App\Models\ConfiguracionModel;
 		date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
 		/* -----------------------------DOCUMENTACIÓN XECS----------------------------------------------- */
+
 		$documentosfile = $this->request->getFiles();
-		if (isset($documentosfile['file_memoriaTecnica']) == 0){
-			$file_memoriaTecnica = "NO ";
-		} else {
-			$file_memoriaTecnica = "SI ";
-		}
-	
-		if (isset($documentosfile['file_altaAutonomos']) == 0){
-			$file_altaAutonomos = "NO ";
-		} else {
-			$file_altaAutonomos = "SI ";
+		
+		if ( !$documentosfile['file_memoriaTecnica'][0]->getName() ){
+			$file_memoriaTecnica = "NO";
+	 	} else {
+			$file_memoriaTecnica = "SI";
+	 	}
+
+		if ( !$documentosfile['file_certificadoIAE'][0]->getName() ){
+			$file_certificadoIAE = "NO";
+	 	} else {
+			$file_certificadoIAE = "SI";
+	 	}
+
+		if ($tipoSolicitante === 'autonomo'){
+			if ( !$documentosfile['file_altaAutonomos'][0]->getName() ){
+				$file_altaAutonomos = "NO";
+	 		} else {
+				$file_altaAutonomos = "SI";
+	 		}
 		}
 
-		if (isset($documentosfile['file_certificadoIAE']) == 0){
-			$file_certificadoIAE = "NO ";
-		} else {
-			$file_certificadoIAE = "SI ";
-		}	
-	
-		if (isset($documentosfile['file_document_acred_como_repres']) == 0){
-			$file_document_acred_como_repres = "NO ";
-		} else {
-			$file_document_acred_como_repres = "SI ";
+		if ($tipoSolicitante != 'autonomo'){		
+			if ( !$documentosfile['file_nifEmpresa'][0]->getName() ){
+				$file_nifEmpresa = "NO";
+	 		} else {
+				$file_nifEmpresa = "SI";
+	 		}
 		}
 
-		if (isset($documentosfile['file_docConstitutivoCluster']) == 0){
-			$file_docConstitutivoCluster = "NO ";
+		if ($this->request->getVar('memoriaTecnicaEnIDI') == 'on') {
+				$memoriaTecnicaEnIDI = 'SI';
 		} else {
-			$file_docConstitutivoCluster = "SI ";
+				$memoriaTecnicaEnIDI = 'NO';
+		}
+		if ($this->request->getVar('certificadoIAEEnIDI') == 'on'){
+			$certificadoIAEEnIDI = 'SI';
+		} else {
+			$certificadoIAEEnIDI = 'NO';
+		}
+		if ($tipoSolicitante != 'autonomo'){
+			if ($this->request->getVar('copiaNIFSociedadEnIDI') == 'on'){
+				$copiaNIFSociedadEnIDI = 'SI';
+			} else {
+				$copiaNIFSociedadEnIDI = 'NO';
+			}
+			if ($this->request->getVar('pJuridicaDocAcreditativaEnIDI') == 'on'){
+				$pJuridicaDocAcreditativaEnIDI = 'SI';
+			} else {
+				$pJuridicaDocAcreditativaEnIDI = 'NO';
+			}
+		}
+		echo "#".$this->request->getGetPost('memoriaTecnicaEnIDI')."#"
+		.$this->request->getGetPost('certificadoIAEEnIDI')."#"
+		.$this->request->getGetPost('copiaNIFSociedadEnIDI')."#"
+		.$this->request->getGetPost('pJuridicaDocAcreditativaEnIDI')."#";
+
+		return;
+		
+		if ($tipoSolicitante != 'autonomo'){		
+			if ( !$documentosfile['file_document_acred_como_repres'][0]->getName() ){
+				$file_document_acred_como_repres = "NO ";
+			} else {
+				$file_document_acred_como_repres = "SI ";
+			}
 		}
 
 		$cumpleRequisitos_dec_resp = "";	
-		//7. AUTORIZACIONES: para personas físicas(autónomos) si/no da el consentimiento para comprobar la identificación de la persona solicitante
-		if ($this->request->getVar('consentimientocopiaNIF') == 'on'){
-			$file_copiaNIF = "SI ";
-		} else {
-			$file_copiaNIF = "NO ";
-		}
 		//7. AUTORIZACIONES: si/no da el consentimiento para comprobar la identificación de la persona solicitante
 		if ($this->request->getVar('consentimiento_identificacion') == 'on'){
 			$file_enviardocumentoIdentificacion = "SI ";
@@ -86,19 +118,9 @@ use App\Models\ConfiguracionModel;
 		} else {
 			$file_certificadoATIB = "NO ";
 		}
-		//7. AUTORIZACIONES: si/no da el consentimiento cumplimiento obligaciones Tesorería Seg. Social
-		if ($this->request->getVar('consentimiento_certificadoSegSoc') == 'on'){
-			$file_certificadoSegSoc = "SI ";
-		} else {
-			$file_certificadoSegSoc = "NO ";
-		}
-		//echo "i ".$this->request->getVar('declaracion_responsable_i')."<br>";
-		//	if ($this->request->getVar('declaracion_responsable_i') == 'on'){
-			$declaracion_responsable_i = "SI ";
-		//	} else {
-		//		$declaracion_responsable_i = "NO ";
-		//	}
-		//echo "ii ".$this->request->getVar('declaracion_responsable_ii')."<br>";
+
+		$declaracion_responsable_i = "SI ";
+
 		if ($this->request->getVar('declaracion_responsable_ii') == 'on'){
 			$veracidad_datos_bancarios_1 = "SI ";
 		} else {
@@ -110,85 +132,45 @@ use App\Models\ConfiguracionModel;
 		} else {
 			$datos_bancarios = $this->request->getVar('cc2');
 		}
-		//echo "iii ".$this->request->getVar('declaracion_responsable_iii')."<br>";
-		//	if ($this->request->getVar('declaracion_responsable_iii') == 'on'){
-			$declaracion_responsable_iii = "SI ";
-		//	} else {
-		//		$declaracion_responsable_iii = "NO ";
-		//	}
-		//echo "iv ".$this->request->getVar('declaracion_responsable_iv')."<br>";	
-		//	if ($this->request->getVar('declaracion_responsable_iv') == 'on'){
-			$declaracion_responsable_iv = "SI ";
-		//	} else {
-		//		$declaracion_responsable_iv = "NO ";
-		//	}
-		//echo "v ".$this->request->getVar('declaracion_responsable_v')."<br>";	
-		//	if ($this->request->getVar('declaracion_responsable_v') == 'on'){
-			$declaracion_responsable_v = "SI ";
-		//	} else {
-		//		$declaracion_responsable_v = "NO ";
-		//	}
-		//echo "vi ".$this->request->getVar('declaracion_responsable_vi')."<br>";	
-		//	if ($this->request->getVar('declaracion_responsable_vi') == 'on'){
-			$declaracion_responsable_vi = "SI ";
-		//	} else {
-		//		$declaracion_responsable_vi = "NO ";
-		//	}
-		//echo "vii ".$this->request->getVar('declaracion_responsable_vii')."<br>";			
-		//	if ($this->request->getVar('declaracion_responsable_vii') == 'on'){
-			$declaracion_responsable_vii = "SI ";
-		//	} else {
-		//		$declaracion_responsable_vii = "NO ";
-		//	}
-		//echo "viii ".$this->request->getVar('declaracion_responsable_viii')."<br>";		
-		//	if ($this->request->getVar('declaracion_responsable_viii') == 'on'){
-			$declaracion_responsable_viii = "SI ";
-		//	} else {
-		//		$declaracion_responsable_viii = "NO ";
-		//	}
-		//echo "ix ".$this->request->getVar('declaracion_responsable_ix')."<br>";		
-		//	if ($this->request->getVar('declaracion_responsable_ix') == 'on'){
-			$declaracion_responsable_ix = "SI ";
-		//	} else {
-		//		$declaracion_responsable_ix = "NO ";
-		//	}
-		//echo "x ".$this->request->getVar('declaracion_responsable_x')."<br>";		
-		//	if ($this->request->getVar('declaracion_responsable_x') == 'on'){
-			$declaracion_responsable_x = "SI ";
-		//	} else {
-		//		$declaracion_responsable_x = "NO ";
-		//	}
-		//echo "xi ".$this->request->getVar('declaracion_responsable_xi')."<br>";		
-		//	if ($this->request->getVar('declaracion_responsable_xi') == 'on'){
-			$declaracion_responsable_xi = "SI ";
-		//	} else {
-		//		$declaracion_responsable_xi = "NO ";
-		//	}	
-		//echo "xii ".$this->request->getVar('declaracion_responsable_xii')."<br>";
-		//	if ($this->request->getVar('declaracion_responsable_xii') == 'on'){
-			$declaracion_responsable_xii = "SI ";
-		//	} else {
-		//		$declaracion_responsable_xii = "NO ";
-		//	}
-		//echo "xiii ".$this->request->getVar('declaracion_responsable_xiii')."<br>";	
+
+		$declaracion_responsable_iii = "SI ";
+
+		$declaracion_responsable_iv = "SI ";
+
+		$declaracion_responsable_v = "SI ";
+
+		$declaracion_responsable_vi = "SI ";
+
+		$declaracion_responsable_vii = "SI ";
+
+		$declaracion_responsable_viii = "SI ";
+
+		$declaracion_responsable_ix = "SI ";
+
+		$declaracion_responsable_x = "SI ";
+
+		$declaracion_responsable_xi = "SI ";
+
+		$declaracion_responsable_xii = "SI ";
+
 		if ($this->request->getVar('declaracion_responsable_xiii') == 'on'){
 			$declaracion_responsable_xiii = "SI ";
 		} else {
 			$declaracion_responsable_xiii = "NO ";
 		}
-		//echo "xiv ".$this->request->getVar('declaracion_responsable_xiv')."<br>";		
+
 		if ($this->request->getVar('declaracion_responsable_xiv') == 'on'){
 			$declaracion_responsable_xiv = "SI ";
 		} else {
 			$declaracion_responsable_xiv = "NO ";
 		}
-		//echo "xv ".$this->request->getVar('declaracion_responsable_xv')."<br>";	
+
 		if ($this->request->getVar('declaracion_responsable_xv') == 'on'){
 			$declaracion_responsable_xv = "SI ";
 		} else {
 			$declaracion_responsable_xv = "NO ";
 		}
-		//echo "xvi--".$this->request->getVar('declaracion_responsable_xvi')."--";	
+
 		if ($this->request->getVar('declaracion_responsable_xvi') == 'on'){
 			$declaracion_responsable_xvi = "SI ";
 		} else {
@@ -203,7 +185,7 @@ use App\Models\ConfiguracionModel;
 		$domicilio = $this->request->getVar('domicilio');
 		$hay_rep = $this->request->getVar('representanteLegal');
 
-		/* se usarán estos dos campos para notificar al consultor */
+		/* se usarán estos dos campos para notificar */
 		$mail_representante = $this->request->getVar('mail_representante');
 		$tel_representante = $this->request->getVar('tel_representante');
 
@@ -217,7 +199,7 @@ use App\Models\ConfiguracionModel;
 		$hay_consultor = "si"; 
 		
 		$importeAyuda = explode(',', $data['configuracion']['programa']);
-		//------------------------------- Busco el importe de la ayuda correspondiente al programa y la convocatoria ------------------------------
+		//------------------------------- Busco el importe de la ayuda correspondiente al programa y la convocatoria -------------------//
 		$programaImporteAyuda = 0;
 		foreach($importeAyuda as $x => $x_value) {  
 			if ( str_replace("'","",explode("=>",$x_value)[0]) === $tipoTramite){
@@ -227,7 +209,7 @@ use App\Models\ConfiguracionModel;
 		}
 
 		$importeAyuda = $programaImporteAyuda;			
-		//-----------------------------------------------------------------------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------------------------------------------------------//
 		
 		$data_exp = [
 				'idExp' => $idExp,
@@ -252,19 +234,22 @@ use App\Models\ConfiguracionModel;
 				'condicion_rep' => $this->request->getVar('cond_rep_legal'),
 				'hay_consultor' => $hay_consultor,
 				'empresa_consultor' =>  $this->request->getVar('empresa_consultor'),
-				'nom_consultor' 	=> $this->request->getVar('nom_consultor'),
-				'tel_consultor' 	=> $this->request->getVar('tel_consultor'),
-				'mail_consultor' 	=> $this->request->getVar('mail_consultor'),
+				'nom_consultor' => $this->request->getVar('nom_consultor'),
+				'tel_consultor' => $this->request->getVar('tel_consultor'),
+				'mail_consultor'=> $this->request->getVar('mail_consultor'),
+
+				'memoriaTecnicaEnIDI' => $memoriaTecnicaEnIDI,
+				'certificadoIAEEnIDI' => $certificadoIAEEnIDI,
+				'copiaNIFSociedadEnIDI' => $copiaNIFSociedadEnIDI,
+				'pJuridicaDocAcreditativaEnIDI' => $pJuridicaDocAcreditativaEnIDI,
 
 				'file_memoriaTecnica' => $file_memoriaTecnica,
 				'file_altaAutonomos' => $file_altaAutonomos,
+				'file_nifEmpresa' => $file_nifEmpresa,
 				'file_certificadoIAE' => $file_certificadoIAE,
 				'file_document_acred_como_repres' => $file_document_acred_como_repres,
-				'file_docConstitutivoCluster' => $file_docConstitutivoCluster,
-
-				'file_certificadoSegSoc' => $file_certificadoSegSoc,
+				'file_enviardocumentoIdentificacion' => $file_enviardocumentoIdentificacion ,
 				'file_certificadoATIB' => $file_certificadoATIB,
-				'file_copiaNIF' => $file_copiaNIF,
 
 				'cumpleRequisitos_participacion_dec_resp' => $cumpleRequisitos_dec_resp,
 				'ayudasSubvenSICuales_dec_resp' => $this->request->getVar('ayudasSubvenSICuales_dec_resp'),
@@ -278,11 +263,11 @@ use App\Models\ConfiguracionModel;
 				'veracidad_datos_bancarios_3'  => $veracidad_datos_bancarios_3,			
 				'cc_datos_bancarios'           => $datos_bancarios,
 				'opcion_banco'                 => $this->request->getVar('opcion_banco'),
-				'noHaRecibidoAyudas_dec_resp'  => $declaracion_responsable_iii,
-				'noHaRecibidoAyudas_otra_admin'  => $declaracion_responsable_iv,
-				'cumpleRequisitos_dec_resp' => $declaracion_responsable_v,
-				'noArticulo_10_dec_resp' => $declaracion_responsable_vi,
-				'epigrafeIAE_dec_resp' => $declaracion_responsable_vii,
+				'ayudasSubven_dec_resp'  			 => $declaracion_responsable_iii,
+				'noHaRecibidoAyudas_otra_admin'  	=> $declaracion_responsable_iv,
+				'cumpleRequisitos_dec_resp' 			=> $declaracion_responsable_v,
+				'noArticulo_10_dec_resp' 					=> $declaracion_responsable_vi,
+				'epigrafeIAE_dec_resp' 						=> $declaracion_responsable_vii,
 				'registroIndustrialMinero_dec_resp' => $declaracion_responsable_viii,
 				'cumpleNormativaSegInd_dec_resp' => $declaracion_responsable_ix,
 				'aceptaCondicionesConv_dec_resp' => $declaracion_responsable_x,
@@ -303,6 +288,11 @@ use App\Models\ConfiguracionModel;
 		$last_insert_id = $save_exp->connID->insert_id;
 		$data_exp ['selloDeTiempo'] = $selloTiempo;
 		$data_exp ['last_insert_id'] = $last_insert_id;
+
+		/* Si no existe la carpeta donde se guardará todo, se crea */
+		if (file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/') != 1 ) {
+			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/');
+		}
 
 		/* ------------------------------------------------------------------------------------------------------------ */	
 		/* --------------------------------memoria técnica, múltiples documentos------------------OK------------------- */
@@ -330,6 +320,79 @@ use App\Models\ConfiguracionModel;
 				}
 		}
 		/* --------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------sube certificado IAE, múltiples documentos--------------OK--------------------- */
+		if (isset($documentosfile['file_certificadoIAE'])) {
+			foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
+				{
+				if ($certificadoIAE->isValid() && ! $certificadoIAE->hasMoved())
+				{
+				$certificadoIAE->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoIAE->getRandomName());
+				$data_file = [
+					'name' => $certificadoIAE->getName(),					
+					'type' => $certificadoIAE->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' =>$tipoTramite,
+					'corresponde_documento' => 'file_certificadoIAE',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $certificadoIAE->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
+				];
+				$save = $documentos->insert($data_file);
+				}
+				}
+		}
+		/* ---------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------alta autónomos, múltiples documentos--------------------OK----------------------- */
+		if (isset($documentosfile['file_altaAutonomos'])) {
+			foreach($documentosfile['file_altaAutonomos'] as $altaAutonomos)
+				{	
+				if ($altaAutonomos->isValid() && ! $altaAutonomos->hasMoved())
+				{
+				$altaAutonomos->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $altaAutonomos->getRandomName());
+				$data_file = [
+					'name' => $altaAutonomos->getName(),					
+					'type' => $altaAutonomos->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' =>$tipoTramite,
+					'corresponde_documento' => 'file_altaAutonomos',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $altaAutonomos->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
+				];
+				$save = $documentos->insert($data_file);
+				}
+				}
+		}
+		/* ----------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------nif empresa, múltiples documentos-----------------------OK----------------------- */
+		if (isset($documentosfile['file_nifEmpresa'])) {
+			foreach($documentosfile['file_nifEmpresa'] as $nifEmpresa)
+				{
+				if ($nifEmpresa->isValid() && ! $nifEmpresa->hasMoved())
+				{
+				$nifEmpresa->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $nifEmpresa->getRandomName());
+				$data_file = [
+				'name' => $nifEmpresa->getName(),
+				'type' => $nifEmpresa->getClientMimeType(),
+				'cifnif_propietario' => $nif,
+				'tipo_tramite' => $tipoTramite,
+				'corresponde_documento' => 'file_nifEmpresa',
+				'datetime_uploaded' => time(),
+				'convocatoria' => $convocatoria,
+				'docRequerido' => 'NO',
+				'created_at'  => $nifEmpresa->getTempName(),
+				'selloDeTiempo'  => $selloTiempo,
+				'id_sol'         => $last_insert_id
+				];
+				$save = $documentos->insert($data_file);
+				}
+				}
+		}
+		/* ---------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documento acreditativo como rep legal, múltiples documentos--------OK------------ */
 		if (isset($documentosfile['file_document_acred_como_repres'])) {
 			foreach($documentosfile['file_document_acred_como_repres'] as $documentoAcreditativo)
@@ -353,227 +416,59 @@ use App\Models\ConfiguracionModel;
 				}
 				}
 		}
-		/* --------------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------documento constitutivo de la entidad - cluster, múltiples documentos----------- */
-		if (isset($documentosfile['file_docConstitutivoCluster'])) {
-			foreach($documentosfile['file_docConstitutivoCluster'] as $documentoConstitutivoCluster)
-			{
-			if ($documentoConstitutivoCluster->isValid() && ! $documentoConstitutivoCluster->hasMoved())
-			{
-				$documentoConstitutivoCluster->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documentoConstitutivoCluster->getRandomName());
-				$data_file = [
-				'name' => $documentoConstitutivoCluster->getName(),					
-				'type' => $documentoConstitutivoCluster->getClientMimeType(),
-				'cifnif_propietario' => $nif,
-				'tipo_tramite' =>$tipoTramite,
-				'corresponde_documento' => 'file_docConstitutivoCluster',
-				'datetime_uploaded' => time(),
-				'convocatoria' => $convocatoria,
-				'created_at'  => $documentoConstitutivoCluster->getTempName(),
-				'selloDeTiempo'  => $selloTiempo,
-				'id_sol'         => $last_insert_id
-				];
-			$save = $documentos->insert($data_file);
-			}
-			}
-		}
-		/* --------------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------alta autónomos, múltiples documentos------------------------------------------- */
-		if (isset($documentosfile['file_altaAutonomos'])) {
-		foreach($documentosfile['file_altaAutonomos'] as $altaAutonomos)
-		{
-		if ($altaAutonomos->isValid() && ! $altaAutonomos->hasMoved())
-			{
-				$altaAutonomos->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $altaAutonomos->getRandomName());
-				$data_file = [
-				'name' => $altaAutonomos->getName(),					
-				'type' => $altaAutonomos->getClientMimeType(),
-				'cifnif_propietario' => $nif,
-				'tipo_tramite' =>$tipoTramite,
-				'corresponde_documento' => 'file_altaAutonomos',
-				'datetime_uploaded' => time(),
-				'convocatoria' => $convocatoria,
-				'created_at'  => $altaAutonomos->getTempName(),
-				'selloDeTiempo'  => $selloTiempo,
-				'id_sol'         => $last_insert_id
-				];
-			$save = $documentos->insert($data_file);
-			}
-		}
-		}
-		/* --------------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------sube certificado IAE, múltiples documentos----------------OK--------------------- */
-		if (isset($documentosfile['file_certificadoIAE'])) {
-		foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
-		{
-		if ($certificadoIAE->isValid() && ! $certificadoIAE->hasMoved())
-			{
-				$certificadoIAE->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoIAE->getRandomName());
-				$data_file = [
-				'name' => $certificadoIAE->getName(),					
-				'type' => $certificadoIAE->getClientMimeType(),
-				'cifnif_propietario' => $nif,
-				'tipo_tramite' =>$tipoTramite,
-				'corresponde_documento' => 'file_certificadoIAE',
-				'datetime_uploaded' => time(),
-				'convocatoria' => $convocatoria,
-				'created_at'  => $certificadoIAE->getTempName(),
-				'selloDeTiempo'  => $selloTiempo,
-				'id_sol'         => $last_insert_id
-				];
-			$save = $documentos->insert($data_file);
-			}
-		}
-		}
-		/* ----------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------nif empresa, múltiples documentos------------------------------------------ */
-		if (isset($documentosfile['file_nifEmpresa'])) {
-		foreach($documentosfile['file_nifEmpresa'] as $nifEmpresa)
-		{
-			if ($nifEmpresa->isValid() && ! $nifEmpresa->hasMoved())
-			{
-				$nifEmpresa->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $nifEmpresa->getRandomName());
-				$data_file = [
-					'name' => $nifEmpresa->getName(),
-					'type' => $nifEmpresa->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipoTramite,
-					'corresponde_documento' => 'file_nifEmpresa',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'docRequerido' => 'NO',
-					'created_at'  => $nifEmpresa->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $last_insert_id
-				];
-			$save = $documentos->insert($data_file);
-		}
-		}
-		}
-		/* ------------------------------------------------------------------------------------------------------- */
-		/* -------- copia nif SI AUTÓNOMO al NO autorización a IDI comprobar dni, múltiples documentos------------ */
-		if (isset($documentosfile['file_copiaNIF'])) {
-		foreach($documentosfile['file_copiaNIF'] as $autorizacionComprobarDNI)
-		{
-			if ($autorizacionComprobarDNI->isValid() && ! $autorizacionComprobarDNI->hasMoved())
-				{
-					$autorizacionComprobarDNI->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $autorizacionComprobarDNI->getRandomName());
-					$data_file = [
-					'name' => $autorizacionComprobarDNI->getName(),
-					'type' => $autorizacionComprobarDNI->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipoTramite,
-					'corresponde_documento' => 'file_copiaNIF',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'created_at'  => $autorizacionComprobarDNI->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $last_insert_id
-					];
-				$save = $documentos->insert($data_file);
-				}
-		}
-		}
-		/* ---------------------------------------------------------------------------------------------OK-------- */
-		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos---------- */
+		/* ------------------------------------------------------------------------------------------------------------------ */
+		/* -------------------- documento identificativo al NO autorización a IDI comprobar dni, múltiples documentos---OK--- */
 		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
-		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
-		{
-			if ($copiaDocumentoIdentificacion->isValid() && ! $copiaDocumentoIdentificacion->hasMoved())
+			foreach($documentosfile['file_enviardocumentoIdentificacion'] as $enviardocumentoIdentificacion)
 				{
-					$copiaDocumentoIdentificacion->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $copiaDocumentoIdentificacion->getRandomName());
+				if ($enviardocumentoIdentificacion->isValid() && ! $enviardocumentoIdentificacion->hasMoved())
+					{
+					$enviardocumentoIdentificacion->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $enviardocumentoIdentificacion->getRandomName());
 					$data_file = [
-					'name' => $copiaDocumentoIdentificacion->getName(),
-					'type' => $copiaDocumentoIdentificacion->getClientMimeType(),
+					'name' => $enviardocumentoIdentificacion->getName(),
+					'type' => $enviardocumentoIdentificacion->getClientMimeType(),
 					'cifnif_propietario' => $nif,
 					'tipo_tramite' => $tipoTramite,
 					'corresponde_documento' => 'file_enviardocumentoIdentificacion',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
 					'docRequerido' => 'NO',
-					'created_at'  => $copiaDocumentoIdentificacion->getTempName(),
+					'created_at'  => $enviardocumentoIdentificacion->getTempName(),
 					'selloDeTiempo'  => $selloTiempo,
 					'id_sol'         => $last_insert_id
 					];
-				$save = $documentos->insert($data_file);
+					$save = $documentos->insert($data_file);
+					}
 				}
 		}
-		}
-		/* ----------------------------------------------------------------------------------------------------- */
-		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
+		/* ------------------------------------------------------------------------------------------------------------------- */
+		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos--------OK---------- */
 		if (isset($documentosfile['file_certificadoATIB'])) {
-		foreach($documentosfile['file_certificadoATIB'] as $corrientePagoATIB)
-		{
-			if ($corrientePagoATIB->isValid() && ! $corrientePagoATIB->hasMoved())
+			foreach($documentosfile['file_certificadoATIB'] as $certificadoATIB)
 				{
-					$corrientePagoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $corrientePagoATIB->getRandomName());
-					$data_file = [
-					'name' => $corrientePagoATIB->getName(),
-					'type' => $corrientePagoATIB->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipoTramite,
-					'corresponde_documento' => 'file_certificadoATIB',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'docRequerido' => 'NO',
-					'created_at'  => $corrientePagoATIB->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $last_insert_id
-					];
-				$save = $documentos->insert($data_file);
+				if ($certificadoATIB->isValid() && ! $certificadoATIB->hasMoved())
+					{
+						$certificadoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoATIB->getRandomName());
+						$data_file = [
+						'name' => $certificadoATIB->getName(),
+						'type' => $certificadoATIB->getClientMimeType(),
+						'cifnif_propietario' => $nif,
+						'tipo_tramite' => $tipoTramite,
+						'corresponde_documento' => 'file_certificadoATIB',
+						'datetime_uploaded' => time(),
+						'convocatoria' => $convocatoria,
+						'docRequerido' => 'NO',
+						'created_at'  => $certificadoATIB->getTempName(),
+						'selloDeTiempo'  => $selloTiempo,
+						'id_sol'         => $last_insert_id
+						];
+						$save = $documentos->insert($data_file);
+					}
 				}
-		}
-		}
-		/* ----------------------------------------------------------------------------------------------------- */
-		/* ---------- corriente pago obligaciones Seg. SOCIAL NO autoriza a IDI comprobarlo, múltiples documentos------ */
-		if (isset($documentosfile['file_certificadoSegSoc'])) {
-		foreach($documentosfile['file_certificadoSegSoc'] as $corrientePagoSegSoc)
-		{
-			if ($corrientePagoSegSoc->isValid() && ! $corrientePagoSegSoc->hasMoved())
-				{
-					$corrientePagoSegSoc->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $corrientePagoSegSoc->getRandomName());
-					$data_file = [
-					'name' => $corrientePagoSegSoc->getName(),
-					'type' => $corrientePagoSegSoc->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipoTramite,
-					'corresponde_documento' => 'file_certificadoSegSoc',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'created_at'  => $corrientePagoSegSoc->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $last_insert_id
-					];
-				$save = $documentos->insert($data_file);
-				}
-		}
-		}
-		/* ----------------------------------------------------------------------------------------------------- */
-		/* ------------------------------sube datos bancarios--------------------------------------------------- */
-		if (strlen ($this->request->getFile('file_datosBancarios')) > 0) {
-		$data = [
-            'name' 	=> $this->request->getVar('denom_interesado'),
-            'nif'  	=> $this->request->getVar('nif'),
-			'file' 	=> $this->request->getFile('file_datosBancarios')
-            ];
-    $data['file']->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $data['file']->getName());
-		$data_file = [
-          'name' 	=> $data['file']->getName(),
-          'type'  => $data['file']->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipoTramite,
-					'corresponde_documento' => 'file_datosBancarios',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'created_at'  => $data['file']->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $last_insert_id
-          ];	  
-		$save = $documentos->insert($data_file);
-		}	
-		/* ----------------------------------------------------------------------------------------------------- */	
+			}	
+		/* ------------------------------------------------------------------------------------------------------------------- */
 
-		$data_file['titulo'] = "Resumen de la solicitud de ayuda/subvención";
+		$data_file['titulo'] = "Resumen de la solicitud de Cheques de consultoría";
 		echo view('templates/header/header_form_solicitud_resultado', $data_file);
 		echo view('pages/forms/dec-resp-solicitud-ayuda', $data_exp);
 		if (strpos($viaSolicitud,"manual") !== false ) {
@@ -733,29 +628,29 @@ use App\Models\ConfiguracionModel;
 		$importeAyuda = 0;
 
 		$data_exp = [
-			 'idExp' => $idExp,
-			 'tipo_solicitante' => $tipoSolicitante,
-			 'fecha_completado' => date("Y-m-d H:i:s"),
-			 'empresa' => $empresa,
-			 'nif' => strtoupper($nif),
-			 'domicilio' => $domicilio,
-			 'localidad' => $localidad,
-			 'cpostal' => $cpostal,
-			 'telefono' => $this->request->getVar('telefono_cont'),
-			 'telefono_rep' => $tel_representante,  // se usa para notificar
-			 'email_rep' => $mail_representante,	// se usa para notificar
-			 'tipo_tramite' => $tipoTramite,
-			 'iae' => $this->request->getVar('codigoIAE'),
-			 'hay_consultor' => $hay_consultor,
+			'idExp' => $idExp,
+			'tipo_solicitante' => $tipoSolicitante,
+			'fecha_completado' => date("Y-m-d H:i:s"),
+			'empresa' => $empresa,
+			'nif' => strtoupper($nif),
+			'domicilio' => $domicilio,
+			'localidad' => $localidad,
+			'cpostal' => $cpostal,
+			'telefono' => $this->request->getVar('telefono_cont'),
+			'telefono_rep' => $tel_representante,  // se usa para notificar
+			'email_rep' => $mail_representante,	// se usa para notificar
+			'tipo_tramite' => $tipoTramite,
+			'iae' => $this->request->getVar('codigoIAE'),
+			'hay_consultor' => $hay_consultor,
 			
-			 'canales_comercializacion_empresa' => $this->request->getVar('canales_comercializacion_empresa'),
-			 'sitio_web_empresa' => $this->request->getVar('sitio_web_empresa'),
-			 'video_empresa' => $this->request->getVar('video_empresa'),
-			 'fecha_creacion_empresa'  => $this->request->getVar('fecha_creacion_empresa'),
-			 'nombre_rep' => $this->request->getVar('nom_representante'),
-			 'nif_rep' => $this->request->getVar('nif_representante'),
+			'canales_comercializacion_empresa' => $this->request->getVar('canales_comercializacion_empresa'),
+			'sitio_web_empresa' => $this->request->getVar('sitio_web_empresa'),
+			'video_empresa' => $this->request->getVar('video_empresa'),
+			'fecha_creacion_empresa'  => $this->request->getVar('fecha_creacion_empresa'),
+			'nombre_rep' => $this->request->getVar('nom_representante'),
+			'nif_rep' => $this->request->getVar('nif_representante'),
 
-			 'hay_rep' => $hay_rep,
+			'hay_rep' => $hay_rep,
 
 			'cumpleRequisitos_dec_resp' => $declaracion_responsable_v,
 			'epigrafeIAE_dec_resp' => $declaracion_responsable_vii,
@@ -1399,9 +1294,9 @@ public function store_idi_isba()
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
 
-		/* Si no existe la carpeta donde se gurdará todo, se crea */
+		/* Si no existe la carpeta donde se guardará todo, se crea */
 
-		if (file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/' != 1 )) {
+		if (file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/') != 1 ) {
 			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/');
 		}
 

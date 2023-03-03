@@ -185,7 +185,6 @@ function analizaDNINIE (dninie) {
 			document.getElementById("nif").value = ""
 			document.getElementById("nif").classList.remove("valid");
 			document.getElementById("nif").classList.add("invalid");
-			/* document.getElementById("rest-to-isba").classList.add("ocultar"); */
 			// Para hacer que funcione el focus() en Firefox
 			// setTimeout("document.getElementById('nif').focus();",0);
 			return;
@@ -207,12 +206,10 @@ function analizaDNINIE (dninie) {
 			}
 		document.getElementById("nif").classList.remove("valid");
 		document.getElementById("nif").classList.add("invalid");
-		/* document.getElementById("rest-to-isba").classList.add("ocultar"); */
 	} else {
 		resultante = primerDigitoDNINIE+digitosIntermedio
 		document.getElementById("nif").classList.add("valid");
 		document.getElementById("nif").classList.remove("invalid");
-		/* document.getElementById("rest-to-isba").classList.remove("ocultar"); */
 		document.querySelector('#rest-result').innerHTML = "";
 	}
 		
@@ -289,7 +286,6 @@ function tenemosDatosSolicitante(documentoIdentificativo) {
 }
 
 function actualizoFormConDatosSolicitante () {
-	
 	document.getElementById("denom_interesado").value = localStorage.getItem('nif');
 	document.getElementById("denom_interesado").value = localStorage.getItem('empresa')
 	document.getElementById("domicilio").value =  localStorage.getItem('domicilio')

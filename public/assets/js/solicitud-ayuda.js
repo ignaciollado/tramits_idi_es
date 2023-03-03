@@ -93,16 +93,11 @@ function habilitarNextButton (valor) {
 function tipoSolicitante (valor)
 	{
 		let element = document.getElementById("interesado")
-		let aChild = document.createElement('input')
-		let elementDoc = document.getElementById("docTipoInteresado")
-		let dChild = document.createElement('input')
-		dChild.setAttribute("aria-required", true)
-		dChild.setAttribute("size" ,"50")
-		dChild.setAttribute("type", "file")
-		dChild.setAttribute("accept", ".pdf")
-		dChild.setAttribute("multiple", "true")
-		dChild.setAttribute("onblur", "validateFormField(this);")
 
+		let elementDoc = document.getElementById("docTipoInteresado")
+		let elementDocNifEmpresa = document.getElementById("docTipoInteresadoNifEmpresa")
+
+		let aChild = document.createElement('input')/* Campos del representante legal */
 		aChild.setAttribute("id", "nom_representante")
 		aChild.setAttribute("name", "nom_representante")
 		aChild.setAttribute("placeholder", "Nom del representant legal")
@@ -122,6 +117,22 @@ function tipoSolicitante (valor)
 		bChild.setAttribute("maxlength", "9")
 		bChild.setAttribute("type", "text")
 		bChild.setAttribute("onBlur", "validateFormField(this);")
+
+		let dChild = document.createElement('input') 
+		dChild.setAttribute("aria-required", true)
+		dChild.setAttribute("size" ,"50")
+		dChild.setAttribute("type", "file")
+		dChild.setAttribute("accept", ".pdf")
+		dChild.setAttribute("multiple", "true")
+		dChild.setAttribute("onblur", "validateFormField(this);")
+
+		let eChild = document.createElement('input') 
+		eChild.setAttribute("aria-required", true)
+		eChild.setAttribute("size" ,"50")
+		eChild.setAttribute("type", "file")
+		eChild.setAttribute("accept", ".pdf")
+		eChild.setAttribute("multiple", "true")
+		eChild.setAttribute("onblur", "validateFormField(this);")
 		
 		if (document.contains(document.getElementById("nif_representante"))) {
 			document.getElementById("nif_representante").remove();
@@ -138,63 +149,71 @@ function tipoSolicitante (valor)
 		if (document.contains(document.getElementById("docConstitutivoCluster"))) {
 			document.getElementById("docConstitutivoCluster").remove();
 		}
+
 		console.log (valor);
 		document.getElementById("nif").value="";
 		switch (valor) {
 			case 'autonomo':
 				document.getElementById("pFisica").classList.remove('ocultar')
 				document.getElementById("pJuridica").classList.add('ocultar')
-				document.getElementById("clusterCT").classList.add('ocultar')
+				document.getElementById("copiaNIFSociedadFieldSet").classList.add('ocultar')
+				document.getElementById("pJuridicaNIFEmpresa").classList.add('ocultar')
+				document.getElementById("pJuridicaDocAcreditativa").classList.add('ocultar')
+				document.getElementById("pJuridicaDocAcreditativaFieldSet").classList.add('ocultar')
 				dChild.setAttribute("id", "file_altaAutonomos")
 				dChild.setAttribute("name", "file_altaAutonomos[]")
 				dChild.setAttribute("placeholder", "Selecciona l'alta en el RETA o en un règim alternatiu equivalent")
 				dChild.setAttribute("title", "Selecciona l'alta en el RETA o en un règim alternatiu equivalent")
 
+				/* element.removeChild(eChild) */
+
 				document.getElementById("declaracion_responsable_xii").checked = true;
-				//document.getElementById("declaracion_responsable_xiii").checked = true;
-				//document.getElementById("declaracion_responsable_xiv").checked = true;
-				//document.getElementById("declaracion_responsable_xv").checked = false;
 				document.getElementById("declaracion_responsable_xii_lbl").style.display = "block";
-				//document.getElementById("declaracion_responsable_xiii_lbl").style.display = "block";
-				//document.getElementById("declaracion_responsable_xiv_lbl").style.display = "block";				
-				//document.getElementById("declaracion_responsable_xv_lbl").style.display = "none";
 				document.getElementById("nif").placeholder = 'DNI / NIE';
 				document.getElementById("nif").title = 'DNI / NIE';
 				document.getElementById("denom_interesado").setAttribute("placeholder", "Nom");
 				document.getElementById("denom_interesado").setAttribute("title", "Nom");
 				break;
-
 			case 'pequenya':
-				element.appendChild(aChild)
-				element.appendChild(bChild)
+/* 				element.appendChild(aChild) 
+				element.appendChild(bChild) 
 				document.getElementById("pFisica").classList.add('ocultar')
 				document.getElementById("pJuridica").classList.remove('ocultar')
-				document.getElementById("clusterCT").classList.add('ocultar')
+				document.getElementById("copiaNIFSociedadFieldSet").classList.remove('ocultar')
+				document.getElementById("pJuridicaNIFEmpresa").classList.remove('ocultar')
+				document.getElementById("pJuridicaDocAcreditativa").classList.remove('ocultar')
+
+				eChild.setAttribute("id", "file_nifEmpresa")
+				eChild.setAttribute("name", "file_nifEmpresa[]")
+				eChild.setAttribute("placeholder", "Selecciona el document NIF de l'empresa")
+				eChild.setAttribute("title", "Selecciona el document NIF de l'empresa")
+
 				dChild.setAttribute("id", "file_document_acred_como_repres")
 				dChild.setAttribute("name", "file_document_acred_como_repres[]")
 				dChild.setAttribute("placeholder", "Selecciona el document acreditatiu de representant")
 				dChild.setAttribute("title", "Selecciona el document acreditatiu de representant")
 
 				document.getElementById("declaracion_responsable_xii").checked = true;
-				//document.getElementById("declaracion_responsable_xiii").checked = true;
-				//document.getElementById("declaracion_responsable_xiv").checked = false;
-				//document.getElementById("declaracion_responsable_xv").checked = false;
 				document.getElementById("declaracion_responsable_xii_lbl").style.display = "block";
-				//document.getElementById("declaracion_responsable_xiii_lbl").style.display = "block";
-				//document.getElementById("declaracion_responsable_xiv_lbl").style.display = "none";
-				//document.getElementById("declaracion_responsable_xv_lbl").style.display = "none";
 				document.getElementById("nif").placeholder = 'NIF';
 				document.getElementById("nif").title = 'NIF';
 				document.getElementById("denom_interesado").setAttribute("placeholder", "Raó social");
 				document.getElementById("denom_interesado").setAttribute("title", "Raó social");
-				break;
+
+				elementDocNifEmpresa.appendChild(eChild)
+				break; */
 
 			case 'mediana':
-				element.appendChild(aChild)
-				element.appendChild(bChild)
+				elementDocNifEmpresa.classList.remove('ocultar') 
+				element.appendChild(aChild) /* Añado campo nombre representante */
+				element.appendChild(bChild) /* Añado campo nif representante */
 				document.getElementById("pFisica").classList.add('ocultar')
 				document.getElementById("pJuridica").classList.remove('ocultar')
-				document.getElementById("clusterCT").classList.add('ocultar')
+				document.getElementById("copiaNIFSociedadFieldSet").classList.remove('ocultar')
+				document.getElementById("pJuridicaNIFEmpresa").classList.remove('ocultar')
+				document.getElementById("pJuridicaDocAcreditativa").classList.remove('ocultar')
+				document.getElementById("pJuridicaDocAcreditativaFieldSet").classList.remove('ocultar')
+
 				if (document.contains(document.getElementById("file_altaAutonomos"))) {
 					document.getElementById("file_altaAutonomos").remove();
 				}
@@ -202,52 +221,27 @@ function tipoSolicitante (valor)
 					document.getElementById("docConstitutivoCluster").remove();
 				}
 
+				eChild.setAttribute("id", "file_nifEmpresa")
+				eChild.setAttribute("name", "file_nifEmpresa[]")
+				eChild.setAttribute("placeholder", "Selecciona el document NIF de l'empresa")
+				eChild.setAttribute("title", "Selecciona el document NIF de l'empresa")
+
 				dChild.setAttribute("id", "file_document_acred_como_repres")
 				dChild.setAttribute("name", "file_document_acred_como_repres[]")
 				dChild.setAttribute("placeholder", "Selecciona el document acreditatiu de representant")
 				dChild.setAttribute("title", "Selecciona el document acreditatiu de representant")
 
 				document.getElementById("declaracion_responsable_xii").checked = true;
-				//document.getElementById("declaracion_responsable_xiii").checked = true;
-				//document.getElementById("declaracion_responsable_xiv").checked = false;
-				//document.getElementById("declaracion_responsable_xv").checked = false;
 				document.getElementById("declaracion_responsable_xii_lbl").style.display = "block";
-				//document.getElementById("declaracion_responsable_xiii_lbl").style.display = "block";
-				//document.getElementById("declaracion_responsable_xiv_lbl").style.display = "none";
-				//document.getElementById("declaracion_responsable_xv_lbl").style.display = "none";	
 				document.getElementById("nif").placeholder = 'NIF';
 				document.getElementById("nif").title = 'NIF';
 				document.getElementById("denom_interesado").setAttribute("placeholder", "Raó social");
-				document.getElementById("denom_interesado").setAttribute("title", "Raó social");		
-				break;
-			
-			case 'cluster_ct':
-				element.appendChild(aChild)
-				element.appendChild(bChild)
-				document.getElementById("pFisica").classList.add('ocultar')
-				document.getElementById("pJuridica").classList.add('ocultar')
-				document.getElementById("clusterCT").classList.remove('ocultar')
-				dChild.setAttribute("id", "file_docConstitutivoCluster")
-				dChild.setAttribute("name", "file_docConstitutivoCluster[]")
-				dChild.setAttribute("placeholder", "Selecciona el document constitutiu del clúster")
-				dChild.setAttribute("title", "Selecciona el document constitutiu del clúster")
-
-				document.getElementById("declaracion_responsable_xii").checked = false;
-				//document.getElementById("declaracion_responsable_xiii").checked = false;
-				//document.getElementById("declaracion_responsable_xiv").checked = false;
-				//document.getElementById("declaracion_responsable_xv").checked = true;
-				document.getElementById("declaracion_responsable_xii_lbl").style.display = "none";
-				//document.getElementById("declaracion_responsable_xiii_lbl").style.display = "none";
-				//document.getElementById("declaracion_responsable_xiv_lbl").style.display = "none";
-				//document.getElementById("declaracion_responsable_xv_lbl").style.display = "block";	
-				document.getElementById("nif").placeholder = 'NIF';
-				document.getElementById("nif").title = 'NIF';
-				document.getElementById("denom_interesado").setAttribute("placeholder", "Raó social");
-				document.getElementById("denom_interesado").setAttribute("title", "Raó social");
+				document.getElementById("denom_interesado").setAttribute("title", "Raó social");	
+				
+				elementDocNifEmpresa.appendChild(eChild)
 				break;
 		}
-		elementDoc.appendChild(dChild)	
-		document.getElementById("aviso2").remove('aviso')
+		elementDoc.appendChild(dChild)
 		document.getElementById("formbox2").className = 'formbox'
 	}
 
@@ -525,10 +519,6 @@ function muestraSubeArchivo (id)
 			}
 		}
 
-		
-		
-		
-		
 		if (id == "certigicadoSegSoc")
 				{
 				if (document.getElementById("certigicadoSegSoc").checked) {
@@ -646,4 +636,137 @@ function getCookie(cname) {
 			}
 		}
 		return "";
+	}
+
+function consultaExpediente ( buscaPor, identificador ) {
+		let end_point = ""
+		let baseUrl = window.location
+		if (baseUrl ==='tramits.idi.es') {
+			return; /* es entorno producción y no debe mostrar datos de empresas/autónomos al poner el DNI/CIF */
+		}
+		identificador = identificador.split(" ").join("") /* quito posibles espacios en blanco */
+	
+		if (buscaPor === 'expediente') {
+			end_point = `https://${baseUrl.hostname}/public/index.php/expediente/${identificador}/IDI-ISBA`
+		}
+		if (buscaPor === 'nif' || buscaPor === 'dni') {
+			end_point = `https://${baseUrl.hostname}/public/index.php/nifExpediente/${identificador}`
+		}
+		console.log (end_point)
+		let spinner = document.querySelector('#spinner-idi-isba')
+		let textIsba = document.querySelector('#text-isba')
+	
+		spinner.classList.remove("ocultar")
+		textIsba.classList.add("ocultar")
+
+		fetch(`${end_point}`)
+		.then(response => response.json())
+		.then(data => {
+		spinner.classList.add("ocultar")
+		textIsba.classList.remove("ocultar")
+
+		data.forEach( solicitante => {
+			console.log(solicitante.id, solicitante.nif, solicitante.empresa, buscaPor)
+
+			document.getElementById("nif").value = solicitante.nif
+			document.getElementById("denom_interesado").value = solicitante.empresa
+			document.getElementById("domicilio").value = solicitante.domicilio
+			document.getElementById("localidad").value = solicitante.localidad
+			document.getElementById("codigoIAE").value = solicitante.iae
+			document.getElementById("telefono_cont").value = solicitante.telefono
+			document.getElementById("cpostal").value = solicitante.cpostal
+
+			if ( buscaPor === 'nif' ) {
+				document.getElementById("nom_representante").value = solicitante.nombre_rep
+				document.getElementById("nif_representante").value = solicitante. nif_rep
+			}
+			document.getElementById("mail_representante").value = solicitante.email_rep
+			document.getElementById("tel_representante").value = solicitante.telefono_rep
+
+			document.getElementById("empresa_consultor").value = solicitante.empresa_consultor
+			document.getElementById("nom_consultor").value = solicitante.nom_consultor
+			document.getElementById("tel_consultor").value = solicitante.tel_consultor
+			document.getElementById("mail_consultor").value = solicitante.mail_consultor
+
+			document.getElementById("nom_entidad").value = solicitante.nom_entidad
+			document.getElementById("domicilio_sucursal").value = solicitante.domicilio_sucursal
+			document.getElementById("codigo_BIC_SWIFT").value = solicitante.codigo_BIC_SWIFT
+			
+		 /* 	if (document.getElementById("opcion_banco").value === 1) {
+				document.getElementById("1_opcion_banco").checked = true
+			} else  {
+				document.getElementById("2_opcion_banco").checked = true
+			} */
+
+	})
+
+	if (buscaPor === 'nif') {
+		//restResultDialog.open = true
+	}
+	}).catch(function(error) {
+		console.log('Hubo un problema con la petición:' + error.message, baseUrl.hostname)
+		spinner.classList.add("ocultar")
+	});
+
+	}
+
+function deshabilitarSubidaDocumento(checkObj) {
+		console.log (checkObj.name, checkObj.checked)
+		switch (checkObj.name) {
+			case 'memoriaTecnicaEnIDI':
+				if (checkObj.checked) {
+					document.getElementById('file_memoriaTecnica').removeAttribute("required")
+				 	document.getElementById('file_memoriaTecnica').removeAttribute("aria-required")
+				 	document.getElementById('enviarmemoriaTecnica').classList.add("ocultar")
+			 	} else {
+				 	document.getElementById('file_memoriaTecnica').setAttribute('required', '')
+				 	document.getElementById('file_memoriaTecnica').setAttribute('aria-required', 'true')
+					document.getElementById('enviarmemoriaTecnica').classList.remove("ocultar")
+			 	}
+				break
+			case 'altaRETA_docAcredEnIDI':
+				if (checkObj.checked) {
+					document.getElementById('file_altaAutonomos').removeAttribute("required")
+				 	document.getElementById('file_altaAutonomos').removeAttribute("aria-required")
+				 	document.getElementById('docTipoInteresado').classList.add("ocultar")
+			 	} else {
+				 	document.getElementById('file_altaAutonomos').setAttribute('required', '')
+				 	document.getElementById('file_altaAutonomos').setAttribute('aria-required', 'true')
+					document.getElementById('docTipoInteresado').classList.remove("ocultar")
+			 	}				
+				break
+			case 'certificadoIAEEnIDI':
+				if (checkObj.checked) {
+					document.getElementById('file_certificadoIAE').removeAttribute("required")
+				 	document.getElementById('file_certificadoIAE').removeAttribute("aria-required")
+				 	document.getElementById('file_certificadoIAE_container').classList.add("ocultar")
+			 	} else {
+				 	document.getElementById('file_certificadoIAE').setAttribute('required', '')
+				 	document.getElementById('file_certificadoIAE').setAttribute('aria-required', 'true')
+					document.getElementById('file_certificadoIAE_container').classList.remove("ocultar")
+			 	}						
+				break
+			case 'copiaNIFSociedadEnIDI':
+				if (checkObj.checked) {
+						document.getElementById('file_nifEmpresa').removeAttribute("required")
+						 document.getElementById('file_nifEmpresa').removeAttribute("aria-required")
+						 document.getElementById('docTipoInteresadoNifEmpresa').classList.add("ocultar")
+			  } else {
+						 document.getElementById('file_nifEmpresa').setAttribute('required', '')
+						 document.getElementById('file_nifEmpresa').setAttribute('aria-required', 'true')
+						document.getElementById('docTipoInteresadoNifEmpresa').classList.remove("ocultar")
+			  }						
+				break
+				case 'pJuridicaDocAcreditativaEnIDI':
+					if (checkObj.checked) {
+							document.getElementById('file_document_acred_como_repres').removeAttribute("required")
+							 document.getElementById('file_document_acred_como_repres').removeAttribute("aria-required")
+							 document.getElementById('docTipoInteresado').classList.add("ocultar")
+					} else {
+							 document.getElementById('file_document_acred_como_repres').setAttribute('required', '')
+							 document.getElementById('file_document_acred_como_repres').setAttribute('aria-required', 'true')
+							document.getElementById('docTipoInteresado').classList.remove("ocultar")
+					}						
+					break						
+		}
 	}

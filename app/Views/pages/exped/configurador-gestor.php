@@ -6,7 +6,7 @@
 <div class="further">
 
 <?php foreach ($convos as $convo) {?>
-<div> <button><?php echo $convo->id;?></button> <span><?php echo $convo->lineaAyuda;?></span> <span><?php echo $convo->programa;?></span> <span><?php echo $convo->convocatoria;?></span></div>
+    <div> <button id="<?php echo $convo->id;?>" class="btn" onclick="javaScript: obtiene_datos_convo(this.id)">Editar</button> <span><?php echo $convo->lineaAyuda;?></span> <span><?php echo $convo->programa;?></span> <span><?php echo $convo->convocatoria;?></span></div>
 <?php }?>
 
   <div class="container">

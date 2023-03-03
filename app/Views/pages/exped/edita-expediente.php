@@ -113,7 +113,7 @@
                     <label for="nif_rep">NIF representant legal:</label>
                     <input type="text" name="nif_rep" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
                 </div>
-        <?php if ( $expedientes['tipo_tramite'] != 'ILS') {?>    
+
                 <div class="form-group general">
                     <label for="empresa_consultor">Empresa del consultor:</label>
                     <input type="text" name="empresa_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "empresa_consultor" placeholder = "Empresa del consultor" value = "<?php echo $expedientes['empresa_consultor']; ?>">
@@ -130,7 +130,7 @@
                     <label for="mail_rep"><strong>Adreça electrònica consultor:</strong></label>
                     <input type="email" name="mail_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "mail_consultor" placeholder="Adreça electrònica del consultor" value="<?php echo $expedientes['mail_consultor']; ?>">
                 </div>
-        <?php }?>
+
     		    <div class="form-group general">
                     <label for="tecnicoAsignado">Tècnica asignada:</label>
                     <input type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
@@ -205,9 +205,40 @@
                         </optgroup>
 			        </select>
 		        </div>
-		    
-            <?php if ( $expedientes['tipo_tramite'] != 'ILS' ) {?>
+                <label for = "memoriaTecnicaEnIDI" class="main" >
+					<span ><?php echo lang('message_lang.memoriaTecnicaEnIDI_sinCambios');?> </span>
+						<input type="checkbox" <?php if ($expedientes['memoriaTecnicaEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "memoriaTecnicaEnIDI" id = "memoriaTecnicaEnIDI">
+					<span class="w3docs"></span>
+				</label>
 
+                <label for = "altaRETA_docAcredEnIDI" class="main" >
+					<span ><?php echo lang('message_lang.altaRetaDocAcredEnIDI_sinCambios');?> </span>
+						<input type="checkbox" <?php if ($expedientes['altaRETA_docAcredEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "altaRETA_docAcredEnIDI" id = "altaRETA_docAcredEnIDI">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "certificadoIAEEnIDI" class="main" >
+					<span ><?php echo lang('message_lang.certificadoIAEEnIDI_sinCambios');?> </span>
+						<input type="checkbox" <?php if ($expedientes['certificadoIAEEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "certificadoIAEEnIDI" id = "certificadoIAEEnIDI">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "copiaNIFSociedadEnIDI" class="main" >
+					<span ><?php echo lang('message_lang.copiaNIFSociedadEnIDI_sinCambios');?> </span>
+						<input type="checkbox" <?php if ($expedientes['copiaNIFSociedadEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "copiaNIFSociedadEnIDI" id = "copiaNIFSociedadEnIDI">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "pJuridicaDocAcreditativaEnIDI" class="main" >
+					<span ><?php echo lang('message_lang.pJuridicaDocAcreditativaEnIDI_sinCambios');?> </span>
+						<input type="checkbox" <?php if ($expedientes['pJuridicaDocAcreditativaEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "pJuridicaDocAcreditativaEnIDI" id = "pJuridicaDocAcreditativaEnIDI">
+					<span class="w3docs"></span>
+				</label>
+                
+                <div class="form-group general">
+                    <label for="importe_minimis">Import de l'ajuda:</label>
+                    <input type="number" name="importe_minimis" readonly disabled class="form-control" id = "importe_minimis" min="0" placeholder="Import de minimis" value="<?php echo $expedientes['importe_minimis']; ?>">
+                </div>
                 <div class="form-group general">
                     <label for="importeAyuda">Import de l'ajuda:</label>
                     <input type="number" name="importeAyuda" readonly disabled class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $expedientes['importeAyuda']; ?>">
@@ -245,7 +276,7 @@
                     <input type = "date" name = "fecha_de_pago" class = "form-control send_fase_0" id = "fecha_de_pago" value = "<?php echo date_format(date_create($expedientes['fecha_de_pago']), 'Y-m-d');?>">
                 </div>  
 
-            <?php }?>                         
+                       
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }

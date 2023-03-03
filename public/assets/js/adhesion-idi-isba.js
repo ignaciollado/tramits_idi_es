@@ -478,16 +478,16 @@ function consultaExpediente ( buscaPor, identificador ) {
 	identificador = identificador.split(" ").join("")
 
 	if (buscaPor === 'expediente') {
-		end_point = `https://${baseUrl.hostname}/public/index.php/numExpediente/${identificador}`
+		end_point = `https://${baseUrl.hostname}/public/index.php/expediente/${identificador}/IDI-ISBA`
 	}
 	if (buscaPor === 'nif') {
 		end_point = `https://${baseUrl.hostname}/public/index.php/nifExpediente/${identificador}`
 	}
-
-	let spinner = document.querySelector('#spinner-idi-isba');
-	let textIsba = document.querySelector('#text-isba');
-	let restResultDialog = document.querySelector('#theDialog');
-	let restResult = document.querySelector('#resultContainer');
+console.log (end_point)
+	let spinner = document.querySelector('#spinner-idi-isba')
+	let textIsba = document.querySelector('#text-isba')
+	let restResultDialog = document.querySelector('#theDialog')
+	let restResult = document.querySelector('#resultContainer')
 
 	spinner.classList.remove("ocultar")
 	textIsba.classList.add("ocultar")

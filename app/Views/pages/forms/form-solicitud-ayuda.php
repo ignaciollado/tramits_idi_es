@@ -1,9 +1,12 @@
 <!-- CONTENT -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/>
 	<script type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
 	<script type="text/javascript" src="/public/assets/js/solicitud-ayuda.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-	<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/>
 
 <section id="formulario_solicitud">
 	<div class="alert alert-info">
@@ -13,15 +16,15 @@
 <form name="xecs_form" id="xecs_form" action="<?php echo base_url('/public/index.php/subirarchivo/store/'.$viaSolicitud);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 <h1><?php echo lang('message_lang.asistente_de_tramitacion').$viaSolicitud;?></h1>
 
-<div class="stepContainer">
-	<span class="step">0</span>
-	<span class="step">1</span>
+	<div class="stepContainer">
+		<span class="step">0</span>
+		<span class="step">1</span>
   	<span class="step">2</span>
   	<span class="step">3</span>
   	<span class="step">4</span>
   	<span class="step">5</span>
   	<span class="step">6</span>
-	<span class="step">7</span> 
+		<span class="step">7</span> 
 	<div  class="buttonContainer" >
     	<button title="Anterior" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn" ><?php echo lang('message_lang.btn_previous');?></button>
     	<button title="Següent" onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn" ><?php echo lang('message_lang.btn_next');?></button>
@@ -32,7 +35,7 @@
 <!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD --------------------------------------------------------------------->
 	<div class="tab">
 		<div class="p-2 bg-white text-center">
-		<div class="btn-group">
+		<div class="langtoggle btn-group">
 			<a title="Català" href="<?php echo base_url('/public/index.php/home/set_lang/ca'); ?>" class="btn btn-outline-light text-dark" role="button"> Català</a>
 			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/set_lang/es'); ?>" class="btn btn-outline-light text-dark" role="button"> Castellano</a>
 		</div>
@@ -41,7 +44,10 @@
 		<fieldset>
     	<!--<legend><strong><?php echo lang('message_lang.rgpd');?></strong></legend>-->
 		<label for = "rgpd" class="main" >
-			<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#"  data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></a></span>
+			<span ><?php echo lang('message_lang.rgpd_leido');?> 
+
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
+
 				<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 			<span class="w3docs"></span>
 		</label>
@@ -57,36 +63,31 @@
 		</fieldset>
 	</div>
 
-		<div id="rgpdModal" class="modal fade" role="dialog">
-  			<div class="modal-dialog">
-	    		<div class="modal-content">
-      				<div class="modal-header">
-	        			<button type="button" class="close" data-dismiss="modal">&times;</button>
-        				<h4 class="modal-title"><?php echo lang('message_lang.rgpd_leido');?> <abbr title='Reglamento general de protección de datos'>RGPD.</abbr></h4>
-      				</div>
-      				<div class="modal-body">
-	        			<p>
-						<?php
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Reglamento (UE) 2016/679 General de Protección de Datos (RGPD)</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+			<?php
 						if (get_cookie('CurrentLanguage')==="ca") {
 							include 'includes/clausulaProteccionDatos.html';
 						} else {
 							include 'includes/clausulaProteccionDatos-es.html';
 						}
 						?>
-						</p>
-    	  			</div>
-      				<div class="modal-footer">
-	        			<button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-
-<!--</div>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------------------->
 <div class="tab" id="programa">
-	
 	<div id="formbox" class="formbox">
     <fieldset><span class="ocultar" id="aviso"><?php echo lang('message_lang.marque_una_opcion');?></span>
  		<!--<legend>-->
@@ -107,14 +108,12 @@
 		<label class="container-radio">
 			<span class="tooltiptext_idi"> <?php echo lang('message_lang.info_programa');?> </span>
 		</label>
-   </fieldset> 
-   		
+   </fieldset>  		
 	</div>
 </div>
 
 <!-------------------------- 2. TIPO DE EMPRESA --------------------------------------------------------------------->
 <div class="tab" id="empresa">
-	
   	<div id="formbox2" class="formbox">
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
  	<!--<legend>-->
@@ -132,15 +131,10 @@
 			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_mediana');?>" id="mediana" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
 			<span class="checkmark"></span>
 		</label>
-		<!-- <label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_cluster_ct');?></h6>
-			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_cluster_ct');?>" id="cluster_ct" onchange = "javaScript: tipoSolicitante (this.id);" value="cluster_ct">
-			<span class="checkmark"></span>
-		</label> -->
 		<label class="container-radio">	
 			<span class="tooltiptext_idi"> <?php echo lang('message_lang.info_tipo_empresa');?> </span>
 		</label>
    	</fieldset>
-   	
 	</div>
 </div>
 
@@ -148,11 +142,14 @@
 <div class="tab">
 	<div id="formbox">
 	<fieldset id="interesado">
-		<!--<legend>-->
-			<h2><?php echo lang('message_lang.identificacion_sol_idigital');?></h2>
-		<!--</legend>-->
+		<h2><?php echo lang('message_lang.identificacion_sol_idigital');?></h2>
+
+		<input name = "nif" id = "nif" type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value); consultaExpediente ( 'dni', this.value );" title="NIF" placeholder = "NIF" aria-required="true" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
+		<span id='rest-result'></span>
+		<div id ="spinner-idi-isba" class="spinner-border text-warning ocultar" role="status">
+ 			<span id ="text-isba" class="visually-hidden">Getting data from ISBA...</span>
+		</div>
 		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" aria-required="true" name = "denom_interesado" id = "denom_interesado" size="220">
-		<input type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this);averiguaTipoDocumento (this.value);" title="NIF" placeholder = "NIF" aria-required="true" name = "nif" id = "nif" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
 		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.direccion_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_sol_idigital');?>" aria-required="true" name="domicilio" id="domicilio">
 		<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/municipios.php';?>
 		<input type = "text" onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.cp_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_idigital');?>" aria-required="true" name="cpostal" id="cpostal" pattern="[0-9]{5}" minlength = "5" maxlength = "5" size="9">  
@@ -179,29 +176,33 @@
 <div class="tab">
 	<div  id="formbox">
     <fieldset>
-       	<!--<legend>-->
-			   <h2><?php echo lang('message_lang.datos_cons_sol_idigital');?></h2>
-		<!--</legend>-->
-	<div id = "verDatosConsultor">
-		<div><input type = "text"  onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.empresa_consultor');?>" aria-required="false" placeholder = "<?php echo lang('message_lang.empresa_consultor');?>" name = "empresa_consultor" id = "empresa_consultor"></div>
-		<div><input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.nombre_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.nombre_consultor');?>"  name = "nom_consultor" id = "nom_consultor"></div>
-		<div><input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.telefono_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.telefono_consultor');?>" name = "tel_consultor" id = "tel_consultor" maxlength = "9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"><p id="mensaje_dni"></p></div>
- 		<div><input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.mail_consultor');?>" name = "mail_consultor" id = "mail_consultor"></div>
-	</div>
+      <!--<legend>-->
+			  <h2><?php echo lang('message_lang.datos_cons_sol_idigital');?></h2>
+			<!--</legend>-->
+			<div id = "verDatosConsultor">
+				<div><input type = "text"  onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.empresa_consultor');?>" aria-required="false" placeholder = "<?php echo lang('message_lang.empresa_consultor');?>" name = "empresa_consultor" id = "empresa_consultor"></div>
+				<div><input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.nombre_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.nombre_consultor');?>"  name = "nom_consultor" id = "nom_consultor"></div>
+				<div><input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.telefono_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.telefono_consultor');?>" name = "tel_consultor" id = "tel_consultor" maxlength = "9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"><p id="mensaje_dni"></p></div>
+ 				<div><input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.mail_consultor');?>" name = "mail_consultor" id = "mail_consultor"></div>
+			</div>
 	</fieldset>
 	</div>
 </div>
 <!-------------------------- 6. DOCUMENTACIÓN ADJUNTA --------------------------------------------------------------------->
 <div class="tab">
 	<div id="formbox">
+	<h2><?php echo lang('message_lang.documentacion_adjunta');?></h2><!-- 6. DOCUMENTACIÓN ADJUNTA OBLITATORIA -->
 		<fieldset>
-			<!--<legend>-->
-				<h2><?php echo lang('message_lang.documentacion_adjunta');?></h2>
-			<!--</legend>-->
-		    <h3><?php echo lang('message_lang.memoria_tecnica');?></h3> <code>[.pdf]:</code>
+			<h3><?php echo lang('message_lang.memoria_tecnica');?></h3>
 			<div id = "enviarmemoriaTecnica" class = "">
-				<input type = "file" id="file_memoriaTecnica" name="file_memoriaTecnica[]" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
+					<code>[.pdf]:</code>
+					<input type = "file" id="file_memoriaTecnica" name="file_memoriaTecnica[]" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>
+			<label for = "memoriaTecnicaEnIDI" class="main" >
+				<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+					<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "memoriaTecnicaEnIDI" id = "memoriaTecnicaEnIDI">
+				<span class="w3docs"></span>
+			</label>
 
 			<label for = "veracidad_datos_bancarios" ><h3><?php echo lang('message_lang.declaracion_datos_bancarios');?></h3>
 				<input title = "<?php echo lang('message_lang.declaracion_datos_bancarios');?>" disabled checked value = "on" type="checkbox" name="veracidad_datos_bancarios" id="veracidad_datos_bancarios"/>
@@ -209,7 +210,7 @@
 			<label for = "veracidad_datos_bancarios_1" class="main"><h3><?php echo lang('message_lang.declaracion_datos_bancarios_1');?></h3>
 				<input title = "<?php echo lang('message_lang.declaracion_datos_bancarios_1');?>" disabled checked type="checkbox" name="veracidad_datos_bancarios_1" id="veracidad_datos_bancarios_1"/>
 				<span class = "w3docs"></span>
-			</label>	
+			</label>
 			<input type="text" title="<?php echo lang('message_lang.nom_entidad');?>" placeholder = "<?php echo lang('message_lang.nom_entidad');?>" aria-required="true" name="nom_entidad" id="nom_entidad" onblur="javaScript: validateFormField(this);"/>
 			<input type="text" title="<?php echo lang('message_lang.domicilio_sucursal');?>" placeholder = "<?php echo lang('message_lang.domicilio_sucursal');?>" aria-required="true" name="domicilio_sucursal" id="domicilio_sucursal" onblur="javaScript: validateFormField(this);"/>
 			<input type="text" title="<?php echo lang('message_lang.codigo_BIC_SWIFT');?>" placeholder = "<?php echo lang('message_lang.codigo_BIC_SWIFT');?>" data-mask = "AAAA-AA-AA-999" maxlength = "14" aria-required="true" name="codigo_BIC_SWIFT" id="codigo_BIC_SWIFT" onblur="javaScript: validateFormField(this);"/>
@@ -233,26 +234,53 @@
 			<label for = "veracidad_datos_bancarios_3" class="main"><h3><?php echo lang('message_lang.declaracion_datos_bancarios_5');?></h3>
 				<input disabled checked type="checkbox" name="veracidad_datos_bancarios_3" id="veracidad_datos_bancarios_3"/>
 				<span class = "w3docs"></span>
-			</label>		
+			</label>
 			<script>
 				$('#cc').mask('SS ES 9999 9999 99 9999999999');
 				$('#cc2').mask('999999999999999999999999');
 				//$("#codigo_BIC_SWIFT").mask('SSSS-SS-SS-AAA');
 				$("#codigo_BIC_SWIFT").mask('AAAA-AA-AA-AAA');
-			</script>	  
+			</script>
 
-	
-			<h3 id="pFisica" class="ocultar"><?php echo lang('message_lang.eres_persona_fisica');?></h3>
-			<h3 id="pJuridica" class="ocultar"><?php echo lang('message_lang.eres_persona_juridica');?></h3>
-			<h3 id="clusterCT" class="ocultar"><?php echo lang('message_lang.eres_cluster_o_ct');?></h3>
-			 <code>[.pdf]:</code>
-			<div id="docTipoInteresado">
-			</div>
-			<h3><?php echo lang('message_lang.certificado_IAE');?></h3> <code>[.pdf]:</code>
-			<div id = "file_certificadoIAE">
+			<h3>6.3. <strong><?php echo lang('message_lang.certificado_IAE');?></strong></h3>
+			<div id = "file_certificadoIAE_container">
+				 <code>[.pdf]:</code>
 				<input type = "file" id="file_certificadoIAE" name="file_certificadoIAE[]" title="Selecciona el certificat d'IAE" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>
-		</fieldset>
+			<fieldset>
+				<label for = "certificadoIAEEnIDI" class="main" >
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+					<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "certificadoIAEEnIDI" id = "certificadoIAEEnIDI">
+					<span class="w3docs"></span>
+				</label>
+			</fieldset>
+
+			<h3 id="pFisica" class="ocultar"><?php echo lang('message_lang.eres_persona_fisica');?></h3>
+			<h3 id="pJuridica" class="ocultar"><?php echo lang('message_lang.eres_persona_juridica');?></h3>
+			<h3 id="pJuridicaNIFEmpresa" class='ocultar'><?php echo lang('message_lang.eres_persona_juridica_nif_empresa');?></h3>
+			<div id="docTipoInteresadoNifEmpresa" class="ocultar">
+				<code>[.pdf]:</code>	
+			</div>
+			<fieldset id="copiaNIFSociedadFieldSet" class="ocultar">
+				<label for = "copiaNIFSociedadEnIDI" class="main" >
+				<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+						<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "copiaNIFSociedadEnIDI" id = "copiaNIFSociedadEnIDI">
+					<span class="w3docs"></span>
+				</label>
+			</fieldset>
+			<h3 id="pJuridicaDocAcreditativa" class='ocultar'><?php echo lang('message_lang.eres_persona_juridica_doc_acreditativa');?></h3>
+			<div id="docTipoInteresado">
+				<code>[.pdf]:</code>	
+			</div>
+			<fieldset id="pJuridicaDocAcreditativaFieldSet" class="ocultar">
+				<label for = "pJuridicaDocAcreditativaEnIDI" class="main" >
+				<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+						<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "pJuridicaDocAcreditativaEnIDI" id = "pJuridicaDocAcreditativaEnIDI">
+					<span class="w3docs"></span>
+				</label>
+			</fieldset>
+			
+		</fieldset>		
 	</div>
 	<div id="formbox">	
 		<span class="tooltiptext_idi"><h3><?php echo lang('message_lang.upload_multiple');?></h3></span>	
@@ -518,7 +546,7 @@ function validateForm() {
   }
   if (currentTab===2) {
 	// Validar que un checkbox de '2. TIPO DE EMPRESA' esté activado
-  	if ( !document.getElementById("autonomo").checked && !document.getElementById("pequenya").checked && !document.getElementById("mediana").checked && !document.getElementById("cluster_ct").checked) {
+  	if ( !document.getElementById("autonomo").checked && !document.getElementById("pequenya").checked && !document.getElementById("mediana").checked /* && !document.getElementById("cluster_ct").checked */) {
 		document.getElementById("aviso2").className = 'aviso-lbl';
 		document.getElementById("formbox2").classList.add("aviso");
 		valid = false;

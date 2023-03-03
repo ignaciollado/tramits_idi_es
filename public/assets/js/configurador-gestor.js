@@ -7,6 +7,10 @@ $(document).ready(function(){
     });
 });
 
+function obtiene_datos_convo (id) {
+    console.log (id)
+}
+
 function leeJson() {
     let data = eval(document.getElementById("meses_fecha_lim_consultoria").value);
     let row = "" ;
@@ -30,11 +34,11 @@ function guardarFormulario(id) {
     let parentElement = document.getElementById("guarda_config");
     parentElement.disabled = true;
     parentElement.innerHTML ="Un moment, actualitzant dades ...";
-    }
+}
 
 function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/" + ";SameSite=Strict";
-    }
+    var d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/" + ";SameSite=Strict";
+}
