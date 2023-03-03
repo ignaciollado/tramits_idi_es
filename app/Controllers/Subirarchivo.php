@@ -284,8 +284,8 @@ use App\Models\ConfiguracionModel;
 		$data_exp ['last_insert_id'] = $last_insert_id;
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
-		if (file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/') != 1 ) {
-			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/');
+		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
+			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0755, true);
 		}
 
 		/* ------------------------------------------------------------------------------------------------------------ */	
