@@ -28,7 +28,7 @@
  *
  * @package    CodeIgniter
  * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2021 CodeIgniter Foundation & IDI
+ * @copyright  2019-2023 CodeIgniter Foundation & IDI
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -95,7 +95,7 @@ return [
    'enviado_correo_electron_justif'   => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_con_dec_res' => "Le hemos enviado un correo electrónico a la dirección que nos ha facilitado en la declaración responsable para que la firme electrónicamente.",
    'enviado_correo_electron_con'      => "Si en la solicitud marcó la opción <strong>'Ya tengo habilitador digital homologado, no necesito que el IDI me asigne uno'</strong>, hemos enviado un correo electrónico al facilitador digital que nos ha indicado para que rellene y firme su declaración responsable.",
-   'nota_info_rec'					  => "Una vez firmada la solicitud, recibirá un correo electrónico con una copia del documento. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <a target = '_blank' href = 'https://www.caib.es/seucaib/es/201/empreses/tramites/tramite/5400391' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)</a>. En caso de no hacerlo, no la podremos procesar.",
+   'nota_info_rec'					  => "Una vez firmada la solicitud, recibirá otro correo electrónico con una copia del documento. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <a target = '_blank' href = 'https://www.caib.es/seucaib/es/201/empreses/tramites/tramite/5400391' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)</a>. En caso de no hacerlo, no la podremos procesar.",
    'nota_info_rec_justif'			  => "Una vez firmado el requerimiento de justificación, recibirá un correo electrónico con una copia del documento firmado. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio del <a target = '_blank' href = 'https://rec.redsara.es/' title = 'Registro electrónico común'>REGISTRO ELECTRÓNICO COMÚN (<strong>REC</strong>)</a>. En caso de no hacerlo, no lo podremos procesar.",
   
    'contacto_idi_pindust'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@idi.es o por teléfono: 971 17 61 61 + 62894 ",
@@ -103,7 +103,7 @@ return [
 
    
    'enviado_correo_ok'                => "Hemos enviado un correo electrónico a la dirección ",
-   'una_vez_firmado'                  => "Una vez la recibamos por medio de lA <strong>SEDE ELECTRÓNICA CAIB</strong>, procederemos a tramitarla.",
+   'una_vez_firmado'                  => "Una vez la recibamos por medio de la <strong>SEDE ELECTRÓNICA CAIB</strong>, procederemos a tramitarla.",
    'intro_sol_idigital'			      => "Convocatoria para la concesión de ayudas de cheques de consultoría para impulsar a la industria de Baleares en materia de digitalización, internacionalización y sostenibilidad.",
    'intro_ils'			                  => "Las industrias interesadas en adherirse al programa han de rellenar el siguiente formulario de solicitud de adhesión",
    'intro_ils_solicitud'			     => "Solicitud para la concesión de la marca Indústria Local Sostenible",
@@ -149,9 +149,9 @@ return [
    'select_programa'                  => "Seleccione un programa",
    'info_programa'              => "El objeto de la convocatoria de ayudas de cheques de consultoría para la elaboración y diseño de:<ol>
 
-                              <li><code>Programa I, «IDigital»:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.
-                              <li><code>Programa II, «IExporta»:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2023.
-                              <li><code>Programa III, «ISostenibilitat»:</code> informes de la huella de carbono corporativa, dentro del marco del programa «Isostenibilitat», para el año 2023.</ol>",
+                              <li><code>Programa I, «IDigital»:</code> Plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.
+                              <li><code>Programa II, «IExporta»:</code> Plan de internacionalización en el marco del programa «Iexporta», para el año 2023.
+                              <li><code>Programa III, «ISostenibilitat»:</code> Informes de la huella de carbono corporativa, dentro del marco del programa «Isostenibilitat», para el año 2023.</ol>",
    
    'programaiDigital'       => "<code>Programa I:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.",
    'programaiExporta'       => "<code>Programa II:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2023.",
@@ -200,8 +200,8 @@ return [
    'solicitante_tipo_ils'                 => "1. TIPO DE EMPRESA",
 
    'solicitante_tipo_autonomo'             => "Autónomo",
-   'solicitante_tipo_pequenya'             => "Pequeña",
-   'solicitante_tipo_mediana'             => "Mediana",   
+   'solicitante_tipo_pequenya'             => "Pequeña empresa",
+   'solicitante_tipo_mediana'             => "Mediana empresa",   
    'solicitante_tipo_grande'             => "Grande",
    'convocatoria_activa'            => "Convocatoria en curso.",
    'solicitante_tipo_cluster_ct'             => "Clúster / Centro Tecnológico",
@@ -213,19 +213,19 @@ return [
     <li> En el caso de elegir una consultoría de 80 horas, 16 horas serían presenciales y 64 horas en linea para la elaboración del plan, con un coste de 6.000 €. El IDI librará un 80 % (4.800 €) y la empresa el 20 % restante (1.200 €).</li>
 	</span>
 	</ul>",
-   "documentacion_necesaria"           => "Antes de empezar, le recomendamos tener preparada la siguiente documentación ya que, a lo largo de esta asistente, se la iremos pidiendo:",
+   "documentacion_necesaria"           => "Antes de empezar, le recomendamos tener preparada la siguiente documentación ya que, a lo largo de este asistente, se la solicitaremos:",
    "documentacion_necesaria_autonomos" => "<dl class='formbox'>
-                                             <dt>Para los autónomos [personas físicas]</dt>
+                                             <dt>En el caso de personas autónomas</dt>
                                                 <dd>Una descripción de la empresa y de su actividad, así como el modelo de negocio.</dd>
                                                 <dd>El certificado de estar de alta en el <abbr title='Régimen especial de trabajadores autónomos'>RETA</abbr> o en un régimen alternativo equivalente.</dd>
                                                 <dd>El certificado de alta del <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_pymes"     => "<dl class='formbox'>
-                                                <dt>Para las pymes [pequeñas y medianas]</dt>
+                                                <dt>En el caso de PYMES</dt>
                                                 <dd>Memoria técnica de su actividad.</dd>
                                                 <dd>Documentación acreditativa de las facultades de representación de la persona que firma la solicitud de ayuda como representante de la empresa beneficiaria.</dd>
-                                                <dd>El certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
-                                                <dd>El <abbr title='Número de identificación fiscal'>NIF</abbr>.</dd>
+                                                <dd>Certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
+                                                <dd><abbr title='Número de identificación fiscal'>NIF</abbr>.</dd>
                                           </dl>",
    "documentacion_necesaria_cluster"   => "<dl class='formbox'>
                                                 <dt>Para los clusters y/o centros tecnológicos</dt>
@@ -234,11 +234,10 @@ return [
                                                    <dd>El certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                   <dt><strong>AUTORIZACIONES</strong>: (la solicitud implica la autorización para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación)</dt>
-                                                      <dd>El <abbr title='Número de identificación fiscal'>NIF</abbr> del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.</dd>
-                                                      <dd>El certificado de estar al corriente de pago con la <abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
-                                                      <dd>El certificado de estar al corriente de pago con la <abbr title='Agència tributaria de les Illes Balears'>ATIB</abbr>.</dd>
-                                                      <dd>El certificado de estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>TGSS</abbr>.</dd>
+                                                   <dt><strong>AUTORIZACIONES</strong>: (la solicitud implica la autorización para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones con la ATIB y la TGSS, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación)</dt>
+                                                      <dd><abbr title='Número de identificación fiscal'>NIF</abbr> del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.</dd>
+                                                      <dd>Certificado de estar al corriente de pago con la <abbr title='Agència tributaria de les Illes Balears'>ATIB</abbr>.</dd>
+                                                      <dd>Certificado de estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>TGSS</abbr>.</dd>
                                                 </dl>",
    "documentacion_necesaria_pymes_ils"     => " <h3>Antes de empezar, es recomendable tener preparada la siguiente documentación relacionada con el <strong>cumplimiento de los requisitos</strong>:</h3>
                                                 <ol class='formbox'>
@@ -273,7 +272,7 @@ return [
    'upload_multiple'               => "Puede subir varios documentos a la vez. Para ello, tiene dos opciones:
 											<ol>
 											<li>Cuando los archivos <strong>no</strong> estén seguidos en la carpeta o <strong>no estén en la misma carpeta</strong>: pulse la tecla <code>CTRL</code> y, sin soltar, vaya marcando con el ratón los archivos correspondientes.</li>
-											<li>Cuando los archivos <strong>si</strong> estén seguidos <strong>en la misma carpeta</strong>: pulse la tecla <code>SHIFT</code> y, sin soltar, y pulsando el ratón marque el primero de los archivos y luego el último, debiendo así quedar todos seleccionados.</li>
+											<li>Cuando los archivos <strong>sí</strong> estén seguidos <strong>en la misma carpeta</strong>: pulse la tecla <code>SHIFT</code> y, sin soltar, y pulsando el ratón marque el primero de los archivos y luego el último, debiendo así quedar todos seleccionados.</li>
 											</ol>",
    'nifEmpresa'                  => "CIF empresa",                                
    'document_identificativos'    => "Al no dar consentimiento, por favor, adjunte los documentos identificativos:",										
@@ -289,15 +288,15 @@ return [
    'declaro'                              => "Declaro:",
    'adjunto'                              => "Declaro que adjunto la siguiente documentación como justificación de la convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2022:",   
    'declaracion_responsable_i'            => "I) Que cumplo con el reglamento (UE) núm. 1407/2013 de la Comisión de 18 de Diciembre de 2013, relativo a la aplicación de los artículos 107 y 108 del Tratado de Funcionamiento de la Unión Europea de las ayudas de minimis.",
-   'declaracion_responsable_ii'           => "II) Que durante los ejercicios fiscales 2020, 2021 y 2022 he recibido un importe total de ayudas de minimis de:", 
-   'declaracion_datos_bancarios_cabecera'          => "DECLARACIÓN RESPONSABLE DE VERACIDAD DE DATOS BANCÁRIOS APORTADOS",
+   'declaracion_responsable_ii'           => "II) Que durante los ejercicios fiscales 2021, 2022 y 2023 he recibido un importe total de ayudas de minimis de:", 
+   'declaracion_datos_bancarios_cabecera'          => "DECLARACIÓN RESPONSABLE DE VERACIDAD DE DATOS BANCARIOS APORTADOS",
    'nom_entidad'						         => "Nombre de la entidad bancaria",
    'domicilio_sucursal'				         => "Domicilio de la sucursal / oficina",
    'codigo_BIC_SWIFT'					      => "Código BIC / SWIFT ej. AAAA-BB-CC-123",   
    'declaracion_datos_bancarios_1'      => "a) La titularidad de la cuenta bancaria correspondiente a los siguientes datos, a efectos del ingreso derivado del procedimiento citado al inicio de la presente declaración:",
    'declaracion_datos_bancarios_2'      => "Opción 1 - IBAN de la cuenta para España (ES9999999999999999999999)",
-   'declaracion_datos_bancarios_3'      => "Opción 2 - Numeración de la cuenta de otros países (9999999999999999999999)",
-   'declaracion_datos_bancarios_4'      => "b) La posibilidad de acreditar documentalmente los datos que se mencionan en el punto (a) de esta declaración, queda eximida de responsabilidad por las actuaciones que se deriven de errores en los datos indicados por el declarante.",
+   'declaracion_datos_bancarios_3'      => "Opción 2 - Número de la cuenta de otros países (9999999999999999999999)",
+   'declaracion_datos_bancarios_4'      => "b) La posibilidad de acreditar documentalmente los datos que se mencionan en el punto (a) de esta declaración queda eximida de responsabilidad por las actuaciones que se deriven de errores en los datos indicados por el declarante.",
    'declaracion_datos_bancarios_5'      => "c) Que el IDI, una vez hechos los ingresos en la cuenta indicada en el punto (a) de esta declaración, queda eximida de responsabilidad por las actuaciones que se deriven de errores en los datos indicados por el declarante.",
    'descripcion_empresa_ils'            => "Descripción de la empresa",
    'fecha_creacion_empresa_ils'        => "Fecha de creación de la empresa",
@@ -327,7 +326,7 @@ return [
    ",
    'declaracion_datos_bancarios'        => "6.2. <strong>La veracidad de los datos bancarios</strong>. De conformidad con el Decreto 6/2013, de 8 de febrero, de medidas de simplificación documental de los procedimientos administrativos, y la relación de documentos del Catálogo de Simplificación Documental sustituibles por la presentación de esta declaración,
    DECLARO:",   
-   'eres_persona_fisica'                => "6.4. <strong>Si eres una persona física</strong>, adjuntar:<ul>
+   'eres_persona_fisica'                => "6.4. <strong>Si es una persona física</strong>, adjuntar:<ul>
                                                 <li>El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.</li>
                                                </ul>",
    'certificado_IAE'                    => "Certificado del IAE.",
@@ -354,8 +353,10 @@ return [
    'presentar_certificado_verificacion_ISO' => "Presentar certificado de verificación ISO 14064-1",   
    'certificado_verificacion_ISO' => "Certificado de verificación ISO 14064-1",
    'certificado_itinerario_formativo' => "Certificado de haber realizado el itinerario formativo",
-   'eres_persona_juridica'              => "6.4. <strong>Si eres persona jurídica</strong>, adjuntar:",
-   'eres_persona_juridica_nif_empresa'  =>   "Cópia del número de identificación fiscal de la sociedad.",                                             
+   'eres_persona_juridica'              => "6.4 a)",
+   'eres_persona_juridica_nif_empresa'  =>   "Cópia del número de identificación fiscal de la sociedad.",
+   'eres_persona_juridica_doc_acreditativa'  =>   "6.4 b) Documentación acreditativa de las facultades de representación de la persona que firma la solicitud de ayuda como representante de la empresa beneficiaria, como puede ser la escritura de poderes de representación, la firma de la solicitud con el certificado digital de representación de la empresa o documentos similares.",   
+
    'eres_cluster_o_ct'                  => "6.5. <strong>Si eres un clusters y/o centro tecnológico</strong>, adjuntar:<ul>
                                                 <li>Adjuntar en PDF el documento constitutivo de la entidad inscrita adecuadamente en el registro correspondiente, con las modificaciones necesarias, si procede, para la acreditación de la personalidad jurídica del solicitante, así como poder suficiente a favor del firmante, en caso de que éste no figure acreditado en la escritura, o certificado actualizado del registro correspondiente, en el que se especifiquen, en los supuestos en que sea procedente, la fecha de constitución, el objeto, el capital y la sede social, la composición del consejo de administración o la junta directiva, los apoderados y los socios que dispongan de más de un 10% y las participaciones.	</li>
                                                 </ul>",
@@ -397,13 +398,13 @@ return [
    'declaracion_responsable_vii_ils'            => "III) Que la entidad beneficiaria está inscrita en el Registro Industrial o en el Registro Minero de las Islas Baleares, si hace falta.",
 
    'declaracion_responsable_ils_vii'            => "III) Que la entidad beneficiaria está inscrita en el Registro Industrial o en el Registro Minero de las Islas Baleares, si hace falta.",
-   'declaracion_responsable_viii'            => "VIII) Que cumplo con las exigencias establecidas por la normativa en materia de seguridad industrial y minera, y cualquier otra que sea aplicable; en el cas de les empresas industriales se tiene que incluir en la solicitud.",
-   'declaracion_responsable_ils_viii'            => "IV) Que cumplo con las exigencias establecidas por la normativa en materia de seguridad industrial y minera, y cualquier otra que sea aplicable; en el cas de les empresas industriales se tiene que incluir en la solicitud.",
+   'declaracion_responsable_viii'            => "VIII) Que cumplo con las exigencias establecidas por la normativa en materia de seguridad industrial y minera, y cualquier otra que sea aplicable. En el caso de las empresas industriales se tiene que incluir en la solicitud.",
+   'declaracion_responsable_ils_viii'            => "IV) Que cumplo con las exigencias establecidas por la normativa en materia de seguridad industrial y minera, y cualquier otra que sea aplicable. En el caso de les empresas industriales se tiene que incluir en la solicitud.",
 
-   'declaracion_responsable_ix'            => "IX) Que los datos consignados en este documento son ciertas, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
-   'declaracion_responsable_ix_ils'            => "IV) Que los datos consignados en este documento son ciertas, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
+   'declaracion_responsable_ix'            => "IX) Que los datos consignados en este documento son ciertos, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
+   'declaracion_responsable_ix_ils'            => "IV) Que los datos consignados en este documento son ciertos, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
 
-   'declaracion_responsable_ils_ix'            => "V) Que los datos consignados en este documento son ciertas, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
+   'declaracion_responsable_ils_ix'            => "V) Que los datos consignados en este documento son ciertos, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
 
    'solicitud_doc_itinerario_formativo_ils_titulo' => "Solicitud del documento: Itinerario formativo sobre la huella de carbono",
    'solicitud_doc_escritura_empresa_ils_titulo' => "Solicitud del documento: Escritura de la Empresa",
@@ -423,20 +424,20 @@ return [
    'documento_informe_resumen_ils' => "Por favor, seleccione el archivo o los archivos que contienen el Informe resúmen de la huella de carbono:",
    'documento_compromiso_reduccion_ils' => "Por favor, seleccione el archivo o los archivos que contienen el Compromiso de reducción de las emisiones de gases de efecto invernadero:",
 
-   'consentimiento_identificacion_solicitante' => "doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears (IDI) pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa. En caso contrario, adjunto declaración de no consentimiento y adjunto el nif del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.",
-   'consentimiento_identificacion_solicitante_pdf'	=> " doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa.",
+   'consentimiento_identificacion_solicitante' => "Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears (IDI) pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa. En caso contrario, adjunto declaración de no consentimiento y adjunto el nif del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.",
+   'consentimiento_identificacion_solicitante_pdf'	=> " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa.",
 
 'declaracion_responsable_iii'      => "III) Que no he recibido ninguna subvención otorgada por alguna entidad, pública o privada, nacional o extranjera, relacionada con la realización de planes de transformación digital, planes  de internacionalización, o bien con la realización de informes de la huella de carbono corporativa.",
 'declaracion_responsable_iv'      => "IV) Que no he recibido ayudas o subvenciones de otras administraciones públicas, o de otros entes públicos o privados,  nacionales e internacionales que, aisladamente o en concurrencia, supere el 100 % del coste de la actividad que tenga de desarrollar la empresa beneficiaria.",
 
 'declaracion_responsable_x'            => "X) Que el consultor cumple con el punto 7 de la convocatoria.",
-// 'doy_mi_consentimiento'          => " doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares pueda comprobar de oficio la identificación de la persona solicitante y/o la persona autorizada por la empresa. En caso de denegación expresa del consentimiento adjunto el NIF del solicitante y de la persona autorizada, si se tercia.",    
-'doy_mi_consentimiento_aeat_atib'   => " doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias (AEAT y de la ATIB). En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
+// 'doy_mi_consentimiento'          => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares pueda comprobar de oficio la identificación de la persona solicitante y/o la persona autorizada por la empresa. En caso de denegación expresa del consentimiento adjunto el NIF del solicitante y de la persona autorizada, si se tercia.",    
+'doy_mi_consentimiento_aeat_atib'   => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias (de la ATIB). En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
 'certificado_corriente_pago_aeat'   => "Certificado de estar al corriente de pagos con la Agencia Tributaria",
 'certificado_corriente_pago_ttss'   => "Certificado de estar al corriente de pagos con la Tesorería de la Seguridad Social",
 'documentos_opcionales_si_ya_los_tiene_admin' => "Los documentos anteriores no se deberán aportar cuando ya consten en el otro expediente, o la Administración los pueda solicitar directamente.",
 'doy_mi_consentimiento_seg_soc'     =>"Respecto a la acreditación del requisito de estar al corriente de las obligaciones con la Seguridad Social, la solicitud de las ayudas implica la autorización para que el IDI pueda obtener de la Tesorería General de la Seguridad Social la información acreditativa del cumplimiento de esta obligación, excepto en caso de denegación expresa del consentimiento, supuesto en que la persona o la entidad solicitante tiene que aportar el certificado correspondiente, junto con la solicitud de las ayudas en formato PDF.",
-'doy_mi_consentimiento_pdf'      => " doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias (<abbr title='Agencia Estatal de la Administración Tributaria'>AEAT</abbr> y de la <abbr title='Agència Tributària de las Illes Balears'>ATIB</abbr>) y con la <abbr title='Tesorería General de la Seguridad Social'>TGSS</abbr>. En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
+'doy_mi_consentimiento_pdf'      => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias con la <abbr title='Agència Tributària de las Illes Balears'>ATIB</abbr> y la <abbr title='Tesorería General de la Seguridad Social'>TGSS</abbr>. En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
 
 'declaracion_no_consentimiento'  => "Al no dar consentimiento, por favor, adjunte certificado de cumplimiento con mis obligaciones tributarias y con la Tesorería de la Seguridad Social",
 'certificado_document_correspon' => "Al no dar consentimiento, por favor, adjunte los certificados y la documentación identificativa correspondiente.",
@@ -452,12 +453,12 @@ return [
 <p>Una vez recibida la respuesta del responsable o en el supuesto de que no haya respondido en el plazo de un mes, la persona afectada por el tratamiento de los datos personales puede presentar la «Reclamación de tutela de derechos» ante la Agencia Española de Protección de Datos.</p>
 <p><strong>Delegación de Protección de Datos</strong>: la Delegación de Protección de Datos del IDI tiene la sede en la Plaça de Son Castelló, 1. 07009 Palma. Dirección electrónica: dpd@idi.es.</p>",
 
-'documentoEnIDI' => "este documento ya se encuentra en el IDI y no ha sufrido modificacioness <strong>(en este caso no hace falta aportarlo)</strong>.",
-'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, en IDI",
-'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, en IDI",
-'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, en IDI.",
-'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, en IDI.",
-'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació, en IDI.",
+'documentoEnIDI' => "Este documento ya se encuentra en el IDI y no ha sufrido modificacioness <strong>(en este caso no hace falta aportarlo)</strong>.",
+'memoriaTecnicaEnIDI_sinCambios' => "Memoria técnica, este documento ya se encuentra en el IDI",
+'altaRetaDocAcredEnIDI_sinCambios' => "Documento acreditativo alta en RETA, este documento ya se encuentra en el IDI",
+'certificadoIAEEnIDI_sinCambios' => "Certificado IAE, este documento ya se encuentra en el IDI.",
+'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, este documento ya se encuentra en el IDI.",
+'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Documento acreditativo de representación, en IDI.",
 
 'clausula_idi'   => "CLÁUSULA USUARIO IDI",
 'texto_mail_intro_1' => "Hemos recibido una solicitud de ayudas para el diseño de planes de transformación digital de",

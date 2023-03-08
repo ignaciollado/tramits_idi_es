@@ -171,11 +171,11 @@ function tipoSolicitante (valor)
 				document.getElementById("declaracion_responsable_xii_lbl").style.display = "block";
 				document.getElementById("nif").placeholder = 'DNI / NIE';
 				document.getElementById("nif").title = 'DNI / NIE';
-				document.getElementById("denom_interesado").setAttribute("placeholder", "Nom");
-				document.getElementById("denom_interesado").setAttribute("title", "Nom");
+				//document.getElementById("denom_interesado").setAttribute("placeholder", "Nom");
+				//document.getElementById("denom_interesado").setAttribute("title", "Nom");
 				break;
 			case 'pequenya':
-/* 				element.appendChild(aChild) 
+/* 			element.appendChild(aChild) 
 				element.appendChild(bChild) 
 				document.getElementById("pFisica").classList.add('ocultar')
 				document.getElementById("pJuridica").classList.remove('ocultar')

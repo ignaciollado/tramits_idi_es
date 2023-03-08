@@ -141,12 +141,13 @@
 		$builder->update($data);	
 
 		// echo "<pre><code>".$respuesta['documentsToSign'][0]['filename']."</code></pre>";
-		// echo "<pre><code>".$respuesta['documentsToSign'][0]['publicAccessId']."</code></pre>";	
+		// echo "<pre><code>".$respuesta['documentsToSign'][0]['publicAccessId']."</code></pre>";
+		echo "<div class='container'>";
 		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron')."</div>";
 		echo "<div class='alert alert-warning'>".lang('message_lang.nota_info_rec')."</div>";
 		echo "<div class='alert alert-info'>".lang('message_lang.contacto_idi_pindust')."</div>";		
 		//echo "<pre><code>".lang('message_lang.enviado_correo_electron_con')."</code></pre>";
 		echo "<div class='alert alert-info'>".lang('message_lang.una_vez_firmado')."</div>";
-		// echo '-</div>';
+		echo '</div>';
 	}
 ?>

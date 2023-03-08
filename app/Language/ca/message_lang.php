@@ -6,7 +6,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2020 CodeIgniter Foundation
+ * Copyright (c) 2019-2023 CodeIgniter Foundation & IDI
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@
  *
  * @package    CodeIgniter
  * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2021 CodeIgniter Foundation & IDI
+ * @copyright  2019-2023 CodeIgniter Foundation & IDI
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -64,7 +64,7 @@ return [
    'todas_las_solicitudes'			   => 'Totes les sol·licituds',
    'timbrado_de_documentos'         => 'Segellament electrònic de la documentació adjuntada a la sol·licitud',
    'generado_correctamente'         => "S'ha generat correctament la ",
-   'titulo_sol_form'	               => "Sol·licitut de xecs consultoria per impulsar la indústria de Balears en matèria de digitalització, internacionalització i sostenibilitat",
+   'titulo_sol_form'	               => "Sol·licitud de xecs de consultoria per impulsar la indústria de Balears en matèria de digitalització, internacionalització i sostenibilitat",
    'titulo_sol_form_ils'	         => "Programa d'adhesió a Industria Local Sostenible (ILS)",
 
    'titulo_sol_idigital'			   => "Sol·licitud ajut i/o subvenció",
@@ -93,7 +93,7 @@ return [
    'enviado_correo_electron_justif'   => "Us hem enviat un correu electrònic a l'adreça que ens va facilitar amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_con_dec_res' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la declaració responsable perquè la signeu electrònicament.",
    'enviado_correo_electron_con'      => "Si en la sol·licitud va marcar l'opció <strong>'Ja tinc CONSULTOR digital homologat, no necessito que el IDI m'assigni un'</strong>, hem enviat un correu electrònic al facilitador digital que ens heu indicat perquè empleni i ferm la seva declaració responsable.",
-   'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebrà un correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar al IDI per mitjà de la <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/201/empreses/tramites/tramite/5400391' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB ('Accés al tràmit telemàtic')</a>. En cas de no fer-ho, no la podrem processar.",
+   'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/201/empreses/tramites/tramite/5400391' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB ('Accés al tràmit telemàtic')</a>. En cas de no fer-ho, no la podrem processar.",
    'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà del <a target = '_blank' href = 'https://rec.redsara.es/' title = 'Registro electrónico común'>REGISTRO ELECTRÓNICO COMÚN (<strong>REC</strong>)</a>. En cas de no fer-ho, no el podrem processar.",
   
    'contacto_idi_pindust'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
@@ -115,14 +115,14 @@ return [
    'select_cuantia_ayuda'             => "Seleccionau la quantia de la ajuda",
    'select_generico'                  => "Seleccionau una opció", 
    'identificacion_sol_ils'           => "3. DADES GENERALS", 
-   'identificacion_sol_idigital'      => "3. INTERESAT",   
+   'identificacion_sol_idigital'      => "3. INTERESSAT",   
    'identificacion_empresa_ils'           => "2. DADES DE L'EMPRESA",   
 
    'nif_solicitante'                  => "NIF del sol·licitant",
    'idExpISBA'                        => "Expedient ISBA",
 
    'solicitante_sol_idigital'         => "Nom o raó social",    
-   'direccion_sol_idigital'           => "Adrça postal",
+   'direccion_sol_idigital'           => "Adreça postal",
    'localidad_sol_idigital'           => "Localitat",
    'cp_sol_idigital'                  => "Codi postal [cinc dígits]",
    'movil_sol_idigital'      		     => "Telèfon de contacte",   
@@ -141,14 +141,14 @@ return [
    'justificacion_justificantes_doc'  => "Els justificants de pagament",
 
    'enviar_documentacion'  			  => "Enviar la documentació",
-   'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITA",
+   'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITAU",
    'programa_continuacion'            => "(Seleccionau només una opció. Presenti una sol·licitud per a cada programa)",
    'select_programa'                  => "Seleccionau un programa",
    'info_programa'              => "L'objecte de la convocatòria d'ajuts de xecs de consultoria per a l'elaboració i disseny de:
 											<ol>
-											<li><code>Programa I, «IDigital»:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2023.</li>
-											<li><code>Programa II, «IExporta»:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2023.</li>
-    										<li><code>Programa III, «ISostenibilitat»:</code> informes de la petjada de carboni corporativa, dins el marc del programa «Isostenibilitat», per a l'any 2023.</li>                           
+											<li><code>Programa I, «IDigital»:</code> Pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2023.</li>
+											<li><code>Programa II, «IExporta»:</code> Pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2023.</li>
+    										<li><code>Programa III, «ISostenibilitat»:</code> Informes de la petjada de carboni corporativa, dins el marc del programa «Isostenibilitat», per a l'any 2023.</li>                           
                                  </ol>",                            
    'programaiDigital'      => "<code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2023.",
    'programaiExporta'      => "<code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2023.",
@@ -209,19 +209,19 @@ return [
     <li> En el cas de triar una consultoria de 80 hores, 16 hores serien presencials i 64 hores en línia per a l’elaboració del pla, amb un cost de 6.000 €. L’IDI lliurarà un 80 % (4.800 €) i l’empresa el 20 % restant (1.200 €). </li>
 	</span>
 	</ul>",
-   "documentacion_necesaria"           => "Abans de començar, és recomanable tenir la següent documentació preparada ja que la hi anirem demanant al llarg d'aquest assistent:",
+   "documentacion_necesaria"           => "Abans de començar, és recomanable tenir la següent documentació preparada ja que al llarg d'aquest assistent es demanarà:",
    "documentacion_necesaria_autonomos" => "<dl class='formbox'>
-                                             <dt>Per als autònoms [persones físiques]</dt>
-                                                <dd>Una descripció de l’empresa i de la seva activitat, així com del model de negoci.</dd>
-                                                <dd>El certificat d’estar d’alta en el <abbr title='Régimen especial de trabajadores autónomos'>RETA</abbr> o en un règim alternatiu equivalent.</dd>
-                                                <dd>El certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
+                                             <dt>En el cas de persones autònomes</dt>
+                                                <dd>Una descripció de l’empresa i de l'activitat, així com del model de negoci.</dd>
+                                                <dd>Certificat d’estar d’alta en el <abbr title='Régimen especial de trabajadores autónomos'>RETA</abbr> o en un règim alternatiu equivalent.</dd>
+                                                <dd>Certificat d’alta d'<abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_pymes"     => "<dl class='formbox'>
-                                                <dt>Per a les pimes [petites i mitjanes]</dt>
-                                                <dd>Memòria tècnica de la seva activitat.</dd>
+                                                <dt>En el cas de PIMES</dt>
+                                                <dd>Memòria tècnica de l'activitat.</dd>
                                                 <dd>Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d’ajut com a representant de l’empresa beneficiària.</dd>
-                                                <dd>El certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
-                                                <dd>El <abbr title='Número de identificación fiscal'>NIF</abbr>.</dd>
+                                                <dd>Certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
+                                                <dd><abbr title='Número de identificación fiscal'>NIF</abbr>.</dd>
 
                                           </dl>",
    "documentacion_necesaria_cluster"   => "<dl class='formbox'>
@@ -231,11 +231,10 @@ return [
                                                    <dd>El certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                   <dt><strong>AUTORITZACIONS</strong>: (la sol·licitud implica l'autorització perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació)</dt>
-                                                      <dd>El <abbr title='Número d´identificació fiscal'>NIF</abbr> del sol·licitant i/o de la persona autoritzada i  els documents acreditatius, si és necessari.</dd>
-                                                      <dd>Certificat d’estar al corrent de pagament amb l´<abbr title='Agencia Estatal de Administració Tributaria'>AEAT</abbr>.</dd>
+                                                   <dt><strong>AUTORITZACIONS</strong>: (la sol·licitud implica l'autorització perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions amb l'Agència Tributària de les Illes Balears i amb la  Tresoreria General de la Seguretat Social, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació)</dt>
+                                                      <dd><abbr title='Número d´identificació fiscal'>NIF</abbr> del sol·licitant i/o de la persona autoritzada i  els documents acreditatius, si és necessari.</dd>
                                                       <dd>Certificat d’estar al corrent de pagament amb l´<abbr title='Agència Tributaria de les Illes Balears'>ATIB</abbr>.</dd>
-                                                      <dd>Certificat d’estar al corrent de pagament amb l´<abbr title='Tresoreria General de la Seguretat Social'>TGSS</abbr>.</dd>
+                                                      <dd>Certificat d’estar al corrent de pagament amb la <abbr title='Tresoreria General de la Seguretat Social'>TGSS</abbr>.</dd>
                                                    </dl>",
 
    "documentacion_necesaria_pymes_ils"     => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació relacionada amb el <strong>compliment dels requisits</strong>:</h3>
@@ -270,10 +269,10 @@ return [
    'si_no_aprovechar_info_asoc_a_NIF_ils'       => "Desitja usar-la en aquesta sol·licitud d'adhesió a ILS?",
    "logotipo_empresa_ils"                       => "Logotip de l'empresa que apareixerà en el nostre apartat d'empreses adherides",
    'video_empresa_ils'                              => "La URL del vídeo de presentació de l'empresa (publicat a Youtube o a Vimeo)",
-   'upload_multiple'              => "Pot pujar diversos documents alhora. Per a això, té dues opcions:
+   'upload_multiple'              => "Podeu pujar diversos documents alhora. Per a això, teniu dues opcions:
 											<ol>
-											<li>Quan els arxius <strong>no</strong> estiguin seguits en la carpeta o <strong>no estiguin en la mateixa carpeta</strong>: premeu la tecla <code>CTRL</code> i, sense deixar anar, marcau amb el ratolí els arxius corresponents.</li>
-											<li>Quan els arxius <strong>sí</strong> estiguin seguits <strong>en la mateixa carpeta</strong>: premeu la tecla <code>SHIFT</code> i, sense deixar anar, i prement el ratolí marqueu el primer dels arxius i després l'últim, i quederan tots seleccionats.</li>
+											<li>Quan els arxius <strong>no</strong> estiguin seguits en la carpeta o <strong>no estiguin en la mateixa carpeta</strong>, premeu la tecla <code>CTRL</code> i, sense deixar anar, marcau amb el ratolí els arxius corresponents.</li>
+											<li>Quan els arxius <strong>sí</strong> estiguin seguits <strong>en la mateixa carpeta</strong>, premeu la tecla <code>SHIFT</code> i, sense deixar anar, i prement el ratolí, marqueu el primer dels arxius i després l'últim, i quederan tots seleccionats.</li>
 											</ol>",
    'nifEmpresa'                  => "CIF empresa",                          
    'document_identificativos'    => "Al no donar consentiment, per favor, adjunti els documents identificatius:",											
@@ -288,16 +287,16 @@ return [
    'declaracion_minimis'                  => "DECLARACIÓ DE MINIMIS",
    'declaro'                              => "Declar:",
    'adjunto'                              => "Declaro que adjunt la següent documentació com a justificació de la convocatòria per a la concessió d'ajuts per al disseny de plans de transformació digital per a l'any 2022:",  
-   'declaracion_responsable_i'            => "I) Que complesc del reglament ( UE) núm. 1407/2013 de la Comissió de 18 de desembre de 2013, relatiu a l’aplicació dels articles 107 i 108 del Tractat de Funcionament de la Unió Europea de les ajudes de minimis. ",
-   'declaracion_responsable_ii'           => "II) Que durant els exercicis fiscals 2020, 2021 i 2022 he rebut un import total d’ajuts de minimis de:",
+   'declaracion_responsable_i'            => "I) Que complesc el reglament ( UE) núm. 1407/2013 de la Comissió de 18 de desembre de 2013, relatiu a l’aplicació dels articles 107 i 108 del Tractat de Funcionament de la Unió Europea de les ajudes de minimis. ",
+   'declaracion_responsable_ii'           => "II) Que durant els exercicis fiscals 2021, 2022 i 2023 he rebut un import total d’ajuts de minimis de:",
    'declaracion_datos_bancarios_cabecera'        => "DECLARACIÓ RESPONSABLE DE VERACITAT DE DADES BANCÀRIES APORTADES",
    'nom_entidad'						=> "Nom de la entitat bancària",
 	'domicilio_sucursal'				=> "Domicili de la sucursal / oficina",
 	'codigo_BIC_SWIFT'					=> "Codi BIC / SWIFT ex. AAAA-BB-CC-123",
    'declaracion_datos_bancarios_1'      => "a) La titularitat del compte bancari corresponent a les següents dades, a l'efecte de l'ingrés derivat del procediment citat a l'inici de la present declaració:",
    'declaracion_datos_bancarios_2'      => "Opció 1 - IBAN del compte per a Espanya (ES9999999999999999999999)",
-   'declaracion_datos_bancarios_3'      => "Opció 2 - Numeració del compte d'altres països (9999999999999999999999)",
-   'declaracion_datos_bancarios_4'      => "b) La possibilitat d'acreditar documentalment les dades que s'esmenten en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel delcarant.",
+   'declaracion_datos_bancarios_3'      => "Opció 2 - Número del compte d'altres països (9999999999999999999999)",
+   'declaracion_datos_bancarios_4'      => "b) La possibilitat d'acreditar documentalment les dades que s'esmenten en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
    'declaracion_datos_bancarios_5'      => "c) Que l'IDI, una vegada fets els ingressos en el compte indicat en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
    'descripcion_empresa_ils'            => "Descripció de l'empresa",
    'fecha_creacion_empresa_ils'        => "Data creació empresa",
@@ -307,7 +306,7 @@ return [
    'documentacion_adjunta_opcional_ils'          => "ALTRA DOCUMENTACIÓ OPCIONAL",
 
    'declaracion_responsable_cabecera_ils'       => "DECLARACIÓ RESPONSABLE",
-   'escritura_empresa_ils'                    => "Escriptura de constitució de l'empresa",
+   'escritura_empresa_ils'                    => "Escriptura de constitució de l’empresa",
    'memoria_tecnica_ils'               => "Document descriptiu de l’empresa i de la seva activitat: <ul>
    <li>S’ha d’adjuntar un document descriptiu de l’empresa i de la seva activitat.</li>
    </ul>
@@ -321,22 +320,22 @@ return [
    'autorizaciones_solicitud_ils'           => "5. AUTORITZACIONS",
 
    'informe_autodiagnostico'			=> "Informe Autodiagnosi Digital",
-   'memoria_tecnica'                    => "6.1. <strong>Descripció de l’empresa i de la seva activitat</strong>: <ul>
-                                             <li>En el cas de persones físiques i/o  jurídiques: s’ha d’adjuntar en format PDF una descripció de l’empresa i la seva activitat, així com el model de negoci, i necessitats de l’empresa en funció del programa al qual es presenti (necessitats digitals, necessitats d'internacionalització o en matèria de sostenibilitat).</li>
+   'memoria_tecnica'                    => "6.1. <strong>Descripció de l’empresa i de l’activitat</strong>: <ul>
+                                             <li>En el cas de persones físiques i/o  jurídiques: s’ha d’adjuntar en format PDF una descripció de l’empresa i la seva activitat, així com el model de negoci, i necessitats de l’empresa en funció del programa al qual es presenti (necessitats digitals, necessitats d’internacionalització o en matèria de sostenibilitat).</li>
                                              </ul>
    ",
-   'declaracion_datos_bancarios'      => "6.2. <strong>La veracitat de les dades bancàries</strong>. De conformitat amb el Decret 6/2013, de 8 de febrer, de mesures de simplificació documental dels procediments administratius, i la relació de documents del Catàleg de Simplificació Documental substituïbles per la presentació d'aquesta declaració,
+   'declaracion_datos_bancarios'      => "6.2. <strong>La veracitat de les dades bancàries</strong>. De conformitat amb el Decret 6/2013, de 8 de febrer, de mesures de simplificació documental dels procediments administratius, i la relació de documents del Catàleg de Simplificació Documental substituïbles per la presentació d’aquesta declaració,
    DECLAR:",
-   'eres_persona_fisica'                => "6.4. <strong>Si ets una persona física</strong>, adjuntar:<ul>
-                                                <li>El certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.</li>
+   'eres_persona_fisica'                => "6.4. <strong>Si sou una persona física</strong>, s’ha d’adjuntar:<ul>
+                                                <li>El certificat d’estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.</li>
                                                </ul>",
    
-   'certificado_IAE'                    => "Certificat de l'IAE.",
-   'cif_empresa'                        => "El CIF de l'empresa.",
+   'certificado_IAE'                    => "Certificat de l’IAE.",
+   'cif_empresa'                        => "El CIF de l’empresa.",
    'doc_Memoria_Tecnica'                => "Memòria tècnica de la seva activitat.",
    'doc_Sede_Social'                    => "Document acreditatiu de tenir la seu social a les Illes Balears.",
    'doc_certificado_IAE'                => "El certificat de l’IAE.",
-   'doc_alta_RETA'                      => "Certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.",
+   'doc_alta_RETA'                      => "Certificat d’estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.",
    'doc_Acreditativa_Repres'            => "Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d'ajuda.",
    'doc_Constitutivo_cluster'           => "Documentació de constitució del clúster.",
    'doc_Logo_Empresa'                   => "Logotip de l'empresa en format WEBP, JPEG o SVG.",
@@ -355,9 +354,9 @@ return [
    'solicito_cabecera_ils'              => "SOL·LICIT",
    'solicito_ils'                       => "Sol·licit la tramitació de la sol·licitud i la concessió de la marca ILS de l'empresa que represent.",
 
-   'eres_persona_juridica'              => "6.4. <strong>Si ets persona jurídica</strong>, adjuntar:",
+   'eres_persona_juridica'              => "6.4 a)",
    'eres_persona_juridica_nif_empresa'  =>   "Còpia del nùmero d'identificació fiscal de la societat.",
-   'eres_persona_juridica_doc_acreditativa'  =>   "Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d'ajuda com a representant de l'empresa beneficiària, com pot ser l'escriptura de poders de representació, la signatura de la sol·licitud amb el certificat digital de representació de l'empresa o documents similars.",   
+   'eres_persona_juridica_doc_acreditativa'  =>   "6.4 b) Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d'ajuda com a representant de l'empresa beneficiària, com pot ser l'escriptura de poders de representació, la signatura de la sol·licitud amb el certificat digital de representació de l'empresa o documents similars.",   
 
    'eres_cluster_o_ct'                  => "6.5. <strong>Si ets un clústers i/o centre tecnològic</strong>, adjuntar:<ul>
                                                 <li>Adjuntar en PDF el document constitutiu de l'entitat inscrita adequadament en el registre corresponent, amb les modificacions necessàries, si escau, per a l'acreditació de la personalitat jurídica del sol·licitant, així com poder suficient a favor del signant, en cas que aquest no figuri acreditat en l'escriptura, o certificat actualitzat del registre corresponent, en el qual s'especifiquin, en els supòsits en què sigui procedent, la data de constitució, l'objecte, el capital i la seu social, la composició del consell d'administració o la junta directiva, els apoderats i els socis que disposin de més d'un 10% i les participacions.	</li>
@@ -381,7 +380,7 @@ return [
    'declaracion_responsable_experiencia' => "Que compta amb experiència en treballs o projectes de transformació digital a indústries.",
    'declaracion_responsable_formacion'   => "Que té estudis de formació professional o de formació universitària en els àmbits S.T.E.M. (ciències, tecnologia, enginyeria o matemàtiques), economia o administració d’empreses.",
    'declaracion_responsable_xi'  => "XI) Que he iniciat, en un temps superior a dos anys, una activitat econòmica en el territori de les Illes Balears, amb domicili a les Illes Balears, i que no supero els paràmetres de la condició de pime.",
-   'declaracion_responsable_xii'  => "XII) Que no tinc la consideració d’empresa en crisis d’acord amb l’article 2.18 del Reglament ( UE) 651/2014 de la comissió de dia 17 de juny de 2014.",
+   'declaracion_responsable_xii'  => "XII) Que no tinc la consideració d’empresa en crisi d’acord amb l’article 2.18 del Reglament ( UE) 651/2014 de la comissió de dia 17 de juny de 2014.",
    'declaracion_responsable_xiii'  => "XIII) En el cas de  persones físiques o jurídiques que estan iniciant o ja han iniciat, en un temps superior a 2 anys, una activitat econòmica en el territori de les Illes Balears, amb domicili a les Illes Balears, i sempre que no superin els paràmetres de la condició de mitjana empresa.",
    'declaracion_responsable_xiv'  => "XIV) En el cas de persona física, declar estar  d'estar inscrita en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.",
    'declaracion_responsable_xv'  => "XV) En el cas de centres tecnològics i clústers de caràcter industrial, declar que els meus representants/associats tenen com a mínim un 40 % d'empreses amb IAE comprès entre els epígrafs punt 3.1 i 3.2  d’aquesta convocatòria. ",
@@ -435,20 +434,20 @@ return [
    'documento_informe_resumen_ils' => "Per favor, seleccioni l'arxiu o els arxius que contenen l'Informe resum de la petjada de carboni:",
    'documento_compromiso_reduccion_ils' => "Per favor, seleccioni l'arxiu o els arxius que contenen el Compromís de reducció de les emissions de gasos d'efecte hivernacle:",
 
-   'consentimiento_identificacion_solicitante'	=> "Don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment adjunt el NIF del sol·licitant i/o de la persona autoritzada i els documents acreditatius,  si s'escau.",
+   'consentimiento_identificacion_solicitante'	=> " Don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment, adjunt el NIF del sol·licitant i/o de la persona autoritzada i els documents acreditatius,  si s'escau.",
    'consentimiento_identificacion_solicitante_pdf'	=> " Don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa.",
 
    'declaracion_responsable_iii'      => "III) Que no he rebut cap subvenció atorgada per alguna entitat, pública o privada, nacional o estrangera, relacionada amb la realització de plans de transformació digital, plans  d’internacionalització, o bé amb la realització d’informes de la petjada de carboni corporativa.",
-   'declaracion_responsable_iv'      => "IV) Que no he rebut ajuts os subvencions d’altres administracions públiques, o d’altres ens públics o privats, nacionals o internacionals que, aïlladament o en concurrència, superi el 100 % del cost de l’activitat que hagi de desenvolupar l’empresa beneficiària.",
+   'declaracion_responsable_iv'      => "IV) Que no he rebut ajuts o subvencions d’altres administracions públiques, o d’altres ens públics o privats, nacionals o internacionals que, aïlladament o en concurrència, superi el 100 % del cost de l’activitat que hagi de desenvolupar l’empresa beneficiària.",
 
    'declaracion_responsable_x'         => "X) Que el consultor compleix amb el punt 7 de la convocatòria.",
 // 'doy_mi_consentimiento'          => "Que don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment adjunto el NIF del sol·licitant i de la persona autoritzada, si s'escau.",
-   'doy_mi_consentimiento_aeat_atib'   => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries (AEAT i de l’ATIB). En cas contrari, adjunt declaració de no consentiment i adjunt els certificats i la documentació corresponent.",
+   'doy_mi_consentimiento_aeat_atib'   => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries. En cas contrari, adjunt declaració de no consentiment i adjunt els certificats i la documentació corresponent.",
    'certificado_corriente_pago_aeat'   => "Certificat d'estar al corrent de pagaments amb l'Agència Tributària",
    'certificado_corriente_pago_ttss'   => "Certificat d'estar al corrent de pagaments amb la Tresoreria de la Seguretat Social",
    'documentos_opcionales_si_ya_los_tiene_admin' => "Els documents anteriors no s'hauran d'aportar quan ja constin en l'altre expedient, o l'Administració els pugui sol·licitar directament.",
    'doy_mi_consentimiento_seg_soc'     =>"Respecte de l'acreditació del requisit d'estar al corrent de les obligacions amb la Seguretat Social, la sol·licitud dels ajuts implica l'autorització perquè l’IDI pugui obtenir de la Tresoreria General de la Seguretat Social la informació acreditativa del compliment d'aquesta obligació, tret del cas de denegació expressa del consentiment, supòsit en què la persona o l'entitat sol·licitant ha d'aportar el certificat corresponent, juntament amb la sol·licitud dels ajuts en format PDF",
-   'doy_mi_consentimiento_pdf'         => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries (<abbr title='Agència Estatal de l´Administració Tributària'>AEAT</abbr> i de l’<abbr title='Agència Tributària de les Illes Balears'>ATIB</abbr>) i amb la <abbr title='Tressoreria General de la Seguretat Social'>TGSS</abbr>. En cas contrari, adjunt declaració de no consentiment i adjunt
+   'doy_mi_consentimiento_pdf'         => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries amb l’<abbr title='Agència Tributària de les Illes Balears'>ATIB</abbr> i la <abbr title='Tressoreria General de la Seguretat Social'>TGSS</abbr>. En cas contrari, adjunt declaració de no consentiment i adjunt
    els certificats i la documentació corresponent.",
 
    'declaracion_no_consentimiento'  => "Al no donar consentiment, per favor, adjunti certificat de compliment de les meves obligacions tributàries i amb la Tresoreria de la Seguretat Social.",
@@ -466,11 +465,11 @@ return [
 <p>Una vegada rebuda la resposta del responsable o en el cas que no hi hagi resposta en el termini d’un mes, la persona afectada pel tractament de les dades personals pot presentar la «Reclamació de tutela de drets» davant l’Agència Espanyola de Protecció de Dades.</p>
 <p><strong>Delegació de Protecció de Dades</strong>: la Delegació de Protecció de Dades de l’IDI té la seu a la plaça de Son Castelló, 1. 07009 Palma. Adreça electrònica: dpd@idi.es.</p>",
 
-'documentoEnIDI' => "aquest document ja es troba enpoder de l'IDI i no ha sofert modificacions <strong>(en aquest cas no cal aportar-ho)</strong>.",
-'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, en IDI",
-'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, en IDI",
-'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, en IDI.",
-'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, en IDI.",
+'documentoEnIDI' => "Aquest document ja es troba en poder de l'IDI i no ha sofert modificacions <strong>(en aquest cas no cal aportar-lo)</strong>.",
+'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, aquest document ja es troba en poder de l'IDI",
+'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, aquest document ja es troba en poder de l'IDI",
+'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, aquest document ja es troba en poder de l'IDI.",
+'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, aquest document ja es troba en poder de l'IDI.",
 'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació, en IDI.",
 
 'clausula_idi'  => "CLÀUSULA USUARI IDI",

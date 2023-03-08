@@ -10,8 +10,8 @@ class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
-        $image_file = K_PATH_IMAGES.'logo_idi_conselleria.png';
-        $this->Image($image_file, 10, 10, 90, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $image_file = K_PATH_IMAGES.'logo_idi_conselleria.jpg';
+        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
@@ -44,7 +44,8 @@ $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetMargins(15, 20, 15, true);
+//$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -73,7 +74,7 @@ $pdf->writeHTMLCell(90, '', 105, 20, $html1, 1, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html2 = lang('message_lang.intro_sol_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
+$html2 = lang('message_lang.intro_sol_idigital'); // "Convocatoria para la concesión de ayudas de cheques de consultoría para impulsar a la industria de Baleares en materia de digitalización, internacionalización y sostenibilidad";
 $pdf->writeHTML($html2, true, false, true, false, '');
 
 // --------------------------------------------------1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA-------------------------------------- //
@@ -107,7 +108,7 @@ $pdf->writeHTML($html5, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$html6 =  lang('message_lang.solicitante_tipo'); // TIPO DE EMPRESA
+$html6 =  lang('message_lang.solicitante_tipo'); // 2. TIPO DE SOLICITANTE
 $pdf->Cell(0, 10, $html6, 1, 1, 'C');
 
 if ($tipo_solicitante == "autonomo") {
@@ -118,9 +119,6 @@ else if ($tipo_solicitante == "pequenya") {
 	}
 else if ($tipo_solicitante == "mediana") {
 	$tipo_solicitante = lang('message_lang.solicitante_tipo_mediana');
-}
-else if ($tipo_solicitante == "cluster_ct") {
-	$tipo_solicitante = lang('message_lang.solicitante_tipo_cluster_ct');
 }
 
 $html7 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -135,10 +133,10 @@ $pdf->setY($currentY + 5);
 $html8 = lang('message_lang.identificacion_sol_idigital'); // DADES DE LA PERSONA SOL·LICITANT
 $pdf->Cell(0, 10, $html8, 1, 1, 'C');
 
-// ------------------------------------------------------------------4. NOTIFICACIÓN---------------------------------------------------------------------- //
+// ------------------------------------------------------------------3. INTERESADO---------------------------------------------------------------------- //
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 5); */
 $html9 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicitante_sol_idigital').": <b>".$empresa."</b> NIF: <b>".$nif."</b></td></tr>";
 $html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.nom_rep_legal_sol_idigital')." :  <b>". $nombre_rep ."</b> NIF: <b>" . $nif_rep . "</b></td></tr>";
@@ -148,7 +146,7 @@ $html9 .= "</table>";
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html9, true, false, true, false, '');
-$html10 = "4. ". lang('message_lang.notificacion_corto'); // "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)";
+$html10 = "4. ". lang('message_lang.notificacion_corto'); // "4. NOTIFICACIÓN (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)";
 $pdf->Cell(0, 10, $html10, 1, 1, 'C');
 
 $html11 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -159,8 +157,8 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html11, true, false, true, false, '');
 
-// ------------------------------------------------------------------5. DATOS DEL CONSULTOR---------------------------------------------------------------------- //
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------5. DATOS DEL CONSULTOR--------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $html12 = lang('message_lang.datos_cons_sol_idigital'); // "DADES DEL CONSULTOR";
 $pdf->Cell(0, 10, $html12, 1, 1, 'C');
 
@@ -178,9 +176,14 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html13, true, false, true, false, '');
 
-// ------------------------------------------------------------------6. DOCUMENTACIÓN ADJUNTA OBLIGATORIA---------------------------------------------------------------------- //
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------6. DOCUMENTACIÓN ADJUNTA OBLIGATORIA--------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// remove default header/footer
+$pdf->setPrintHeader(false);
 $pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 $html14 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
 $html14 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']." </h4>";
 $pdf->SetFillColor(230, 247, 255);
@@ -198,24 +201,31 @@ $html16 .= "<tr><td><ol>";
 if ( trim($file_memoriaTecnica) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.doc_Memoria_Tecnica')."</li>";		
 }
+if ( trim($memoriaTecnicaEnIDI) === "SI") { /* OK */
+	$html16 .= "<li>".lang('message_lang.memoriaTecnicaEnIDI_sinCambios')."</li>";		
+}
 if (trim( $file_altaAutonomos) === "SI") {
 	$html16 .= "<li>".lang('message_lang.doc_alta_RETA')."</li>";		
 }
 if ( trim($file_certificadoIAE) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.doc_certificado_IAE')."</li>";		
 }
+if ( trim($certificadoIAEEnIDI) === "SI") { /* OK */
+	$html16 .= "<li>".lang('message_lang.certificadoIAEEnIDI_sinCambios')."</li>";		
+}
 if ( trim($file_document_acred_como_repres) === "SI") { /* FAIL */
 	$html16 .= "<li>".lang('message_lang.doc_Acreditativa_Repres')."</li>";		
+}
+if ( trim($pJuridicaDocAcreditativaEnIDI) === "SI") { /* OK */
+	$html16 .= "<li>".lang('message_lang.pJuridicaDocAcreditativaEnIDI_sinCambios')."</li>";		
 }
 if ( trim($file_nifEmpresa) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.eres_persona_juridica_nif_empresa')."</li>";		
 }
-/* if ( trim($file_enviardocumentoIdentificacion) === "SI") {
-	$html16 .= "<li>".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";		
+if ( trim($copiaNIFSociedadEnIDI) === "SI") { /* OK */
+	$html16 .= "<li>".lang('message_lang.copiaNIFSociedadEnIDI_sinCambios')."</li>";		
 }
-if ( trim($file_certificadoATIB) === "SI") {
-	$html16 .= "<li>".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
-} */
+
 $html16 .= "</ol></td></tr>";
 $html16 .= "</table>";
 $currentY = $pdf->getY();
@@ -237,8 +247,8 @@ $html18 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'
 $html18 .= "<tr><td></td></tr>";
 $html18 .= "<tr><td><ul>";
 // $html18 .= "<li><b>".$file_copiaNIF."</b> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";		
-$html18 .= "<li><b>".$file_enviardocumentoIdentificacion."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";		
-$html18 .= "<li><b>".$file_certificadoATIB."</b> ".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
+$html18 .= "<li><b>".str_replace($file_enviardocumentoIdentificacion,'SI', 'SÍ')."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";		
+$html18 .= "<li><b>".str_replace($file_certificadoATIB,'SI', 'SÍ')."</b> ".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
 // $html18 .= "<li><b>".$file_certificadoSegSoc."</b> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";		
 $html18 .= "</ul></td></tr>";
 $html18 .= "</table>";
@@ -250,6 +260,9 @@ $pdf->writeHTML($html18, true, false, true, false, '');
 // ----------------------------------------------------------------------------------------------------------------------------------------------------- //
 // ----------------------------------------------8. DECLARACIÓN RESPONSABLE------------------------------------------------------------- //
 $pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 $html19 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
 $html19 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']." </h4>";
 $pdf->SetFillColor(230, 247, 255);
@@ -275,9 +288,9 @@ $pdf->Cell(0, 10, $html22, 1, 1, 'C');
 
 $html23 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html23 .= "<tr><td>".lang('message_lang.declaro');
-if ( $cumpleNormativaMinimos_dec_resp_1 == "SI ") {
+/* if ( $cumpleNormativaMinimos_dec_resp_1 == "SI ") { */
 	$html23 .= "<p>".lang('message_lang.declaracion_responsable_i')."</p>";
-}
+/* } */
 if ( $importe_minimis != 0) {
 	$html23 .= "<p>".lang('message_lang.declaracion_responsable_ii')."<br> $importe_minimis €</p>";
 }
@@ -309,7 +322,7 @@ if ( $veracidad_datos_bancarios_2 == "SI ") {
 if ( $veracidad_datos_bancarios_3 == "SI ") {
 	$html25 .= "<p>".lang('message_lang.declaracion_datos_bancarios_5')."</p>";
 }
-if ( $noHaRecibidoAyudas_dec_resp == "SI ") {
+/* if ( $noHaRecibidoAyudas_dec_resp == "SI ") {
 	$html25 .= "<p>".lang('message_lang.declaracion_responsable_iii')."</p>";
 }
 if ( $noHaRecibidoAyudas_otra_admin == "SI ") {
@@ -326,7 +339,7 @@ if ( $epigrafeIAE_dec_resp == "SI ") {
 }
 if ( $registroIndustrialMinero_dec_resp == "SI ") {
 	$html25 .= "<p>".lang('message_lang.declaracion_responsable_viii')."</p>";
-}
+} */
 $html25 .= "</td></tr>";
 $html25 .= "</table>";
 $currentY = $pdf->getY();
@@ -336,6 +349,9 @@ $pdf->writeHTML($html25, true, false, true, false, '');
 // ----------------------------------------------------------------------------------------------------------------------------------------------------- //
 // ----------------------------------------------La declaración responsable del solicitante (2)------------------------------------------------------------- //
 $pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 $html26 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
 $html26 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']." </h4>";
 $pdf->SetFillColor(230, 247, 255);
@@ -350,19 +366,38 @@ $pdf->Cell(0, 10, $html27, 1, 1, 'C');
 $html28 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html28 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.declaro')."</td></tr>";
 $html28 .= "<tr><td ><ul>";
-if ( $cumpleNormativaSegInd_dec_resp == "SI ") {
+
+/* if ( $declaracion_responsable_iii == "SI ") { */
+	$html28 .= "<p>".lang('message_lang.declaracion_responsable_iii')."</p>";
+/* }
+if ( $declaracion_responsable_iv == "SI ") { */
+	$html28 .= "<p>".lang('message_lang.declaracion_responsable_iv')."</p>";
+/* }
+if ( $declaracion_responsable_v == "SI ") { */
+	$html28 .= "<p>".lang('message_lang.declaracion_responsable_v')."</p>";
+/* }
+if ( $declaracion_responsable_vi == "SI ") { */
+	$html28 .= "<p>".lang('message_lang.declaracion_responsable_vi')."</p>";
+/* }
+if ( $declaracion_responsable_vii == "SI ") { */
+	$html28 .= "<p>".lang('message_lang.declaracion_responsable_vii')."</p>";
+/* }
+if ( $declaracion_responsable_viii == "SI ") { */
+	$html28 .= "<p>".lang('message_lang.declaracion_responsable_viii')."</p>";
+/* }
+if ( $declaracion_responsable_ix == "SI ") { */
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_ix')."</p>";
-}
-if ( $aceptaCondicionesConv_dec_resp == "SI ") {
+/* }
+if ( $declaracion_responsable_x == "SI ") { */
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_x')."</p>";
-}
-if ( $declaracion_responsable_consultor == "SI ") {
+/* }
+if ( $declaracion_responsable_xi == "SI ") { */
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xi')."</p>";
-}
-if ( $declaracion_responsable_xii == "SI ") {
+/* }
+if ( $declaracion_responsable_xii == "SI ") { */
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xii')."</p>";
-}
-if ( $declaracion_responsable_xiii == "SI ") {
+/* } */
+/* if ( $declaracion_responsable_xiii == "SI ") {
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xiii')."</p>";
 }
 if ( $declaracion_responsable_xiv == "SI ") {
@@ -373,7 +408,7 @@ if ( $declaracion_responsable_xv == "SI ") {
 }
 if ( $declaracion_responsable_xvi == "SI ") {
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xvi')."</p>";
-}
+} */
 $html28 .= "</ul></td></tr>";
 $html28 .= "</table>";
 
@@ -382,6 +417,9 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTML($html28, true, false, true, false, '');
 
 // ---------------------------------------------------------RGDP----------------------------------------------------------------- //
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
@@ -390,7 +428,7 @@ $html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffff
 $html29 .= "<tr><td style='text-align:center;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
 $html29 .= "</table>";
 $currentY = $pdf->getY();
-$pdf->setY($currentY);
+$pdf->setY($currentY+40);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 //$html29 .= "</section>";
 //$html29 .= "</content>";
