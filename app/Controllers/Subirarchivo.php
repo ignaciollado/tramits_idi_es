@@ -36,7 +36,7 @@ use App\Models\ConfiguracionModel;
 
 		date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
-		/* -----------------------------DOCUMENTACIÓN XECS----------------------------------------------- */
+		/* -----------------------------DOCUMENTACIÓN LINEA CHEQUES----------------------------------------------- */
 
 		$documentosfile = $this->request->getFiles();
 		
@@ -282,6 +282,8 @@ use App\Models\ConfiguracionModel;
 		$last_insert_id = $save_exp->connID->insert_id;
 		$data_exp ['selloDeTiempo'] = $selloTiempo;
 		$data_exp ['last_insert_id'] = $last_insert_id;
+
+		/* var_dump($save_exp); */
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
 		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {

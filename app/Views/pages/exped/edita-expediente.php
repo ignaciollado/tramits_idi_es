@@ -292,6 +292,7 @@
 			        <div >Document</div>
     		        <div >Tràmit</div>
 			        <div >Estat</div>
+                    <div >Acció</div>
   		        </div>
                 <?php if($documentos){ ?>
                 <?php foreach($documentos as $docs_item): 
@@ -400,19 +401,43 @@
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
     					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span class="detail-wrapper-docs-col">
+                            <?php 
+                            switch ($docs_item->corresponde_documento) {
+                                case 'file_escritura_empresa':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
+                                    break;
+    				            case 'file_certificadoIAE':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
+                                    break;
+                                case 'file_informeResumenIls':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-resumen-ils.php'; 
+                                    break;
+                                case 'file_informeInventarioIls':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-geh-ils.php';
+                                    break;
+                                case 'file_certificado_itinerario_formativo':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-itinerario-formativo-ils.php';
+	    				            break;
+                                case 'file_modeloEjemploIls':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-compromiso-reduccion-ils.php';
+	    				            break;
+                            } 
+                            ?>
+                            </span>                            
   			            </div>
                           <?php }?>
                 <?php endforeach; ?>
@@ -430,6 +455,7 @@
 			            <div >Document</div>
     		            <div >Tràmit</div>
 			            <div >Estat</div>
+                        <div >Acció</div>
   		            </div>
                     <?php if($documentos){ ?>
                     <?php foreach($documentos as $docs_opc_item): 
@@ -483,6 +509,7 @@
                                 }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocNoRequerido"><strong>Elimina</strong></button>';?></span>
   			            </div>
                     <?php }?>
                     <?php endforeach; ?>
@@ -492,7 +519,24 @@
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
-
+            <div id="myModalDocNoRequerido" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-header">
+        		            Aquesta acció no es podrá desfer.
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+    			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
+                            <div class="modal-footer">
+    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  	
 
             <br>
             <div class="alert alert-info">

@@ -173,6 +173,7 @@ function cambiaEstadoDoc(id) {
 
 	let element = document.getElementById(id)
 	let buttonID = id.split("#")[3]
+	
 	switch (buttonID) {
 		case 'file_escritura_empresa':
 			buttonID = "myBtnEnviarFormularioEscrituraEmpresa"
@@ -203,7 +204,7 @@ function cambiaEstadoDoc(id) {
 			break		
 	}
 	let button = document.getElementById(buttonID)
-
+	console.log(id, buttonID, button)
 	element.style.color = "yellow";
 	let estado = '';
 	let stateChanged = false;
@@ -647,6 +648,7 @@ function actualiza_fase_1_solicitud_expediente(formName) {  //SE EMPLEA
 		}
 	);
 }
+
 function actualiza_fase_1_solicitud_expediente_ils(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		alert ("nada que actualizar")
@@ -693,6 +695,7 @@ function actualiza_fase_1_solicitud_expediente_ils(formName) {  //SE EMPLEA
 		}
 	);
 }
+
 function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
@@ -732,6 +735,7 @@ function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 		}
 	);
 }
+
 function actualiza_fase_2_validacion_expediente_ils(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
@@ -768,6 +772,7 @@ function actualiza_fase_2_validacion_expediente_ils(formName) {  //SE EMPLEA
 		}
 	);
 }
+
 function actualiza_fase_3_ejecucion_expediente(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
@@ -818,6 +823,7 @@ function actualiza_fase_3_ejecucion_expediente(formName) {  //SE EMPLEA
 		}
 	);
 }
+
 function actualiza_fase_3_ejecucion_expediente_ils(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
@@ -858,6 +864,7 @@ function actualiza_fase_3_ejecucion_expediente_ils(formName) {  //SE EMPLEA
 		}
 	);
 }
+
 function actualiza_fase_4_justificacion_expediente(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
@@ -904,6 +911,7 @@ function actualiza_fase_4_justificacion_expediente(formName) {  //SE EMPLEA
 		}
 	);
 }
+
 function actualiza_fase_5_desestimiento_expediente(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
@@ -984,6 +992,7 @@ function avisarCambiosEnFormulario(fase, elemento) {
 
 	document.getElementById(fase).className = "error-msg";
 }
+
 function actualizaFechaConsultoria(fechaAct, addMeses) {
 	document.getElementById("fecha_kick_off").value = fechaAct;
 	document.getElementById("fecha_kick_off_modal").value = fechaAct;
@@ -1027,6 +1036,7 @@ function actualizaFechaConsultoria(fechaAct, addMeses) {
 			resultadoP.setAttribute("border", "2");
 		});
 }
+
 function actualizaFechasILS(fechaAdhesion) {
 	let d = new Date(fechaAdhesion);
 	d.setFullYear(d.getFullYear() + 1) // Fecha seguimiento es fecha Adhesión + 1 año
@@ -1049,6 +1059,7 @@ function actualizaFechasILS(fechaAdhesion) {
 			document.getElementById("fecha_renovacion").value = nuevaFechaRenovacionAdhesion;
 		});
 }
+
 function actualizaFechas(fechaCierre, dias) {
 	let d = new Date(fechaCierre);
 	d.setDate(d.getDate() + dias);
@@ -1076,9 +1087,11 @@ function actualizaFechas(fechaCierre, dias) {
 			resultadoP.setAttribute("border", "2");
 		});
 }
+
 function actualizaRequired(valor) {
 
 }
+
 function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimiento").value;
 	let id = document.getElementById("id").value;
@@ -1099,6 +1112,7 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 	let textoMotivoReq = document.getElementById("motivoRequerimientoIls").value;
 	let id = document.getElementById("id").value;
@@ -1119,6 +1133,7 @@ function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 		}
 	);
 }
+
 function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoInicioRequerimiento").value;
 	let id = document.getElementById("id").value;
@@ -1139,6 +1154,7 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoRequerimientoSubsanacion_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimientoSubsanacion").value;
 	let id = document.getElementById("id").value;
@@ -1159,6 +1175,7 @@ function actualizaMotivoRequerimientoSubsanacion_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoInformeSobreSubsanacion_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoSobreSubsanacion").value;
 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value;
@@ -1181,6 +1198,7 @@ function actualizaMotivoInformeSobreSubsanacion_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 	let textoMotivoRenuncia = document.getElementById("motivoDesestimientoRenuncia").value;
 	let id = document.getElementById("id").value;
@@ -1201,6 +1219,7 @@ function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_8").value;
 	let id = document.getElementById("id").value;
@@ -1221,6 +1240,7 @@ function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_9").value;
 	let id = document.getElementById("id").value;
@@ -1241,6 +1261,7 @@ function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDesfavorable_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfSinReq").value;
 	let id = document.getElementById("id").value;
@@ -1260,6 +1281,7 @@ function actualizaMotivoDesfavorable_click() {
 		}
 	);
 }
+
 function actualizaMotivoDesfavorableConReqIls_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReqIls").value;
 	let id = document.getElementById("id").value;
@@ -1282,6 +1304,7 @@ function actualizaMotivoDesfavorableConReqIls_click() {
 		}
 	);
 }
+
 function actualizaMotivoDesfavorableConReq_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
 	let id = document.getElementById("id").value;
@@ -1304,6 +1327,7 @@ function actualizaMotivoDesfavorableConReq_click() {
 		}
 	);
 }
+
 function enviaAFirmaRequerimiento_click(parametro) {
 	$("#enviaAFirmaRequerimiento", parametro)
 		.html("Actualitzant, un moment per favor.")
@@ -1922,3 +1946,20 @@ async function obtieneEstadoDelaFirma (publicId) {
 		document.getElementById ("estat_signatura").innerHTML = estadoFirma;
 		});
 }
+
+
+function docNoRequerido_click (id, nombre) {
+	document.cookie = "documento_actual = " + id;
+	console.log (id);
+}
+
+function eliminaDocNoRequerido_click() {
+	console.log (getCookie("documento_actual"));
+	let id = getCookie("documento_actual");
+	console.log (getCookie("nuevo_estado"));
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+	location.reload();
+});	
+}
+

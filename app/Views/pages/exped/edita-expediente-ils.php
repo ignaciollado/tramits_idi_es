@@ -444,15 +444,15 @@
                 </div>
             </div>  	
             <script>
-                function docNoRequerido_click (id, nombre) {
+                /* function docNoRequerido_click (id, nombre) {
     	        document.cookie = "documento_actual = " + id;
 	            console.log (id);
-                }
+                } */
                 function opcion_seleccionada_click(respuesta) {
     	        document.cookie = "respuesta = " + respuesta;
 	            console.log (respuesta);
                 }
-                function eliminaDocNoRequerido_click() {
+/*                 function eliminaDocNoRequerido_click() {
     	        console.log (getCookie("documento_actual"));
 	            let id = getCookie("documento_actual");
 	            console.log (getCookie("nuevo_estado"));
@@ -460,7 +460,7 @@
 	            $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
     			    location.reload();
 			    });	
-                }
+                } */
                 function getCookie(cname) {
                 var name = cname + "=";
                 var decodedCookie = decodeURIComponent(document.cookie);
