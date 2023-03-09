@@ -195,14 +195,18 @@ function cambiaEstadoDoc(id) {
 			break
 		case 	'file_enviardocumentoIdentificacion':
 			buttonID = "myBtnEnviarFormularioDocumentoIdentificacion"
-			break			
+			break
 		case 	'file_certificadoATIB':
 			buttonID = "myBtnEnviarFormularioCertificadoATIB"
-			break			
+			break
 		case 	'file_certificadoSegSoc':
 			buttonID = "myBtnEnviarFormularioCertificadoSegSoc"
-			break		
+			break
+		case 'file_altaAutonomos':
+			buttonID = "myBtnEnviarFormularioAltaAutonomos"
+			break
 	}
+
 	let button = document.getElementById(buttonID)
 	console.log(id, buttonID, button)
 	element.style.color = "yellow";
@@ -234,7 +238,7 @@ function cambiaEstadoDoc(id) {
 		button.classList.add("btn-primary")
 		estado = 'Rebutjat'
 		stateChanged = true
-		actualizaMotivoRequerimientoIls_click()
+/* 		actualizaMotivoRequerimientoIls_click() */
 	}
 	if (element.innerHTML === 'Rebutjat' && !stateChanged) {
 		element.classList.remove("isa_error")

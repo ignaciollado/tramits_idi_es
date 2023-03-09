@@ -278,7 +278,13 @@
 					<span class="w3docs"></span>
 				</label>
 			</fieldset>
-			
+
+			<h3>6.5. <strong><?php echo lang('message_lang.certificado_corriente_pago_aeat');?></strong></h3>
+			<div id = "file_certificadoAEAT_container" class="ocultar">
+				 <code>[.pdf]:</code>
+				<input type = "file" id="file_certificadoAEAT" name="file_certificadoAEAT[]" size="50" accept=".pdf" multiple required aria-required="true" onblur="javaScript: validateFormField(this);"/>
+			</div>		
+
 		</fieldset>		
 	</div>
 	<div id="formbox">	

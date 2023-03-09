@@ -215,6 +215,7 @@ return [
                                                 <dd>Una descripció de l’empresa i de l'activitat, així com del model de negoci.</dd>
                                                 <dd>Certificat d’estar d’alta en el <abbr title='Régimen especial de trabajadores autónomos'>RETA</abbr> o en un règim alternatiu equivalent.</dd>
                                                 <dd>Certificat d’alta d'<abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
+                                                <dd>Certificat d'estar al corrent de pagaments amb l'<abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_pymes"     => "<dl class='formbox'>
                                                 <dt>En el cas de PIMES</dt>
@@ -222,7 +223,7 @@ return [
                                                 <dd>Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d’ajut com a representant de l’empresa beneficiària.</dd>
                                                 <dd>Certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                                 <dd><abbr title='Número de identificación fiscal'>NIF</abbr>.</dd>
-
+                                                <dd>Certificat d'estar al corrent de pagaments amb l'<abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
                                           </dl>",
    "documentacion_necesaria_cluster"   => "<dl class='formbox'>
                                                 <dt>Per als clústers i/o centres tecnològics</dt>
@@ -311,7 +312,7 @@ return [
    <li>S’ha d’adjuntar un document descriptiu de l’empresa i de la seva activitat.</li>
    </ul>
                                           ",
-   'documentacion_adjunta'              => "6. DOCUMENTACIÓ ADJUNTA OBLIGATÒRIA",
+   'documentacion_adjunta'              => "6. DOCUMENTACIÓ ADJUNTA",
    'autorizaciones_solicitud'           => "7. AUTORITZACIONS",
    'expongo_cabecera_ils'                        => "EXPÒS",
    'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓ REQUERIDA ADJUNTADA",
@@ -443,7 +444,7 @@ return [
    'declaracion_responsable_x'         => "X) Que el consultor compleix amb el punt 7 de la convocatòria.",
 // 'doy_mi_consentimiento'          => "Que don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment adjunto el NIF del sol·licitant i de la persona autoritzada, si s'escau.",
    'doy_mi_consentimiento_aeat_atib'   => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries. En cas contrari, adjunt declaració de no consentiment i adjunt els certificats i la documentació corresponent.",
-   'certificado_corriente_pago_aeat'   => "Certificat d'estar al corrent de pagaments amb l'Agència Tributària",
+   'certificado_corriente_pago_aeat'   => "Certificat d'estar al corrent de pagaments amb l'AEAT",
    'certificado_corriente_pago_ttss'   => "Certificat d'estar al corrent de pagaments amb la Tresoreria de la Seguretat Social",
    'documentos_opcionales_si_ya_los_tiene_admin' => "Els documents anteriors no s'hauran d'aportar quan ja constin en l'altre expedient, o l'Administració els pugui sol·licitar directament.",
    'doy_mi_consentimiento_seg_soc'     =>"Respecte de l'acreditació del requisit d'estar al corrent de les obligacions amb la Seguretat Social, la sol·licitud dels ajuts implica l'autorització perquè l’IDI pugui obtenir de la Tresoreria General de la Seguretat Social la informació acreditativa del compliment d'aquesta obligació, tret del cas de denegació expressa del consentiment, supòsit en què la persona o l'entitat sol·licitant ha d'aportar el certificat corresponent, juntament amb la sol·licitud dels ajuts en format PDF",

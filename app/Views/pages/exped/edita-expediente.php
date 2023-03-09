@@ -1,11 +1,6 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-<!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
     <?php 
@@ -423,17 +418,8 @@
     				            case 'file_certificadoIAE':
                                     include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
                                     break;
-                                case 'file_informeResumenIls':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-resumen-ils.php'; 
-                                    break;
-                                case 'file_informeInventarioIls':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-informe-geh-ils.php';
-                                    break;
-                                case 'file_certificado_itinerario_formativo':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-itinerario-formativo-ils.php';
-	    				            break;
-                                case 'file_modeloEjemploIls':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-solicitud-compromiso-reduccion-ils.php';
+                                case 'file_altaAutonomos':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-alta-autonomos.php';
 	    				            break;
                             } 
                             ?>
@@ -441,6 +427,10 @@
   			            </div>
                           <?php }?>
                 <?php endforeach; ?>
+                    <div >
+                        <button class='hide-button' id="requeriment-button" onclick = "javaScript: generaRequerimiento(<?php echo $expedientes['id']; ?>);">Generar el requeriment</button>
+<!--                         <button class='hide-button' id="adhesion-button" onclick = "javaScript: generaResolucionAdhesion(<?php echo $expedientes['id']; ?>);">Generar la resolució de concessió</button> -->
+                    </div>
                 <?php } else { 
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
@@ -803,10 +793,10 @@
                 <?php }?>                  
         </form>
         </div>        
-    	    <script>
+<!--     	    <script>
 		        $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
 		        $('#tel_consultor').mask('999999999');
-	        </script>
+	        </script> -->
 
             <?php foreach($config_fechas_limite as $config_item): 
 	                $dias_fecha_lim_justificar	= $config_item->dias_fecha_lim_justificar;

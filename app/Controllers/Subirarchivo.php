@@ -52,6 +52,12 @@ use App\Models\ConfiguracionModel;
 			$file_certificadoIAE = "SI";
 	 	}
 
+		if ( !$documentosfile['file_certificadoAEAT'][0]->getName() ){
+			$file_certificadoAEAT = "NO";
+	 	} else {
+			$file_certificadoAEAT = "SI";
+	 	}		
+
 		if ($tipoSolicitante === 'autonomo'){
 			if ( !$documentosfile['file_altaAutonomos'][0]->getName() ){
 				$file_altaAutonomos = "NO";
@@ -244,6 +250,7 @@ use App\Models\ConfiguracionModel;
 				'file_document_acred_como_repres' => $file_document_acred_como_repres,
 				'file_enviardocumentoIdentificacion' => $file_enviardocumentoIdentificacion ,
 				'file_certificadoATIB' => $file_certificadoATIB,
+				'file_certificadoAEAT' => $file_certificadoAEAT,
 
 				'cumpleRequisitos_participacion_dec_resp' => $cumpleRequisitos_dec_resp,
 				'ayudasSubvenSICuales_dec_resp' => $this->request->getVar('ayudasSubvenSICuales_dec_resp'),
@@ -282,8 +289,6 @@ use App\Models\ConfiguracionModel;
 		$last_insert_id = $save_exp->connID->insert_id;
 		$data_exp ['selloDeTiempo'] = $selloTiempo;
 		$data_exp ['last_insert_id'] = $last_insert_id;
-
-		/* var_dump($save_exp); */
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
 		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
@@ -413,6 +418,31 @@ use App\Models\ConfiguracionModel;
 				}
 		}
 		/* ------------------------------------------------------------------------------------------------------------------ */
+		/* ---------- corriente pago obligaciones AEAT, múltiples documentos--------OK---------- */
+		if (isset($documentosfile['file_certificadoAEAT'])) {
+			foreach($documentosfile['file_certificadoAEAT'] as $certificadoAEAT)
+				{
+					if ($certificadoAEAT->isValid() && ! $certificadoAEAT->hasMoved())
+						{
+						$certificadoAEAT->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoAEAT->getRandomName());
+						$data_file = [
+							'name' => $certificadoAEAT->getName(),
+							'type' => $certificadoAEAT->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipoTramite,
+							'corresponde_documento' => 'file_certificadoAEAT',
+							'datetime_uploaded' => time(),
+							'convocatoria' => $convocatoria,
+							'docRequerido' => 'SI',
+							'created_at'  => $certificadoAEAT->getTempName(),
+							'selloDeTiempo'  => $selloTiempo,
+							'id_sol'         => $last_insert_id
+							];
+							$save = $documentos->insert($data_file);
+						}
+				}
+		}	
+		/* ------------------------------------------------------------------------------------------------------------------- */
 		/* -------------------- documento identificativo al NO autorización a IDI comprobar dni, múltiples documentos---OK--- */
 		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
 			foreach($documentosfile['file_enviardocumentoIdentificacion'] as $enviardocumentoIdentificacion)

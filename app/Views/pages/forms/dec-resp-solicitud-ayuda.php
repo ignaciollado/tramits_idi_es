@@ -225,6 +225,9 @@ if ( trim($file_nifEmpresa) === "SI") { /* OK */
 if ( trim($copiaNIFSociedadEnIDI) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.copiaNIFSociedadEnIDI_sinCambios')."</li>";		
 }
+if ( trim($file_certificadoAEAT) === "SI") { /* OK */
+	$html16 .= "<li>".lang('message_lang.certificado_corriente_pago_aeat')."</li>";		
+}
 
 $html16 .= "</ol></td></tr>";
 $html16 .= "</table>";

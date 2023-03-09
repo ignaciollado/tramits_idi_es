@@ -165,44 +165,15 @@ function tipoSolicitante (valor)
 				dChild.setAttribute("placeholder", "Selecciona l'alta en el RETA o en un règim alternatiu equivalent")
 				dChild.setAttribute("title", "Selecciona l'alta en el RETA o en un règim alternatiu equivalent")
 
-				/* element.removeChild(eChild) */
-
 				document.getElementById("declaracion_responsable_xii").checked = true;
 				document.getElementById("declaracion_responsable_xii_lbl").style.display = "block";
 				document.getElementById("nif").placeholder = 'DNI / NIE';
 				document.getElementById("nif").title = 'DNI / NIE';
 				//document.getElementById("denom_interesado").setAttribute("placeholder", "Nom");
 				//document.getElementById("denom_interesado").setAttribute("title", "Nom");
+				/* element.removeChild(eChild) */
 				break;
 			case 'pequenya':
-/* 			element.appendChild(aChild) 
-				element.appendChild(bChild) 
-				document.getElementById("pFisica").classList.add('ocultar')
-				document.getElementById("pJuridica").classList.remove('ocultar')
-				document.getElementById("copiaNIFSociedadFieldSet").classList.remove('ocultar')
-				document.getElementById("pJuridicaNIFEmpresa").classList.remove('ocultar')
-				document.getElementById("pJuridicaDocAcreditativa").classList.remove('ocultar')
-
-				eChild.setAttribute("id", "file_nifEmpresa")
-				eChild.setAttribute("name", "file_nifEmpresa[]")
-				eChild.setAttribute("placeholder", "Selecciona el document NIF de l'empresa")
-				eChild.setAttribute("title", "Selecciona el document NIF de l'empresa")
-
-				dChild.setAttribute("id", "file_document_acred_como_repres")
-				dChild.setAttribute("name", "file_document_acred_como_repres[]")
-				dChild.setAttribute("placeholder", "Selecciona el document acreditatiu de representant")
-				dChild.setAttribute("title", "Selecciona el document acreditatiu de representant")
-
-				document.getElementById("declaracion_responsable_xii").checked = true;
-				document.getElementById("declaracion_responsable_xii_lbl").style.display = "block";
-				document.getElementById("nif").placeholder = 'NIF';
-				document.getElementById("nif").title = 'NIF';
-				document.getElementById("denom_interesado").setAttribute("placeholder", "Raó social");
-				document.getElementById("denom_interesado").setAttribute("title", "Raó social");
-
-				elementDocNifEmpresa.appendChild(eChild)
-				break; */
-
 			case 'mediana':
 				elementDocNifEmpresa.classList.remove('ocultar') 
 				element.appendChild(aChild) /* Añado campo nombre representante */

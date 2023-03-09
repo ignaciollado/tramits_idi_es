@@ -219,6 +219,7 @@ return [
                                                 <dd>Una descripción de la empresa y de su actividad, así como el modelo de negocio.</dd>
                                                 <dd>El certificado de estar de alta en el <abbr title='Régimen especial de trabajadores autónomos'>RETA</abbr> o en un régimen alternativo equivalente.</dd>
                                                 <dd>El certificado de alta del <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
+                                                <dd>Certificado de estar al corriente de pago con la <abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_pymes"     => "<dl class='formbox'>
                                                 <dt>En el caso de PYMES</dt>
@@ -226,6 +227,7 @@ return [
                                                 <dd>Documentación acreditativa de las facultades de representación de la persona que firma la solicitud de ayuda como representante de la empresa beneficiaria.</dd>
                                                 <dd>Certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                                 <dd><abbr title='Número de identificación fiscal'>NIF</abbr>.</dd>
+                                                <dd>Certificado de estar al corriente de pago con la <abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
                                           </dl>",
    "documentacion_necesaria_cluster"   => "<dl class='formbox'>
                                                 <dt>Para los clusters y/o centros tecnológicos</dt>
@@ -311,7 +313,7 @@ return [
    <li>Adjuntar un documento descriptivo de la empresa y de su actividad.</li>
    </ul>
 ",
-   'documentacion_adjunta'              => "6. DOCUMENTACIÓN ADJUNTA OBLIGATORIA",      
+   'documentacion_adjunta'              => "6. DOCUMENTACIÓN ADJUNTA",      
    'autorizaciones_solicitud'           => "7. AUTORIZACIONES",
    'expongo_cabecera_ils'                        => "EXPONGO",
    'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓN REQUERIDA ADJUNTADA",
@@ -433,7 +435,7 @@ return [
 'declaracion_responsable_x'            => "X) Que el consultor cumple con el punto 7 de la convocatoria.",
 // 'doy_mi_consentimiento'          => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares pueda comprobar de oficio la identificación de la persona solicitante y/o la persona autorizada por la empresa. En caso de denegación expresa del consentimiento adjunto el NIF del solicitante y de la persona autorizada, si se tercia.",    
 'doy_mi_consentimiento_aeat_atib'   => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias (de la ATIB). En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
-'certificado_corriente_pago_aeat'   => "Certificado de estar al corriente de pagos con la Agencia Tributaria",
+'certificado_corriente_pago_aeat'   => "Certificado de estar al corriente de pagos con la AEAT",
 'certificado_corriente_pago_ttss'   => "Certificado de estar al corriente de pagos con la Tesorería de la Seguridad Social",
 'documentos_opcionales_si_ya_los_tiene_admin' => "Los documentos anteriores no se deberán aportar cuando ya consten en el otro expediente, o la Administración los pueda solicitar directamente.",
 'doy_mi_consentimiento_seg_soc'     =>"Respecto a la acreditación del requisito de estar al corriente de las obligaciones con la Seguridad Social, la solicitud de las ayudas implica la autorización para que el IDI pueda obtener de la Tesorería General de la Seguridad Social la información acreditativa del cumplimiento de esta obligación, excepto en caso de denegación expresa del consentimiento, supuesto en que la persona o la entidad solicitante tiene que aportar el certificado correspondiente, junto con la solicitud de las ayudas en formato PDF.",
