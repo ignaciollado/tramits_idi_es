@@ -23,11 +23,12 @@
         <h2 class="card-title"><?php echo  $row->empresa;?></h2>
         <p class="card-text"><?php echo  $row->nif;?></p>
         <p class="card-text"><?php echo  $row->domicilio;?></p>
-        <p class="card-text"><?php echo  $row->localidad;?></p>
+        <?php $localidad = explode("#", $row->localidad);?>
+        <p class="card-text"><?php echo  $localidad[1]." (".$localidad[0].")";?></p>
         <p class="card-text"><?php echo  $row->telefono;?></p>
         <p class="card-text"><a target="_blank" href="<?php echo "https://". $row->sitio_web_empresa;?>"><?php echo  $row->sitio_web_empresa;?></a></p>
-        <p class="card-text"><?php echo  $row->video_empresa;?></p>
-        <p class="card-text"><?php echo  $row->fecha_creacion_empresa;?></p>
+        <p class="card-text"><a target="_blank" href="<?php echo $row->video_empresa;?>"><?php echo  $row->video_empresa;?></a></p>
+        <p class="card-text"><?php If ($row->fecha_creacion_empresa != '0000-00-00') {echo  date_format(date_create($row->fecha_creacion_empresa),"d/m/Y");}?></p>
         <p class="card-text"><?php echo  $row->canales_comercializacion_empresa;?></p>
       </div>
     </article>

@@ -9,17 +9,14 @@ class Configuracion extends Controller
     {
 		$language = \Config\Services::language();
 		$language->setLocale('ca');
+		$modelConfig = new ConfiguracionModel();
 		$db = \Config\Database::connect();
-		$query   = $db->query('SELECT * FROM pindust_configuracion');
-		$data['convos'] = $query->getResult();
+		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
 		$data['titulo'] = "Configuració del gestor d'ajuts i de subvencions";
-		echo $db->getLastQuery();
-		echo $db->affectedRows();
-		echo $db->getPlatform();
-		echo $db->getVersion();
-		
+		//echo $db->getPlatform()." ";
+		//echo $db->getVersion();
 		echo view('templates/header/header', $data);	
-    echo view('pages/exped/configurador-gestor', $data);
+        echo view('pages/exped/configurador-gestor');
 		echo view('templates/footer/footer');	
     }  
 	
@@ -35,12 +32,12 @@ class Configuracion extends Controller
 			'mail_registro' => $this->request->getVar('mail_registro'),
 			'programa' => $this->request->getVar('programa'),
 			'convocatoria' => $this->request->getVar('convocatoria'),
-            'num_BOIB' => $this->request->getVar('num_BOIB'),
+      'num_BOIB' => $this->request->getVar('num_BOIB'),
 			'num_BOIB_modific' => $this->request->getVar('num_BOIB_modific'),
-			'respresidente' => $this->request->getVar('respresidente'),
+			'resPresidente' => $this->request->getVar('respresidente'),
 			'directorGeneralPolInd' => $this->request->getVar('directorGeneralPolInd'),
 			'directorGerenteIDI' => $this->request->getVar('directorGerenteIDI'),
-			'fechaLimiteProgramas' => $this->request->getVar('fechaLimiteProgramas'),
+			/* 'fechaLimiteProgramas' => $this->request->getVar('fechaLimiteProgramas'), */
 			'convocatoria_desde' =>  date('Y-m-d H:i:s',strtotime(str_replace("/","-",$this->request->getVar('convocatoria_desde')))),
 			'convocatoria_hasta' =>  date('Y-m-d H:i:s',strtotime(str_replace("/","-",$this->request->getVar('convocatoria_hasta')))),
             'convocatoria_aviso_es' => $this->request->getVar('convocatoria_aviso_es'),
@@ -49,10 +46,9 @@ class Configuracion extends Controller
 			'emisorDIR3' => $this->request->getVar('emisorDIR3'),
 			'codigoSIA' => $this->request->getVar('codigoSIA')
             ];
- 
-        $builder->where('id', $this->request->getVar('id'));
+		var_dump($data);
+    $builder->where('id', $this->request->getVar('id'));
 		$save = $builder->update($data);
-		
 		
 		$modelConfig = new ConfiguracionModel();
 		$db = \Config\Database::connect();

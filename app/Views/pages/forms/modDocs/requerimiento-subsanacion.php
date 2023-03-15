@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myRequerimientoSubsanacion" id="myBtnRequerimientoSubsanacion">Motiu del requeriment</button>
+			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myRequerimientoSubsanacion" id="myBtnRequerimientoSubsanacion">Motiu del requeriment</button>
 			<span id="btn_18" class="">
     			<a id="wrapper_generadoc_req_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requerimiento_subsanacion');?>" class="btn-primary-itramits">Envia a la firma <br>de Gerència IDI</a>
 			</span>			
@@ -62,13 +62,13 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
  <!-- The Modal -->
- <div id="myRequerimientoSubsanacion" class="modal fade" role="dialog">
+ <div class="modal" id="myRequerimientoSubsanacion">
 				<div class="modal-dialog">
                 <!-- Modal content-->
     			<div class="modal-content" style = "width: 80%;">
       				<div class="modal-header">
-      					<label for="motivoRequerimientoSubsanación"><strong>Escriu el motiu del requeriment d'esmena:</strong></label>
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Motiu del requeriment d'esmena:</h4>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
 						<div class="form-group">
@@ -77,31 +77,10 @@
         				</div>
 						<div class="form-group">
            				<button type="button" onclick = "javaScript: actualizaMotivoRequerimientoSubsanacion_click();" id="guardaMotivoRequerimientoSubsanacion" 
-							class="btn-itramits btn-success-itramits">Guarda</button>
+							class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
         				</div>				
     					</div>
   					</div>
 				</div>
 		</div>
-				<script>
-					// Get the modal
-					let modal_18 = document.getElementById("myRequerimientoSubsanacion");
-					// Get the button that opens the modal
-					let btn_18 = document.getElementById("myBtnRequerimientoSubsanacion");
-					// Get the <span> element that closes the modal
-					let span_18 = document.getElementsByClassName("close")[0];
-					// When the user clicks the button, open the modal 
-					btn_18.onclick = function() {
-                    	modal_18.style.display = "block";
-					}
-					// When the user clicks on <span> (x), close the modal
-					span_18.onclick = function() {
-	                    modal_18.style.display = "none";
-					}
-					// When the user clicks anywhere outside of the modal, close it
-					window.onclick = function(event) {
-  					if (event.target == modal_18) {
-	                    modal_18.style.display = "none";
-  					}
-					}
-				</script>
+			

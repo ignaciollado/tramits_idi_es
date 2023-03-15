@@ -8,7 +8,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myRequerimiento" id="myBtnRequerimiento">Motiu del <br>requeriment</button>
+			<button type="button" class="btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myRequerimiento">Motiu del <br>requeriment</button>
 			<span id="btn_3" class="">
     			<a id ="wrapper_motivoRequerimiento" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment');?>">Envia a signar el requeriment</a>
 			</span>
@@ -52,61 +52,37 @@
 			echo $estado_firma;
 	}
 			 ?>
-	<?php ?>
-            <!-- The Modal -->
-			<div id="myRequerimiento" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-                <!-- Modal content-->
-    			<div class="modal-content" style = "width: 80%;">
-      				<div class="modal-header">
-      					<label for="motivoRequerimiento"><strong>Escriu el motiu del requeriment:</strong></label>
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
-      				</div>
-      				<div class="modal-body">
-						<div class="form-group">
+
+<div class="modal" id="myRequerimiento">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Motiu del requeriment:</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+					<div class="form-group">
 						<textarea required rows="10" cols="30" name="motivoRequerimiento" class="form-control" id = "motivoRequerimiento" 
 						placeholder="Motiu del requeriment"><?php echo $expedientes['motivoRequerimiento']; ?></textarea>
-        				</div>
-						<div class="form-group">
-           				<button type="button" onclick = "javaScript: actualizaMotivoRequerimiento_click();" id="guardaMotivoRequerimiento" 
-							class="btn-itramits btn-success-itramits">Guarda</button>
-        				</div>				
-    					</div>
-  					</div>
-				</div>
-			</div>
-			<script>
-					// Get the modal
-					let modal_3 = document.getElementById("myRequerimiento");
+        	</div>
+					
+      </div>
 
-					// Get the button that opens the modal
-					let btn_3 = document.getElementById("myBtnRequerimiento");
+      <!-- Modal footer -->
+      <div class="modal-footer">
+				<div class="form-group">
+          	<button type="button" onclick = "javaScript: actualizaMotivoRequerimiento_click();" id="guardaMotivoRequerimiento" 
+						class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
+				</div>		
+      </div>
 
-					// Get the <span> element that closes the modal
-					let span_3 = document.getElementsByClassName("close")[0];
+    </div>
+  </div>
+</div>
 
-					// When the user clicks the button, open the modal 
-					btn_3.onclick = function() {
-                    	modal_3.style.display = "block";
-
-						if ( <?php echo $session->get("programa") === "ILS";?> ) {
-							let id = '<?php echo $session->get("id");?>'
-							getEstadoValidacionDocumentos(id)
-						}
-					}
-
-					// When the user clicks on <span> (x), close the modal
-					span_3.onclick = function() {
-	                    modal_3.style.display = "none";
-					}
-
-					// When the user clicks anywhere outside of the modal, close it
-					window.onclick = function(event) {
-  					if (event.target == modal_3) {
-	                    modal_3.style.display = "none";
-  					}
-					}
-			</script>
-	<?php ?> 
   </div>  
 </div>

@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-	  		<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myDenegacion_8" id="myBtnResDenegacionConReq">Motiu de la denegació</button>	
+	  		<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myDenegacion_8" id="myBtnResDenegacionConReq">Motiu de la denegació</button>	
 			<span id="btn_8" class="">
     			<a id="wrapper_motivoDenegacion_8" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_denegacion_con_req');?>" class="btn btn-primary-itramits">Envia a la firma <br>de Gerència IDI</a>
 			</span>
@@ -62,15 +62,15 @@
 	<?php //} else {?> <!-- En caso de no existir el documento PDF muestra el botón para generarlo-->
 			<div id="wrapper_generaDenegacion_8" class="">
 				
-       	 	</div>
-            <!-- The Modal -->
-			<div id="myDenegacion_8" class="modal fade" role="dialog">
+      </div>
+      <!-- The Modal -->
+			<div class="modal"  id="myDenegacion_8">
 				<div class="modal-dialog">
                     <!-- Modal content-->
     				<div class="modal-content" style = "width: 80%;">
       					<div class="modal-header">
       					<label for="motivoResDenegacionConReq"><strong>Escriu el motiu de la denegació:</strong></label>
-        						<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       					</div>
       					<div class="modal-body">
 							<div class="form-group">
@@ -79,35 +79,11 @@
         					</div>
 							<div class="form-group">
            						<button type="button" onclick = "javaScript: actualizaMotivoDenegacion_click();" id="guardaMotivoDenegacion" 
-								   	class="btn-itramits btn-success-itramits">Guarda</button>
+								   	class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
         					</div>				
     					</div>
   					</div>
 				</div>
 			</div>
-				<script>
-					// Get the modal
-					let modal_8 = document.getElementById("myDenegacion_8");
-					// Get the button that opens the modal
-					let btn_8 = document.getElementById("myBtnResDenegacionConReq");
-					// Get the <span> element that closes the modal
-					let span_8 = document.getElementsByClassName("close")[0];
-					// When the user clicks the button, open the modal 
-					btn_8.onclick = function() {
-						modal_8.style.display = "block";
-					}
-					// When the user clicks on <span> (x), close the modal
-					span_8.onclick = function() {
-						modal_8.style.display = "none";
-					}
-					// When the user clicks anywhere outside of the modal, close it
-					window.onclick = function(event) {
-  					if (event.target == modal_8) {
-						modal_8.style.display = "none";
-  					}
-					}
-				</script>
-
-		<?php //}?>
   	</div>
 </div>

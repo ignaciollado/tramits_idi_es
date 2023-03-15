@@ -9,8 +9,8 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myActaDeCierre" id="myBtnActaDeCierre">Genera l'acta</button>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myEnviarJustificador" id="myBtnEnviarJustificador">Envia la justificació</button>       
+			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myActaDeCierre" id="myBtnActaDeCierre">Genera l'acta</button>
+			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia la justificació</button>       
 		<?php }?>
 		<span id="btn_17" class="">
     		<a id="wrapper_ActaDeCierre" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>      	
@@ -55,18 +55,19 @@
 			 	echo $estado_firma;
 		}
 	?>
-		<!--<?php //} else {?>-->
+
 		<?php }?>
 		<div id="wrapper_generaActaDeCierre" class="">
 		
-        </div>
-        <!-- The Modal para generar el acta de cierre-->
-		<div id="myActaDeCierre" class="modal fade" role="dialog">
+    </div>
+
+    <!-- The Modal para generar el acta de cierre-->
+		<div class="modal" id="myActaDeCierre">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Dades per generar l'acta de tancament</strong></label>
-        				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Dades per generar l'acta de tancament</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
 
     				<div class="modal-body">
@@ -114,43 +115,22 @@
                         </div>	 					
 
 					    <div class="form-group">
-           				    <button type="button" onclick = "javaScript: actualizaActaCierre_click();" id="guardaMotivoActaDeCierre" class="btn-itramits btn-success-itramits">Guarda</button>
+           				    <button type="button" onclick = "javaScript: actualizaActaCierre_click();" id="guardaMotivoActaDeCierre" 
+											class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
         				</div>	
 					</div>
 				</div>
 			</div>
 		</div>
-				<script>
-				// Get the modal
-				let modal_17 = document.getElementById("myActaDeCierre");
-				// Get the button that opens the modal
-				let btn_17 = document.getElementById("myBtnActaDeCierre");
-				// Get the <span> element that closes the modal
-				let span_17 = document.getElementsByClassName("close")[0];
-				// When the user clicks the button, open the modal 
-				btn_17.onclick = function() {
-                    modal_17.style.display = "block";
-				}
-				// When the user clicks on <span> (x), close the modal
-				span_17.onclick = function() {
-                    modal_17.style.display = "none";
-				}
-				// When the user clicks anywhere outside of the modal, close it
-				window.onclick = function(event) {
-  				if (event.target == modal_17) {
-                    modal_17.style.display = "none";
-  				}
-				}
-				</script>
 
- <!-- The Modal para generar el correo de justificación-->
- <div id="myEnviarJustificador" class="modal fade" role="dialog">
+ 		<!-- The Modal para generar el correo de justificación-->
+ 		<div class="modal" id="myEnviarJustificador">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Enviar correu electrònic per justificació</strong></label>
-        				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
-  					</div>
+						<h4 class="modal-title">Enviar correu electrònic per justificació</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  				</div>
     				<div class="modal-body">
 						<div class="form-group">
 							<span>Vols enviar un correu electrònic al sol·licitant de l'ajuda perquè pugui realitzar la justificació?</span>
@@ -165,34 +145,6 @@
 				</div>
 			</div>
 		</div>
-
-
-<script>
-// Get the modal
-let modal_17_1 = document.getElementById("myEnviarJustificador");
-				// Get the button that opens the modal
-				let btn_17_1 = document.getElementById("myBtnEnviarJustificador");
-				// Get the <span> element that closes the modal
-				let span_17_1 = document.getElementsByClassName("close")[0];
-				// When the user clicks the button, open the modal 
-				btn_17_1.onclick = function() {
-                    modal_17_1.style.display = "block";
-				}
-				// When the user clicks on <span> (x), close the modal
-				span_17_1.onclick = function() {
-                    modal_17_1.style.display = "none";
-				}
-				// When the user clicks anywhere outside of the modal, close it
-				window.onclick = function(event) {
-  				if (event.target == modal_17_1) {
-                    modal_17_1.style.display = "none";
-  				}
-				}
-</script>
-				
-
-				
-	<?php //}?>
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>

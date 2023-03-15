@@ -1,14 +1,7 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script type="text/javascript" src="/public/assets/js/configurador-gestor.js"></script>
 <div class="further">
-
-<?php foreach ($convos as $convo) {?>
-    <div> <button id="<?php echo $convo->id;?>" class="btn" onclick="javaScript: obtiene_datos_convo(this.id)">Editar</button> <span><?php echo $convo->lineaAyuda;?></span> <span><?php echo $convo->programa;?></span> <span><?php echo $convo->convocatoria;?></span></div>
-<?php }?>
-
   <div class="container">
   <h3>Terminis :</h3>
      
@@ -48,7 +41,7 @@
         </div>
         <div class="form-group">
             <label for="respresidente">President de l'IDI:</label>
-            <input type="text" required name="respresidente" maxlength = "50" size="50" class="form-control" id="respresidente" value = "<?php echo $configuracion['respresidente'];?>">
+            <input type="text" required name="respresidente" maxlength = "50" size="50" class="form-control" id="respresidente" value = "<?php echo $configuracion['resPresidente'];?>">
         </div>
         <div class="form-group">
             <label for="directorGeneralPolInd">Director General Política Industrial:</label>

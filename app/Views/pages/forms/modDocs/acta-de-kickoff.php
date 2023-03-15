@@ -10,7 +10,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-	  		<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myactaDeKickOff" id="myBtnactaDeKickOff">Genera l'acta</button>   
+	  		<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myactaDeKickOff" id="myBtnactaDeKickOff">Genera l'acta</button>   
 		<?php }?>	
 	  	
 		<span id="btn_15" class="">
@@ -54,18 +54,18 @@
 			 	echo $estado_firma;
 		}
 	?>
-		<!--<?php //} else {?>-->
+
 		<?php }?>
 		<div id="wrapper_generaactaDeKickOff" class="">
 				
-        </div>
-            <!-- The Modal -->
-			<div id="myactaDeKickOff" class="modal fade" role="dialog">
+    </div>
+
+		<div class="modal" id="myactaDeKickOff">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalKickOff"><strong>Dades per generar l'acta de kick off</strong></label>
-        				<button id="cerrarModalKickOff" type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Dades per generar l'acta de kick off</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
 
     				<div class="modal-body">
@@ -125,35 +125,13 @@
 
 					<div class="form-group">
            				<button type="button" onclick = "javaScript: actualizaMotivoactaDeKickOff_click();" id="guardaMotivoactaDeKickOff" 
-							class="btn-itramits btn-success-itramits">Guarda</button>
+							class="btn-itramits btn-success-itramits"
+							data-bs-dismiss="modal">Guarda</button>
         				</div>	
 					</div>
 				</div>
 			</div>
-			</div>
-				<script>
-				// Get the modal
-				let modal_15 = document.getElementById("myactaDeKickOff");
-				// Get the button that opens the modal
-				let btn_15 = document.getElementById("myBtnactaDeKickOff");
-				// Get the <span> element that closes the modal
-				let span_15 = document.getElementsByClassName("close")[0];
-				// When the user clicks the button, open the modal 
-				btn_15.onclick = function() {
-                    modal_15.style.display = "block";
-				}
-				// When the user clicks on <span> (x), close the modal
-				span_15.onclick = function() {
-                    modal_15.style.display = "none";
-				}
-				// When the user clicks anywhere outside of the modal, close it
-				window.onclick = function(event) {
-  				if (event.target == modal_15) {
-                    modal_15.style.display = "none";
-  				}
-				}
-				</script>
-	<?php //}?>
+		</div>
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>

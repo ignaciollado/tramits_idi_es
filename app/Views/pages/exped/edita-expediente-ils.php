@@ -415,7 +415,7 @@
                                 }
                             ?>
                             <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocNoRequerido"><strong>Elimina</strong></button>';?></span>
+	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#myModalDocNoRequerido"><strong>Elimina</strong></button>';?></span>
   			            </div>
                     <?php }?>
                     <?php endforeach; ?>
@@ -425,19 +425,19 @@
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
-            <div id="myModalDocNoRequerido" class="modal fade" role="dialog">
+            <div class="modal" id="myModalDocNoRequerido">
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content" style = "width: 60%;">
                         <div class="modal-header">
-        		            Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Aquesta acció no es podrá desfer.</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
     			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
                             <div class="modal-footer">
     		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>

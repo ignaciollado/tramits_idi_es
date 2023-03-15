@@ -612,7 +612,9 @@ function getCookie(cname) {
 function consultaExpediente ( buscaPor, identificador ) {
 		let end_point = ""
 		let baseUrl = window.location
-		if (baseUrl ==='tramits.idi.es') {
+	
+		if (baseUrl ==='Location https://tramits.idi.es/public/index.php/home/solicitud_ayuda') {
+			baseUrl = ""
 			return; /* es entorno producción y no debe mostrar datos de empresas/autónomos al poner el DNI/CIF */
 		}
 		identificador = identificador.split(" ").join("") /* quito posibles espacios en blanco */
@@ -623,7 +625,9 @@ function consultaExpediente ( buscaPor, identificador ) {
 		if (buscaPor === 'nif' || buscaPor === 'dni') {
 			end_point = `https://${baseUrl.hostname}/public/index.php/nifExpediente/${identificador}`
 		}
-		console.log (end_point)
+		
+		return
+		
 		let spinner = document.querySelector('#spinner-idi-isba')
 		let textIsba = document.querySelector('#text-isba')
 	

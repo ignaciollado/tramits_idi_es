@@ -1,8 +1,7 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
+
     <?php 
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
@@ -499,7 +498,7 @@
                                 }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocNoRequerido"><strong>Elimina</strong></button>';?></span>
+                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocNoRequerido"><strong>Eliminar</strong></button>';?></span>
   			            </div>
                     <?php }?>
                     <?php endforeach; ?>
@@ -509,18 +508,18 @@
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
-            <div id="myModalDocNoRequerido" class="modal fade" role="dialog">
+            <div class="modal" id="myModalDocNoRequerido">
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content" style = "width: 60%;">
                         <div class="modal-header">
-        		            Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Aquesta acció no es podrá desfer.</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
     			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
                             <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
                                 <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
                             </div>
                         </div>
@@ -793,14 +792,10 @@
                 <?php }?>                  
         </form>
         </div>        
-<!--     	    <script>
-		        $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
-		        $('#tel_consultor').mask('999999999');
-	        </script> -->
 
-            <?php foreach($config_fechas_limite as $config_item): 
-	                $dias_fecha_lim_justificar	= $config_item->dias_fecha_lim_justificar;
-	                $meses_fecha_lim_consultoria = $config_item->meses_fecha_lim_consultoria;
+        <?php foreach($config_fechas_limite as $config_item): 
+	            $dias_fecha_lim_justificar	= $config_item->dias_fecha_lim_justificar;
+	            $meses_fecha_lim_consultoria = $config_item->meses_fecha_lim_consultoria;
                 endforeach; 
 
             $mesesPrograma = explode("#",$meses_fecha_lim_consultoria);

@@ -34,7 +34,7 @@
         </div>       
         <div class="form-group">
             <label for="respresidente">President de l'IDI:</label>
-            <input type="text" name="respresidente" readonly class="form-control" id="respresidente" value = "<?php echo $configuracion['respresidente'];?>">
+            <input type="text" name="respresidente" readonly class="form-control" id="respresidente" value = "<?php echo $configuracion['resPresidente'];?>">
         </div>
         <div class="form-group">
             <label for="directorGeneralPolInd">Director General Política Industrial:</label>
