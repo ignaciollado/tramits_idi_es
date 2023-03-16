@@ -75,10 +75,10 @@ return [
 
    'titulo_justificacion_idigital'	  => "Cheques consultoría industria Islas Baleares. Requerimiento de justificación.",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
-   'subtitulo_sol_idigital'			  => "La solicitud de ayuda y/o subvención para el año 2023 está pendiente de firmar, por favor, entre en el documento y firmela. 
-   RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO POR MEDIO DEL REGISTRO ELECTRÓNICO COMÚN (REC) EN EL SIGUIENTE ENLACE:
-	https://rec.redsara.es/registro/action/are/acceso.do
-   SI NO PASA POR EL REC SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA. 
+   'subtitulo_sol_idigital'			  => "La solicitud de ayuda y/o subvención para el año 2023 está pendiente de firmar, por favor, entre en el documento y fírmela. 
+   RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
+	https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586
+   
    Si necesita contactarnos, puede hacerlo por correo electrónico: pindust@idi.es y/o por teléfono: 971 17 61 61 + 62894", 
    'subtitulo_adhesion_ils'			  => "La solicitud de adhesión a ILS esta pendiente de firmar, por favor, entre en el documento y fírmelo.
    RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF FIRMADO Y REGISTRARLO POR MEDIO DE LA SEDE ELECTRÓNICA DE CAIB EN EL SEGUIENTE ENLACE:

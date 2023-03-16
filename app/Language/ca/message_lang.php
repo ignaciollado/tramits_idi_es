@@ -76,9 +76,11 @@ return [
 
    'titulo_justificacion_idigital'	  => "Xecs consultoria indústria Illes Balears. Requeriment de justificació.",   
    'titulo_requerimiento_idigital'	  => "Requeriment documentació/informació adicional.",
-   'subtitulo_sol_idigital'			  => "La sol·licitud d'ajuda i/o subvenció per a l'any 2023 està pendent de signar, si us plau, entre en el document i signi'l. RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO PER MITJÀ DE La SEU ELECTRÒNICA DE CAIB EN EL SEGÜENT ENLLAÇ:
-         https://www.caib.es/seucaib/ca/
-   SI NO PASSA PER LA SEU ELECTRÒNICA DE CAIB S'ENTENDRÀ QUE LA SOL·LICITUD NO HA ESTAT PRESENTADA. Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i/o per telèfon: 971 17 61 61 + 62894",
+   'subtitulo_sol_idigital'			  => "La sol·licitud d'ajuda i/o subvenció per a l'any 2023 està pendent de signar, si us plau, entre en el document i signi'l. 
+   RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
+   https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586
+   
+   Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i/o per telèfon: 971 17 61 61 + 62894",
    'subtitulo_adhesion_ils'            => "La sol·licitud d'adhesió a ILS està pendent de signar. Si us plau, entrau en el document i signau-lo.
    RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO PER MITJÀ DE LA SEU ELECTRÒNICA CAIB EN EL SEGÜENT ENLLAÇ:
       https://www.caib.es/seucaib/ca/201/empreses/tramites/tramite/5400391
