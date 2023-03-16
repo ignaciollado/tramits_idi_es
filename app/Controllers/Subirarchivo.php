@@ -107,13 +107,13 @@ use App\Models\ConfiguracionModel;
 
 		$cumpleRequisitos_dec_resp = "";	
 		//7. AUTORIZACIONES: si/no da el consentimiento para comprobar la identificación de la persona solicitante
-		if ($this->request->getPost('consentimiento_identificacion') == 'on'){
+		if ($this->request->getPost('consentimiento_identificacion') === 'on'){
 			$file_enviardocumentoIdentificacion = "SI ";
 		} else {
 			$file_enviardocumentoIdentificacion = "NO ";
 		}
 		//7. AUTORIZACIONES: si/no da el consentimiento cumplimiento obligaciones tributarias
-		if ($this->request->getPost('consentimiento_certificadoATIB') == 'on'){
+		if ($this->request->getPost('consentimiento_certificadoATIB') === 'on'){
 			$file_certificadoATIB = "SI ";
 		} else {
 			$file_certificadoATIB = "NO ";
