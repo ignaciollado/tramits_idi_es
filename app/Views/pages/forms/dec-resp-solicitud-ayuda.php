@@ -1,7 +1,7 @@
 <?php
 helper('cookie');
 require_once('tcpdf/tcpdf.php');
-
+$defaultLanguage=get_cookie('itramitsCurrentLanguage');
 use App\Models\ConfiguracionModel;
 	$modelConfig = new ConfiguracionModel();
 	$data['configuracion'] = $modelConfig->where('convocatoria_activa', true)->first();	
@@ -62,9 +62,12 @@ $pdf->setFontSubsetting(false);
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
-$html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi')."</b>";
+$html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi').$defaultLanguage."</b>";
 $html1 .= "<br>";
 $html1 .= lang('message_lang.codigo_dir3')." <b>".$data['configuracion']['emisorDIR3']."</b>";
+$html1 .= "<br>";
+$html1 .= lang('message_lang.codigo_sia')." <b>".$data['configuracion']['codigoSIA']."</b>";
+
 
 // set color for background
 $pdf->SetFillColor(230, 247, 255);

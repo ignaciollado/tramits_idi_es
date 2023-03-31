@@ -1,10 +1,13 @@
 <?php namespace App\Models;
 use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Model;
- 
+
 class ExpedientesModel extends Model
 {
-    protected $table = 'pindust_expediente';
+    protected $DBGroup          = 'default';
+    protected $table            = 'pindust_expediente';
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
  
     protected $allowedFields = ['id', 'fecha_kick_off', 'fecha_enmienda', 'fecha_completado', 'fecha_limite_consultoria', 
     'fecha_reunion_cierre', 'fecha_limite_justificacion', 'fecha_propuesta_resolucion', 'fecha_propuesta_resolucion_notif', 
@@ -12,4 +15,38 @@ class ExpedientesModel extends Model
     'fecha_amp_termino', 'fecha_REC', 'ref_REC', 'empresa', 'nif', 'telefono', 'email', 'domicilio', 'fecha_solicitud', 
     'tipo_tramite', 'convocatoria', 'hay_consultor', 'situacion', 'importeAyuda', 'porcentajeConcedido',
     'canales_comercializacion_empresa', 'sitio_web_empresa', 'video_empresa', 'fecha_creacion_empresa', 'publicar_en_web'];
+
+    public function findExpedienteById($idExp, $convocatoria,$tipoTramite) {
+        $expediente = $this->asArray()->where(['idExp'=> $idExp, 'convocatoria'=> $convocatoria, 'tipo_tramite'=> $tipoTramite])->first();
+
+        if (!$expediente) {
+            throw new \Exception('E000'); /* Could not find expediente for specified idExp/Convocatoria/tipoTramite */
+        }
+
+        return $expediente;
+    }
+
+    public function findNumberOfConvocatorias($nif, $tipoTramite) {  
+        $sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE nif="'.$nif.'" AND tipo_tramite="'.$tipoTramite.'"';
+
+        $query = $this->query($sql);
+        $results = $query->getResultArray();
+
+        if (!$results) {
+            throw new \Exception('E000'); /* Could not find expediente for specified idExp/Convocatoria/tipoTramite */
+        }
+
+        foreach ($results as $row) {
+            $totalConvos = $row['totalConvos'];
+        }
+
+        return $totalConvos;
+    }
+
+    public function updateImporteAyuda ($id, $importe) {
+        $data = [
+            "importeayuda" => $importe
+        ];
+        return $this->update($id, $data);
+    }
 }

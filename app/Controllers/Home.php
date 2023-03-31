@@ -63,7 +63,8 @@ class Home extends BaseController
 		helper('filesystem');
 		helper('cookie');
 		$language = \Config\Services::language();
-		$language->setLocale('ca'); 
+		$language->setLocale('ca');
+		service('request')->setLocale('ca');
 		$modelConfig = new ConfiguracionModel();
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
 		$desde = $data['configuracion']['convocatoria_desde'];
@@ -126,7 +127,8 @@ class Home extends BaseController
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
 		$idioma =  $request->uri->getSegment(3); 
-		$language->setLocale($idioma); 
+		$language->setLocale($idioma);
+		service('request')->setLocale($idioma);
 		helper('form');
 		helper('filesystem');
 		$data['titulo'] = lang('message_lang.titulo_sol_idigital');

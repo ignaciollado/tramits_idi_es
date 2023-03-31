@@ -31,30 +31,30 @@ $(document).ready(function () {
 		$("#spinner_2").removeClass("ocultar");
 		$("#btn_2").addClass("ocultar");
 	});
-	$("#generaInfFavConReq").click(function (e) {
+/* 	$("#generaInfFavConReq").click(function (e) {
 		$("#spinner_6").removeClass("ocultar");
 		$("#btn_6").addClass("ocultar");
-	});
+	}); */
 	$("#wrapper_motivoDenegacion_8").click(function (e) {
 		$("#spinner_8").removeClass("ocultar");
 		$("#btn_8").addClass("ocultar");
 	});
-	$("#wrapper_generaInformeDesfSinReq").click(function () {
+/* 	$("#wrapper_generaInformeDesfSinReq").click(function () {
 		$("#spinner_5").removeClass("ocultar");
 		$("#btn_5").addClass("ocultar");
-	});
-	$("#wrapper_generaInformeDesfConReq").click(function () {
+	}); */
+/* 	$("#wrapper_generaInformeDesfConReq").click(function () {
 		$("#spinner_4").removeClass("ocultar");
 		$("#btn_4").addClass("ocultar");
-	});
-	$("#wrapper_motivoDenegacion_9").click(function (e) {
+	}); */
+/* 	$("#wrapper_motivoDenegacion_9").click(function (e) {
 		$("#spinner_9").removeClass("ocultar");
 		$("#btn_9").addClass("ocultar");
-	});
-	$("#generadoc_res_conces_con_req").click(function (e) {
+	}); */
+/* 	$("#generadoc_res_conces_con_req").click(function (e) {
 		$("#spinner_10").removeClass("ocultar");
 		$("#btn_10").addClass("ocultar");
-	});
+	}); */
 	$("#generadoc_res_conces_sin_req").click(function () {
 		$("#spinner_11").removeClass("ocultar");
 		$("#btn_11").addClass("ocultar");
@@ -967,7 +967,7 @@ function validateForm(formName) {
 
 function avisarCambiosEnFormulario(fase, elemento) {
 	let respuesta = false;
-
+	return
 	if (elemento === "porcentajeConcedido") {
 			let actualizaimporteAyuda = "/public/assets/utils/actualiza_importe_ayuda.php?"+document.getElementById("programa").value+"/"+document.getElementById("porcentajeConcedido").value+"/"+document.getElementById("id").value;
 			fetch(actualizaimporteAyuda)
@@ -1663,9 +1663,29 @@ function enviaMailManualYLogotipo_click() {
 	);
 }
 
+async function insertaMejoraEnSolicitud() {
+	let addMejora = document.getElementById('addMejora')
+	let idSol = document.getElementById('id')
+	let fechaRecMejora = document.getElementById('fechaRecMejora')
+	let refRecMejora = document.getElementById('refRecMejora')
+
+		if (!fechaRecMejora.value || !refRecMejora.value) {
+			return
+		}
+
+	let API_URI = `/public/assets/utils/inserta_mejora_solicitud.php?id_sol=${idSol.value}&fechaRecMejora=${fechaRecMejora.value}&refRecMejora=${refRecMejora.value}`;
+
+	addMejora.innerHTML = "<div class='.info-msg'>Un moment, <br>afegint ...</div>"
+	await fetch(API_URI)
+		.then((response) => response.text())
+		.then((data) => {
+			location.reload();
+		})
+
+}
+
 function myFunction_docs_IDI_click(id, nombre) {
 	document.cookie = "documento_actual = " + id;
-	console.log(id);
 }
 
 function opcion_seleccionada_click(respuesta) {

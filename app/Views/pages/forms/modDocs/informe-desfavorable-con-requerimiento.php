@@ -3,16 +3,18 @@
   <div class="card-itramits-body">
      Informe desfavorable amb requeriment	
   </div>
-  <div class="btn-group" role="group" aria-label="generar informe">
+  <div class="card-itramits-footer" aria-label="generar informe">
 
   		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-  			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfConReq" id="myBtngeneraInformeDesfConReq">Generar l'informe</button>
+  			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfConReq" id="myBtngeneraInformeDesfConReq">Generar l'informe</button>
 			<span id="btn_4" class="">					
-    			<a id ="wrapper_generaInformeDesfConReq" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_con_requerimiento');?>" class="btn btn-primary-itramits">Envia a signar el document</a>      	
-			</span>
+    			<!-- <a id ="wrapper_generaInformeDesfConReq" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_con_requerimiento');?>" class="btn btn-primary-itramits">Envia a signar el document</a>-->
+					<button id="wrapper_generaInformeDesfConReq" class='btn btn-secondary ocultar' onclick="enviaInformeDesfavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
+					<div id='infoMissingDataDoc6' class="alert alert-danger ocultar"></div>
+				</span>
 			<span id="spinner_4" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>	
 		<?php }?>
 			
@@ -92,3 +94,50 @@
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
+
+<script>
+	function enviaInformeDesfavorableConRequerimiento(id, convocatoria, programa, nifcif) {
+		let todoBien = true
+		let fecha_REC = document.getElementById('fecha_REC')
+		let ref_REC = document.getElementById('ref_REC')
+	 	let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif') //0000-00-00
+		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
+		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
+		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let spinner_4 = document.getElementById('spinner_4')
+		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
+		infoMissingDataDoc6.innerText = ""
+
+		if(!fecha_REC.value) {
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Data REC sol·licitud<br>"
+			todoBien = false
+		}
+		if(!ref_REC.value) {
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Referència REC sol·licitud<br>"
+			todoBien = false
+		}
+	 	if(!fecha_requerimiento_notif.value) {
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Data notificació requeriment<br>"
+			todoBien = false
+		}
+		if(!fecha_REC_enmienda.value) {
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Data REC esmena<br>"
+			todoBien = false
+		}
+		if(!ref_REC_enmienda.value) {
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Referència REC esmena<br>"
+			todoBien = false
+		} 
+
+		if (todoBien) {
+			infoMissingDataDoc6.classList.add('ocultar')
+			generaInfFavConReq.disabled = true
+			generaInfFavConReq.innerHTML = "Generant ..."
+			spinner_4.classList.remove('ocultar')
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_desfavorable_con_requerimiento'
+		} else {
+			infoMissingDataDoc6.classList.remove('ocultar')
+		}
+	}
+</script>

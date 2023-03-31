@@ -5,15 +5,15 @@
         $session = session();
         $empresa = $session->get('full_name');
         $nif = $nifcif;
-		$adreca_mail = $session->get('username');
-		$telefono_cont = $session->get('telefono');
+				$adreca_mail = $session->get('username');
+				$telefono_cont = $session->get('telefono');
 		if ( $byCEOSigned ) {
-			
     		$useritramits = new UseriTramitsModel();
     		$data['useriTramits'] = $useritramits->where('rol', 'gerencia')->first();
-			$adreca_mail = $data['useriTramits']['user_name'];
-			$telefono_cont = $data['useriTramits']['telefono'];
-
+				$adreca_mail = $data['useriTramits']['user_name'];
+				$telefono_cont = $data['useriTramits']['telefono'];
+				$adreca_mail = "ignacio.llado@idi.es";
+				$telefono_cont = "677234076";
 		}
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 		require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
@@ -96,7 +96,7 @@
 
 	function execute($apiPath, $json, $methodName) {
 		$url = REST_API_URL.$apiPath;
-		echo "<br><br>-- "."\nMethod URL: ".$url."\n\n"."  --  ";
+		// echo "<br><br>-- "."\nMethod URL: ".$url."\n\n"."  --  ";
 		
 		// Initiate curl
 		$ch = curl_init();
@@ -135,7 +135,7 @@
 	}	
 		
 	function printResult($result, $last_insert_id, $tipo_Doc) {
-		echo "**** ".$result." ****";
+		//echo "**** ".$result." ****";
 		$respuesta = json_decode ($result, true);
 		$db      = \Config\Database::connect();
 		$builder = $db->table('pindust_documentos_generados');

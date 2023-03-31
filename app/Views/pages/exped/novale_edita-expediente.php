@@ -1,22 +1,8 @@
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script> -->
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
-
-<?php
-    use App\Models\DocumentosGeneradosModel;
-    $modelDocumentosGenerados = new DocumentosGeneradosModel();
-
+    <?php
     use App\Models\MejorasExpedienteModel;
     $modelMejorasSolicitud = new MejorasExpedienteModel();
     $session = session();
@@ -30,7 +16,7 @@
         Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
     }
 
-	$programa = $expedientes['tipo_tramite'];
+    $programa = $expedientes['tipo_tramite'];
 	$id = $expedientes['id'];
 	$nifcif = $expedientes['nif'];
     $convocatoriaEnCurso = $configuracion['convocatoria'];
@@ -44,57 +30,58 @@
     ];
     $session->set($expedienteID);
 
-/* Si no hay IMPORTE AYUDA, Calcula el importe según el programa Y el número de convocatorias a las que se ha  presentado */
+    /* Si no hay IMPORTE AYUDA, Calcula el importe según el programa Y el número de convocatorias a las que se ha  presentado */
 
-if (!$expedientes['importeAyuda']) {
-    $objs = json_decode( $configuracion['programa']);
-    /**
-     * object(stdClass)#88 (3) { ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
-     * { ["Primera"]=> array(3) { [0]=> int(5100) [1]=> int(90) [2]=> int(60) } ["Segunda"]=> array(3) 
-     * { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } ["Tercera"]=> array(3) 
-     * { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } } } ["Programa_II"]=> object(stdClass)#92 (1) 
-     * { ["edicion"]=> object(stdClass)#91 (2) { ["Primera"]=> array(3) { [0]=> int(4080) [1]=> int(90) [2]=> int(48) } 
-     * ["Segunda"]=> array(3) { [0]=> int(4080) [1]=> int(80) [2]=> int(48) } } } 
-     * ["Programa_III"]=> object(stdClass)#94 (1) { ["edicion"]=> object(stdClass)#93 (2) { 
-     * ["Primera"]=> array(3) { [0]=> int(1360) [1]=> int(90) [2]=> int(16) } 
-     * ["Segunda"]=> array(3) { [0]=> int(1360) [1]=> int(80) [2]=> int(16) } } } } */
-  
-    switch ($programa) {
-        case 'Programa I':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_I->edicion->Primera[0]*($objs->Programa_I->edicion->Primera[1]/100);
-                    break;
-                case 2:
-                    $importeAyuda = $objs->Programa_I->edicion->Segunda[0]*($objs->Programa_I->edicion->Segunda[1]/100);                
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_I->edicion->Tercera[0]*($objs->Programa_I->edicion->Tercera[1]/100);
-            }
-            break;
-        case 'Programa II':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_II->edicion->Primera[0]*($objs->Programa_II->edicion->Primera[1]/100);
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_II->edicion->Segunda[0]*($objs->Programa_II->edicion->Segunda[1]/100);
-            }
-            break;
-        case 'Programa III':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
-            }
-            break;
+    if (!$expedientes['importeAyuda']) {
+        $objs = json_decode( $configuracion['programa']);
+        /**
+         * object(stdClass)#88 (3) { ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
+         * { ["Primera"]=> array(3) { [0]=> int(5100) [1]=> int(90) [2]=> int(60) } ["Segunda"]=> array(3) 
+         * { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } ["Tercera"]=> array(3) 
+         * { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } } } ["Programa_II"]=> object(stdClass)#92 (1) 
+         * { ["edicion"]=> object(stdClass)#91 (2) { ["Primera"]=> array(3) { [0]=> int(4080) [1]=> int(90) [2]=> int(48) } 
+         * ["Segunda"]=> array(3) { [0]=> int(4080) [1]=> int(80) [2]=> int(48) } } } 
+         * ["Programa_III"]=> object(stdClass)#94 (1) { ["edicion"]=> object(stdClass)#93 (2) { 
+         * ["Primera"]=> array(3) { [0]=> int(1360) [1]=> int(90) [2]=> int(16) } 
+         * ["Segunda"]=> array(3) { [0]=> int(1360) [1]=> int(80) [2]=> int(16) } } } } */
+      
+        switch ($programa) {
+            case 'Programa I':
+                switch($totalConvocatorias) {
+                    case 1:
+                        $importeAyuda = $objs->Programa_I->edicion->Primera[0]*($objs->Programa_I->edicion->Primera[1]/100);
+                        break;
+                    case 2:
+                        $importeAyuda = $objs->Programa_I->edicion->Segunda[0]*($objs->Programa_I->edicion->Segunda[1]/100);                
+                        break;
+                    default:
+                        $importeAyuda = $objs->Programa_I->edicion->Tercera[0]*($objs->Programa_I->edicion->Tercera[1]/100);
+                }
+                break;
+            case 'Programa II':
+                switch($totalConvocatorias) {
+                    case 1:
+                        $importeAyuda = $objs->Programa_II->edicion->Primera[0]*($objs->Programa_II->edicion->Primera[1]/100);
+                        break;
+                    default:
+                        $importeAyuda = $objs->Programa_II->edicion->Segunda[0]*($objs->Programa_II->edicion->Segunda[1]/100);
+                }
+                break;
+            case 'Programa III':
+                switch($totalConvocatorias) {
+                    case 1:
+                        $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
+                        break;
+                    default:
+                        $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
+                }
+                break;
+        }
+        $modelExp->updateImporteAyuda ($id, $importeAyuda);
+    } else {
+        $importeAyuda = $expedientes['importeAyuda'];
     }
-    $modelExp->updateImporteAyuda ($id, $importeAyuda);
-} else {
-    $importeAyuda = $expedientes['importeAyuda'];
-}    
+
 	?>
 
     <!----------------------------------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --->
@@ -134,7 +121,7 @@ if (!$expedientes['importeAyuda']) {
                     </div>
     		        <div class="form-group general">
                         <label for="programa">Programa:</label>
-		    	        <input type="text" name="programa" list="listaProgramas" class="form-control send_fase_0" required readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "programa" value="<?php echo $expedientes['tipo_tramite'];?>">
+		    	        <input type="text" name="programa" list="listaProgramas" class="form-control send_fase_0" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "programa" value="<?php echo $expedientes['tipo_tramite'];?>">
                     </div>
                     <datalist id="listaProgramas">
     			        <option value="Programa I">
@@ -184,7 +171,7 @@ if (!$expedientes['importeAyuda']) {
                     <label for="nif_rep">NIF representant legal:</label>
                     <input type="text" name="nif_rep" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
                 </div>
-        <?php if ( $expedientes['tipo_tramite'] != 'ILS') {?>    
+
                 <div class="form-group general">
                     <label for="empresa_consultor">Empresa del consultor:</label>
                     <input type="text" name="empresa_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "empresa_consultor" placeholder = "Empresa del consultor" value = "<?php echo $expedientes['empresa_consultor']; ?>">
@@ -201,7 +188,7 @@ if (!$expedientes['importeAyuda']) {
                     <label for="mail_rep"><strong>Adreça electrònica consultor:</strong></label>
                     <input type="email" name="mail_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "mail_consultor" placeholder="Adreça electrònica del consultor" value="<?php echo $expedientes['mail_consultor']; ?>">
                 </div>
-        <?php }?>
+
     		    <div class="form-group general">
                     <label for="tecnicoAsignado">Tècnica asignada:</label>
                     <input type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
@@ -276,7 +263,7 @@ if (!$expedientes['importeAyuda']) {
                         </optgroup>
 			        </select>
 		        </div>
-		    
+
                 <label for = "memoriaTecnicaEnIDI" class="main" >
 					<span ><?php echo lang('message_lang.memoriaTecnicaEnIDI_sinCambios');?> </span>
 						<input type="checkbox" <?php if ($expedientes['memoriaTecnicaEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "memoriaTecnicaEnIDI" id = "memoriaTecnicaEnIDI">
@@ -300,11 +287,16 @@ if (!$expedientes['importeAyuda']) {
 						<input type="checkbox" <?php if ($expedientes['pJuridicaDocAcreditativaEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "pJuridicaDocAcreditativaEnIDI" id = "pJuridicaDocAcreditativaEnIDI">
 					<span class="w3docs"></span>
 				</label>
-
+                
+                <div class="form-group general">
+                    <label for="importe_minimis">Import de minimis:</label>
+                    <input type="number" name="importe_minimis" readonly disabled class="form-control" id = "importe_minimis" min="0" placeholder="Import de minimis" value="<?php echo $expedientes['importe_minimis']; ?>">
+                </div>
                 <div class="form-group general">
                     <label for="importeAyuda">Import de l'ajuda:</label>
-                    <input type="number" name="importeAyuda" readonly disabled class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $expedientes['importeAyuda']; ?>">
+                    <input type="number" name="importeAyuda" class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $importeAyuda; ?>">
                 </div>
+
                 <div class="form-group general">
                     <label for="porcentajeConcedido">Percentatje de l'ajuda:</label>
                     <select class="form-control send_fase_0" readonly disabled id = "porcentajeConcedido" name = "porcentajeConcedido" required>
@@ -337,7 +329,7 @@ if (!$expedientes['importeAyuda']) {
                     <label for = "fecha_de_pago"><strong>Data pagament:</strong></label>
                     <input type = "date" name = "fecha_de_pago" class = "form-control send_fase_0" id = "fecha_de_pago" value = "<?php echo date_format(date_create($expedientes['fecha_de_pago']), 'Y-m-d');?>">
                 </div>  
-   
+
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -360,6 +352,7 @@ if (!$expedientes['importeAyuda']) {
 			        <div >Document</div>
     		        <div >Tràmit</div>
 			        <div >Estat</div>
+                    <div >Acció</div>
   		        </div>
                 <?php if($documentos){ ?>
                 <?php foreach($documentos as $docs_item): 
@@ -367,7 +360,7 @@ if (!$expedientes['importeAyuda']) {
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
 
-                    if ($convocatoria == '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_item->corresponde_documento) {
 				            case 'file_infoautodiagnostico':
 					            $nom_doc = "Informe autodiagnosi digital";
@@ -401,7 +394,10 @@ if (!$expedientes['importeAyuda']) {
 					            break;				
 				            case 'file_altaAutonomos':	
 					            $nom_doc = "Còpia documentació acreditativa alta d'autònoms";
-					            break;	
+					            break;
+                            case 'file_certificadoAEAT':
+                                $nom_doc = "Certificat AEAT";
+                                break;
 				            case 'file_escrituraConstitucion':	
 					            $nom_doc = "Còpia escriptura de constitució de l'entitat";
 					            break;
@@ -468,22 +464,41 @@ if (!$expedientes['importeAyuda']) {
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
     					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span class="detail-wrapper-docs-col">
+                            <?php 
+                            switch ($docs_item->corresponde_documento) {
+                                case 'file_escritura_empresa':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
+                                    break;
+    				            case 'file_certificadoIAE':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
+                                    break;
+                                case 'file_altaAutonomos':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-alta-autonomos.php';
+	    				            break;
+                            } 
+                            ?>
+                            </span>                            
   			            </div>
                           <?php }?>
                 <?php endforeach; ?>
+                    <div >
+                        <button class='hide-button' id="requeriment-button" onclick = "javaScript: generaRequerimiento(<?php echo $expedientes['id']; ?>);">Generar el requeriment</button>
+                        <!--                         <button class='hide-button' id="adhesion-button" onclick = "javaScript: generaResolucionAdhesion(<?php echo $expedientes['id']; ?>);">Generar la resolució de concessió</button> -->
+                    </div>
                 <?php } else { 
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
@@ -498,6 +513,7 @@ if (!$expedientes['importeAyuda']) {
 			            <div >Document</div>
     		            <div >Tràmit</div>
 			            <div >Estat</div>
+                        <div >Acció</div>
   		            </div>
                     <?php if($documentos){ ?>
                     <?php foreach($documentos as $docs_opc_item): 
@@ -505,7 +521,7 @@ if (!$expedientes['importeAyuda']) {
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_opc_item->type;
                         
-                    if ($convocatoria === '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_opc_item->corresponde_documento) {
 			    	        case 'file_memoriaTecnica':
 					            $nom_doc = "La memòria tècnica";
@@ -551,6 +567,7 @@ if (!$expedientes['importeAyuda']) {
                                 }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocNoRequerido"><strong>Eliminar</strong></button>';?></span>
   			            </div>
                     <?php }?>
                     <?php endforeach; ?>
@@ -560,7 +577,24 @@ if (!$expedientes['importeAyuda']) {
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
-
+            <div class="modal" id="myModalDocNoRequerido">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Aquesta acció no es podrá desfer.</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+    			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
+                            <div class="modal-footer">
+    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  	
 
             <br>
             <div class="alert alert-info">
@@ -652,48 +686,48 @@ if (!$expedientes['importeAyuda']) {
                 <?php }?>    
             </form>
         </div>
-        <div class="col docsExpediente">
-            <h3>Actes administratius:</h3>
-           <ol start ="1">
-            <!----------------------------------------- Requeriment 2021 OK ------------------------------------------------>
-	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento.php';?></li>
-            <!-------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Resolució desistiment per no esmenar  SIN VIAFIRMA ----------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-no-enmendar.php';?></li>
-            <!-------------------------------------------------------------------------------------------------------------->
-            </ol>
-            <h3>Millores: <small class="alert alert-secondary" role="alert"><?php echo $ultimaMejoraSolicitud; ?></small></h3>
-            <?php if($mejorasSolicitud): ?>
-                <div class = "header-wrapper-docs-3 detail-wrapper-docs-justificacion">
+        <div class='col'>
+            <div class="row docsExpediente">
+                <h3>Actes administratius:</h3>
+                <ol start ="1">
+                <!------------------------------------------------- Requeriment ------------------------------------------------>
+	            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento.php';?></li>
+                <!-------------------------------------------------------------------------------------------------------------->
+                <!----------------------------------------- Resolució desistiment per no esmenar  SIN VIAFIRMA ----------------->
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-no-enmendar.php';?></li>
+                <!-------------------------------------------------------------------------------------------------------------->
+                </ol>
+            </div>
+            <div class="row docsExpediente">
+                <h3>Millores</h3>
+                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
         	        <div >Data rec</div>
    	  	            <div >Referència rec</div>
    	  	            <div >Acciò</div>
                 </div>
-               
                 <div class='filas-container'>
+                    <?php if($mejorasSolicitud): ?>
                     <?php foreach($mejorasSolicitud as $mejorasSolicitud_item):?>
-                        <div id ="mejora_<?php echo $mejorasSolicitud_item['id'];?>" class = "detail-wrapper-docs-3 detail-wrapper-docs-solicitud">
-                            <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['fecha_rec_mejora'] ;?></span>
-                            <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['ref_rec_mejora'] ;?></span>
-                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$mejorasSolicitud_item['id'].'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#modalEliminaMejora"><strong>Elimina</strong></button>';?></span>
-                        </div>
+                    <div id ="mejora_<?php echo $mejorasSolicitud_item['id'];?>" class = "detail-wrapper-docs-4 detail-wrapper-docs-solicitud">
+                        <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['fecha_rec_mejora'] ;?></span>
+                        <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['ref_rec_mejora'] ;?></span>
+                        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$mejorasSolicitud_item['id'].'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#modalEliminaMejora"><strong>Elimina</strong></button>';?></span>
+                    </div>
                     <?php endforeach; ?>
                 </div>
-            <?php endif; ?>
-            <?php if(!$mejorasSolicitud): ?>
-              <span class="alert alert-info" role="alert">De moment, no hi ha millores!</span>
-            <?php endif; ?>
-            <div style="margin-top:1rem;color:blue;text-align:left;padding:.5rem;">
+                <?php endif; ?>
+                <div style="margin-top:1rem;color:blue;text-align:left;padding:.5rem;">
                 <div class="mb-3">
                     <input type='datetime-local' title = "dd/mm/aaaa hh:mm:ss" name = "fechaRecMejora" class='form-control form-control-sm' id="fechaRecMejora"/>
                 </div>
                 <div class="mb-3">
                     <input type='text' placeholder = "El número del REC [GOIBE539761_2021]" name = "refRecMejora" class='form-control form-control-sm' id="refRecMejora" maxlength = "16"/>
                 </div>
-                    <button class="btn btn-success btn-lg btn-block btn-docs" onclick="insertaMejoraEnSolicitud()" id="addMejora">Afegir</button>
-            </div>          
+                    <button class="btn btn-success btn-lg btn-block btn-docs" onclick="insertaMejoraEnSolicitud()">Afegir</button>
+                </div>
+            </div>
         </div>
-        
+
         <div class="col docsExpediente">
         <div class="col">
             <h3>Documents de l'expedient:</h3>
@@ -731,8 +765,11 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                                <!--  <span id = "custodia" class = "detail-wrapper-docs-col">
+    	    		                <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
+	    	                    </span> -->
                                 <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target = "#eliminaDocsExpediente"><strong>Elimina</strong></button>';?></span>		
+		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#eliminaDocsExpediente"><strong>Elimina</strong></button>';?></span>		
     		                        <?php } else {?>
 	    		                        <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
     		                    <?php } ?>
@@ -762,6 +799,7 @@ if (!$expedientes['importeAyuda']) {
                     </div>
                 </div>
 
+                
                 <div id="modalEliminaMejora" class="modal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
@@ -781,35 +819,33 @@ if (!$expedientes['importeAyuda']) {
                     </div>
                 </div>
 
-                    <script>
+                <script>
                         function myFunction_docs_IDI_click (id, nombre) {
         	                document.cookie = "documento_actual = " + id;
     	                    console.log (id);
                             }
                         function opcion_seleccionada_click(respuesta) {
             	            document.cookie = "respuesta = " + respuesta;
-	                        console.log (respuesta);
                             }
                         function eliminaDocSolicitud_click() {
-                	        console.log (getCookie("documento_actual"));
 	                        let id = getCookie("documento_actual");
                             document.getElementById(id).disabled= true;
                             document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	                        console.log (getCookie("nuevo_estado"));
     	                    let corresponde_documento = 'file_resguardoREC';
-	                        $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+	                        $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento }, function(data){
                                 location.reload();
     	    		        });	
                             }
                         function eliminaMejoraSolicitud_click() {
-                            let id = getCookie("documento_actual");
-                            document.getElementById(id).disabled= true;
-                            document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-                            let corresponde_documento = 'file_resguardoREC';
-                            $.post("/public/assets/utils/delete_mejora_solicitud.php",{ id: id }, function(data){
-                                location.reload();
-                            });	
-                        }
+                         let id = getCookie("documento_actual");
+                         document.getElementById(id).disabled= true;
+                         document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+                         let corresponde_documento = 'file_resguardoREC';
+                         $.post("/public/assets/utils/delete_mejora_solicitud.php",{ id: id }, function(data){
+                             location.reload();
+                         });	
+                         }
+
                         function getCookie(cname) {
                             var name = cname + "=";
                             var decodedCookie = decodeURIComponent(document.cookie);
@@ -825,7 +861,44 @@ if (!$expedientes['importeAyuda']) {
                             }
                             return "";
                             }
-                    </script> 
+                </script>
+
+                <script>
+                    function myFunction_docs_IDI_click (id, nombre) {
+        	            document.cookie = "documento_actual = " + id;
+    	                console.log (id);
+                        }
+                    function opcion_seleccionada_click(respuesta) {
+            	        document.cookie = "respuesta = " + respuesta;
+	                    console.log (respuesta);
+                        }
+                    function eliminaDocSolicitud_click() {
+                	    console.log (getCookie("documento_actual"));
+	                    let id = getCookie("documento_actual");
+                        document.getElementById(id).disabled= true;
+                        document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	                    console.log (getCookie("nuevo_estado"));
+    	                let corresponde_documento = 'file_resguardoREC';
+	                    $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+                            location.reload();
+    	    		    });	
+                        }
+                    function getCookie(cname) {
+                            var name = cname + "=";
+                            var decodedCookie = decodeURIComponent(document.cookie);
+                            var ca = decodedCookie.split(';');
+                            for(var i = 0; i <ca.length; i++) {
+                                var c = ca[i];
+                                while (c.charAt(0) == ' ') {
+                                    c = c.substring(1);
+                                }
+                                if (c.indexOf(name) == 0) {
+                                    return c.substring(name.length, c.length);
+                                }
+                            }
+                            return "";
+                            }
+                </script>
         
                 <h5 class ="upload-docs-type-label">[.pdf, .zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Solicitud');?>" onsubmit="logSubmit('subeDocsSolicitudBtn')" name="subir_faseExpedSolicitud" id="subir_faseExpedSolicitud" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
@@ -884,14 +957,10 @@ if (!$expedientes['importeAyuda']) {
                 <?php }?>                  
         </form>
         </div>        
-    	    <script>
-		        $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
-		        $('#tel_consultor').mask('999999999');
-	        </script>
 
-            <?php foreach($config_fechas_limite as $config_item): 
-	                $dias_fecha_lim_justificar	= $config_item->dias_fecha_lim_justificar;
-	                $meses_fecha_lim_consultoria = $config_item->meses_fecha_lim_consultoria;
+        <?php foreach($config_fechas_limite as $config_item): 
+	            $dias_fecha_lim_justificar	= $config_item->dias_fecha_lim_justificar;
+	            $meses_fecha_lim_consultoria = $config_item->meses_fecha_lim_consultoria;
                 endforeach; 
 
             $mesesPrograma = explode("#",$meses_fecha_lim_consultoria);
@@ -1000,9 +1069,9 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-
+                        <!-- <span id="custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
         		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target = "#myModalDocValidacion"><strong>Elimina</strong></button>';?></span>		
+	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocValidacion"><strong>Elimina</strong></button>';?></span>		
     		            <?php } else {?>
             	    		<span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
                 		<?php } ?>
@@ -1011,19 +1080,19 @@ if (!$expedientes['importeAyuda']) {
                 endforeach; ?>
                 <?php endif; ?>
             </div>
-            <div id="myModalDocValidacion" class="modal" role="dialog">
+            <div id="myModalDocValidacion" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content" style = "width: 60%;">
                         <div class="modal-header">
         		            Aquesta acció no es podrá desfer.
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
     			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
                             <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
@@ -1031,12 +1100,12 @@ if (!$expedientes['importeAyuda']) {
             </div>  	
             <script>
                 function myFunction_docs_IDI_click (id, nombre) {
-    	        document.cookie = "documento_actual = " + id;
-	            console.log (id);
-                }
+        	        document.cookie = "documento_actual = " + id;
+    	            console.log (id);
+                }                
                 function opcion_seleccionada_click(respuesta) {
-    	        document.cookie = "respuesta = " + respuesta;
-	            console.log (respuesta);
+    	            document.cookie = "respuesta = " + respuesta;
+	                console.log (respuesta);
                 }
                 function eliminaDocValidacion_click() {
     	        console.log (getCookie("documento_actual"));
@@ -1199,7 +1268,7 @@ if (!$expedientes['importeAyuda']) {
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
         		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-    	        		    <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocEjecucion"><strong>Elimina</strong></button>';?></span>		
+    	        		    <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocEjecucion"><strong>Elimina</strong></button>';?></span>		
         		        <?php } else {?>
     	        		    <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
         		        <?php } ?>			
@@ -1208,19 +1277,19 @@ if (!$expedientes['importeAyuda']) {
                 endforeach; ?>
             <?php endif; ?>
             </div>
-            <div id="myModalDocEjecucion" class="modal" role="dialog">
+            <div id="myModalDocEjecucion" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content" style = "width: 60%;">
                         <div class="modal-header">
     		                Aquesta acció no es podrá desfer.
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
     	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
                             <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
@@ -1229,8 +1298,8 @@ if (!$expedientes['importeAyuda']) {
 
             <script>
                 function myFunction_docs_IDI_click (id, nombre) {
-    	            document.cookie = "documento_actual = " + id;
-	                console.log (id);
+        	        document.cookie = "documento_actual = " + id;
+    	            console.log (id);
                     }
                 function opcion_seleccionada_click(respuesta) {
         	        document.cookie = "respuesta = " + respuesta;
@@ -1374,6 +1443,7 @@ if (!$expedientes['importeAyuda']) {
                     <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-justificacion">
                         <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
                         <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
+                       <!--  <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
                        <?php
                             switch ($docSolicitud_item->estado) {
 				                case 'Pendent':
@@ -1391,7 +1461,7 @@ if (!$expedientes['importeAyuda']) {
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                         <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: justificacion_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocJustificacion"><strong>Elimina</strong></button>';?></span>		
+                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: justificacion_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocJustificacion"><strong>Elimina</strong></button>';?></span>		
                         <?php } else {?>
                             <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
                         <?php } ?>			
@@ -1400,19 +1470,19 @@ if (!$expedientes['importeAyuda']) {
                     endforeach; ?>
                 <?php endif; ?>
 
-                <div id="myModalDocJustificacion" class="modal" role="dialog">
+                <div id="myModalDocJustificacion" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content" style = "width: 60%;">
                             <div class="modal-header">
                                 Aquesta acció no es podrá desfer.
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
-                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
                                 </div>
                             </div>
                         </div>

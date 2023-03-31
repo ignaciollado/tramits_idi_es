@@ -25,8 +25,6 @@ foreach($importeAyuda as $x => $x_value) {
 		}
 	}
 
-
-
 $importeAyudaConcedida = $programaImporteAyuda * ($porcentajeConcedido/100);
 $query = "UPDATE pindust_expediente SET importeAyuda = '" . $importeAyudaConcedida ."', porcentajeConcedido = '". $nuevosParametros[1] . "' WHERE  id = " . $nuevosParametros[2];
 $result = mysqli_query($conn, $query);

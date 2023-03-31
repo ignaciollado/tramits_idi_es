@@ -167,7 +167,7 @@
       	</div>
 	<div class="header-wrapper-col">
 		<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
-			Semàfor
+			Import de l'ajuda
 		<?php } else {?>
 			Visible a la web ILS
 		<?php }?>
@@ -203,7 +203,7 @@
 			<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
 
 			<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
-				<span id = "semaforo" class = "detail-wrapper-col"><?php echo "estado de los requerimientos" ?></span>
+				<span id = "semaforo" class = "detail-wrapper-col"><?php echo money_format("%i ", $item['importeAyuda'])." €" ?></span>
 			<?php } else {?>
 				<span id = "publicar_en_web" class = "detail-wrapper-col">
 					<?php  If ( $item['publicar_en_web'] == 1 )  { echo 'SI'; } else {  echo 'NO'; };?>

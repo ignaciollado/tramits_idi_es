@@ -215,7 +215,7 @@ ol, ul {
     -ms-user-select: none;
     user-select: none;
     border: 1px solid transparent;
-   /*  padding: .5rem!important; */
+    padding: .5rem!important;
     line-height: 1.5;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,.2),0 4px 20px 0 rgba(0,0,0,.1);

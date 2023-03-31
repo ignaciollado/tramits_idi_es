@@ -1,34 +1,33 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!----------------------------------------- Informe favorable amb requeriment 2021 OK-->
+
+<!----------------------------------------- Informe favorable amb requeriment OK-------------------------------------->
+<!-- Campos requeridos son: fecha_REC, ref_REC, fecha_rec_mejora, ref_rec_mejora, fecha_requerimiento_notif, fecha_REC_enmienda, ref_REC_enmienda -->
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	 Informe favorable amb requeriment
   	</div>
   	<div class="card-itramits-footer">
-
 	  	<?php
-        if ( !$esAdmin && !$esConvoActual ) {?>
-        <?php }
-        else {?>
-	  		<span id="btn_6" class="">	
-	  			<a id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento');?>" class="btn-primary-itramits">Genera l'informe</a>
-			</span>
-			<span id="spinner_6" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			
+      if ( !$esAdmin && !$esConvoActual ) {
+        /*  */
+				}
+      else {?>
+	  		<span id="btn_6" class="">
+					<!-- <a id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento');?>" class="btn-primary-itramits">Genera l'informe</a> -->
+					<button id="generaInfFavConReq" class='btn btn-secondary' onclick="enviaInformeFavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
+					<div id='infoMissingDataDoc3' class="alert alert-danger ocultar"></div>
+				</span>
+				<span id="spinner_6" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:20px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>  
   	<div class="card-itramits-footer">
-<?php if ($expedientes['doc_informe_favorable_con_requerimiento'] !=0) { ?>
-	<?php 
-	$db = \Config\Database::connect();
-	$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_favorable_con_requerimiento.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";// AND tipo_tramite='".$expedientes['tipo_tramite']."'";
-	$query = $db->query($sql);
-	$row = $query->getRow();
-
-	if (isset($row))
-	{
-	    $PublicAccessId = $row->publicAccessId;
-	    $requestPublicAccessId = $PublicAccessId;
+<?php if ($expedientes['doc_informe_favorable_con_requerimiento'] !=0) { 
+		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria']);
+		if (isset($tieneDocumentosGenerados))
+		{
+	  $PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
+	  $requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
 		$estado_firma = $respuesta['status'];
@@ -53,10 +52,56 @@
 			}
 			echo $estado_firma;
 	}		
-			 ?>			
-		<!--<?php //} else {?>-->
-<?php }?>
-	<!--<?php //}?>-->
-  	</div>
+}?>
+</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
+
+<script>
+
+	function enviaInformeFavorableConRequerimiento(id, convocatoria, programa, nifcif) {
+		let todoBien = true
+		let fecha_REC = document.getElementById('fecha_REC')
+		let ref_REC = document.getElementById('ref_REC')
+		let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif') //0000-00-00
+		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
+		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
+		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let spinner_6 = document.getElementById('spinner_6')
+		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
+		infoMissingDataDoc3.innerText = ""
+
+		if(!fecha_REC.value) {
+			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data REC sol·licitud<br>"
+			todoBien = false
+		}
+		if(!ref_REC.value) {
+			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Referència REC sol·licitud<br>"
+			todoBien = false
+		}
+		if(!fecha_requerimiento_notif.value) {
+			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data notificació requeriment<br>"
+			todoBien = false
+		}
+		if(!fecha_REC_enmienda.value) {
+			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data REC esmena<br>"
+			todoBien = false
+		}
+		if(!ref_REC_enmienda.value) {
+			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Referència REC esmena<br>"
+			todoBien = false
+		}
+
+		if (todoBien) {
+			infoMissingDataDoc3.classList.add('ocultar')
+			generaInfFavConReq.disabled = true
+			generaInfFavConReq.innerHTML = "Generant ..."
+			spinner_6.classList.remove('ocultar')
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_con_requerimiento'
+		} else {
+			infoMissingDataDoc3.classList.remove('ocultar')
+		}
+	}
+
+</script>

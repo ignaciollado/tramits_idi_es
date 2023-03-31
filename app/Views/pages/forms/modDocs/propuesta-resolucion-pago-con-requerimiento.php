@@ -9,8 +9,10 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<a href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_conces_con_req');?>" class="btn-primary-itramits">Genera la proposta</a>
-			<span id="spinner_6" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			<!-- <a href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_conces_con_req');?>" class="btn-primary-itramits">Genera la proposta</a> -->
+			<button id="wrapper_generaInformeDesfConReq" class='btn btn-secondary' onclick="enviaPropResolucionPagoSinReg(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la proposta</button>
+			<div id='infoMissingDataDoc10' class="alert alert-danger ocultar"></div>
+			<span id="spinner_10" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 
 	</div>
@@ -60,3 +62,50 @@
   	</div>
 </div>
 <!-------------------------------------------------------------------------------------------------------------------->
+
+<script>
+	function enviaPropResolucionPagoSinReg(id, convocatoria, programa, nifcif) {
+		let todoBien = true
+		let fecha_REC = document.getElementById('fecha_REC')
+		let ref_REC = document.getElementById('ref_REC')
+	 	let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
+		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
+		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
+		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let spinner_10 = document.getElementById('spinner_10')
+		let infoMissingDataDoc10 = document.getElementById('infoMissingDataDoc10')
+		infoMissingDataDoc10.innerText = ""
+
+		if(!fecha_REC.value) {
+			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Data REC sol·licitud<br>"
+			todoBien = false
+		}
+		if(!ref_REC.value) {
+			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Referència REC sol·licitud<br>"
+			todoBien = false
+		}
+	 	if(!fecha_infor_fav_desf.value) {
+			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Data firma informe favorable / desfavorable<br>"
+			todoBien = false
+		}
+ 		if(!fecha_REC_enmienda.value) {
+			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Data REC esmena<br>"
+			todoBien = false
+		}
+		if(!ref_REC_enmienda.value) {
+			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Referència REC esmena<br>"
+			todoBien = false
+		}
+
+		if (todoBien) {
+			infoMissingDataDoc10.classList.add('ocultar')
+			generaInfFavConReq.disabled = true
+			generaInfFavConReq.innerHTML = "Generant ..."
+			spinner_10.classList.remove('ocultar')
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_prop_res_conces_con_req'
+		} else {
+			infoMissingDataDoc10.classList.remove('ocultar')
+		}
+	}
+</script>

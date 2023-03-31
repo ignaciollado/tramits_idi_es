@@ -42,6 +42,7 @@
     <fieldset>
 		<h4><?php echo lang('message_lang.destino_solicitud');?>: <strong><?php echo lang('message_lang.idi');?></strong></h4>
 		<h4><?php echo lang('message_lang.codigo_dir3');?> <strong><?php echo $data['configuracion']['emisorDIR3'];?></strong></h4>
+		<h4><?php echo lang('message_lang.codigo_sia');?> <strong><?php echo $data['configuracion']['codigoSIA'];?></strong></h4>
 		<h4><?php echo lang('message_lang.convocatoria_sol_idigital');?>: <strong><?php echo $data['configuracion']['convocatoria'];?></strong></h4>
 	</fieldset> 
 		</div>

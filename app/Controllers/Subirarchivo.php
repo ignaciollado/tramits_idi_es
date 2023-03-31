@@ -1,7 +1,8 @@
 <?php namespace App\Controllers;
 	
 use App\Models\ConfiguracionModel;
- class SubirArchivo extends BaseController
+
+class SubirArchivo extends BaseController
 {
 	public function store()
    {

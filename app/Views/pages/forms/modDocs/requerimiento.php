@@ -8,7 +8,8 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type="button" class="btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myRequerimiento">Motiu del <br>requeriment</button>
+			<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#motivoRequerimiento">Motiu del <br>requeriment</button>
+			<div id='infoMissingDataDoc1' class="alert alert-danger ocultar"></div>
 			<span id="btn_3" class="">
     			<a id ="wrapper_motivoRequerimiento" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment');?>">Envia a signar el requeriment</a>
 			</span>
@@ -53,7 +54,7 @@
 	}
 			 ?>
 
-<div class="modal" id="myRequerimiento">
+<div class="modal" id="motivoRequerimiento">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -86,3 +87,35 @@
 
   </div>  
 </div>
+
+<script>
+
+/* 	function enviaRequerimiento(id, convocatoria, programa, nifcif) {
+		let todoBien = true
+		let fecha_REC = document.getElementById('fecha_REC')
+		let ref_REC = document.getElementById('ref_REC')
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let spinner_3 = document.getElementById('spinner_3')
+		let infoMissingDataDoc1 = document.getElementById('infoMissingDataDoc1')
+		infoMissingDataDoc1.innerText = ""
+		if(!fecha_REC.value) {
+			infoMissingDataDoc1.innerHTML = infoMissingDataDoc1.innerHTML + "Data REC sol·licitud<br>"
+			todoBien = false
+		}
+		if(!ref_REC.value) {
+			infoMissingDataDoc1.innerHTML = infoMissingDataDoc1.innerHTML + "Referència REC sol·licitud<br>"
+			todoBien = false
+		}
+
+		if (todoBien) {
+			infoMissingDataDoc1.classList.add('ocultar')
+			generaInfFavConReq.disabled = true
+			generaInfFavConReq.innerHTML = "Generant ..."
+			spinner_3.classList.remove('ocultar')
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment'
+		} else {
+			infoMissingDataDoc1.classList.remove('ocultar')
+		}
+	}
+ */
+</script>

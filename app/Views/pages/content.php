@@ -23,15 +23,74 @@
 	  </fieldset>
   </section>
 </div>
-<!-------------------------------------------------------------------------------------------------------------------------->
-
-<!------------------------------------------------------2022---------------------------------------------------------------->
+<!-------------------------------------------------------CHEQUES------------------------------------------------------------>
 <button class="accordion"><h1>XECS</h1></button>
-<div class="panel" style="display:block;">
-<button class="accordion accordion--convo"><h1>Convocatòria 2022</h1></button>
-<div class="panel">
+<!-- <div class="panel" style="display:block;"> -->
+<!------------------------------------------------------2023---------------------------------------------------------------->
+<button class="accordion accordion--convo"><h1>Convocatòria 2023</h1></button>
+  <div class="panel" style="display:block;">
 
-  <section id="sectionProgramaI">
+    <section id="sectionProgramaI">
+    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2023');?>" target="_self">Programa I</a></h2>
+	  <fieldset>
+      <div>
+        <span id="totalSolicitudesI_2023"></span>
+        <span id="importeTotalI_2023"></span>
+        <span id="importeConcedidoI_2023"></span>
+      </div>
+      <div>
+          <span id="totalSolicitudesINoREC_2023"></span>
+          <span id="totalSolicitudesIPendientes_2023"></span>
+          <span id="totalSolicitudesIDenegadas_2023"></span>
+          <span id="totalSolicitudesIFinalizadas_2023"></span>
+          <span id="totalSolicitudesIJustificado_2023"></span>
+      </div>
+	  </fieldset>
+    </section>
+
+    <section id="sectionProgramaII">
+    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2023');?>" target="_self">Programa II</a></pre></h2>
+	  <fieldset>
+      <div>
+        <span id="totalSolicitudesII_2023"></span>
+        <span id="importeTotalII_2023"></span>
+        <span id="importeConcedidoII_2023"></span>
+      </div>
+      <div>
+          <span id="totalSolicitudesIINoREC_2023"></span>
+          <span id="totalSolicitudesIIPendientes_2023"></span>
+          <span id="totalSolicitudesIIDenegadas_2023"></span>
+          <span id="totalSolicitudesIIFinalizadas_2023"></span>
+          <span id="totalSolicitudesIIJustificado_2023"></span>
+      </div>
+	  </fieldset>
+    </section>
+
+    <section id="sectionProgramaIII">
+    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2023');?>" target="_self">Programa III</a></h2>
+	  <fieldset>
+      <div>
+        <span id="totalSolicitudesIII_2023"></span>
+        <span id="importeTotalIII_2023"></span>
+        <span id="importeConcedidoIII_2023"></span>
+      </div>
+      <div>
+          <span id="totalSolicitudesIIINoREC_2023"></span>
+          <span id="totalSolicitudesIIIPendientes_2023"></span>
+          <span id="totalSolicitudesIIIDenegadas_2023"></span>
+          <span id="totalSolicitudesIIIFinalizadas_2023"></span>
+          <span id="totalSolicitudesIIIJustificado_2023"></span>
+      </div>
+	  </fieldset>
+    </section>
+
+  </div> 
+<!-------------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------2022---------------------------------------------------------------->
+<button class="accordion accordion--convo"><h1>Convocatòria 2022</h1></button>
+  <div class="panel">
+
+    <section id="sectionProgramaI">
     <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2022');?>" target="_self">Programa I</a></h2>
 	  <fieldset>
       <div>
@@ -47,9 +106,9 @@
           <span id="totalSolicitudesIJustificado_2022"></span>
       </div>
 	  </fieldset>
-  </section>
+    </section>
 
-  <section id="sectionProgramaII">
+    <section id="sectionProgramaII">
     <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2022');?>" target="_self">Programa II</a></pre></h2>
 	  <fieldset>
       <div>
@@ -65,9 +124,9 @@
           <span id="totalSolicitudesIIJustificado_2022"></span>
       </div>
 	  </fieldset>
-  </section>
+    </section>
 
-  <section id="sectionProgramaIII">
+    <section id="sectionProgramaIII">
     <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2022');?>" target="_self">Programa III</a></h2>
 	  <fieldset>
       <div>
@@ -83,12 +142,12 @@
           <span id="totalSolicitudesIIIJustificado_2022"></span>
       </div>
 	  </fieldset>
-  </section>
-</div>  
+    </section>
+  </div>  
 <!-------------------------------------------------------------------------------------------------------------------------->
 <!----------------------------------------------------2021------------------------------------------------------------------>
 <button class="accordion accordion--convo"><h1>Convocatòria 2021</h1></button>
-<div class="panel" >
+  <div class="panel" >
     <section id="sectionProgramaI">
       <h2><a title="Consultar els expedients" href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2021');?>" target="_self">Programa I</a></h2>
 	    <fieldset>
@@ -145,7 +204,7 @@
   </div>  
   <!-------------------------------------------------------------------------------------------------------------------------->
   <!-----------------------------------------------2020----------------------------------------------------------------------->
-  <button class="accordion accordion--convo"><h1>Convocatòria 2020</h1></button>
+<button class="accordion accordion--convo"><h1>Convocatòria 2020</h1></button>
   <div class="panel">
     <section id="sectioniDigital2020">
 	    <h2 id="iDigital2020" onclick="listPrograma('2020', 'iDigital 2020')">iDigital 2020</h2>
@@ -186,8 +245,8 @@
   var acc = document.getElementsByClassName("accordion");
   var i;
   console.log("Acordeones home: " + acc.length +"--")
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {

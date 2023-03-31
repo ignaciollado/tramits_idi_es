@@ -80,10 +80,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: Informe favorable<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
-$html .= "NIF: ".$data['expediente']['nif'];
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -119,21 +119,6 @@ $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
 
-//$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-//$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
-//$html .= "</table>";
-//$pdf->writeHTML($html, true, false, true, false, '');
-
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 4);
-//$parrafo_1_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB_modific'], lang('message_lang.doc_info_favorable_sin_req_p1_1'));
-//$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-//$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1_1 ."</td></tr>";
-//$html .= "</table>";
-//$pdf->writeHTML($html, true, false, true, false, '');
-
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 4);
 $parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('message_lang.doc_info_favorable_sin_req_p2'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
@@ -142,29 +127,16 @@ $parrafo_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['i
 $parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
-//$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-//$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_2 ."</td></tr>";
-//$html .= "</table>";
-//$pdf->writeHTML($html, true, false, true, false, '');
 
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 4);
 $parrafo_3 =  lang('message_lang.doc_info_favorable_sin_req_p3');
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
-//$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-//$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_3 ."</td></tr>";
-//$html .= "</table>";
-//$pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
 $parrafo_4 = lang('message_lang.doc_info_favorable_sin_req_p4');
 $html .= "<li>". $parrafo_4 ."</li>";
 $html .= "</ol>";
-//$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-//$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_4 ."</td></tr>";
-//$html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer

@@ -6,6 +6,7 @@ use App\Models\ConsultorModel;
 use App\Models\DocumentosModel;
 use App\Models\DocumentosTipoModel;
 use App\Models\DocumentosJustificacionModel;
+use App\Models\MejorasExpedienteModel;
 use App\Models\ConfiguracionModel;
 
 class Expedientes extends Controller
@@ -272,36 +273,29 @@ class Expedientes extends Controller
 		$language->setLocale($idioma);
 
 		$modelConfig = new ConfiguracionModel();
+
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();		
 		$data['importeAyuda'] = $data['configuracion']['programa'];
     $data['abrirPanel'] = 0;
 		
 		$modelExp = new ExpedientesModel();
+		$modelDocumentos = new DocumentosModel();
+		$modelJustificacion = new DocumentosJustificacionModel();
+		$modelMejorasSolicitud = new MejorasExpedienteModel();
+
 		$db = \Config\Database::connect();
 
 		$qry = "SELECT * FROM pindust_configuracion WHERE (convocatoria_activa = 1)";
 		$query = $db->query($qry);
 		$data['config_fechas_limite'] = $query->getResult();
 
-		//--------------------------------------------Comprueba si ya hay algún documento de justificación-------------------
-		
-		$query = $db->query("SELECT COUNT(id) AS totalDocsJustifPlan FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_PlanTransformacionDigital' AND id_sol = $id)");
-		foreach ($query->getResult('array') as $row)
-		{
-			$data['totalDocsJustifPlan'] = $row['totalDocsJustifPlan'];
-		}
-		$query = $db->query("SELECT COUNT(id) AS totalDocsJustifFact FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_FactTransformacionDigital' AND id_sol = $id)");
-		foreach ($query->getResult('array') as $row)
-		{
-			$data['totalDocsJustifFact'] = $row['totalDocsJustifFact'];
-		}
-		$query = $db->query("SELECT COUNT(id) AS totalDocsJustifPagos FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_PagosTransformacionDigital' AND id_sol = $id)");
-		foreach ($query->getResult('array') as $row)
-		{
-			$data['totalDocsJustifPagos'] = $row['totalDocsJustifPagos'];
-		} 
+		//-----------------------------------Comprueba si ya hay algún documento de justificación-------------------
 
-		//----------------------------------------------------------------------------------------------------------------------------------------------
+		$data['totalDocsJustifPlan'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PlanTransformacionDigital', $id);
+		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
+		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
+
+		//-----------------------------Obtiene el detalle del Expediente----------------------------------------------
 		
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 		
@@ -311,41 +305,48 @@ class Expedientes extends Controller
 		$solicitante = mb_strtoupper ($data['expedientes']['empresa']);
 		$nifcif = strtoupper($data['expedientes']['nif']);
 
-		//-------------------------------------Actualiza la situación a Justificado, si han justificado el expediente------------------------------------
-		
-		/* 		If ($tipo_tramite =='Programa I' && $data['totalDocsJustifPlan']>0 && $data['totalDocsJustifFact']>0 && $data['totalDocsJustifPagos']>0) {
-			$sql = 'UPDATE pindust_expediente SET situacion="Justificado" WHERE id =' . $id;
-			$db->simpleQuery($sql);
-		}
+		$data['totalConvocatorias'] = $modelExp->findNumberOfConvocatorias($nifcif, $tipo_tramite);
 
-		If (($tipo_tramite == 'Programa II' || $tipo_tramite == 'Programa III') && $data['totalDocsJustifPlan']>0) {
-			$sql = 'UPDATE pindust_expediente SET situacion="Justificado" WHERE id =' . $id;
-			$db->simpleQuery($sql);
-		} */
-
-		//--------------------------------------------------------------------------------------------------
 		$data['titulo'] = "Expedient: " . $idExp ."/". $convocatoria. " (".$tipo_tramite.") - ".$solicitante." - ".$nifcif;
+
+		/* ----Busca si ya tenemos alguno de los documentos en el IDI y que en la solicitud lo han marcado como SI lo tenemos---- */
+		if ($data['expedientes']['memoriaTecnicaEnIDI']) {
+			$modelDocumentos->findIfDocumentIsInIDI($id, $nifcif, 'file_memoriaTecnica', $tipo_tramite, $convocatoria );
+		}
+		if ($data['expedientes']['altaRETA_docAcredEnIDI']) {
+			$modelDocumentos->findIfDocumentIsInIDI($id, $nifcif, 'file_altaAutonomos', $tipo_tramite, $convocatoria );
+		}
+		if ($data['expedientes']['certificadoIAEEnIDI']) {
+			$modelDocumentos->findIfDocumentIsInIDI($id, $nifcif, 'file_certificadoIAE', $tipo_tramite, $convocatoria );
+		}
+		if ($data['expedientes']['copiaNIFSociedadEnIDI']) {
+			$modelDocumentos->findIfDocumentIsInIDI($id, $nifcif, 'file_nifEmpresa', $tipo_tramite, $convocatoria );
+		}
+		if ($data['expedientes']['pJuridicaDocAcreditativaEnIDI']) {
+			$modelDocumentos->findIfDocumentIsInIDI($id, $nifcif, 'file_document_acred_como_repres', $tipo_tramite, $convocatoria );
+		}
+		/* --------------------------------------------------------------- */
 		
+		/* SELECCIONA TODOS LOS DOCUMENTOS ASOCIADOS AL EXPEDIENTE */
 		$qry = "SELECT * FROM pindust_documentos WHERE (fase_exped = '') AND id_sol = " . $id;
 		$query = $db->query($qry);
 		$data['documentos'] = $query->getResult();
+		/* ---------------------------------------------------------------- */
 
-		$qry = "SELECT * FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_PlanTransformacionDigital' AND id_sol = " . $id . ")";
-		$query = $db->query($qry);
-		$data['documentosJustifPlan'] = $query->getResult();
-		
-		$qry = "SELECT * FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_FactTransformacionDigital' AND id_sol = " . $id . ")";
-		$query = $db->query($qry);
-		$data['documentosJustifFact'] = $query->getResult();					
-
-		$qry = "SELECT * FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_PagosTransformacionDigital' AND id_sol = " . $id . ")";
-		$query = $db->query($qry);
-		$data['documentosJustifPagos'] = $query->getResult();		
+		/* Los documentos de la justificación por PLAN, FASCTURA, PAGOS */
+		$data['documentosJustifPlan'] = $modelJustificacion->listDocumentosJustificacion('file_PlanTransformacionDigital', $id);
+		$data['documentosJustifFact'] = $modelJustificacion->listDocumentosJustificacion('file_FactTransformacionDigital', $id);
+		$data['documentosJustifPagos'] = $modelJustificacion->listDocumentosJustificacion('file_PagosTransformacionDigital', $id);
 		
 		$qry = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $id;  //Todos los documentos del expediente pertenecientes a cualquier fase
 		$query = $db->query($qry);
-		$data['documentosExpediente'] = $query->getResult();	
-		
+		$data['documentosExpediente'] = $query->getResult();
+
+		/* Lista de las MEJORAS de la solicitud */
+		$data['mejorasSolicitud'] = $modelMejorasSolicitud->selectAllMejorasExpediente($id);
+		$data['ultimaMejoraSolicitud'] = $modelMejorasSolicitud->selectLastMejorasExpediente($id);
+
+		/* Muestra la vista */
 		echo view('templates/header/header', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);	
 		if ( $tipo_tramite === 'ILS') {
@@ -808,11 +809,11 @@ class Expedientes extends Controller
 	
 	public function delete($id = null)
     {
-		$modelExp = new ExpedientesModel();
-		$data['user'] = $modelExp->where('id', $id)->delete();
-		echo view('templates/header/header', $data);      
-		echo redirect()->to( base_url('public/index.php/users') );
-		echo view('templates/footer/footer');			
+			$modelExp = new ExpedientesModel();
+			$data['user'] = $modelExp->where('id', $id)->delete();
+			echo view('templates/header/header', $data);      
+			echo redirect()->to( base_url('public/index.php/users') );
+			echo view('templates/footer/footer');			
     }
 	
   public function configurador_update()
@@ -1062,7 +1063,7 @@ class Expedientes extends Controller
 					];
 					$builder->where('id', $request->uri->getSegment(3));
 					$save_exped = $builder->update($data_infor);
-					$data['byCEOSigned'] = true;
+					$data['byCEOSigned'] = false;
 					$data_footer = [
 						'tipoDoc' => "Proposta resolució denegació ajut amb requeriment",
 						'conVIAFIRMA' => false
@@ -1080,7 +1081,7 @@ class Expedientes extends Controller
 					];
 					$builder->where('id', $request->uri->getSegment(3));
 					$save_exped = $builder->update($data_infor);
-					$data['byCEOSigned'] = true;
+					$data['byCEOSigned'] = false;
 					$data_footer = [
 						'tipoDoc' => " Proposta resolució denegació ajut sense requeriment",
 						'conVIAFIRMA' => false
@@ -1098,7 +1099,7 @@ class Expedientes extends Controller
 					];
 					$builder->where('id', $request->uri->getSegment(3));
 					$save_exped = $builder->update($data_infor);
-					$data['byCEOSigned'] = true;
+					$data['byCEOSigned'] = false;
 					$data_footer = [
 						'tipoDoc' => " Proposta resolució concessió ajut sense requeriment",
 						'conVIAFIRMA' => false
@@ -1116,7 +1117,7 @@ class Expedientes extends Controller
 						];
 						$builder->where('id', $request->uri->getSegment(3));
 						$save_exped = $builder->update($data_infor);
-						$data['byCEOSigned'] = true;
+						$data['byCEOSigned'] = false;
 						$data_footer = [
 							'tipoDoc' => " Proposta resolució concessió ajut amb requeriment",
 							'conVIAFIRMA' => false
@@ -1220,7 +1221,7 @@ class Expedientes extends Controller
 						];
 						$builder->where('id', $request->uri->getSegment(3));
 						$save_exped = $builder->update($data_infor);
-						$data['byCEOSigned'] = true;
+						$data['byCEOSigned'] = false;
 						$data_footer = [
 							'tipoDoc' => " Requeriment d'esmena",
 							'conVIAFIRMA' => false

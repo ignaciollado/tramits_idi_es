@@ -134,6 +134,54 @@ window.addEventListener('load', (event) => {
     setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa I', 'Justificado', 'totalSolicitudesIJustificado_2022'); }, intervaloActualizacion);
     setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa II', 'Justificado', 'totalSolicitudesIIJustificado_2022'); }, intervaloActualizacion);
     setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa III', 'Justificado', 'totalSolicitudesIIIJustificado_2022'); }, intervaloActualizacion);
+
+
+    //convo 2023
+
+    listPrograma('2023', 'Programa I');
+    listPrograma('2023', 'Programa II');
+    listPrograma('2023', 'Programa III');
+
+    setInterval(function(){ listPrograma('2023', 'Programa I'); }, intervaloActualizacion);
+    setInterval(function(){ listPrograma('2023', 'Programa II'); }, intervaloActualizacion);
+    setInterval(function(){ listPrograma('2023', 'Programa III'); }, intervaloActualizacion);
+
+    setInterval(function(){ importeTotalSolicitadoPrograma('2023', 'Programa I'); }, intervaloActualizacion);
+    setInterval(function(){ importeTotalSolicitadoPrograma('2023', 'Programa II'); }, intervaloActualizacion);
+    setInterval(function(){ importeTotalSolicitadoPrograma('2023', 'Programa III'); }, intervaloActualizacion);
+
+    
+    setInterval(function(){ importeTotalConcedidoPrograma('2023', 'Programa I'); }, intervaloActualizacion);
+    setInterval(function(){ importeTotalConcedidoPrograma('2023', 'Programa II'); }, intervaloActualizacion);
+    setInterval(function(){ importeTotalConcedidoPrograma('2023', 'Programa III'); }, intervaloActualizacion);
+
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'Finalizado', 'totalSolicitudesIFinalizadas_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa II', 'Finalizado', 'totalSolicitudesIIFinalizadas_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa III', 'Finalizado', 'totalSolicitudesIIIFinalizadas_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'ILS', 'empresaAdherida', 'totalSolicitudesILSAdheridas_2023'); }, intervaloActualizacion);
+
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'Denegado', 'totalSolicitudesIDenegadas_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa II', 'Denegado', 'totalSolicitudesIIDenegadas_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa III', 'Denegado', 'totalSolicitudesIIIDenegadas_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'ILS', 'empresaDenegada', 'totalSolicitudesILSDenegadas_2023'); }, intervaloActualizacion);
+
+
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'pendiente', 'totalSolicitudesIPendientes_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa II', 'pendiente', 'totalSolicitudesIIPendientes_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa III', 'pendiente', 'totalSolicitudesIIIPendientes_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'ILS', 'pendiente', 'totalSolicitudesILSPendientes_2023'); }, intervaloActualizacion);
+
+
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa III', 'nohapasadoREC', 'totalSolicitudesIIINoREC_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'ILS', 'nohapasadoREC', 'totalSolicitudesILSNoREC_2023'); }, intervaloActualizacion);
+
+
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'Justificado', 'totalSolicitudesIJustificado_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa II', 'Justificado', 'totalSolicitudesIIJustificado_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa III', 'Justificado', 'totalSolicitudesIIIJustificado_2023'); }, intervaloActualizacion);
+
    /*  setInterval(function(){ totalSolicitudesPorSituacion('2022', 'ILS', 'Justificado', 'totalSolicitudesILSJustificado_2022'); }, intervaloActualizacion); */
 
 });

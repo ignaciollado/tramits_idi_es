@@ -8,7 +8,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
-<section id="formulario_solicitud">
+<?php 
+
+if (!get_cookie('itramitsCurrentLanguage')) {
+	setcookie("itramitsCurrentLanguage", 'ca');
+	service('request')->setLocale('ca');
+}
+?>
+	<section id="formulario_solicitud">
 	<div class="alert alert-info">
 		<?php echo lang('message_lang.intro_sol_idigital');?>
 	</div>
@@ -72,10 +79,10 @@
       </div>
       <div class="modal-body">
 			<?php
-						if (get_cookie('CurrentLanguage')==="ca") {
-							include 'includes/clausulaProteccionDatos.html';
-						} else {
+						if (service('request')->getLocale()==="es") {
 							include 'includes/clausulaProteccionDatos-es.html';
+						} else {
+							include 'includes/clausulaProteccionDatos.html';
 						}
 						?>
       </div>
@@ -469,7 +476,7 @@ function showTab(n) {
   	} else {
 		// console.log(cookie.value)
 		let currentLanguage = getCookie('itramitsCurrentLanguage')
-		if (currentLanguage=="ca") {
+		if (currentLanguage === "ca") {
 			submitBTN.innerHTML = "Següent"
 		} else {
 		  	submitBTN.innerHTML = "Siguiente"
