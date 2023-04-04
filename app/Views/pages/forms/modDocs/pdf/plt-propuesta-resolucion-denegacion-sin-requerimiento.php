@@ -6,14 +6,20 @@
 <?php
 require_once('tcpdf/tcpdf.php');
 setlocale(LC_MONETARY,"es_ES");
+use App\Models\ConfiguracionModel;
+use App\Models\ExpedientesModel;
+use App\Models\MejorasExpedienteModel;
+
     //obtengo los datos de la convocatoria
-    use App\Models\ConfiguracionModel;
     $configuracion = new ConfiguracionModel();
     $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
     //obtengo los datos de la solicitud
-    use App\Models\ExpedientesModel;
     $expediente = new ExpedientesModel();
     $data['expediente'] = $expediente->where('id', $id)->first();
+    //obtengo los datos de la última mejora de la solicitud (si la hay)
+    $mejorasSolicitud = new MejorasExpedienteModel();
+    $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
+    $ultimaMejora = explode("##",  $data['ultimaMejora']);    
     //obtengo los datos del documento
     $db = \Config\Database::connect();
 	$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
@@ -85,8 +91,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: proposta de resolució <br>de denegació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -129,6 +137,13 @@ $parrafo_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['i
 $parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
+
+if ($ultimaMejora[2] && $ultimaMejora[3]) {
+    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_prop_resolucion_denegacion_sin_req_p3m'));
+    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
+    $html .= "<li>". $parrafo_3m ."</li>";
+    $html .= "<br>";
+}
 
 $parrafo_4 = str_replace("%FECHAPROPDENEGACION%", date_format(date_create($data['expediente']['fecha_propuesta_denegacion']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_denegacion_sin_req_p4'));
 $parrafo_4 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4);

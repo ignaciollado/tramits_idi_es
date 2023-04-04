@@ -8,25 +8,25 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#motivoRequerimiento">Motiu del <br>requeriment</button>
+			<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#motivoRequerimiento">Motiu del requeriment</button>
 			<div id='infoMissingDataDoc1' class="alert alert-danger ocultar"></div>
-			<span id="btn_3" class="">
+			<span id="btn_1" class="">
     			<a id ="wrapper_motivoRequerimiento" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment');?>">Envia a signar el requeriment</a>
 			</span>
-			<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			<span id="spinner_1" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 	<?php }?>
 	
 	</div>
   <div class ="card-itramits-footer">
+	<?php if ($expedientes['doc_requeriment'] !=0) { ?>
+		<!-- <a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment');?>" target = "_self"><i class='fa fa-check'></i>El requeriment</a> -->
+	<?php }?>
 	<?php
 	//Compruebo el estado de la firma del documento.
-	$db = \Config\Database::connect();
-	$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_requeriment.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
-	$query = $db->query($sql);
-	$row = $query->getRow();
-	if (isset($row))
+	$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria']);
+	if (isset($tieneDocumentosGenerados))
 	{
-		$PublicAccessId = $row->publicAccessId;
+		$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 	  $requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
@@ -67,7 +67,7 @@
       <!-- Modal body -->
       <div class="modal-body">
 					<div class="form-group">
-						<textarea required rows="10" cols="30" name="motivoRequerimiento" class="form-control" id = "motivoRequerimiento" 
+						<textarea required rows="10" cols="30" name="motivoRequerimientoTexto" class="form-control" id = "motivoRequerimientoTexto" 
 						placeholder="Motiu del requeriment"><?php echo $expedientes['motivoRequerimiento']; ?></textarea>
         	</div>
 					

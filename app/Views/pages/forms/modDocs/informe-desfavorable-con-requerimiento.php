@@ -1,4 +1,4 @@
-<!-- -------------------------------------- Informe desfavorable amb requeriment 2021 OK-->
+<!-- -------------------------------------- Informe desfavorable amb requeriment DOC 6-->
 <div class="card-itramits">
   <div class="card-itramits-body">
      Informe desfavorable amb requeriment	

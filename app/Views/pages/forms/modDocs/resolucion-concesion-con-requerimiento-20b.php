@@ -1,7 +1,7 @@
-<!------------------------------------------- Informe inici requeriment justificación DOC 18 SIN VIAFIRMA --------->
+<!----------------------------------------- Informe inici requeriment d'esmena (20b) DOC 21 SIN VIAFIRMA --------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Informe inici requeriment justificació
+      Resolució de concesió amb requeriment (20b)
 	</div>
 	<div class="card-itramits-footer">
 
@@ -9,23 +9,22 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myInicioRequerimiento" id="myBtnInicioRequerimiento">Genera el requeriment</button>
-			<span id="btn_177" class="">
-    			<a id="wrapper_inicio_req_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_inicio_requerimiento_justificacion');?>" class="btn-primary-itramits">Envia a signar el requeriment</a>
+			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera la resolució</button>
+			<span id="btn_19" class="">
+    			<a id="wrapper_informe_sobre_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_resolucion_concesion_con_req_20b');?>" class="btn-primary-itramits">Envia a signar l'informe</a>
 			</span>
-			<span id="spinner_177" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			<span id="spinner_19" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>
 	<div class="card-itramits-footer">
-
-	<?php if ($expedientes['doc_inicio_requerimiento_subsanacion'] !=0) { ?>
-		<a	class='btn btn-ver-itramits' class="ocultar" href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_inicio_requerimiento_justificacion');?>" target = "_self"><i class='fa fa-check'></i>Inici requeriment justificació</a>		
+	<?php if ($expedientes['doc_informe_sobre_la_subsanacion'] !=0) { ?>
+		<a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_sobre_la_subsanacion');?>" target = "_self"><i class='fa fa-check'></i>Informe sobre l'esmena</a>		
 		<?php }?>
 		<?php
 	//Compruebo el estado de la firma del documento.
 	$db = \Config\Database::connect();
-	$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_inicio_requerimiento_subsanacion.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
+	$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_sobre_la_subsanacion.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
 	$query = $db->query($sql);
 	$row = $query->getRow();
 	if (isset($row))
@@ -57,26 +56,29 @@
 			echo $estado_firma;
 	}
 			 ?>
-  	
-	</div>
+  	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <!-- The Modal -->
- 		<div id="myInicioRequerimiento" class="modal fade" role="dialog">
+<div id="mySobreSubsanacionRequerimiento" class="modal fade" role="dialog">
 				<div class="modal-dialog">
                 <!-- Modal content-->
     			<div class="modal-content" style = "width: 80%;">
       				<div class="modal-header">
-      					<label for="motivoInicioRequerimiento"><strong>Escriu el motiu de l'inici del requeriment:</strong></label>
+      					<label for="motivoSobreSubsanacion"><strong>Una vegada transcorregut el termini, el tècnic exposa i proposa que:</strong></label>
         				<button type="button" class="close" data-dismiss="modal">&times;</button>
       				</div>
       				<div class="modal-body">
 						<div class="form-group">
-							<textarea required rows="10" cols="30" name="motivoInicioRequerimiento" class="form-control" id = "motivoInicioRequerimiento" 
-							placeholder="Motiu del requeriment"><?php echo $expedientes['motivoInicioRequerimiento']; ?></textarea>
+							<textarea required rows="10" cols="30" name="motivoSobreSubsanacion" class="form-control" id = "motivoSobreSubsanacion" 
+							placeholder="El tècnic exposa que ..."><?php echo $expedientes['motivoSobreSubsanacion']; ?></textarea>
         				</div>
 						<div class="form-group">
-           				<button type="button" onclick = "javaScript: actualizaMotivoInicioRequerimiento_click();" id="guardaMotivoInicioRequerimiento" 
+							<textarea required rows="10" cols="30" name="propuestaTecnicoSobreSubsanacion" class="form-control" id = "propuestaTecnicoSobreSubsanacion" 
+							placeholder="El tècnic proposa que ..."><?php echo $expedientes['propuestaTecnicoSobreSubsanacion']; ?></textarea>
+        				</div>					
+						<div class="form-group">
+           				<button type="button" onclick = "javaScript: actualizaMotivoInformeSobreSubsanacion_click();" id="guardaMotivoInformeSobreSubsanacion" 
 							class="btn-itramits btn-success-itramits">Guarda</button>
         				</div>				
     					</div>
@@ -85,23 +87,23 @@
 		</div>
 				<script>
 					// Get the modal
-					let modal_177 = document.getElementById("myInicioRequerimiento");
+					let modal_19 = document.getElementById("mySobreSubsanacionRequerimiento");
 					// Get the button that opens the modal
-					let btn_177 = document.getElementById("myBtnInicioRequerimiento");
+					let btn_19 = document.getElementById("myBtnSobreSubsanacionRequerimiento");
 					// Get the <span> element that closes the modal
-					let span_177 = document.getElementsByClassName("close")[0];
+					let span_19 = document.getElementsByClassName("close")[0];
 					// When the user clicks the button, open the modal 
-					btn_17.onclick = function() {
-                    	modal_177.style.display = "block";
+					btn_19.onclick = function() {
+                    	modal_19.style.display = "block";
 					}
 					// When the user clicks on <span> (x), close the modal
-					span_17.onclick = function() {
-	                    modal_177.style.display = "none";
+					span_19.onclick = function() {
+	                    modal_19.style.display = "none";
 					}
 					// When the user clicks anywhere outside of the modal, close it
 					window.onclick = function(event) {
-  					if (event.target == modal_177) {
-	                    modal_177.style.display = "none";
+  					if (event.target == modal_19) {
+	                    modal_19.style.display = "none";
   					}
 					}
 				</script>

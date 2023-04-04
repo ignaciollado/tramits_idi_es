@@ -1,7 +1,7 @@
-<!----------------------------------------- Informe inici requeriment d'esmena SIN VIAFIRMA --------->
+<!----------------------------------------- Informe inici requeriment d'esmena SIN VIAFIRMA DOC 19--------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-      Requeriment d'esmena
+      Requeriment d'esmena justificació 
 	</div>
 	<div class="card-itramits-footer">
 

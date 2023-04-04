@@ -1,5 +1,4 @@
-
-<!----------------------------------------- Informe favorable amb requeriment OK-------------------------------------->
+<!----------------------------------------- Informe favorable amb requeriment DOC 3-------------------------------------->
 <!-- Campos requeridos son: fecha_REC, ref_REC, fecha_rec_mejora, ref_rec_mejora, fecha_requerimiento_notif, fecha_REC_enmienda, ref_REC_enmienda -->
 <div class="card-itramits">
   	<div class="card-itramits-body">

@@ -9,12 +9,12 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-				<span id="btn_2" class="">	
+				<span id="btn_4" class="">	
     			<!-- <a id="generaInfFavSinReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_sin_requerimiento');?>" class="btn-primary-itramits">Generar l'informe</a> -->
 					<button id="generaInfFavConReq" class='btn btn-secondary' onclick="enviaInformeFavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
 					<div id='infoMissingDataDoc4' class="alert alert-danger ocultar"></div>
 				</span>
-			<span id="spinner_2" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			<span id="spinner_4" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>  
@@ -68,7 +68,7 @@
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda') */
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_2 = document.getElementById('spinner_2')
+		let spinner_4 = document.getElementById('spinner_4')
 		let infoMissingDataDoc4 = document.getElementById('infoMissingDataDoc4')
 		infoMissingDataDoc4.innerText = ""
 
@@ -97,7 +97,7 @@
 			infoMissingDataDoc4.classList.add('ocultar')
 			generaInfFavConReq.disabled = true
 			generaInfFavConReq.innerHTML = "Generant ..."
-			spinner_2.classList.remove('ocultar')
+			spinner_4.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_sin_requerimiento'
 		} else {
 			infoMissingDataDoc4.classList.remove('ocultar')

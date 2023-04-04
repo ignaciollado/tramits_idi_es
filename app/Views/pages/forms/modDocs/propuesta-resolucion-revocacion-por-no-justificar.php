@@ -1,8 +1,8 @@
-<!----------------------------------------- Resolució desistiment por renuncia DOC 22 SIN VIAFIRMA --------------------------------->
+<!----------------------------------------- Propuesta resolución revocació por no justificar DOC 23 SIN VIAFIRMA --------------------------------->
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució desistiment per renúncia
+  Proposta resolució revocació per no justificar
   </div>
 
   	<div class="card-itramits-footer">
@@ -11,10 +11,10 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Genera la resolució</button>  
+			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
+			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Generar la proposta</button>  
 			<span id="btn_14" class="">
-    			<a id ="wrapper_motivoDesestimientoRenuncia" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>"><i class='fa fa-info'></i> Generar el PDF de desistiment</a>
+    			<a id ="wrapper_motivoDesestimientoRenuncia" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Generar el PDF de la proposta</a>
 			</span>		
 			<span id="spinner_14" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>  
@@ -22,8 +22,8 @@
 	</div>
 
   	<div class="card-itramits-footer">
-	<?php if ($expedientes['doc_res_desestimiento_por_renuncia'] !=0) { ?>
-        <a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" target = "_self"><i class='fa fa-check'></i>El desistiment</a>	
+	<?php if ($expedientes['doc_prop_res_revocacion_por_no_justificar'] !=0) { ?>
+        <a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>" target = "_self"><i class='fa fa-check'></i>La proposta</a>	
 		<?php }?>
 	<?php //} else {?>
         

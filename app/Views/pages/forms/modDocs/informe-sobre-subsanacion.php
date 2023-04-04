@@ -1,7 +1,7 @@
-<!----------------------------------------- Informe inici requeriment d'esmena SIN VIAFIRMA --------->
+<!----------------------------------------- Informe inici requeriment d'esmena DOC 20 SIN VIAFIRMA --------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-      Informe sobre l'esmena de la documentació de justificació
+      Informe post esmena justificació
 	</div>
 	<div class="card-itramits-footer">
 
@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera el requeriment</button>
+			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera l'informe</button>
 			<span id="btn_19" class="">
     			<a id="wrapper_informe_sobre_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_sobre_la_subsanacion');?>" class="btn-primary-itramits">Envia a signar l'informe</a>
 			</span>

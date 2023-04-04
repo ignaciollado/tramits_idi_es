@@ -45,8 +45,19 @@ class ExpedientesModel extends Model
 
     public function updateImporteAyuda ($id, $importe) {
         $data = [
-            "importeayuda" => $importe
+            'importeAyuda'  => $importe,
         ];
         return $this->update($id, $data);
+    }
+
+    public function getPublicAccessId ($id) {
+        $sql = 'SELECT PublicAccessId FROM pindust_expediente WHERE id="'.$id.'"';
+
+        $query = $this->query($sql); 
+        $row = $query->getRow();
+    
+        if (isset($row)) {
+            return $row->PublicAccessId;
+        }
     }
 }

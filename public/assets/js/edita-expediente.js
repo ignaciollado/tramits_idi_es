@@ -23,10 +23,10 @@ $(document).ready(function () {
 		$("#muestraRequerimiento").css("cursor", " progress");
 	});
 
-	$("#wrapper_motivoRequerimiento").click(function () {
-		$("#spinner_3").removeClass("ocultar");
-		$("#btn_3").addClass("ocultar");
-	});
+ 	$("#wrapper_motivoRequerimiento").click(function () {
+		$("#spinner_1").removeClass("ocultar");
+		$("#btn_1").addClass("ocultar");
+	}); 
 	$("#generaInfFavSinReq").click(function () {
 		$("#spinner_2").removeClass("ocultar");
 		$("#btn_2").addClass("ocultar");
@@ -35,10 +35,10 @@ $(document).ready(function () {
 		$("#spinner_6").removeClass("ocultar");
 		$("#btn_6").addClass("ocultar");
 	}); */
-	$("#wrapper_motivoDenegacion_8").click(function (e) {
+/* 	$("#wrapper_motivoDenegacion_8").click(function (e) {
 		$("#spinner_8").removeClass("ocultar");
 		$("#btn_8").addClass("ocultar");
-	});
+	}); */
 /* 	$("#wrapper_generaInformeDesfSinReq").click(function () {
 		$("#spinner_5").removeClass("ocultar");
 		$("#btn_5").addClass("ocultar");
@@ -1097,10 +1097,13 @@ function actualizaRequired(valor) {
 }
 
 function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
-	let textoMotivoReq = document.getElementById("motivoRequerimiento").value;
+	let textoMotivoReq = document.getElementById("motivoRequerimientoTexto").value;
 	let id = document.getElementById("id").value;
-	let modal = document.getElementById("myRequerimiento");
-	
+	let modal = document.getElementById("motivoRequerimiento");
+	if ( textoMotivoReq === "" ) {
+		alert ("Falta indicar el motiu.")
+		return;
+	}
 	$.post(
 		"/public/assets/utils/actualiza_motivo_requerimiento_en_expediente.php",
 		{ id: id, textoMotivoReq: textoMotivoReq },
@@ -1108,7 +1111,7 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_motivoRequerimiento").remove = "ocultar";
-				document.getElementById("wrapper_motivoRequerimiento").className = "btn-primary-itramits";
+				document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
@@ -1129,7 +1132,7 @@ function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_motivoRequerimientoIls").remove = "ocultar";
-				document.getElementById("wrapper_motivoRequerimientoIls").className = "btn-primary-itramits";
+				document.getElementById("wrapper_motivoRequerimientoIls").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
@@ -1137,7 +1140,6 @@ function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 		}
 	);
 }
-
 function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoInicioRequerimiento").value;
 	let id = document.getElementById("id").value;
@@ -1150,7 +1152,7 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_inicio_req_subsanacion").remove = "ocultar";
-				document.getElementById("wrapper_inicio_req_subsanacion").className = "btn-primary-itramits";
+				document.getElementById("wrapper_inicio_req_subsanacion").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
@@ -1158,7 +1160,6 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 		}
 	);
 }
-
 function actualizaMotivoRequerimientoSubsanacion_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimientoSubsanacion").value;
 	let id = document.getElementById("id").value;
@@ -1171,7 +1172,7 @@ function actualizaMotivoRequerimientoSubsanacion_click() {  //SE EMPLEA
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_generadoc_req_subsanacion").remove = "ocultar";
-				document.getElementById("wrapper_generadoc_req_subsanacion").className = "btn-primary-itramits";
+				document.getElementById("wrapper_generadoc_req_subsanacion").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
@@ -1179,7 +1180,6 @@ function actualizaMotivoRequerimientoSubsanacion_click() {  //SE EMPLEA
 		}
 	);
 }
-
 function actualizaMotivoInformeSobreSubsanacion_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoSobreSubsanacion").value;
 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value;
@@ -1194,7 +1194,7 @@ function actualizaMotivoInformeSobreSubsanacion_click() {  //SE EMPLEA
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_informe_sobre_subsanacion").remove = "ocultar";
-				document.getElementById("wrapper_informe_sobre_subsanacion").className = "btn-primary-itramits";
+				document.getElementById("wrapper_informe_sobre_subsanacion").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
@@ -1202,7 +1202,6 @@ function actualizaMotivoInformeSobreSubsanacion_click() {  //SE EMPLEA
 		}
 	);
 }
-
 function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 	let textoMotivoRenuncia = document.getElementById("motivoDesestimientoRenuncia").value;
 	let id = document.getElementById("id").value;
@@ -1215,7 +1214,7 @@ function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_motivoDesestimientoRenuncia").remove = "ocultar";
-				document.getElementById("wrapper_motivoDesestimientoRenuncia").className = "btn-primary-itramits";
+				document.getElementById("wrapper_motivoDesestimientoRenuncia").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
@@ -1223,12 +1222,37 @@ function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 		}
 	);
 }
-
 function actualizaMotivoDenegacion_click() {  //SE EMPLEA
+	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_7").value;
+	let id = document.getElementById("id").value;
+	let modal = document.getElementById("myDenegacion_7");
+	if ( textoMotivoDenegacion === "") {
+		alert ("Falta indicar el motiu de la denegació")
+		return
+	}
+	$.post(
+		"/public/assets/utils/actualiza_motivo_denegacion_en_expediente.php",
+		{ id: id, textoMotivoDenegacion: textoMotivoDenegacion },
+		function (data) {
+			$(".result").html(data);
+			if (data == 1) {
+				document.getElementById("wrapper_motivoDenegacion_7").remove = "ocultar";
+				document.getElementById("wrapper_motivoDenegacion_7").className = "btn btn-primary";
+				modal.style.display = "none";
+				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
+				document.getElementById("wrapper_generaDenegacion_7").style.display = "none";
+			}
+		}
+	);
+}
+function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_8").value;
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("myDenegacion_8");
-	
+	if ( textoMotivoDenegacion === "") {
+		alert ("Falta indicar el motiu de la denegació")
+		return
+	}
 	$.post(
 		"/public/assets/utils/actualiza_motivo_denegacion_en_expediente.php",
 		{ id: id, textoMotivoDenegacion: textoMotivoDenegacion },
@@ -1236,31 +1260,10 @@ function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_motivoDenegacion_8").remove = "ocultar";
-				document.getElementById("wrapper_motivoDenegacion_8").className = "btn-primary-itramits";
+				document.getElementById("wrapper_motivoDenegacion_8").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				document.getElementById("wrapper_generaDenegacion_8").style.display = "none";
-			}
-		}
-	);
-}
-
-function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
-	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_9").value;
-	let id = document.getElementById("id").value;
-	let modal = document.getElementById("myDenegacion_9");
-	
-	$.post(
-		"/public/assets/utils/actualiza_motivo_denegacion_en_expediente.php",
-		{ id: id, textoMotivoDenegacion: textoMotivoDenegacion },
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				document.getElementById("wrapper_motivoDenegacion_9").remove = "ocultar";
-				document.getElementById("wrapper_motivoDenegacion_9").className = "btn-primary-itramits";
-				modal.style.display = "none";
-				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				document.getElementById("wrapper_generaDenegacion_9").style.display = "none";
 			}
 		}
 	);
@@ -1270,7 +1273,10 @@ function actualizaMotivoDesfavorable_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfSinReq").value;
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("mygeneraInformeDesfSinReq");
-	console.log(modal);
+	if ( textoMotivo === "" ) {
+		alert ("Falta indicar el motiu")
+		return
+	}
 	$.post(
 		"/public/assets/utils/actualiza_motivo_generaInformeDesfReq_en_expediente.php",
 		{ id: id, textoMotivo: textoMotivo },
@@ -1278,7 +1284,7 @@ function actualizaMotivoDesfavorable_click() {
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_generaInformeDesfSinReq").remove = "ocultar";
-				document.getElementById("wrapper_generaInformeDesfSinReq").className = "btn-primary-itramits";
+				document.getElementById("wrapper_generaInformeDesfSinReq").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 			}
@@ -1299,7 +1305,7 @@ function actualizaMotivoDesfavorableConReqIls_click() {
 			console.log("## " + data + " ##");
 			if (data == 1) {
 				document.getElementById("wrapper_generaInformeDesfConReqIls").remove = "ocultar";
-				document.getElementById("wrapper_generaInformeDesfConReqIls").className = "btn-primary-itramits";				
+				document.getElementById("wrapper_generaInformeDesfConReqIls").className = "btn btn-primary";				
 				document.getElementById("wrapper_motivogeneraInformeDesfConReqIls").remove = "ocultar";
 				document.getElementById("wrapper_motivogeneraInformeDesfConReqIls").className = "enviararchivo_ver";
 				modal.style.display = "none";
@@ -1313,7 +1319,10 @@ function actualizaMotivoDesfavorableConReq_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("mygeneraInformeDesfConReq");
-
+	if ( textoMotivo === "") {
+		alert ( "Falta indicar el motiu")
+		return
+	}
 	$.post(
 		"/public/assets/utils/actualiza_motivo_generaInformeDesfReq_en_expediente.php",
 		{ id: id, textoMotivo: textoMotivo },
@@ -1322,7 +1331,7 @@ function actualizaMotivoDesfavorableConReq_click() {
 			console.log("##" + data + "##");
 			if (data == 1) {
 				document.getElementById("wrapper_generaInformeDesfConReq").remove = "ocultar";
-				document.getElementById("wrapper_generaInformeDesfConReq").className = "btn-primary-itramits";				
+				document.getElementById("wrapper_generaInformeDesfConReq").className = "btn btn-primary";				
 				document.getElementById("wrapper_motivogeneraInformeDesfConReq").remove = "ocultar";
 				document.getElementById("wrapper_motivogeneraInformeDesfConReq").className = "enviararchivo_ver";
 				modal.style.display = "none";
@@ -1364,7 +1373,7 @@ function actualizaMotivoactaDeKickOff_click() {
 			//$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_actaDeKickOff").remove = "ocultar";
-				document.getElementById("wrapper_actaDeKickOff").className = "btn-primary-itramits";	
+				document.getElementById("wrapper_actaDeKickOff").className = "btn btn-primary";	
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in064
 			}
@@ -1394,7 +1403,7 @@ function actualizaActaCierre_click() {
 			//$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_ActaDeCierre").remove = "ocultar";
-				document.getElementById("wrapper_ActaDeCierre").className = "btn-primary-itramits";
+				document.getElementById("wrapper_ActaDeCierre").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 			}

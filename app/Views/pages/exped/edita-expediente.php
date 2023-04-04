@@ -15,14 +15,15 @@
 
 <?php
     use App\Models\DocumentosGeneradosModel;
-    $modelDocumentosGenerados = new DocumentosGeneradosModel();
-
     use App\Models\MejorasExpedienteModel;
+    use App\Models\ExpedientesModel;
+
+    $modelDocumentosGenerados = new DocumentosGeneradosModel();
+  
     $modelMejorasSolicitud = new MejorasExpedienteModel();
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
-
-    use App\Models\ExpedientesModel;
+   
     $modelExp = new ExpedientesModel();
 
     if ($totalConvocatorias>1){
@@ -91,10 +92,10 @@ if (!$expedientes['importeAyuda']) {
             }
             break;
     }
-    $modelExp->updateImporteAyuda ($id, $importeAyuda);
-} else {
-    $importeAyuda = $expedientes['importeAyuda'];
-}    
+        $resultadoActualizar = $modelExp->updateImporteAyuda ($id, $importeAyuda);
+    } else {
+        $importeAyuda = $expedientes['importeAyuda'];
+    }
 	?>
 
     <!----------------------------------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --->
@@ -179,7 +180,6 @@ if (!$expedientes['importeAyuda']) {
                 </div>
             </div>
             <div class="col">
-            <div style="margin-top:5.5rem;"></div>
                 <div class="form-group general">
                     <label for="nif_rep">NIF representant legal:</label>
                     <input type="text" name="nif_rep" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
@@ -303,7 +303,7 @@ if (!$expedientes['importeAyuda']) {
 
                 <div class="form-group general">
                     <label for="importeAyuda">Import de l'ajuda:</label>
-                    <input type="number" name="importeAyuda" readonly disabled class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $expedientes['importeAyuda']; ?>">
+                    <input type="number" name="importeAyuda" readonly disabled class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $importeAyuda; ?>">
                 </div>
                 <div class="form-group general">
                     <label for="porcentajeConcedido">Percentatje de l'ajuda:</label>
@@ -367,7 +367,7 @@ if (!$expedientes['importeAyuda']) {
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
 
-                    if ($convocatoria == '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_item->corresponde_documento) {
 				            case 'file_infoautodiagnostico':
 					            $nom_doc = "Informe autodiagnosi digital";
@@ -505,7 +505,7 @@ if (!$expedientes['importeAyuda']) {
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_opc_item->type;
                         
-                    if ($convocatoria === '2022') {
+                    if ($convocatoria >= '2022') {
 			            switch ($docs_opc_item->corresponde_documento) {
 			    	        case 'file_memoriaTecnica':
 					            $nom_doc = "La memòria tècnica";
@@ -567,15 +567,12 @@ if (!$expedientes['importeAyuda']) {
             <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
             <?php
 
-	//Compruebo el estado de la firma del documento.
-	$db = \Config\Database::connect();
-	$sql = "SELECT PublicAccessId FROM pindust_expediente WHERE id=".$expedientes['id'];
+	//Compruebo el estado de la firma de la declaración responsable.
+    $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
 
-	$query = $db->query($sql);
-	$row = $query->getRow();
-	if (isset($row))
+	if (isset($thePublicAccessId))
 		{
-		$PublicAccessId = $row->PublicAccessId;
+		$PublicAccessId = $thePublicAccessId->PublicAccessId;
 	    $requestPublicAccessId = $PublicAccessId;
         $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
@@ -784,11 +781,9 @@ if (!$expedientes['importeAyuda']) {
                     <script>
                         function myFunction_docs_IDI_click (id, nombre) {
         	                document.cookie = "documento_actual = " + id;
-    	                    console.log (id);
                             }
                         function opcion_seleccionada_click(respuesta) {
             	            document.cookie = "respuesta = " + respuesta;
-	                        console.log (respuesta);
                             }
                         function eliminaDocSolicitud_click() {
                 	        console.log (getCookie("documento_actual"));
@@ -1032,16 +1027,14 @@ if (!$expedientes['importeAyuda']) {
             <script>
                 function myFunction_docs_IDI_click (id, nombre) {
     	        document.cookie = "documento_actual = " + id;
-	            console.log (id);
                 }
                 function opcion_seleccionada_click(respuesta) {
     	        document.cookie = "respuesta = " + respuesta;
-	            console.log (respuesta);
                 }
                 function eliminaDocValidacion_click() {
     	        console.log (getCookie("documento_actual"));
 	            let id = getCookie("documento_actual");
-	            console.log (getCookie("nuevo_estado"));
+
 	            let corresponde_documento = 'file_resguardoREC';
 	            $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
     			    location.reload();
@@ -1155,7 +1148,7 @@ if (!$expedientes['importeAyuda']) {
             <!--<li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acuerdo-de-confidencialidad.php';?></li>-->
             <!---------------------------------------------------------------------------------------------------------------->
             <!-----------------------------------------19.-resolución ampliación plazo ------------------------------------>
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-ampliacion-plazo.php';?></li>
+            <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-ampliacion-plazo.php';?></li> -->
             <!---------------------------------------------------------------------------------------------------------------->
             </ol>
         </div>
@@ -1230,16 +1223,13 @@ if (!$expedientes['importeAyuda']) {
             <script>
                 function myFunction_docs_IDI_click (id, nombre) {
     	            document.cookie = "documento_actual = " + id;
-	                console.log (id);
                     }
                 function opcion_seleccionada_click(respuesta) {
         	        document.cookie = "respuesta = " + respuesta;
-	                console.log (respuesta);
                     }
                 function eliminaDocValidacion_click() {
     	            console.log (getCookie("documento_actual"));
 	                let id = getCookie("documento_actual");
-	                console.log (getCookie("nuevo_estado"));
 	                let corresponde_documento = 'file_resguardoREC';
 	                $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
     			        location.reload();
@@ -1341,18 +1331,21 @@ if (!$expedientes['importeAyuda']) {
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="17">
-            <!----------------------------------------- Resolución de concesión ---------------------------------------------->
+            <!----------------------------------------- Resolución de concesión DOC 17---------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe inicio requerimiento de subsanación -------------------------->
+            <!----------------------------------------- Informe inicio requerimento justificación DOC 18---------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Requerimiento de subsanación ----------------------------------------->
+            <!----------------------------------------- Requerimiento de subsanación justificación DOC 19--------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe sobre la subsanación de la documentación de justificación ---->
+            <!----------------------------------------- Informe post subsanación de la documentación de justificación DOC 20---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->                            
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------- Resolució de concesió amb requeriment (20b) ---->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento-20b.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->                                      
         </ol>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
@@ -1422,18 +1415,14 @@ if (!$expedientes['importeAyuda']) {
                 <script>
                     function justificacion_docs_IDI_click (id, nombre) {
                         document.cookie = "documento_actual = " + id;
-                        console.log (id);
                     }
                     function opcion_seleccionada_click(respuesta) {
                         document.cookie = "respuesta = " + respuesta;
-                        console.log (respuesta);
                     }
                     function eliminaDocJustificacion_click() {
-                        console.log (getCookie("documento_actual"));
                         let id = getCookie("documento_actual");
                         document.getElementById(id).disabled= true;
                         document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-                        console.log (getCookie("nuevo_estado"));
                         let corresponde_documento = 'file_resguardoREC';
                         $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
                             location.reload();
@@ -1768,10 +1757,16 @@ if (!$expedientes['importeAyuda']) {
 
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
-            <ol start="21">
-                <!----------------------------------------- 14.-abril_Resolució desistiment per renúncia  2021 SIN VIAFIRMA -------->
+            <ol start="22">
+                <!----------------------------------------- Reseolución desestimiento  DOC 22 SIN VIAFIRMA -------->
                 <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
-                <!------------------------------------------------------------------------------------------------------------------>
+                <!------------------------------------------------------------------------------------------------->
+                <!----------------- Propuesta resolución revocación por no justificar  DOC 23 SIN VIAFIRMA -------->
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-revocacion-por-no-justificar.php';?></li>
+                <!------------------------------------------------------------------------------------------------->
+                <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA -------->
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-revocacion-por-no-justificar.php';?></li>
+                <!------------------------------------------------------------------------------------------------->    
             </ol>
         </div>
 
@@ -1830,18 +1825,14 @@ if (!$expedientes['importeAyuda']) {
             <script>
                 function desestimiento_docs_IDI_click (id, nombre) {
     	            document.cookie = "documento_actual = " + id;
-	                console.log (id);
                     }
                 function opcion_seleccionada_click(respuesta) {
         	        document.cookie = "respuesta = " + respuesta;
-	                console.log (respuesta);
                     }
                 function eliminaDocDesestimiento_click() {
-    	            console.log (getCookie("documento_actual"));
 	                let id = getCookie("documento_actual");
                     document.getElementById(id).disabled= true;
                     document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	                console.log (getCookie("nuevo_estado"));
 	                let corresponde_documento = 'file_resguardoREC';
 	                $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
     			        location.reload();
