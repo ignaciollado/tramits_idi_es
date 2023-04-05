@@ -4,8 +4,10 @@ mainNode.onload = configuraDetalle_OnLoad;
 $(document).ready(function () {
 
 	idExp = document.getElementById("id")
-	compruebaEstadoDocumentosRequeridos(idExp.value)
-
+	programa = document.getElementById("programa")
+	if (programa.value === "ILS") {
+		compruebaEstadoDocumentosRequeridos(idExp.value)
+	}
 	$("#exped-fase-1").submit(function () {
 		$("#send-exped-fase-1", this)
 			.html("Actualitzant, un moment per favor.")
@@ -31,30 +33,6 @@ $(document).ready(function () {
 		$("#spinner_2").removeClass("ocultar");
 		$("#btn_2").addClass("ocultar");
 	});
-/* 	$("#generaInfFavConReq").click(function (e) {
-		$("#spinner_6").removeClass("ocultar");
-		$("#btn_6").addClass("ocultar");
-	}); */
-/* 	$("#wrapper_motivoDenegacion_8").click(function (e) {
-		$("#spinner_8").removeClass("ocultar");
-		$("#btn_8").addClass("ocultar");
-	}); */
-/* 	$("#wrapper_generaInformeDesfSinReq").click(function () {
-		$("#spinner_5").removeClass("ocultar");
-		$("#btn_5").addClass("ocultar");
-	}); */
-/* 	$("#wrapper_generaInformeDesfConReq").click(function () {
-		$("#spinner_4").removeClass("ocultar");
-		$("#btn_4").addClass("ocultar");
-	}); */
-/* 	$("#wrapper_motivoDenegacion_9").click(function (e) {
-		$("#spinner_9").removeClass("ocultar");
-		$("#btn_9").addClass("ocultar");
-	}); */
-/* 	$("#generadoc_res_conces_con_req").click(function (e) {
-		$("#spinner_10").removeClass("ocultar");
-		$("#btn_10").addClass("ocultar");
-	}); */
 	$("#generadoc_res_conces_sin_req").click(function () {
 		$("#spinner_11").removeClass("ocultar");
 		$("#btn_11").addClass("ocultar");
@@ -116,8 +94,6 @@ const form = document.getElementById('subir_faseExpedSolicitud');
 
 function openFaseExped(evt, faseName, backgroundColor, id) {
 	var i, tabcontent, tablinks;
-	console.log (faseName)
-	console.log (backgroundColor)
 	localStorage.removeItem("currentTab");
 	localStorage.setItem("currentTab",faseName);
 	compruebaEstadoDocumentosRequeridos(id);
@@ -205,8 +181,16 @@ function cambiaEstadoDoc(id) {
 		case 'file_altaAutonomos':
 			buttonID = "myBtnEnviarFormularioAltaAutonomos"
 			break
+		case 'file_certificadoAEAT':
+			buttonID = "myBtnEnviarFormularioCertAEAT"
+			break	
+		case 'file_document_acred_como_repres':
+			buttonID = "myBtnEnviarFormularioDocAcreditativa";
+			break	
+		case 'file_memoriaTecnica':
+			buttonID = "myBtnEnviarFormularioMemTec";
+			break
 	}
-
 	let button = document.getElementById(buttonID)
 	console.log(id, buttonID, button)
 	element.style.color = "yellow";
@@ -265,7 +249,6 @@ function cambiaEstadoDoc(id) {
 			send_fase_0.innerHTML = "Actualitzar"
 			send_fase_0.className = "btn-itramits bth-success-itramits"
 			send_fase_0.disabled = false
-			compruebaEstadoDocumentosRequeridos ( id.split("#")[2])
 							}
 		}
 	)

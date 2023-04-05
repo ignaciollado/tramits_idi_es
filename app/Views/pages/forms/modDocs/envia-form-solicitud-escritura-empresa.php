@@ -31,7 +31,7 @@ foreach ($query->getResult('array') as $row)
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Sol·licitud de l'escriptura empresa ILS</strong></label>
+						<label for="cerrarModalActaCierre"><strong>Sol·licitud de l'escriptura empresa</strong></label>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   					</div>
     				<div class="modal-body">
@@ -52,23 +52,23 @@ foreach ($query->getResult('array') as $row)
 
   <script>
   // Get the modal
-  let modal_17ils_EscrituraEmpresa = document.getElementById("myEnviarFormularioEscrituraEmpresa");
+  let modal_17_EscrituraEmpresa = document.getElementById("myEnviarFormularioEscrituraEmpresa");
 	// Get the button that opens the modal
-	let btn_17ils_EscrituraEmpresa = document.getElementById("myBtnEnviarFormularioEscrituraEmpresa");
+	let btn_17_EscrituraEmpresa = document.getElementById("myBtnEnviarFormularioEscrituraEmpresa");
 	// Get the <span> element that closes the modal
-	/* let span_17ils_EscrituraEmpresa = document.getElementsByClassName("close")[0]; */
+	/* let span_17_EscrituraEmpresa = document.getElementsByClassName("close")[0]; */
 	// When the user clicks the button, open the modal 
-	btn_17ils_EscrituraEmpresa.onclick = function() {
-    modal_17ils_EscrituraEmpresa.style.display = "block";
+	btn_17_EscrituraEmpresa.onclick = function() {
+    modal_17_EscrituraEmpresa.style.display = "block";
 	}
 	// When the user clicks on <span> (x), close the modal
-/* 	span_17ils_EscrituraEmpresa.onclick = function() {
-    modal_17ils_EscrituraEmpresa.style.display = "none";
+/* 	span_17_EscrituraEmpresa.onclick = function() {
+    modal_17_EscrituraEmpresa.style.display = "none";
 	} */
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-  	if (event.target == modal_17ils_EscrituraEmpresa) {
-      modal_17ils_EscrituraEmpresa.style.display = "none";
+  	if (event.target == modal_17_EscrituraEmpresa) {
+      modal_17_EscrituraEmpresa.style.display = "none";
   	}
 	}
   </script>

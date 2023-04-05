@@ -1,13 +1,4 @@
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script> -->
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -119,6 +110,7 @@ if (!$expedientes['importeAyuda']) {
 	            <div class="col">
                     <h3>Detall:</h3>
      			    <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $expedientes['id']; ?>"> 
+
                     <div class="form-group general">
                         <label for="empresa">Nom o raó social:</label>
                         <input type="text" name="empresa" class="form-control send_fase_0" id = "empresa" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> placeholder="Nom del sol·licitant" value="<?php echo $expedientes['empresa']; ?>">
@@ -432,27 +424,9 @@ if (!$expedientes['importeAyuda']) {
                             case 'file_escritura_empresa':	
                                 $nom_doc = "Escriptures del registre Mercantil";
                                 break;
-                            case 'file_logotipoEmpresaIls':	
-                                $nom_doc = "Logotip de l'empresa";
-                                break; 
-                            case 'file_informeResumenIls':	
-                                $nom_doc = "Informe resum de la petjada de carboni";
-                                break;
-                            case 'file_informeInventarioIls':	
-                                $nom_doc = "Informe d'Inventari de GEH segons la norma ISO 14.064-1";
-                                break;
-                            case 'file_modeloEjemploIls':	
-                                $nom_doc = "Compromís de reducció de les emissions de gasos d'efecte hivernacle";
-                                break;
-                            case 'file_lineaProduccionBalearesIls':	
-                                $nom_doc = "Declaració responsable de que l'empresa compta amb una línia de producció activa a les Illes Balears";
-                                break;
-                            case 'file_certificado_itinerario_formativo':	
-                                $nom_doc = "Certificat itinerari formatiu";
-                                break;
-                            case 'file_certificado_verificacion_ISO':	
-                                $nom_doc = "Certificat verificación ISO";
-                                break;    
+                            case 'file_certificadoAEAT':	
+                                $nom_doc = "Certificat AEAT";
+                                break;                              
 			                default:
 					        $nom_doc = $docs_item->corresponde_documento; 
 			            } 
@@ -468,19 +442,40 @@ if (!$expedientes['importeAyuda']) {
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
-    					            $estado_doc = '<button  id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span class="detail-wrapper-docs-col">
+                            <?php 
+                            switch ($docs_item->corresponde_documento) {
+                                case 'file_escritura_empresa':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
+                                    break;
+    				            case 'file_certificadoIAE':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
+                                    break;
+                                case 'file_document_acred_como_repres':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-documentacion-acred-represent.php'; 
+                                    break;
+                                case 'file_certificadoAEAT':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-aeat.php'; 
+                                    break;
+                                case 'file_memoriaTecnica':
+                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-memoria-tecnica.php'; 
+                                     break;                                                                      
+                            } 
+                            ?>
+                            </span>                            
   			            </div>
                           <?php }?>
                 <?php endforeach; ?>
@@ -550,7 +545,7 @@ if (!$expedientes['importeAyuda']) {
     					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                                 }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                            <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
   			            </div>
                     <?php }?>
                     <?php endforeach; ?>
@@ -880,8 +875,8 @@ if (!$expedientes['importeAyuda']) {
         </form>
         </div>        
     	    <script>
-		        $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
-		        $('#tel_consultor').mask('999999999');
+		     /*    $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
+		        $('#tel_consultor').mask('999999999'); */
 	        </script>
 
             <?php foreach($config_fechas_limite as $config_item): 

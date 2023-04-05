@@ -1,4 +1,4 @@
-<!----------------------------------------- Enviar formulario solicitud de certificado IAE ILS -->
+<!----------------------------------------- Enviar formulario solicitud de certificado IAE -->
 <!-- <div class="card-itramits"> -->
 <?php
 $totalNotifications = 0;
@@ -31,12 +31,12 @@ foreach ($query->getResult('array') as $row)
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Sol·licitud del certificat IAE ILS</strong></label>
+						<label for="cerrarModalActaCierre"><strong>Sol·licitud del certificat IAE</strong></label>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè ens faci arribar el certificat IAE?</span>
+							<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar la documentació?</span>
 						</div>	
 						<div class="form-group">
            			<button type="button" onclick = "javaScript: enviaMailCertificadoIAE_click();" id="enviaMailCertificadoIAE" class="btn-itramits btn-success-itramits">Enviar
@@ -51,23 +51,23 @@ foreach ($query->getResult('array') as $row)
 
   <script>
   // Get the modal
-  let modal_17ils_CertificadoIAE = document.getElementById("myEnviarFormularioCertificadoIAE");
+  let modal_17_CertificadoIAE = document.getElementById("myEnviarFormularioCertificadoIAE");
 	// Get the button that opens the modal
-	let btn_17ils_CertificadoIAE = document.getElementById("myBtnEnviarFormularioCertificadoIAE");
+	let btn_17_CertificadoIAE = document.getElementById("myBtnEnviarFormularioCertificadoIAE");
 	// Get the <span> element that closes the modal
-	let span_17ils_CertificadoIAE = document.getElementsByClassName("close")[0];
+	let span_17_CertificadoIAE = document.getElementsByClassName("close")[0];
 	// When the user clicks the button, open the modal 
-	btn_17ils_CertificadoIAE.onclick = function() {
-    modal_17ils_CertificadoIAE.style.display = "block";
+	btn_17_CertificadoIAE.onclick = function() {
+    modal_17_CertificadoIAE.style.display = "block";
 	}
 	// When the user clicks on <span> (x), close the modal
-/* 	span_17ils_CertificadoIAE.onclick = function() {
-    modal_17ils_CertificadoIAE.style.display = "none";
+/* 	span_17_CertificadoIAE.onclick = function() {
+    modal_17_CertificadoIAE.style.display = "none";
 	} */
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-  	if (event.target == modal_17ils_CertificadoIAE) {
-      modal_17ils_CertificadoIAE.style.display = "none";
+  	if (event.target == modal_17_CertificadoIAE) {
+      modal_17_CertificadoIAE.style.display = "none";
   	}
 	}
   </script>

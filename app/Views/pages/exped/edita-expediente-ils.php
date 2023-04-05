@@ -54,7 +54,7 @@
      			    <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $expedientes['id']; ?>">
      			    <input type="hidden" name="convocatoria" class="form-control" id="convocatoria" value="<?php echo $expedientes['convocatoria']; ?>">
 
-                     <div class="form-group form-check form-switch general">
+                    <div class="form-group form-check form-switch general">
                         <label for = "publicar_en_web" class="main" >
 				            <span>Publicat en la web de ILS</ºspan>
 					            <input type="checkbox" class="form-control send_fase_0" <?php if ($expedientes['publicar_en_web'] == 1) { echo 'checked';} ?> value="<?php echo $expedientes['publicar_en_web']; ?>" name = "publicar_en_web" id = "publicar_en_web">
@@ -750,8 +750,8 @@
         </form>
         </div>        
     	    <script>
-		        $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
-		        $('#tel_consultor').mask('999999999');
+		     /*    $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
+		        $('#tel_consultor').mask('999999999'); */
 	        </script>
 
         <div class="col docsExpediente">

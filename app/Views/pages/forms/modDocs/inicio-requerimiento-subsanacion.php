@@ -10,10 +10,10 @@
         <?php }
         else {?>
 			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myInicioRequerimiento" id="myBtnInicioRequerimiento">Genera el requeriment</button>
-			<span id="btn_177" class="">
+			<span id="btn_18" class="">
     			<a id="wrapper_inicio_req_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_inicio_requerimiento_justificacion');?>" class="btn-primary-itramits">Envia a signar el requeriment</a>
 			</span>
-			<span id="spinner_177" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			<span id="spinner_18" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>
@@ -85,23 +85,23 @@
 		</div>
 				<script>
 					// Get the modal
-					let modal_177 = document.getElementById("myInicioRequerimiento");
+					let modal_18 = document.getElementById("myInicioRequerimiento");
 					// Get the button that opens the modal
-					let btn_177 = document.getElementById("myBtnInicioRequerimiento");
+					let btn_18 = document.getElementById("myBtnInicioRequerimiento");
 					// Get the <span> element that closes the modal
-					let span_177 = document.getElementsByClassName("close")[0];
+					let span_18 = document.getElementsByClassName("close")[0];
 					// When the user clicks the button, open the modal 
-					btn_17.onclick = function() {
-                    	modal_177.style.display = "block";
+					btn_18.onclick = function() {
+                    	modal_18.style.display = "block";
 					}
 					// When the user clicks on <span> (x), close the modal
-					span_17.onclick = function() {
-	                    modal_177.style.display = "none";
+					span_18.onclick = function() {
+	                    modal_18.style.display = "none";
 					}
 					// When the user clicks anywhere outside of the modal, close it
 					window.onclick = function(event) {
-  					if (event.target == modal_177) {
-	                    modal_177.style.display = "none";
+  					if (event.target == modal_18) {
+	                    modal_18.style.display = "none";
   					}
 					}
 				</script>
