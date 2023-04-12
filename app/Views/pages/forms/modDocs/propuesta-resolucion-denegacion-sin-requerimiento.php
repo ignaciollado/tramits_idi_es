@@ -21,7 +21,7 @@
 	<div class="card-itramits-footer">
 
 		<?php
-		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria']);
+		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_denegacion_sin_req.pdf');
 		if (isset($tieneDocumentosGenerados)) {
 			$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 			$requestPublicAccessId = $PublicAccessId;

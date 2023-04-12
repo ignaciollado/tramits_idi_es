@@ -85,8 +85,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: acta núm. ".$data['expediente']['actaNumKickOff']."<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 
 // set membrete
 $pdf->SetFillColor(255, 255, 255);
@@ -112,6 +114,7 @@ $intro .= "Data: ".date_format(date_create($data['expediente']['fecha_kick_off']
 $intro .= "Hora inici: ".$data['expediente']['horaInicioSesionKickOff']. "<br>";
 $intro .= "Hora acabament reunió: ".$data['expediente']['horaFinSesionKickOff']. "<br>";
 $intro .= "Lloc: ".$data['expediente']['lugarSesionKickOff']. "<br>";
+$intro .= "Empresa: ".$data['expediente']['empresa']. "<br>";
 
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $intro ."</td></tr>";

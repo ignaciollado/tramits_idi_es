@@ -23,7 +23,8 @@
 	<?php }?>
 	<?php
 	//Compruebo el estado de la firma del documento.
-	$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria']);
+	$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_requeriment.pdf');
+
 	if (isset($tieneDocumentosGenerados))
 	{
 		$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;

@@ -20,7 +20,7 @@
 			<!-- 		<a class="btn btn-ver-itramits" href="<?php echo base_url('public/index.php/expedientes/muestrainforme/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_prop_res_conces_sin_req'); ?>" target = "_self"><i class='fa fa-check'></i>La proposta de resolució</a>
  -->
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria']);
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_prop_res_conces_sin_req.pdf');
 
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;

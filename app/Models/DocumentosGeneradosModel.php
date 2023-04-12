@@ -39,17 +39,12 @@ class DocumentosGeneradosModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function documentosGeneradosPorExpedYTipo($idExp, $convocatoria) {
-        $sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_favorable_con_requerimiento.pdf' 
-                AND id_sol=".$idExp." AND convocatoria='".$convocatoria."'";
-                
+    public function documentosGeneradosPorExpedYTipo($idExp, $convocatoria, $nombreDocumento) {
+        $sql = "SELECT * FROM pindust_documentos_generados WHERE name = '$nombreDocumento'
+                AND id_sol = $idExp AND convocatoria = '$convocatoria'";      
         $query = $this->query($sql);
 
-        /* $results = $query->getResultArray(); */
         $row = $query->getRow();
-        /* foreach ($results as $row) {
-            $totalConvos = $row['totalDocsGenerados'];
-        } */
         return $row;
     }
 }

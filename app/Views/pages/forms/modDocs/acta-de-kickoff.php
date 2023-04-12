@@ -21,13 +21,10 @@
   	<div class="card-itramits-footer">
 	<?php if ($expedientes['doc_acta_kickoff'] !=0) { 
     //Compruebo el estado de la firma del documento.
-	   $db = \Config\Database::connect();
-	   $sql = "SELECT publicAccessId FROM pindust_documentos_generados WHERE name='doc_acta_kickoff.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
-	   $query = $db->query($sql);
-	   $row = $query->getRow();
-	   if (isset($row))
+		 $tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_acta_kickoff.pdf');
+	   if (isset($tieneDocumentosGenerados))
 	   {
-       $PublicAccessId = $row->publicAccessId;
+       $PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 	   $requestPublicAccessId = $PublicAccessId;
 	   $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 	   $respuesta = json_decode ($request, true);
@@ -53,9 +50,7 @@
 					}
 			 	echo $estado_firma;
 		}
-	?>
-
-		<?php }?>
+	 }?>
 		<div id="wrapper_generaactaDeKickOff" class="">
 				
     </div>

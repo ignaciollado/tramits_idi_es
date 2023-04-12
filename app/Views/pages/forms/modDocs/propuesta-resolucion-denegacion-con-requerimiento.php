@@ -21,7 +21,7 @@
 	<div class="card-itramits-footer">
 		<?php if ($expedientes['doc_prop_res_denegacion_con_req'] != 0) { ?> <!--Si existe el documento PDF muetra el enlace -->
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria']);
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_prop_res_denegacion_con_req.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -87,6 +87,7 @@
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion')
 		let fecha_propuesta_resolucion_notif = document.getElementById('fecha_propuesta_resolucion_notif')
+		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 
 		let wrapper_motivoDenegacion_7 = document.getElementById('wrapper_motivoDenegacion_7')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
@@ -116,6 +117,10 @@
 		}
 		if (!fecha_propuesta_resolucion_notif.value) {
 			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data notificació proposta resolució<br>"
+			todoBien = false
+		}
+		if (!fecha_infor_fav_desf.value) {
+			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
 

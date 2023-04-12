@@ -22,16 +22,17 @@
 
 	<?php 
     //Compruebo el estado de la firma del documento.
-	   $db = \Config\Database::connect();
+/* 	   $db = \Config\Database::connect();
 	   $sql = "SELECT publicAccessId FROM pindust_documentos_generados WHERE name='doc_acta_de_cierre.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
 	   $query = $db->query($sql);
-	   $row = $query->getRow();
-	   if (isset($row))
+	   $row = $query->getRow(); */
+		 $tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_acta_kickoff.pdf');
+	   if (isset($tieneDocumentosGenerados))
 	   {
-       $PublicAccessId = $row->publicAccessId;
-	   $requestPublicAccessId = $PublicAccessId;
-	   $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
-	   $respuesta = json_decode ($request, true);
+    	$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
+	   	$requestPublicAccessId = $PublicAccessId;
+	   	$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+	   	$respuesta = json_decode ($request, true);
        $estado_firma = $respuesta['status'];
 				switch ($estado_firma)
 					{

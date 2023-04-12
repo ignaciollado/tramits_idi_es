@@ -22,7 +22,7 @@
 	</div>  
   	<div class="card-itramits-footer">
 <?php if ($expedientes['doc_informe_favorable_con_requerimiento'] !=0) { 
-		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria']);
+		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_informe_favorable_con_requerimiento.pdf');
 		if (isset($tieneDocumentosGenerados))
 		{
 	  $PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
