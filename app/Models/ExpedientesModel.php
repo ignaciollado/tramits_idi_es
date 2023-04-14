@@ -52,7 +52,8 @@ class ExpedientesModel extends Model
 
     public function getPublicAccessId ($id) {
         $sql = 'SELECT PublicAccessId FROM pindust_expediente WHERE id="'.$id.'"';
-
+        echo $sql;
+        return;
         $query = $this->query($sql); 
         $row = $query->getRow();
     

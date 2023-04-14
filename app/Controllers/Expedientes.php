@@ -912,7 +912,6 @@ class Expedientes extends Controller
 		$tipoDocumento = $request->uri->getSegment(7);
 
 		$query = $builder->select('idExp')->where('id', $id_sol)->get()->getResult();
-
 		foreach ($query as $row) {
 			$idExp = $row->idExp;
 		}
@@ -947,6 +946,7 @@ class Expedientes extends Controller
 		if (!is_dir($dir)) {
 			mkdir($dir, 0775);
 		}
+
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
 			case "doc_requeriment":  //va a VIAFIRMA DOC 1 A TÉCNICO
@@ -1223,15 +1223,15 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => true
 				];
 				echo "<h4>Informe inici requeriment justificació</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-inicio-requerimiento-subsanacion', $data);
+				echo view('pages/forms/modDocs/pdf/plt-inicio-requerimiento-justificacion', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_requerimiento_subsanacion": //CON VIAFIRMA DOC 19 - A GERENTE
+			case "doc_requerimiento_justificacion": //CON VIAFIRMA DOC 19 - A GERENTE
 				$data_infor = [
-					'doc_requerimiento_subsanacion' => $last_insert_id
+					'doc_requerimiento_justificacion' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
@@ -1241,7 +1241,7 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => true
 				];
 				echo "<h4>Requeriment d'esmena justificació</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-requerimiento-subsanacion', $data);
+				echo view('pages/forms/modDocs/pdf/plt-requerimiento-justificacion', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);

@@ -57,7 +57,6 @@
 <!------------------------------------------------------------------------------------------------------>
 
 <script>
-
 	function enviaInformeFavorableConRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')

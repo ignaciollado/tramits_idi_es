@@ -6,14 +6,19 @@
 <?php
 require_once('tcpdf/tcpdf.php');
 setlocale(LC_MONETARY,"es_ES");
+use App\Models\ConfiguracionModel;
+use App\Models\ExpedientesModel;
+use App\Models\MejorasExpedienteModel;
     //obtengo los datos de la convocatoria
-    use App\Models\ConfiguracionModel;
     $configuracion = new ConfiguracionModel();
     $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
     //obtengo los datos de la solicitud
-    use App\Models\ExpedientesModel;
     $expediente = new ExpedientesModel();
     $data['expediente'] = $expediente->where('id', $id)->first();
+    //obtengo los datos de la última mejora de la solicitud (si la hay)
+    $mejorasSolicitud = new MejorasExpedienteModel();
+    $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
+    $ultimaMejora = explode("##",  $data['ultimaMejora']);    
     //obtengo los datos del documento
     $db = \Config\Database::connect();
 	$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
@@ -77,8 +82,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
-// -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// --------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
+// -------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
 $currentY = $pdf->getY();
@@ -87,6 +92,8 @@ $html = "Document: resolució de concessió<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
+$html .= "NIF: ".$data['expediente']['nif'];
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -107,20 +114,22 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 6);
+$pdf->setY($currentY + 5);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_resolucion_concesion_sin_req_antecedentes') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_resolucion_concesion_sin_req_p1'));
 $parrafo_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p2'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
@@ -130,35 +139,42 @@ $parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $par
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+if ($ultimaMejora[2] && $ultimaMejora[3]) {
+    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p3m'));
+    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
+    $html .= "<li>". $parrafo_3m ."</li>";
+    $html .= "<br>";
+}
+
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $parrafo_3 = str_replace("%FECHANOTPROPRESOL%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion_notif']),"d/m/Y") ,lang('message_lang.doc_resolucion_concesion_sin_req_p3'));
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $parrafo_4 = str_replace("%FECHAPAGO%", date_format(date_create($data['expediente']['fecha_de_pago']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p4'));
 $parrafo_4 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4);
 $html .= "<li>". $parrafo_4 ."</li>";
 $html .= "<br>";
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $parrafo_5 = str_replace("%FECHAREUNIONCIERRE%", date_format(date_create($data['expediente']['fecha_reunion_cierre']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p5'));
 $html .= "<li>". $parrafo_5 ."</li>";
 $html .= "</br>";
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p6'));
 $parrafo_6 = str_replace("%REFRECJUSTIFICACION%", $data['expediente']['ref_REC_justificacion'], $parrafo_6);
 $parrafo_6 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_6);
 $html .= "<li>". $parrafo_6 ."</li>";
 $html .= "<br>";
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $parrafo_7 = lang('message_lang.doc_resolucion_concesion_sin_req_p7');
 $html .= "<li>". $parrafo_7 ."</li>";
 $html .= "<br>";

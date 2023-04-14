@@ -94,7 +94,6 @@
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
-
 <script>
 	function enviaInformeDesfavorableConRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true

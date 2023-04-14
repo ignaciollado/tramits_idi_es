@@ -192,7 +192,6 @@ function cambiaEstadoDoc(id) {
 			break
 	}
 	let button = document.getElementById(buttonID)
-	console.log(id, buttonID, button)
 	element.style.color = "yellow";
 	let estado = '';
 	let stateChanged = false;
@@ -200,8 +199,10 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_caducado")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
-		button.style.display = 'none'
-		button.classList.remove("btn-primary")
+		if (button) {
+			button.style.display = 'none'
+			button.classList.remove("btn-primary")
+		}
 		estado = 'Pendent'
 		stateChanged = true
 	}
@@ -209,8 +210,10 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_info")
 		element.classList.add("isa_success")
 		element.innerHTML = "Aprovat"
- 		button.style.display = 'none'
-		button.classList.remove("btn-primary")
+		if (button) {
+ 			button.style.display = 'none'
+			button.classList.remove("btn-primary")
+		}
 		estado = 'Aprovat'
 		stateChanged = true
 	}
@@ -218,18 +221,21 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_success")
 		element.classList.add("isa_error")
 		element.innerHTML = "Rebutjat"
-		button.style.display = 'block'
-		button.classList.add("btn-primary")
+		if (button) {
+			button.style.display = 'block'
+			button.classList.add("btn-primary")
+		}
 		estado = 'Rebutjat'
 		stateChanged = true
-/* 		actualizaMotivoRequerimientoIls_click() */
 	}
 	if (element.innerHTML === 'Rebutjat' && !stateChanged) {
 		element.classList.remove("isa_error")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
-		button.style.display = 'none'
-		button.classList.remove("btn-primary")
+		if (button) {
+			button.style.display = 'none'
+			button.classList.remove("btn-primary")
+		}
 		estado = 'Pendent';
 		stateChanged = true;
 	}
@@ -1127,7 +1133,10 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoInicioRequerimiento").value;
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("myInicioRequerimiento");
-	
+	if ( textoMotivoReq === "" ) {
+		alert ("Falta indicar el motiu.")
+		return;
+	}
 	$.post(
 		"/public/assets/utils/actualiza_motivo_inicio_requerimiento_en_expediente.php",
 		{ id: id, textoMotivoReq: textoMotivoReq },
@@ -1143,19 +1152,22 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 		}
 	);
 }
-function actualizaMotivoRequerimientoSubsanacion_click() {  //SE EMPLEA
-	let textoMotivoReq = document.getElementById("motivoRequerimientoSubsanacion").value;
+function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
+	let textoMotivoReq = document.getElementById("motivoRequerimientoJustificacion").value;
 	let id = document.getElementById("id").value;
-	let modal = document.getElementById("myRequerimientoSubsanacion");
-	
+	let modal = document.getElementById("myRequerimientoJustificacion");
+	if ( textoMotivoReq === "" ) {
+		alert ("Falta indicar el motiu.")
+		return;
+	}	
 	$.post(
-		"/public/assets/utils/actualiza_motivo_requerimiento_subsanacion_en_expediente.php",
+		"/public/assets/utils/actualiza_motivo_requerimiento_justificacion_en_expediente.php",
 		{ id: id, textoMotivoReq: textoMotivoReq },
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {
-				document.getElementById("wrapper_generadoc_req_subsanacion").remove = "ocultar";
-				document.getElementById("wrapper_generadoc_req_subsanacion").className = "btn btn-primary";
+				document.getElementById("wrapper_generadoc_req_justificacion").remove = "ocultar";
+				document.getElementById("wrapper_generadoc_req_justificacion").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
@@ -1189,7 +1201,10 @@ function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 	let textoMotivoRenuncia = document.getElementById("motivoDesestimientoRenuncia").value;
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("myDesestimientoRenuncia");
-	
+	if ( textoMotivoRenuncia === "" ) {
+		alert ("Falta indicar el motiu.")
+		return;
+	}
 	$.post(
 		"/public/assets/utils/actualiza_motivo_desestimiento_renuncia_en_expediente.php",
 		{ id: id, textoMotivoRenuncia: textoMotivoRenuncia },

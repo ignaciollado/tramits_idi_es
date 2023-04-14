@@ -555,8 +555,6 @@ if (!$expedientes['importeAyuda']) {
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
-
-
             <br>
             <div class="alert alert-info">
             <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
@@ -654,7 +652,7 @@ if (!$expedientes['importeAyuda']) {
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-no-enmendar.php';?></li>
             <!-------------------------------------------------------------------------------------------------------------->
             </ol>
-            <h3>Millores: <small class="alert alert-secondary" role="alert"><?php echo $ultimaMejoraSolicitud; ?></small></h3>
+            <h3>Millores: <!-- <small class="alert alert-secondary" role="alert"><?php echo $ultimaMejoraSolicitud; ?></small> --></h3>
             <?php if($mejorasSolicitud): ?>
                 <div class = "header-wrapper-docs-3 detail-wrapper-docs-justificacion">
         	        <div >Data rec</div>
@@ -1330,10 +1328,10 @@ if (!$expedientes['importeAyuda']) {
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Informe inicio requerimento justificación DOC 18---------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-subsanacion.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Requerimiento de subsanación justificación DOC 19--------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento-subsanacion.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Informe post subsanación de la documentación de justificación DOC 20---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>

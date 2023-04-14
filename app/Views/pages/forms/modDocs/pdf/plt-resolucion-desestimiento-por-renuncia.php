@@ -219,7 +219,7 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+$pdf->setY($currentY + 15);
 $recursos = lang('message_lang.doc_resolucion_desestimiento_recursos');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos ."</td></tr>";

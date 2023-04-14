@@ -12,8 +12,8 @@
     		$data['useriTramits'] = $useritramits->where('rol', 'gerencia')->first();
 				$adreca_mail = $data['useriTramits']['user_name'];
 				$telefono_cont = $data['useriTramits']['telefono'];
-			 	$adreca_mail = "ignacio.llado@idi.es";
-				$telefono_cont = "677234076"; 
+/* 			 	$adreca_mail = "ignacio.llado@idi.es";
+				$telefono_cont = "677234076";  */
 		}
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 		require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
