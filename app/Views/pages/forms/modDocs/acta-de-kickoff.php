@@ -10,7 +10,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-	  		<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myactaDeKickOff" id="myBtnactaDeKickOff">Genera l'acta</button>   
+	  		<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myactaDeKickOff" id="myBtnactaDeKickOff">Genera l'acta</button>   
 		<?php }?>	
 	  	
 		<span id="btn_15" class="">

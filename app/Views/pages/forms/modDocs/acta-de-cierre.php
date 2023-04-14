@@ -9,8 +9,8 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myActaDeCierre" id="myBtnActaDeCierre">Genera l'acta</button>
-			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia la justificació</button>       
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myActaDeCierre" id="myBtnActaDeCierre">Genera l'acta</button>
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia la justificació</button>       
 		<?php }?>
 		<span id="btn_17" class="">
     		<a id="wrapper_ActaDeCierre" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>      	

@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target= "#myInicioRequerimiento" id="myBtnInicioRequerimiento">Genera el requeriment</button>
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target= "#myInicioRequerimiento" id="myBtnInicioRequerimiento">Genera el requeriment</button>
 			<span id="btn_18" class="">
     			<!-- <a id="wrapper_inicio_req_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_inicio_requerimiento_justificacion');?>" class="btn-primary-itramits">Envia a signar el requeriment</a> -->
 					<button id="wrapper_inicio_req_subsanacion" class='btn btn-secondary ocultar' onclick="enviaInformeInicioRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
