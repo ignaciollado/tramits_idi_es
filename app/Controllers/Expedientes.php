@@ -1277,7 +1277,7 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo "<h4>Resolució de concesió amb requeriment</h4>";
-				echo view('pages/forms/modDocs/pdf/resolucion-concesion-con-requerimiento', $data);
+				echo view('pages/forms/modDocs/pdf/plt-resolucion-concesion-con-requerimiento', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 

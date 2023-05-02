@@ -1175,16 +1175,18 @@ function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
 		}
 	);
 }
-function actualizaMotivoInformeSobreSubsanacion_click() {  //SE EMPLEA
-	let textoMotivoReq = document.getElementById("motivoSobreSubsanacion").value;
+function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
+	let textoMotivoInforme = document.getElementById("motivoSobreSubsanacion").value;
 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value;
-
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("mySobreSubsanacionRequerimiento");
-	
+	if ( textoMotivoInforme === "" || propuestaTecnicoSobreSubsanacion === "" ) {
+		alert ("Falta indicar el que exposa y/o el que proposa.")
+		return;
+	}	
 	$.post(
 		"/public/assets/utils/actualiza_motivo_informe_sobre_subsanacion_en_expediente.php",
-		{ id: id, textoMotivoReq: textoMotivoReq, propuestaTecnicoSobreSubsanacion: propuestaTecnicoSobreSubsanacion },
+		{ id: id, textoMotivoInforme: textoMotivoInforme, propuestaTecnicoSobreSubsanacion: propuestaTecnicoSobreSubsanacion },
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {

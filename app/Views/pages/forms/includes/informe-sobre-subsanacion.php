@@ -9,11 +9,13 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera l'informe</button>
-			<span id="btn_19" class="">
-    			<a id="wrapper_informe_sobre_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_sobre_la_subsanacion');?>" class="btn-primary-itramits">Envia a signar l'informe</a>
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle = "modal" data-bs-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera l'informe</button>
+			<span id="btn_20" class="">
+    			<!-- <a id="wrapper_informe_sobre_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_sobre_la_subsanacion');?>" class="btn-primary-itramits">Envia a signar l'informe</a> -->
+					<button id="wrapper_informe_sobre_subsanacion" class='btn btn-secondary ocultar' onclick="enviaInformeSobreSubsanacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
+					<div id='infoMissingDataDoc20' class="alert alert-danger ocultar"></div>
 			</span>
-			<span id="spinner_19" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			<span id="spinner_20" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>
@@ -30,7 +32,7 @@
 	if (isset($row))
 	{
 		$PublicAccessId = $row->publicAccessId;
-	    $requestPublicAccessId = $PublicAccessId;
+	  $requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
 		$estado_firma = $respuesta['status'];
@@ -60,13 +62,13 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <!-- The Modal -->
-<div id="mySobreSubsanacionRequerimiento" class="modal fade" role="dialog">
+<div id="mySobreSubsanacionRequerimiento" class="modal">
 				<div class="modal-dialog">
                 <!-- Modal content-->
-    			<div class="modal-content" style = "width: 80%;">
+    			<div class="modal-content">
       				<div class="modal-header">
       					<label for="motivoSobreSubsanacion"><strong>Una vegada transcorregut el termini, el tècnic exposa i proposa que:</strong></label>
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
 						<div class="form-group">
@@ -79,31 +81,43 @@
         				</div>					
 						<div class="form-group">
            				<button type="button" onclick = "javaScript: actualizaMotivoInformeSobreSubsanacion_click();" id="guardaMotivoInformeSobreSubsanacion" 
-							class="btn-itramits btn-success-itramits">Guarda</button>
+							class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
         				</div>				
     					</div>
   					</div>
 				</div>
 		</div>
-				<script>
-					// Get the modal
-					let modal_19 = document.getElementById("mySobreSubsanacionRequerimiento");
-					// Get the button that opens the modal
-					let btn_19 = document.getElementById("myBtnSobreSubsanacionRequerimiento");
-					// Get the <span> element that closes the modal
-					let span_19 = document.getElementsByClassName("close")[0];
-					// When the user clicks the button, open the modal 
-					btn_19.onclick = function() {
-                    	modal_19.style.display = "block";
-					}
-					// When the user clicks on <span> (x), close the modal
-					span_19.onclick = function() {
-	                    modal_19.style.display = "none";
-					}
-					// When the user clicks anywhere outside of the modal, close it
-					window.onclick = function(event) {
-  					if (event.target == modal_19) {
-	                    modal_19.style.display = "none";
-  					}
-					}
-				</script>
+
+		<script>
+	function enviaInformeSobreSubsanacion(id, convocatoria, programa, nifcif) {
+		let todoBien = true
+		
+	 	let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion') //0000-00-00
+		let fecha_firma_requerimiento_justificacion = document.getElementById('fecha_firma_requerimiento_justificacion')
+
+		let wrapper_informe_sobre_subsanacion = document.getElementById('wrapper_informe_sobre_subsanacion')
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let spinner_20 = document.getElementById('spinner_20')
+		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
+		infoMissingDataDoc20.innerText = ""
+
+		if(!fecha_propuesta_resolucion.value) {
+			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data firma proposta resolució<br>"
+			todoBien = false
+		}
+		if(!fecha_firma_requerimiento_justificacion.value) {
+			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data firma requeriment justificació<br>"
+			todoBien = false
+		}
+
+		if (todoBien) {
+			infoMissingDataDoc20.classList.add('ocultar')
+			wrapper_informe_sobre_subsanacion.disabled = true
+			wrapper_informe_sobre_subsanacion.innerHTML = "Generant ..."
+			spinner_20.classList.remove('ocultar')
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_sobre_la_subsanacion'
+		} else {
+			infoMissingDataDoc20.classList.remove('ocultar')
+		}
+	}
+</script>

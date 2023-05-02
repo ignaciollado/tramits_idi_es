@@ -149,8 +149,8 @@ $html .= "<br>";
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_info_favorable_con_req_p3m'));
-    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
-    $html .= "<li>". $parrafo_3m ."</li>";
+    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], lang('message_lang.doc_info_favorable_con_req_p3m'));
+    $html .= "<li>". $parrafo_3 ."</li>";
     $html .= "<br>";
 }
 

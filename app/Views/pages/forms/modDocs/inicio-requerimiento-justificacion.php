@@ -33,7 +33,7 @@
 	if (isset($row))
 	{
 		$PublicAccessId = $row->publicAccessId;
-	    $requestPublicAccessId = $PublicAccessId;
+	  $requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
 		$estado_firma = $respuesta['status'];

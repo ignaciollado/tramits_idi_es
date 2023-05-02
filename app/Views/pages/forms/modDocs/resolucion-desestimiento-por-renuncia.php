@@ -24,9 +24,9 @@
 	</div>
 
   	<div class="card-itramits-footer">
-	<?php if ($expedientes['doc_res_desestimiento_por_renuncia'] !=0) { ?>
+			<?php if ($expedientes['doc_res_desestimiento_por_renuncia'] !=0) { ?>
         <a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" target = "_self">La resolució de desistiment</a>	
-		<?php }?>
+			<?php }?>
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>

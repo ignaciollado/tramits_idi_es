@@ -77,11 +77,12 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
-$html =  "Document: informe sobre l'esmena<br> de la documentació de justificació<br>";
-$html .= "Nom empresa: ". $data['expediente']['empresa']."<br>";
+$html =  "Document: informe sobre l’esmena<br>de la documentació de justificació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);

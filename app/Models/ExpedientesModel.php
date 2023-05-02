@@ -52,13 +52,23 @@ class ExpedientesModel extends Model
 
     public function getPublicAccessId ($id) {
         $sql = 'SELECT PublicAccessId FROM pindust_expediente WHERE id="'.$id.'"';
-        echo $sql;
-        return;
+
         $query = $this->query($sql); 
         $row = $query->getRow();
-    
+
+        return $row->PublicAccessId;
         if (isset($row)) {
             return $row->PublicAccessId;
+        } else {
+            return "nada";
         }
+    }
+
+    public function getWithZeroIdSol() {
+        $sql = "SELECT count(id) as totalZeros FROM pindust_expediente WHERE idExp=0";
+        $query = $this->query($sql);
+        $row = $query->getRow();
+
+        return $row->totalZeros;
     }
 }

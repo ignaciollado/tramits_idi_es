@@ -312,8 +312,7 @@ if (!$expedientes['importeAyuda']) {
                 <div class="form-group general">
                     <label for="cc_datos_bancarios">CC:</label>
                     <input type="text" name="cc_datos_bancarios" readonly disabled class="form-control" id = "cc_datos_bancarios"  placeholder="Compte corrent" value="<?php echo strtoupper($expedientes['cc_datos_bancarios']); ?>">
-                </div>               
-
+                </div>
 	    	    <div class="form-group general">
                     <label for = "ordenDePago"><strong>Enviar a pagament:</strong></label>
                     <select class="form-control send_fase_0" id = "ordenDePago" name = "ordenDePago" required>
@@ -324,11 +323,11 @@ if (!$expedientes['importeAyuda']) {
 	    	    <div class="form-group general">
                     <label for = "fechaEnvioAdministracion"><strong>Data enviament a administració:</strong></label>
                     <input type = "date" name = "fechaEnvioAdministracion" class = "form-control send_fase_0" id = "fechaEnvioAdministracion" value = "<?php echo date_format(date_create($expedientes['fechaEnvioAdministracion']), 'Y-m-d');?>">
-                </div>    
+                </div>
 	    	    <div class="form-group general">
                     <label for = "fecha_de_pago"><strong>Data pagament:</strong></label>
                     <input type = "date" name = "fecha_de_pago" class = "form-control send_fase_0" id = "fecha_de_pago" value = "<?php echo date_format(date_create($expedientes['fecha_de_pago']), 'Y-m-d');?>">
-                </div>  
+                </div>
    
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
@@ -562,14 +561,14 @@ if (!$expedientes['importeAyuda']) {
 
 	//Compruebo el estado de la firma de la declaración responsable.
     $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
-
 	if (isset($thePublicAccessId))
 		{
-		$PublicAccessId = $thePublicAccessId->PublicAccessId;
+		$PublicAccessId = $thePublicAccessId;
 	    $requestPublicAccessId = $PublicAccessId;
         $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
 		$estado_firma = $respuesta['status'];
+
 			switch ($estado_firma)
 				{
 				case 'NOT_STARTED':
@@ -1720,7 +1719,6 @@ if (!$expedientes['importeAyuda']) {
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-5" id="exped-fase-5" method="post" accept-charset="utf-8">
             <div class="form-group desistimiento">
                 <label for = "fecha_REC_desestimiento"><strong>Data REC desistiment:</strong></label>
-	    	    <!-- <input type = "datetime-local" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo date_format(date_create($expedientes['fecha_REC_desestimiento']),"Y-m-d\Th:m");?>"/> -->
 	    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_desestimiento']);?>"/>
             </div>
 		    <div class="form-group desistimiento">

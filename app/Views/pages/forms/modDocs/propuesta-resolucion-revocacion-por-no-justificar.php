@@ -12,9 +12,11 @@
         <?php }
         else {?>
 			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Generar la proposta</button>  
+			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target = "#myResolucionRevocacionPorNoJustificar" id="myBtnResolucionRevocacionPorNoJustificar">Generar la proposta</button>  
 			<span id="btn_23" class="">
-    			<a id ="wrapper_motivoDesestimientoRenuncia" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Generar el PDF de la proposta</a>
+    			<!-- 	<a id ="wrapper_motivoResolucionRevocacionPorNoJustificar" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Generar el PDF de la proposta</a> -->
+					<button id="wrapper_motivoResolucionRevocacionPorNoJustificar" class='btn btn-secondary ocultar' onclick="enviaPropuestaResalucionRevocacionPorNoJustificar(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
+					<div id='infoMissingDataDoc23' class="alert alert-danger ocultar"></div>
 			</span>		
 			<span id="spinner_23" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>  
@@ -31,48 +33,54 @@
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
-
 <!-- The Modal -->
-<div id="myDesestimientoRenuncia" class="modal fade" role="dialog">
+		<div id="myResolucionRevocacionPorNoJustificar" class="modal">
 			<div class="modal-dialog">
                 <!-- Modal content-->
-    			<div class="modal-content" style = "width: 80%;">
+    			<div class="modal-content">
       				<div class="modal-header">
-      					<label for="motivoDesestimientoRenuncia"><strong>Escriu el motiu del desistiment per renúncia:</strong></label>
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+      					<label for="motivoResolucionRevocacionPorNoJustificar"><strong>Escriu el motiu de la resolució de revocació:</strong></label>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
-						<div class="form-group">
-						<textarea required rows="10" cols="30" name="motivoDesestimientoRenuncia" class="form-control" id = "motivoDesestimientoRenuncia" 
-						placeholder="Motiu del desistiment per renúncia"><?php echo $expedientes['motivoDesestimientoRenuncia']; ?></textarea>
+								<div class="form-group">
+									<textarea required rows="10" cols="30" name="motivoResolucionRevocacionPorNoJustificar" class="form-control" id = "motivoResolucionRevocacionPorNoJustificar" 
+									placeholder="Motiu del desistiment per renúncia"><?php echo $expedientes['motivoResolucionRevocacionPorNoJustificar']; ?></textarea>
         				</div>
-						<div class="form-group">
-           				<button type="button" onclick = "javaScript: actualizaMotivoDesestimientoRenuncia_click();" id="guardaMotivoDesestimientoRenuncia" 
-							class="btn-itramits btn-success-itramits">Guarda</button>
+								<div class="form-group">
+           				<button type="button" onclick = "javaScript: actualizaMotivoResolucionRevocacionPorNoJustificar_click();" id="guardaMotivoResolucionRevocacionPorNoJustificar" 
+											class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
         				</div>				
     					</div>
-  					</div>
-				</div>
-				</div>
-				<script>
-					// Get the modal
-					let modal_23 = document.getElementById("myDesestimientoRenuncia");
-					// Get the button that opens the modal
-					let btn_23 = document.getElementById("myBtnDesestimientoRenuncia");
-					// Get the <span> element that closes the modal
-					let span_23 = document.getElementsByClassName("close")[0];
-					// When the user clicks the button, open the modal 
-					btn_23.onclick = function() {
-                    	modal_23.style.display = "block";
-					}
-					// When the user clicks on <span> (x), close the modal
-					span_23.onclick = function() {
-	                    modal_23.style.display = "none";
-					}
-					// When the user clicks anywhere outside of the modal, close it
-					window.onclick = function(event) {
-  					if (event.target == modal_23) {
-	                    modal_23.style.display = "none";
-  					}
-					}
-				</script>
+  				</div>
+			</div>
+		</div>
+		<script>
+ 		function enviaPropuestaResalucionRevocacionPorNoJustificar(id, convocatoria, programa, nifcif) {
+			let todoBien = true
+			let fecha_REC = document.getElementById('fecha_REC')
+			let ref_REC = document.getElementById('ref_REC')
+			let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+			let spinner_23 = document.getElementById('spinner_23')
+			let infoMissingDataDoc23 = document.getElementById('infoMissingDataDoc23')
+			infoMissingDataDoc23.innerText = ""
+			if(!fecha_REC.value) {
+				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Data REC sol·licitud<br>"
+				todoBien = false
+			}
+			if(!ref_REC.value) {
+				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Referència REC sol·licitud<br>"
+				todoBien = false
+			}
+
+			if (todoBien) {
+				infoMissingDataDoc23.classList.add('ocultar')
+				generaInfFavConReq.disabled = true
+				generaInfFavConReq.innerHTML = "Generant ..."
+				spinner_23.classList.remove('ocultar')
+				window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment'
+			} else {
+				infoMissingDataDoc23.classList.remove('ocultar')
+			}
+		}
+		</script>				
