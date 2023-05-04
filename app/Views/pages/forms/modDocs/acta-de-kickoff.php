@@ -1,22 +1,21 @@
-<!----------------------------------------- abril_Acta Kick off -->
+<!----------------------------------------- abril_Acta Kick off DOC 14 -->
 <div class="card-itramits">
 
   	<div class="card-itramits-body">
     	 Acta de Kick off
   	</div>
   	<div class="card-itramits-footer">
-
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
 	  		<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myactaDeKickOff" id="myBtnactaDeKickOff">Genera l'acta</button>   
-		<?php }?>	
+			<?php }?>	
 	  	
-		<span id="btn_15" class="">
+		<span id="btn_14" class="">
     		<a id="wrapper_actaDeKickOff" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_kickoff');?>" class="btn-primary-itramits">Envia a signar l'acta</a>      	
 		</span>	
-		<span id="spinner_15" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+		<span id="spinner_14" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 	</div>
   	<div class="card-itramits-footer">
 	<?php if ($expedientes['doc_acta_kickoff'] !=0) { 
@@ -24,11 +23,11 @@
 		 $tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_acta_kickoff.pdf');
 	   if (isset($tieneDocumentosGenerados))
 	   {
-       $PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
-	   $requestPublicAccessId = $PublicAccessId;
-	   $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
-	   $respuesta = json_decode ($request, true);
-       $estado_firma = $respuesta['status'];
+       	$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
+	   		$requestPublicAccessId = $PublicAccessId;
+	   		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+	   		$respuesta = json_decode ($request, true);
+       	$estado_firma = $respuesta['status'];
 				switch ($estado_firma)
 					{
 					case 'NOT_STARTED':

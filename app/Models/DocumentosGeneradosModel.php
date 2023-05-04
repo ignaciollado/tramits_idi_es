@@ -47,4 +47,13 @@ class DocumentosGeneradosModel extends Model
         $row = $query->getRow();
         return $row;
     }
+
+    public function getGeneratedDocumentData($idSol, $convocatoria, $documento) {
+        $query = $this->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=" . $idSol . " AND convocatoria='" . $convocatoria . "' AND corresponde_documento='" . $documento . "'");
+		foreach ($query->getResult() as $row) {
+			$file = $row->name;
+			$nifcif = $row->cifnif_propietario;
+		}
+        
+    }
 }

@@ -1,32 +1,28 @@
-<!----------------------------------------- Acta de cierre -->
+<!----------------------------------------- Acta de cierre DOC 15-->
 <div class="card-itramits">
 
   	<div class="card-itramits-body">
     	Acta de tancament
   	</div>
-  	<div class="btn-group">
+  	<div class="card-itramits-footer">
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myActaDeCierre" id="myBtnActaDeCierre">Genera l'acta</button>
-			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia la justificació</button>       
-		<?php }?>
-		<span id="btn_17" class="">
+				<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myActaDeCierre" id="myBtnActaDeCierre">Genera l'acta</button>    
+			<?php }?>
+
+		<span id="btn_15" class="">
     		<a id="wrapper_ActaDeCierre" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>      	
 		</span>	
-		<span id="spinner_17" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+		<span id="spinner_15" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 	</div>
   	<div class="card-itramits-footer">
-	<?php if ($expedientes['doc_acta_kickoff'] !=0) { ?>
+	<?php if ($expedientes['doc_acta_de_cierre'] !=0) { ?>
 
 	<?php 
     //Compruebo el estado de la firma del documento.
-/* 	   $db = \Config\Database::connect();
-	   $sql = "SELECT publicAccessId FROM pindust_documentos_generados WHERE name='doc_acta_de_cierre.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
-	   $query = $db->query($sql);
-	   $row = $query->getRow(); */
-		 $tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_acta_kickoff.pdf');
+		 $tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_acta_de_cierre.pdf');
 	   if (isset($tieneDocumentosGenerados))
 	   {
     	$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
@@ -44,7 +40,7 @@
 					$estado_firma .= "</a>";				
 					break;
 					case 'COMPLETED':
-					    $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		
+					    $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signada";		
 					$estado_firma .= "</a>";					
 					break;
 					case 'IN_PROCESS':
@@ -138,7 +134,7 @@
 						</div>	
 						<div class="form-group">
            				    <button type="button" onclick = "javaScript: enviaMailJustificacion_click();" id="enviaMailJustificacion" class="btn-itramits btn-success-itramits">Enviar
-							   <span id="spinner_171" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
+							   <span id="spinner_151" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
 							   </button>
 							   <span id="mensaje" class ="ocultar info-msg"></span>
         				</div>	

@@ -74,13 +74,22 @@ $pdf->setFontSubsetting(false);
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
+//$cabecera = "Nom representant: ".$data['expediente']['nombre_rep']."<br>";
+//$cabecera .= "Nom empresa: ".$data['expediente']['empresa'];
+//$html .= $cabecera;
+// set color for background
+//$pdf->SetFillColor(255, 255, 255);
+// set color for text
+//$pdf->SetTextColor(0, 0, 0);
+//writeHTMLCell(w, h, x, y, html = '', border = 0, ln = 0, fill = 0, reseth = true, align = '', autopadding = true) ⇒ Object Also known as: write_html_cell
+//$pdf->writeHTMLCell(90, '', 125, 20, $html, 0, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html =  "Document: requeriment<br>";
-$html .= "Nom empresa: ". $data['expediente']['empresa']."<br>";
-$html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
+$html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
 

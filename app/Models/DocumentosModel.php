@@ -10,7 +10,13 @@ class DocumentosModel extends Model
                                     'created_at', 'tipo_tramite', 'corresponde_documento', 
                                     'datetime_uploaded', 'selloDeTiempo', 'id_sol'];
 
-    public function findIfDocumentIsInIDI($idExp, $nif, $correspondeDocumento, $tipoTramite, $convocatoria ) {
+    public function allExpedienteDocuments($idSol) {
+        $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes a cualquier fase
+		$query = $this->query($sql);
+        return $query->getResult();
+    }    
+    
+    public function findIfDocumentIsInIDI($idSol, $nif, $correspondeDocumento, $tipoTramite, $convocatoria ) {
         date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
 
@@ -18,7 +24,7 @@ class DocumentosModel extends Model
         $query = $this->query($sql);
         foreach ($query->getResultArray() as $row) {
             $registro =
-            $idExp.",'".
+            $idSol.",'".
             $row['cifnif_propietario']."','".
             date("Y")."','".
             $row['name']."','".
@@ -32,14 +38,14 @@ class DocumentosModel extends Model
             return 'D000 '.$correspondeDocumento."<br>"; /* No documents for this nif and type in IDI */
         }
 
-        return $this->duplicateRegisterIfSaysDocumentInIDI($registro, $idExp, $tipoTramite, $convocatoria, $correspondeDocumento); /* Yes documents for this nif and type in IDI */
+        return $this->duplicateRegisterIfSaysDocumentInIDI($registro, $idSol, $tipoTramite, $convocatoria, $correspondeDocumento); /* Yes documents for this nif and type in IDI */
     }
 
-    public function duplicateRegisterIfSaysDocumentInIDI($registro, $id, $tipoTramite, $convocatoria, $correspondeDocumento) {
+    public function duplicateRegisterIfSaysDocumentInIDI($registro, $idSol, $tipoTramite, $convocatoria, $correspondeDocumento) {
         $totalDocumentos = 0;
         //$sql = 'SELECT count(id) as totalDocumentos FROM pindust_documentos WHERE id_sol='.$id.' AND tipo_tramite ="'.$tipoTramite.'" AND convocatoria ="'.$convocatoria.'" AND corresponde_documento ="'.$correspondeDocumento.'"';
         /* Cada vez comprueba que el documento no haya sido ya creado (esta función se llama cada vez que se entra en la vista EDICIÓN) */
-        $sql = 'SELECT count(id) as totalDocumentos FROM pindust_documentos WHERE id_sol='.$id.' AND convocatoria ="'.$convocatoria.'" AND corresponde_documento ="'.$correspondeDocumento.'"';
+        $sql = 'SELECT count(id) as totalDocumentos FROM pindust_documentos WHERE id_sol='.$idSol.' AND convocatoria ="'.$convocatoria.'" AND corresponde_documento ="'.$correspondeDocumento.'"';
         $query  = $this->query($sql);
         foreach ($query->getResult('array') as $row) {
             $totalDocumentos = $row['totalDocumentos'];

@@ -90,10 +90,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: proposta de resolució <br>de denegació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
-$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -153,10 +153,7 @@ $parrafo_3 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $par
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
 
-$parrafo_4 = str_replace("%FECHAPROPDENEGACION%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_denegacion_con_req_p4'));
-$parrafo_4 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4);
-$parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
-$parrafo_4 = str_replace("%FECHANOTPROPRESDENEGACION%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion_notif']),"d/m/Y") , $parrafo_4);
+$parrafo_4 =  lang('message_lang.doc_prop_resolucion_denegacion_con_req_p4');
 $html .= "<li>". $parrafo_4 ."</li>";
 $html .= "<br>";
 

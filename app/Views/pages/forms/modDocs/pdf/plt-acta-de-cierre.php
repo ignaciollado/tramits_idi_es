@@ -85,10 +85,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: Acta núm. ".$data['expediente']['actaNumCierre']."<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
-$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 
 // set membrete
 $pdf->SetFillColor(255, 255, 255);
@@ -107,8 +107,6 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 1);
 $intro = "Assumpte: Reunió tancament consultoria ".$data['expediente']['tipo_tramite']. "<br>";
 $intro .= "Data: ".date_format(date_create($data['expediente']['fecha_reunion_cierre']),"d/m/Y"). "<br>";
 $intro .= "Hora inici: ".$data['expediente']['horaInicioActaCierre']. "<br>";
@@ -121,16 +119,12 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 1);
 $asistentes =  lang('message_lang.doc_acta_cierre_asistentes');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $asistentes ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 1);
 $nombreAsistentes =  $data['expediente']['asistentesActaCierre'];
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". nl2br($nombreAsistentes) ."</td></tr>";
@@ -170,14 +164,6 @@ $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>"
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_3 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
-
-//// remove default header/footer
-//$pdf->setPrintHeader(false);
-//$pdf->AddPage();
-//$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-//// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
-//// align: T (top), M (middle), B (bottom), N (next line)
-//$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);

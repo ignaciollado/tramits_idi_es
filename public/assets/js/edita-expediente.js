@@ -50,16 +50,16 @@ $(document).ready(function () {
 		$("#btn_14").addClass("ocultar");
 	});
 	$("#wrapper_actaDeKickOff").click(function () {
-		$("#spinner_15").removeClass("ocultar");
-		$("#btn_15").addClass("ocultar");
+		$("#spinner_14").removeClass("ocultar");
+		$("#btn_14").addClass("ocultar");
 	});
 	$("#generadoc_res_denegacion_con_req").click(function () {
 		$("#spinner_16").removeClass("ocultar");
 		$("#btn_16").addClass("ocultar");
 	});
 	$("#wrapper_ActaDeCierre").click(function () {
-		$("#spinner_17").removeClass("ocultar");
-		$("#btn_17").addClass("ocultar");
+		$("#spinner_15").removeClass("ocultar");
+		$("#btn_15").addClass("ocultar");
 	});
 	$("#wrapper_inicio_req_subsanacion").click(function () {
 		$("#spinner_177").removeClass("ocultar");
@@ -1108,7 +1108,6 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 		}
 	);
 }
-
 function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 	let textoMotivoReq = document.getElementById("motivoRequerimientoIls").value;
 	let id = document.getElementById("id").value;
@@ -1268,7 +1267,25 @@ function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 		}
 	);
 }
-
+function actualizaMotivoResolucionRevocacionPorNoJustificar_click() {  //SE EMPLEA
+	let textoMotivoRevocacion = document.getElementById("motivoResolucionRevocacionPorNoJustificar").value;
+	let id = document.getElementById("id").value;
+	if ( textoMotivoRevocacion === "") {
+		alert ("Falta indicar el motiu de la revocació")
+		return
+	}
+	$.post(
+		"/public/assets/utils/actualiza_motivo_Revocacion_en_expediente.php",
+		{ id: id, textoMotivoRevocacion: textoMotivoRevocacion },
+		function (data) {
+			$(".result").html(data);
+			if (data == 1) {
+				document.getElementById("wrapper_motivoResolucionRevocacionPorNoJustificar").remove = "ocultar";
+				document.getElementById("wrapper_motivoResolucionRevocacionPorNoJustificar").className = "btn btn-primary";
+			}
+		}
+	);
+}
 function actualizaMotivoDesfavorable_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfSinReq").value;
 	let id = document.getElementById("id").value;
@@ -1291,7 +1308,6 @@ function actualizaMotivoDesfavorable_click() {
 		}
 	);
 }
-
 function actualizaMotivoDesfavorableConReqIls_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReqIls").value;
 	let id = document.getElementById("id").value;
@@ -1314,7 +1330,6 @@ function actualizaMotivoDesfavorableConReqIls_click() {
 		}
 	);
 }
-
 function actualizaMotivoDesfavorableConReq_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
 	let id = document.getElementById("id").value;
@@ -1340,7 +1355,6 @@ function actualizaMotivoDesfavorableConReq_click() {
 		}
 	);
 }
-
 function enviaAFirmaRequerimiento_click(parametro) {
 	$("#enviaAFirmaRequerimiento", parametro)
 		.html("Actualitzant, un moment per favor.")
@@ -1348,7 +1362,6 @@ function enviaAFirmaRequerimiento_click(parametro) {
 		.css("background-color", "orange")
 		.css("cursor", " progress");
 }
-
 function actualizaMotivoactaDeKickOff_click() {
 	let actaNumKickOff = document.getElementById("actaNumKickOff").value;
 	let fecha_kick_off = document.getElementById("fecha_kick_off_modal").value;
@@ -1380,7 +1393,6 @@ function actualizaMotivoactaDeKickOff_click() {
 		}
 	);
 }
-
 function actualizaActaCierre_click() {
 	let actaNumCierre = document.getElementById("actaNumCierre").value;
 	let fecha_reunion_cierre = document.getElementById("fecha_reunion_cierre_modal").value;
@@ -1410,7 +1422,6 @@ function actualizaActaCierre_click() {
 		}
 	);
 }
-
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarJustificador");
@@ -1431,7 +1442,6 @@ function enviaMailJustificacion_click() {
 		}
 	);
 }
-
 function enviaMailFormEmpresa_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarFormularioEmpresa");
@@ -1451,7 +1461,6 @@ function enviaMailFormEmpresa_click() {
 		}
 	);
 }
-
 function enviaMailEscrituraEmpresa_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
@@ -1473,7 +1482,6 @@ function enviaMailEscrituraEmpresa_click() {
 		}
 	);
 }
-
 function enviaMailCertificadoIAE_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IAE").value;
@@ -1495,7 +1503,6 @@ function enviaMailCertificadoIAE_click() {
 		}
 	);
 }
-
 function enviaMailDocumentoIdentificacion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IDSOL").value;
@@ -1517,7 +1524,6 @@ function enviaMailDocumentoIdentificacion_click() {
 		}
 	);
 }
-
 function enviaMailCertificadoSegSoc_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_TGSS").value;
@@ -1539,7 +1545,6 @@ function enviaMailCertificadoSegSoc_click() {
 		}
 	);
 }
-
 function enviaMailCertificadoATIB_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ATIB").value;
@@ -1561,7 +1566,6 @@ function enviaMailCertificadoATIB_click() {
 		}
 	);
 }
-
 function enviaMailInformeResumen_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_RESUMEN").value;
@@ -1583,7 +1587,6 @@ function enviaMailInformeResumen_click() {
 		}
 	);
 }
-
 function enviaMailCompromisoReduccion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_REDUCCION").value;
@@ -1607,7 +1610,6 @@ function enviaMailCompromisoReduccion_click() {
 		}
 	);
 }
-
 function enviaMailItinerarioFormativo_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ITINERARIO").value;
@@ -1629,7 +1631,6 @@ function enviaMailItinerarioFormativo_click() {
 		}
 	);
 }
-
 function enviaMailInformeGEH_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_GEH").value;
@@ -1651,7 +1652,6 @@ function enviaMailInformeGEH_click() {
 		}
 	);
 }
-
 function enviaMailManualYLogotipo_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarManualYLogotipo");
@@ -1671,7 +1671,6 @@ function enviaMailManualYLogotipo_click() {
 		}
 	);
 }
-
 async function insertaMejoraEnSolicitud() {
 	let addMejora = document.getElementById('addMejora')
 	let idSol = document.getElementById('id')
@@ -1692,16 +1691,13 @@ async function insertaMejoraEnSolicitud() {
 		})
 
 }
-
 function myFunction_docs_IDI_click(id, nombre) {
 	document.cookie = "documento_actual = " + id;
 }
-
 function opcion_seleccionada_click(respuesta) {
 	document.cookie = "respuesta = " + respuesta;
 	console.log(respuesta);
 }
-
 function eliminaArchivoDocIDI_click() {
 	console.log(getCookie("documento_actual"));
 	let id = getCookie("documento_actual");
@@ -1715,7 +1711,6 @@ function eliminaArchivoDocIDI_click() {
 		}
 	);
 }
-
 function myFunction_click(id, nombre) {
 	document.cookie = "documento_actual = " + id;
 	console.log("++" + id + "++");

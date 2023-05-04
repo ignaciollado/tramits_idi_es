@@ -17,10 +17,10 @@
    
     $modelExp = new ExpedientesModel();
 
-    if ($totalConvocatorias>1){
+    /* if ($totalConvocatorias>1){ */
         echo '<div class="alert alert-warning" role="alert">
         Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
-    }
+    /* } */
 
 	$programa = $expedientes['tipo_tramite'];
 	$id = $expedientes['id'];
@@ -41,11 +41,13 @@
 if (!$expedientes['importeAyuda']) {
     $objs = json_decode( $configuracion['programa']);
     /**
-     * object(stdClass)#88 (3) { ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
-     * { ["Primera"]=> array(3) { [0]=> int(5100) [1]=> int(90) [2]=> int(60) } ["Segunda"]=> array(3) 
-     * { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } ["Tercera"]=> array(3) 
-     * { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } } } ["Programa_II"]=> object(stdClass)#92 (1) 
-     * { ["edicion"]=> object(stdClass)#91 (2) { ["Primera"]=> array(3) { [0]=> int(4080) [1]=> int(90) [2]=> int(48) } 
+     * object(stdClass)#88 (3) { 
+     * ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
+     * { ["Primera"]=> array(3) { [0]=> int(5100) [1]=> int(90) [2]=> int(60) } 
+     * ["Segunda"]=> array(3) { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } 
+     * ["Tercera"]=> array(3) { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } } } 
+     * ["Programa_II"]=> object(stdClass)#92 (1) { ["edicion"]=> object(stdClass)#91 (2) { 
+     * ["Primera"]=> array(3) { [0]=> int(4080) [1]=> int(90) [2]=> int(48) } 
      * ["Segunda"]=> array(3) { [0]=> int(4080) [1]=> int(80) [2]=> int(48) } } } 
      * ["Programa_III"]=> object(stdClass)#94 (1) { ["edicion"]=> object(stdClass)#93 (2) { 
      * ["Primera"]=> array(3) { [0]=> int(1360) [1]=> int(90) [2]=> int(16) } 
@@ -77,9 +79,11 @@ if (!$expedientes['importeAyuda']) {
             switch($totalConvocatorias) {
                 case 1:
                     $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
+                    echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
                     break;
                 default:
                     $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
+                    echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
             }
             break;
     }
@@ -347,10 +351,10 @@ if (!$expedientes['importeAyuda']) {
             <h3>Documentació <strong>requerida</strong> de l'expedient:</h3>
             <div class="docsExpediente">
   	            <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-        	        <div >Rebut el</div>
-			        <div >Document</div>
-    		        <div >Tràmit</div>
-			        <div >Estat</div>
+        	        <div>Rebut el</div>
+			        <div>Document</div>
+    		        <div>Tràmit</div>
+			        <div>Estat</div>
   		        </div>
                 <?php if($documentos){ ?>
                 <?php foreach($documentos as $docs_item): 
@@ -693,8 +697,8 @@ if (!$expedientes['importeAyuda']) {
                     <div >Estat</div>                         
       	            <div >Acció</div>
                 </div>
-                <?php if($documentosExpediente): ?>
-                <?php foreach($documentosExpediente as $docSolicitud_item): 
+                <?php if($documentos): ?>
+                <?php foreach($documentos as $docSolicitud_item): 
 			                if($docSolicitud_item->fase_exped == 'Solicitud') {
     			                $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 	    		                $parametro = explode ("/",$path);
@@ -960,8 +964,8 @@ if (!$expedientes['importeAyuda']) {
 		            <div >Estat</div>                     
       	            <div >Acció</div>
                 </div>
-            <?php if($documentosExpediente): ?>
-            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
+            <?php if($documentos): ?>
+            <?php foreach($documentos as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Validacion') {
 			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			        $parametro = explode ("/",$path);
@@ -1155,8 +1159,8 @@ if (!$expedientes['importeAyuda']) {
 		            <div >Estat</div>                     
       	            <div >Acció</div>
                 </div>
-            <?php if($documentosExpediente): ?>
-            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
+            <?php if($documentos): ?>
+            <?php foreach($documentos as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Ejecucion') {
 			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			        $parametro = explode ("/",$path);
@@ -1287,7 +1291,7 @@ if (!$expedientes['importeAyuda']) {
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_liquidacion" class = "form-control send_fase_4" id = "fecha_res_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_liquidacion']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
-            <label for = "fecha_not_liquidacion"><strong>Data notificació resolució:</strong></label>
+            <label for = "fecha_not_liquidacion"><strong>Data notificació liquidació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_liquidacion" class = "form-control send_fase_4" id = "fecha_not_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_liquidacion']), 'Y-m-d');?>">
             </div>	
             <!--</div>
@@ -1348,8 +1352,8 @@ if (!$expedientes['importeAyuda']) {
                     <div >Acció</div>
                 </div>
 
-                <?php if($documentosExpediente): ?>
-                    <?php foreach($documentosExpediente as $docSolicitud_item): 			            
+                <?php if($documentos): ?>
+                    <?php foreach($documentos as $docSolicitud_item): 			            
                             if($docSolicitud_item->fase_exped == 'Justificac') {
                                 $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
                                 $parametro = explode ("/",$path);
@@ -1772,8 +1776,8 @@ if (!$expedientes['importeAyuda']) {
       	            <div >Acció</div>
                 </div>
 
-            <?php if($documentosExpediente): ?>
-            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
+            <?php if($documentos): ?>
+            <?php foreach($documentos as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Desestimie') {
 			    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			    $parametro = explode ("/",$path);

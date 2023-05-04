@@ -381,6 +381,7 @@ else if ($item['situacion'] == "empresaDenegada") {
 				if (strlen($item['ref_REC']) > 0) {
 					$referencia = str_replace("/","-",$item['ref_REC']) ;
 				}
+				
 			?>
 			<span id="__<?php echo $item['id'];?>" class = "detail-wrapper-col"><a id="_<?php echo $item['id'];?>" onclick= "cambiarTexto(<?php echo $item['id'];?>)" href="<?php echo base_url('/public/index.php/expedientes/edit/'.$item['id']);?>" class="btn btn-itramits-info">+info</a></span>
   	</div>

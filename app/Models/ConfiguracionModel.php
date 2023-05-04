@@ -11,4 +11,14 @@ class ConfiguracionModel extends Model
     'num_BOIB_modific', 'respresidente', 'convocatoria_desde', 'convocatoria_hasta', 
     'convocatoria_aviso_ca', 'convocatoria_aviso_es', 
     'updateInterval', 'convocatoria_activa' ];
+
+    public function convoActiva() {
+        return $this->where('convocatoria_activa', 1)->first();
+    }
+
+    public function fechasConvoActiva () {
+        $qry = "SELECT * FROM pindust_configuracion WHERE (convocatoria_activa = 1)";
+		$query = $this->query($qry);
+		return $query->getResult();
+    }
 }

@@ -99,10 +99,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: informe favorable<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
-$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -149,8 +149,8 @@ $html .= "<br>";
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_info_favorable_con_req_p3m'));
-    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], lang('message_lang.doc_info_favorable_con_req_p3m'));
-    $html .= "<li>". $parrafo_3 ."</li>";
+    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
+    $html .= "<li>". $parrafo_3m ."</li>";
     $html .= "<br>";
 }
 

@@ -26,9 +26,20 @@ class ExpedientesModel extends Model
         return $expediente;
     }
 
-    public function findNumberOfConvocatorias($nif, $tipoTramite) {  
-        $sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE nif="'.$nif.'" AND tipo_tramite="'.$tipoTramite.'"';
+    public function findNumberOfConvocatorias($nif, $tipoTramite, $convocatoria) {  
+        //$sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE 
+        //nif="'.$nif.'" 
+        //AND situacion="Finalizado"  
+        //AND convocatoria !='.$convocatoria.' 
+        //AND tipo_tramite="'.$tipoTramite.'"'; */
 
+        $sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE 
+        nif="'.$nif.'"
+        AND convocatoria !='.$convocatoria.' 
+        AND tipo_tramite="'.$tipoTramite.'"';
+
+        /* echo $sql; */
+        
         $query = $this->query($sql);
         $results = $query->getResultArray();
 
@@ -39,7 +50,7 @@ class ExpedientesModel extends Model
         foreach ($results as $row) {
             $totalConvos = $row['totalConvos'];
         }
-
+        $totalConvos = $totalConvos + 1; /* SE LE SUMA 1 PORQUE SE CUENTA PRIMERA CONVOCATORIA, SEGUNDA CONVO, TERCERA... Y NO CONVOCATORIA CERO */
         return $totalConvos;
     }
 

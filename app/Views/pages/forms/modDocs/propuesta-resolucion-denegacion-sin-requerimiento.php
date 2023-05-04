@@ -77,8 +77,8 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion')
-		let fecha_propuesta_resolucion_notif = document.getElementById('fecha_propuesta_resolucion_notif')
+/* 		let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion')
+		let fecha_propuesta_resolucion_notif = document.getElementById('fecha_propuesta_resolucion_notif') */
 
 		let wrapper_motivoDenegacion_8 = document.getElementById('wrapper_motivoDenegacion_8')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
@@ -94,14 +94,14 @@
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Referència REC sol·licitud<br>"
 			todoBien = false
 		}
-		if (!fecha_propuesta_resolucion.value) {
+/* 		if (!fecha_propuesta_resolucion.value) {
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data firma proposta resolució<br>"
 			todoBien = false
 		}
 		if (!fecha_propuesta_resolucion_notif.value) {
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data notificació proposta resolució<br>"
 			todoBien = false
-		}
+		} */
 
 		if (todoBien) {
 			infoMissingDataDoc8.classList.add('ocultar')

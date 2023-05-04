@@ -85,6 +85,8 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: resolució ampliació termini<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
+$html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
 

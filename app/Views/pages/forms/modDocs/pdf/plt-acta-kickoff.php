@@ -85,10 +85,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: acta núm. ".$data['expediente']['actaNumKickOff']."<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
-$html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 
 // set membrete
 $pdf->SetFillColor(255, 255, 255);
@@ -107,8 +107,6 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 1);
 $intro = "Assumpte: reunió llançament del programa<br>";
 $intro .= "Data: ".date_format(date_create($data['expediente']['fecha_kick_off']),"d/m/Y"). "<br>";
 $intro .= "Hora inici: ".$data['expediente']['horaInicioSesionKickOff']. "<br>";
@@ -121,16 +119,12 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 1);
 $asistentes =  lang('message_lang.doc_acta_kickOff_asistentes');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $asistentes ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-//$currentY = $pdf->getY();
-//$pdf->setY($currentY + 1);
 $nombreAsistentes =  $data['expediente']['asistentesKickOff'];
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". nl2br($nombreAsistentes) ."</td></tr>";
@@ -144,14 +138,6 @@ $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>"
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
-
-// $currentY = $pdf->getY();
-// $pdf->setY($currentY + 1);
-// $parrafo_2 = lang('message_lang.doc_acta_kickOff_desarrollo_sesion_p1');
-// $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-// $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_2 ."</td></tr>";
-// $html .= "</table>";
-// $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 1);

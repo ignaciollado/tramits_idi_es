@@ -100,7 +100,6 @@ class Expedientes extends Controller
 		echo view('templates/footer/footer');
 	}
 
-
 	public function filtrarExpedientes($sort_by = 'fecha_completado', $sort_order = 'ASC')
 	{
 		$language = \Config\Services::language();
@@ -277,7 +276,7 @@ class Expedientes extends Controller
 
 		$modelConfig = new ConfiguracionModel();
 
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
+		$data['configuracion'] = $modelConfig->convoActiva();
 		$data['importeAyuda'] = $data['configuracion']['programa'];
 		$data['abrirPanel'] = 0;
 
@@ -288,9 +287,7 @@ class Expedientes extends Controller
 
 		$db = \Config\Database::connect();
 
-		$qry = "SELECT * FROM pindust_configuracion WHERE (convocatoria_activa = 1)";
-		$query = $db->query($qry);
-		$data['config_fechas_limite'] = $query->getResult();
+		$data['config_fechas_limite'] = $modelConfig->fechasConvoActiva();
 
 		//-----------------------------------Comprueba si ya hay algún documento de justificación-------------------
 
@@ -308,7 +305,7 @@ class Expedientes extends Controller
 		$solicitante = mb_strtoupper($data['expedientes']['empresa']);
 		$nifcif = strtoupper($data['expedientes']['nif']);
 
-		$data['totalConvocatorias'] = $modelExp->findNumberOfConvocatorias($nifcif, $tipo_tramite);
+		$data['totalConvocatorias'] = $modelExp->findNumberOfConvocatorias($nifcif, $tipo_tramite, $convocatoria);
 
 		$data['titulo'] = "Expedient: " . $idExp . "/" . $convocatoria . " (" . $tipo_tramite . ") - " . $solicitante . " - " . $nifcif;
 
@@ -331,9 +328,9 @@ class Expedientes extends Controller
 		/* --------------------------------------------------------------- */
 
 		/* SELECCIONA TODOS LOS DOCUMENTOS ASOCIADOS AL EXPEDIENTE */
-		$qry = "SELECT * FROM pindust_documentos WHERE (fase_exped = '') AND id_sol = " . $id;
+		/* 		$qry = "SELECT * FROM pindust_documentos WHERE (fase_exped = '') AND id_sol = " . $id;
 		$query = $db->query($qry);
-		$data['documentos'] = $query->getResult();
+		$data['documentos'] = $query->getResult(); */
 		/* ---------------------------------------------------------------- */
 
 		/* Los documentos de la justificación por PLAN, FASCTURA, PAGOS */
@@ -341,9 +338,9 @@ class Expedientes extends Controller
 		$data['documentosJustifFact'] = $modelJustificacion->listDocumentosJustificacion('file_FactTransformacionDigital', $id);
 		$data['documentosJustifPagos'] = $modelJustificacion->listDocumentosJustificacion('file_PagosTransformacionDigital', $id);
 
-		$qry = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $id;  //Todos los documentos del expediente pertenecientes a cualquier fase
-		$query = $db->query($qry);
-		$data['documentosExpediente'] = $query->getResult();
+		/* Todos los documentos de un expediente */
+		$data['documentos'] = $modelDocumentos->allExpedienteDocuments($id); 		
+		//$data['documentosExpediente'] = $modelDocumentos->allExpedienteDocuments($id); 
 
 		/* Lista de las MEJORAS de la solicitud */
 		$data['mejorasSolicitud'] = $modelMejorasSolicitud->selectAllMejorasExpediente($id);
@@ -873,7 +870,8 @@ class Expedientes extends Controller
 		$documento = $request->uri->getSegment(7);
 		$db = \Config\Database::connect();
 
-		$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=" . $id . " AND convocatoria='" . $convocatoria . "' AND corresponde_documento='" . $documento . "'");
+		$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=" . $id . 
+						" AND convocatoria='" . $convocatoria . "' AND corresponde_documento='" . $documento . "'");
 		foreach ($query->getResult() as $row) {
 			$file = $row->name;
 			$nifcif = $row->cifnif_propietario;
@@ -1305,11 +1303,13 @@ class Expedientes extends Controller
 				$builder->update($data_infor);
 				$data['byCEOSigned'] = true;
 				$data_footer = [
-					'tipoDoc' => " Proposta resolució revocació per no justificar",
+					'tipoDoc' => " Proposta de resolució de revocació per no justificar",
 					'conVIAFIRMA' => true
 				];
 				echo "<h4>Proposta resolució revocació per no justificar</h4>";
 				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-revocacion-por-no-justificar', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
