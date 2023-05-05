@@ -338,9 +338,11 @@ class Expedientes extends Controller
 		$data['documentosJustifFact'] = $modelJustificacion->listDocumentosJustificacion('file_FactTransformacionDigital', $id);
 		$data['documentosJustifPagos'] = $modelJustificacion->listDocumentosJustificacion('file_PagosTransformacionDigital', $id);
 
-		/* Todos los documentos de un expediente */
-		$data['documentos'] = $modelDocumentos->allExpedienteDocuments($id); 		
-		//$data['documentosExpediente'] = $modelDocumentos->allExpedienteDocuments($id); 
+		/* Todos los documentos de un expediente en la pestaña DETALL */
+		$data['documentosDetalle'] = $modelDocumentos->allExpedienteDocuments($id, 'detalle');
+
+		/* Todos los documentos de un expediente en la pestaña EN EL RESTO DE PESTAÑAS */
+		$data['documentos'] = $modelDocumentos->allExpedienteDocuments($id, ''); 
 
 		/* Lista de las MEJORAS de la solicitud */
 		$data['mejorasSolicitud'] = $modelMejorasSolicitud->selectAllMejorasExpediente($id);

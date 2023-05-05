@@ -27,16 +27,16 @@ class ExpedientesModel extends Model
     }
 
     public function findNumberOfConvocatorias($nif, $tipoTramite, $convocatoria) {  
-        //$sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE 
-        //nif="'.$nif.'" 
-        //AND situacion="Finalizado"  
-        //AND convocatoria !='.$convocatoria.' 
-        //AND tipo_tramite="'.$tipoTramite.'"'; */
-
         $sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE 
-        nif="'.$nif.'"
+        nif="'.$nif.'" 
+        AND situacion="Finalizado"  
         AND convocatoria !='.$convocatoria.' 
         AND tipo_tramite="'.$tipoTramite.'"';
+
+       /*  $sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE 
+        nif="'.$nif.'"
+        AND convocatoria !='.$convocatoria.' 
+        AND tipo_tramite="'.$tipoTramite.'"'; */
 
         /* echo $sql; */
         

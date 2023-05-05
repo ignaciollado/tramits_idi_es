@@ -351,13 +351,13 @@ if (!$expedientes['importeAyuda']) {
             <h3>Documentació <strong>requerida</strong> de l'expedient:</h3>
             <div class="docsExpediente">
   	            <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-        	        <div>Rebut el</div>
-			        <div>Document</div>
-    		        <div>Tràmit</div>
-			        <div>Estat</div>
+        	        <div >Rebut el</div>
+			        <div >Document</div>
+    		        <div >Tràmit</div>
+			        <div >Estat</div>
   		        </div>
-                <?php if($documentosDetalle){ ?>
-                <?php foreach($documentosDetalle as $docs_item): 
+                <?php if($documentos){ ?>
+                <?php foreach($documentos as $docs_item): 
 			            $path = $docs_item->created_at;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
@@ -497,8 +497,8 @@ if (!$expedientes['importeAyuda']) {
     		            <div >Tràmit</div>
 			            <div >Estat</div>
   		            </div>
-                    <?php if($documentosDetalle){ ?>
-                    <?php foreach($documentosDetalle as $docs_opc_item): 
+                    <?php if($documentos){ ?>
+                    <?php foreach($documentos as $docs_opc_item): 
 			            $path = $docs_opc_item->created_at;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_opc_item->type;
@@ -697,8 +697,8 @@ if (!$expedientes['importeAyuda']) {
                     <div >Estat</div>                         
       	            <div >Acció</div>
                 </div>
-                <?php if($documentos): ?>
-                <?php foreach($documentos as $docSolicitud_item): 
+                <?php if($documentosExpediente): ?>
+                <?php foreach($documentosExpediente as $docSolicitud_item): 
 			                if($docSolicitud_item->fase_exped == 'Solicitud') {
     			                $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 	    		                $parametro = explode ("/",$path);
@@ -964,8 +964,8 @@ if (!$expedientes['importeAyuda']) {
 		            <div >Estat</div>                     
       	            <div >Acció</div>
                 </div>
-            <?php if($documentos): ?>
-            <?php foreach($documentos as $docSolicitud_item): 			            
+            <?php if($documentosExpediente): ?>
+            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Validacion') {
 			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			        $parametro = explode ("/",$path);
@@ -1159,8 +1159,8 @@ if (!$expedientes['importeAyuda']) {
 		            <div >Estat</div>                     
       	            <div >Acció</div>
                 </div>
-            <?php if($documentos): ?>
-            <?php foreach($documentos as $docSolicitud_item): 			            
+            <?php if($documentosExpediente): ?>
+            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Ejecucion') {
 			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			        $parametro = explode ("/",$path);
@@ -1352,8 +1352,8 @@ if (!$expedientes['importeAyuda']) {
                     <div >Acció</div>
                 </div>
 
-                <?php if($documentos): ?>
-                    <?php foreach($documentos as $docSolicitud_item): 			            
+                <?php if($documentosExpediente): ?>
+                    <?php foreach($documentosExpediente as $docSolicitud_item): 			            
                             if($docSolicitud_item->fase_exped == 'Justificac') {
                                 $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
                                 $parametro = explode ("/",$path);
@@ -1776,8 +1776,8 @@ if (!$expedientes['importeAyuda']) {
       	            <div >Acció</div>
                 </div>
 
-            <?php if($documentos): ?>
-            <?php foreach($documentos as $docSolicitud_item): 			            
+            <?php if($documentosExpediente): ?>
+            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Desestimie') {
 			    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			    $parametro = explode ("/",$path);

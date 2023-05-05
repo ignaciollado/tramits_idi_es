@@ -10,9 +10,15 @@ class DocumentosModel extends Model
                                     'created_at', 'tipo_tramite', 'corresponde_documento', 
                                     'datetime_uploaded', 'selloDeTiempo', 'id_sol'];
 
-    public function allExpedienteDocuments($idSol) {
-        $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes a cualquier fase
-		$query = $this->query($sql);
+    public function allExpedienteDocuments($idSol, $faseExpediente) {
+        /* echo "**".$faseExpediente."**"; */
+        if ( $faseExpediente === "detalle") {
+            $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped = '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes fase detalle
+        } else {
+            $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes a cualquier fase
+        }
+       /*  echo $sql; */
+        $query = $this->query($sql);
         return $query->getResult();
     }    
     
