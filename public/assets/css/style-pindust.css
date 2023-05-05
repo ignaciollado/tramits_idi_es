@@ -1104,7 +1104,7 @@ code {
     border: 3px solid #fff!important;
 }
 .seguimiento-lbl{
-	background-color: #fffb0b;
+	background-color: #d9e90d;
     color: #000;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -1114,7 +1114,7 @@ code {
     border-radius: 0!important;
 }
 .seguimiento-lbl-final{
-	background-color: #fffb0b;
+	background-color: #d9e90d;
     color: #000;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -1125,7 +1125,7 @@ code {
     border: 3px solid #fff!important;
 }
 .ejecucion_cab {
-	background-color: #fffb0b;
+	background-color: #d9e90d;
 	color:#000;
 	padding-left: .5rem;
 	padding-right: .5rem;
@@ -1142,9 +1142,9 @@ code {
 	width:100%;
 	border-radius: 0!important;
 }
-.ejecucion-final {
-	background-color: #080081;
-	color:#fff;
+.ejecucion-justificado {
+	background-color: #d9e90d;
+	color:#000;
 	padding-left: .5rem;
 	padding-right: .5rem;
 	padding-top: 1rem;
@@ -1153,8 +1153,30 @@ code {
 	border-radius: 0!important;
 	border: 3px solid #fff!important;
 }
+.ejecucion-final {
+	background-color: #04c935;
+	color:#000;
+	padding-left: .5rem;
+	padding-right: .5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	width:100%;
+	border-radius: 0!important;
+	border: 3px solid #fff!important;
+}
+.ejecucion-revocado {
+	background-color: #7b7c7c;
+	color: #fff;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	width: 100%;
+	border-radius: 0!important;
+	border: 3px solid #000!important;
+}
 .sitEjecucion {
-	background-color: #fffb0b;
+	background-color: #d9e90d;
 	color:#000;
 	padding-left: .5rem;
 	padding-right: .5rem;
@@ -1164,7 +1186,7 @@ code {
 	border-radius: 0!important;
 }
 .ejecucion-lbl {
-	background-color: #fffb0b;
+	background-color: #d9e90d;
 	color:#000;
 	padding-left: .5rem;
 	padding-right: .5rem;
@@ -1174,7 +1196,7 @@ code {
 	border-radius: 0!important;
 }
 .sitEjecucion_cab_ils{
-	background-color: #fffb0b;
+	background-color: #d9e90d;
 	color: #000;
 }
 .sitEjecucion_ils{
@@ -1588,7 +1610,7 @@ code {
         color: #fff;
     }
     .ejecucion_tab {
-        background-color: #fffb0b!important;
+        background-color: #d9e90d!important;
         color: #000;
     }
     .justificacion_tab {

@@ -166,10 +166,10 @@ window.addEventListener('load', (event) => {
     setInterval(function(){ totalSolicitudesPorSituacion('2023', 'ILS', 'empresaDenegada', 'totalSolicitudesILSDenegadas_2023'); }, intervaloActualizacion);
 
 
-    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'pendiente', 'totalSolicitudesIPendientes_2023'); }, intervaloActualizacion);
-    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa II', 'pendiente', 'totalSolicitudesIIPendientes_2023'); }, intervaloActualizacion);
-    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa III', 'pendiente', 'totalSolicitudesIIIPendientes_2023'); }, intervaloActualizacion);
-    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'ILS', 'pendiente', 'totalSolicitudesILSPendientes_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'inicioConsultoria', 'totalSolicitudesIPendientes_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa II', 'inicioConsultoria', 'totalSolicitudesIIPendientes_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa III', 'inicioConsultoria', 'totalSolicitudesIIIPendientes_2023'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2023', 'ILS', 'inicioConsultoria', 'totalSolicitudesILSPendientes_2023'); }, intervaloActualizacion);
 
 
     setInterval(function(){ totalSolicitudesPorSituacion('2023', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2023'); }, intervaloActualizacion);
@@ -234,8 +234,8 @@ async function totalSolicitudesPorSituacion(year, stage, situacion, elementID) {
         situacion = '<code class="alert solicitud"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds NO HAN PASSAT PEL REC</code>'
     }
 
-    if (situacion == 'pendiente') {
-        situacion = '<code class="alert solicitud"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds PENDENTS de VALIDACIÓ</code>';
+    if (situacion == 'inicioConsultoria') {
+        situacion = '<code class="alert solicitud"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA</code>';
     }
 
     if (situacion == 'Denegado') {

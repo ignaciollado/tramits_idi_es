@@ -50,7 +50,7 @@ class ExpedientesModel extends Model
         foreach ($results as $row) {
             $totalConvos = $row['totalConvos'];
         }
-        $totalConvos = $totalConvos + 1; /* SE LE SUMA 1 PORQUE SE CUENTA PRIMERA CONVOCATORIA, SEGUNDA CONVO, TERCERA... Y NO CONVOCATORIA CERO */
+        $totalConvos = $totalConvos + 1; /* LE SUMA 1 PORQUE SE CUENTA PRIMERA CONVOCATORIA, SEGUNDA CONVO, TERCERA... Y NO CONVOCATORIA CERO */
         return $totalConvos;
     }
 
