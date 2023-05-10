@@ -1,3 +1,7 @@
+liveToast = document.getElementById('liveToast')
+toastMessage = document.getElementById('toastMessage')
+toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast)
+
 function averiguaTipoDocumento (valor) {
 	let formasJuridicas = document.querySelectorAll('input[name="tipo_solicitante"]');
 	let formaJuridaSelected
@@ -10,7 +14,9 @@ function averiguaTipoDocumento (valor) {
 	}
 
 	if(valor.length != 9)	{
-		document.getElementById("info_lbl").innerHTML = "La longitud del número del documento identificador tiene que ser de 9 dígitos.";
+		toastMessage.innerHTML = "La longitud del número del documento identificador tiene que ser de 9 dígitos."
+		toastBootstrap.show()
+
 		document.getElementById("nif").value = "";
 		document.getElementById("nif").classList.remove("valid");
 		document.getElementById("nif").classList.add("invalid");
@@ -44,7 +50,7 @@ function analizaCIF (cif) {
 	let esCIF_OK = false
 
 	// Mostraré el resultado en el elemento HTML con id = info_lbl
-	document.getElementById("info_lbl").innerHTML = "";
+	/* document.getElementById("info_lbl").innerHTML = ""; */
 	// Creo los arrays con todos los posibles valores de organización, provincia y letras y números de control
 	let organizacionCodigo = ["A","B","C","D","E","F","G","J","H","K","L","M","N","P","Q","R","S","U","V","W"];
 	// Los códigos de provincia, los separo en varios arrays por comodidad de lectura
@@ -108,41 +114,43 @@ function analizaCIF (cif) {
 		motivo = "Alguna part del CIF no està correcta:\n";
 	}
 	if (!organizacion_OK) {
-		motivo = motivo + "<li>Organización equivocada</li>";
+		motivo = motivo + "<li>Organització equivocada (El primer caràcter)</li>";
 	}
 	if (!provincia_OK) {
-		motivo = motivo + "<li>Provincia equivocada</li>";
+		motivo = motivo + "<li>Provincia equivocada (El segon i el tercer caràcters)</li>";
 	}
 	if (!numeracion_OK) {
-		motivo = motivo + "<li>Número secuencial equivocado</li>";
+		motivo = motivo + "<li>Número sequencial erroni (Des-de el quart fins al vuité caràcters)</li>";
 	}
 	if (!dControl_OK) {
-		motivo = motivo + "<li>Dígito de control equivocado</li>";
+		motivo = motivo + "<li>Dígit de control erroni (El darrer caràcter)</li>";
 	}
 	// Muestro el valor entrado en el elemento HTML con id = info_lbl
-	document.getElementById("info_lbl").innerHTML = document.getElementById("info_lbl").innerHTML + motivo;
+	/* document.getElementById("info_lbl").innerHTML = document.getElementById("info_lbl").innerHTML + motivo; */
 
 	if (esCIF_OK) 
 	{
-		console.log (`Sí Motivo: ${motivo}`, esCIF_OK)
+		/* console.log (`Sí Motivo: ${motivo}`, esCIF_OK) */
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").value = cif;
 		document.getElementById("nif").classList.remove("invalid");
 		document.getElementById("nif").classList.add("valid");
-		document.getElementById("info_lbl").classList.add("ocultar");
-		document.getElementById("info_lbl").value = "";
+		/* document.getElementById("info_lbl").classList.add("ocultar");
+		document.getElementById("info_lbl").value = ""; */
 		consultaExpediente ( 'nif', cif )
 	}
 	else 
 	{
-		console.log (`No Motivo: ${motivo}`, esCIF_OK)
+		/* console.log (`No Motivo: ${motivo}`, esCIF_OK) */
+		toastMessage.innerHTML = motivo
+		toastBootstrap.show()
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").focus();
 		document.getElementById("nif").value = "";
 		document.getElementById("nif").classList.remove("valid");
 		document.getElementById("nif").classList.add("invalid");
-		document.getElementById("info_lbl").classList.remove("ocultar");
-		document.getElementById("info_lbl").value = motivo;
+		/* document.getElementById("info_lbl").classList.remove("ocultar");
+		document.getElementById("info_lbl").value = motivo; */
 	}
 	}
 
@@ -181,7 +189,10 @@ function analizaDNINIE (dninie) {
 	{
 		if (primerDigitoDNINIE!='X' && primerDigitoDNINIE!='Y' && primerDigitoDNINIE!='Z') // y tiene que ser X,Y,Z
 			{
-			document.getElementById("info_lbl").innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z.";
+			//document.getElementById("info_lbl").innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z.";
+			toastMessage.innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z."
+			toastBootstrap.show()
+
 			document.getElementById("nif").value = ""
 			document.getElementById("nif").classList.remove("valid");
 			document.getElementById("nif").classList.add("invalid");

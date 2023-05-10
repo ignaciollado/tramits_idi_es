@@ -1,5 +1,6 @@
 window.addEventListener('load', (event) => {
-    const intervaloActualizacion = (document.getElementById("updateInterval").value/4 * 60 * 1000)/10;
+    let intervaloActualizacion = (document.getElementById("updateInterval").value/4 * 60 * 1000)/10;
+    intervaloActualizacion = intervaloActualizacion / 10
     const googleId = document.querySelector(".unreadMails").id;
 
     setInterval(function(){ getUnreadMessages(googleId); }, intervaloActualizacion);
@@ -18,7 +19,7 @@ window.addEventListener('load', (event) => {
 
     listPrograma('2022', 'ILS');
 
-    importeTotalSolicitadoPrograma('2022', 'Programa I');
+    /* importeTotalSolicitadoPrograma('2022', 'Programa I');
     importeTotalSolicitadoPrograma('2022', 'Programa II');
     importeTotalSolicitadoPrograma('2022', 'Programa III');
 
@@ -45,7 +46,7 @@ window.addEventListener('load', (event) => {
 
     totalSolicitudesPorSituacion('2022', 'Programa I', 'Justificado', 'totalSolicitudesIJustificado_2021');
     totalSolicitudesPorSituacion('2022', 'Programa II', 'Justificado', 'totalSolicitudesIIJustificado_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa III', 'Justificado', 'totalSolicitudesIIIJustificado_2021');
+    totalSolicitudesPorSituacion('2022', 'Programa III', 'Justificado', 'totalSolicitudesIIIJustificado_2021'); */
 
     //convo 2020
 
@@ -76,9 +77,9 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2021', 'Programa II', 'Denegado', 'totalSolicitudesIIDenegadas_2021');
     totalSolicitudesPorSituacion('2021', 'Programa III', 'Denegado', 'totalSolicitudesIIIDenegadas_2021');
 
-    totalSolicitudesPorSituacion('2021', 'Programa I', 'pendiente', 'totalSolicitudesIPendientes_2021');
-    totalSolicitudesPorSituacion('2021', 'Programa II', 'pendiente', 'totalSolicitudesIIPendientes_2021');
-    totalSolicitudesPorSituacion('2021', 'Programa III', 'pendiente', 'totalSolicitudesIIIPendientes_2021');
+    totalSolicitudesPorSituacion('2021', 'Programa I', 'inicioConsultoria', 'totalSolicitudesIPendientes_2021');
+    totalSolicitudesPorSituacion('2021', 'Programa II', 'inicioConsultoria', 'totalSolicitudesIIPendientes_2021');
+    totalSolicitudesPorSituacion('2021', 'Programa III', 'inicioConsultoria', 'totalSolicitudesIIIPendientes_2021');
 
     totalSolicitudesPorSituacion('2021', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2021');
     totalSolicitudesPorSituacion('2021', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2021');
@@ -119,10 +120,10 @@ window.addEventListener('load', (event) => {
     setInterval(function(){ totalSolicitudesPorSituacion('2022', 'ILS', 'empresaDenegada', 'totalSolicitudesILSDenegadas_2022'); }, intervaloActualizacion);
 
 
-    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa I', 'pendiente', 'totalSolicitudesIPendientes_2022'); }, intervaloActualizacion);
-    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa II', 'pendiente', 'totalSolicitudesIIPendientes_2022'); }, intervaloActualizacion);
-    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa III', 'pendiente', 'totalSolicitudesIIIPendientes_2022'); }, intervaloActualizacion);
-    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'ILS', 'pendiente', 'totalSolicitudesILSPendientes_2022'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa I', 'inicioConsultoria', 'totalSolicitudesIPendientes_2022'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa II', 'inicioConsultoria', 'totalSolicitudesIIPendientes_2022'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa III', 'inicioConsultoria', 'totalSolicitudesIIIPendientes_2022'); }, intervaloActualizacion);
+    setInterval(function(){ totalSolicitudesPorSituacion('2022', 'ILS', 'inicioConsultoria', 'totalSolicitudesILSPendientes_2022'); }, intervaloActualizacion);
 
 
     setInterval(function(){ totalSolicitudesPorSituacion('2022', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2022'); }, intervaloActualizacion);

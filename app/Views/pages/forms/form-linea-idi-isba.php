@@ -5,7 +5,6 @@
   	$locale = $language->getLocale();
   ?>
 
-
   <fieldset>
 			<?php echo lang('message_lang.documentacion_necesaria_pymes_idi_isba');?>
 			<h3><?php echo lang('message_lang.documentacion_resultante_cabecera_idi_isba');?></h3>
@@ -13,8 +12,7 @@
 			<!-- <input type='hidden' id="tipo_solicitante" name="tipo_solicitante" value="mediana"> -->
 	</fieldset>
 
-<!-- Modal -->
-<div class="modal fade" id="rgpdModal" tabindex="-1" aria-labelledby="rgpdModalLabel" aria-hidden="true">
+<div class="modal fade" id="rgpdModal" tabindex="-1" aria-labelledby="rgpd" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -32,24 +30,27 @@
 				</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Dialog listado solicitantes ya constan en otros expedientes -->
-<dialog id="theDialog">
-	<div id='resultContainer'>Those are the founded files</div>
-	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javaScript: let restResultDialog = document.querySelector('#theDialog'); restResultDialog.close()">Close</button>
-</dialog>
+		<!-- Dialog con el listado de beneficiarios que ya constan en otros expedientes -->
+		<dialog id="theDialog">
+			<h3>Aquests expedients que coincideixen amb el número de document identificador que ens ha facilitat:</h3>
+			<br>
+			<div id='resultContainer'>Those are the founded files</div>
+			<br>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javaScript: let restResultDialog = document.querySelector('#theDialog'); restResultDialog.close()">Close</button>
+		</dialog>
 
 		<div id="formbox">
 			<fieldset>
 				<div class="form-check"> 
   				<input class="form-check-input" type="checkbox"  onChange="javaScript: activaDesactivaFormulario (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
   				<label class="form-check-label" for="flexCheckDefault">
-					<?php echo lang('message_lang.rgpd_leido');?><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#rgpdModal">RGPD</button>
+						<?php echo lang('message_lang.rgpd_leido');?><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#rgpdModal">RGPD</button>
   				</label>
 				</div>
 				<span id='aviso'></span>
@@ -88,14 +89,33 @@
 
 			<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 				<div class="input-group">
-					<input type = "text" name = "idExpISBA" id = "idExpISBA" aria-label="Input group idExpISBA" aria-describedby="btnGroupAddon" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: consultaExpediente ( 'expediente', this.value );" title="<?php echo lang('message_lang.idExpISBA');?>" placeholder = "<?php echo lang('message_lang.idExpISBA');?>">
+					<input type = "text" name = "idExpISBA" id = "idExpISBA" aria-label="Input group idExpISBA" aria-describedby="btnGroupAddon" disabled=disabled readonly onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: consultaExpediente ( 'expediente', this.value );" title="<?php echo lang('message_lang.idExpISBA');?>" placeholder = "<?php echo lang('message_lang.idExpISBA');?>">
   			</div>
 				<div class="input-group">
-					<input type = "text" name = "nif" id = "nif" aria-label="Input group nif" aria-describedby="btnGroupAddon" onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" minlength = "9" maxlength = "9" aria-required="true"><small id = "info_lbl" class="alert alert-danger ocultar" role="alert"></small>
-  			</div>
+					<input type = "text" name = "nif" id = "nif" aria-label="Input group nif" aria-describedby="btnGroupAddon" 
+					onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" 
+					title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" minlength = "9" maxlength = "9" 
+					aria-required="true">
+				</div>
 				<span id='rest-result'></span>
 				<div id ="spinner-idi-isba" class="spinner-border text-warning ocultar" role="status">
  						<span id ="text-isba" class="visually-hidden">Getting data from ISBA...</span>
+				</div>
+			</div>
+
+			<div aria-live="polite" aria-atomic="true" class="position-relative">
+				<div class="toast-container top-0 end-0 p-3">
+					<div id="liveToast" class="toast align-items-center text-bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
+	  					<div class="toast-body">
+								<strong class="me-auto"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></strong>
+								<div id="toastMessage" class="toast-body">
+	      					This is a toast message.
+    					</div>
+    					<div class="mt-2 pt-2 border-top">
+	    					<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Tanca</button>
+  				  	</div>
+  						</div>
+					</div>
 				</div>
 			</div>
 

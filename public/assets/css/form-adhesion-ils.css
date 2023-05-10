@@ -47,7 +47,6 @@ section {
 h4 {
   font-size: 1.5rem !important;
 }
-
 #regForm {
     background-color: rgba(255, 255, 255, 1);
     padding: 3rem;
@@ -67,6 +66,7 @@ header .logo {
 .menu div {
   text-align: right;
 }
+
 .w3docs {
   position: absolute;
   top: 0;

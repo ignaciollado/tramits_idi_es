@@ -78,7 +78,9 @@ class ApiController extends ResourceController
         $linea = str_replace("%20", " ", $linea);
 
         $where = "idExp = " . $idExp;
-        $where .= " AND convocatoria = '" . $convo ."'";
+        if ($convo !== 'any') {
+            $where .= " AND convocatoria = '" . $convo ."'";
+        }
         $where .= " AND tipo_tramite = '" . $linea ."'";
 
         $data = $apiModel->where( $where )->findAll();
@@ -119,9 +121,9 @@ class ApiController extends ResourceController
             }else{
                 return $this->failNotFound('Expediente with this NIF does not exist.');
             }
-      }
+    }
 
-    // obtiene datos convo-linea ayuda
+    // obtiene todo los datos de la convo-linea ayuda
     public function getConvocatoria($id = null) {
         $apiModel = new ApiModel();
 
@@ -174,7 +176,7 @@ class ApiController extends ResourceController
         }
     }
 
-  /*   private function genericResponse($data, $msj, $code)    {        
+    /*   private function genericResponse($data, $msj, $code)    {        
       if ($code == 200) {            
         return $this->respond(array( "data" => $data, "code" => $code )); 
         //, 404, "No hay nada"        

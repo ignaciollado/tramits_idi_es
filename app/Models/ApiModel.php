@@ -8,6 +8,7 @@ class ApiModel extends Model
     protected $table = 'pindust_expediente';
     protected $primaryKey = 'id';
     protected $allowedFields = [
+      'id',
       'idExp', 
       'tipo_solicitante',
       'empresa',
