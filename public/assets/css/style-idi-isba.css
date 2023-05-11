@@ -54,6 +54,11 @@ header .logo {
   text-align: right;
 }
 
+.ocultar {
+	display: none!important;
+	background-color: #000;
+}
+
 .w3docs {
   position: absolute;
   top: 0;

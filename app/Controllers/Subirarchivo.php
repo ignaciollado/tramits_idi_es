@@ -1187,13 +1187,13 @@ public function store_idi_isba()
 			$declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom = "NO";
 		}
 
-
 		//5. doy mi consentimiento para que el Instituto de Innovación Empresarial  ...
 		if ($this->request->getVar('consentimiento_identificacion') === 'on'){ /* Sí da consentimiento */
 			$file_enviardocumentoIdentificacion = "SI"; 
 		} else {
 			$file_enviardocumentoIdentificacion = "NO"; /* OK */
 		}
+
 		//6. doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga ...
 		if ($this->request->getVar('consentimiento_certificadoATIB') === 'on'){
 			$file_certificadoATIB = "SI"; 
@@ -1322,13 +1322,12 @@ public function store_idi_isba()
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
-
 		if (file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/') != 1 ) {
 			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/');
 		}
 
-		/* ------------------------------------------------------------------------------------------------------- */
-		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos------------ */
+		/* ------------------------------------------------------------------------------------------------------ */
+		/* -------------------- copia nif al NO autorizar al IDI comprobar dni, múltiples documentos------------ */
 		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
 		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $documentoIdentificacion)
 			{
@@ -1348,12 +1347,13 @@ public function store_idi_isba()
 						'selloDeTiempo'  => $selloTiempo,
 						'id_sol'         => $last_insert_id
 						];
-						$save = $documentos->insert($data_file);
+						$documentos->insert($data_file);
 					}
 			}
+			echo "subida copia NIF";
 		}
 		/* ----------------------------------------------------------------------------------------------------- */
-		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
+		/* ---------- corriente pago obligaciones ATIB al NO autorizar al IDI comprobarlo, múltiples documentos------ */
 		if (isset($documentosfile['file_certificadoATIB'])) {
 		foreach($documentosfile['file_certificadoATIB'] as $certificadoATIB)
 			{
@@ -1373,9 +1373,10 @@ public function store_idi_isba()
 						'selloDeTiempo'  => $selloTiempo,
 						'id_sol'         => $last_insert_id
 						];
-						$save = $documentos->insert($data_file);
+						$documentos->insert($data_file);
 					}
 			}
+			echo "subida copia cert obligaciones ATIB";
 		}
  		/* ------------------------------------------------------------------------------------------------------------ */
  		/* --------------------------------certificados Tes. Seg. Soc.------------------------------------------------- */
@@ -1398,12 +1399,13 @@ public function store_idi_isba()
 					'selloDeTiempo'  => $selloTiempo,
 					'id_sol'         => $last_insert_id
 					];
-					$save = $documentos->insert($data_file);
+					$documentos->insert($data_file);
 				}
 			}
+			echo "subida copia cert seg social";
 		}
- 		/* ----------------------------------------------------------------------------------------------------------------- */
-
+		/* ------------------------------------------------------------------------------------------------------------ */
+ 		/* -------------------------------------ESCRITURA EMPRESA------------------------------------------------------ */
  		if (isset($documentosfile['file_escritura_empresa'])) {
 	 	foreach($documentosfile['file_escritura_empresa'] as $escrituraEmpresa)
 		 	{
@@ -1423,9 +1425,10 @@ public function store_idi_isba()
 				 'selloDeTiempo'  => $selloTiempo,
 				 'id_sol'         => $last_insert_id
 				 ];
-			 		$save = $documentos->insert($data_file);
+			 		$documentos->insert($data_file);
 			 	}
 		 	}
+			 echo "subida copia escritura empresa";
 	 	}
   	
 		$data_file['titulo'] = "Resumen de la solicitud de ayuda IDI-ISBA";

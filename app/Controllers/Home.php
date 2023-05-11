@@ -261,13 +261,15 @@ class Home extends BaseController
 		echo view('pages/forms/form-adhesion-ils');
 	}
 
-	public function solicitud_linea_idi_isba($page = 'forms/linea-idi-isba', $language='ca') {
+	public function solicitud_linea_idi_isba($page = 'forms/linea-idi-isba', $idioma='ca') {
 		helper('form');
 		helper('filesystem');
 		helper('cookie');
 		$request = \Config\Services::request();
 		$idioma =  $request->uri->getSegment(3);
-
+		if (!$idioma) {
+			$idioma = 'ca';
+		}
 		$language = \Config\Services::language();
 		$language->setLocale($idioma); 
 		$cookie = array(

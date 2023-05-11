@@ -11,13 +11,11 @@ class DocumentosModel extends Model
                                     'datetime_uploaded', 'selloDeTiempo', 'id_sol'];
 
     public function allExpedienteDocuments($idSol, $faseExpediente) {
-        /* echo "**".$faseExpediente."**"; */
         if ( $faseExpediente === "detalle") {
             $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped = '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes fase detalle
         } else {
             $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes a cualquier fase
         }
-       /*  echo $sql; */
         $query = $this->query($sql);
         return $query->getResult();
     }    
@@ -26,8 +24,9 @@ class DocumentosModel extends Model
         date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
 
-        $sql = 'SELECT * FROM pindust_documentos WHERE cifnif_propietario = "'.$nif.'" AND corresponde_documento = "'.$correspondeDocumento.'" ORDER By id DESC limit 1'; /* AND tipo_tramite = "'.$tipoTramite.'"'; */
+        $sql = 'SELECT * FROM pindust_documentos WHERE cifnif_propietario = "kk'.$nif.'" AND corresponde_documento = "'.$correspondeDocumento.'" ORDER By id DESC limit 1'; /* AND tipo_tramite = "'.$tipoTramite.'"'; */
         $query = $this->query($sql);
+
         foreach ($query->getResultArray() as $row) {
             $registro =
             $idSol.",'".
@@ -41,7 +40,11 @@ class DocumentosModel extends Model
         }
 
         if (!$query->getResultArray()) {
-            return 'D000 '.$correspondeDocumento."<br>"; /* No documents for this nif and type in IDI */
+                return 'D000 '.$correspondeDocumento."<br>"; /* No documents for this nif and type in IDI */
+        }
+
+        if (count($query->getResultArray()) === 0) {
+            return;
         }
 
         return $this->duplicateRegisterIfSaysDocumentInIDI($registro, $idSol, $tipoTramite, $convocatoria, $correspondeDocumento); /* Yes documents for this nif and type in IDI */

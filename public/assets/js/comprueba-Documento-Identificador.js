@@ -227,6 +227,7 @@ function analizaDNINIE (dninie) {
 		let i = resultante % 23;
 		let letraDNINIE = posiblesLetrasDNINIE[i];
 		document.getElementById("nif").value = primerDigitoDNINIE+digitosIntermedio+letraDNINIE;
+		consultaExpediente ( 'nif', primerDigitoDNINIE+digitosIntermedio+letraDNINIE )
 	}
 
 function tenemosDatosSolicitante(documentoIdentificativo) {

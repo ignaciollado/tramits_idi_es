@@ -38,11 +38,11 @@
 
 		<!-- Dialog con el listado de beneficiarios que ya constan en otros expedientes -->
 		<dialog id="theDialog">
-			<h3>Aquests expedients que coincideixen amb el número de document identificador que ens ha facilitat:</h3>
+			<h3>Aquests son els expedients que coincideixen amb el <br>número de document identificador que ens ha facilitat:</h3>
 			<br>
 			<div id='resultContainer'>Those are the founded files</div>
 			<br>
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javaScript: let restResultDialog = document.querySelector('#theDialog'); restResultDialog.close()">Close</button>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javaScript: document.querySelector('#theDialog').open = false">Close</button>
 		</dialog>
 
 		<div id="formbox">
@@ -64,19 +64,19 @@
 		 		<h2><?php echo lang('message_lang.solicitante_tipo');?></h2>
 				<div class="form-check form-check-inline">
   				<input class="form-check-input" type="radio" name="tipo_solicitante" checked id="autonomo" value="autonomo" onchange = "javaScript: tipoSolicitante (this.id);">
-  				<label class="form-check-label" for="condicion_rep_admin">
+  				<label class="form-check-label" for="autonomo">
 						<?php echo lang('message_lang.solicitante_tipo_autonomo');?>
 			  	</label>
 				</div>
 				<div class="form-check form-check-inline">
   				<input class="form-check-input" type="radio" name="tipo_solicitante" id="pequenya" value="pequenya" onchange = "javaScript: tipoSolicitante (this.id);">
-  				<label class="form-check-label" for="condicion_rep_apoderado">
+  				<label class="form-check-label" for="pequenya">
 						<?php echo lang('message_lang.solicitante_tipo_pequenya');?>
   				</label>
 				</div>
 				<div class="form-check form-check-inline">
   				<input class="form-check-input" type="radio" name="tipo_solicitante" id="mediana" value="mediana" onchange = "javaScript: tipoSolicitante (this.id);">
-  				<label class="form-check-label" for="condicion_rep_apoderado">
+  				<label class="form-check-label" for="mediana">
 						<?php echo lang('message_lang.solicitante_tipo_mediana');?>
   				</label>
 				</div>
@@ -191,7 +191,7 @@
 					SI
   			</label>
 			</div>
-			<span id="empresa_eco"></span>
+			<div class="alert alert-primary" role="alert" id="empresa_eco"></div>
 		</fieldset>
 		<fieldset>
 			<h2><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');?></h2>
@@ -353,7 +353,18 @@
 		<span class="tooltiptext_idi"><h3><?php echo lang('message_lang.upload_multiple');?></h3></span>	
 	</div>
 
-<button type="submit" name="sendForm" id="sendForm" class="btn btn-primary">Enviar</button>
+<button type="submit" name="sendFormIDIISBA" id="sendFormIDIISBA" 
+				class="btn btn-primary" 
+				data-bs-toggle="tooltip" 
+				data-bs-placement="top"
+        data-bs-title="Premi per enviar la sol·licitud del beneficiari a l'IDI."
+				onclick="disableSendFormIDIISBA()"
+				>Enviar
+
+				<div class="spinner-border text-primary ocultar" role="status" id="spinnerSendRequestIDIISBA">
+  				<span class="visually-hidden">Sending request, please wait...</span>
+				</div>
+</button>
 </form>
 
 <script>

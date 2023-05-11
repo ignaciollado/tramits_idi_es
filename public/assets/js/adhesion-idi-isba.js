@@ -9,6 +9,10 @@ let restResult = document.querySelector('#resultContainer')
 let end_point = ""
 let baseUrl = window.location
 
+let theForm=document.getElementById("adhesion_idi_isba");
+let btnSendFormIDIISBA = document.getElementById("sendFormIDIISBA")
+let spinnerSendRequestIDIISBA = document.getElementById("spinnerSendRequestIDIISBA")
+
 activaDesactivaFormulario (false)
 
 function activaDesactivaFormulario (valor) {
@@ -29,11 +33,22 @@ function activaDesactivaFormulario (valor) {
   }
 }
 
+function disableSendFormIDIISBA() {
+	btnSendFormIDIISBA.innerHTML ="Un moment, enviant ..."
+	btnSendFormIDIISBA.disabled = true
+	spinnerSendRequestIDIISBA.classList.remove("ocultar")
+
+	theForm.style.cursor="progress";
+	theForm.disabled = true;
+	theForm.style.opacity =".2";
+	theForm.submit();
+}
+
  function limpiaInfo_lbl (valor) {
 	//document.getElementById("info_lbl").innerHTML = ""
 } 
 
-function tipoSolicitante (valor)	{
+function tipoSolicitante (valor) {
 		console.log (valor)
 		document.getElementById("nif").value=""
 		switch (valor) {
@@ -147,7 +162,7 @@ function selectorNoSi(field) {
 
   if (inputElement.name === 'empresa_eco_idi_isba') {
     if (inputElement.value === 'SI') {
-      empresa_eco_lbl.innerHTML = "¡¡¡ Tiene una bofificación por ser ECO !!!"
+      empresa_eco_lbl.innerHTML = "Punto 7.2. de la convocatoria (cubrirá los siete años de la operación original, y son: el 100% del coste del aval los <strong>siete años</strong><br> de la operación, con la limitación del 1,25% sobre el importe del aval)"
       empresa_eco_lbl.classList.add("valid")
       empresa_eco_lbl.classList.remove("invalid")
     } else {
@@ -175,6 +190,8 @@ function formatNumber(field) {
   let actualFormatNumber = document.getElementById(field.id)
   let newFormatNumber
 
+	actualFormatNumber = actualFormatNumber.replace(".","")
+	actualFormatNumber = actualFormatNumber.replace(",","")
   newFormatNumber = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(actualFormatNumber.value)
 
   actualFormatNumber.value = newFormatNumber
@@ -495,7 +512,7 @@ function consultaExpediente ( buscaPor, identificador ) {
 		spinner.classList.add("ocultar")
 		textIsba.classList.remove("ocultar")
 		data.forEach( beneficiario => {
-			restResult.innerHTML += `<button class='btn btn-outline-primary btn-sm' title='click to select this item' onclick="javaScript: rellenaElFormulario(${beneficiario.id});"> ${beneficiario.id} </button> ${beneficiario.nif} ${beneficiario.empresa}<br>`
+			restResult.innerHTML += `<button class='btn btn-outline-primary btn-sm' title='click to select this item' onclick="javaScript: rellenaElFormulario(${beneficiario.id});"> ${beneficiario.id} ${beneficiario.nif} ${beneficiario.empresa} ${beneficiario.domicilio} ${beneficiario.localidad}</button><br>`
 	})
 
 	if (buscaPor === 'nif') {
@@ -515,7 +532,6 @@ function rellenaElFormulario(id) {
 		fetch(`${end_point}`)
 		.then(response => response.json())
 		.then(beneficiario => {
-			console.log(beneficiario[0])
 
 		 	document.getElementById("denom_interesado").value = beneficiario[0].empresa
 			document.getElementById("domicilio").value = beneficiario[0].domicilio

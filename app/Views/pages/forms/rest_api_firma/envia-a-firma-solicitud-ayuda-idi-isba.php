@@ -59,7 +59,7 @@
 		$request->subject = lang('message_lang.titulo_solicitud_idi_isba'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
 		$request->message = lang('message_lang.subtitulo_solicitud_ayudas_idi_isba'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 		$request->senderNotificationLevel = "ALL";
-		$request->signatureLevel = "CERTIFICATE_OTP_SMS";
+		$request->signatureLevel = "ALL";
 		// $request->stampName = "qr_code";
 		// URL para los callbacks tras realizar una acción con la petición. Será un GET con los parámetros:
 		// action (String con el tipo de acción), label (String con la public access id de la petición) y finished=ok (si está finalizada la petición. En caso contrario, no se incluirá).

@@ -89,6 +89,8 @@ class Expedientes extends Controller
 			->where($where)
 			->findAll();
 
+		$data['totalExpedientes'] = count($data['expedientes']);
+
 		$data['titulo'] = "Sol·licituds d'ajuts i/o subvencions filtrades ";
 
 		$data['sort_by'] = 'fecha_completado';
@@ -225,6 +227,8 @@ class Expedientes extends Controller
 		$data['sort_by'] = 'fecha_completado';
 		$data['sort_order'] = 'DESC';
 
+		$data['totalExpedientes'] = count($data['expedientes']);
+
 		echo view('templates/header/header', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 		echo view('pages/exped/listado-expediente', $data);
@@ -351,6 +355,7 @@ class Expedientes extends Controller
 		/* Muestra la vista */
 		echo view('templates/header/header', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+
 		if ($tipo_tramite === 'ILS') {
 			echo view('pages/exped/edita-expediente-ils', $data);
 		} else if ($tipo_tramite === 'IDI-ISBA') {

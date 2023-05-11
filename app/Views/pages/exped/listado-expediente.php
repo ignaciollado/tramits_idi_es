@@ -186,7 +186,9 @@
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
 					</div>
 	<div class = "header-wrapper-col">
-
+	<span class='alert alert-info'>
+		<?php echo $totalExpedientes;?>
+</span>
 </div>
   </div>
   <!-- The rest of the items in the list are the actual data -->

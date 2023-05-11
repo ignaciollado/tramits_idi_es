@@ -271,8 +271,8 @@
 			        <div>Estat</div>
 			        <div>Acció</div>
   		        </div>
-                <?php if($documentos){ ?>
-                <?php foreach($documentos as $docs_item): 
+                <?php if($documentosDetalle){ ?>
+                <?php foreach($documentosDetalle as $docs_item): 
 			            $path = $docs_item->created_at;
                         $id_doc = $docs_item->id;
 			            $parametro = explode ("/",$path);
@@ -364,8 +364,8 @@
 			            <div >Estat</div>
                         <div>Acció</div>
   		            </div>
-                    <?php if($documentos){ ?>
-                    <?php foreach($documentos as $docs_opc_item): 
+                    <?php if($documentosDetalle){ ?>
+                    <?php foreach($documentosDetalle as $docs_opc_item): 
 			            $path = $docs_opc_item->created_at;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_opc_item->type;
