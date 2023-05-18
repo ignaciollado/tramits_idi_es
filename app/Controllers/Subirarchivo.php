@@ -1288,6 +1288,8 @@ public function store_idi_isba()
 		$coste_aval_solicita_idi_isba = $this->request->getVar('coste_aval_solicita_idi_isba');
 		$gastos_aval_solicita_idi_isba = $this->request->getVar('gastos_aval_solicita_idi_isba');
 
+		return;
+
 		$data_exp = [
 			 'idExp' => $idExp,
 			 'tipo_solicitante' => $tipoSolicitante,
