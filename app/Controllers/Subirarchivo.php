@@ -1,6 +1,8 @@
 <?php namespace App\Controllers;
 	
 use App\Models\ConfiguracionModel;
+use App\Models\DocumentosModel;
+use App\Models\ExpedientesModel;
 
 class SubirArchivo extends BaseController
 {
@@ -1130,10 +1132,11 @@ class SubirArchivo extends BaseController
 	 }	
 
 public function store_idi_isba()
-	 {
+	{
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
+
 		$request = \Config\Services::request();
 		$idioma =  $request->uri->getSegment(3);
 	
@@ -1141,8 +1144,9 @@ public function store_idi_isba()
 		$language->setLocale($idioma);
  
 		$modelConfig = new ConfiguracionModel();
+
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first(); 
-		$convocatoria =   date("Y"); // $data['configuracion']['convocatoria'];
+		$convocatoria = date("Y"); // $data['configuracion']['convocatoria'];
 		$tipo_tramite =  'IDI-ISBA';
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 	 
@@ -1158,66 +1162,97 @@ public function store_idi_isba()
 		 	$idExp++;
 			}
 
-	 	/* $tipoTramite = "IDI-ISBA"; */ // $this->request->getVar('opc_programa');
 	 	$tipoSolicitante = $this->request->getVar('tipo_solicitante');
  
 	 	date_default_timezone_set("Europe/Madrid");
 	 	$selloTiempo = date("d_m_Y_h_i_sa");
 
 		/* -------------------------------6. DECLARO-------------------------------------------- */
+		//declaración responsable punto 1
+		
+		$declaro_idi_isba_que_cumple_4 = $this->request->getVar('declaro_idi_isba_que_cumple_4');
+		$declaro_idi_isba_que_cumple_1 = "SI";
+		$declaro_idi_isba_que_cumple_2 = "SI";
+		$declaro_idi_isba_que_cumple_3 = "SI";
 
-		//1. Que el/la solicitante cumple con los requisitos de pequeña o mediana empresa
-
-		if ($this->request->getVar('declaro_idi_isba_que_cumple') === 'on'){ /* OK */
-			$declaro_idi_isba_que_cumple = "SI "; /* OK */
-		} else {
-			$declaro_idi_isba_que_cumple = "NO "; /* OK */
+		//declaración responsable punto 4
+		if ($this->request->getVar('declaro_idi_isba_que_cumple_4')!=null) {
+			if ($this->request->getVar('declaro_idi_isba_que_cumple_4') == "on"){
+				$declaro_idi_isba_que_cumple_4 = "SI";
+			} else {
+				$declaro_idi_isba_que_cumple_4 = "NO";
+			}
 		}
-		//2. Que el/la solicitante cumple con el requisito relativo a la no participación superior al 25% ...
-		if ($this->request->getVar('declaro_idi_isba_que_cumple_no_mas_25') === 'on'){
-			$declaro_idi_isba_que_cumple_no_mas_25 = "SI ";
-		} else {
-			$declaro_idi_isba_que_cumple_no_mas_25 = "NO ";
-		}
+		$ayudasSubvenSICuales_dec_resp = $this->request->getVar('ayudasSubvenSICuales_dec_resp');
+		$declaro_idi_isba_que_cumple_5 = "SI";
+		$declaro_idi_isba_que_cumple_6 = "SI";
+		$declaro_idi_isba_que_cumple_7 = "SI";
+		$declaro_idi_isba_que_cumple_8 = "SI";
+		
+		/* -------------------------------DOCUMENTACIÓN DE IDI-ISBA------------------------------------ */
+ 		/* -------------------------------7. DOCUMENTACIÓN--------------------------------------------- */
+ 		$documentosfile = $this->request->getFiles(); 
 
-		//3. Que el/la solicitante no incurre en ninguna causa de prohibición o de incompatibilidad ...
-		if ($this->request->getVar('declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom') === 'on'){
-			$declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom = "SI";
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
+			$file_document_acred_como_repres = "NO";
 		} else {
-			$declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom = "NO";
-		}
-
-		//5. doy mi consentimiento para que el Instituto de Innovación Empresarial  ...
-		if ($this->request->getVar('consentimiento_identificacion') === 'on'){ /* Sí da consentimiento */
-			$file_enviardocumentoIdentificacion = "SI"; 
-		} else {
-			$file_enviardocumentoIdentificacion = "NO"; /* OK */
-		}
-
-		//6. doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga ...
-		if ($this->request->getVar('consentimiento_certificadoATIB') === 'on'){
-			$file_certificadoATIB = "SI"; 
-		} else {
-			$file_certificadoATIB = "NO";
+			$file_document_acred_como_repres = "SI";
 		}
 
-		//7. Respecto a la acreditación del requisito de estar al corriente de las obligaciones con la Seguridad ...
-		if ($this->request->getVar('consentimiento_TesoreriaSegSoc') === 'on'){
-			$file_certificadoSegSoc = "SI";
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_d'][0]->getName() ){
+			$file_copiaNIF = "NO";
 		} else {
-			$file_certificadoSegSoc = "NO";
+			$file_copiaNIF = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_e'][0]->getName() ){
+			$file_nifEmpresa = "NO";
+		} else {
+			$file_nifEmpresa = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_f'][0]->getName() ){
+			$file_escrituraConstitucion = "NO";
+		} else {
+			$file_escrituraConstitucion = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_g'][0]->getName() ){
+			$file_certificadoIAE = "NO";
+		} else {
+			$file_certificadoIAE = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_h'][0]->getName() ){
+			$file_certificadoAEAT = "NO";
+		} else {
+			$file_certificadoAEAT = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_i'][0]->getName() ){
+			$file_certificadoSGR = "NO";
+		} else {
+			$file_certificadoSGR = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_j'][0]->getName() ){
+			$file_contratoOperFinanc = "NO";
+		} else {
+			$file_contratoOperFinanc = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_k'][0]->getName() ){
+			$file_avalOperFinanc = "NO";
+		} else {
+			$file_avalOperFinanc = "SI";
+		}
+
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_l'][0]->getName() ){
+			$file_certificadoInverECO = "NO";
+		} else {
+			$file_certificadoInverECO = "SI";
 		}
 		
-		/* ----------------------------------------DOCUMENTACIÓN DE IDI-ISBA----------------------------------------------------- */
- 		/* -------------------------------7. DOCUMENTACIÓN QUE NOS PUEDE ADJUNTAR--------------------------------------------- */
- 		$documentosfile = $this->request->getFiles();
-		
-		if ( !$documentosfile['file_escritura_empresa'][0]->getName() ){
-			$file_escritura_empresa = "NO";
-	 	} else {
-			$file_escritura_empresa = "SI";
-	 	}
- 
  		$nif = $this->request->getVar('nif');
 		$empresa = $this->request->getVar('denom_interesado');
 		$domicilio = $this->request->getVar('domicilio');
@@ -1234,6 +1269,7 @@ public function store_idi_isba()
 		$tel_notificacion  = $this->request->getVar('tel_representante');
 		$mail_notificacion = $this->request->getVar('mail_representante');
 		/*****************************************************************/
+
 		$nom_entidad = ucwords($this->request->getVar('nom_entidad'));
 		$importe_prestamo = $this->request->getVar('importe_prestamo');
 		$plazo_prestamo   = $this->request->getVar('plazo_prestamo');
@@ -1251,14 +1287,6 @@ public function store_idi_isba()
 		$intereses_ayuda_solicita_idi_isba = $this->request->getVar('intereses_ayuda_solicita_idi_isba');
 		$coste_aval_solicita_idi_isba = $this->request->getVar('coste_aval_solicita_idi_isba');
 		$gastos_aval_solicita_idi_isba = $this->request->getVar('gastos_aval_solicita_idi_isba');
-
-		$tiene_ayudas_subv = $this->request->getVar('tiene_ayudas_subv');
-
-		$ayuda_subv_de = $this->request->getVar('ayuda_subv_de');
-
-		if ( $this->request->getVar('ayuda_subv_de') === 'otros') {
-			$ayuda_subv_otros_detalle = $this->request->getVar('ayuda_subv_otros_detalle');
-		}
 
 		$data_exp = [
 			 'idExp' => $idExp,
@@ -1281,10 +1309,26 @@ public function store_idi_isba()
 			 'telefono_contacto_rep' 	=> $telefono_contacto_rep, //uso este otro ya que en IDI-ISBA necesitan un teléfono de contacto
 			 'condicion_rep' 	=> $condicion_rep,
 
-			 'declaro_idi_isba_que_cumple' => $declaro_idi_isba_que_cumple,
-			 'declaro_idi_isba_que_cumple_no_mas_25' 	=> $declaro_idi_isba_que_cumple_no_mas_25,
-			 'declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom' 	=> $declaro_idi_isba_que_cumple_no_incurre_prohibicion_incom,
+			 'declaro_idi_isba_que_cumple_1' 	=> $declaro_idi_isba_que_cumple_1,
+			 'declaro_idi_isba_que_cumple_2' 	=> $declaro_idi_isba_que_cumple_2,
+			 'declaro_idi_isba_que_cumple_3' 	=> $declaro_idi_isba_que_cumple_3,
+			 'declaro_idi_isba_que_cumple_4' 	=> $declaro_idi_isba_que_cumple_4,
+			 'declaro_idi_isba_que_cumple_5' 	=> $declaro_idi_isba_que_cumple_5,
+			 'declaro_idi_isba_que_cumple_6' 	=> $declaro_idi_isba_que_cumple_6,
+			 'declaro_idi_isba_que_cumple_7' 	=> $declaro_idi_isba_que_cumple_7,
+			 'declaro_idi_isba_que_cumple_8' 	=> $declaro_idi_isba_que_cumple_8,
 
+			 'file_document_acred_como_repres' => $file_document_acred_como_repres,
+			 'file_copiaNIF' => $file_copiaNIF,
+			 'file_nifEmpresa' => $file_nifEmpresa,
+			 'file_escrituraConstitucion' => $file_escrituraConstitucion,
+			 'file_certificadoIAE' => $file_certificadoIAE,
+			 'file_certificadoAEAT' => $file_certificadoAEAT ,
+			 'file_certificadoSGR' => $file_certificadoSGR,
+			 'file_contratoOperFinanc' => $file_contratoOperFinanc,
+			 'file_avalOperFinanc' => $file_avalOperFinanc,
+			 'file_certificadoInverECO' => $file_certificadoInverECO,
+			 
 			 'nom_entidad' => $nom_entidad,
 			 'importe_prestamo' => $importe_prestamo,
 			 'plazo_prestamo' => $plazo_prestamo,
@@ -1301,14 +1345,7 @@ public function store_idi_isba()
 			 'intereses_ayuda_solicita_idi_isba' => $intereses_ayuda_solicita_idi_isba,
 			 'coste_aval_solicita_idi_isba' => $coste_aval_solicita_idi_isba,
 			 'gastos_aval_solicita_idi_isba' => $gastos_aval_solicita_idi_isba,
-			 'tiene_ayudas_subv' => $tiene_ayudas_subv,
-			 'ayuda_subv_de' => $ayuda_subv_de,
-			 'ayuda_subv_otros_detalle' => $ayuda_subv_otros_detalle,
-
-			 'file_enviardocumentoIdentificacion'   => $file_enviardocumentoIdentificacion,
-			 'file_certificadoATIB' => $file_certificadoATIB,
-			 'file_certificadoSegSoc' => $file_certificadoSegSoc,
-			 'file_escritura_empresa' => $file_escritura_empresa,
+			 'ayudasSubvenSICuales_dec_resp' => $ayudasSubvenSICuales_dec_resp,
 
 			 'selloDeTiempo' => $selloTiempo,
 			 'importeAyuda'	=> 0,
@@ -1322,115 +1359,301 @@ public function store_idi_isba()
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
-		if (file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/') != 1 ) {
-			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/');
+
+		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
+			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0755, true);
 		}
 
-		/* ------------------------------------------------------------------------------------------------------ */
-		/* -------------------- copia nif al NO autorizar al IDI comprobar dni, múltiples documentos------------ */
-		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
-		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $documentoIdentificacion)
+		/* 
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_c'], $nif, $selloTiempo, $tipo_tramite, '*file_document_acred_como_repres', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_d'], $nif, $selloTiempo, $tipo_tramite, 'file_copiaNIF', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_e'], $nif, $selloTiempo, $tipo_tramite, '*file_nifEmpresa', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_f'], $nif, $selloTiempo, $tipo_tramite, '*file_escrituraConstitucion', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_g'], $nif, $selloTiempo, $tipo_tramite, '*file_certificadoIAE', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_h'], $nif, $selloTiempo, $tipo_tramite, 'file_certificadoAEAT', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_i'], $nif, $selloTiempo, $tipo_tramite, '*file_certificadoSGR', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_j'], $nif, $selloTiempo, $tipo_tramite, '*file_contratoOperFinanc', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_k'], $nif, $selloTiempo, $tipo_tramite, '*file_avalOperFinanc', $convocatoria, 'SI', $last_insert_id);
+		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_l'], $nif, $selloTiempo, $tipo_tramite, '*file_certificadoInverECO', $convocatoria, 'NO', $last_insert_id);
+
+
+		function subeDocumentoFormularioSolicitud( $documentoQueSube, $nifCif, $selloDeTiempo, $tipoTramite, $tipoDocumento, $convo, $esRequerido, $lastInsertId ) {
+			global $modelDocumentos;
+			foreach($documentoQueSube as $documentToUpload)
 			{
-				if ($documentoIdentificacion->isValid() && ! $documentoIdentificacion->hasMoved())
+				if (strlen(trim($documentToUpload->getName()))!=0)
+				{
+				$documentToUpload->move(WRITEPATH.'documentos/'.$nifCif.'/'.$selloDeTiempo.'/', $documentToUpload->getRandomName());
+				$data_file = [
+				'name' => $documentToUpload->getName(),					
+				'type' => $documentToUpload->getClientMimeType(),
+				'cifnif_propietario' => $nifCif,
+				'tipo_tramite' =>$tipoTramite,
+				'corresponde_documento' => $tipoDocumento,
+				'datetime_uploaded' => time(),
+				'convocatoria' 			=> $convo,
+				'docRequerido' 			=> $esRequerido,
+				'created_at'  			=> $documentToUpload->getTempName(),
+				'selloDeTiempo'  		=> $selloDeTiempo,
+				'id_sol'         		=> $lastInsertId
+				];
+				$modelDocumentos->insert($data_file);
+				}
+			}
+		} */
+		/* ------------------------------------------------------------------------------------------------------- */
+		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos------------ */
+
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
+		foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_c'] as $documento_C)
+			{
+				if ($documento_C->isValid() && ! $documento_C->hasMoved())
 					{
-						$documentoIdentificacion->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documentoIdentificacion->getRandomName());
+						$documento_C->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_C->getRandomName());
 						$data_file = [
-						'name' => $documentoIdentificacion->getName(),
-						'type' => $documentoIdentificacion->getClientMimeType(),
+						'name' => $documento_C->getName(),
+						'type' => $documento_C->getClientMimeType(),
 						'cifnif_propietario' => $nif,
 						'tipo_tramite' => $tipo_tramite,
-						'corresponde_documento' => 'file_enviardocumentoIdentificacion',
+						'corresponde_documento' => 'file_document_acred_como_repres',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
 						'docRequerido' => 'SI',
-						'created_at'  => $documentoIdentificacion->getTempName(),
+						'created_at'  => $documento_C->getTempName(),
 						'selloDeTiempo'  => $selloTiempo,
 						'id_sol'         => $last_insert_id
 						];
 						$documentos->insert($data_file);
 					}
 			}
-			echo "subida copia NIF";
-		}
+		} 
+
 		/* ----------------------------------------------------------------------------------------------------- */
-		/* ---------- corriente pago obligaciones ATIB al NO autorizar al IDI comprobarlo, múltiples documentos------ */
-		if (isset($documentosfile['file_certificadoATIB'])) {
-		foreach($documentosfile['file_certificadoATIB'] as $certificadoATIB)
+		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
+ 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
+		foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_d'] as $documento_d)
 			{
-				if ($certificadoATIB->isValid() && ! $certificadoATIB->hasMoved())
+				if ($documento_d->isValid() && ! $documento_d->hasMoved())
 					{
-						$certificadoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoATIB->getRandomName());
+						$documento_d->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_d->getRandomName());
 						$data_file = [
-						'name' => $certificadoATIB->getName(),
-						'type' => $certificadoATIB->getClientMimeType(),
+						'name' => $documento_d->getName(),
+						'type' => $documento_d->getClientMimeType(),
 						'cifnif_propietario' => $nif,
 						'tipo_tramite' => $tipo_tramite,
-						'corresponde_documento' => 'file_certificadoATIB',
+						'corresponde_documento' => 'file_copiaNIF',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
 						'docRequerido' => 'SI',
-						'created_at'  => $certificadoATIB->getTempName(),
+						'created_at'  => $documento_d->getTempName(),
 						'selloDeTiempo'  => $selloTiempo,
 						'id_sol'         => $last_insert_id
 						];
 						$documentos->insert($data_file);
 					}
 			}
-			echo "subida copia cert obligaciones ATIB";
-		}
+		} 
  		/* ------------------------------------------------------------------------------------------------------------ */
  		/* --------------------------------certificados Tes. Seg. Soc.------------------------------------------------- */
- 		if (isset($documentosfile['file_certificadoSegSoc' ])) {
-		foreach($documentosfile['file_certificadoSegSoc' ] as $certificadoSegSoc)
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_e' ])) {
+		foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_e' ] as $documento_e)
 			{
-				if ($certificadoSegSoc->isValid() && ! $certificadoSegSoc->hasMoved())
+				if ($documento_e->isValid() && ! $documento_e->hasMoved())
 				{
-					$certificadoSegSoc->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoSegSoc->getRandomName());
+					$documento_e->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_e->getRandomName());
 					$data_file = [
-					'name' => $certificadoSegSoc->getName(),					
-					'type' => $certificadoSegSoc->getClientMimeType(),
+					'name' => $documento_e->getName(),					
+					'type' => $documento_e->getClientMimeType(),
 					'cifnif_propietario' => $nif,
 					'tipo_tramite' =>$tipo_tramite,
-					'corresponde_documento' => 'file_certificadoSegSoc',
+					'corresponde_documento' => 'file_nifEmpresa',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
 					'docRequerido' => 'SI',
-					'created_at'  => $certificadoSegSoc->getTempName(),
+					'created_at'  => $documento_e->getTempName(),
 					'selloDeTiempo'  => $selloTiempo,
 					'id_sol'         => $last_insert_id
 					];
 					$documentos->insert($data_file);
 				}
 			}
-			echo "subida copia cert seg social";
-		}
-		/* ------------------------------------------------------------------------------------------------------------ */
- 		/* -------------------------------------ESCRITURA EMPRESA------------------------------------------------------ */
- 		if (isset($documentosfile['file_escritura_empresa'])) {
-	 	foreach($documentosfile['file_escritura_empresa'] as $escrituraEmpresa)
+		} 
+ 		/* ----------------------------------------------------------------------------------------------------------------- */
+
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
+	 	foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_f'] as $documento_f)
 		 	{
-		 		if (strlen(trim($escrituraEmpresa->getName()))!=0)
+		 		if (strlen(trim($documento_f->getName()))!=0)
 			 	{
-				 $escrituraEmpresa->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $escrituraEmpresa->getRandomName());
+				 $documento_f->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_f->getRandomName());
 				 $data_file = [
-				 'name' => $escrituraEmpresa->getName(),					
-				 'type' => $escrituraEmpresa->getClientMimeType(),
+				 'name' => $documento_f->getName(),					
+				 'type' => $documento_f->getClientMimeType(),
 				 'cifnif_propietario' => $nif,
 				 'tipo_tramite' =>$tipo_tramite,
-				 'corresponde_documento' => 'file_escritura_empresa',
+				 'corresponde_documento' => 'file_escrituraConstitucion',
 				 'datetime_uploaded' => time(),
 				 'convocatoria' => $convocatoria,
-				 'docRequerido' => 'NO',
-				 'created_at'  => $escrituraEmpresa->getTempName(),
+				 'docRequerido' => 'SI',
+				 'created_at'  => $documento_f->getTempName(),
 				 'selloDeTiempo'  => $selloTiempo,
 				 'id_sol'         => $last_insert_id
 				 ];
 			 		$documentos->insert($data_file);
 			 	}
 		 	}
-			 echo "subida copia escritura empresa";
-	 	}
-  	
+	 	} 
+  	/* ----------------------------------------------------------------------------------------------------------------- */
+
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_g'] as $documento_g)
+				{
+						if (strlen(trim($documento_g->getName()))!=0)
+						{
+						$documento_g->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_g->getRandomName());
+						$data_file = [
+						'name' => $documento_g->getName(),					
+						'type' => $documento_g->getClientMimeType(),
+						'cifnif_propietario' => $nif,
+						'tipo_tramite' =>$tipo_tramite,
+						'corresponde_documento' => 'file_certificadoIAE',
+						'datetime_uploaded' => time(),
+						'convocatoria' => $convocatoria,
+						'docRequerido' => 'SI',
+						'created_at'  => $documento_g->getTempName(),
+						'selloDeTiempo'  => $selloTiempo,
+						'id_sol'         => $last_insert_id
+						];
+							$documentos->insert($data_file);
+						}
+				}
+			}
+  	/* ----------------------------------------------------------------------------------------------------------------- */
+
+			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_h'] as $documento_h)
+				{
+					if (strlen(trim($documento_h->getName()))!=0)
+					{
+					$documento_h->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_h->getRandomName());
+					$data_file = [
+					'name' => $documento_h->getName(),					
+					'type' => $documento_h->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' =>$tipo_tramite,
+					'corresponde_documento' => 'file_certificadoAEAT',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'docRequerido' => 'SI',
+					'created_at'  => $documento_h->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
+					];
+						$documentos->insert($data_file);
+					}
+				}
+		}
+  	/* ----------------------------------------------------------------------------------------------------------------- */
+
+			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_i'] as $documento_i)
+				{
+					if (strlen(trim($documento_i->getName()))!=0)
+					{
+					$documento_i->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_i->getRandomName());
+					$data_file = [
+					'name' => $documento_i->getName(),					
+					'type' => $documento_i->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' =>$tipo_tramite,
+					'corresponde_documento' => 'file_certificadoSGR',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'docRequerido' => 'SI',
+					'created_at'  => $documento_i->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
+					];
+						$save = $documentos->insert($data_file);
+					}
+				}
+		} 
+		/* ----------------------------------------------------------------------------------------------------------------- */
+
+			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_j'] as $documento_j)
+				{
+					if (strlen(trim($documento_j->getName()))!=0)
+					{
+					$documento_j->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_j->getRandomName());
+					$data_file = [
+					'name' => $documento_j->getName(),					
+					'type' => $documento_j->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' =>$tipo_tramite,
+					'corresponde_documento' => 'file_contratoOperFinanc',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'docRequerido' => 'SI',
+					'created_at'  => $documento_j->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
+					];
+						$documentos->insert($data_file);
+					}
+				}
+		} 
+  	/* ----------------------------------------------------------------------------------------------------------------- */
+
+			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_k'] as $documento_k)
+				{
+					if (strlen(trim($documento_k->getName()))!=0)
+					{
+					$documento_k->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_k->getRandomName());
+					$data_file = [
+					'name' => $documento_k->getName(),					
+					'type' => $documento_k->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' =>$tipo_tramite,
+					'corresponde_documento' => 'file_avalOperFinanc',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'docRequerido' => 'SI',
+					'created_at'  => $documento_k->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
+					];
+						$documentos->insert($data_file);
+					}
+				}
+		} 
+  	/* ----------------------------------------------------------------------------------------------------------------- */
+
+		 if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_l'] as $documento_l)
+				{
+					if (strlen(trim($documento_l->getName()))!=0)
+					{
+					$documento_l->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $documento_l->getRandomName());
+					$data_file = [
+					'name' => $documento_l->getName(),					
+					'type' => $documento_l->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' =>$tipo_tramite,
+					'corresponde_documento' => 'file_certificadoInverECO',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'docRequerido' => 'NO',
+					'created_at'  => $documento_l->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $last_insert_id
+					];
+						$documentos->insert($data_file);
+					}
+				}
+		}
+
 		$data_file['titulo'] = "Resumen de la solicitud de ayuda IDI-ISBA";
 
 	 	echo view('pages/forms/solicitud-ayuda-idi-isba', $data_exp);

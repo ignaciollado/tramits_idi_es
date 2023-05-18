@@ -196,19 +196,10 @@
                         <input type="text" name="gastos_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "gastos_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>" value = "<?php echo $expedientes['gastos_aval_solicita_idi_isba']; ?>">
                     </div>
         
-                    <label for=''><u><?php echo lang('message_lang.declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas') ?></u></label>           
-                    <div class="form-check form-check-inline">
-  					    <input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_no" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
-  						    <label class="form-check-label" for="tiene_ayudas_subv_no">
-							    NO
-                            </label>
-					</div>
-					<div class="form-check form-check-inline">
-  						<input class="form-check-input" type="radio" name="tiene_ayudas_subv" disabled id="tiene_ayudas_subv_si" value="<?php echo $expedientes['tiene_ayudas_subv']; ?>">
-  							<label class="form-check-label" for="tiene_ayudas_subv_si">
-								SI
-  							</label>
-					</div>
+                    <div class="form-group general">
+                        <label for="ayudasSubvenSICuales_dec_resp"><?php echo lang('message_lang.declaro_idi_isba_ayudas_recibidas') ?>:</label>
+                        <input type="text" name="ayudasSubvenSICuales_dec_resp" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "ayudasSubvenSICuales_dec_resp" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>" value = "<?php echo $expedientes['ayudasSubvenSICuales_dec_resp']; ?>">
+                    </div>
 
     		        <div class="form-group general">
                         <label for="tecnicoAsignado">Tècnica asignada:</label>
@@ -279,23 +270,41 @@
 			            $tipoMIME = $docs_item->type;
                     if ($convocatoria >= '2022') {
 			            switch ($docs_item->corresponde_documento) {
-                            case 'file_resguardoREC':	
-                                $nom_doc = "Justificant de presentació pel REC";
+	    			        case 'file_declaracionResponsable':
+					            $nom_doc = "Declaració responsable de l'empresa";
+					            break;
+                            case 'file_document_acred_como_repres':
+                                $nom_doc = "Documentació acreditativa de les facultats de representació de la persona que firma la sol·licitud d'ajut";
                                 break;
-                            case 'file_DocumentoIDI':	
-                                $nom_doc = "Document pujat des-de l'IDI";
+				            case 'file_certificadoATIB':
+					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
+					            break;
+				            case 'file_escrituraConstitucion':	
+					            $nom_doc = "Còpia escriptures de constitució de l'entitat sol·licitant";
+					            break;
+				            case 'file_nifEmpresa':	
+					            $nom_doc = "Còpia del NIF de l'empresa";
+					            break;
+                            case 'file_certificadoAEAT':	
+                                $nom_doc = "Certificat d'estar al corrent de pagament amb la AEAT";
                                 break;
-                            case 'file_enviardocumentoIdentificacion':
-                                $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
+                            case 'file_certificadoIAE':	
+                                $nom_doc = "Documentació acreditativa alta cens IAE";
                                 break;
-                            case 'file_certificadoATIB':
-                                $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
+                            case 'file_certificadoSGR':
+                                $nom_doc = "Certificat de la societat de garantia recíproca";
                                 break;
-                            case 'file_certificadoSegSoc':	
-                                $nom_doc = "Certificat estar al corrent obligacions amb la TGSS";
+                            case 'file_contratoOperFinanc':
+                                $nom_doc = "El contracte de l'operació financera";
                                 break;
+                            case 'file_avalOperFinanc':
+                                $nom_doc = "El contracte o document d'aval de l'operació financera";
+                                break;
+                            case 'file_copiaNIF':
+                                $nom_doc = "La fotocòpia del DNI de la persona que signa la sol.licitud";
+                                break;                                
 			                default:
-					            $nom_doc = "..".$docs_item->corresponde_documento.".."; 
+					            $nom_doc = "¿ ".$docs_item->corresponde_documento." ?"; 
 			            } 
                     } else {
                             $nom_doc = $docs_item->name;
@@ -374,20 +383,15 @@
 				            case 'file_copiaNIF':
 					            $nom_doc = "Còpia del NIF al no autoritzar a IDI per comprobar";
 					            break;
-                            case 'file_escritura_empresa':
-                                $nom_doc = "Escritura o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil y si procede documento acreditativo de representación.";
-                                //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
-                                break;
-                            case 'file_certificadoIAE':
-                                $nom_doc = "Justificant de presentació pel REC";
-                                //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
-                                break;
                             case 'file_resguardoREC':	
                                 $nom_doc = "Justificant de presentació pel REC";
                                 break;
                             case 'file_DocumentoIDI':	
                                 $nom_doc = "Document pujat des-de l'IDI";
-                                break;                                  
+                                break;
+                            case 'file_certificadoInverECO':
+                                $nom_doc = "Certificat inversions verdes segons taxonomia europea";
+                                break;                                     
 			                default:
 					        $nom_doc = $docs_opc_item->corresponde_documento;
 			            } 

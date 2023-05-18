@@ -69,10 +69,38 @@ header .logo {
   background-color: rgba(207, 234, 233, 1);
 }
 
+input:focus {
+  outline: none;
+}
+
+input:invalid {
+  border-color: rgb(179, 3, 3);
+}
+select:invalid {
+  border-color: rgb(179, 3, 3);
+}
+input:valid {
+  border-color: rgba(4, 170, 109, 1)
+}
+select:valid {
+  border-color: rgba(4, 170, 109, 1)
+}
 .main:hover input ~ .w3docs {
   background-color: rgba(255, 165, 0, 1);
 }
-
+.mallorca {
+  background-color: #fabe12;
+}
+.menorca {
+  background-color: #609330;
+}
+.eivissa {
+  background-color: #ea5d38;
+}
+.formentera {
+  background-color: #00145c;
+  color: #ffffff;
+}
 .checkmark {
   position: absolute;
   top: 0;

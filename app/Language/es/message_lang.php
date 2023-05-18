@@ -85,7 +85,7 @@ return [
    https://www.caib.es/seucaib/es/201/empreses/tramites/tramite/5400391/
    SI NO PASA POR LA SEDE ELECTRÓNICA DE CAIB SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.
    Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@idi.es y/o por teléfono: 971 17 61 61 + 62891",
-   'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratègico Industrial 2018-2025",
+   'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas de carácter industrial de las Islas Baleares para cubrir los gastos financieros de operaciones de financiación de inversiones productivas, eficiencia energética y transformación digital previstas en el Plan Estratégico Industrial 2018-2025",
 
 
    'subtitulo_justificacion_idigital'	 => "<div style='color:red;'><p>RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE</p><p>DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DEL REGISTRO ELECTRÓNICO COMÚN (REC) EN EL SIGUIENTE ENLACE:</p><p> https://rec.redsara.es/registro/action/are/acceso.do</p><p>SI NO PASSA PEL <strong>REC</strong> S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.</p></div>",     
@@ -95,8 +95,12 @@ return [
    'enviado_correo_electron_justif'   => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_con_dec_res' => "Le hemos enviado un correo electrónico a la dirección que nos ha facilitado en la declaración responsable para que la firme electrónicamente.",
    'enviado_correo_electron_con'      => "Si en la solicitud marcó la opción <strong>'Ya tengo habilitador digital homologado, no necesito que el IDI me asigne uno'</strong>, hemos enviado un correo electrónico al facilitador digital que nos ha indicado para que rellene y firme su declaración responsable.",
-   'nota_info_rec'					  => "Una vez firmada la solicitud, recibirá otro correo electrónico con una copia del documento. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <a target = '_blank' href = 'https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586/' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</a>. En caso de no hacerlo, no la podremos procesar.",
-   'nota_info_rec_justif'			  => "Una vez firmado el requerimiento de justificación, recibirá un correo electrónico con una copia del documento firmado. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio del <a target = '_blank' href = 'https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586/' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</a>. En caso de no hacerlo, no lo podremos procesar.",
+   //'nota_info_rec'					  => "Una vez firmada la solicitud, recibirá otro correo electrónico con una copia del documento que se acaba de generar. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <a target = '_blank' href = 'https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586/' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</a>. En caso de no hacerlo, no la podremos procesar.",
+   'nota_info_rec'					  => "Una vez firmada la solicitud, recibirá otro correo electrónico con una copia del documento que se acaba de generar. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <strong>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</strong>. En caso de no hacerlo, no la podremos procesar.",
+
+   //'nota_info_rec_justif'			  => "Una vez firmado el requerimiento de justificación, recibirá un correo electrónico con una copia del documento firmado. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio del <a target = '_blank' href = 'https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586/' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</a>. En caso de no hacerlo, no lo podremos procesar.",
+   'nota_info_rec_justif'			  => "Una vez firmado el requerimiento de justificación, recibirá un correo electrónico con una copia del documento firmado. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <strong>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</strong>. En caso de no hacerlo, no lo podremos procesar.",
+
   
    'contacto_idi_pindust'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@idi.es o por teléfono: 971 17 61 61 + 62894 ",
    'contacto_idi_ils'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: pjordi@idi.es o por teléfono: 971 17 61 61 + 62891 ",   
@@ -196,7 +200,7 @@ return [
    'opc_iExporta'                     => "Programa II",
    'opc_iLs'                          => "Programa III",
 
-   'solicitante_tipo'                 => "2. TIPO DE SOLICITANTE",
+   'solicitante_tipo'                 => "TIPO DE SOLICITANTE",
    'solicitante_tipo_ils'                 => "1. TIPO DE EMPRESA",
 
    'solicitante_tipo_autonomo'             => "Autónomo",
@@ -478,26 +482,33 @@ return [
 'avisos_idi_isba'                         => "ok",
 'notificacion_idi_isba'		            => "En este correo y movil recibirá los avisos de las notificaciones corresponentes al procedimiento",
 'intro_idi_isba_solicitud'		         => "Solicitud de ayudas a microempresas, pequeñas y medianas para cubrir gastos financieros",
+'aviso_idi_isba_solicitud'			         => "Las solicitudes se podrán presentar un vez el interesado haya  formalizado el aval con la entidad colaboradora ISBA SGR (punto 9.3 de la convocatoria).",
 'documentacion_necesaria_idi_isba'        => "Documentación necesaria a adjuntar",
 'documentacion_identificativa_idi_isba'   => "Documentos de identificación de la persona solicitante y/o la persona autorizada por la empresa.",
-'documentacion_necesaria_pymes_idi_isba'  => "<h3>Antes de empezar, es recomendable tener preparada la siguiente documentación:</h3>
-   <ol class='formbox'>
-      <li>Copia del DNI del solicitante o de su representante.</li>
-      <li>Escrituras o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil y, si procede, documento acreditativo de representación.</li>
-      <li>El certificado de la Agencia Tributaria de alta en el Censo de Empresarios, Profesionales y Retenedores y el <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
-      <li>En el caso de ayudas superiores a 3.000 euros:
+'documentacion_necesaria_pymes_idi_isba'  => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació<br> (apartado Noveno: Solicitudes y forma de presentación):</h3>
+   <ol class='formbox' style='list-style-type: lower-alpha;' start='3'>
+      <li>Fotocopia del documento fehaciente que acredite la representación, por cualquier forma válida en derecho, de la persona que actúa en nombre de la persona o entidad solicitante.</li>
+      <li>La fotocopia del DNI de la persona que firma la solicitud, en nombre propio o en representación de una persona jurídica o de una entidad sin personalidad jurídica, salvo el consentimiento expreso del interesado para que sus datos de identidad personal puedan consultarse mediante el sistema de verificación de datos de identidad establecido en la Orden PRE/3949/2006, de 26 de diciembre, por la que se establece la configuración, características, requisitos y procedimientos de acceso al Sistema de Verificación de Datos de Identidad, conforme a lo que se dispone en el Real Decreto 522/2006, de 28 de abril, por el que se suprime la aportación de fotocopias de documentos de identidad en los procedimientos administrativos de la Administración General del Estado y de sus organismos públicos vinculados o dependientes..</li>
+      <li>La fotocopia del documento de identificación fiscal (NIF) de la empresa o empresas solicitantes y promotoras de la actuación.</li>
+      <li>La copia de las escrituras de constitución de la empresa solicitante, así como de los vigentes estatutos o documento fundacional correspondiente, en los que consten las normas por las que se regulan sus actividades, debidamente registradas, en su caso, en los registros públicos competentes.</li>
+      <li>La documentación acreditativa de estar dado de alta en el Censo de Empresarios Profesionales y Retenedores y en el Impuesto sobre Actividades Económicas (IAE). El solicitante tiene que presentar al menos unos de estos dos certificados de situación censal de la Agencia Estatal de Administración Tributaria:
          <ol>
-            <li>Certificado de estar al corriente de pagos con la Agencia Tributaria.</li>
-            <li>Certificado de estar al corriente de pagos con la Tesorería de la Seguridad Social.</li>
+         <li>Certificado de alta en el Censo de empresarios, profesionales y retenedores.</li>
+         <li>Certificado de alta en el Censo de actividades económicas.</li>
          </ol>
       </li>
-
+      <li>El certificado de estar al corriente de pago con la Agencia Tributaria (AEAT)</li>
+      <li>El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar</li>
+      <li>El contrato de la operación financiera</li>
+      <li>El contrato o documento de aval de la operación financiera</li>
+      <li>En el caso de inversiones certificadas como verdes según la taxonomía europea, se deberá aportar certificado</li>
    </ol>
-   <h3><strong>Los documentos anteriores no se deberán aportar cuando ya consten en otro expediente, o la Administración los pueda solicitar directamente.</strong></h3>",
+   <h3><strong>
+   Els documents anteriors no s'hauran d'aportar quan ja constin en un altre expedient, o l'Administració els pugui sol·licitar directament.</strong></h3>",
 'documentacion_resultante_cabecera_idi_isba' => "Al finalizar este trámite, recibirá por correo electrónico un documento pdf que contendrá:",
 'documentacion_resultante_idi_isba' => '<ol class="formbox">
-                                             <li>La solicitud de ayuda.</li>
-                                             <li>Una declaración responsable justificativa de cumplimiento de requisitos.</li>
+                                             <li>El documento normalizado de solicitud de subvención de esta convocatoria.</li>
+                                             <li>Una Declaración responsable de la persona titular de la empresa o de quien la representa legalmente.</li>
                                        </ol>',
 'identificacion_sol_idi_isba' => "Identificación del SOLICITANTE",
 'operacion_financiera_idi_isba'  => "OPERACIÓN FINANCIERA",
@@ -517,16 +528,33 @@ return [
 'presupuesto_proyecto_de_inversion_idi_isba' => "PRESUPUESTO DEL PROYECTO DE INVERSIÓN",
 'importe_del_presupuesto_idi_isba'  => "Importe del presupuesto (IVA incluído)",
 'detalle_importe_ayuda_solicitado_idi_isba' => "Con el siguiente detalle:",
-'declaro_idi_isba_que_cumple'    => "Que el/la solicitante cumple con los requisitos de pequeña o mediana empresa.",
-'declaro_idi_isba_que_cumple_no_mas_25' => "Que el/la solicitante cumple con el requisito  relativo a la <strong>no participación superior al 25%</strong> por una o varias empresas que, a nivel consolidado, incumplen los límites del punto 1) anterior.",
-'declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad'   => "Que el/la solicitante <strong>no incurre en ninguna causa de prohibición o de incompatibilidad</strong>
-para recibir la subvención según la legislación vigente.",
-'declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'   => " <strong>tiene ayudas o subvenciones solicitadas o condedidas</strong> por alguna entidad, pública
- o privada, nacional o extranjera, relacionadas tanto con el proyecto de inversión como con la operación financiera:",
+'declaro_idi_isba_que_cumple_1'  => "Que el solicitante cumple los requisitos de pequeña o mediana empresa, de acuerdo con el anexo 1 del Reglamento (UE) núm. 651/2014 de la Comisión, de 17 de junio de 2014 por el que se declaran determinadas categorías de ayuda compatibles con el mercado interior en aplicación de los artículos 107 y 108 del Tratado, cumple con los requisitos para ser considerado una pyme.",
+'declaro_idi_isba_que_cumple_2'  => "Que la persona o entidad beneficiaria no está sometida a ninguna causa de prohibición o de incompatibilidad para recibir la ayuda según la legislación vigente y que el solicitante no ha sido sancionado o condenado por resolución administrativa o sentencia judicial firme por discriminación salarial, acoso moral o cualquier tipo de trato desigual, por razón de sexo, en el ámbito de las relaciones laborales.",
+'declaro_idi_isba_que_cumple_3'  => "Que el solicitante va a llevar a cabo la actividad de inversión, así como la justificación de la realización de la actividad y el cumplimiento de los requisitos y condiciones que determinan la concesión de la subvención.",
+'declaro_idi_isba_que_cumple_4'  => "Que no ha solicitado o recibido ninguna otra ayuda de cualquier entidad, pública o privada, nacional o extranjera, relacionada con la operación financiera o con el proyecto de inversión; o, en caso contrario, relación de todas las ayudas y las subvenciones solicitadas o recibidas.",
+'declaro_idi_isba_que_cumple_5'  => "Cumplimiento del reglamento (UE) n.º 1407/2013 de la Comisión de 18 de diciembre de 2013, relativo a la aplicación de los artículos 107 y 108 del Tratado de Funcionamiento de la Unión Europea de las ayudas de minimis. Declaración de las ayudas recibidas durante el ejercicio fiscal en curso y los dos ejercicios fiscales anteriores.",
+'declaro_idi_isba_que_cumple_6'  => "Que, en la fecha de la solicitud, está al corriente de los pagos de sus obligaciones tributarias con la Administración de la Comunidad Autónoma de las Illes Balears, así como al corriente de los pagos de sus obligaciones tributarias con la Seguridad Social.",
+'declaro_idi_isba_que_cumple_7'  => "Una declaración responsable de la veracidad de datos bancarios.",
+'declaro_idi_isba_que_cumple_8'  => "Que, en la fecha de la solicitud, está adherida al programa Industria Local Sostenible (en caso de tener Resolución de adhesión al programa ILS).", 
+'declaro_idi_isba_ayudas_recibidas' => "Relació de totes les ajudes i les subvencions sol·licitades o rebudes:",
 'direccion_general_politica_industrial_idi_isba'   => "De la Dirección General de Politica Industrial",
 'otros_declaro_idi_isba'   => "Otros",
-'documentacion_adjunta_requerida_idi_isba' => "Documentación que nos puede adjuntar",
-'escritura_empresa_idi_isba' => "Escritura o certificado o nota del Registro si el solicitante es una sociedad mercantil o acta de constitución si es sociedad civil y si procede documento acreditativo de representación.",
+'documentacion_adjunta_requerida_idi_isba' => "Documentación",
+'documentacion_adjunta_requerida_idi_isba_c' => "Fotocopia del documento fehaciente que acredite la representación, por cualquier forma válida en derecho, de la persona que actúa en nombre de la persona o entidad solicitante.",
+'documentacion_adjunta_requerida_idi_isba_d' => "La fotocopia del DNI de la persona que firma la solicitud, en nombre propio o en representación de una persona jurídica o de una entidad sin personalidad jurídica, salvo el consentimiento expreso del interesado para que sus datos de identidad personal puedan consultarse mediante el sistema de verificación de datos de identidad establecido en la Orden PRE/3949/2006, de 26 de diciembre, por la que se establece la configuración, características, requisitos y procedimientos de acceso al Sistema de Verificación de Datos de Identidad, conforme a lo que se dispone en el Real Decreto 522/2006, de 28 de abril, por el que se suprime la aportación de fotocopias de documentos de identidad en los procedimientos administrativos de la Administración General del Estado y de sus organismos públicos vinculados o dependientes. ",
+'documentacion_adjunta_requerida_idi_isba_e' => "La fotocopia del documento de identificación fiscal (NIF) de la empresa o empresas solicitantes y promotoras de la actuación. ",
+'documentacion_adjunta_requerida_idi_isba_f' => "La copia de las escrituras de constitución de la empresa solicitante, así como de los vigentes estatutos o documento fundacional correspondiente, en los que consten las normas por las que se regulan sus actividades, debidamente registradas, en su caso, en los registros públicos competentes.",
+'documentacion_adjunta_requerida_idi_isba_g' => "La documentación acreditativa de estar dado de alta en el Censo de Empresarios Profesionales y Retenedores y en el Impuesto sobre Actividades Económicas (IAE). El solicitante tiene que presentar al menos unos de estos dos certificados de situación censal de la Agencia Estatal de Administración Tributaria:
+<ol>
+   <li> Certificado de alta en el Censo de empresarios, profesionales y retenedores.</li>
+   <li> Certificado de alta en el Censo de actividades económicas.</li>
+</ol>",
+'documentacion_adjunta_requerida_idi_isba_h' => "El certificado de estar al corriente de pago con la Agencia Tributaria (AEAT).",
+'documentacion_adjunta_requerida_idi_isba_i' => "El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.",
+'documentacion_adjunta_requerida_idi_isba_j' => "El contrato de la operación financiera.",
+'documentacion_adjunta_requerida_idi_isba_k' => "El contrato o documento de aval de la operación financiera.",
+'documentacion_adjunta_requerida_idi_isba_l' => "En el caso de inversiones certificadas como verdes según la taxonomía europea, se deberá aportar certificado",
+
 
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓN ADJUNTA",
 'certificado_alta_censo_AEAT'            => "Certificado de estar de alta en el censo de la AEAT",
@@ -535,8 +563,10 @@ para recibir la subvención según la legislación vigente.",
 'no_adherido_a_ils'     => "NO",
 'adherido_a_ils'        => "SÍ",
 'solicita_ayuda_idi_isba'  => "solicita_ayuda_importe_idi_isba",
-'solicita_ayuda_importe_idi_isba' => "Importe (€) de la cantidad que solicita",
-'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvención de intereses de 2 puntos, consistente en la cuantía de",
+'solicita_ayuda_importe_idi_isba' => "SOLICITO una AYUDA por importe de ",
+'solicita_ayuda_importe_idi_isba_detall' => " con el siguiente detalle: ",
+
+'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvención de intereses, consistente en la cuantía de",
 'solicita_ayuda_coste_aval_isba_idi_isba' => "Una subvención al coste del aval de ISBA, consistente en la cuantía de",
 'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvención a los gastos de apertura y de estudio, consistente en la cuantía de",
 'ayuda_superior_3000' => "En el caso de ayudas superiores a los 3000 €:",

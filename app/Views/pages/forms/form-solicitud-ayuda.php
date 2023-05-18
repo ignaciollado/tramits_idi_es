@@ -352,7 +352,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<!--<legend>-->
 		<h2><?php echo lang('message_lang.declaracion_responsable');?></h2>
 	<!--</legend>-->
-		    <label for = "declaracion_responsable_i" class="main"><?php echo lang('message_lang.declaracion_responsable_i');?>
+		  <label for = "declaracion_responsable_i" class="main"><?php echo lang('message_lang.declaracion_responsable_i');?>
 				<input title = "<?php echo lang('message_lang.declaracion_responsable_i');?>" disabled checked type="checkbox" name="declaracion_responsable_i" id="declaracion_responsable_i" />
 				<span class = "w3docs"></span>
 			</label>
@@ -365,7 +365,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</fieldset>
 
 	<fieldset>		
-		    <label for = "declaracion_responsable_iii" class="main"><?php echo lang('message_lang.declaracion_responsable_iii');?>
+		  <label for = "declaracion_responsable_iii" class="main"><?php echo lang('message_lang.declaracion_responsable_iii');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_iii');?>" disabled checked type="checkbox" name="declaracion_responsable_iii" id="declaracion_responsable_iii" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
@@ -400,17 +400,17 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<span class = "w3docs"></span>
 			</label>
 
-		    <label for = "declaracion_responsable_x" class="main"><?php echo lang('message_lang.declaracion_responsable_x');?>
+		  <label for = "declaracion_responsable_x" class="main"><?php echo lang('message_lang.declaracion_responsable_x');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_x');?>" disabled checked type="checkbox" name="declaracion_responsable_x" id="declaracion_responsable_x" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
 
-		    <label for = "declaracion_responsable_xi" class="main"><?php echo lang('message_lang.declaracion_responsable_xi');?>
+		  <label for = "declaracion_responsable_xi" class="main"><?php echo lang('message_lang.declaracion_responsable_xi');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_xi');?>" disabled checked type="checkbox" name="declaracion_responsable_xi" id="declaracion_responsable_xi">
 			<span class = "w3docs"></span>
 			</label>
 
-		    <label for = "declaracion_responsable_xii" id="declaracion_responsable_xii_lbl" class="main"><?php echo lang('message_lang.declaracion_responsable_xii');?>
+		  <label for = "declaracion_responsable_xii" id="declaracion_responsable_xii_lbl" class="main"><?php echo lang('message_lang.declaracion_responsable_xii');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_xii');?>" disabled checked type="checkbox" name="declaracion_responsable_xii" id="declaracion_responsable_xii">
 			<span class = "w3docs"></span>
 			</label>

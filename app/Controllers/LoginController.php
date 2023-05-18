@@ -30,7 +30,6 @@ class LoginController extends Controller
 			$data['titulo'] = lang('message_lang.titulo');
 			echo view('templates/header/header-login', $data);		
 			echo view('pages/login/login-view');
-			//echo view('templates/footer/footer', $data);		
 		}
     }      
 
@@ -38,15 +37,11 @@ class LoginController extends Controller
     public function login($googleToken = null) {
 		$db = \Config\Database::connect();
 		$request = \Config\Services::request();
-		$googleToken =  $request->uri->getSegment(3);
+		$googleToken = $request->uri->getSegment(3);
 		$avatar = "";
-		// echo "Estoy en el controlador, y tengo este token: <br><br>".$googleToken;
 		
 		if ($googleToken) { // El token JWT tiene tres partes: header, payload y signature)
 			list($header, $payload, $signature) = explode(".", json_encode($googleToken, true));
-			// echo "HEADER:<br>".base64_decode ($header)."<br><br>";
-			// echo "SIGNATURE:<br>".base64_decode ($signature)."<br><br>";
-			// echo "<strong>PAYLOAD:</strong><br>".base64_decode ($payload)."<br><br>";//.json_encode(base64_decode ($payload));
 	 		$obj_php = json_decode(base64_decode ($payload)); // Es la parte payload del JWT (JSon Web Token enviado desde GSuite)
 			$hd = $obj_php->hd;
 			$aud = $obj_php->aud; // The value of the aud parameter is the integration record and the company, separated by a semicolon.
@@ -58,7 +53,6 @@ class LoginController extends Controller
 			$user =  $obj_php->name;
 			$jti = $obj_php->jti; // The value of the jti parameter is the token ID, which is unique for every token.
 
-			// echo "<br><br>".$aud." - ".$iss." - ".$hd." - ".$exp." - ".$user. " - ".$iat. " - >>>". $googleSub."<<<";
 			
 			if ( $aud != '317070054037-t1thp3bfgcsskpuok1f0e12ja6hcbus5.apps.googleusercontent.com' && $aud != '317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com' ) {
 				return;
@@ -70,7 +64,6 @@ class LoginController extends Controller
 			$currentTime = new Time('now');
 			$tokenExpired = $currentTime->isAfter(gmdate("Y-m-d\TH:i:s\Z", $exp)); //es después $currentTime que $exp?
 
-			// echo ("<br><br>Ahora: ".$currentTime." exp: ".gmdate("Y-m-d H:i:s", $exp)." iat: ".gmdate("Y-m-d H:i:s", $iat));
 			if ($tokenExpired) {
 				return;
 			}

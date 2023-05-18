@@ -1,6 +1,6 @@
-liveToast = document.getElementById('liveToast')
-toastMessage = document.getElementById('toastMessage')
-toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast)
+let liveToast = document.getElementById('liveToast')
+let toastMessage = document.getElementById('toastMessage')
+let toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast)
 
 function averiguaTipoDocumento (valor) {
 	let formasJuridicas = document.querySelectorAll('input[name="tipo_solicitante"]');
@@ -18,8 +18,8 @@ function averiguaTipoDocumento (valor) {
 		toastBootstrap.show()
 
 		document.getElementById("nif").value = "";
-		document.getElementById("nif").classList.remove("valid");
-		document.getElementById("nif").classList.add("invalid");
+		/* document.getElementById("nif").classList.remove("valid");
+		document.getElementById("nif").classList.add("invalid"); */
 		return;
 	}
 
@@ -130,27 +130,22 @@ function analizaCIF (cif) {
 
 	if (esCIF_OK) 
 	{
-		/* console.log (`Sí Motivo: ${motivo}`, esCIF_OK) */
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").value = cif;
-		document.getElementById("nif").classList.remove("invalid");
-		document.getElementById("nif").classList.add("valid");
-		/* document.getElementById("info_lbl").classList.add("ocultar");
-		document.getElementById("info_lbl").value = ""; */
-		consultaExpediente ( 'nif', cif )
+/* 		document.getElementById("nif").classList.remove("invalid");
+		document.getElementById("nif").classList.add("valid"); */
+
+		 consultaExpediente ( 'nif', cif ) 
 	}
 	else 
 	{
-		/* console.log (`No Motivo: ${motivo}`, esCIF_OK) */
 		toastMessage.innerHTML = motivo
 		toastBootstrap.show()
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").focus();
 		document.getElementById("nif").value = "";
-		document.getElementById("nif").classList.remove("valid");
-		document.getElementById("nif").classList.add("invalid");
-		/* document.getElementById("info_lbl").classList.remove("ocultar");
-		document.getElementById("info_lbl").value = motivo; */
+/* 		document.getElementById("nif").classList.remove("valid");
+		document.getElementById("nif").classList.add("invalid"); */
 	}
 	}
 
@@ -194,8 +189,8 @@ function analizaDNINIE (dninie) {
 			toastBootstrap.show()
 
 			document.getElementById("nif").value = ""
-			document.getElementById("nif").classList.remove("valid");
-			document.getElementById("nif").classList.add("invalid");
+/* 			document.getElementById("nif").classList.remove("valid");
+			document.getElementById("nif").classList.add("invalid"); */
 			// Para hacer que funcione el focus() en Firefox
 			// setTimeout("document.getElementById('nif').focus();",0);
 			return;
@@ -215,12 +210,12 @@ function analizaDNINIE (dninie) {
 				break
 			}
 			}
-		document.getElementById("nif").classList.remove("valid");
-		document.getElementById("nif").classList.add("invalid");
+/* 		document.getElementById("nif").classList.remove("valid");
+		document.getElementById("nif").classList.add("invalid"); */
 	} else {
 		resultante = primerDigitoDNINIE+digitosIntermedio
-		document.getElementById("nif").classList.add("valid");
-		document.getElementById("nif").classList.remove("invalid");
+/* 		document.getElementById("nif").classList.add("valid");
+		document.getElementById("nif").classList.remove("invalid"); */
 		document.querySelector('#rest-result').innerHTML = "";
 	}
 		
@@ -263,7 +258,6 @@ function tenemosDatosSolicitante(documentoIdentificativo) {
 					infoDisponible.innerHTML += "<li>Tenim la memòria Tècnica: "+dataToArray[13]+"</li>";
 					infoDisponible.innerHTML += "<li>Tenim el certificat IAE: "+dataToArray[14]+"</li>";
 					infoDisponible.innerHTML += "<li>Tenim una còpia del NIF: "+dataToArray[15]+"</li>";
-
 
 					localStorage.setItem('nif', dataToArray[0]);
 					localStorage.setItem('empresa', dataToArray[1]);

@@ -87,7 +87,7 @@ return [
    SI NO PASSA PER LA SEU ELECTRÒNICA CAIB S'ENTENDRÀ QUE LA SOL·LICITUD NO HA ESTAT PRESENTADA.
    Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i/o per telèfon: 971 17 61 61 + 62891",
 
-   'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses per cobrir despeses financeres d'operacions de finançament d'inversions productives previstes al Pla Estratègic Industrial 2018-2023",
+   'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses de caràcter industrial de les Illes Balears per cobrir despeses financeres d'operacions de finançament d'inversions productives, eficiència energètica i transformació digital previstes en el Pla Estratègic Industrial 2018-2023",
    'subtitulo_justificacion_idigital'	 => "<div style='color:red;'><p>RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE</p><p>DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DEL REGISTRE ELECTRÒNIC COMÚ (REC) AL SEGÜENT ENLLAÇ:</p><p> https://rec.redsara.es/registro/action/are/acceso.do</p><p>SI NO PASSA PEL <strong>REC</strong> S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.</p></div>",     
    'enviado_correo_electron'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_ils'      => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'adhesió a ILS</strong> perquè la signeu electrònicament.",
@@ -95,10 +95,12 @@ return [
    'enviado_correo_electron_justif'   => "Us hem enviat un correu electrònic a l'adreça que ens va facilitar amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_con_dec_res' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la declaració responsable perquè la signeu electrònicament.",
    'enviado_correo_electron_con'      => "Si en la sol·licitud va marcar l'opció <strong>'Ja tinc CONSULTOR digital homologat, no necessito que el IDI m'assigni un'</strong>, hem enviat un correu electrònic al facilitador digital que ens heu indicat perquè empleni i ferm la seva declaració responsable.",
-   'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</a>. En cas de no fer-ho, no la podrem processar.",
-   'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà del <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</a>. En cas de no fer-ho, no el podrem processar.",
-  
-   'contacto_idi_pindust'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
+   //'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</a>. En cas de no fer-ho, no la podrem processar.",
+   'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no la podrem processar.",
+   //'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà del <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</a>. En cas de no fer-ho, no el podrem processar.",
+   'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no el podrem processar.",
+   
+      'contacto_idi_pindust'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
    'contacto_idi_ils'                  => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pjordi@idi.es i per telèfon: 971 17 61 61 + 62891 ",   
   
    'enviado_correo_ok'                 => "Hem enviat un correu electrònic a la adreça ",
@@ -195,7 +197,7 @@ return [
    'opc_iExporta'                     => "Programa II",
    'opc_iLs'                          => "Programa III",
 
-   'solicitante_tipo'                 => "2. TIPUS DE SOL·LICITANT",
+   'solicitante_tipo'                 => "TIPUS DE SOL·LICITANT",
    'solicitante_tipo_ils'                 => "1. TIPUS D'EMPRESA",
 
    'solicitante_tipo_autonomo'        => "Autònom",
@@ -491,27 +493,33 @@ return [
 'avisos_idi_isba'                      => "ok",
 'notificacion_idi_isba'		            => "En aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment",
 'intro_idi_isba_solicitud'			         => "Sol·licitud d'ajuts a microempreses, petites i mitjanes per cobrir despeses financeres",
+'aviso_idi_isba_solicitud'			         => "Las solicitudes se podrán presentar un vez el interesado haya  formalizado el aval con la entidad colaboradora ISBA SGR (punto 9.3 de la convocatoria).",
 'documentacion_necesaria_idi_isba'        => "Documentació necessaria a adjuntar",
 'documentacion_identificativa_idi_isba'   => "Documents de identificatius de la persona sol·licitant i/o la persona autoritzada per l’empresa.",
-'documentacion_necesaria_pymes_idi_isba'  => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació:</h3>
-   <ol class='formbox'>
-      <li>Còpia del DNI del sol·licitant o del seu representant.</li>
-      <li>Escriptures o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil i, si escau, document acreditatiu de representació.</li>
-      <li>El certificat de l'Agència Tributària d'alta en el Cens d'Empresaris, Professionals i Retenidors i l' <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</li>
-      <li>En el cas d'ajudes superiors a 3.000 euros:
+'documentacion_necesaria_pymes_idi_isba'  => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació<br> (apartado Noveno: Solicitudes y forma de presentación):</h3>
+   <ol class='formbox' style='list-style-type: lower-alpha;' start='3'>
+      <li>Fotocopia del documento fehaciente que acredite la representación, por cualquier forma válida en derecho, de la persona que actúa en nombre de la persona o entidad solicitante.</li>
+      <li>La fotocopia del DNI de la persona que firma la solicitud, en nombre propio o en representación de una persona jurídica o de una entidad sin personalidad jurídica, salvo el consentimiento expreso del interesado para que sus datos de identidad personal puedan consultarse mediante el sistema de verificación de datos de identidad establecido en la Orden PRE/3949/2006, de 26 de diciembre, por la que se establece la configuración, características, requisitos y procedimientos de acceso al Sistema de Verificación de Datos de Identidad, conforme a lo que se dispone en el Real Decreto 522/2006, de 28 de abril, por el que se suprime la aportación de fotocopias de documentos de identidad en los procedimientos administrativos de la Administración General del Estado y de sus organismos públicos vinculados o dependientes..</li>
+      <li>La fotocopia del documento de identificación fiscal (NIF) de la empresa o empresas solicitantes y promotoras de la actuación.</li>
+      <li>La copia de las escrituras de constitución de la empresa solicitante, así como de los vigentes estatutos o documento fundacional correspondiente, en los que consten las normas por las que se regulan sus actividades, debidamente registradas, en su caso, en los registros públicos competentes.</li>
+      <li>La documentación acreditativa de estar dado de alta en el Censo de Empresarios Profesionales y Retenedores y en el Impuesto sobre Actividades Económicas (IAE). El solicitante tiene que presentar al menos unos de estos dos certificados de situación censal de la Agencia Estatal de Administración Tributaria:
          <ol>
-            <li>Certificat d'estar al corrent de pagaments amb l'Agència Tributària.</li>
-            <li>Certificat d'estar al corrent de pagaments amb la Tresoreria de la Seguretat Social.</li>
+         <li>Certificado de alta en el Censo de empresarios, profesionales y retenedores.</li>
+         <li>Certificado de alta en el Censo de actividades económicas.</li>
          </ol>
       </li>
-
+      <li>El certificado de estar al corriente de pago con la Agencia Tributaria (AEAT)</li>
+      <li>El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar</li>
+      <li>El contrato de la operación financiera</li>
+      <li>El contrato o documento de aval de la operación financiera</li>
+      <li>En el caso de inversiones certificadas como verdes según la taxonomía europea, se deberá aportar certificado</li>
    </ol>
    <h3><strong>
    Els documents anteriors no s'hauran d'aportar quan ja constin en un altre expedient, o l'Administració els pugui sol·licitar directament.</strong></h3>",
 'documentacion_resultante_cabecera_idi_isba' => "En finalitzar aquest tràmit, rebrà per correu electrònic un document pdf que contindrà:",
 'documentacion_resultante_idi_isba' => '<ol class="formbox">
-                                             <li>La sol·licitud d´ajuda.</li>
-                                             <li>Una declaració responsable justificativa de compliment de requisits.</li>
+                                             <li>El documento normalizado de solicitud de subvención de esta convocatoria.</li>
+                                             <li>Una Declaración responsable de la persona titular de la empresa o de quien la representa legalmente.</li>
                                        </ol>',
 'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
 'operacion_financiera_idi_isba'  => "OPERACIÓ FINANÇERA",
@@ -532,15 +540,32 @@ return [
 'presupuesto_proyecto_de_inversion_idi_isba' => "PRESSUPOST DEL PROJECTE D'INVERSIÓ",
 'importe_del_presupuesto_idi_isba'  => "Import del pressupost (IVA inclós)",
 'detalle_importe_ayuda_solicitado_idi_isba' => "Amb el següent detall:",
-'declaro_idi_isba_que_cumple'    => "Que el/la sol·licitant cumpleix amb els requisits de la petita i mitjana empresa.",
-'declaro_idi_isba_que_cumple_no_mas_25' => "Que el/la sol·licitant compleix amb el requisit relatiu a la <strong>no participació superior al 25%</strong> per una o diverses empreses que, a nivell consolidat, incompleixen els límits del punt 1) anterior.",
-'declaro_idi_isba_que_cumple_no_incurre_prohibicion_incompatibilidad'   => "Que el/la sol·licitant <strong>no incorre en cap causa de prohibició o d'incompatibilitat</strong> per a rebre la subvenció segons la legislació vigent.",
-'declaro_idi_isba_que_cumple_no_si_tiene_ayudas_solicitadas'   => " <strong>Té ajudes o subvencions sol·licitades o concedides</strong> per alguna entitat, pública
-o privada, nacional o estrangera, relacionades tant amb el projecte d'inversió com amb l'operació financera:",
+'declaro_idi_isba_que_cumple_1'  => "Que el solicitante cumple los requisitos de pequeña o mediana empresa, de acuerdo con el anexo 1 del Reglamento (UE) núm. 651/2014 de la Comisión, de 17 de junio de 2014 por el que se declaran determinadas categorías de ayuda compatibles con el mercado interior en aplicación de los artículos 107 y 108 del Tratado, cumple con los requisitos para ser considerado una pyme.",
+'declaro_idi_isba_que_cumple_2'  => "Que la persona o entidad beneficiaria no está sometida a ninguna causa de prohibición o de incompatibilidad para recibir la ayuda según la legislación vigente y que el solicitante no ha sido sancionado o condenado por resolución administrativa o sentencia judicial firme por discriminación salarial, acoso moral o cualquier tipo de trato desigual, por razón de sexo, en el ámbito de las relaciones laborales.",
+'declaro_idi_isba_que_cumple_3'  => "Que el solicitante va a llevar a cabo la actividad de inversión, así como la justificación de la realización de la actividad y el cumplimiento de los requisitos y condiciones que determinan la concesión de la subvención.",
+'declaro_idi_isba_que_cumple_4'  => "Que no ha solicitado o recibido ninguna otra ayuda de cualquier entidad, pública o privada, nacional o extranjera, relacionada con la operación financiera o con el proyecto de inversión; o, en caso contrario, relación de todas las ayudas y las subvenciones solicitadas o recibidas.",
+'declaro_idi_isba_que_cumple_5'  => "Cumplimiento del reglamento (UE) n.º 1407/2013 de la Comisión de 18 de diciembre de 2013, relativo a la aplicación de los artículos 107 y 108 del Tratado de Funcionamiento de la Unión Europea de las ayudas de minimis. Declaración de las ayudas recibidas durante el ejercicio fiscal en curso y los dos ejercicios fiscales anteriores.",
+'declaro_idi_isba_que_cumple_6'  => "Que, en la fecha de la solicitud, está al corriente de los pagos de sus obligaciones tributarias con la Administración de la Comunidad Autónoma de las Illes Balears, así como al corriente de los pagos de sus obligaciones tributarias con la Seguridad Social.",
+'declaro_idi_isba_que_cumple_7'  => "Una declaración responsable de la veracidad de datos bancarios.",
+'declaro_idi_isba_que_cumple_8'  => "Que, en la fecha de la solicitud, está adherida al programa Industria Local Sostenible (en caso de tener Resolución de adhesión al programa ILS).", 
+'declaro_idi_isba_ayudas_recibidas' => "Relación de todas las ayudas y las subvenciones solicitadas o recibidas:",
 'direccion_general_politica_industrial_idi_isba'   => "De la Direcció General de Politica Indústrial",
 'otros_declaro_idi_isba'   => "Altres",
-'documentacion_adjunta_requerida_idi_isba' => "Documentació que ens pot adjuntar",
-'escritura_empresa_idi_isba' => "Escriptura o certificat o nota del Registre si el sol·licitant és una societat mercantil o acta de constitució si és societat civil i si escau, document acreditatiu de representació.",
+'documentacion_adjunta_requerida_idi_isba' => "Documentación",
+'documentacion_adjunta_requerida_idi_isba_c' => "Fotocopia del documento fehaciente que acredite la representación, por cualquier forma válida en derecho, de la persona que actúa en nombre de la persona o entidad solicitante.",
+'documentacion_adjunta_requerida_idi_isba_d' => "La fotocopia del DNI de la persona que firma la solicitud, en nombre propio o en representación de una persona jurídica o de una entidad sin personalidad jurídica, salvo el consentimiento expreso del interesado para que sus datos de identidad personal puedan consultarse mediante el sistema de verificación de datos de identidad establecido en la Orden PRE/3949/2006, de 26 de diciembre, por la que se establece la configuración, características, requisitos y procedimientos de acceso al Sistema de Verificación de Datos de Identidad, conforme a lo que se dispone en el Real Decreto 522/2006, de 28 de abril, por el que se suprime la aportación de fotocopias de documentos de identidad en los procedimientos administrativos de la Administración General del Estado y de sus organismos públicos vinculados o dependientes. ",
+'documentacion_adjunta_requerida_idi_isba_e' => "La fotocopia del documento de identificación fiscal (NIF) de la empresa o empresas solicitantes y promotoras de la actuación. ",
+'documentacion_adjunta_requerida_idi_isba_f' => "La copia de las escrituras de constitución de la empresa solicitante, así como de los vigentes estatutos o documento fundacional correspondiente, en los que consten las normas por las que se regulan sus actividades, debidamente registradas, en su caso, en los registros públicos competentes.",
+'documentacion_adjunta_requerida_idi_isba_g' => "La documentación acreditativa de estar dado de alta en el Censo de Empresarios Profesionales y Retenedores y en el Impuesto sobre Actividades Económicas (IAE). El solicitante tiene que presentar al menos unos de estos dos certificados de situación censal de la Agencia Estatal de Administración Tributaria:
+<ol>
+   <li> Certificado de alta en el Censo de empresarios, profesionales y retenedores.</li>
+   <li> Certificado de alta en el Censo de actividades económicas.</li>
+</ol>",
+'documentacion_adjunta_requerida_idi_isba_h' => "El certificado de estar al corriente de pago con la Agencia Tributaria (AEAT).",
+'documentacion_adjunta_requerida_idi_isba_i' => "El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.",
+'documentacion_adjunta_requerida_idi_isba_j' => "El contrato de la operación financiera.",
+'documentacion_adjunta_requerida_idi_isba_k' => "El contrato o documento de aval de la operación financiera.",
+'documentacion_adjunta_requerida_idi_isba_l' => "En el caso de inversiones certificadas como verdes según la taxonomía europea, se deberá aportar certificado",
 'ayuda_superior_3000' => "En el cas d'ajudes superiors als 3000 €:",
 
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓ ADJUNTA",
@@ -551,8 +576,9 @@ o privada, nacional o estrangera, relacionades tant amb el projecte d'inversió 
 'adherido_a_ils'        => "SI",
 'documentacion_adjuntada_idi_isba' => "Documentació adjuntada",
 'solicita_ayuda_idi_isba'  => "Sol·licit un ajut per import de",
-'solicita_ayuda_importe_idi_isba' => "Import (€) de la quantitat que sol·licita",
-'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvenció d'interessos de 2 punts, consistent en la quantia de",
+'solicita_ayuda_importe_idi_isba' => "SOL·LICIT un AJUT per import de ",
+'solicita_ayuda_importe_idi_isba_detall' => " amb el següent detall: ",
+'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvenció d'interessos, consistent en la quantia de",
 'solicita_ayuda_coste_aval_isba_idi_isba' => "Una subvenció al cost de l'aval de ISBA, consistent en la quantia de",
 'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvenció a les despeses d'obertura i d'estudi, consistent en la quantia de",
 

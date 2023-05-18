@@ -1,4 +1,4 @@
-<select aria-required="true" onblur="javaScript: validateFormField(this);" title="IAE" id = "codigoIAE"  name = "codigoIAE">
+<select aria-required="true" onblur="javaScript: validateFormField(this);" title="IAE" id = "codigoIAE"  name = "codigoIAE" required>
 <option value="" disabled selected><?php echo lang('message_lang.select_iae');?></option>
 <option value="162.0">162.0 FABRICACION DE HIELO PARA LA VENTA</option>		
 

@@ -1,8 +1,7 @@
-<select aria-required="true" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.localidad_sol_idigital');?>" id = "localidad"  name = "localidad" size="1">
-<option value="" disabled selected><?php echo lang('message_lang.select_poblacion');?></option>
-	<option disabled="disabled" value="Mallorca#Tots" style="background-color:gray;color:white">
-      Mallorca
-    </option><option value="Mallorca#Alaró">
+<select title = "<?php echo lang('message_lang.localidad_sol_idigital');?>" id = "localidad"  name = "localidad" size="1" required>
+<option value=""><?php echo lang('message_lang.select_poblacion');?></option>
+<optgroup label="Mallorca"  class="mallorca">
+	<option value="Mallorca#Alaró">
       Alaró
     </option><option value="Mallorca#Alcúdia">
       Alcúdia
@@ -108,9 +107,10 @@
       Valldemossa
     </option><option value="Mallorca#Vilafranca">
       Vilafranca
-    </option><option value="Menorca#Tots" disabled="disabled" style="background-color:gray;color:white;">
-      Menorca
-    </option><option value="Menorca#Alaior">
+    </option>
+  </optgroup>
+  <optgroup label="Menorca"  class="menorca">
+    <option value="Menorca#Alaior">
       Alaior
     </option><option value="Menorca#Es Castell">
       Es Castell
@@ -126,9 +126,10 @@
       Es Migjorn Gran
     </option><option value="Menorca#Sant Lluís">
       Sant Lluís
-    </option><option value="Eivissa#Tots" disabled="disabled" style="background-color:gray;color:white;">
-      Eivissa
-    </option><option value="Eivissa#Eivissa">
+    </option>
+  </optgroup>
+  <optgroup label="Eivissa" class="eivissa">
+    <option value="Eivissa#Eivissa">
       Eivissa
     </option><option value="Eivissa#Sant Antoni de Portmany">
       Sant Antoni de Portmany
@@ -138,8 +139,11 @@
       Sant Josep de Sa Talaia
     </option><option value="Eivissa#Santa Eulària des Riu">
       Santa Eulària des Riu
-    </option><option value="Formentera#Tots" disabled="disabled" style="background-color:gray;color:white;">
+    </option>
+  </optgroup>
+  <optgroup label="Formentera" class="formentera">   
+    <option value="Formentera#Formentera">
       Formentera
-    </option><option value="Formentera#Formentera">
-      Formentera
-    </option></select>
+    </option>
+  </optgroup>
+  </select>

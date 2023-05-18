@@ -428,8 +428,11 @@ if (!$expedientes['importeAyuda']) {
                                 $nom_doc = "Escriptures del registre Mercantil";
                                 break;
                             case 'file_certificadoAEAT':	
-                                $nom_doc = "Certificat AEAT";
-                                break;                              
+                                $nom_doc = "Certificat d'estar al corrent de pagament amb la AEAT";
+                                break;
+                            case 'file_altaCensoAEAT':	
+                                $nom_doc = "Documentació acreditativa alta cens AEAT";
+                                break;                                  
 			                default:
 					        $nom_doc = $docs_item->corresponde_documento; 
 			            } 

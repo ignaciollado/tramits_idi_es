@@ -96,7 +96,7 @@ async function getUnreadMessages(userId) {
 		'params': parameters,
 		//'body': resource
 	  }).then(function(resp) {
-		writeResponse(resp.result);
+				writeResponse(resp.result);
 	  });
 }
 

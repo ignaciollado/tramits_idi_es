@@ -24,11 +24,6 @@
 		$uri = new \CodeIgniter\HTTP\URI();
 		$request = \Config\Services::request();
 	
-		/* 		$language = \Config\Services::language(); */
-
-		/* echo "---".$idioma."---"; */
-		/* $language->setLocale($idioma); */
-	
 		$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 ?>
@@ -38,7 +33,7 @@
 <article>
 	<!-- HEADER: MENU + HEROE SECTION -->
 	<header class="header__formlineaidiisba">
-		<div class="langtoggle btn-group">
+		<div class="langtoggle btn-group" role="group" aria-label="Language toggle">
 			<a title="Català" href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/ca'); ?>" class="btn btn-outline-light text-dark" role="button"> Català</a>
 			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/es'); ?>" class="btn btn-outline-light text-dark" role="button"> Castellano</a>
 		</div>
@@ -56,14 +51,18 @@
 			<h1><?php echo lang('message_lang.titulo_solicitud_idi_isba');?></h1>
 		</div>
 
+		<div class="alert alert-danger" role="alert">
+			<h2> <strong><?php echo lang('message_lang.aviso_idi_isba_solicitud');?></strong> </h2>
+		</div>
+
 		<div class='siacode'>
-			<h5><?php echo lang('message_lang.Codi_SIA');?>: <?php echo $data['configuracion']['codigoSIA'];?></h5>
+			<h5><?php echo lang('message_lang.Codi_SIA');?>: xxxxx<?php echo $data['configuracion']['codigoSIA'];?>xxxx</h5>
 		</div>
 
 		<div class="formspecifications">
 	   	<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.destino_solicitud');?>:</span><span class='formspecifications_col'><?php echo lang('message_lang.idi');?></span></div>
 			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.codigo_dir3');?></span><span class='formspecifications_col'><?php echo $data['configuracion']['emisorDIR3'];?></span></div>
-			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.tramite_procedimiento');?>:</span class='formspecifications_col'><span><?php echo lang('message_lang.tramite_procedimiento_texto');?></span></div>
+			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.tramite_procedimiento');?>:</span class='formspecifications_col'><span><?php echo lang('message_lang.subtitulo_solicitud_ayudas_idi_isba');?></span></div>
 		</div>
 	</header>
 </article>
