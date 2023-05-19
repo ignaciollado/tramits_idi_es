@@ -71,7 +71,7 @@ class ApiController extends ResourceController
         }
     }
 
-    // single by IdExp
+    // single by IdExp, optionally convo, optionally linea de ayuda
     public function getExpediente($idExp=null, $convo=null, $linea=null ) {
         $apiModel = new ApiModel();
 
@@ -92,11 +92,11 @@ class ApiController extends ResourceController
         }
     }
 
-    // single by NIF (DNI, CIF, NIE)
-    public function getExpedientebyNIF($nif = null, $program = null, $convo = null) {
+    // single by NIF (DNI, CIF, NIE), optionally linea de ayuda
+    public function getExpedientebyNIF($nif = null, $linea = null, $convo = null) {
           $apiModel = new ApiModel();
   
-          $program = str_replace("%20", " ", $program);
+          $linea = str_replace("%20", " ", $linea);
   
           $where = "nif = '" . $nif ."'";
           $data = $apiModel->where( $where )->findAll();
@@ -108,7 +108,7 @@ class ApiController extends ResourceController
           }
     }
 
-    // single by expediente IDI (nnnn/AAAA)
+    // single by expediente IDI (nnnn/AAAA) and convo
     public function getExpedientebyExp($idExp = null, $convo = null) {
             $apiModel = new ApiModel();
     
@@ -123,7 +123,7 @@ class ApiController extends ResourceController
             }
     }
 
-    // obtiene todo los datos de la convo-linea ayuda
+    // obtiene todo los datos de la convo-linea ayuda por id
     public function getConvocatoria($id = null) {
         $apiModel = new ApiModel();
 

@@ -1128,6 +1128,30 @@ function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 		}
 	);
 }
+function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
+	let textoMotivoReq = document.getElementById("motivoRequerimientoIdiIsba").value;
+	let id = document.getElementById("id").value;
+	/* let modal = document.getElementById("myRequerimientoIdiIsba"); */
+	if ( textoMotivoReq === "" ) {
+		alert ("Falta indicar el motiu.")
+		return;
+	}
+	$.post(
+		"/public/assets/utils/actualiza_motivo_requerimiento_en_expediente.php",
+		{ id: id, textoMotivoReq: textoMotivoReq },
+		function (data) {
+			$(".result").html(data);
+			if (data == 1) {
+				document.getElementById("wrapper_motivoRequerimientoIdiIsba").remove = "ocultar";
+				document.getElementById("wrapper_motivoRequerimientoIdiIsba").className = "btn btn-primary";
+				//modal.style.display = "none";
+				//$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
+				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
+			}
+		}
+	);
+}
+
 function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoInicioRequerimiento").value;
 	let id = document.getElementById("id").value;

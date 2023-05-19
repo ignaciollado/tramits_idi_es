@@ -19,7 +19,8 @@
         "monolog/monolog": "^1.17|^2.0",
         "phpseclib/phpseclib": "~2.0||^3.0.2",
         "guzzlehttp/guzzle": "~5.3.3||~6.0||~7.0",
-        "guzzlehttp/psr7": "^1.2"
+        "guzzlehttp/psr7": "^1.2",
+        "codeigniter4/translations": "*"
     },
     "require-dev": {
         "codeigniter4/codeigniter4-standard": "^1.0",

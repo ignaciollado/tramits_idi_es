@@ -125,3 +125,9 @@ nb-configuration.xml
 /results/
 /phpunit*.xml
 /.phpunit.*.cache
+app/Views/pages/forms/modDocs/pdf/fpdf/
+system/
+system/*.php
+.gitignore
+composer.json
+

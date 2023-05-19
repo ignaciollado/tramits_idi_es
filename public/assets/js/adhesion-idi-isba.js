@@ -41,7 +41,8 @@ function activaDesactivaFormulario (valor) {
   }
 }
 
-function disableSendFormIDIISBA(e) {
+function onFormSubmit(e) {
+	
 	btnSendFormIDIISBA.innerHTML ="Un moment, enviant ..."
 	btnSendFormIDIISBA.disabled = true
 	spinnerSendRequestIDIISBA.classList.remove("ocultar")
@@ -49,7 +50,7 @@ function disableSendFormIDIISBA(e) {
 	theForm.style.cursor="progress";
 	theForm.disabled = true;
 	theForm.style.opacity =".2";
-	//theForm.submit();
+	theForm.submit();
 }
 
  function limpiaInfo_lbl (valor) {

@@ -1,12 +1,18 @@
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script> -->
-<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">  -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
 
 <?php
+    use App\Models\DocumentosGeneradosModel;
+    use App\Models\MejorasExpedienteModel;
+
+    $modelDocumentosGenerados = new DocumentosGeneradosModel();
+  
+    $modelMejorasSolicitud = new MejorasExpedienteModel();
+
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
 	$programa = $expedientes['tipo_tramite'];
@@ -156,7 +162,7 @@
                         <label for="plazo_aval_isba"><?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>:</label>
                         <input type="text" name="plazo_aval_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_aval_isba" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba') ?>" value = "<?php echo $expedientes['plazo_aval_isba']; ?>">
                     </div>
-<!--                     <div class="form-group general">
+                    <!--                     <div class="form-group general">
                         <label for="carencia_idi_isba"><?php echo lang('message_lang.carencia_idi_isba') ?>:</label>
                         <input type="text" name="carencia_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "carencia_idi_isba" placeholder = "<?php echo lang('message_lang.carencia_idi_isba') ?>" value = "<?php echo $expedientes['carencia_idi_isba']; ?>">
                     </div>   -->                  
@@ -189,13 +195,13 @@
                             <label for="intereses_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>:</label>
                             <input type="text" name="intereses_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "intereses_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>" value = "<?php echo $expedientes['intereses_ayuda_solicita_idi_isba']; ?>">
                         </li>
-<!--                     </div>
+                        <!--                     </div>
                     <div class="form-group general"> -->
                         <li>
                             <label for="coste_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>:</label>
                             <input type="text" name="coste_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "coste_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>" value = "<?php echo $expedientes['coste_aval_solicita_idi_isba']; ?>">
                         </li>
-<!--                     </div>
+                    <!--                     </div>
                     <div class="form-group general"> -->
                         <li>
                             <label for="gastos_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>:</label>
@@ -381,32 +387,32 @@
                         <div>Acció</div>
   		            </div>
                     <?php if($documentosDetalle){ ?>
-                    <?php foreach($documentosDetalle as $docs_opc_item): 
-			            $path = $docs_opc_item->created_at;
-			            $parametro = explode ("/",$path);
-			            $tipoMIME = $docs_opc_item->type;
-                    if ($convocatoria >= '2022') {
-			            switch ($docs_opc_item->corresponde_documento) {
-				            case 'file_copiaNIF':
-					            $nom_doc = "Còpia del NIF al no autoritzar a IDI per comprobar";
-					            break;
-                            case 'file_resguardoREC':	
-                                $nom_doc = "Justificant de presentació pel REC";
-                                break;
-                            case 'file_DocumentoIDI':	
-                                $nom_doc = "Document pujat des-de l'IDI";
-                                break;
-                            case 'file_certificadoInverECO':
-                                $nom_doc = "Certificat inversions verdes segons taxonomia europea";
-                                break;                                     
-			                default:
-					        $nom_doc = $docs_opc_item->corresponde_documento;
-			            } 
-                    } else {
-                        $nom_doc = $docs_opc_item->name;
-                    }?>
+                        <?php foreach($documentosDetalle as $docs_opc_item): 
+			                $path = $docs_opc_item->created_at;
+			                $parametro = explode ("/",$path);
+			                $tipoMIME = $docs_opc_item->type;
+                        if ($convocatoria >= '2022') {
+			                switch ($docs_opc_item->corresponde_documento) {
+				                case 'file_copiaNIF':
+					                $nom_doc = "Còpia del NIF al no autoritzar a IDI per comprobar";
+					                break;
+                                case 'file_resguardoREC':	
+                                    $nom_doc = "Justificant de presentació pel REC";
+                                    break;
+                                case 'file_DocumentoIDI':	
+                                    $nom_doc = "Document pujat des-de l'IDI";
+                                    break;
+                                case 'file_certificadoInverECO':
+                                    $nom_doc = "Certificat inversions verdes segons taxonomia europea";
+                                    break;                                     
+			                    default:
+					            $nom_doc = $docs_opc_item->corresponde_documento;
+			                } 
+                        } else {
+                            $nom_doc = $docs_opc_item->name;
+                        }?>
 
-                    <?php if ($docs_opc_item->docRequerido === 'NO') {?>
+                        <?php if ($docs_opc_item->docRequerido === 'NO') {?>
   			            <div id ="fila" class = "detail-wrapper-docs general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_opc_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_opc_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
@@ -427,7 +433,7 @@
                                 }
                             ?>
                             <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocNoRequerido"><strong>Elimina</strong></button>';?></span>
+	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#eliminaDocNoRequerido"><strong>Elimina</strong></button>';?></span>
   			            </div>
                     <?php }?>
                     <?php endforeach; ?>
@@ -437,18 +443,18 @@
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
-            <div id="myModalDocNoRequerido" class="modal fade" role="dialog">
-                <div class="modal-dialog">
+            <div class="modal" id="eliminaDocNoRequerido">
+			    <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content" style = "width: 60%;">
+                    <div class="modal-content">
                         <div class="modal-header">
         		            Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
     			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
                             <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
                                 <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
                             </div>
                         </div>
@@ -488,9 +494,7 @@
                 }
                 return "";
                 }
-            </script> 
-
-
+            </script>
             <br>
             <div>
                 <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
@@ -585,10 +589,10 @@
             <h3>Actes administratius:</h3>
             <ol start ="1">
             <!----------------------------------------- Requeriment DOC 1 ILS ---------------------------------------------->
-	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/requerimiento.php';?></li>
+	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/requerimiento.php';?></li>
             <!-------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Resolució desistiment per no esmenar  SIN VIAFIRMA ----------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/resolucion-desestimiento-por-no-enmendar.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-desestimiento-por-no-enmendar.php';?></li>
             <!-------------------------------------------------------------------------------------------------------------->
             </ol>
         </div>

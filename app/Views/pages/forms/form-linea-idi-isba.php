@@ -358,18 +358,18 @@
 	<div id="formbox">	
 		<span class="tooltiptext_idi"><h3><?php echo lang('message_lang.upload_multiple');?></h3></span>	
 	</div>
-<button type="submit" name="sendFormIDIISBA" id="sendFormIDIISBA" 
+	<button type="submit" name="sendFormIDIISBA" id="sendFormIDIISBA" 
 				class="btn btn-primary" 
 				data-bs-toggle="tooltip" 
 				data-bs-placement="top"
         data-bs-title="Premi per enviar la sol·licitud del beneficiari a l'IDI."
-				onSubmit="disableSendFormIDIISBA(event)"
+				onClick="onFormSubmit(event)"
 				>Enviar
 
 				<div class="spinner-border text-primary ocultar" role="status" id="spinnerSendRequestIDIISBA">
   				<span class="visually-hidden">Sending request, please wait...</span>
 				</div>
-</button>
+	</button>
 </form>
 
 <script>

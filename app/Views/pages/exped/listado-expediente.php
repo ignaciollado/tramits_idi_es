@@ -166,11 +166,16 @@
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa/" . (($sort_order == 'ASC' && $sort_by == 'empresa') ? 'DESC' : 'ASC'), 'https');?>">Sol·licitant</a>					
       	</div>
 	<div class="header-wrapper-col">
-		<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
-			Import de l'ajuda
-		<?php } else {?>
-			Visible a la web ILS
+
+		<?php if (  strtoupper($session->get('programa_fltr')) === 'ILS' ) {?>
+			 Visible a la web ILS
+		<?php } elseif ( strtoupper($session->get('programa_fltr')) === 'IDI-ISBA' ) {
+			?>
+			Import ajut sol·licitat
+			<?php } else {?>
+				Import de l'ajuda
 		<?php }?>
+
   </div>	
 				
 <!-- 	<div <?php echo($sort_by == 'email_rep' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
@@ -204,8 +209,19 @@
 			<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
 			<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
 
+
+			
+
 			<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
-				<span id = "semaforo" class = "detail-wrapper-col"><?php echo money_format("%i ", $item['importeAyuda'])." €" ?></span>
+
+				<span id = "semaforo" class = "detail-wrapper-col">
+				 
+					<?php 
+					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
+					echo money_format("%i ", $item['importeAyuda'])." €"; } else {
+						echo money_format("%i ", $item['importe_ayuda_solicita_idi_isba'])." €";} ?>
+
+			</span>
 			<?php } else {?>
 				<span id = "publicar_en_web" class = "detail-wrapper-col">
 					<?php  If ( $item['publicar_en_web'] == 1 )  { echo 'SI'; } else {  echo 'NO'; };?>

@@ -1131,8 +1131,8 @@ class SubirArchivo extends BaseController
 		echo view('templates/footer/footer');
 	 }	
 
-public function store_idi_isba()
-	{
+	public function store_idi_isba()
+		{
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -1193,66 +1193,77 @@ public function store_idi_isba()
  		/* -------------------------------7. DOCUMENTACIÓN--------------------------------------------- */
  		$documentosfile = $this->request->getFiles(); 
 
+if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
 			$file_document_acred_como_repres = "NO";
 		} else {
 			$file_document_acred_como_repres = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_d'][0]->getName() ){
 			$file_copiaNIF = "NO";
 		} else {
 			$file_copiaNIF = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_e'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_e'][0]->getName() ){
 			$file_nifEmpresa = "NO";
 		} else {
 			$file_nifEmpresa = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_f'][0]->getName() ){
 			$file_escrituraConstitucion = "NO";
 		} else {
 			$file_escrituraConstitucion = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_g'][0]->getName() ){
 			$file_certificadoIAE = "NO";
 		} else {
 			$file_certificadoIAE = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_h'][0]->getName() ){
 			$file_certificadoAEAT = "NO";
 		} else {
 			$file_certificadoAEAT = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_i'][0]->getName() ){
 			$file_certificadoSGR = "NO";
 		} else {
 			$file_certificadoSGR = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_j'][0]->getName() ){
 			$file_contratoOperFinanc = "NO";
 		} else {
 			$file_contratoOperFinanc = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_k'][0]->getName() ){
 			$file_avalOperFinanc = "NO";
 		} else {
 			$file_avalOperFinanc = "SI";
 		}
-
+	}
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_l'][0]->getName() ){
 			$file_certificadoInverECO = "NO";
 		} else {
 			$file_certificadoInverECO = "SI";
 		}
-		
+	}
+
  		$nif = $this->request->getVar('nif');
 		$empresa = $this->request->getVar('denom_interesado');
 		$domicilio = $this->request->getVar('domicilio');
@@ -1287,8 +1298,6 @@ public function store_idi_isba()
 		$intereses_ayuda_solicita_idi_isba = $this->request->getVar('intereses_ayuda_solicita_idi_isba');
 		$coste_aval_solicita_idi_isba = $this->request->getVar('coste_aval_solicita_idi_isba');
 		$gastos_aval_solicita_idi_isba = $this->request->getVar('gastos_aval_solicita_idi_isba');
-
-		return;
 
 		$data_exp = [
 			 'idExp' => $idExp,
@@ -1355,7 +1364,7 @@ public function store_idi_isba()
 			];
 	
 	 	$save_exp = $expediente->insert($data_exp);
-		
+		/* var_dump($save_exp); */
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;

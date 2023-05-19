@@ -1072,7 +1072,8 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => true
 				];
 				echo " <h4>Proposta de resolució de denegació ajut amb requeriment</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-denegacion-con-requerimiento', $data);
+				/* echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-denegacion-con-requerimiento', $data); */
+				echo view('pages/forms/modDocs/pdf/plt-fpdf-propuesta-resolucion-denegacion-con-requerimiento', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);

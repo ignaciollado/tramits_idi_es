@@ -90,7 +90,7 @@
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 
 		let wrapper_motivoDenegacion_7 = document.getElementById('wrapper_motivoDenegacion_7')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_7 = document.getElementById('spinner_7')
 		let infoMissingDataDoc7 = document.getElementById('infoMissingDataDoc7')
 		infoMissingDataDoc7.innerText = ""
