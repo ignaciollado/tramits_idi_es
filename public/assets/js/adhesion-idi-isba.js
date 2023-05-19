@@ -42,7 +42,11 @@ function activaDesactivaFormulario (valor) {
 }
 
 function onFormSubmit(e) {
-	
+ 	let x = document.forms[theForm]["fname"].value;
+  if (x == "") {
+    alert("All fields must be valid [with a green field border]");
+    return false;
+  } 
 	btnSendFormIDIISBA.innerHTML ="Un moment, enviant ..."
 	btnSendFormIDIISBA.disabled = true
 	spinnerSendRequestIDIISBA.classList.remove("ocultar")

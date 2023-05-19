@@ -2,8 +2,14 @@
 <html lang="es-ES">
 <head>
 	<meta charset="UTF-8">
-	<title><?php echo lang('message_lang.titulo_justificacion_idigital');?></title>
-	<meta name="description" content="Requeriment informació adicional per a les ajuts de xecs de consultoria">
+	<title>
+			<?php if ($tipoTramite == "IDI-ISBA") {?>
+				<?php echo lang('message_lang.titulo_solicitud_idi_isba');?>
+			<?php } else { ?>
+				<?php echo lang('message_lang.titulo_justificacion_idigital');?>
+			<?php } ?>
+	</title>
+	<meta name="description" content="Requeriment informació adicional">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
 	<!-- Latest compiled and minified CSS -->
@@ -22,7 +28,8 @@
 	<script type="text/javascript" src="/public/assets/js/solicitud-ayuda.js"></script>		
 </head>
 <body>
-<?php 
+<?php
+
 use App\Models\ConfiguracionModel;
 use App\Models\ExpedientesModel;
 	$modelConfig = new ConfiguracionModel();
@@ -45,7 +52,11 @@ use App\Models\ExpedientesModel;
 																					src = "<?php echo base_url()."/public/assets/images/logo_idi_conselleria.jpg";?>" >
 			</li>
 			<li>
-			<h2><?php echo lang('message_lang.titulo_justificacion_idigital');?></h2>
+			<?php if ($tipoTramite == "IDI-ISBA") {?>
+				<h2><?php echo lang('message_lang.titulo_solicitud_idi_isba');?></h2>
+			<?php } else { ?>
+				<h2><?php echo lang('message_lang.titulo_justificacion_idigital');?></h2>
+			<?php } ?>
 			</li>
 		</ul>
 	</div>	

@@ -89,7 +89,6 @@ class Home extends BaseController
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
 		
-		
 		if ($request->getLocale()){
 			$idioma = $request->getLocale();
 		} else {
@@ -97,12 +96,18 @@ class Home extends BaseController
 			$language->setLocale($idioma);
 		}
 		
+		if ($tipoTramite == 'IDI-ISBA') {
+			$titulo  = "Ajuts a les despeses financeres a través de l'aval d'ISBA";
+		} else {
+			$titulo = "Convocatòria Xecs consultoria - Requeriment";
+		}
+
 		$data = [
 			'id' => $id,
             'nif' => $nif,
 			'tipoTramite' => $tipoTramite,
 			'idioma' => $idioma,
-			'titulo' => "Convocatòria Xecs consultoria - Requeriment"
+			'titulo' => $titulo
 		];
 
 		echo view('templates/header/header-form-justificacion', $data);

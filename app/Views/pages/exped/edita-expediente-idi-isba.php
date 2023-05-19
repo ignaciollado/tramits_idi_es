@@ -135,7 +135,7 @@
                 <div class="col">
                     <div style="margin-top:5.5rem;"></div>       	     
 
-                    <label for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?></label><br>
+                    <label class="alert alert-success" role="alert" for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?></label><br>
                     <label for=''><u><?php echo lang('message_lang.operacion_financiera_prestamo_idi_isba') ?></u></label>
                     <div class="form-group general">
                         <label for="nom_entidad"><?php echo lang('message_lang.entidad_financiera_idi_isba') ?>:</label>
@@ -171,7 +171,7 @@
                         <input type="text" name="fecha_aval_isba" class="form-control" readonly disabled  oninput = "javaScript: actualizaRequired(this.value);" readonly id = "fecha_aval_isba" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>" value = "<?php echo $expedientes['fecha_aval_isba']; ?>">
                     </div>
 
-                    <label for=''><?php echo lang('message_lang.proyecto_de_inversion_idi_isba') ?></label>
+                    <label class="alert alert-success" role="alert" for=''><?php echo lang('message_lang.proyecto_de_inversion_idi_isba') ?></label>
                     <div class="form-group general">
                         <label for="finalidad_inversion_idi_isba"><?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>:</label>
                         <input type="text" name="finalidad_inversion_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "finalidad_inversion_idi_isba" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>" value = "<?php echo $expedientes['finalidad_inversion_idi_isba']; ?>">
@@ -780,7 +780,7 @@
             <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-concesion-sin-requerimiento.php';?>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta resolucio denegació ajut_ amb requeriment SIN VIAFIRMA-->
-	        <!--  <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-con-requerimiento.php';?></li> -->
+	        <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-con-requerimiento.php';?></li> -->
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta resolucio denegació ajut_ sin requeriment SIN VIAFIRMA-->
 	        <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-sin-requerimiento.php';?></li> -->

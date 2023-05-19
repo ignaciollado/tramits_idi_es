@@ -176,25 +176,18 @@
 				Import de l'ajuda
 		<?php }?>
 
-  </div>	
-				
-<!-- 	<div <?php echo($sort_by == 'email_rep' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/email_rep/" . (($sort_order == 'ASC' && $sort_by == 'email_rep') ? 'DESC' : 'ASC'), 'https');?>">E·mail notificacions</a>
-					</div> -->
-<!-- 	<div <?php echo($sort_by == 'telefono_rep' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/telefono_rep/" . (($sort_order == 'ASC' && $sort_by == 'telefono_rep') ? 'DESC' : 'ASC'), 'https');?>">Telèfon notificacions</a>
-					</div>		 -->	
+  </div>
 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Representant legal</a>
-					</div>	
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Representant legal</a>
+	</div>	
 	<div <?php echo($sort_by == 'situacion' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
-					</div>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
+	</div>
 	<div class = "header-wrapper-col">
-	<span class='alert alert-info'>
-		<?php echo $totalExpedientes;?>
-</span>
-</div>
+		<span class='alert alert-info'>
+			<?php echo $totalExpedientes;?>
+		</span>
+	</div>
   </div>
   <!-- The rest of the items in the list are the actual data -->
   				<?php
@@ -209,29 +202,17 @@
 			<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
 			<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
 
-
-			
-
 			<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
-
 				<span id = "semaforo" class = "detail-wrapper-col">
-				 
-					<?php 
-					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
-					echo money_format("%i ", $item['importeAyuda'])." €"; } else {
+					<?php if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
+						echo money_format("%i ", $item['importeAyuda'])." €"; } else {
 						echo money_format("%i ", $item['importe_ayuda_solicita_idi_isba'])." €";} ?>
-
-			</span>
+				</span>
 			<?php } else {?>
 				<span id = "publicar_en_web" class = "detail-wrapper-col">
 					<?php  If ( $item['publicar_en_web'] == 1 )  { echo 'SI'; } else {  echo 'NO'; };?>
-			</span>
+				</span>
 		<?php }?>
-
-			
-
-			<!-- <span id = "emailRepresentante" class = "detail-wrapper-col"><?php echo $item['email_rep']; ?></span> -->
-			<!-- <span id = "telRepresentante" class = "detail-wrapper-col"><?php echo $item['telefono_rep']; ?></span> -->
 
 			<span id = "nombre_rep" class = "detail-wrapper-col"><?php echo $item['nombre_rep']; ?></span>
 

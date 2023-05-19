@@ -18,8 +18,6 @@ function averiguaTipoDocumento (valor) {
 		toastBootstrap.show()
 
 		document.getElementById("nif").value = "";
-		/* document.getElementById("nif").classList.remove("valid");
-		document.getElementById("nif").classList.add("invalid"); */
 		return;
 	}
 
@@ -132,10 +130,8 @@ function analizaCIF (cif) {
 	{
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").value = cif;
-/* 		document.getElementById("nif").classList.remove("invalid");
-		document.getElementById("nif").classList.add("valid"); */
 
-		 consultaExpediente ( 'nif', cif ) 
+		/* consultaExpediente ( 'nif', cif )  */
 	}
 	else 
 	{
@@ -144,8 +140,6 @@ function analizaCIF (cif) {
 		document.querySelector('#rest-result').innerHTML = "";
 		document.getElementById("nif").focus();
 		document.getElementById("nif").value = "";
-/* 		document.getElementById("nif").classList.remove("valid");
-		document.getElementById("nif").classList.add("invalid"); */
 	}
 	}
 
@@ -184,15 +178,9 @@ function analizaDNINIE (dninie) {
 	{
 		if (primerDigitoDNINIE!='X' && primerDigitoDNINIE!='Y' && primerDigitoDNINIE!='Z') // y tiene que ser X,Y,Z
 			{
-			//document.getElementById("info_lbl").innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z.";
 			toastMessage.innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z."
 			toastBootstrap.show()
-
 			document.getElementById("nif").value = ""
-/* 			document.getElementById("nif").classList.remove("valid");
-			document.getElementById("nif").classList.add("invalid"); */
-			// Para hacer que funcione el focus() en Firefox
-			// setTimeout("document.getElementById('nif').focus();",0);
 			return;
 			}
 		else 
@@ -210,23 +198,18 @@ function analizaDNINIE (dninie) {
 				break
 			}
 			}
-/* 		document.getElementById("nif").classList.remove("valid");
-		document.getElementById("nif").classList.add("invalid"); */
 	} else {
 		resultante = primerDigitoDNINIE+digitosIntermedio
-/* 		document.getElementById("nif").classList.add("valid");
-		document.getElementById("nif").classList.remove("invalid"); */
 		document.querySelector('#rest-result').innerHTML = "";
 	}
 		
 		let i = resultante % 23;
 		let letraDNINIE = posiblesLetrasDNINIE[i];
 		document.getElementById("nif").value = primerDigitoDNINIE+digitosIntermedio+letraDNINIE;
-		consultaExpediente ( 'nif', primerDigitoDNINIE+digitosIntermedio+letraDNINIE )
+		/* consultaExpediente ( 'nif', primerDigitoDNINIE+digitosIntermedio+letraDNINIE ) */
 	}
 
 function tenemosDatosSolicitante(documentoIdentificativo) {
-	//let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
 	let nif = documentoIdentificativo;
 	let modal = document.getElementById("myModal");
 	let response = false;
