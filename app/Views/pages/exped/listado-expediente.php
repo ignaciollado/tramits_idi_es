@@ -197,22 +197,26 @@
 						$i++;
 					?>
   	<div id ="fila" class = "detail-wrapper">
-   			<span id = "fechaComletado" class = "detail-wrapper-col"><?php if ($item['fecha_completado'] != '0000-00-00 00:00:00' && $item['fecha_completado'] != '1970-01-01 01:00:00') {echo $item['fecha_completado'];} ?></span>
+   		<span id = "fechaComletado" class = "detail-wrapper-col"><?php if ($item['fecha_completado'] != '0000-00-00 00:00:00' && $item['fecha_completado'] != '1970-01-01 01:00:00') {echo $item['fecha_completado'];} ?></span>
 			<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
 			<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
 			<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
 
 			<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
 				<span id = "semaforo" class = "detail-wrapper-col">
-					<?php if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
-						echo money_format("%i ", $item['importeAyuda'])." €"; } else {
-						echo money_format("%i ", $item['importe_ayuda_solicita_idi_isba'])." €";} ?>
+					<?php 
+					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
+						echo $item['importeAyuda']." €";
+					} else {
+						echo $item['importe_ayuda_solicita_idi_isba'];
+					} 
+					?>
 				</span>
 			<?php } else {?>
 				<span id = "publicar_en_web" class = "detail-wrapper-col">
 					<?php  If ( $item['publicar_en_web'] == 1 )  { echo 'SI'; } else {  echo 'NO'; };?>
 				</span>
-		<?php }?>
+			<?php }?>
 
 			<span id = "nombre_rep" class = "detail-wrapper-col"><?php echo $item['nombre_rep']; ?></span>
 
@@ -252,7 +256,7 @@
 			else if ($item['situacion'] == "reqFirmado") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud te el requeriment signat"><strong>Requeriment signat</strong></span></div>';				
 			}
-			
+
 			else if ($item['situacion'] == "emitirIFPRPago") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>IF + PR pagament emetre</strong></span></div>';				
 			}
@@ -388,8 +392,6 @@ else if ($item['situacion'] == "empresaDenegada") {
 				}
 			?>
 
-
-
     <?php
         } else {
             echo "<div class='alert alert-warning'><strong>Cap expedient!</strong> No s'ha trobat cap informació coincident amb els seus criteris de filtrat.</div>";
@@ -401,21 +403,21 @@ else if ($item['situacion'] == "empresaDenegada") {
 </div>
 
 <script>
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+	function getCookie(cname) {
+	  var name = cname + "=";
+	  var decodedCookie = decodeURIComponent(document.cookie);
+	  var ca = decodedCookie.split(';');
+	  for(var i = 0; i <ca.length; i++) {
+    	var c = ca[i];
+    	while (c.charAt(0) == ' ') {
+	      c = c.substring(1);
+    	}
+    	if (c.indexOf(name) == 0) {
+	      return c.substring(name.length, c.length);
+    	}
+  	}
+  	return "";
+	}
 </script>
 
 <style>

@@ -37,8 +37,8 @@
 <div class="tab_fase_exp">
     <button id="detall_tab_selector" class="tablinks" onclick="openFaseExped(event, 'detall_tab', ' #ccc', <?php echo $expedientes['id'];?>)">Detall</button>  
     <button id="solicitud_tab_selector" class="tablinks" onclick="openFaseExped(event, 'solicitud_tab', '#f6b26b', <?php echo $expedientes['id'];?>)">Sol·licitud</button>
-<!--     <button id="validacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'validacion_tab', '#b23cfd', <?php echo $expedientes['id'];?>)">Adhesió</button>
-    <button id="ejecucion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'ejecucion_tab', '#fffb0b', <?php echo $expedientes['id'];?>)">Seguiment</button> -->
+    <button id="validacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'validacion_tab', '#b23cfd', <?php echo $expedientes['id'];?>)">Validació</button>
+    <!--<button id="ejecucion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'ejecucion_tab', '#fffb0b', <?php echo $expedientes['id'];?>)">Seguiment</button> -->
     <button id="justifiacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'justificacion_tab', '#a64d79', <?php echo $expedientes['id'];?>)">Justificació</button>
 <!--     <button id="deses_ren_tab_selector" class="tablinks" onclick="openFaseExped(event, 'deses_ren_tab', '#8e7cc3', <?php echo $expedientes['id'];?>)">Desistiment o renúncia</button> -->
 </div>
@@ -724,7 +724,7 @@
     </div><!-- Cierre de la fila -->
 </div><!-- Cierre del tab Solicitud -->
 
-<div id="validacion_tab" class="tab_fase_exp_content"> <!-- ADHESIÓN -->
+<div id="validacion_tab" class="tab_fase_exp_content">
     <div class="row">
     <div class="col-sm-2 docsExpediente">
         <h3>Detall:</h3>   
@@ -761,53 +761,11 @@
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="3">
-            <!-----------------------------------------Informe favorable amb requeriment ILS ------------>
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/informe-favorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Informe favorable sense requeriment ILS ---------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/informe-favorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Informe desfavorable sense requeriment ILS -->
-            <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li> -->
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Informe desfavorable amb requeriment ILS -->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/informe-desfavorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta resolucio concessió ajut_ amb requeriment SIN VIAFIRMA-->
-            <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-concesion-con-requerimiento.php';?>
-            <!-------------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------Proposta resolucio concessió ajut_ sense requeriment SIN VIAFIRMA-->
-            <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-concesion-sin-requerimiento.php';?>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta resolucio denegació ajut_ amb requeriment SIN VIAFIRMA-->
-	        <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-con-requerimiento.php';?></li> -->
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta resolucio denegació ajut_ sin requeriment SIN VIAFIRMA-->
-	        <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-sin-requerimiento.php';?></li> -->
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta de resolució i resolució de pagament sense requeriment SIN VAIFIRMA-->
-            <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-pago-sin-requerimiento.php';?></li> -->
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta de resolució i resolució de pagament amb requeriment SIN VIAFIRMA-->
-            <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-pago-con-requerimiento.php';?></li> -->
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Resolució denegació amb requeriment ILS SIN VIAFIRMA -->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/resolucion-denegacion-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Resolució denegació_ sense requeriment SIN VIAFIRMA-->
-            <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-sin-requerimiento.php';?></li> -->
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Resolució concesió adhesió ILS sense requeriment------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/resolucion-concesion-adhesion-ils-sin-requerimiento.php';?>
-            <input type="hidden" name="doc_res_concesion_adhesion_sin_req_auto_ils" class="form-control" id="doc_res_concesion_adhesion_sin_req_auto_ils" value="<?php echo $expedientes['doc_res_concesion_adhesion_sin_req_auto_ils']; ?>"></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Resolució concesió adhesió ILS sense requeriment--------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/resolucion-concesion-adhesion-ils-con-requerimiento.php';?>
-            <input type="hidden" name="doc_res_concesion_adhesion_con_req_auto_ils" class="form-control" id="doc_res_concesion_adhesion_con_req_auto_ils" value="<?php echo $expedientes['doc_res_concesion_adhesion_con_req_auto_ils']; ?>"></li>
-            <!------------------------------------------------------------------------------------------------------>            
-            <!-----------------------------------------Resolució de concessió SIN VIAFIRMA-->
-            <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento.php';?>
-            <!------------------------------------------------------------------------------------------------------>            
+            <!-----------------------------------------Informe favorable sense requeriment -------------------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-favorable-sin-requerimiento.php';?></li>
+            <!-----------------------------------------Proposta de resolució i resolució de pagament sense requeriment SIN VAIFIRMA---------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-pago-sin-requerimiento.php';?></li>
+            <!-------------------------------------------------------------------------------------------------------------------------------->            
         </ol>
         </div>
         <div class="col docsExpediente">

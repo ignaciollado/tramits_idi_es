@@ -131,3 +131,4 @@ system/*.php
 .gitignore
 composer.json
 
+app/Views/pages/forms/modDocs/pdf/

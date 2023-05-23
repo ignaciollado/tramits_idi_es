@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <?php	
         use App\Models\UseriTramitsModel;
 
@@ -15,6 +15,7 @@
  			 	$adreca_mail = "ignacio.llado@idi.es";
 				$telefono_cont = "677234076";
 		}
+
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 		require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
 		require_once dirname(__FILE__) . '/model/AddresseeLine.php';

@@ -85,8 +85,6 @@
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
-		/* let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion')
-		let fecha_propuesta_resolucion_notif = document.getElementById('fecha_propuesta_resolucion_notif') */
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 
 		let wrapper_motivoDenegacion_7 = document.getElementById('wrapper_motivoDenegacion_7')
@@ -111,14 +109,6 @@
 			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Referència REC esmena<br>"
 			todoBien = false
 		}
-/* 		if (!fecha_propuesta_resolucion.value) {
-			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data firma proposta resolució<br>"
-			todoBien = false
-		}
-		if (!fecha_propuesta_resolucion_notif.value) {
-			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data notificació proposta resolució<br>"
-			todoBien = false
-		} */
 		if (!fecha_infor_fav_desf.value) {
 			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data firma informe favorable / desfavorable<br>"
 			todoBien = false

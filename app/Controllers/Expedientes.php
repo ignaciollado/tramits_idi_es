@@ -954,7 +954,7 @@ class Expedientes extends Controller
 
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
-			case "doc_requeriment":  //va a VIAFIRMA DOC 1 A TÉCNICO
+			case "doc_requeriment":  														//va a VIAFIRMA DOC 1 A TÉCNICO
 				$data_infor = [
 					'doc_requeriment' => $last_insert_id
 				];
@@ -972,7 +972,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 				
-			case "doc_res_desestimiento_por_no_enmendar": //SIN VIAFIRMA DOC 2 A DIRECTOR GENERAL
+			case "doc_res_desestimiento_por_no_enmendar": 			//SIN VIAFIRMA DOC 2 A DIRECTOR GENERAL
 				$data_infor = [
 					'doc_res_desestimiento_por_no_enmendar' => $last_insert_id
 				];
@@ -988,7 +988,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;		
 
-			case "doc_informe_favorable_con_requerimiento":  //va a VIAFIRMA DOC 3 A TÉCNICO
+			case "doc_informe_favorable_con_requerimiento":  		//va a VIAFIRMA DOC 3 A TÉCNICO
 				$data_infor = [
 					'doc_informe_favorable_con_requerimiento' => $last_insert_id
 				];
@@ -1006,7 +1006,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_informe_favorable_sin_requerimiento":  //va a VIAFIRMA DOC 4 A TÉCNICO
+			case "doc_informe_favorable_sin_requerimiento":  		//va a VIAFIRMA DOC 4 A TÉCNICO
 				$data_infor = [
 					'doc_informe_favorable_sin_requerimiento' => $last_insert_id
 				];
@@ -1060,18 +1060,19 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_prop_res_denegacion_con_req": //CON VIAFIRMA DOC 7 - A GERENTE
+			case "doc_prop_res_denegacion_con_req": 						//CON VIAFIRMA DOC 7 - A GERENTE
 				$data_infor = [
 					'doc_prop_res_denegacion_con_req' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
-				$data['byCEOSigned'] = true;
+				$data['byCEOSigned'] = false;
 				$data_footer = [
-					'tipoDoc' => "Proposta resolució denegació ajut amb requeriment",
+					'tipoDoc' => "<h4>Proposta de resolució de denegació amb requeriment</h4>",
 					'conVIAFIRMA' => true
 				];
-				echo " <h4>Proposta de resolució de denegació ajut amb requeriment</h4>";
+				$data['nombreDocumento'] = "207_2023_fpdf_prop_res_denegacion_con_req.pdf";
+				/* echo " <h4>Proposta de resolució de denegació amb requeriment</h4>"; */
 				/* echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-denegacion-con-requerimiento', $data); */
 				echo view('pages/forms/modDocs/pdf/plt-fpdf-propuesta-resolucion-denegacion-con-requerimiento', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
