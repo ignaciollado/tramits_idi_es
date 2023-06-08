@@ -29,12 +29,14 @@
     <fieldset>
 <h5><?php echo lang('message_lang.justificacion_doc');?>: <strong><?php echo lang('message_lang.justificacion_titulo');?></strong></h5>
 <h5><?php echo lang('message_lang.justificacion_exp');?>:  <?php echo $data['expedientes']['idExp'];?> / <?php echo $data['expedientes']['convocatoria'];?></h5>
+<h5>Núm. REC GOIB: <?php echo $data['expedientes']['ref_REC'];?></h5>
 <h5><?php echo lang('message_lang.destino_solicitud');?>: <?php echo lang('message_lang.idi');?></h5>
 <h5><?php echo lang('message_lang.codigo_dir3');?> <?php echo $data['configuracion']['emisorDIR3'];?></h5>
+<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracion']['codigoSIA'];?></h5>
    </fieldset> 
 
 <div class="alert alert-info">
-<?php echo lang('message_lang.intro_sol_idigital');?>
+	<?php echo lang('message_lang.intro_sol_idigital');?>
 </div>
 
 <?php 

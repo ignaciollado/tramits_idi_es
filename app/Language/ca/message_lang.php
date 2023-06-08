@@ -74,7 +74,7 @@ return [
    'tramite_procedimiento'          => "Tràmit o procediment",
    'tramite_procedimiento_texto'    => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
 
-   'titulo_justificacion_idigital'	  => "Xecs consultoria indústria Illes Balears. Requeriment de justificació.",   
+   'titulo_justificacion_idigital'	  => "Ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears. Requeriment de justificació.",   
    'titulo_requerimiento_idigital'	  => "Requeriment documentació/informació adicional.",
    'subtitulo_sol_idigital'			  => "La sol·licitud d'ajuda i/o subvenció per a l'any 2023 està pendent de signar, si us plau, entre en el document i signi'l. 
    RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
@@ -88,7 +88,7 @@ return [
    Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i/o per telèfon: 971 17 61 61 + 62891",
 
    'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses de caràcter industrial de les Illes Balears per cobrir despeses financeres d'operacions de finançament d'inversions productives, eficiència energètica i transformació digital previstes en el Pla Estratègic Industrial 2018-2023",
-   'subtitulo_justificacion_idigital'	 => "<div style='color:red;'><p>RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE</p><p>DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DEL REGISTRE ELECTRÒNIC COMÚ (REC) AL SEGÜENT ENLLAÇ:</p><p> https://rec.redsara.es/registro/action/are/acceso.do</p><p>SI NO PASSA PEL <strong>REC</strong> S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.</p></div>",     
+   'subtitulo_justificacion_idigital'	 => "RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",     
    'enviado_correo_electron'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_ils'      => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'adhesió a ILS</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_idi_isba' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut IDI-ISBA</strong> perquè la signeu electrònicament.",

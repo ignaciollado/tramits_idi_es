@@ -14,6 +14,7 @@
 
 		<span id="btn_15" class="">
     		<a id="wrapper_ActaDeCierre" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>      	
+				<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
 		</span>	
 		<span id="spinner_15" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 	</div>
@@ -142,6 +143,7 @@
 				</div>
 			</div>
 		</div>
+		
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>

@@ -52,9 +52,11 @@ $pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
+use App\Models\ConfiguracionModel;
 use App\Models\ExpedientesModel;
 
 	$modelExp = new ExpedientesModel();
+	$configuracion = new ConfiguracionModel();
 	$db = \Config\Database::connect();
 	$uri = new \CodeIgniter\HTTP\URI();
 	$request = \Config\Services::request();
@@ -66,6 +68,7 @@ use App\Models\ExpedientesModel;
 	
 	$query = $db->query("SELECT * FROM pindust_documentos_justificacion WHERE selloDeTiempo ='" . $selloTiempo."'");
 	$justificacion = $query->getResult();
+	$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
 	$data['expedientes'] = $modelExp->where('id', $id)->first();
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -75,9 +78,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = lang('message_lang.justificacion_doc').": ".lang('message_lang.justificacion_titulo')."<br>";
 $html .= "Núm. Expedient: ". $data['expedientes']['idExp']."/".$data['expedientes']['convocatoria']."<br>";
-$html .= "SIA: 2406896<br>";
-$html .= "Emissor (DIR3): A04003714<br>";
-$html .= "Projecte: ".$data['expedientes']['tipo_tramite']."<br>";
+$html .= "Núm. REC GOIB: ". $data['expedientes']['ref_REC']."<br>";
+$html .=  lang('message_lang.codigo_dir3').":".$data['configuracion']['emisorDIR3']."<br>";
+$html .=  lang('message_lang.codigo_sia').":".$data['configuracion']['codigoSIA']."<br>";
+$html .= "Projecte: ".$data['expedientes']['tipo_tramite']."<br><br>";
 
 // set membrete
 $pdf->SetFillColor(255, 255, 255);

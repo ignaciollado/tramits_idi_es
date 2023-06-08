@@ -1449,7 +1449,7 @@ function actualizaActaCierre_click() {
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarJustificador");
-	document.getElementById("spinner_171").classList.remove("ocultar");
+	document.getElementById("spinner_151").classList.remove("ocultar");
 	document.getElementById("enviaMailJustificacion").disabled.true;
 	$.post(
 		"/public/assets/utils/enviaCorreoElectronicoJustificacion.php",
@@ -1457,7 +1457,7 @@ function enviaMailJustificacion_click() {
 		function (data) {
 			console.log(data);
 			if (data) {
-				document.getElementById("spinner_171").classList.add("ocultar");
+				document.getElementById("spinner_151").classList.add("ocultar");
 				document.getElementById("enviaMailJustificacion").style.display = "none";
 				document.getElementById("mensaje").classList.remove("ocultar");
 				document.getElementById("mensaje").innerHTML = data;

@@ -73,7 +73,7 @@ return [
    'tramite_procedimiento'          => "Trámite o procedimiento",
    'tramite_procedimiento_texto'    => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratégico Industrial 2018-2025",
 
-   'titulo_justificacion_idigital'	  => "Cheques consultoría industria Islas Baleares. Requerimiento de justificación.",
+   'titulo_justificacion_idigital'	  => "Ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares. Requerimiento de justificación.",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
    'subtitulo_sol_idigital'			  => "La solicitud de ayuda y/o subvención para el año 2023 está pendiente de firmar, por favor, entre en el documento y fírmela. 
    RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
@@ -88,7 +88,7 @@ return [
    'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas de carácter industrial de las Islas Baleares para cubrir los gastos financieros de operaciones de financiación de inversiones productivas, eficiencia energética y transformación digital previstas en el Plan Estratégico Industrial 2018-2025",
 
 
-   'subtitulo_justificacion_idigital'	 => "<div style='color:red;'><p>RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE</p><p>DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DEL REGISTRO ELECTRÓNICO COMÚN (REC) EN EL SIGUIENTE ENLACE:</p><p> https://rec.redsara.es/registro/action/are/acceso.do</p><p>SI NO PASSA PEL <strong>REC</strong> S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.</p></div>",     
+   'subtitulo_justificacion_idigital'	 => "RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",     
    'enviado_correo_electron'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_ils'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de adhesión a ILS</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_idi_isba' => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda IDI-ISBA</strong> para que la firme electrónicamente.",
