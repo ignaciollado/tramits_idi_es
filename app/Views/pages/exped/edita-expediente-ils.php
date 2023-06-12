@@ -171,7 +171,10 @@
                     <label for="sitio_web_empresa">Lloc web de l'empresa (<span class="alert-info">no poner el prefijo https:// ni http://</span>):</label>
                     <input type="text" name="sitio_web_empresa" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "sitio_web_empresa" placeholder = "Lloc web de l'empresa" value = "<?php echo $expedientes['sitio_web_empresa']; ?>">
                 </div>
-                
+		        <div class="form-group general">
+                    <label for="video_empresa">Video de l'empresa (<span class="alert-info">no poner el prefijo https:// ni http://</span>):</label>
+                    <input type="text" name="video_empresa" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "video_empresa" placeholder = "Video de l'empresa" value = "<?php echo $expedientes['video_empresa']; ?>">
+                </div>                
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
