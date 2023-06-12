@@ -520,7 +520,9 @@ function actualiza_fase_0_expediente_ils(formName) {  //SE EMPLEA
 	let nif_rep = document.getElementById("nif_rep").value; // Representant legal NIF
 	let tecnicoAsignado = document.getElementById("tecnicoAsignado").value; // Tècnica asignada
 	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
-	let sitio_web_empresa = document.getElementById("sitio_web_empresa").value; // Situació
+	let sitio_web_empresa = document.getElementById("sitio_web_empresa").value; // lloc web empresa
+	let video_empresa = document.getElementById("video_empresa").value; // video empresa
+
 
 	for (let step = 0; step < 16; step++) {
 		document.getElementsByClassName("form-group general")[step].style.opacity = "0.5";
@@ -536,7 +538,7 @@ function actualiza_fase_0_expediente_ils(formName) {  //SE EMPLEA
 		"/public/assets/utils/actualiza_fase_0_expediente_ils.php",
 		{ id: id, empresa: empresa, publicar_en_web: publicar_en_web, telefono_rep: telefono_rep, email_rep: email_rep,
 			nombre_rep: nombre_rep, nif_rep, nif_rep, tecnicoAsignado: tecnicoAsignado, 
-			situacion_exped: situacion_exped, sitio_web_empresa: sitio_web_empresa },
+			situacion_exped: situacion_exped, sitio_web_empresa: sitio_web_empresa, video_empresa: video_empresa },
 		
 		function (data) {
 			$(".result").html(data);
