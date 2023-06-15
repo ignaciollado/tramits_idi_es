@@ -95,7 +95,11 @@ const form = document.getElementById('subir_faseExpedSolicitud');
 function openFaseExped(evt, faseName, backgroundColor, id) {
 	var i, tabcontent, tablinks;
 	localStorage.removeItem("currentTab");
-	localStorage.setItem("currentTab",faseName);
+	localStorage.setItem("currentTab", faseName);
+
+	console.log (faseName)
+
+
 	compruebaEstadoDocumentosRequeridos(id);
 
 	tabcontent = document.getElementsByClassName("tab_fase_exp_content");
@@ -104,6 +108,7 @@ function openFaseExped(evt, faseName, backgroundColor, id) {
 	}
 
 	tablinks = document.getElementsByClassName("tablinks");
+	console.log ( `--------${tablinks.length}--------` )
 	for (i = 0; i < tablinks.length; i++) {
 		tablinks[i].className = tablinks[i].className.replace(" active", "");
 		tablinks[i].className = tablinks[i].className = "tablinks";

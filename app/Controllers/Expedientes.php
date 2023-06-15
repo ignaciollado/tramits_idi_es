@@ -345,7 +345,7 @@ class Expedientes extends Controller
 		/* Todos los documentos de un expediente en la pestaña DETALL */
 		$data['documentosDetalle'] = $modelDocumentos->allExpedienteDocuments($id, 'detalle');
 
-		/* Todos los documentos de un expediente en la pestaña EN EL RESTO DE PESTAÑAS */
+		/* Todos los documentos de un expediente EN EL RESTO DE PESTAÑAS */
 		$data['documentos'] = $modelDocumentos->allExpedienteDocuments($id, ''); 
 
 		/* Lista de las MEJORAS de la solicitud */

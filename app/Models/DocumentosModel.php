@@ -16,6 +16,7 @@ class DocumentosModel extends Model
         } else {
             $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes a cualquier fase
         }
+
         $query = $this->query($sql);
         return $query->getResult();
     }    
