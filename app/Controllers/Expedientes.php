@@ -368,6 +368,9 @@ class Expedientes extends Controller
 
 	public function do_upload($id = null, $nif = null, $tipo_tramite = null, $convocatoria = null, $tipoJustDoc = null, $faseExped = null)
 	{
+		
+		/* /public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Solicitud') */
+		
 		helper('filesystem');
 		helper(['form', 'url']);
 		$request = \Config\Services::request();
@@ -383,7 +386,12 @@ class Expedientes extends Controller
 		$selloTiempo = date("d_m_Y_h_i_sa");
 		$id_sol =  $request->uri->getSegment(3);
 		$nif =  $request->uri->getSegment(4);
+		$tipo_tramite = $request->uri->getSegment(5);
 		$tipo_tramite = str_replace("%20", " ", $tipo_tramite);
+		$faseExped = $request->uri->getSegment(8);
+		/* 	$tipoJustDoc = $request->uri->getSegment(5); */
+
+
 		// Sube el plan
 		if ($tipoJustDoc == "plan") {
 			$documentosfile = $this->request->getFiles();
@@ -455,7 +463,8 @@ class Expedientes extends Controller
 				}
 			}
 		}
-
+		/* echo "---".$tipo_tramite."--".$faseExped."--".$tipoJustDoc."--"; */
+		/* return; */
 		// Sube los documentos según la fase del expediente
 		if ($faseExped == "Solicitud" || $faseExped == "Validacion" || $faseExped == "Ejecucion" || $faseExped == "Justificacion" || $faseExped == "Desestimiento" || $faseExped == "Adhesion" || $faseExped == "Seguimient" || $faseExped == "Renovacion") {
 			$documentosfile = $this->request->getFiles();
@@ -470,7 +479,7 @@ class Expedientes extends Controller
 						'type' 						=> $resguardo->getClientMimeType(),
 						'cifnif_propietario' 		=> $nif,
 						'tipo_tramite' 				=> $tipo_tramite,
-						'corresponde_documento' 	=> 'file_faseExped' . $tipo_tramite,
+						'corresponde_documento' 	=> 'file_faseExped' . $faseExped,
 						'datetime_uploaded' 		=> time(),
 						'convocatoria' 				=> $convocatoria,
 						'created_at' 				=> $resguardo->getTempName(),

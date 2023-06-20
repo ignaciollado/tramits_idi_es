@@ -30,7 +30,7 @@
 	   	$requestPublicAccessId = $PublicAccessId;
 	   	$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 	   	$respuesta = json_decode ($request, true);
-       $estado_firma = $respuesta['status'];
+       	$estado_firma = $respuesta['status'];
 				switch ($estado_firma)
 					{
 					case 'NOT_STARTED':

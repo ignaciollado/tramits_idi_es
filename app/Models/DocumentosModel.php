@@ -12,7 +12,7 @@ class DocumentosModel extends Model
 
     public function allExpedienteDocuments($idSol, $faseExpediente) {
         if ( $faseExpediente === "detalle") {
-            $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped = '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes fase detalle
+            $sql = "SELECT * FROM pindust_documentos WHERE fase_exped = '' AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes fase detalle requeridos y no requeridos
         } else {
             $sql = "SELECT * FROM pindust_documentos WHERE (fase_exped <> '') AND id_sol = " . $idSol;  //Todos los documentos del expediente pertenecientes a cualquier fase
         }
