@@ -35,15 +35,15 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 $mail->Username = "tramits@tramits.idi.es";  // SMTP username
-$mail->Password = "RYrzz1254w@)"; // SMTP password
+$mail->Password = "yVcgQ9$8#32="; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
 $mail->FromName = "IDI";
 // Lo que verá del remitente el destinatario
-$mail->SetFrom("noreply@idi.es","IDI");
+$mail->SetFrom("noreply@tramits.idi.es","IDI");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("pindust@idi.es","IDI");
+$mail->AddReplyTo("response@tramits.idi.es","IDI"); 
 // Con copia oculta
 $mail->AddBCC("ignacio.llado@idi.es", "Servei de Política Industrial");
 // El destinatario.

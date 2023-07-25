@@ -79,11 +79,11 @@ if (!$expedientes['importeAyuda']) {
             switch($totalConvocatorias) {
                 case 1:
                     $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
-                    echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
+                    //echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
                     break;
                 default:
                     $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
-                    echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
+                    //echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
             }
             break;
     }
