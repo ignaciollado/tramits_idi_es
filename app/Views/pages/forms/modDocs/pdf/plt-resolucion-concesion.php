@@ -107,7 +107,7 @@ $pdf->setFontSubsetting(false);
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_resolucion_concesion_sin_req_intro'));
-$intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
+$intro = str_replace("%fecha_propuesta_resolucion_notif%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion_notif']),"d/m/Y"), $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
 $html .= "</table>";
@@ -135,14 +135,16 @@ $parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $par
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
 
-if ($ultimaMejora[2] && $ultimaMejora[3]) {
+/* if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p3m'));
     $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
     $html .= "<li>". $parrafo_3m ."</li>";
     $html .= "<br>";
-}
+} */
 
 $parrafo_3 = str_replace("%FECHANOTPROPRESOL%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion_notif']),"d/m/Y") ,lang('message_lang.doc_resolucion_concesion_sin_req_p3'));
+$parrafo_3 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_3);
+$parrafo_3 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_3);
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
 
@@ -157,6 +159,7 @@ $html .= "</br>";
 
 $parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p6'));
 $parrafo_6 = str_replace("%REFRECJUSTIFICACION%", $data['expediente']['ref_REC_justificacion'], $parrafo_6);
+$parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_6);
 $parrafo_6 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_6);
 $html .= "<li>". $parrafo_6 ."</li>";
 $html .= "<br>";
@@ -192,6 +195,27 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
 $req_fundamentos_2 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_2');
 $html .= "<li>". $req_fundamentos_2 ."</li>";
+$html .= "<br>";
+/* $pdf->writeHTML($html, true, false, true, false, ''); */
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 3);
+$req_fundamentos_3 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_3');
+$html .= "<li>". $req_fundamentos_3 ."</li>";
+$html .= "<br>";
+/* $pdf->writeHTML($html, true, false, true, false, ''); */
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 3);
+$req_fundamentos_4 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_4');
+$html .= "<li>". $req_fundamentos_4 ."</li>";
+$html .= "<br>";
+/* $pdf->writeHTML($html, true, false, true, false, ''); */
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 3);
+$req_fundamentos_5 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_5');
+$html .= "<li>". $req_fundamentos_5 ."</li>";
 $html .= "</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -216,17 +240,19 @@ $pdf->setY($currentY + 3);
 $resolucion_1 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_resolucion_concesion_sin_req_resolucion_1'));
 $resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
 $resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
+$resolucion_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $resolucion_1);
+
 $html = "<ol>";
 $html .= "<li>". $resolucion_1 ."</li>";
 $html .= "<br>";
 
-$currentY = $pdf->getY();
+/* $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
 $resolucion_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_resolucion_concesion_sin_req_resolucion_2'));
 $resolucion_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_2);
 $resolucion_2 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_2);
 $html .= "<li>". $resolucion_2 ."</li>";
-$html .= "<br>";
+$html .= "<br>"; */
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
