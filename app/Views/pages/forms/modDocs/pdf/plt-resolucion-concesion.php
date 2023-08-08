@@ -157,7 +157,7 @@ $parrafo_5 = str_replace("%FECHAREUNIONCIERRE%", date_format(date_create($data['
 $html .= "<li>". $parrafo_5 ."</li>";
 $html .= "</br>";
 
-$parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p6'));
+/* $parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p6'));
 $parrafo_6 = str_replace("%REFRECJUSTIFICACION%", $data['expediente']['ref_REC_justificacion'], $parrafo_6);
 $parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_6);
 $parrafo_6 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_6);
@@ -167,7 +167,7 @@ $html .= "<br>";
 $parrafo_7 = lang('message_lang.doc_resolucion_concesion_sin_req_p7');
 $html .= "<li>". $parrafo_7 ."</li>";
 $html .= "<br>";
-$html .= "</ol>";
+$html .= "</ol>"; */
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
@@ -178,49 +178,66 @@ $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
+
+$parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p6'));
+$parrafo_6 = str_replace("%REFRECJUSTIFICACION%", $data['expediente']['ref_REC_justificacion'], $parrafo_6);
+$parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_6);
+$parrafo_6 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_6);
+$html = '<ol start="6"><li>'. $parrafo_6 .'</li>';
+$html .= "<br>";
+
+$parrafo_7 = lang('message_lang.doc_resolucion_concesion_sin_req_p7');
+$html .= "<li>". $parrafo_7 ."</li>";
+$html .= "<br>";
+$html .= "</ol>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 15);
+
 $req_fundamentos = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $req_fundamentos ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $req_fundamentos_1 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_1');
 $html = "<ol>";
 $html .= "<li>". $req_fundamentos_1 ."</li>";
 $html .= "<br>";
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $req_fundamentos_2 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_2');
 $html .= "<li>". $req_fundamentos_2 ."</li>";
 $html .= "<br>";
 /* $pdf->writeHTML($html, true, false, true, false, ''); */
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $req_fundamentos_3 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_3');
 $html .= "<li>". $req_fundamentos_3 ."</li>";
 $html .= "<br>";
 /* $pdf->writeHTML($html, true, false, true, false, ''); */
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $req_fundamentos_4 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_4');
 $html .= "<li>". $req_fundamentos_4 ."</li>";
 $html .= "<br>";
 /* $pdf->writeHTML($html, true, false, true, false, ''); */
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $req_fundamentos_5 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_5');
 $html .= "<li>". $req_fundamentos_5 ."</li>";
 $html .= "</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $dicto = lang('message_lang.doc_resolucion_concesion_sin_req_dicto');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $dicto ."</td></tr>";
@@ -228,15 +245,15 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+$pdf->setY($currentY + 15);
 $resolucion = lang('message_lang.doc_resolucion_concesion_sin_req_resolucion');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $resolucion_1 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_resolucion_concesion_sin_req_resolucion_1'));
 $resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
 $resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
@@ -254,8 +271,8 @@ $resolucion_2 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_2)
 $html .= "<li>". $resolucion_2 ."</li>";
 $html .= "<br>"; */
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 3); */
 $resolucion_3 = lang('message_lang.doc_resolucion_concesion_sin_req_resolucion_3');
 $html .= "<li>". $resolucion_3 ."</li>";
 $html .= "</ol>";
