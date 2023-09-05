@@ -43,7 +43,7 @@
 				<img src='/public/assets/images/logo-isba-sgr-317.png' alt=' logo isba sgr'>
 			</a>
 			<a href='https://www.idi.es' target="_blank">
-				<img src='/public/assets/images/logo_institut_dinnovacio_empresarial_col_horitz.jpg' alt='logo idi-conselleria'>
+				<img width="70%" src='/public/assets/images/logo_institut_dinnovacio_empresarial_col_horitz.jpg' alt='logo idi-conselleria'>
 			</a>
 		</div>
 

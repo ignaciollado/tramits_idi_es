@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myRequerimientoIls" id="myBtnRequerimientoIls">Motiu del requeriment</button>
+			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target= "#myRequerimientoIls" id="myBtnRequerimientoIls">Motiu del requeriment</button>
 			<span id="btn_3" class="">
     			<a id ="wrapper_motivoRequerimientoIls" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment_ils');?>">Envia a signar el requeriment</a>
 			</span>
@@ -25,7 +25,7 @@
 	$query = $db->query($sql);
 	$row = $query->getRow();
 	if (isset($row))
-		{
+	{
 		$PublicAccessId = $row->publicAccessId;
 	    $requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
@@ -51,17 +51,17 @@
 				$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
 				}
 			echo $estado_firma;
-		}?>
-
+	}
+			 ?>
 	<?php ?>
             <!-- The Modal -->
-			<div id="myRequerimientoIls" class="modal fade" role="dialog">
+			<div id="myRequerimientoIls" class="modal">
 				<div class="modal-dialog">
                 <!-- Modal content-->
-    			<div class="modal-content" style = "width: 80%;">
+    			<div class="modal-content">
       				<div class="modal-header">
-      					<label for="motivoRequerimientoIls"><strong>Escriu el motiu del requeriment ILS:</strong></label>
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+					  	<h4 class="modal-title">Escriu el motiu del requeriment ILS:</h4>
+        				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
 						<div class="form-group">
@@ -70,7 +70,7 @@
         				</div>
 						<div class="form-group">
            				<button type="button" onclick = "javaScript: actualizaMotivoRequerimientoIls_click();" id="guardaMotivoRequerimientoIls" 
-							class="btn-itramits btn-success-itramits">Guarda</button>
+							class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
         				</div>				
     					</div>
   					</div>

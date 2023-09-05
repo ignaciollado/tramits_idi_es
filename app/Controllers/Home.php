@@ -283,7 +283,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		
 		echo view('templates/header/header_form_linea_idi_isba');
 		echo view('pages/forms/form-linea-idi-isba');
@@ -304,7 +304,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 				'id' => $id,
 				'idioma' => 'ca',
@@ -328,7 +328,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 			'id' => $id,
 			'idioma' => 'es',
@@ -353,7 +353,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 				'id' => $id,
 				'idioma' => 'ca',
@@ -378,7 +378,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 				'id' => $id,
 				'idioma' => 'ca',
@@ -403,7 +403,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 				'id' => $id,
 				'idioma' => 'ca',
@@ -428,7 +428,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 				'id' => $id,
 				'idioma' => 'ca',
@@ -453,7 +453,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 				'id' => $id,
 				'idioma' => 'ca',
@@ -478,7 +478,7 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   	set_cookie($cookie);
+   		set_cookie($cookie);
 		$data = [
 				'id' => $id,
 				'idioma' => 'ca',

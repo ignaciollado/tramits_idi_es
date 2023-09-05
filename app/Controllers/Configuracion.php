@@ -32,12 +32,12 @@ class Configuracion extends Controller
 			'mail_registro' => $this->request->getVar('mail_registro'),
 			'programa' => $this->request->getVar('programa'),
 			'convocatoria' => $this->request->getVar('convocatoria'),
-      'num_BOIB' => $this->request->getVar('num_BOIB'),
+            'num_BOIB' => $this->request->getVar('num_BOIB'),
 			'num_BOIB_modific' => $this->request->getVar('num_BOIB_modific'),
-			'resPresidente' => $this->request->getVar('respresidente'),
+			'respresidente' => $this->request->getVar('respresidente'),
 			'directorGeneralPolInd' => $this->request->getVar('directorGeneralPolInd'),
 			'directorGerenteIDI' => $this->request->getVar('directorGerenteIDI'),
-			/* 'fechaLimiteProgramas' => $this->request->getVar('fechaLimiteProgramas'), */
+			'fechaLimiteProgramas' => $this->request->getVar('fechaLimiteProgramas'),
 			'convocatoria_desde' =>  date('Y-m-d H:i:s',strtotime(str_replace("/","-",$this->request->getVar('convocatoria_desde')))),
 			'convocatoria_hasta' =>  date('Y-m-d H:i:s',strtotime(str_replace("/","-",$this->request->getVar('convocatoria_hasta')))),
             'convocatoria_aviso_es' => $this->request->getVar('convocatoria_aviso_es'),
@@ -46,9 +46,10 @@ class Configuracion extends Controller
 			'emisorDIR3' => $this->request->getVar('emisorDIR3'),
 			'codigoSIA' => $this->request->getVar('codigoSIA')
             ];
-		var_dump($data);
-    $builder->where('id', $this->request->getVar('id'));
+ 
+        $builder->where('id', $this->request->getVar('id'));
 		$save = $builder->update($data);
+		
 		
 		$modelConfig = new ConfiguracionModel();
 		$db = \Config\Database::connect();
