@@ -10,7 +10,7 @@
         <?php }
         else {?>
 <!--   			<a id="generadoc_res_denegacion_sin_req" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_denegacion_sin_req');?>" class="btn-primary-itramits">Genera la resolució</a> -->
-				<button id="generadoc_res_denegacion_sin_req" class='btn btn-secondary' onclick="generaResolucionDenegacionSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera  la resolució</button>
+				<button id="generadoc_res_denegacion_sin_req" class='btn btn-primary' onclick="generaResolucionDenegacionSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera  la resolució</button>
 					<div id='infoMissingDataDoc12' class="alert alert-danger ocultar"></div>
 			<span id="spinner_12" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>

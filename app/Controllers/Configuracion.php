@@ -13,8 +13,6 @@ class Configuracion extends Controller
 		$db = \Config\Database::connect();
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
 		$data['titulo'] = "Configuració del gestor d'ajuts i de subvencions";
-		//echo $db->getPlatform()." ";
-		//echo $db->getVersion();
 		echo view('templates/header/header', $data);	
         echo view('pages/exped/configurador-gestor');
 		echo view('templates/footer/footer');	
@@ -26,26 +24,17 @@ class Configuracion extends Controller
 		$db      = \Config\Database::connect();
 		$builder = $db->table('pindust_configuracion');
         $data = [
-			'meses_fecha_lim_consultoria' => $this->request->getVar('meses_fecha_lim_consultoria'),
-			'dias_fecha_lim_justificar' => $this->request->getVar('dias_fecha_lim_justificar'),
-			'updateInterval' => $this->request->getVar('updateInterval'),
-			'mail_registro' => $this->request->getVar('mail_registro'),
-			'programa' => $this->request->getVar('programa'),
-			'convocatoria' => $this->request->getVar('convocatoria'),
-            'num_BOIB' => $this->request->getVar('num_BOIB'),
-			'num_BOIB_modific' => $this->request->getVar('num_BOIB_modific'),
 			'respresidente' => $this->request->getVar('respresidente'),
 			'directorGeneralPolInd' => $this->request->getVar('directorGeneralPolInd'),
 			'directorGerenteIDI' => $this->request->getVar('directorGerenteIDI'),
-			'fechaLimiteProgramas' => $this->request->getVar('fechaLimiteProgramas'),
-			'convocatoria_desde' =>  date('Y-m-d H:i:s',strtotime(str_replace("/","-",$this->request->getVar('convocatoria_desde')))),
-			'convocatoria_hasta' =>  date('Y-m-d H:i:s',strtotime(str_replace("/","-",$this->request->getVar('convocatoria_hasta')))),
+			'eMailPresidente' => $this->request->getVar('eMailPresidente'),
+			'eMailDGeneral' => $this->request->getVar('eMailDGeneral'),
+			'eMailDGerente' => $this->request->getVar('eMailDGerente'),
             'convocatoria_aviso_es' => $this->request->getVar('convocatoria_aviso_es'),
             'convocatoria_aviso_ca' => $this->request->getVar('convocatoria_aviso_ca'),
-            'convocatoria_activa' => $this->request->getVar('convocatoria_activa'),
-			'emisorDIR3' => $this->request->getVar('emisorDIR3'),
-			'codigoSIA' => $this->request->getVar('codigoSIA')
-            ];
+            'convocatoria_activa' => 1,
+			'emisorDIR3' => $this->request->getVar('emisorDIR3')
+            	];
  
         $builder->where('id', $this->request->getVar('id'));
 		$save = $builder->update($data);

@@ -1,10 +1,9 @@
-
 window.addEventListener('load', (event) => {
-    const intervaloActualizacion = (document.getElementById("updateInterval").value/4 * 60 * 1000)/10;
+    /* const intervaloActualizacion = (document.getElementById("updateInterval").value/4 * 60 * 1000)/10; */
 
     const googleId = document.querySelector(".unreadMails").id;
 
-    setInterval(function(){ getUnreadMessages(googleId); }, intervaloActualizacion);
+    setInterval(function(){ getUnreadMessages(googleId); }, 60000);
 
     // Harcodeo todo lo que sigue por falta de tiempo. Cuando pueda, tengo que refactorizar.  (02/12/2021)
     
@@ -32,11 +31,12 @@ function signOut() {
 		})
 		.then(function () {
 			window.location.href =
-				"https://pre-tramits.idi.es/public/index.php/logout";
+				"https://tramits.idi.es/public/index.php/logout";
 		});
 }
 
 async function getUnreadMessages(userId) {
+	console.log (`--${userId}--`)
 	var parameters = {
         "labelIds": "INBOX",
 		"q": "is:unread"
@@ -61,7 +61,7 @@ function writeResponse(response) {
 	if ( response['resultSizeEstimate'] > 0) {
 		let x = document.createElement("A");
 		x.setAttribute("href", "https://mail.google.com/mail/u/0/#inbox");
-		x.setAttribute("title", "Consultar els missatges de correu ...");
+		x.setAttribute("title", "Consultar els missatges de correu...");
 		x.setAttribute("class", "label label-info");
 		x.style.color = "#ffffff";
 		x.innerHTML = response['resultSizeEstimate']+ " missatges";

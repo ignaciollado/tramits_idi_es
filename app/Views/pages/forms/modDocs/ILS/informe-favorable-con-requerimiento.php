@@ -11,7 +11,7 @@
         <?php }
         else {?>
 	  		<span id="btn_6" class="">	
-	  			<a id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento_ils');?>" class="btn-primary-itramits">Genera l'informe</a>
+	  			<a id="generaInfFavConReq" class = "btn btn-primary" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento_ils');?>">Genera l'informe</a>
 			</span>
 			<span id="spinner_6" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 		<?php }?>

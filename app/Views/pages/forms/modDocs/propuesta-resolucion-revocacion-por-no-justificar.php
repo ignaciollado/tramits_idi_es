@@ -12,7 +12,7 @@
         <?php }
         else {?>
 			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
-			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target = "#myResolucionRevocacionPorNoJustificar" id="myBtnResolucionRevocacionPorNoJustificar">Generar la proposta</button>  
+			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target = "#myResolucionRevocacionPorNoJustificar" id="myBtnResolucionRevocacionPorNoJustificar">Generar la proposta</button>  
 			<span id="btn_23" class="">
     			<!-- 	<a id ="wrapper_motivoResolucionRevocacionPorNoJustificar" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_prop_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Generar el PDF de la proposta</a> -->
 					<button id="wrapper_motivoResolucionRevocacionPorNoJustificar" class='btn btn-secondary ocultar' onclick="enviaPropuestaResalucionRevocacionPorNoJustificar(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
@@ -39,8 +39,8 @@
                 <!-- Modal content-->
     			<div class="modal-content">
       				<div class="modal-header">
-      					<label for="motivoResolucionRevocacionPorNoJustificar"><strong>Escriu el motiu de la resolució de revocació:</strong></label>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					  	<h4 class="modal-title">Motiu de la resolució de revocació:</h4>
+        				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
 								<div class="form-group">

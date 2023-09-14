@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myRequerimientoJustificacion" id="myBtnRequerimientoJustificacion">Motiu del requeriment</button>
+			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myRequerimientoJustificacion" id="myBtnRequerimientoJustificacion">Motiu del requeriment</button>
 			<span id="btn_19" class="">
 <!--     			<a id="wrapper_generadoc_req_justificacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requerimiento_justificacion');?>" class="btn-primary-itramits">Envia a la firma de Gerència IDI</a> -->
 					<button id="wrapper_generadoc_req_justificacion" class='btn btn-secondary ocultar' onclick="enviaRequerimientoJustificacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a la firma de Gerència IDI</button>

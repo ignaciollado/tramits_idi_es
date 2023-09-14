@@ -9,7 +9,7 @@
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
 			<!-- <a href="<?php echo base_url('public/index.php/expedientes/generaInforme/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_prop_res_conces_con_req'); ?>" class="btn-primary-itramits">Genera la proposta</a> -->
-			<button id="wrapper_propuestaResPagoConReg" class='btn btn-secondary' onclick="enviaPropResolucionPagoConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
+			<button id="wrapper_propuestaResPagoConReg" class='btn btn-primary' onclick="enviaPropResolucionPagoConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
 			<div id='infoMissingDataDoc10' class="alert alert-danger ocultar"></div>
 			<span id="spinner_10" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>

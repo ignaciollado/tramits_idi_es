@@ -29,7 +29,7 @@
     $totalexpedAZero = "<span class='badge bg-secondary'>".$modelExp->getWithZeroIdSol()."</span>";
     ?>
 <!-----------------------------------------------------CHEQUES-------------------------------------------------------------->
-<button class="accordion"><?php echo $totalexpedAZero;?><h1>XECS</h1></button>
+<button class="accordion"><h1>XECS</h1></button>
 <!-- <div class="panel" style="display:block;"> -->
 <!------------------------------------------------------2023---------------------------------------------------------------->
 <button class="accordion accordion--convo"><h1>Convocatòria 2023</h1></button>

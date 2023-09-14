@@ -11,7 +11,7 @@
         else {?>
 			<span id="btn_20b" class="">
     	<!-- 		<a id="wrapper_informe_sobre_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_resolucion_concesion_con_req_20b');?>" class="btn-primary-itramits">Envia a signar l'informe</a> -->
-					<button id="generaResolucioConcesio20b" class='btn btn-secondary' onclick="enviaResolucionConcesionConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
+					<button id="generaResolucioConcesio20b" class='btn btn-primary' onclick="enviaResolucionConcesionConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
 					<div id='infoMissingDataDoc20b' class="alert alert-danger ocultar"></div>
 				</span>
 				<span id="spinner_20b" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:20px; color:#000000;"></i></span>

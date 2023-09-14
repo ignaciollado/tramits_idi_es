@@ -12,7 +12,7 @@
         <?php }
         else {?>
 			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
-			<button type = "button" class = "btn btn-secondary"  data-bs-toggle = "modal" data-bs-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Motiu de la resolució</button>  
+			<button type = "button" class = "btn btn-primary" data-bs-toggle = "modal" data-bs-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Motiu de la resolució</button>  
 			<span id="btn_22" class="">
     			<!-- <a id ="wrapper_motivoDesestimientoRenuncia" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>">Generar el desistiment</a> -->
 					<button id="wrapper_motivoDesestimientoRenuncia" class='btn btn-primary ocultar' onclick="generaResolucionPorDesestimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
@@ -37,7 +37,7 @@
                 <!-- Modal content-->
     			<div class="modal-content">
       				<div class="modal-header">
-								<h4 class="modal-title">Motiu del desistiment per renúncia:</h4>
+						<h4 class="modal-title">Motiu del desistiment per renúncia:</h4>
         				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">

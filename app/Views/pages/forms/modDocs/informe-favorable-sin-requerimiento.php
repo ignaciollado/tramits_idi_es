@@ -11,7 +11,7 @@
         else {?>
 				<span id="btn_4" class="">	
     			<!-- <a id="generaInfFavSinReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_sin_requerimiento');?>" class="btn-primary-itramits">Generar l'informe</a> -->
-					<button id="generaInfFavConReq" class='btn btn-secondary' onclick="enviaInformeFavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
+					<button id="generaInfFavConReq" class = "btn btn-primary" onclick="enviaInformeFavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
 					<div id='infoMissingDataDoc4' class="alert alert-danger ocultar"></div>
 				</span>
 			<span id="spinner_4" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>

@@ -9,7 +9,7 @@
       if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
       else {?>
-			<button id="generadoc_res_denegacion_sin_req" class='btn btn-secondary' onclick="generaResolucionDenegacionConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera  la resolució</button>
+			<button id="generadoc_res_denegacion_sin_req" class='btn btn-primary' onclick="generaResolucionDenegacionConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera  la resolució</button>
 			<div id='infoMissingDataDoc11' class="alert alert-danger ocultar"></div>
 			<span id="spinner_11" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>

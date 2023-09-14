@@ -12,7 +12,7 @@
         <?php }
         else {?>
 			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
-			<button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Generar la resolució</button>  
+			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Generar la resolució</button>  
 			<span id="btn_24" class="">
     			<a id ="wrapper_motivoDesestimientoRenuncia" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Generar el PDF de la resolució</a>
 			</span>		
@@ -33,13 +33,13 @@
 <!------------------------------------------------------------------------------------------------------>
 
 <!-- The Modal -->
-<div id="myDesestimientoRenuncia" class="modal fade" role="dialog">
+<div id="myDesestimientoRenuncia" class="modal">
 			<div class="modal-dialog">
                 <!-- Modal content-->
     			<div class="modal-content" style = "width: 80%;">
       				<div class="modal-header">
-      					<label for="motivoDesestimientoRenuncia"><strong>Escriu el motiu del desistiment per renúncia:</strong></label>
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+					  	<h4 class="modal-title">Motiu del desistiment per renúncia:</h4>
+        				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
 						<div class="form-group">
@@ -48,7 +48,7 @@
         				</div>
 						<div class="form-group">
            				<button type="button" onclick = "javaScript: actualizaMotivoDesestimientoRenuncia_click();" id="guardaMotivoDesestimientoRenuncia" 
-							class="btn-itramits btn-success-itramits">Guarda</button>
+							class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
         				</div>				
     					</div>
   					</div>

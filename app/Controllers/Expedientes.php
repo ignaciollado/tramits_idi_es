@@ -313,7 +313,7 @@ class Expedientes extends Controller
 
 		$data['titulo'] = "Expedient: " . $idExp . "/" . $convocatoria . " (" . $tipo_tramite . ") - " . $solicitante . " - " . $nifcif;
 
-		/* ----Busca si ya tenemos alguno de los documentos en el IDI y que en la solicitud lo han marcado como SI lo tenemos---- */
+		/* ----Comprueba si ya tenemos alguno de los documentos en el IDI y que en la solicitud lo han marcado como SI lo tenemos---- */
 		if ($data['expedientes']['memoriaTecnicaEnIDI']) {
 			$modelDocumentos->findIfDocumentIsInIDI($id, $nifcif, 'file_memoriaTecnica', $tipo_tramite, $convocatoria);
 		}

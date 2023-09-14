@@ -9,10 +9,10 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfSinReq" id="myBtngeneraInformeDesfSinReq">Generar l'informe</button>
+			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfSinReq" id="myBtngeneraInformeDesfSinReq">Generar l'informe</button>
 			<span id="btn_5" class="">		
 			<!-- 				<a id ="wrapper_generaInformeDesfSinReq" class="" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_sin_requerimiento');?>">Envia a signar l'informe</a> -->
-				<button id="wrapper_generaInformeDesfSinReq" class='btn btn-secondary ocultar' onclick="enviaInformeDesfavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
+				<button id="wrapper_generaInformeDesfSinReq" class='btn btn-primary ocultar' onclick="enviaInformeDesfavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
 				<div id='infoMissingDataDoc5' class="alert alert-danger ocultar"></div>
 			</span>
 			<span id="spinner_5" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>	

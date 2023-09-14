@@ -1,5 +1,8 @@
 window.addEventListener('load', (event) => {
     let intervaloActualizacion = (document.getElementById("updateInterval").value/4 * 60 * 1000)/10;
+    if (intervaloActualizacion === 0) {
+        intervaloActualizacion = 60000
+    }
     intervaloActualizacion = intervaloActualizacion / 10
     const googleId = document.querySelector(".unreadMails").id;
 

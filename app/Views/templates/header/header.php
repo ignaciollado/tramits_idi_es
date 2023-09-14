@@ -5,7 +5,7 @@
 	<title><?= esc($titulo); ?></title>
 	<meta name="description" content="iTramits: Gestor d'ajuts i de subvencions de  l'IDI">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="google-signin-scope" content="profile email">
+	<!-- <meta name="google-signin-scope" content="profile email"> -->
 	<!--- PRODUCCIÓN -->
     <!--<meta name="google-signin-client_id" content="317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com">-->
 	<!--- DESARROLLO -->
@@ -13,12 +13,14 @@
 
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 	<link rel="shortcut icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/estilos.css"/>
-	<script src="https://apis.google.com/js/api:client.js"></script>
+	<!-- <script src="https://apis.google.com/js/api:client.js"></script> -->
 	<script type="text/javascript" src="/public/assets/js/pindust.js"></script>
 	<!--<script type="text/javascript" src="/public/assets/js/comprueba-CIF.js"></script>-->
 </head>
@@ -133,7 +135,9 @@ ul { list-style-type: none; }
 			<?php }?>					
 			<!--<li class="menu-item"><a title = "Sortida" href="<?php echo base_url('/public/index.php/logout'); ?>" target="_self"><i class="fas fa-power-off" style='color:orange;'></i></a></li>-->
 			<?php if ($session->get('rol')=='admin') {?>	
-				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/configuracion/configurador_edit'); ?>" target="_self"><?php echo lang('message_lang.config_menu');?></a></li>
+				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/configuracion/configurador_edit'); ?>" target="_self"><?php echo lang('message_lang.config_general');?></a></li>
+				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/configGestorAyudas/profile_management'); ?>" target="_self"><?php echo lang('message_lang.config_linea');?></a></li>
+
 			<?php }?>
 			<?php if ($session->get('rol')=='admin') {?>	
 				<li class="menu-item"><a href="https://soporte.viafirma.com/" target="_self">Soporte técnico VIAFIRMA</a></li>

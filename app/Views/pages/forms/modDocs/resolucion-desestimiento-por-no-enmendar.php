@@ -13,7 +13,7 @@
         else {?>
 				<span id="btn_2" class="">
 					<!-- <a href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_no_enmendar');?>" class="btn-primary-itramits">Genera el desistiment per no esmenar</a> -->
-					<button id="generaElDesestimiento" class='btn btn-secondary' onclick="enviaDesestimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
+					<button id="generaElDesestimiento" class = "btn btn-primary" onclick="enviaDesestimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
 					<div id='infoMissingDataDoc2' class="alert alert-danger ocultar"></div>
 				</span>
 					<span id="spinner_2" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>

@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-	  		<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myactaDeKickOff" id="myBtnactaDeKickOff">Genera l'acta</button>   
+	  		<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myactaDeKickOff" id="myBtnactaDeKickOff">Genera l'acta</button>   
 			<?php }?>	
 	  	
 		<span id="btn_14" class="">

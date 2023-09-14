@@ -8,7 +8,7 @@
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myDenegacion_8" id="myBtnResDenegacionSinReq">Motiu de la denegació</button>
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myDenegacion_8" id="myBtnResDenegacionSinReq">Motiu de la denegació</button>
 			<span id="btn_8" class="">
 				<!-- <a id="wrapper_motivoDenegacion_8" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_prop_res_denegacion_sin_req'); ?>" class="btn btn-primary-itramits">Genera la proposta</a> -->
 				<button id="wrapper_motivoDenegacion_8" class='btn btn-primary ocultar' onclick="enviaPropuestaResDenegacionSinRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a la firma <br>de Gerència IDI</button>

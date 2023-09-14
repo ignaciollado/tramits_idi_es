@@ -59,7 +59,9 @@ return [
    'dec_resp_con_menu'                => 'Declaració responsable consultor',
    'portafirmas_menu'                 => 'Portafirmes IDI',
    'sede_caib_menu'                   => 'Seu electrònica CAIB',
-   'config_menu'                      => 'Configuració',
+   'config_general'                => 'Configuració general',
+   'config_linea'                  => 'Configuració linia',
+
    'salida'                         => 'Finalitzar',
    'todas_las_solicitudes'			   => 'Totes les sol·licituds',
    'timbrado_de_documentos'         => 'Segellament electrònic de la documentació adjuntada a la sol·licitud',
