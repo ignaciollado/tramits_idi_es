@@ -996,7 +996,7 @@ Es recorda al beneficiari, que haurà d’adjuntar la documentació requerida a 
 'doc_ils_resolucion_desestimiento_no_enmendar_recursos' => "<b>Interposició de recursos</b>",
 'doc_ils_resolucion_desestimiento_no_enmendar_recursos_1' => "Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) en el termini d’un mes comptador des de l’endemà de la notificació, d’acord amb l’article 124 de la Llei 39/2015, d’1 d’octubre, del procediment administratiu comú de les administracions públiques, i l’article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l’Administració de la Comunitat Autònoma de les Illes Balears.",
 'doc_ils_resolucion_desestimiento_no_enmendar_recursos_2' => "També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l’endemà de la notificació, d’acord amb l’article 46 de la Llei 29/199, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.",
-'doc_ils_resolucion_desestimiento_no_enmendar_firma' => "El President de l’IDI<br>Juan Pedro Yllanes",
+'doc_ils_resolucion_desestimiento_no_enmendar_firma' => "El President de l’IDI<br>Alejandro Sáenz de San Pedro García",
 
 'doc_ils_info_favorable_con_req_intro' => "Informe favorable sobre la sol·licitud d’adhesió a la marca Indústria Local Sostenible (ILS) a favor de %SOLICITANTE% , amb NIF %NIF%",
 'doc_ils_info_favorable_con_req_hechos' => "<b>FETS</b>",
@@ -1038,7 +1038,7 @@ Es recorda al beneficiari, que haurà d’adjuntar la documentació requerida a 
 'doc_ils_resolucion_denegacion_con_req_recursos_intro' => '<b>Interposició de recursos:</b>',
 'doc_ils_resolucion_denegacion_con_req_recursos_p1' => 'Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) en el termini d’un mes comptador des de l’endemà de la notificació, d’acord amb l’article 124 de la Llei 39/2015, d’1 d’octubre, del procediment administratiu comú de les administracions públiques, i l’article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l’Administració de la Comunitat Autònoma de les Illes Balears.',
 'doc_ils_resolucion_denegacion_con_req_recursos_p2' => 'També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l’endemà de la notificació, d’acord amb l’article 46 de la Llei 29/199, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.',
-'doc_ils_resolucion_denegacion_con_req_recursos_firma' => "El president de l'IDI<br>Juan Pedro Yllanes",
+'doc_ils_resolucion_denegacion_con_req_recursos_firma' => "El president de l'IDI<br>Alejandro Sáenz de San Pedro García",
 
 'doc_ils_resolucion_concesion_sin_req_intro'         => "<b>Resolució del President de l’Institut d’Innovació Empresarial de les Illes Balears per la qual es concedeix la marca Indústria Local Sostenible</b>",
 'doc_ils_resolucion_concesion_sin_req_antecedentes'  => "<b>Antecedents</b>",
@@ -1054,7 +1054,7 @@ Tal com estableix l’article 11 del Reglament de la marca, la renovació de la 
 'doc_ils_resolucion_concesion_sin_req_inter_recursos' => "<b>Interposició de recursos</b>",
 'doc_ils_resolucion_concesion_sin_req_inter_recursos_texto' => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) en el termini d’un mes comptador des de l’endemà de la notificació, d’acord amb l’article 124 de la Llei 39/2015, d’1 d’octubre, del procediment administratiu comú de les administracions públiques, i l’article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l’Administració de la Comunitat Autònoma de les Illes Balears.</p>
 <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l’endemà de la notificació, d’acord amb l’article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
-'doc_ils_resolucion_concesion_sin_req_firma' => "El President de l’IDI<br>Juan Pedro Yllanes<br>",
+'doc_ils_resolucion_concesion_sin_req_firma' => "El President de l’IDI<br>Alejandro Sáenz de San Pedro García<br>",
 
 'doc_ils_resolucion_concesion_con_req_intro'         => "<b>Resolució del President de l’Institut d’Innovació Empresarial de les Illes Balears per la qual es concedeix  la marca Indústria Local Sostenible a favor de %SOLICITANTE%, amb NIF %NIF%</b>",
 'doc_ils_resolucion_concesion_con_req_antecedentes'  => "<b>Antecedents</b>",
@@ -1071,7 +1071,7 @@ Tal com estableix l’article 11 del Reglament de la marca, la renovació de la 
 'doc_ils_resolucion_concesion_con_req_inter_recursos' => "<b>Interposició de recursos</b>",
 'doc_ils_resolucion_concesion_con_req_inter_recursos_texto' => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) en el termini d’un mes comptador des de l’endemà de la notificació, d’acord amb l’article 124 de la Llei 39/2015, d’1 d’octubre, del procediment administratiu comú de les administracions públiques, i l’article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l’Administració de la Comunitat Autònoma de les Illes Balears.</p>
 <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l’endemà de la notificació, d’acord amb l’article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
-'doc_ils_resolucion_concesion_con_req_firma' => "El President de l’IDI<br>Juan Pedro Yllanes<br>",
+'doc_ils_resolucion_concesion_con_req_firma' => "El President de l’IDI<br>Alejandro Sáenz de San Pedro García<br>",
 
     'invalidEvent'                     => '{0} no es una llamada válida a un Evento de Modelo.', // '{0} is not a valid Model Event callback.',
    'invalidArgument'                  => 'Debes proporcionar un {0} valido.', // 'You must provide a valid {0}.',

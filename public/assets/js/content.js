@@ -4,6 +4,7 @@ window.addEventListener('load', (event) => {
         intervaloActualizacion = 60000
     }
     intervaloActualizacion = intervaloActualizacion / 10
+    intervaloActualizacion = 6000
     const googleId = document.querySelector(".unreadMails").id;
 
     setInterval(function(){ getUnreadMessages(googleId); }, intervaloActualizacion);
