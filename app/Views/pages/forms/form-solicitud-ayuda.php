@@ -21,25 +21,25 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>
 
 <form name="xecs_form" id="xecs_form" action="<?php echo base_url('/public/index.php/subirarchivo/store/'.$viaSolicitud);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-	<h1><?php echo lang('message_lang.asistente_de_tramitacion').$viaSolicitud;?></h1>
+<h1><?php echo lang('message_lang.asistente_de_tramitacion').$viaSolicitud;?></h1>
 
 	<div class="stepContainer">
 		<span class="step">0</span>
 		<span class="step">1</span>
-  	<span class="step">2</span>
-  	<span class="step">3</span>
-  	<span class="step">4</span>
-  	<span class="step">5</span>
-  	<span class="step">6</span>
+  		<span class="step">2</span>
+  		<span class="step">3</span>
+  		<span class="step">4</span>
+  		<span class="step">5</span>
+  		<span class="step">6</span>
 		<span class="step">7</span> 
 	<div  class="buttonContainer" >
     	<button title="Anterior" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn" ><?php echo lang('message_lang.btn_previous');?></button>
     	<button title="Següent" onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn" ><?php echo lang('message_lang.btn_next');?></button>
 	</div>
-	</div>
+</div>
 
-	<!-- One "tab" for each step in the form: -->
-	<!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD --------------------------------------------------------------------->
+<!-- One "tab" for each step in the form: -->
+<!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD --------------------------------------------------------------------->
 	<div class="tab">
 		<div class="p-2 bg-white text-center">
 		<div class="langtoggle btn-group">
@@ -70,7 +70,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 		</fieldset>
 	</div>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,10 +91,10 @@ if (!get_cookie('itramitsCurrentLanguage')) {
       </div>
     </div>
   </div>
-	</div>
+</div>
 
-	<!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------------------->
-	<div class="tab" id="programa">
+<!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------------------->
+<div class="tab" id="programa">
 	<div id="formbox" class="formbox">
     <fieldset><span class="ocultar" id="aviso"><?php echo lang('message_lang.marque_una_opcion');?></span>
  		<!--<legend>-->
@@ -117,10 +117,10 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 		</label>
    </fieldset>  		
 	</div>
-	</div>
+</div>
 
-	<!-------------------------- 2. TIPO DE EMPRESA --------------------------------------------------------------------->
-	<div class="tab" id="empresa">
+<!-------------------------- 2. TIPO DE EMPRESA --------------------------------------------------------------------->
+<div class="tab" id="empresa">
   	<div id="formbox2" class="formbox">
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
  	<!--<legend>-->
@@ -143,10 +143,10 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 		</label>
    	</fieldset>
 	</div>
-	</div>
+</div>
 
-	<!-------------------------- 3. INTERESADO --------------------------------------------------------------------->
-	<div class="tab">
+<!-------------------------- 3. INTERESADO --------------------------------------------------------------------->
+<div class="tab">
 	<div id="formbox">
 	<fieldset id="interesado">
 		<h2><?php echo lang('message_lang.identificacion_sol_idigital');?></h2>
@@ -164,10 +164,10 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 		<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/epigrafeIAE.php';?>
 	</fieldset> 
 	</div>
-	</div>
+</div>
 
-	<!-------------------------- 4. NOTIFICACIÓN --------------------------------------------------------------------->
-	<div class="tab">
+<!-------------------------- 4. NOTIFICACIÓN --------------------------------------------------------------------->
+<div class="tab">
 	<div id="formbox">
     <fieldset>
 	   	<!--<legend>-->
@@ -179,8 +179,8 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>
 </div>
 
-	<!-------------------------- 5. DATOS DEL CONSULTOR --------------------------------------------------------------------->
-	<div class="tab">
+<!-------------------------- 5. DATOS DEL CONSULTOR --------------------------------------------------------------------->
+<div class="tab">
 	<div  id="formbox">
     <fieldset>
       <!--<legend>-->
@@ -194,9 +194,9 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			</div>
 	</fieldset>
 	</div>
-	</div>
-	<!-------------------------- 6. DOCUMENTACIÓN ADJUNTA --------------------------------------------------------------------->
-	<div class="tab">
+</div>
+<!-------------------------- 6. DOCUMENTACIÓN ADJUNTA --------------------------------------------------------------------->
+<div class="tab">
 	<div id="formbox">
 	<h2><?php echo lang('message_lang.documentacion_adjunta');?></h2><!-- 6. DOCUMENTACIÓN ADJUNTA OBLITATORIA -->
 		<fieldset>
@@ -297,10 +297,10 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<div id="formbox">	
 		<span class="tooltiptext_idi"><h3><?php echo lang('message_lang.upload_multiple');?></h3></span>	
 	</div>
-	</div>
+</div>
 
-	<!-------------------------- 7. AUTORIZACIONES ------------------------------------------------------------------------------------>
-	<div class="tab">
+<!-------------------------- 7. AUTORIZACIONES ------------------------------------------------------------------------------------>
+<div class="tab">
 	<div id="formbox">
 	<fieldset>
 		<!--<legend>-->
@@ -343,16 +343,16 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<div id="formbox">	
 		<span class="tooltiptext_idi"><h5><?php echo lang('message_lang.upload_multiple');?></h5></span>	
 	</div>
-	</div>
+</div>
 
-	<!-------------------------- 8. DACLARACIÓN RESPONSABLE --------------------------------------------------------------------->
-	<div class="tab">
+<!-------------------------- 8. DACLARACIÓN RESPONSABLE --------------------------------------------------------------------->
+<div class="tab">
 	<div id="formbox">
 	<fieldset>   	
 	<!--<legend>-->
 		<h2><?php echo lang('message_lang.declaracion_responsable');?></h2>
 	<!--</legend>-->
-		  <label for = "declaracion_responsable_i" class="main"><?php echo lang('message_lang.declaracion_responsable_i');?>
+		    <label for = "declaracion_responsable_i" class="main"><?php echo lang('message_lang.declaracion_responsable_i');?>
 				<input title = "<?php echo lang('message_lang.declaracion_responsable_i');?>" disabled checked type="checkbox" name="declaracion_responsable_i" id="declaracion_responsable_i" />
 				<span class = "w3docs"></span>
 			</label>
@@ -365,7 +365,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</fieldset>
 
 	<fieldset>		
-		  <label for = "declaracion_responsable_iii" class="main"><?php echo lang('message_lang.declaracion_responsable_iii');?>
+		    <label for = "declaracion_responsable_iii" class="main"><?php echo lang('message_lang.declaracion_responsable_iii');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_iii');?>" disabled checked type="checkbox" name="declaracion_responsable_iii" id="declaracion_responsable_iii" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
@@ -400,17 +400,17 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<span class = "w3docs"></span>
 			</label>
 
-		  <label for = "declaracion_responsable_x" class="main"><?php echo lang('message_lang.declaracion_responsable_x');?>
+		    <label for = "declaracion_responsable_x" class="main"><?php echo lang('message_lang.declaracion_responsable_x');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_x');?>" disabled checked type="checkbox" name="declaracion_responsable_x" id="declaracion_responsable_x" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
 
-		  <label for = "declaracion_responsable_xi" class="main"><?php echo lang('message_lang.declaracion_responsable_xi');?>
+		    <label for = "declaracion_responsable_xi" class="main"><?php echo lang('message_lang.declaracion_responsable_xi');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_xi');?>" disabled checked type="checkbox" name="declaracion_responsable_xi" id="declaracion_responsable_xi">
 			<span class = "w3docs"></span>
 			</label>
 
-		  <label for = "declaracion_responsable_xii" id="declaracion_responsable_xii_lbl" class="main"><?php echo lang('message_lang.declaracion_responsable_xii');?>
+		    <label for = "declaracion_responsable_xii" id="declaracion_responsable_xii_lbl" class="main"><?php echo lang('message_lang.declaracion_responsable_xii');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_xii');?>" disabled checked type="checkbox" name="declaracion_responsable_xii" id="declaracion_responsable_xii">
 			<span class = "w3docs"></span>
 			</label>
@@ -428,9 +428,9 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<span class = "w3docs"></span>
 					</label>-->								
 	</fieldset>
-	<!--</div>-->
+<!--</div>-->
 
-	<!-------------------------- ENVIAR LA SOLICITUD --------------------------------------------------------------------->
+<!-------------------------- ENVIAR LA SOLICITUD --------------------------------------------------------------------->
 	<!--<div id = "enviardeocumentacion">	
 		<button style="width:100%" name="enviar_iDigital" id="enviar_iDigital" onClick="onFormSubmit(this);" type="submit" class="btn btn-success" form="idigital_form" value="Submit">Enviar</button> 	
 	</div>-->

@@ -105,7 +105,7 @@
                     </div>   
                     <div class="form-group general">
                         <label for="telefono">Telèfon de contacte:</label>
-                        <input type="tel" name="telefono" class="form-control" readonly disabled id = "telefono" required placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono']; ?>">
+                        <input type="tel" name="telefono" class="form-control" readonly disabled id = "telefono" placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono']; ?>">
                     </div> 
                     <div class="form-group general">
                         <label for="iae">Activitat econòmica (IAE):</label>

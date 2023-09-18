@@ -28,12 +28,12 @@ foreach ($query->getResult('array') as $row)
 <?php  }?>
 
   <!-- The Modal para generar el correo de justificación -->
-  <div id="myEnviarFormularioItinerarioFormativo" class="modal" role="dialog">
+  <div id="myEnviarFormularioItinerarioFormativo" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Sol·licitud del certificat itinerari formatiu ILS</strong></label>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<h4 class="modal-title">Sol·licitud del certificat itinerari formatiu ILS</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">

@@ -11,7 +11,7 @@ class Crud extends BaseController
 	    $crud = new GroceryCrud();
 	    $crud->setTable('pindust_expediente')
             ->setSubject('Sol·licitud', 'Sol·licituts')
-            ->columns(['idExp', 'convocatoria', 'tipo_tramite', 'situacion', 'nif', 'empresa', 'domicilio', 'localidad', 'cc_datos_bancarios', 'cpostal', 'telefono',
+            ->columns(['idExp', 'convocatoria', 'tipo_tramite', 'situacion', 'nif', 'empresa', 'domicilio', 'localidad', 'cpostal', 'telefono',
                         'telefono_rep', 'email_rep', 'nom_consultor', 'empresa_consultor', 'tel_consultor', 'mail_consultor',
                         'iae', 'importeAyuda', 'porcentajeConcedido','fecha_acta_cierre', 'fecha_REC', 'fecha_REC_enmienda', 'fecha_REC_amp_termino',
                         'fecha_REC_justificacion', 'fecha_REC_requerimiento_justificacion', 'fecha_REC_desestimiento', 'fecha_enmienda',
@@ -28,7 +28,6 @@ class Crud extends BaseController
                         ->displayAs('telefono_rep', 'Telèfon notificacions')
                         ->displayAs('email_rep', 'Mail notificacions')
                         ->displayAs('iae', 'IAE')
-                        ->displayAs('cc_datos_bancarios', 'CC')
                         ->displayAs('importeAyuda', 'Import ajut')
                         ->displayAs('porcentajeConcedido', '% concedit')
 

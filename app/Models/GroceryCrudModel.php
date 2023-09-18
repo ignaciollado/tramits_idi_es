@@ -489,7 +489,6 @@ class GroceryCrudModel extends Model {
     function db_insert($post_array)
     {
     	$insert = $this->db->table($this->table_name)->insert($post_array);
-
     	if($insert) {
     		return $this->db->insertID();
     	}

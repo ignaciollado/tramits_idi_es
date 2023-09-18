@@ -64,7 +64,7 @@ return [
    'todas_las_solicitudes'			  => 'Todas las solicitudes',
    'timbrado_de_documentos'        => 'Sellado electrónico de la documentación adjuntada a la solicitud',
    'generado_correctamente'        => "Se ha generado correctamente la ", 
-   'titulo_sol_form'	              => "Solicitud de cheques de consultoría para impulsar a la industria de Baleares en materia de digitalización, internacionalización y sostenibilidad.",
+   'titulo_sol_form'	              => "Formulario de solicitud",
    'titulo_sol_form_ils'	               => "Programa de adhesión a Industria Local Sostenible (ILS)",
 
    'titulo_sol_idigital'			  => "Solicitud de ayuda y/o subvención",
@@ -173,7 +173,7 @@ return [
    'condicion_rep_apoderado'          => "Apoderado",
    'conCIF'							  => " con NIF ",
    'direccion_rep_legal_sol_idigital' => "Dirección",
-   'tel_rep_legal_sol_idigital' 	     => "Teléfono móvil a efectos de notificaciones",
+   'tel_rep_legal_sol_idigital' 	     => "Teléfono móvil del solicitante o del representante",
    'mail_rep_legal_sol_idigital' 	  => "Dirección electrónica a efectos de notificaciones",
    'tit_tel_rep_legal_sol_idigital'   => "Teléfono móvil a efectos de notificaciones (podrá recibir algún SMS nuestro con la finalidad de informarle).",
    'tit_mail_rep_legal_sol_idigital'  => "Dirección electrónica a efectos de notificaciones (será la dirección de correo que usaremos para enviarle información y notificaciones.",
@@ -474,7 +474,7 @@ return [
 'notalegal' 	=> "<p><u>AVISO LEGAL</u>: este mensaje y sus archivos adjuntos van dirigidos exclusivamente a su destinatario y pueden contener información confidencial sometida a secreto profesional. No es permitida su comunicación, reproducción o distribución sin la autorización exprés del INSTITUTO De INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES Si no sois el destinatario final, por favor eliminadlo e informadnos por esta vía.</p>",
 'no_imprimir' 	=> "<p><span style='color: green;'>Antes de imprimir este mensaje, por favor, asegúrese de que realmente es necesario. El medio ambiente es en nuestras manos.</span></p>",
 'texto_enlace'  => "Declaración responsable del consultor/habilitador",
-'firma'         => "<p><a href='http://www.idi.es' title='IDI'>Instituto de Innovación Empresarial de las Islas Baleares (IDI)</a></p><p><a href='http://www.caib.es' title='CAIB'>Consejería de Transición Energética y Sectores Productivos</a></p><p>Gobierno de las Islas Baleares</p><p></p><p>Plaza de Son Castelló, 1 - 07009, Palma. Islas Baleares</p><p></p>",
+'firma'         => "<p><a href='http://www.idi.es' title='IDI'>Instituto de Innovación Empresarial de las Islas Baleares (IDI)</a></p><p><a href='http://www.caib.es' title='CAIB'>Consejería de Empresa, Ocupación y Energía</a></p><p>Gobierno de las Islas Baleares</p><p></p><p>Plaza de Son Castelló, 1 - 07009, Palma. Islas Baleares</p><p></p>",
 'firma_ils'     => "Firma",
 'fecha_ils'     => "Fecha",
 'doc_info_favorable_cabecera' => "Informe favorable sobre la solicitud de ayuda para el diseño de un plan de transformación digital para %SOLICITANTE%, con NIF %NIF%",
@@ -503,10 +503,8 @@ return [
       <li>El contrato de la operación financiera</li>
       <li>El contrato o documento de aval de la operación financiera</li>
       <li>En el caso de inversiones certificadas como verdes según la taxonomía europea, se deberá aportar certificado</li>
-   </ol>
-   <h3><strong>
-   Els documents anteriors no s'hauran d'aportar quan ja constin en un altre expedient, o l'Administració els pugui sol·licitar directament.</strong></h3>",
-'documentacion_resultante_cabecera_idi_isba' => "Al finalizar este trámite, recibirá por correo electrónico un documento pdf que contendrá:",
+   </ol>",
+'documentacion_resultante_cabecera_idi_isba' => "<strong>Al finalizar este trámite, recibirá por correo electrónico un documento pdf que contendrá:</strong>",
 'documentacion_resultante_idi_isba' => '<ol class="formbox">
                                              <li>El documento normalizado de solicitud de subvención de esta convocatoria.</li>
                                              <li>Una Declaración responsable de la persona titular de la empresa o de quien la representa legalmente.</li>
@@ -515,7 +513,7 @@ return [
 'operacion_financiera_idi_isba'  => "OPERACIÓN FINANCIERA",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTAMO",
 'entidad_financiera_idi_isba'    => "Entidad financiera",
-'importe_prestamo_entidad_idi_isba' => "Importe préstamo entidad financiera (€)",
+'importe_prestamo_entidad_idi_isba' => "Importe de la operación",
 'plazo_prestamo_entidad_idi_isba' => "Plazo préstamo entidad financiera",
 'carencia_prestamo_entidad_idi_isba'     => "Carencia préstamo entidad financiera (si procedeix) en anys",
 
@@ -523,7 +521,7 @@ return [
 'cuantia_prestamo_idi_isba'      => "Cuantía aval de ISBA, SGR (€)",
 'plazo_prestamo_idi_isba'        => "Plazo aval de ISBA, SGR (en años)",
 'carencia_idi_isba'              => "Carencia aval de ISBA, SGR (en años)",
-'fecha_del_aval_idi_isba'        => "Fecha del aval de ISBA, SGR",
+'fecha_del_aval_idi_isba'        => "Fecha formalización aval",
 'proyecto_de_inversion_idi_isba' => "PROYECTO DE INVERSIÓN",
 'proyecto_de_inversion_idi_isba_finalidad' => "Finalidad de la inversión",
 'presupuesto_proyecto_de_inversion_idi_isba' => "PRESUPUESTO DEL PROYECTO DE INVERSIÓN",
@@ -547,8 +545,8 @@ return [
 'documentacion_adjunta_requerida_idi_isba_f' => "La copia de las escrituras de constitución de la empresa solicitante, así como de los vigentes estatutos o documento fundacional correspondiente, en los que consten las normas por las que se regulan sus actividades, debidamente registradas, en su caso, en los registros públicos competentes.",
 'documentacion_adjunta_requerida_idi_isba_g' => "La documentación acreditativa de estar dado de alta en el Censo de Empresarios Profesionales y Retenedores y en el Impuesto sobre Actividades Económicas (IAE). El solicitante tiene que presentar al menos unos de estos dos certificados de situación censal de la Agencia Estatal de Administración Tributaria:
 <ol>
-   <li> Certificado de alta en el Censo de empresarios, profesionales y retenedores.</li>
-   <li> Certificado de alta en el Censo de actividades económicas.</li>
+   <li>Certificado de alta en el Censo de empresarios, profesionales y retenedores.</li>
+   <li>Certificado de alta en el Censo de actividades económicas.</li>
 </ol>",
 'documentacion_adjunta_requerida_idi_isba_h' => "El certificado de estar al corriente de pago con la Agencia Tributaria (AEAT).",
 'documentacion_adjunta_requerida_idi_isba_i' => "El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.",
@@ -919,7 +917,7 @@ d’assessorament i acompanyament i el tractament de dades de caràcter confiden
 'doc_acuerdo_de_confidencialidad_firma_2'   => "Tècnica de l’IDI",
 
 'doc_informe_de_liquidacion_asunto'   => "Informe de liquidació de la subvenció concedida a favor de %SOLICITANTE% (núm. exp. %EXPED%)",
-'doc_informe_de_liquidacion_p1'   => "El %FECHAFIRMARESCONCESION% es va concedir l’ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTE%, en el marc de la convocatòria per a la concessió d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat, aprovada per Resolució del conseller de Transició Energètica i Sectors Productius i president de l'IDI (BOIB Núm. %BOIBNUM%), ",
+'doc_informe_de_liquidacion_p1'   => "El %FECHAFIRMARESCONCESION% es va concedir l’ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTE%, en el marc de la convocatòria per a la concessió d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat, aprovada per Resolució del conseller d'Empresa, Ocupació i Energia i president de l'IDI (BOIB Núm. %BOIBNUM%), ",
 //'doc_informe_de_liquidacion_p1_1'   => "i la resolució del president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) per la qual s’acorda traspassar crèdit, ampliar crèdit i modificar la convocatòria per a la concessió d’ajuts de xecs de consultoria per impulsar la indústria de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat ( BOIB Núm. %BOIBNUM%)",
 'doc_informe_de_liquidacion_p2'   => "El %FECHAPAGO%, l’IDI va pagar l’ajut de %IMPORTE% en concepte de bestreta.",
 'doc_informe_de_liquidacion_p2_2' => "El %FECHARECJUSTIFICACION% i amb núm. de registre %REFRECJUSTIFICACION% va presentar la documentació justificativa de la subvenció. L’import justificat és de %IMPORTE%.",

@@ -3,28 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo lang('message_lang.titulo_solicitud_idi_isba');?></title>
-	<meta name="description" content="Assistent per sol·licitar la linia de ajuts idi-isba">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+	<meta name="description" content="Assistent per sol·licitar la linia de ajuts idi-isba" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-idi-isba.css"/>
-	<script defer type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
-	<script defer type="text/javascript" src="/public/assets/js/adhesion-idi-isba.js"></script>	
 </head>
 
 
 <?php
 		use App\Models\ConfiguracionModel;
+		use App\Models\ConfiguracionLineaModel;
 		use App\Models\ExpedientesModel;
-		$configuracion = new ConfiguracionModel();
+		$generalConfig = new ConfiguracionModel;
+		$lineaConfig = new ConfiguracionLineaModel();
+
+		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ISBA');
+
 		$modelExp = new ExpedientesModel();
 		$db = \Config\Database::connect();
 		
 		$uri = new \CodeIgniter\HTTP\URI();
 		$request = \Config\Services::request();
 	
-		$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+		/* $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first(); */
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 ?>
 
@@ -43,7 +46,7 @@
 				<img src='/public/assets/images/logo-isba-sgr-317.png' alt=' logo isba sgr'>
 			</a>
 			<a href='https://www.idi.es' target="_blank">
-				<img width="70%" src='/public/assets/images/logo_institut_dinnovacio_empresarial_col_horitz.jpg' alt='logo idi-conselleria'>
+				<img width="70%" src='/public/assets/images/logo_idi_conselleria.jpg' alt='logo idi-conselleria'>
 			</a>
 		</div>
 
@@ -56,7 +59,7 @@
 		</div>
 
 		<div class='siacode'>
-			<h5><?php echo lang('message_lang.Codi_SIA');?>: xxxxx<?php echo $data['configuracion']['codigoSIA'];?>xxxx</h5>
+			<h5><?php echo lang('message_lang.Codi_SIA');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
 		</div>
 
 		<div class="formspecifications">
@@ -66,3 +69,7 @@
 		</div>
 	</header>
 </article>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script defer type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
+<script defer type="text/javascript" src="/public/assets/js/adhesion-idi-isba.js"></script>	

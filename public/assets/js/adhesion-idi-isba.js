@@ -69,11 +69,17 @@ function tipoSolicitante (valor) {
 				document.getElementById("nif").title = 'DNI / NIE';
 				document.getElementById("denom_interesado").setAttribute("placeholder", "Nom");
 				document.getElementById("denom_interesado").setAttribute("title", "Nom");
+				document.getElementById("nom_representante").value = ""
+				document.getElementById("nom_representante").readOnly = true
+				document.getElementById("nom_representante").disabled = true
+				document.getElementById("nif_representante").readOnly = true
+				document.getElementById("nif_representante").disabled = true
+				document.getElementById("domicilio_rep").readOnly = true
+				document.getElementById("domicilio_rep").disabled = true
+				document.getElementById("telefono_contacto_rep").readOnly = true
+				document.getElementById("telefono_contacto_rep").disabled = true
 				break;
 			case 'pequenya':
-       	document.getElementById("nif").placeholder = 'NIF';
-				document.getElementById("nif").title = 'NIF'; 
-				break;
 			case 'mediana':
 				if (document.contains(document.getElementById("file_altaAutonomos"))) {
 					document.getElementById("file_altaAutonomos").remove();
@@ -81,8 +87,18 @@ function tipoSolicitante (valor) {
 				if (document.contains(document.getElementById("docConstitutivoCluster"))) {
 					document.getElementById("docConstitutivoCluster").remove();
 				}
-        document.getElementById("nif").placeholder = 'NIF';
-				document.getElementById("nif").title = 'NIF';
+        		document.getElementById("nif").placeholder = 'NIF empresa';
+				document.getElementById("nif").title = 'NIF empresa';
+				document.getElementById("denom_interesado").placeholder = 'Raó social';
+				document.getElementById("denom_interesado").title = 'Raó social';
+				document.getElementById("nom_representante").readOnly = false
+				document.getElementById("nom_representante").disabled = false
+				document.getElementById("nif_representante").readOnly = false
+				document.getElementById("nif_representante").disabled = false
+				document.getElementById("domicilio_rep").readOnly = false
+				document.getElementById("domicilio_rep").disabled = false
+				document.getElementById("telefono_contacto_rep").readOnly = false
+				document.getElementById("telefono_contacto_rep").disabled = false
 				break;
 		}
 }
@@ -656,4 +672,20 @@ function rellenaElFormulario(id) {
 		});
 
 		restResultDialog.open = false
+}
+
+function getReaNum( reaVal ) {
+	console.log (reaVal.value, reaVal.checked)
+	if (reaVal.value === "reaNum") {
+		document.getElementById("reaNum").type = "text"
+	} else {
+		document.getElementById("reaNum").value = ""
+		document.getElementById("reaNum").type = "hidden"
+	}
+	if (reaVal.value === "expedISBA") {
+		document.getElementById("expedISBA").type = "text"
+	} else {
+		document.getElementById("expedISBA").value = ""
+		document.getElementById("expedISBA").type = "hidden"
+	}
 }

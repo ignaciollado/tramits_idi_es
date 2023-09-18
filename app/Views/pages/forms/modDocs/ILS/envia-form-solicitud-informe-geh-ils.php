@@ -20,7 +20,7 @@ foreach ($query->getResult('array') as $row)
 					?>
 
 						<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
-						data-toggle = "modal" data-target = "#myEnviarInformeGEH" 
+						data-bs-toggle="modal" data-bs-target = "#myEnviarInformeGEH" 
 						id="myBtnEnviarInformeGEH" 
 						title="Torna a sol·licitar el document">Notifica 
 						<span class="badge text-bg-secondary"><?php echo $totalNotifications;?></span>
@@ -29,12 +29,12 @@ foreach ($query->getResult('array') as $row)
 		  <?php }?>
 
   <!-- The Modal para generar el correo de justificación-->
-  <div id="myEnviarInformeGEH" class="modal fade" role="dialog">
+  <div id="myEnviarInformeGEH" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Sol·licitud de l'Informe d'Inventari de GEH segons la norma ISO 14.064-1 de ILS</strong></label>
-        				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Sol·licitud de l'Informe d'Inventari de GEH segons la norma ISO 14.064-1 de ILS</h4>
+        				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">

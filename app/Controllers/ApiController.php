@@ -71,7 +71,7 @@ class ApiController extends ResourceController
         }
     }
 
-    // single by IdExp, optionally convo, optionally linea de ayuda
+    // single by IdExp
     public function getExpediente($idExp=null, $convo=null, $linea=null ) {
         $apiModel = new ApiModel();
 
@@ -84,7 +84,7 @@ class ApiController extends ResourceController
         $where .= " AND tipo_tramite = '" . $linea ."'";
 
         $data = $apiModel->where( $where )->findAll();
-
+echo $where;
         if($data){
             return $this->respond($data);
         }else{
@@ -92,11 +92,11 @@ class ApiController extends ResourceController
         }
     }
 
-    // single by NIF (DNI, CIF, NIE), optionally linea de ayuda
-    public function getExpedientebyNIF($nif = null, $linea = null, $convo = null) {
+    // single by NIF (DNI, CIF, NIE)
+    public function getExpedientebyNIF($nif = null, $program = null, $convo = null) {
           $apiModel = new ApiModel();
   
-          $linea = str_replace("%20", " ", $linea);
+          $program = str_replace("%20", " ", $program);
   
           $where = "nif = '" . $nif ."'";
           $data = $apiModel->where( $where )->findAll();
@@ -108,7 +108,7 @@ class ApiController extends ResourceController
           }
     }
 
-    // single by expediente IDI (nnnn/AAAA) and convo
+    // single by expediente IDI (nnnn/AAAA)
     public function getExpedientebyExp($idExp = null, $convo = null) {
             $apiModel = new ApiModel();
     
@@ -121,9 +121,9 @@ class ApiController extends ResourceController
             }else{
                 return $this->failNotFound('Expediente with this NIF does not exist.');
             }
-    }
+      }
 
-    // obtiene todo los datos de la convo-linea ayuda por id
+    // obtiene datos convo-linea ayuda
     public function getConvocatoria($id = null) {
         $apiModel = new ApiModel();
 
@@ -176,7 +176,7 @@ class ApiController extends ResourceController
         }
     }
 
-    /*   private function genericResponse($data, $msj, $code)    {        
+  /*   private function genericResponse($data, $msj, $code)    {        
       if ($code == 200) {            
         return $this->respond(array( "data" => $data, "code" => $code )); 
         //, 404, "No hay nada"        

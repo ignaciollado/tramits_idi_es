@@ -28,30 +28,20 @@
 	<div class="menu">
 		<div>
 			<a href="http://www.idi.es" target="_blank">
-				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_institut_dinnovacio_empresarial_col_horitz.jpg";?>" />
+				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_idi_conselleria.jpg";?>" />
 			</a>
 		</div>
 		<div>
 		<?php
-	use App\Models\ConfiguracionModel;
-	$modelConfig = new ConfiguracionModel();
-	//$db = \Config\Database::connect();
-	$data['configuracion'] = $modelConfig->where('convocatoria_activa', true)->first();	
 	?>
 
     <fieldset>
 		<h4><?php echo lang('message_lang.destino_solicitud');?>: <strong><?php echo lang('message_lang.idi');?></strong></h4>
-		<h4><?php echo lang('message_lang.codigo_dir3');?> <strong><?php echo $data['configuracion']['emisorDIR3'];?></strong></h4>
-		<h4><?php echo lang('message_lang.codigo_sia');?> <strong><?php echo $data['configuracion']['codigoSIA'];?></strong></h4>
-		<h4><?php echo lang('message_lang.convocatoria_sol_idigital');?>: <strong><?php echo $data['configuracion']['convocatoria'];?></strong></h4>
+		<h4><?php echo lang('message_lang.codigo_dir3');?> <strong><?php echo $configuracion['emisorDIR3'];?></strong></h4>
+		<h4><?php echo lang('message_lang.codigo_sia');?> <strong><?php echo $configuracionLinea['codigoSIA'];?></strong></h4>
+		<h4><?php echo lang('message_lang.convocatoria_sol_idigital');?>: <strong><?php echo $configuracionLinea['convocatoria'];?></strong></h4>
 	</fieldset> 
 		</div>
 	</div>
-  <!--<div class="p-2 bg-white text-center">
-	<div class="btn-group">
-	<a href="<?php echo base_url('/public/index.php/home/set_lang/ca'); ?>" class="btn btn-outline-light text-dark" role="button"> Català</a>
-	<a href="<?php echo base_url('/public/index.php/home/set_lang/es'); ?>" class="btn btn-outline-light text-dark" role="button"> Castellano</a>
-	</div>
-  </div>-->
 </header>
 </section>

@@ -10,7 +10,7 @@
 html {
   font-family: Alegreya, "Open Sans", sans-serif;
   color: rgb(0, 0, 0);
-  font-size: 14px;
+  font-size: 12px;
   box-sizing: border-box; /* para obligar al navegador que use el modelo de cajas alternativo donde, al ancho y al alto de la caja NO hay que sumar padding, margin, border*/
 }
 html, body {

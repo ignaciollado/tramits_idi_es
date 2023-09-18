@@ -6,19 +6,21 @@
       <?php }
         else {?>
 			  <button type = "button" class = "btn-primary-itramits" 
-				data-toggle = "modal" data-target = "#myEnviarFormularioEmpresa" 
+			  	data-bs-toggle="modal" data-bs-target = "#myEnviarFormularioEmpresa" 
 				id="myBtnEnviarFormEmpresa">Enviar al sol·licitant el formulari de sol·licitud de dades per a la web de ILS</button>       
 		  <?php }?>
 
 
   <!-- The Modal para generar el correo de justificación-->
-  <div id="myEnviarFormularioEmpresa" class="modal fade" role="dialog">
+  <div id="myEnviarFormularioEmpresa" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
+
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Sol·licitar dades adicionals d'empresa per a la web de ILS</strong></label>
-        				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Sol·licitar dades adicionals d'empresa per a la web de ILS</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
+
     				<div class="modal-body">
 						<div class="form-group">
 							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè pugui afegir dades de l'empresa?</span>

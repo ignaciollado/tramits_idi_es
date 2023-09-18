@@ -76,7 +76,7 @@ $email_message .= "<div><a title='Obrir el formulari per fer-nos arribar l´itin
     $email_message .= "<br><div>Pilar Jordi Amorós</div>";
     $email_message .= "<br><div>Cap de Servei de Política Industrial</div>";
     $email_message .= "<div><strong>Institut d'Innovació Empresarial de les Illes Balears</strong></div>";
-    $email_message .= "<div><strong>Vicepresidència de Transició Energètica, Sectors Productius i Memòria Democràtica</strong></div>";
+    $email_message .= "<div><strong>Conselleria Empresa, Ocupació i Energia</strong></div>";
     $email_message .= "<div>Telèfon 971 176161 + 62891</div>";
     $email_message .= "<div>Plaça de Son Castelló, 1</div>";
     $email_message .= "<div>07009 Palma</div></td></tr>";

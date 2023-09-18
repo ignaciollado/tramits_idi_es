@@ -13,9 +13,10 @@ class ConfigGestorAyudas extends BaseController
         $crud->setExport();
 	    $crud->setTable('pindust_linea_ayuda')
             ->setSubject('Linea de ayuda', 'Lineas de ayudas')
-            ->columns(['id', 'codigoSIA', 'lineaAyuda', 'convocatoria', 
-                        'num_BOIB', 'num_BOIB_modific', 'convocatoria_desde', 'convocatoria_hasta'])
+            ->columns(['id', 'codigoSIA', 'lineaAyuda', 'convocatoria', 'activeLineData', 
+                        'num_BOIB', 'convocatoria_desde', 'convocatoria_hasta'])
             
+                        ->displayAs('activeLineData', "Convocatòria activa?")
                         ->displayAs('lineaAyuda', "Linia d'ajuda")
                         ->displayAs('programa', 'Programa')
                         ->displayAs('convocatoria', 'Convocatòria')
@@ -25,11 +26,14 @@ class ConfigGestorAyudas extends BaseController
                         ->displayAs('directorGerenteIDI', 'Director Gerent')
                         ->displayAs('codigoSIA', 'cod. SIA')
                         ->displayAs('dias_fecha_lim_justificar', "Màxim dies per justificar l'ajut rebut")
+                        ->displayAs('convocatoria_aviso_ca', "Nota convocatòria pendent de publicació")
+                        ->displayAs('convocatoria_aviso_es', "Nota convocatoria pendiente de publicación")
 
 
-            ->fields(['convocatoria', 'lineaAyuda', 'codigoSIA', 'num_BOIB', 'num_BOIB_modific', 'programa', 'convocatoria_desde', 'convocatoria_hasta', 'dias_fecha_lim_justificar'])
 
-            ->requiredFields(['convocatoria', 'codigoSIA', 'lineaAyuda', 'num_BOIB',  'convocatoria_desde', 'convocatoria_hasta']);
+            ->fields(['convocatoria', 'lineaAyuda', 'activeLineData', 'codigoSIA', 'num_BOIB', 'num_BOIB_modific', 'programa', 'convocatoria_desde', 'convocatoria_hasta', 'dias_fecha_lim_justificar', 'convocatoria_aviso_ca', 'convocatoria_aviso_es'])
+
+            ->requiredFields(['convocatoria', 'activeLineData', 'lineaAyuda', 'codigoSIA', 'num_BOIB',  'convocatoria_desde', 'convocatoria_hasta', 'convocatoria_aviso_ca', 'convocatoria_aviso_es']);
 
         $crud->fieldType('convocatoria', 'dropdown', ['2020' => '2020',
         '2021' => '2021',
@@ -44,6 +48,9 @@ class ConfigGestorAyudas extends BaseController
         $crud->fieldType('lineaAyuda', 'dropdown', ['XECS' => 'XECS',
         'ILS' => 'ILS',
         'ISBA' => 'ISBA']);
+
+        $crud->fieldType('activeLineData', 'dropdown', ['SI' => 'SI',
+        'NO' => 'NO']);
 
         $crud->fieldType('codigoSIA', 'number');
         $crud->fieldType('dias_fecha_lim_justificar', 'number');

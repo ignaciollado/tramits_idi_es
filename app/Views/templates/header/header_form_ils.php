@@ -45,7 +45,7 @@
 	<header class="header__formempresasils">
 		<fieldset  class="header__formempresasils--logo">
 			<a href="http://www.idi.es" target="_blank">
-				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_institut_dinnovacio_empresarial_col_horitz.jpg";?>" />
+				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_idi_conselleria_ils.jpg";?>" />
 			</a>
 		</fieldset>
 		<fieldset  class="header__formempresasils--documento">

@@ -144,22 +144,6 @@ $html .= "</ol>";
 $html .= "<br>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-// remove default header/footer
-/* $pdf->setPrintHeader(false);
-$pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png'; */
-// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
-// align: T (top), M (middle), B (bottom), N (next line)
-/* $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false); */
-
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
-$parrafo_pre = lang('message_lang.doc_ils_info_favorable_con_req_preconclusion');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_pre ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, ''); */
-
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_ils_info_favorable_con_req_conclusion'));

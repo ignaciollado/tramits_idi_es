@@ -1,0 +1,108 @@
+CRITICAL - 2023-09-18 08:59:02 --> Call to a member function configuracionGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:01:39 --> Call to a member function configuracionGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:03:13 --> Call to a member function configuracionnGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:04:25 --> Call to a member function configuracionnGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:05:15 --> Call to a member function configuracionnGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:06:23 --> Call to a member function configuracionGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:07:39 --> Call to a member function configuracionGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:45 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:50 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:51 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:51 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:52 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:52 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:52 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:52 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:08:52 --> Call to a member function activeConfigurationLineData() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_ayuda()
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:29:52 --> Call to a member function configuracionGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_linea_idi_isba('es')
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-09-18 09:30:09 --> Call to a member function configuracionGeneral() on null
+#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_linea_idi_isba('es')
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}

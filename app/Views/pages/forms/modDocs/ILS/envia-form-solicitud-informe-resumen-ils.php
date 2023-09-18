@@ -17,7 +17,7 @@ foreach ($query->getResult('array') as $row)
       <?php }
         else {?>
 				<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
-				data-toggle = "modal" data-target = "#myEnviarFormularioInformeResumen" 
+				data-bs-toggle="modal" data-bs-target = "#myEnviarFormularioInformeResumen" 
 				id="myBtnEnviarFormularioInformeResumen" title="Torna a sol·licitar el document">
 				Notifica <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary"><?php echo $totalNotifications;?></span>
                                                 </button>    
@@ -25,12 +25,12 @@ foreach ($query->getResult('array') as $row)
 
 
   <!-- The Modal para generar el correo-->
-  <div id="myEnviarFormularioInformeResumen" class="modal fade" role="dialog">
+  <div id="myEnviarFormularioInformeResumen" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModalActaCierre"><strong>Sol·licitud de l'Informe resum ILS</strong></label>
-        				<button id="cerrarModalActaCierre" type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Sol·licitud de l'Informe resum ILS</h4>
+        				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">

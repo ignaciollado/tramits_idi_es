@@ -5,17 +5,18 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
         else {?>
-			  <button type = "button" class = "btn-primary-itramits" data-toggle = "modal" data-target = "#myEnviarManualYLogotipo" id="myBtnEnviarManualYLogotipo">Enviar al sol·licitant el manual d'ús i els logotips ILS</button>       
+			  <button type = "button" class = "btn-primary-itramits" 
+			  data-bs-toggle="modal" data-bs-target = "#myEnviarManualYLogotipo" id="myBtnEnviarManualYLogotipo">Enviar al sol·licitant el manual d'ús i els logotips ILS</button>       
 		  <?php }?>
 
 
   <!-- The Modal para generar el correo de justificación-->
-  <div id="myEnviarManualYLogotipo" class="modal fade" role="dialog">
+  <div id="myEnviarManualYLogotipo" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<label for="cerrarModal"><strong>Enviar el manual i els logotips de ILS</strong></label>
-        				<button id="cerrarModal" type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Enviar el manual i els logotips de ILS</h4>
+        				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">

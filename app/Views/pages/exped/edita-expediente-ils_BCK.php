@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col docsExpediente">
             <form action="<?php echo base_url('public/index.php/expedientes/update');?>" name="exped-fase-0" id="exped-fase-0" method="post" accept-charset="utf-8">
-	        <div class = "row">	
+	            <div class = "row">	
 	            <div class="col">
                     <h3>Detall:</h3>
                     
@@ -105,8 +105,8 @@
 				            ?>
 			            <input type="text" name="Poblacio" class="form-control" readonly disabled id = "Poblacio" placeholder="Població" value="<?php echo $localidad[1].' ('.$localidad[0].')';?>">
                     </div> 
-            </div>
-            <div class="col">
+                </div>
+                <div class="col">
                 <div style="margin-top:5.5rem;"></div>
                 <div class="form-group general">
                     <label for="cpostal">Codi postal:</label>
@@ -454,7 +454,7 @@
     	        document.cookie = "respuesta = " + respuesta;
 	            console.log (respuesta);
                 }
-    /*                 function eliminaDocNoRequerido_click() {
+                    /*                 function eliminaDocNoRequerido_click() {
     	        console.log (getCookie("documento_actual"));
 	            let id = getCookie("documento_actual");
 	            console.log (getCookie("nuevo_estado"));

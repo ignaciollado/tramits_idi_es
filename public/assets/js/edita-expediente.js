@@ -951,6 +951,7 @@ function actualiza_fase_5_desestimiento_expediente(formName) {  //SE EMPLEA
 }
 
 function validateForm(formName) {
+	console.log (formName, document.forms[formName])
 	for(i=0; i<document.forms[formName].elements.length; i++){
 		if(document.forms[formName].elements[i].value.length==0 && document.forms[formName].elements[i].required){
 			alert("Falta rellenar algún campo")

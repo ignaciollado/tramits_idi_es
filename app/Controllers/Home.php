@@ -1,8 +1,9 @@
 <?php namespace App\Controllers;
 
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
-
+		
 class Home extends BaseController
 {
 	public function index()
@@ -65,17 +66,21 @@ class Home extends BaseController
 		$language = \Config\Services::language();
 		$language->setLocale('ca');
 		service('request')->setLocale('ca');
-		$modelConfig = new ConfiguracionModel();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
-		$desde = $data['configuracion']['convocatoria_desde'];
-		$hasta = $data['configuracion']['convocatoria_hasta'];
+		$generalConfig = new ConfiguracionModel;
+		$lineaConfig = new ConfiguracionLineaModel();
+		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+		
+		$desde = $data['configuracionLinea']['convocatoria_desde'];
+		$hasta = $data['configuracionLinea']['convocatoria_hasta'];
 
 		if ( date("Y-m-d")>= $desde && date("Y-m-d")<= $hasta) {
-			echo view('templates/header/header_form');
-			echo view('pages/forms/form-solicitud-ayuda');
+			echo view('templates/header/header_form', $data);
+			echo view('pages/forms/form-solicitud-ayuda', $data);
 			echo view('templates/footer/footer_form');
 		} else {
-			$data['aviso'] = $data['configuracion']['convocatoria_aviso_ca'];
+			$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_ca'];
+			$data['titulo'] = $data['configuracionLinea']['lineaAyuda'];
 			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
 			echo view('templates/footer/footer_form');
 		}
@@ -136,7 +141,7 @@ class Home extends BaseController
 		service('request')->setLocale($idioma);
 		helper('form');
 		helper('filesystem');
-		$data['titulo'] = lang('message_lang.titulo_sol_idigital');
+
 		$cookie = array(
 			'name'   => 'CurrentLanguage',
 			'value'  => $idioma,                            
@@ -145,21 +150,27 @@ class Home extends BaseController
 			);
    		set_cookie($cookie);
 
-		   $modelConfig = new ConfiguracionModel();
-		   $data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
-		   $desde = $data['configuracion']['convocatoria_desde'];
-		   $hasta = $data['configuracion']['convocatoria_hasta'];
-		   if ( date("Y-m-d")>= $desde && date("Y-m-d")<= $hasta) {
-				echo view('templates/header/header_form', $data);
-				echo view('pages/forms/form-solicitud-ayuda');
-				echo view('templates/footer/footer_form');
+		$generalConfig = new ConfiguracionModel;
+		$lineaConfig = new ConfiguracionLineaModel();
+		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+		 
+		$desde = $data['configuracionLinea']['convocatoria_desde'];
+		$hasta = $data['configuracionLinea']['convocatoria_hasta'];
+		if ( date("Y-m-d")>= $desde && date("Y-m-d")<= $hasta) {
+			echo view('templates/header/header_form', $data);
+			echo view('pages/forms/form-solicitud-ayuda');
+			echo view('templates/footer/footer_form');
+		} else {
+			if ($idioma === 'ca') {
+				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_ca'];
 			} else {
-				$data['aviso'] = $data['configuracion']['convocatoria_aviso_ca'];
-				echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
+				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_es'];
 			}
-		/* 		echo view('templates/header/header_form', $data);
-		echo view('pages/forms/form-solicitud-ayuda');
-		echo view('templates/footer/footer_form'); */
+			$data['titulo'] = $data['configuracionLinea']['lineaAyuda'];
+			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
+			echo view('templates/footer/footer_form');
+		}
 	}
 	
 	public function set_lang_req ()
@@ -284,10 +295,31 @@ class Home extends BaseController
 			'secure' => true
 			);
    		set_cookie($cookie);
+
+		$generalConfig = new ConfiguracionModel;
+		$lineaConfig = new ConfiguracionLineaModel();
+
+		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ISBA');
+		   
+		$desde = $data['configuracionLinea']['convocatoria_desde'];
+		$hasta = $data['configuracionLinea']['convocatoria_hasta'];
+   
+		if ( date("Y-m-d")>= $desde && date("Y-m-d")<= $hasta) {
+			echo view('templates/header/header_form_linea_idi_isba');
+			echo view('pages/forms/form-linea-idi-isba');
+			echo view('templates/footer/footer_form');
+		} else {
+			if ($idioma === 'ca') {
+				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_ca'];
+			} else {
+				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_es'];
+			}
+			$data['titulo'] = $data['configuracionLinea']['lineaAyuda'];
+			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
+			echo view('templates/footer/footer_form');
+		}
 		
-		echo view('templates/header/header_form_linea_idi_isba');
-		echo view('pages/forms/form-linea-idi-isba');
-		echo view('templates/footer/footer_form');
 	}
 
 	public function datos_empresa_ils( $id )

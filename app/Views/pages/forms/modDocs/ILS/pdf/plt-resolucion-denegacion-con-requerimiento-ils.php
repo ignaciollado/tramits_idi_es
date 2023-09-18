@@ -156,6 +156,7 @@ $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.jpg';
 $pdf->Image($image_file, 15, 15, '', '40', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
 $req_fundamentos = lang('message_lang.doc_ils_resolucion_denegacion_con_req_resol_intro');

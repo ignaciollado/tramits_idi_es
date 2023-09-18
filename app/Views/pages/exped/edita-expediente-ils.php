@@ -46,6 +46,7 @@
 <div id="detall_tab" class="tab_fase_exp_content" style="display:block;">
     <div class="row">
         <div class="col">
+        <form action="" onload = "javaScript: actualizaRequired();" name="exped-fase-0" id="exped-fase-0" method="post" accept-charset="utf-8">
             <div class="row">	
 	            <div class="col">
                     <h3>Detall:</h3>
@@ -179,6 +180,7 @@
                     
                 </div>
             </div>
+        </form>
         </div>
         <div class="col">
             <input type="hidden" name="doc_requeriment_auto_ils" class="form-control" id="doc_requeriment_auto_ils" value="<?php echo $expedientes['doc_requeriment_auto_ils']; ?>">
@@ -570,7 +572,7 @@
         <div class="col docsExpediente" style="border:1px solid #aaccff;">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-ils detail-wrapper-docs-justificacion-ils">
         	        <div >Pujat el</div>
    	  	            <div >Document</div>
                     <div >Estat</div>                         
@@ -584,7 +586,7 @@
 		    	                $tipoMIME = $docSolicitud_item->type;
 			                    $nom_doc = $docSolicitud_item->name;
 			                ?>
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-solicitud">
+                    <div id ="fila" class = "detail-wrapper-docs-ils detail-wrapper-docs-solicitud-ils">
           	                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
        		                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                                    <?php
@@ -784,7 +786,7 @@
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-ils detail-wrapper-docs-justificacion-ils">
     	            <div >Pujat el</div>
    	  	            <div >Document</div>
 		            <div >Estat</div>                     
@@ -798,7 +800,7 @@
 			        $tipoMIME = $docSolicitud_item->type;
 			        $nom_doc = $docSolicitud_item->name;?>
 
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-validacion">
+                    <div id ="fila" class = "detail-wrapper-docs-ils detail-wrapper-docs-validacion-ils">
       	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
    		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                            <?php
@@ -959,7 +961,7 @@
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-ils detail-wrapper-docs-justificacion-ils">
     	            <div >Pujat el</div>
    	  	            <div >Document</div>
 		            <div >Estat</div>                     
@@ -973,9 +975,9 @@
 			        $tipoMIME = $docSolicitud_item->type;
 			        $nom_doc = $docSolicitud_item->name;
 			        ?>
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-ejecucion">
+                    <div id ="fila" class = "detail-wrapper-docs-ils detail-wrapper-docs-ejecucion">
       	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-   		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
+   		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                        <!--  <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
                        <?php
                             switch ($docSolicitud_item->estado) {

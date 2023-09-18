@@ -34,7 +34,7 @@ class Configuracion extends Controller
             'convocatoria_aviso_ca' => $this->request->getVar('convocatoria_aviso_ca'),
             'convocatoria_activa' => 1,
 			'emisorDIR3' => $this->request->getVar('emisorDIR3')
-            	];
+            ];
  
         $builder->where('id', $this->request->getVar('id'));
 		$save = $builder->update($data);
