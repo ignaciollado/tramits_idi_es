@@ -70,7 +70,8 @@ $email_message .= "<div>Bon dia,</div>";
 $email_message .= "<br><div>com a empresa ja adherida al programa ILS,  adjuntam el Manual d'ús de la marca (castellà i català), així com un ZIP amb distintes versions del logotip en format .png. 
 <br><br></div>";
 $email_message .= "<ol style='list-style-type: upper-roman;'>
-<li><a title='Manual d´us de la marca (castellà i català) ILS' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/manual_uso_marca_garantia_ils_20221228.pdf'>Manual d´us de la marca (castellà i català) ILS</a></li>
+<li><a title='Manual d´us de la marca (català) ILS' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/manual_uso_marca_garantia_ils_20230918-ca.pdf'>Manual d´us de la marca (català) ILS</a></li>
+<li><a title='Manual d´us de la marca (castellano) ILS' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/manual_uso_marca_garantia_ils_20230918-es.pdf'>Manual d´us de la marca (castellano) ILS</a></li>
 <li><a title='Logotip ILS format PDF' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/ils-logo.pdf'>ils-logo (PDF)</a></li>
 <li><a title='Logotip ILS format PNG' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/ils-logo-01.png'>ils-logo-01 (PNG)</a></li>
 <li><a title='Logotip ILS format PNG' href = 'https://tramits.idi.es/public/assets/docs_logos_ils/ils-logo-02.png'>ils-logo-02 (PNG)</a></li>

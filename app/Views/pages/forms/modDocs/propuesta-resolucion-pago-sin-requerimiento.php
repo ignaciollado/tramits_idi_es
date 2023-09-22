@@ -4,7 +4,7 @@
 		Proposta de resolució i resolució de pagament sense requeriment
 	</div>
 	<div class="card-itramits-footer">
-
+	pre-tramits
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
@@ -63,7 +63,7 @@
 		/* let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda') */
 		let wrapper_propuestaResPagoSinReg = document.getElementById('wrapper_propuestaResPagoSinReg')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_9 = document.getElementById('spinner_9')
 		let infoMissingDataDoc9 = document.getElementById('infoMissingDataDoc9')
 		infoMissingDataDoc9.innerText = ""

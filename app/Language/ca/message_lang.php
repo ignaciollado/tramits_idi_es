@@ -59,8 +59,8 @@ return [
    'dec_resp_con_menu'                => 'Declaració responsable consultor',
    'portafirmas_menu'                 => 'Portafirmes IDI',
    'sede_caib_menu'                   => 'Seu electrònica CAIB',
-   'config_general'                => 'Configuració general',
-   'config_linea'                  => 'Configuració linia',
+   'config_general'                => 'Configuració global',
+   'config_linea'                  => 'Configuració línies ajuda',
 
    'salida'                         => 'Finalitzar',
    'todas_las_solicitudes'			   => 'Totes les sol·licituds',
@@ -897,7 +897,7 @@ return [
 'doc_acta_cierre_desarrollo_sesion_p1' => "El consultor/a ha presentat el document realitzat en base a les especificacions de la convocatòria, deixant espai per resoldre dubtes o comentaris.",
 'doc_acta_cierre_desarrollo_sesion_p2' => "A partir de la sessió d’avui, tal i com diu la convocatòria, l’empresa té 20 dies naturals per justificar l’ajut rebut, per tant, la data màxima és fins a dia %FECHAJUSTIFICACIONAYUDA%",
 'doc_acta_cierre_desarrollo_sesion_p5' => "Observacions reunió: %OBSERVACIONESACTACIERRE%",
-'doc_acta_cierre_firma' => "Signa el/la tècnic/a de l'IDI",
+'doc_acta_cierre_firma' => "Signa el/la tècnic/a",
 
 'doc_acuerdo_ampliacion_termino_intro' => "Resolució d’ampliació del termini d’execució de l’activitat corresponent a l’ajut de xecs de consultoria per impulsar la competitivitat industrial balear en matèria de digitalització, internacionalització i sostenibilitat a favor de %SOLICITANTE% , amb NIF %NIF%",
 'doc_acuerdo_ampliacion_termino_p1' => "El %FECHARESOLCONCESION% es va dictar proposta de resolució i resolució de pagament de l’ajut %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%. La data màxima d’execució de l’activitat subvencionables es va fixar en el %FECHALIMITECONSULTORIA%.",
@@ -947,7 +947,7 @@ estratègic d’internacionalització o un informe de la petjada de carboni a l�
 'doc_informe_de_liquidacion_p2_3' => "Una vegada analitzada la documentació aportada es considera que la subvenció concedida ha estat correctament justificada per l’entitat.",
 'doc_informe_de_liquidacion_p3'   => "Aquesta liquidació constitueix un simple acte de tràmit, no susceptible de recurs, sense perjudici de la iniciació, tramitació i resolució ulterior del procediment de pagament, revocació, reintegrament i/o, si escau, sancionador, que pertoqui en cada cas per part de l’òrgan competent i de les al·legacions que pugui fer la persona o entitat interessada en el si d’aquests procediments.",
 'doc_informe_de_liquidacion_p4'   => "En tot cas, aquesta liquidació no impedeix que l’Administració concedent pugui revisar posteriorment la justificació de la subvenció, dins el termini de prescripció corresponent.",
-'doc_informe_de_liquidacion_firma' => "Signa el/la tècnic/a de l'IDI",
+'doc_informe_de_liquidacion_firma' => "Signa el/la tècnic/a",
 
 'doc_inicio_requerimiento_subsanacion_asunto' => "Informe d’inici de requeriment d’esmena de la documentació justificativa de la subvenció concedida a  %SOLICITANTE% amb NIF %NIF%",
 'doc_inicio_requerimiento_subsanacion_p1' => "El %FECHAFIRMARESOLUCION%, es va concedir l’ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTEAYUDA% €, en el marc de la convocatòria de subvencions per a l’any 2023 de l’ajut de xecs de consultoria per a la competitivitat industrial les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat (BOIB Núm. %BOIBNUM%)",

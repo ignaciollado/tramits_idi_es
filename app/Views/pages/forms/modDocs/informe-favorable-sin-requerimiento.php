@@ -63,9 +63,6 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-	/* 	let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif') //0000-00-00
-		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
-		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda') */
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_4 = document.getElementById('spinner_4')
@@ -80,18 +77,6 @@
 			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència REC sol·licitud<br>"
 			todoBien = false
 		}
-	/* 	if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data notificació requeriment<br>"
-			todoBien = false
-		}
-		if(!fecha_REC_enmienda.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data REC esmena<br>"
-			todoBien = false
-		}
-		if(!ref_REC_enmienda.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència REC esmena<br>"
-			todoBien = false
-		} */
 
 		if (todoBien) {
 			infoMissingDataDoc4.classList.add('ocultar')

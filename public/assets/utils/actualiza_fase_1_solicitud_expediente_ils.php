@@ -65,7 +65,7 @@ $query = "UPDATE pindust_expediente
     fecha_maxima_enmienda = '" . $date_maxima_enmienda ."'
     WHERE  id = " . $id;
 
-/* echo $query; */
+/* echo $query;  */
 $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 echo $result;

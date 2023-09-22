@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfSinReq" id="myBtngeneraInformeDesfSinReq">Generar l'informe</button>
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfSinReq" id="myBtngeneraInformeDesfSinReq">Motiu de la denegació</button>
 			<span id="btn_5" class="">		
 			<!-- 				<a id ="wrapper_generaInformeDesfSinReq" class="" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_sin_requerimiento');?>">Envia a signar l'informe</a> -->
 				<button id="wrapper_generaInformeDesfSinReq" class='btn btn-primary ocultar' onclick="enviaInformeDesfavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
@@ -59,29 +59,22 @@
 <div class="modal" id="mygeneraInformeDesfSinReq">
   <div class="modal-dialog">
     <div class="modal-content">
-
-      <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Motiu de la denegació:</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-
-      <!-- Modal body -->
       <div class="modal-body">
-				<div class="form-group">
-        	<input type="hidden" name="motivogeneraInformeDesfSinReq_valor" class="form-control" id = "motivogeneraInformeDesfSinReq_valor" required placeholder="Nom del sol·licitant" value="<?php echo $expedientes['motivoDenegacion']; ?>">
-					<textarea rows="10" cols="30" name="motivogeneraInformeDesfSinReq" class="form-control" id = "motivogeneraInformeDesfSinReq" min="0" placeholder="Motiu de la denegació"></textarea>
-        </div>	
+			<div class="form-group">
+        		<input type="hidden" name="motivogeneraInformeDesfSinReq_valor" class="form-control" id = "motivogeneraInformeDesfSinReq_valor" required placeholder="Nom del sol·licitant" value="<?php echo $expedientes['motivoDenegacion']; ?>">
+				<textarea rows="10" cols="30" name="motivogeneraInformeDesfSinReq" class="form-control" id = "motivogeneraInformeDesfSinReq" min="0" placeholder="Motiu de la denegació"><?php echo $expedientes['motivoDenegacion']; ?></textarea>
+        	</div>	
       </div>
-
-      <!-- Modal footer -->
       <div class="modal-footer">
-				<div class="form-group">
-          	<button type="button" onclick = "javaScript: actualizaMotivoDesfavorable_click();" id="guardaMotivogeneraInformeDesfSinReq" 
+			<div class="form-group">
+          		<button type="button" onclick = "javaScript: actualizaMotivoDesfavorable_click();" id="guardaMotivogeneraInformeDesfSinReq" 
 						class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
-				</div>		
+			</div>		
       </div>
-
     </div>
   </div>
 </div>
@@ -95,11 +88,8 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-	/* 	let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif') //0000-00-00
-		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
-		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda') */
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_5 = document.getElementById('spinner_5')
 		let infoMissingDataDoc5 = document.getElementById('infoMissingDataDoc5')
 		infoMissingDataDoc5.innerText = ""
@@ -112,18 +102,6 @@
 			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Referència REC sol·licitud<br>"
 			todoBien = false
 		}
-	/* 	if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Data notificació requeriment<br>"
-			todoBien = false
-		}
-		if(!fecha_REC_enmienda.value) {
-			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Data REC esmena<br>"
-			todoBien = false
-		}
-		if(!ref_REC_enmienda.value) {
-			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Referència REC esmena<br>"
-			todoBien = false
-		} */
 
 		if (todoBien) {
 			infoMissingDataDoc5.classList.add('ocultar')

@@ -6,18 +6,22 @@
 <?php
 require_once('tcpdf/tcpdf.php');
 setlocale(LC_MONETARY,"es_ES");
-    //obtengo los datos de la convocatoria
-    use App\Models\ConfiguracionModel;
-    $configuracion = new ConfiguracionModel();
-    $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-    //obtengo los datos de la solicitud
-    use App\Models\ExpedientesModel;
-    $expediente = new ExpedientesModel();
-    $data['expediente'] = $expediente->where('id', $id)->first();
-    //obtengo los datos del documento
-    $db = \Config\Database::connect();
-	$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
-    foreach ($query->getResult() as $row)
+
+use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
+use App\Models\ExpedientesModel;
+
+$configuracion = new ConfiguracionModel();
+$configuracionLinea = new ConfiguracionLineaModel();
+$expediente = new ExpedientesModel();
+
+$data['configuracion'] = $configuracion->configuracionGeneral();   
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['expediente'] = $expediente->where('id', $id)->first();
+   
+$db = \Config\Database::connect();
+$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
+foreach ($query->getResult() as $row)
         {
         $nif = $row->cifnif_propietario;
         }
@@ -87,8 +91,8 @@ $html = "Document: resolució<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
-$html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -118,7 +122,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
 $parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_resolucion_desestimiento_p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $parrafo_1);
+$parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
@@ -245,7 +249,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
 $firma = lang('message_lang.doc_resolucion_desestimiento_firma');
-$firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
+$firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

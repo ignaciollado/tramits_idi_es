@@ -1,18 +1,14 @@
 <!----------------------------------------- Resolució desistiment por renuncia DOC 22 SIN VIAFIRMA --------------------------------->
 <div class="card-itramits">
-
-  <div class="card-itramits-body">
-  	Resolució desistiment per renúncia
-  </div>
-
+  <div class="card-itramits-body">Resolució desistiment per renúncia</div>
   	<div class="card-itramits-footer">
-
+		pre-tramits
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
 			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
-			<button type = "button" class = "btn btn-primary" data-bs-toggle = "modal" data-bs-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Motiu de la resolució</button>  
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle = "modal" data-bs-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Motiu del desestiment</button>  
 			<span id="btn_22" class="">
     			<!-- <a id ="wrapper_motivoDesestimientoRenuncia" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>">Generar el desistiment</a> -->
 					<button id="wrapper_motivoDesestimientoRenuncia" class='btn btn-primary ocultar' onclick="generaResolucionPorDesestimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
@@ -20,19 +16,16 @@
 			</span>		
 			<span id="spinner_22" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>  
-
 	</div>
-
   	<div class="card-itramits-footer">
 			<?php if ($expedientes['doc_res_desestimiento_por_renuncia'] !=0) { ?>
-        <a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" target = "_self">La resolució de desistiment</a>	
+        <a class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" target = "_self">La resolució de desistiment</a>	
 			<?php }?>
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
 
-<!-- The Modal -->
-<div id="myDesestimientoRenuncia" class="modal">
+		<div id="myDesestimientoRenuncia" class="modal">
 			<div class="modal-dialog">
                 <!-- Modal content-->
     			<div class="modal-content">
@@ -52,7 +45,8 @@
     					</div>
   					</div>
 				</div>
-</div>
+		</div>
+
 <script>
 	function generaResolucionPorDesestimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
@@ -62,7 +56,7 @@
 		let ref_REC_desestimiento = document.getElementById('ref_REC_desestimiento')
 		
 		let wrapper_motivoDesestimientoRenuncia = document.getElementById('wrapper_motivoDesestimientoRenuncia')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_22 = document.getElementById('spinner_22')
 		let infoMissingDataDoc22 = document.getElementById('infoMissingDataDoc22')
 		infoMissingDataDoc22.innerText = ""

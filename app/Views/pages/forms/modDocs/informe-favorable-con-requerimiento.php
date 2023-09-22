@@ -5,23 +5,25 @@
     	 Informe favorable amb requeriment
   	</div>
   	<div class="card-itramits-footer">
-	  	<?php
+	<?php
 			
       if ( !$esAdmin && !$esConvoActual ) {
         /*  */
 				}
-      else {?>
-	  		<span id="btn_3" class="">
-					<!-- <a id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento');?>" class="btn-primary-itramits">Genera l'informe</a> -->
-					<button id="generaInfFavConReq" class = "btn btn-primary" onclick="enviaInformeFavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
-					<div id='infoMissingDataDoc3' class="alert alert-danger ocultar"></div>
-				</span>
-				<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:20px; color:#000000;"></i></span>
-		<?php }?>
+      else {
+	?>
+	  	<span id="btn_3" class="">
+			<!-- <a id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento');?>" class="btn-primary-itramits">Genera l'informe</a> -->
+			<button id="generaInfFavConReq" class = "btn btn-primary" onclick="enviaInformeFavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
+			<div id='infoMissingDataDoc3' class="alert alert-danger ocultar"></div>
+		</span>
+		<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:20px; color:#000000;"></i></span>
+	
+	<?php }?>
 	
 	</div>  
   	<div class="card-itramits-footer">
-<?php if ($expedientes['doc_informe_favorable_con_requerimiento'] !=0) { 
+	<?php if ($expedientes['doc_informe_favorable_con_requerimiento'] !=0) { 
 		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_informe_favorable_con_requerimiento.pdf');
 		if (isset($tieneDocumentosGenerados))
 		{

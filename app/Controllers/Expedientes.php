@@ -11,6 +11,7 @@ use App\Models\DocumentosTipoModel;
 use App\Models\DocumentosJustificacionModel;
 use App\Models\MejorasExpedienteModel;
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 
 class Expedientes extends Controller
 {
@@ -20,8 +21,7 @@ class Expedientes extends Controller
 		$language = \Config\Services::language();
 		$language->setLocale('ca');
 		$session = session();
-		$modelConfig = new ConfiguracionModel();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
+
 		$where = "";
 
 		$rol =  $session->get('rol');
@@ -279,9 +279,9 @@ class Expedientes extends Controller
 		$language->setLocale($idioma);
 
 		$modelConfig = new ConfiguracionModel();
+		$modelConfigLinea = new ConfiguracionLineaModel();
 
-		$data['configuracion'] = $modelConfig->convoActiva();
-		$data['importeAyuda'] = $data['configuracion']['programa'];
+		$data['configuracion'] = $modelConfig->configuracionGeneral(); 
 		$data['abrirPanel'] = 0;
 
 		$modelExp = new ExpedientesModel();
@@ -290,8 +290,6 @@ class Expedientes extends Controller
 		$modelMejorasSolicitud = new MejorasExpedienteModel();
 
 		$db = \Config\Database::connect();
-
-		$data['config_fechas_limite'] = $modelConfig->fechasConvoActiva();
 
 		//-----------------------------------Comprueba si ya hay algún documento de justificación-------------------
 
@@ -302,6 +300,8 @@ class Expedientes extends Controller
 		//-----------------------------Obtiene el detalle del Expediente----------------------------------------------
 
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
+		$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData('XECS');
+		$data['importeAyuda'] = $data['configuracionLinea']['programa'];
 
 		$idExp =  $data['expedientes']['idExp'];
 		$convocatoria = $data['expedientes']['convocatoria'];
@@ -952,18 +952,20 @@ class Expedientes extends Controller
 			'created_at'  => WRITEPATH . 'documentos/' . $data['nifcif'] . '/informes/' . $selloDeTiempo . '/' . $tipoDocumento . ".pdf",
 			'selloDeTiempo'  => $selloDeTiempo
 		];
+
 		$documentos->insert($data_file);
 		$last_insert_id = $db->insertID();
 		$data['last_insert_id'] = $last_insert_id;
 		$dir = WRITEPATH . 'documentos/' . $request->uri->getSegment(6) . '/informes/';
+		$dir = WRITEPATH . 'documentos/B0000001/informes/';
 
 		if (!is_dir($dir)) {
-			mkdir($dir, 0775);
+			mkdir($dir, 0775, true);
 		}
 
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
-			case "doc_requeriment":  														//va a VIAFIRMA DOC 1 A TÉCNICO
+			case "doc_requeriment":  								//va a VIAFIRMA DOC 1 A TÉCNICO
 				$data_infor = [
 					'doc_requeriment' => $last_insert_id
 				];
@@ -987,6 +989,7 @@ class Expedientes extends Controller
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
+
 				$data['byCEOSigned'] = false;
 				$data_footer = [
 					'tipoDoc' => " Resolució desistiment per no esmenar",

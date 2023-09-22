@@ -1,25 +1,32 @@
 <?php
 require_once('tcpdf/tcpdf.php');
-    //obtengo los datos de la convocatoria
-    use App\Models\ConfiguracionModel;
-    $configuracion = new ConfiguracionModel();
-    $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-    //obtengo los datos de la solicitud
-    use App\Models\ExpedientesModel;
-    $expediente = new ExpedientesModel();
-    $data['expediente'] = $expediente->where('id', $id)->first();
-    //obtengo los datos del documento
-    $db = \Config\Database::connect();
-	$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
-    foreach ($query->getResult() as $row)
-        {
-        $nif = $row->cifnif_propietario;
-        }
+
+setlocale(LC_MONETARY,"es_ES");
+use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
+use App\Models\ExpedientesModel;
+use App\Models\MejorasExpedienteModel;
+    
+$configuracion = new ConfiguracionModel();
+$configuracionLinea = new ConfiguracionLineaModel();
+$expediente = new ExpedientesModel();
+$mejorasSolicitud = new MejorasExpedienteModel();
+
+$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['expediente'] = $expediente->where('id', $id)->first();
+
+$db = \Config\Database::connect();
+$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
+foreach ($query->getResult() as $row) {
+    $nif = $row->cifnif_propietario;
+}
         
-    $session = session();
-        if ($session->has('logged_in')) {  
-           $pieFirma =  $session->get('full_name');
-        }
+$session = session();
+if ($session->has('logged_in')) {  
+    $pieFirma =  $session->get('full_name');
+}
+
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -90,8 +97,8 @@ $html =  "Document: requeriment<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
-$html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -109,7 +116,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], lang('message_lang.doc_requerimiento_p1'));
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('message_lang.doc_requerimiento_p1'));
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";

@@ -7,19 +7,24 @@
 require_once('tcpdf/tcpdf.php');
 setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
 use App\Models\MejorasExpedienteModel;
-    //obtengo los datos de la convocatoria
-    $configuracion = new ConfiguracionModel();
-    $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-    //obtengo los datos de la solicitud
-    $expediente = new ExpedientesModel();
-    $data['expediente'] = $expediente->where('id', $id)->first();
-    //obtengo los datos de la última mejora de la solicitud (si la hay)
-    $mejorasSolicitud = new MejorasExpedienteModel();
+    
+$configuracion = new ConfiguracionModel();
+$configuracionLinea = new ConfiguracionLineaModel();
+$expediente = new ExpedientesModel();
+$mejorasSolicitud = new MejorasExpedienteModel();
+
+$data['configuracion'] = $configuracion->configuracionGeneral();   
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+ 
+$data['expediente'] = $expediente->where('id', $id)->first();
+
+
     $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
     $ultimaMejora = explode("##",  $data['ultimaMejora']);    
-    //obtengo los datos del documento
+   
     $db = \Config\Database::connect();
 	$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
     foreach ($query->getResult() as $row)
@@ -92,8 +97,9 @@ $html = "Document: resolució de concessió<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
-$html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
+
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -121,7 +127,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_resolucion_concesion_sin_req_p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $parrafo_1);
+$parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
@@ -134,13 +140,6 @@ $parrafo_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['i
 $parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
-
-/* if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p3m'));
-    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
-    $html .= "<li>". $parrafo_3m ."</li>";
-    $html .= "<br>";
-} */
 
 $parrafo_3 = str_replace("%FECHANOTPROPRESOL%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion_notif']),"d/m/Y") ,lang('message_lang.doc_resolucion_concesion_sin_req_p3'));
 $parrafo_3 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_3);
@@ -157,17 +156,6 @@ $parrafo_5 = str_replace("%FECHAREUNIONCIERRE%", date_format(date_create($data['
 $html .= "<li>". $parrafo_5 ."</li>";
 $html .= "</br>";
 
-/* $parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_sin_req_p6'));
-$parrafo_6 = str_replace("%REFRECJUSTIFICACION%", $data['expediente']['ref_REC_justificacion'], $parrafo_6);
-$parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_6);
-$parrafo_6 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_6);
-$html .= "<li>". $parrafo_6 ."</li>";
-$html .= "<br>";
-
-$parrafo_7 = lang('message_lang.doc_resolucion_concesion_sin_req_p7');
-$html .= "<li>". $parrafo_7 ."</li>";
-$html .= "<br>";
-$html .= "</ol>"; */
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
@@ -252,27 +240,15 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $resolucion_1 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_resolucion_concesion_sin_req_resolucion_1'));
 $resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
 $resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
-$resolucion_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $resolucion_1);
+$resolucion_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $resolucion_1);
 
 $html = "<ol>";
 $html .= "<li>". $resolucion_1 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$resolucion_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_resolucion_concesion_sin_req_resolucion_2'));
-$resolucion_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_2);
-$resolucion_2 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_2);
-$html .= "<li>". $resolucion_2 ."</li>";
-$html .= "<br>"; */
-
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $resolucion_3 = lang('message_lang.doc_resolucion_concesion_sin_req_resolucion_3');
 $html .= "<li>". $resolucion_3 ."</li>";
 $html .= "</ol>";
@@ -303,7 +279,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $firma = lang('message_lang.doc_resolucion_concesion_sin_req_firma');
-$firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
+$firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'] , $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

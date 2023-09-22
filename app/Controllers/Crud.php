@@ -23,6 +23,9 @@ class Crud extends BaseController
                         'fecha_de_pago', 'fecha_max_desp_ampliacion', 'ref_REC', 'ref_REC_enmienda', 'ref_REC_amp_termino', 'ref_REC_justificacion',
                         'ref_REC_requerimiento_justificacion', 'ref_REC_desestimiento', 'importe_minimis', 'tecnicoAsignado'])
             
+                        ->displayAs('convocatoria', "Convocatòria")
+                        ->displayAs('tipo_tramite', "Línia d'ajuda")
+                        ->displayAs('situacion', "Situació")
                         ->displayAs('nif', 'NIF / CIF')
                         ->displayAs('cpostal', 'CP')
                         ->displayAs('telefono_rep', 'Telèfon notificacions')

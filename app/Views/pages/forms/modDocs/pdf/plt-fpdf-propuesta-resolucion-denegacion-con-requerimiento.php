@@ -15,38 +15,36 @@ require('dompdf/src/CanvasFactory.php');
 
 setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
 use App\Models\MejorasExpedienteModel;
-    //obtengo los datos de la convocatoria
-    $configuracion = new ConfiguracionModel();
-    $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-    //obtengo los datos de la solicitud
-    $expediente = new ExpedientesModel();
-    $data['expediente'] = $expediente->where('id', $id)->first();
-    //obtengo los datos de la última mejora de la solicitud (si la hay)
-    $mejorasSolicitud = new MejorasExpedienteModel();
-    $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
-    $ultimaMejora = explode("##",  $data['ultimaMejora']);
-    //obtengo los datos del documento
-    $db = \Config\Database::connect();
-	  $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
-    foreach ($query->getResult() as $row)
-        {
-        $nif = $row->cifnif_propietario;
-        }
-        
-    $session = session();
-    if ($session->has('logged_in')) {  
-       $pieFirma =  $session->get('full_name');
-    }
+            
+$configuracion = new ConfiguracionModel();
+$configuracionLinea = new ConfiguracionLineaModel();
+$expediente = new ExpedientesModel();
+$mejorasSolicitud = new MejorasExpedienteModel();
+    
+$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['expediente'] = $expediente->where('id', $id)->first();
+    
+$db = \Config\Database::connect();
+$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
+foreach ($query->getResult() as $row) {
+    $nif = $row->cifnif_propietario;
+}
+            
+$session = session();
+if ($session->has('logged_in')) {  
+    $pieFirma =  $session->get('full_name');
+}
 
-  // reference the Dompdf namespace
-  use Dompdf\Dompdf;
-  use Dompdf\Options;
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+use Dompdf\Options;
   
-  $options = new Options();
-  $options->set('defaultFont', 'Courier');
-  $dompdf = new Dompdf($options);
+$options = new Options();
+$options->set('defaultFont', 'Courier');
+$dompdf = new Dompdf($options);
 
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();

@@ -56,34 +56,26 @@
 			 ?>
 
 <div class="modal" id="motivoRequerimiento">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Motiu del requeriment:</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-					<div class="form-group">
-						<textarea required rows="10" cols="30" name="motivoRequerimientoTexto" class="form-control" id = "motivoRequerimientoTexto" 
-						placeholder="Motiu del requeriment"><?php echo $expedientes['motivoRequerimiento']; ?></textarea>
-        	</div>
-					
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
+  	<div class="modal-dialog">
+    	<div class="modal-content">	
+      		<div class="modal-header">
+        		<h4 class="modal-title">Motiu del requeriment:</h4>
+        		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      		</div>
+      		<div class="modal-body">
 				<div class="form-group">
-          	<button type="button" onclick = "javaScript: actualizaMotivoRequerimiento_click();" id="guardaMotivoRequerimiento" 
-						class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
+					<textarea required rows="10" cols="30" name="motivoRequerimientoTexto" class="form-control" id = "motivoRequerimientoTexto" 
+					placeholder="Motiu del requeriment"><?php echo $expedientes['motivoRequerimiento']; ?></textarea>
+        		</div>		
+      		</div>
+      		<div class="modal-footer">
+				<div class="form-group">
+          			<button type="button" onclick = "javaScript: actualizaMotivoRequerimiento_click();" id="guardaMotivoRequerimiento" 
+					class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
 				</div>		
-      </div>
-
-    </div>
-  </div>
+      		</div>
+    	</div>
+  	</div>
 </div>
 
   </div>  

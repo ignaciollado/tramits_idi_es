@@ -7,30 +7,30 @@
 require_once('tcpdf/tcpdf.php');
 setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
 use App\Models\MejorasExpedienteModel;
-    //obtengo los datos de la convocatoria
-    $configuracion = new ConfiguracionModel();
-    $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-    //obtengo los datos de la solicitud
-    $expediente = new ExpedientesModel();
-    $data['expediente'] = $expediente->where('id', $id)->first();
-    //obtengo los datos de la última mejora de la solicitud (si la hay)
-    $mejorasSolicitud = new MejorasExpedienteModel();
-    $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
-    $ultimaMejora = explode("##",  $data['ultimaMejora']);
-    //obtengo los datos del documento
-    $db = \Config\Database::connect();
-	$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
-    foreach ($query->getResult() as $row)
-        {
-        $nif = $row->cifnif_propietario;
-        }
         
-    $session = session();
-        if ($session->has('logged_in')) {  
-           $pieFirma =  $session->get('full_name');
-        }
+$configuracion = new ConfiguracionModel();
+$configuracionLinea = new ConfiguracionLineaModel();
+$expediente = new ExpedientesModel();
+$mejorasSolicitud = new MejorasExpedienteModel();
+
+$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['expediente'] = $expediente->where('id', $id)->first();
+
+$db = \Config\Database::connect();
+$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
+foreach ($query->getResult() as $row) {
+    $nif = $row->cifnif_propietario;
+}
+        
+$session = session();
+if ($session->has('logged_in')) {  
+    $pieFirma =  $session->get('full_name');
+}
+
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -92,8 +92,8 @@ $html = "Document: proposta de resolució <br>de revocació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
-$html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);
@@ -124,7 +124,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
 $parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $parrafo_1);
+$parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
@@ -173,6 +173,8 @@ $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 35);
 $parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p6'));
 $parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $parrafo_6);
 $parrafo_6 = str_replace("%NIF%", $data['expediente']['nif'] , $parrafo_6);
@@ -203,7 +205,7 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 25);
+$pdf->setY($currentY + 35);
 $req_fundamentos = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_fundamentos');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $req_fundamentos ."</td></tr>";
@@ -253,8 +255,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 $firma = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_firma');
-$firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
-$firma = str_replace("%DIRECTORAGERENTEIDI%", "Mariona Luis Tomás", $firma);
+$firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
+$firma = str_replace("%DIRECTORAGERENTEIDI%", $data['configuracion']['directorGerenteIDI'], $firma);
 
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

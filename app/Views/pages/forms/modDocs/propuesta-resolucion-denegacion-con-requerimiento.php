@@ -4,11 +4,11 @@
 		Proposta de resolució de denegació amb requeriment
 	</div>
 	<div class="card-itramits-footer" aria-label="generar informe">
-
+	pre-tramits
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myDenegacion_7" id="myBtnResDenegacionConReq">Motiu de la denegació</button>
+			<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myDenegacion_7" id="myBtnResDenegacionConReq">Motiu de la denegació</button>
 			<span id="btn_7" class="">
 				<!-- <a id="wrapper_motivoDenegacion_7" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_prop_res_denegacion_con_req'); ?>" class="btn btn-primary-itramits">Envia a la firma <br>de Gerència IDI</a> -->
 				<button id="wrapper_motivoDenegacion_7" class='btn btn-primary ocultar' onclick="enviaPropuestaResDenegacionConRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a la firma <br>de Gerència IDI</button>

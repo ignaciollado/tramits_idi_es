@@ -41,10 +41,10 @@
   			<datalist id="programa">
 			  	<option value="Programa iDigital 20">
     			<option value="Programa I">
-					<option value="Programa II">
+				<option value="Programa II">
     			<option value="Programa III">
-					<option value="ILS">
-					<option value="IDI-ISBA">
+				<option value="ILS">
+				<option value="IDI-ISBA">
   			</datalist>
   		</div>
 	</div>

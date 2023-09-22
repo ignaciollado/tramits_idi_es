@@ -9,7 +9,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-  			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfConReq" id="myBtngeneraInformeDesfConReq">Generar l'informe</button>
+  			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfConReq" id="myBtngeneraInformeDesfConReq">Motiu de la denegació</button>
 				<span id="btn_4" class="">					
     			<!-- <a id ="wrapper_generaInformeDesfConReq" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_con_requerimiento');?>" class="btn btn-primary-itramits">Envia a signar el document</a>-->
 					<button id="wrapper_generaInformeDesfConReq" class='btn btn-primary ocultar' onclick="enviaInformeDesfavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
@@ -59,37 +59,29 @@
 
 
 <div class="modal" id="mygeneraInformeDesfConReq">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Motiu de la denegació:</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-					<div class="form-group">
-          	<input type="hidden" name="motivogeneraInformeDesfConReq_valor" class="form-control" id = "motivogeneraInformeDesfConReq_valor" required placeholder="Nom del sol·licitant" value="<?php echo $expedientes['motivoDenegacion']; ?>">
-						<textarea rows="10" cols="30" name="motivogeneraInformeDesfConReq" class="form-control" id = "motivogeneraInformeDesfConReq" min="0" placeholder="Motiu de la denegació"></textarea>
-        	</div>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
+  	<div class="modal-dialog">
+    	<div class="modal-content">
+	      	<div class="modal-header">
+        		<h4 class="modal-title">Motiu de la denegació:</h4>
+        		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      		</div>
+      		<div class="modal-body">
 				<div class="form-group">
-          	<button type="button" onclick = "javaScript: actualizaMotivoDesfavorableConReq_click();" id="guardaMotivogeneraInformeDesfConReq" 
-						class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
-				</div>		
-      </div>
-
-    </div>
-  </div>
+          			<input type="hidden" name="motivogeneraInformeDesfConReq_valor" class="form-control" id = "motivogeneraInformeDesfConReq_valor" required placeholder="Nom del sol·licitant" value="<?php echo $expedientes['motivoDenegacion']; ?>">
+					<textarea rows="10" cols="30" name="motivogeneraInformeDesfConReq" class="form-control" id = "motivogeneraInformeDesfConReq" min="0" placeholder="Motiu de la denegació"><?php echo $expedientes['motivoDenegacion']; ?></textarea>
+        		</div>
+      		</div>
+      	<div class="modal-footer">
+			<div class="form-group">
+       			<button type="button" onclick = "javaScript: actualizaMotivoDesfavorableConReq_click();" id="guardaMotivogeneraInformeDesfConReq" 
+				class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
+			</div>		
+      	</div>
+    	</div>
+  	</div>
 </div>
 						
-	<div id="wrapper_motivogeneraInformeDesfConReq" class="ocultar">
-	</div>
+	<div id="wrapper_motivogeneraInformeDesfConReq" class="ocultar"></div>
  
   	</div>
 </div>
@@ -103,7 +95,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_4 = document.getElementById('spinner_4')
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
 		infoMissingDataDoc6.innerText = ""

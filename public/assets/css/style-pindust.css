@@ -226,14 +226,15 @@ header {
 		footer {
 			display: grid!important;
 			grid-template-columns: auto;
-			position: sticky;
+			position: fixed;
     		left: 0;
     		bottom: 0;
     		width: 100%;
-			/*padding: 1rem;*/
 			background-color: #a3d4db;
 			text-align: center;
   			clear: both;
+			margin-top: 2rem;
+			z-index: -9999;
 		}
 
 		.unreadMails {

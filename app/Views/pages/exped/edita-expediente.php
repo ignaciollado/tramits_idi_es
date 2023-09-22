@@ -10,23 +10,19 @@
     use App\Models\ExpedientesModel;
 
     $modelDocumentosGenerados = new DocumentosGeneradosModel();
-  
     $modelMejorasSolicitud = new MejorasExpedienteModel();
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
    
     $modelExp = new ExpedientesModel();
 
-    /* if ($totalConvocatorias>1){ */
-        echo '<div class="alert alert-warning" role="alert">
-        Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
-    /* } */
+    echo '<div class="alert alert-warning" role="alert">
+    Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
 
 	$programa = $expedientes['tipo_tramite'];
 	$id = $expedientes['id'];
 	$nifcif = $expedientes['nif'];
-    $convocatoriaEnCurso = $configuracion['convocatoria'];
-
+    $convocatoriaEnCurso =$configuracionLinea['convocatoria'];
     $esAdmin = ($session->get('rol') == 'admin');
     $esConvoActual = ($convocatoria == $convocatoriaEnCurso);
 
@@ -36,10 +32,12 @@
     ];
     $session->set($expedienteID);
 
-/* Si no hay IMPORTE AYUDA, Calcula el importe según el programa Y el número de convocatorias a las que se ha  presentado */
-
+/* Cuando no hay IMPORTE AYUDA, calcula el importe según el programa y 
+el número de convocatorias a las que se ha  presentado. La definición del importe
+está en la convo publicada en el BOIB 
+*/
 if (!$expedientes['importeAyuda']) {
-    $objs = json_decode( $configuracion['programa']);
+    $objs = json_decode( $configuracionLinea['programa']);
     /**
      * object(stdClass)#88 (3) { 
      * ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
@@ -79,11 +77,11 @@ if (!$expedientes['importeAyuda']) {
             switch($totalConvocatorias) {
                 case 1:
                     $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
-                    //echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
+                    echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
                     break;
                 default:
                     $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
-                    //echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
+                    echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
             }
             break;
     }
@@ -739,12 +737,11 @@ if (!$expedientes['importeAyuda']) {
                 <?php endif; ?>
             </div>
 
-                <div id="eliminaDocsExpediente" class="modal" role="dialog">
+                <div id="eliminaDocsExpediente" class="modal">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-content">
                             <div class="modal-header">
-	    	                    Aquesta acció no es podrá desfer.
+                                <h4 class="modal-title">Aquesta acció no es podrá desfer</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -758,12 +755,11 @@ if (!$expedientes['importeAyuda']) {
                     </div>
                 </div>
 
-                <div id="modalEliminaMejora" class="modal" role="dialog">
+                <div id="modalEliminaMejora" class="modal">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-content">
                             <div class="modal-header">
-	    	                    Aquesta acció no es podrá desfer.
+                                <h4 class="modal-title">Aquesta acció no es podrá desfer</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -877,16 +873,10 @@ if (!$expedientes['importeAyuda']) {
                     </div>
                 <?php }?>                  
         </form>
-        </div>        
-    	    <script>
-		     /*    $('#fecha_REC_amp_termino').mask('99/99/9999 99:99:99');
-		        $('#tel_consultor').mask('999999999'); */
-	        </script>
-
-            <?php foreach($config_fechas_limite as $config_item): 
-	                $dias_fecha_lim_justificar	= $config_item->dias_fecha_lim_justificar;
-	                $meses_fecha_lim_consultoria = $config_item->meses_fecha_lim_consultoria;
-                endforeach; 
+        </div> 
+        <?php 
+            $dias_fecha_lim_justificar = $configuracionLinea['dias_fecha_lim_justificar'];
+            $meses_fecha_lim_consultoria = $configuracionLinea['meses_fecha_lim_consultoria'];
 
             $mesesPrograma = explode("#",$meses_fecha_lim_consultoria);
             $mesesPrograma = str_replace("{","",$mesesPrograma);

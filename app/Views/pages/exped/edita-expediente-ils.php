@@ -1,14 +1,4 @@
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
 
 <?php
     $session = session();
@@ -1101,7 +1091,6 @@
             </div>                          
             <div class="form-group justificacion">
             <label for = "fecha_REC_justificacion"><strong>Data REC justificació:</strong></label>
-			<!-- <input type = "datetime-local" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_justificacion']),"Y-m-d\Th:m");?>" /> -->
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
             </div>	
 		    <div class="form-group justificacion">
@@ -1115,16 +1104,13 @@
 		    <div class="form-group justificacion">
             <label for = "fecha_not_liquidacion"><strong>Data notificació resolució:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_liquidacion" class = "form-control send_fase_4" id = "fecha_not_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_liquidacion']), 'Y-m-d');?>">
-            </div>	
-            <!--</div>
-            <div class="col">    -->			
+            </div>			
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Data firma requeriment justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
             </div>	
             <div class="form-group justificacion">
             <label for = "fecha_REC_requerimiento_justificacion"><strong>Data REC requeriment justificació:</strong></label>
-			<!-- <input type = "datetime-local" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_REC_requerimiento_justificacion']),"Y-m-d\Th:m");?>" /> -->
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
 
             </div>	
@@ -1138,7 +1124,7 @@
                 <?php }
                     else {?>
                     <div class="form-group">
-                        <button type="button"  onclick = "javaScript: actualiza_fase_4_justificacion_expediente('exped-fase-4');" id="send_fase_4" onChange="avisarCambiosEnFormulario('send_fase_4', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button type="button"  onclick = "javaScript: actualiza_fase_4_justificacion_expediente_ils('exped-fase-4');" id="send_fase_4" onChange="avisarCambiosEnFormulario('send_fase_4', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
                     </div>
                 <?php }?>
             
@@ -1694,3 +1680,9 @@
     </div>
 </div>
 <!-- </form> -->
+
+
+
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/public/assets/js/edita-expediente-ils.js"></script>

@@ -17,7 +17,7 @@ $query = "UPDATE pindust_expediente
     ref_REC_informe_seguimiento = '" . $ref_REC_informe_seguimiento ."'
 
     WHERE  id = " . $id;
-
+/* echo $query; */
 $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 echo $result;

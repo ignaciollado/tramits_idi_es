@@ -5,17 +5,19 @@
     	Acta de tancament
   	</div>
   	<div class="card-itramits-footer">
+	  pre-tramits
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-				<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myActaDeCierre" id="myBtnActaDeCierre">Genera l'acta</button>    
-			<?php }?>
+				<button type = "button" id="btn_ActaDeCierre" class = "btn btn-primary" id="myBtnActaDeCierre" onclick="enviaActaDeCierre(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera l'acta</button>    
+		<?php }?>
 
 		<span id="btn_15" class="">
-    		<a id="wrapper_ActaDeCierre" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>      	
-				<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
+    		<a id="wrapper_ActaDeCierre" class = "ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>   
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
 		</span>	
+		<div id='infoMissingDataDoc15' class = "alert alert-danger ocultar"></div>
 		<span id="spinner_15" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 	</div>
   	<div class="card-itramits-footer">
@@ -64,7 +66,7 @@
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-					<h4 class="modal-title">Dades per generar l'acta de tancament</h4>
+						<h4 class="modal-title">Dades per generar l'acta de tancament</h4>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
 
@@ -136,8 +138,8 @@
 						<div class="form-group">
            				    <button type="button" onclick = "javaScript: enviaMailJustificacion_click();" id="enviaMailJustificacion" class="btn-itramits btn-success-itramits">Enviar
 							   <span id="spinner_151" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
-							   </button>
-							   <span id="mensaje" class ="ocultar info-msg"></span>
+							</button>
+							<span id="mensaje" class ="ocultar info-msg"></span>
         				</div>	
 					</div>
 				</div>
@@ -146,4 +148,37 @@
 		
   	</div>
 </div>
-<!------------------------------------------------------------------------------------------------------>
+<script>
+	function enviaActaDeCierre(id, convocatoria, programa, nifcif) {
+		let todoBien = true
+		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
+		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
+
+		let wrapper_ActaDeCierre = document.getElementById('wrapper_ActaDeCierre')
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let spinner_15 = document.getElementById('spinner_15')
+		let infoMissingDataDoc15 = document.getElementById('infoMissingDataDoc15')
+		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });
+		infoMissingDataDoc15.innerText = ""
+
+		if (!fecha_reunion_cierre.value) {
+			infoMissingDataDoc15.innerHTML = infoMissingDataDoc15.innerHTML + "Data reunió tancament<br>"
+			todoBien = false
+		}
+		if (!fecha_limite_justificacion.value) {
+			infoMissingDataDoc15.innerHTML = infoMissingDataDoc15.innerHTML + "Data límit per justificar l'ajut rebut<br>"
+			todoBien = false
+		}
+		if (todoBien) {
+			infoMissingDataDoc15.classList.add('ocultar')
+			myActaDeCierre.show()
+			//infoMissingDataDoc15.classList.add('ocultar')
+			//wrapper_ActaDeCierre.disabled = true
+			//wrapper_ActaDeCierre.innerHTML = "Generant ..."
+			//spinner_15.classList.remove('ocultar')
+			/* window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_conces_con_req' */
+		} else {
+			infoMissingDataDoc15.classList.remove('ocultar')
+		}
+	}
+</script>

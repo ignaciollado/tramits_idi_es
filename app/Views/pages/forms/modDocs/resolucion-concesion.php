@@ -4,7 +4,7 @@
     	Resolució de concessió
 	</div>
 	<div class="card-itramits-footer">
-
+	pre-tramits
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -21,10 +21,10 @@
 	<div class="card-itramits-footer">
 	<?php if ($expedientes['doc_res_conces_sin_req'] !=0) { ?>
 		<a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_conces_sin_req');?>" target = "_self"><i class='fa fa-check'></i>La resolució de concessió</a>		
-		<?php }?>
-	<?php //} else {?>
-
-	<?php //}?>	
+		<?php }
+	else {
+		echo $expedientes['doc_res_conces_sin_req'];
+	}?>	
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
@@ -39,7 +39,7 @@
 		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
 		let ref_REC_justificacion = document.getElementById('ref_REC_justificacion')
 		let generadoc_res_conces_sin_req = document.getElementById('generadoc_res_conces_sin_req')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_17 = document.getElementById('spinner_17')
 		let infoMissingDataDoc17 = document.getElementById('infoMissingDataDoc17')
 		infoMissingDataDoc17.innerText = ""

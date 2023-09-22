@@ -4,12 +4,12 @@
     	Informe inici requeriment justificació
 	</div>
 	<div class="card-itramits-footer">
-
+	pre-tramits
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target= "#myInicioRequerimiento" id="myBtnInicioRequerimiento">Genera el requeriment</button>
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target= "#myInicioRequerimiento" id="myBtnInicioRequerimiento">Motiu del requeriment</button>
 			<span id="btn_18" class="">
     			<!-- <a id="wrapper_inicio_req_subsanacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_inicio_requerimiento_justificacion');?>" class="btn-primary-itramits">Envia a signar el requeriment</a> -->
 					<button id="wrapper_inicio_req_subsanacion" class='btn btn-secondary ocultar' onclick="enviaInformeInicioRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
@@ -98,7 +98,7 @@
 		let fecha_max_desp_ampliacion = document.getElementById('fecha_max_desp_ampliacion')
 
 		let wrapper_inicio_req_subsanacion = document.getElementById('wrapper_inicio_req_subsanacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_18 = document.getElementById('spinner_18')
 		let infoMissingDataDoc18 = document.getElementById('infoMissingDataDoc18')
 		infoMissingDataDoc18.innerText = ""

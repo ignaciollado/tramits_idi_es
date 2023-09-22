@@ -4,12 +4,12 @@
       Requeriment d'esmena justificació 
 	</div>
 	<div class="card-itramits-footer">
-
+	pre-tramits
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myRequerimientoJustificacion" id="myBtnRequerimientoJustificacion">Motiu del requeriment</button>
+			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myRequerimientoJustificacion" id="myBtnRequerimientoJustificacion">Motiu del requeriment</button>
 			<span id="btn_19" class="">
 <!--     			<a id="wrapper_generadoc_req_justificacion" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requerimiento_justificacion');?>" class="btn-primary-itramits">Envia a la firma de Gerència IDI</a> -->
 					<button id="wrapper_generadoc_req_justificacion" class='btn btn-secondary ocultar' onclick="enviaRequerimientoJustificacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a la firma de Gerència IDI</button>
@@ -99,7 +99,7 @@
 		let fecha_inicio_req_justificacion = document.getElementById('fecha_inicio_req_justificacion')
 
 		let wrapper_generadoc_req_justificacion = document.getElementById('wrapper_generadoc_req_justificacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_19 = document.getElementById('spinner_19')
 		let infoMissingDataDoc19 = document.getElementById('infoMissingDataDoc19')
 		infoMissingDataDoc19.innerText = ""

@@ -4,6 +4,7 @@ require_once 'conectar_a_bbdd.php';
 $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
 $itemsArray = explode  ("/", $items['query']);
+$totalAyuda = 0;
 
 $convocatoria = str_replace("%22", "'", $itemsArray[0]);
 $tipoTramite = str_replace("%22", "'", $itemsArray[1]);

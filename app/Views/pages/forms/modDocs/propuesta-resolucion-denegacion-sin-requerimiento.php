@@ -4,11 +4,11 @@
 		Proposta de resolució de denegació sense requeriment
 	</div>
 	<div class="card-itramits-footer" aria-label="generar informe">
-
+	pre-tramits
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myDenegacion_8" id="myBtnResDenegacionSinReq">Motiu de la denegació</button>
+			<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myDenegacion_8" id="myBtnResDenegacionSinReq">Motiu de la denegació</button>
 			<span id="btn_8" class="">
 				<!-- <a id="wrapper_motivoDenegacion_8" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_prop_res_denegacion_sin_req'); ?>" class="btn btn-primary-itramits">Genera la proposta</a> -->
 				<button id="wrapper_motivoDenegacion_8" class='btn btn-primary ocultar' onclick="enviaPropuestaResDenegacionSinRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a la firma <br>de Gerència IDI</button>
@@ -81,7 +81,7 @@
 		let fecha_propuesta_resolucion_notif = document.getElementById('fecha_propuesta_resolucion_notif') */
 
 		let wrapper_motivoDenegacion_8 = document.getElementById('wrapper_motivoDenegacion_8')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_8 = document.getElementById('spinner_8')
 		let infoMissingDataDoc8 = document.getElementById('infoMissingDataDoc8')
 		infoMissingDataDoc8.innerText = ""
