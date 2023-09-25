@@ -58,13 +58,14 @@
 			<h2> <strong><?php echo lang('message_lang.aviso_idi_isba_solicitud');?></strong> </h2>
 		</div>
 
-		<div class='siacode'>
+<!-- 		<div class='siacode'>
 			<h5><?php echo lang('message_lang.Codi_SIA');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
-		</div>
+		</div> -->
 
 		<div class="formspecifications">
-	   	<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.destino_solicitud');?>:</span><span class='formspecifications_col'><?php echo lang('message_lang.idi');?></span></div>
+	   		<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.destino_solicitud');?>:</span><span class='formspecifications_col'><?php echo lang('message_lang.idi');?></span></div>
 			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.codigo_dir3');?></span><span class='formspecifications_col'><?php echo $data['configuracion']['emisorDIR3'];?></span></div>
+			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.Codi_SIA');?></span><span class='formspecifications_col'><?php echo $data['configuracionLinea']['codigoSIA'];?></span></div>
 			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.tramite_procedimiento');?>:</span class='formspecifications_col'><span><?php echo lang('message_lang.subtitulo_solicitud_ayudas_idi_isba');?></span></div>
 		</div>
 	</header>

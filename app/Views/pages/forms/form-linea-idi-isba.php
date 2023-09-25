@@ -139,7 +139,7 @@
 <!-------------------------- xx. FORMA DE ACREDITACIÓN DE LA REPRESENTACIÓN--------------------------------------------------------->
 	<div id="formbox">
     	<fieldset>
-			<h2>3. <?php echo lang('message_lang.acreditacion_de_la_representacion');?></h2>
+			<h2>xx. <?php echo lang('message_lang.acreditacion_de_la_representacion');?></h2>
 			<div class="form-check">
   				<input class="form-check-input" type="radio" name="forma_acred_represent" id="forma_acred_represent1" value="reaNum" onchange="javaScript: getReaNum(this);">
   				<label class="form-check-label" for="forma_acred_represent1">REA núm.</label>
@@ -165,8 +165,8 @@
 	<div id="formbox">
     	<fieldset>
 			<h2>3. <?php echo lang('message_lang.titulo_notificiaciones');?></h2>
-			<input type = "tel" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" ><p id="mensaje_tel"></p>
 			<input type = "email" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220">
+			<input type = "tel" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" ><p id="mensaje_tel"></p>
 		</fieldset>
 	</div>
 <!-------------------------- 4. OPERACIÓN FINANCIERA --------------------------------------------------------------------->
@@ -195,11 +195,11 @@
 			<h2>6. <?php echo lang('message_lang.adherido_a_ils_si_no');?></h2>
 			<div class="form-check form-check-inline">
   			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_no" onchange="javaScript: selectorNoSi(this);" value="NO" required>
-  			<label class="form-check-label" for="empresa_eco_idi_isba_no">NO</label>
+  			<label class="form-check-label" for="empresa_eco_idi_isba_no"><?php echo lang('message_lang.no_adherido_a_ils');?></label>
 			</div>
 			<div class="form-check form-check-inline">
   			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_si" onchange="javaScript: selectorNoSi(this);" value="SI">
-  			<label class="form-check-label" for="empresa_eco_idi_isba_si">SI</label>
+  			<label class="form-check-label" for="empresa_eco_idi_isba_si"><?php echo lang('message_lang.adherido_a_ils');?></label>
 			</div>
 			<div class="alert alert-primary ocultar" role="alert" id="empresa_eco"></div>
 		</fieldset>
@@ -307,11 +307,11 @@
 		
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_d');?></strong></h3>
-				 	<div class="form-check">
+<!-- 				 	<div class="form-check">
   					<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
   						<label class="form-check-label" for="consentimiento_identificacion"><?php echo lang('message_lang.consentimiento_identificacion_solicitante');?></label>
-					</div>
-					<div id = "enviardocumentoIdentificacion" class = "ocultar">
+					</div> -->
+					<div id = "enviardocumentoIdentificacion">
 						<label for = "file_enviardocumentoIdentificacion"><h5><?php echo lang('message_lang.document_identificativos');?></h5><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					</div>
 			</li>
@@ -339,11 +339,11 @@
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?></strong></h3>
-				 	<div class="form-check">
+<!-- 				 	<div class="form-check">
 	  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.doy_mi_consentimiento_aeat_atib');?>" checked readonly name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
   					<label class="form-check-label" for="consentimiento_certificadoATIB"><?php echo lang('message_lang.doy_mi_consentimiento_aeat_atib');?></label>
-					</div>
-					<div id = "enviarcertificadoATIB" class = "ocultar">
+					</div> -->
+					<div id = "enviarcertificadoATIB">
 						<label for = "file_certificadoATIB"><h5><?php echo lang('message_lang.certificado_document_correspon');?></h5><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code> 
 					</div>
 			</li>
@@ -369,12 +369,12 @@
 				</div>	
 			</li>	
 
-			<li>
+<!-- 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_l');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_l" name="documentacion_adjunta_requerida_idi_isba_l[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_l');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
-			</li>
+			</li> -->
 			</ol>
 		</fieldset>
 		<!-- <span><?php //echo lang('message_lang.documentos_opcionales_si_ya_los_tiene_admin');?></span> -->

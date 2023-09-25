@@ -114,7 +114,10 @@ return [
    'convocatoria_sol_idigital'	      => "Convocatòria ",
    'titulo_sol_idigital_consul'       => "Declaració responsable del consultor per al programa de transformació digital<br>en el marc del programa 'Idigital'",
    'titulo_rep_legal'                 => "REPRESENTANT LEGAL",
-   'titulo_notificiaciones'           => "NOTIFICACIÓ (en aquesta adreça electrònica rebreu els avisos de les notificacions corresponents al procediment)",
+   'titulo_notificiaciones'           => "CANAL PREFERENT DE NOTIFICACIÓ <br><small>D'acord amb l'apartat 17 de la convocatòria les notificacions i les comunicacions a la persona sol·licitant
+   es duran a terme per via telemàtica a l'adreça de correu electrònic que hagi designat la persona sol·licitant a efectes de notificacións en aquest formulari de sol·licitud.
+   Els avisos de la posada a disposició de la notificació a la Carpeta Ciutadana del <a target='_blank' href='https://sede.administracion.gob.es/carpeta/clave.html'>Punto de Acceso General del Estado</a> s'enviaran a l'adreça de correu
+      electrònic que heu designat a les dades del declarant</small>",
    'titulo_dec_resp_consul'           => "DECLARACIÓ RESPONSABLE DEL CONSULTOR",
    'select_poblacion'                 => "Seleccionau una població",
    'select_iae'                       => "Epígraf IAE",
@@ -168,6 +171,7 @@ return [
    'condicion_rep'                    => "Condició que al·lega",
    'condicion_rep_admin'              => "Administrador",
    'condicion_rep_apoderado'          => "Apoderat",
+   'acreditacion_de_la_representacion' => "Mitjà d'acreditació de la representació",
    'conCIF'							        => " amb NIF ",   
    'direccion_rep_legal_sol_idigital' => "Adreça",
    'tel_rep_legal_sol_idigital' 	     => "Telèfon mòbil del sol·licitant o del representant",
@@ -542,7 +546,7 @@ return [
 'detalle_importe_ayuda_solicitado_idi_isba' => "Amb el següent detall:",
 'declaro_idi_isba_que_cumple_1'  => "Que la persona o entitat sol·licitant compleix els requisits de petita o mitjana empresa, d'acord amb l'annex 1 del Reglament (UE) núm. 651/2014 de la Comissió, de 17 de juny de 2014 pel qual es declaren determinades categories d'ajuda compatibles amb el mercat interior en aplicació dels articles 107 i 108 del Tractat, compleix amb els requisits per ser considerat una pime.",
 'declaro_idi_isba_que_cumple_2'  => "Que la persona o entitat beneficiària no està sotmesa a cap causa de prohibició o d'incompatibilitat per rebre l'ajuda segons la legislació vigent i que el sol·licitant no ha estat sancionat o condemnat per resolució administrativa o sentència judicial ferma per discriminació salarial, assetjament moral o qualsevol tipus de tracte desigual, per raó de sexe, en l'àmbit de les relacions laborals.",
-'declaro_idi_isba_que_cumple_3'  => "Que persona o entitat sol·licitant durà a terme l'activitat d'inversió, així com la justificació de la realització de l'activitat i el compliment dels requisits i condicions que determinen la concessió de la subvenció.",
+'declaro_idi_isba_que_cumple_3'  => "Que la persona o entitat sol·licitant durà a terme l'activitat d'inversió, així com la justificació de la realització de l'activitat i el compliment dels requisits i condicions que determinen la concessió de la subvenció.",
 'declaro_idi_isba_que_cumple_4'  => "Que no ha sol·licitat o rebut cap altra ajuda de qualsevol entitat, pública o privada, nacional o estrangera, relacionada amb l'operació financera o amb el projecte d'inversió; o, en cas contrari, relació de totes les ajudes i les subvencions sol·licitades o rebudes.",
 'declaro_idi_isba_que_cumple_5'  => "Compliment del reglament (UE) núm. 1407/2013 de la Comissió de 18 de desembre de 2013, relatiu a l'aplicació dels articles 107 i 108 del Tractat de funcionament de la Unió Europea de les ajudes de minimis. Declaració de les ajudes rebudes durant l'exercici fiscal en curs i els dos exercicis fiscals anteriors.",
 'declaro_idi_isba_que_cumple_6'  => "Que, en la data de la sol·licitud, està al corrent dels pagaments de les seves obligacions tributàries amb l'Administració de la Comunitat Autònoma de les Illes Balears, així com al corrent dels pagaments de les seves obligacions tributàries amb la Seguretat Social.",
@@ -553,7 +557,7 @@ return [
 'otros_declaro_idi_isba'   => "Altres",
 'documentacion_adjunta_requerida_idi_isba' => "Documentació",
 'documentacion_adjunta_requerida_idi_isba_c' => "Fotocòpia del document fefaent que acrediti la representació, per qualsevol forma vàlida en dret, de la persona que actua en nom de la persona o entitat sol·licitant.",
-'documentacion_adjunta_requerida_idi_isba_d' => "La fotocòpia del DNI de la persona que signa la sol·licitud, en nom propi o en representació d'una persona jurídica o d'una entitat sense personalitat jurídica, excepte el consentiment exprés de l'interessat perquè les seves dades d'identitat personal es puguin consultar mitjançant el sistema de verificació de dades d'identitat establert en l'Ordre PRE/3949/2006, de 26 de desembre, per la qual s'estableix la configuració, característiques, requisits i procediments d'accés al Sistema de Verificació de Dades d'Identitat, conforme a allò que es disposa en el Reial decret 522/2006, de 28 d'abril, pel qual se suprimeix l'aportació  de fotocòpies de documents d'identitat en els procediments administratius de l'Administració General de l'Estat i dels seus organismes públics vinculats o dependents.",
+'documentacion_adjunta_requerida_idi_isba_d' => "La fotocòpia del DNI de la persona que signa la sol·licitud, en nom propi o en representació d'una persona jurídica o d'una entitat sense personalitat jurídica.",
 'documentacion_adjunta_requerida_idi_isba_e' => "La fotocòpia del document d'identificació fiscal (NIF) de l'empresa o empreses sol·licitants i promotores de l'actuació.",
 'documentacion_adjunta_requerida_idi_isba_f' => "La còpia de les escriptures de constitució de l'empresa sol·licitant, així́ com dels estatuts vigents o document fundacional corresponent, en els quals constin les normes per les quals es regulen les seves activitats, degudament registrades, si escau, en els registres públics competents.",
 'documentacion_adjunta_requerida_idi_isba_g' => "La documentació acreditativa d'estar donat d'alta en el Cens d'empresaris professionals i retenidors i en l'Impost sobre Activitats Econòmiques (IAE). El sol·licitant ha de presentar almenys uns d'aquests dos certificats de situació censal de l'Agència Estatal d'Administració Tributària:
@@ -571,11 +575,13 @@ return [
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓ ADJUNTA",
 'certificado_alta_censo_AEAT'            => "Certificat d´estar d´alta en el cens de la AEAT",
 
-'adherido_a_ils_si_no'  => "Participa o està adherit a alguna mena de programa per a reduir la petjada de carboni",
-'no_adherido_a_ils'     => "NO",
-'adherido_a_ils'        => "SI",
+'adherido_a_ils_si_no'  => "CATEGORIA",
+'no_adherido_a_ils'     => "Inversió",
+'adherido_a_ils'        => "Inversió ILS",
 'documentacion_adjuntada_idi_isba' => "Documentació adjuntada",
-'solicita_ayuda_idi_isba'  => "Sol·licit un ajut per import de",
+'solicita_ayuda_idi_isba'  => "SOL·LICITO<br><small>D'acord amb la convocatòria per a l'any 2023 d'ajuts a les empreses imdustrials amb activitat a les Illes Balears per cobrir
+les comissions d'obertura i d'estudi, els interessos i el cost de l'aval de societats de garantia recíproca per operaciones de finançament d'inversions productives i de liquiditat, aprovada per
+Resolució del conseller d'Empresa, Ocupació i Energia, els imports corresponnents per l'operació, avalada per societat de garantia recíproca, següent:</small>",
 'solicita_ayuda_importe_idi_isba' => "SOL·LICIT un AJUT per import de ",
 'solicita_ayuda_importe_idi_isba_detall' => " amb el següent detall: ",
 'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvenció d'interessos, consistent en la quantia de",

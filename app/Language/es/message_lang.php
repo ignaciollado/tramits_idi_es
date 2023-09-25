@@ -116,7 +116,10 @@ return [
    'convocatoria_sol_idigital'	      => "Convocatoria ",
    'titulo_sol_idigital_consul'       => "Declaración responsable del consultor para el programa de transformación digital<br>en el marco del programa 'Idigital'",
    'titulo_rep_legal'                 => "REPRESENTANTE LEGAL",   
-   'titulo_notificiaciones'           => "NOTIFICACIÓN (en este correo recibirá los avisos de las notificaciones correspondientes al procedimiento)",   
+   'titulo_notificiaciones'           => "CANAL PREFERENTE DE NOTIFICACIÓN <br><small>De acuerdo con el apartado 17 de la convocatoria, las notificaciones y las comunicaciones a la persona
+   solicitante se realizarán por vía telemática a la dirección de correo electrónico que haya designado la persona solicitante.
+   Los avisos de la puesta a disposición de la notificación en la Carpeta Ciutadana del <a target='_blank' href='https://sede.administracion.gob.es/carpeta/clave.html'>Punto de Acceso General del Estado</a> se enviarán a la dirección de correo
+    electrónico que ha designado en los datos del declarante.</small>",   
    'titulo_dec_resp_consul'           => "DECLARACIÓN RESPONSABLE DEL CONSULTOR",
    'select_poblacion'                 => "Seleccione una población",
    'select_iae'                       => "Epígrafe IAE",
@@ -171,7 +174,8 @@ return [
    'condicion_rep'                    => "Condición que alega",
    'condicion_rep_admin'              => "Administrador",
    'condicion_rep_apoderado'          => "Apoderado",
-   'conCIF'							  => " con NIF ",
+   'acreditacion_de_la_representacion' => "Medio para acreditar la representación",
+   'conCIF'							        =>  " con NIF ",
    'direccion_rep_legal_sol_idigital' => "Dirección",
    'tel_rep_legal_sol_idigital' 	     => "Teléfono móvil del solicitante o del representante",
    'mail_rep_legal_sol_idigital' 	  => "Dirección electrónica a efectos de notificaciones",
@@ -540,7 +544,7 @@ return [
 'otros_declaro_idi_isba'   => "Otros",
 'documentacion_adjunta_requerida_idi_isba' => "Documentación",
 'documentacion_adjunta_requerida_idi_isba_c' => "Fotocopia del documento fehaciente que acredite la representación, por cualquier forma válida en derecho, de la persona que actúa en nombre de la persona o entidad solicitante.",
-'documentacion_adjunta_requerida_idi_isba_d' => "La fotocopia del DNI de la persona que firma la solicitud, en nombre propio o en representación de una persona jurídica o de una entidad sin personalidad jurídica, salvo el consentimiento expreso del interesado para que sus datos de identidad personal puedan consultarse mediante el sistema de verificación de datos de identidad establecido en la Orden PRE/3949/2006, de 26 de diciembre, por la que se establece la configuración, características, requisitos y procedimientos de acceso al Sistema de Verificación de Datos de Identidad, conforme a lo que se dispone en el Real Decreto 522/2006, de 28 de abril, por el que se suprime la aportación de fotocopias de documentos de identidad en los procedimientos administrativos de la Administración General del Estado y de sus organismos públicos vinculados o dependientes. ",
+'documentacion_adjunta_requerida_idi_isba_d' => "La fotocopia del DNI de la persona que firma la solicitud, en nombre propio o en representación de una persona jurídica o de una entidad sin personalidad jurídica.",
 'documentacion_adjunta_requerida_idi_isba_e' => "La fotocopia del documento de identificación fiscal (NIF) de la empresa o empresas solicitantes y promotoras de la actuación. ",
 'documentacion_adjunta_requerida_idi_isba_f' => "La copia de las escrituras de constitución de la empresa solicitante, así como de los vigentes estatutos o documento fundacional correspondiente, en los que consten las normas por las que se regulan sus actividades, debidamente registradas, en su caso, en los registros públicos competentes.",
 'documentacion_adjunta_requerida_idi_isba_g' => "La documentación acreditativa de estar dado de alta en el Censo de Empresarios Profesionales y Retenedores y en el Impuesto sobre Actividades Económicas (IAE). El solicitante tiene que presentar al menos unos de estos dos certificados de situación censal de la Agencia Estatal de Administración Tributaria:
@@ -558,10 +562,13 @@ return [
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓN ADJUNTA",
 'certificado_alta_censo_AEAT'            => "Certificado de estar de alta en el censo de la AEAT",
 
-'adherido_a_ils_si_no' => "Participa o está adherido a algún tipo de programa para reducir la huella de carbono",
-'no_adherido_a_ils'     => "NO",
-'adherido_a_ils'        => "SÍ",
-'solicita_ayuda_idi_isba'  => "solicita_ayuda_importe_idi_isba",
+'adherido_a_ils_si_no' => "CATEGORÍA",
+'no_adherido_a_ils'     => "Inversión",
+'adherido_a_ils'        => "Inversión ILS",
+'solicita_ayuda_idi_isba'  => "SOLICITO<br><small>De acuerdo con la convocatoria para el año 2023 de ayudas a las empresas industriales con actividad en las Islas Baleares
+para cubrir las comisiones de apertura y de estudio, los intereses y el coste del aval de sociedades de garantía recíproca para operaciones de financiación de inversiones productivas
+y de liquidez, aprobada por Resolución del consejero de Empresa, Ocupación y Energía, los importes correspondientes para la operación, avalada por sociedad de garantía recíproca
+, siguiente:</small>",
 'solicita_ayuda_importe_idi_isba' => "SOLICITO una AYUDA por importe de ",
 'solicita_ayuda_importe_idi_isba_detall' => " con el siguiente detalle: ",
 
@@ -571,7 +578,7 @@ return [
 'ayuda_superior_3000' => "En el caso de ayudas superiores a los 3000 €:",
 'documentacion_adjuntada_idi_isba' => "Documentación adjuntada",
 
-'doc_requerimiento_asunto' => "Assumpte: requeriment de documentació relativa a l’expedient de subvenció",
+'doc_requerimiento_asunto' => "Asunto: requerimiento de documentación relativa al expediente de subvención",
 'doc_requerimiento_p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la resolució del President de l’IDI per la qual s'aprova la convocatòria per a la concessió d’ajuts de xecs de consultoria  per  a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat (BOIB núm. %BOIBNUM%), us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",
 'doc_requerimiento_p2' => "Tal i com estableix la convocatòria a l’article 5.9, l’esmena de les deficiències s’ha de fer a través del tràmit específic que hi ha al procediment de la Seu electrònica de la CAIB. Si no es compleix aquest punt, s’entendrà que la sol·licitud d’esmena no està presentada.",
 'doc_requerimiento_p3' => "L’esmena s’ha  d’adreçar a l’IDI, Institut d’Innovació Empresarial de les Illes Balears. ",
