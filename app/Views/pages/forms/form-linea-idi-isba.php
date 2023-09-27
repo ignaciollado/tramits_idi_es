@@ -122,17 +122,18 @@
 			<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 			<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
 			<input type="text" aria-required="true" name = "domicilio_rep" id = "domicilio_rep" title="<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
-			<input type="text" aria-required="true" name = "telefono_contacto_rep" id = "telefono_contacto_rep" title="<?php echo lang('message_lang.movil_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
+			<input type="text" aria-required="true" name = "telefono_contacto_rep" id = "telefono_contacto_rep" title="<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
+			<input type="text" aria-required="true" name = "cp_rep" id = "cp_rep" title="<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" minlength = "5" maxlength = "5" onblur="javaScript: validateFormField(this);">
 
-			<div class="form-check form-check-inline">
+			<!-- <div class="form-check form-check-inline">
   			<input class="form-check-input" type="radio" name="condicion_rep" id="condicion_rep_admin" value="administrador">
   			<label class="form-check-label" for="condicion_rep_admin"><?php echo lang('message_lang.condicion_rep_admin');?></label>
-			</div>
+			</div> -->
 
-			<div class="form-check form-check-inline">
+<!-- 			<div class="form-check form-check-inline">
   			<input class="form-check-input" type="radio" name="condicion_rep" id="condicion_rep_apoderado" value="apoderado">
   			<label class="form-check-label" for="condicion_rep_apoderado"><?php echo lang('message_lang.condicion_rep_apoderado');?></label>
-			</div>
+			</div> -->
 		</fieldset> 
 	</div>
 
@@ -339,10 +340,6 @@
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?></strong></h3>
-<!-- 				 	<div class="form-check">
-	  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.doy_mi_consentimiento_aeat_atib');?>" checked readonly name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
-  					<label class="form-check-label" for="consentimiento_certificadoATIB"><?php echo lang('message_lang.doy_mi_consentimiento_aeat_atib');?></label>
-					</div> -->
 					<div id = "enviarcertificadoATIB">
 						<label for = "file_certificadoATIB"><h5><?php echo lang('message_lang.certificado_document_correspon');?></h5><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code> 
 					</div>

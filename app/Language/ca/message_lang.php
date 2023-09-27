@@ -131,10 +131,10 @@ return [
    'idExpISBA'                        => "Expedient ISBA",
 
    'solicitante_sol_idigital'         => "Nom o raó social",    
-   'direccion_sol_idigital'           => "Adreça postal",
+   'direccion_sol_idigital'           => "Adreça postal del sol·licitant",
    'localidad_sol_idigital'           => "Localitat",
-   'cp_sol_idigital'                  => "Codi postal [cinc dígits]",
-   'movil_sol_idigital'      		     => "Telèfon de contacte",   
+   'cp_sol_idigital'                  => "Codi postal del sol·licitant [cinc dígits]",
+   'movil_sol_idigital'      		     => "Telèfon de contacte del sol·licitant",   
    'mail_sol_idigital'      		     => "Adreça electrònica de contacte",
    'notificacion'					        => "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)",
    'notificacion_corto'				     => "NOTIFICACIÓ",
@@ -173,8 +173,15 @@ return [
    'condicion_rep_apoderado'          => "Apoderat",
    'acreditacion_de_la_representacion' => "Mitjà d'acreditació de la representació",
    'conCIF'							        => " amb NIF ",   
-   'direccion_rep_legal_sol_idigital' => "Adreça",
+
    'tel_rep_legal_sol_idigital' 	     => "Telèfon mòbil del sol·licitant o del representant",
+   
+   'nom_rep_legal_sol_idigital'       => "Nombre del representant legal",
+   'nif_rep_legal_sol_idigital'       => "NIF del representant legal",
+   'direccion_rep_legal_sol_idigital' => "Adreça del representant legal",
+   'cp_sol_rep_legal_idigital'         => "Còdi postal del representant legal",
+   'movil_rep_legal_sol_idigital'      => "Telèfon de contacte del representant legal",
+
    'mail_rep_legal_sol_idigital' 	  => "Adreça electrònica a efectes de notificacions",
    'tit_tel_rep_legal_sol_idigital'   => "Telèfon mòbil a l'efecte de notificacions (podrà rebre algun SMS nostre amb la finalitat d'informar-lo).",
    'tit_mail_rep_legal_sol_idigital'  => "Adreça electrònica a l'efecte de notificacions (serà l'adreça de correu que usarem per a enviar-li informació i notificacions.",
@@ -526,7 +533,7 @@ return [
                                              <li>Una Declaració responsable de la persona titular de l'empresa o de qui la representa legalment.</li>
                                        </ol>",
 'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
-'operacion_financiera_idi_isba'  => "OPERACIÓ FINANÇERA",
+'operacion_financiera_idi_isba'  => "INVERSIÓ DESTINADA A",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTEC",
 
 'entidad_financiera_idi_isba'    => "Nom entitat finançera",
