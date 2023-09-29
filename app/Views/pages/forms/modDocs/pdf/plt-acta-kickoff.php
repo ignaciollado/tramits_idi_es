@@ -15,10 +15,11 @@ $configuracion = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
-    
-$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+
+$data['configuracion'] = $configuracion->configuracionGeneral();   
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
 $data['expediente'] = $expediente->where('id', $id)->first();
-    
+
 $db = \Config\Database::connect();
 $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
 foreach ($query->getResult() as $row) {

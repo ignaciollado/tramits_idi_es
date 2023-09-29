@@ -26,14 +26,19 @@ legend {
 				border-color: initial;
 				border-image: initial;
 				padding-top: 3rem!important;
-			}		
+			}	
 a {
   color: #000000 !Important;
-  font-weight: bold !Important;
+  font-weight: 600 !Important;
+  text-decoration: none !Important;
 }
 a:hover {
   cursor: pointer;
-  color: #fff;
+  color: #348234;
+  text-decoration: underline !Important;
+}
+.small {
+	font-size: .8rem!important;
 }
 .hidden-itramits {
     display: none !important;
@@ -51,11 +56,9 @@ a:hover {
 }
 .alert {
     position: relative;
-    /* padding: .75rem 1.25rem;
-    margin-bottom: 1rem; */
     border: 1px solid transparent;
     border-radius: .25rem;
-		text-align: left;
+	text-align: left;
 }
 .alert-info {
     color: #fff;
@@ -66,7 +69,7 @@ a:hover {
     color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;
-		font-size: 1.25rem;
+	font-size: 1.25rem;
 }
   input:required:invalid, input:focus:invalid {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
@@ -87,7 +90,6 @@ header {
 .header__formempresasils {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	/* max-width: 1110px; */
 	margin: 0;
 }
 
@@ -226,15 +228,14 @@ header {
 		footer {
 			display: grid!important;
 			grid-template-columns: auto;
-			position: fixed;
+			position: sticky;
     		left: 0;
     		bottom: 0;
     		width: 100%;
+			/*padding: 1rem;*/
 			background-color: #a3d4db;
 			text-align: center;
   			clear: both;
-			margin-top: 2rem;
-			z-index: -9999;
 		}
 
 		.unreadMails {
@@ -489,7 +490,7 @@ code {
 	display: inline-block;
     text-align: center;
     white-space: wrap;
-    /* vertical-align: middle; */
+    margin: .2rem;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
@@ -1350,6 +1351,13 @@ span.export {
 	width: 100%;
 	color: #fff;
 }
+.header-wrapper-docs {
+	display: grid;
+	grid-template-columns: 20% 40% 10% 10% 20%;
+	padding: .4rem;
+	width: 100%;
+	color: #fff;
+}
 
 .header-wrapper-docs-3 {
 	display: grid;
@@ -1361,7 +1369,7 @@ span.export {
 
 .header-wrapper-docs-4 {
 	display: grid;
-	grid-template-columns: 20% 60% 10% 10%;
+	grid-template-columns: 40% 40% 10% 10%;
 	padding: .4rem;
 	width: 100%;
 	color: #fff;
@@ -1410,37 +1418,43 @@ span.export {
 
 .detail-wrapper-docs {
 	display: grid;
-  grid-template-columns: 20% 40% 10% 10% 20%;
-  padding: .4rem;
+  	grid-template-columns: 20% 40% 10% 10% 20%;
+  	padding: .4rem;
 	width: 100%;
 }
 
 .detail-wrapper-docs-3 {
 	display: grid;
-  grid-template-columns: 45% 45% 10%;
-  padding: .4rem;
+  	grid-template-columns: 45% 45% 10%;
+  	padding: .4rem;
 	width: 100%;
 }
 
 .detail-wrapper-docs-4 {
 	display: grid;
-  grid-template-columns: 30% 50% 10% 10%;
-  padding: .4rem;
+  	grid-template-columns: 40% 40% 10% 10%;
+  	padding: .4rem;
 	width: 100%;
 }
 
 .detail-wrapper-docs-solicitud {
 	background-color: #f6b26b;
 }
+.detail-wrapper-docs-solicitud-ils {
+	background-color: #080081;
+  }
 
 .detail-wrapper-docs-validacion {
 	background-color: #00ff00;
 }
+.detail-wrapper-docs-validacion-ils {
+	background-color: #b23cfd;
+  }
 
 .detail-wrapper-docs-ejecucion {
-	background-color: #6d9eeb;
+	background-color: rgb(255, 251, 11);
 }
-.header-wrapper-docs-justificacion {
+.detail-wrapper-docs-justificacion {
 	background-color: #f37020;
 }
 .detail-wrapper-docs-justificacion {
@@ -1451,6 +1465,23 @@ span.export {
 	background-color: #1266f1;
 	font-size: 1.3rem;
 }
+.detail-wrapper-docs-justificacion-ils {
+	display: grid;
+	grid-template-columns: 40% 40% 10% 10%;
+	padding: .4rem;
+	width: 100%;
+	background-color: #1266f1;
+	font-size: 1.3rem;
+  }
+  .detail-wrapper-docs-seguimiento-ils {
+	display: grid;
+	grid-template-columns: 40% 40% 10% 10%;
+	padding: .4rem;
+	width: 100%;
+	background-color: rgb(255, 251, 11);
+	font-size: 1.3rem;
+  }  
+
 
 .detail-wrapper-docs-justificacion-justificantes {
 	display: grid;

@@ -6,26 +6,30 @@
 <?php
 require_once('tcpdf/tcpdf.php');
 setlocale(LC_MONETARY,"es_ES");
-    //obtengo los datos de la convocatoria
-    use App\Models\ConfiguracionModel;
-    $configuracion = new ConfiguracionModel();
-    $data['configuracion'] = $configuracion->where('convocatoria_activa', 2)->first();
-    //obtengo los datos de la solicitud
-    use App\Models\ExpedientesModel;
-    $expediente = new ExpedientesModel();
-    $data['expediente'] = $expediente->where('id', $id)->first();
-    //obtengo los datos del documento
-    $db = \Config\Database::connect();
-	$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
-    foreach ($query->getResult() as $row)
-        {
-        $nif = $row->cifnif_propietario;
-        }
+use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
+use App\Models\ExpedientesModel;
+
+$configuracion = new ConfiguracionModel();
+$configuracionLinea = new ConfiguracionLineaModel();
+$expediente = new ExpedientesModel();
+
+$data['configuracion'] = $configuracion->configuracionGeneral();   
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('IDI-ISBA');
+$data['expediente'] = $expediente->where('id', $id)->first();
+
+//obtengo los datos del documento
+$db = \Config\Database::connect();
+$query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
+foreach ($query->getResult() as $row) {
+    $nif = $row->cifnif_propietario;
+    }
         
-    $session = session();
-        if ($session->has('logged_in')) {  
-           $pieFirma =  $session->get('full_name');
-        }
+$session = session();
+if ($session->has('logged_in')) {  
+    $pieFirma =  $session->get('full_name');
+    }
+
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -86,10 +90,10 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: resolució<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
-$html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
-$html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
-$html .= "NIF: ".$data['expediente']['nif'];
+$html .= "NIF: ". $data['expediente']['nif']."<br>";
+$html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
+$html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 
 // set color for background
 $pdf->SetFillColor(255, 255, 255);

@@ -13,7 +13,7 @@ class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
-        $image_file = K_PATH_IMAGES.'logo_institut_dinnovacio_empresaria_col_vertical.png';
+        $image_file = K_PATH_IMAGES.'logo_idi_conselleria.png';
         $this->Image($image_file, 20, 10, 25, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer

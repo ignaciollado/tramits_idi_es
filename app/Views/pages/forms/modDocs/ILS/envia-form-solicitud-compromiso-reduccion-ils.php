@@ -50,25 +50,25 @@ foreach ($query->getResult('array') as $row)
 
   <script>
   // Get the modal
-  let modal_17ils_CompromisoReduccion = document.getElementById("myEnviarFormularioCompromisoReduccion");
+  //let modal_17ils_CompromisoReduccion = document.getElementById("myEnviarFormularioCompromisoReduccion");
 	// Get the button that opens the modal
-	let btn_17ils_CompromisoReduccion = document.getElementById("myBtnEnviarFormularioCompromisoReduccion");
+	//let btn_17ils_CompromisoReduccion = document.getElementById("myBtnEnviarFormularioCompromisoReduccion");
 	// Get the <span> element that closes the modal
-	let span_17ils_CompromisoReduccion = document.getElementsByClassName("close")[0];
+	//let span_17ils_CompromisoReduccion = document.getElementsByClassName("close")[0];
 	// When the user clicks the button, open the modal 
-	btn_17ils_CompromisoReduccion.onclick = function() {
-    modal_17ils_CompromisoReduccion.style.display = "block";
-	}
+	//btn_17ils_CompromisoReduccion.onclick = function() {
+    //modal_17ils_CompromisoReduccion.style.display = "block";
+	//}
 	// When the user clicks on <span> (x), close the modal
-	span_17ils_CompromisoReduccion.onclick = function() {
-    modal_17ils_CompromisoReduccion.style.display = "none";
-	}
+	//span_17ils_CompromisoReduccion.onclick = function() {
+    //modal_17ils_CompromisoReduccion.style.display = "none";
+	//}
 	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-  	if (event.target == modal_17ils_CompromisoReduccion) {
-      modal_17ils_CompromisoReduccion.style.display = "none";
-  	}
-	}
+	//window.onclick = function(event) {
+  	//if (event.target == modal_17ils_CompromisoReduccion) {
+    //  modal_17ils_CompromisoReduccion.style.display = "none";
+  	//}
+	//}
   </script>
 				
 

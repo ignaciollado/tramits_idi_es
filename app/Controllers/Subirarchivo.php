@@ -1071,7 +1071,7 @@ class SubirArchivo extends BaseController
 		$mail_representante = $this->request->getVar('mail_representante');
 		$tel_representante = $this->request->getVar('tel_representante');
 		$data_consultor = [
-     'empresa' => $empresa,
+     	'empresa' => $empresa,
     	'nif' => $nif,
 			'domicilio' => $domicilio,
 			'localidad' => $this->request->getVar('localidad'),
@@ -1193,7 +1193,7 @@ class SubirArchivo extends BaseController
  		/* -------------------------------7. DOCUMENTACIÓN--------------------------------------------- */
  		$documentosfile = $this->request->getFiles(); 
 
-if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
+	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
 			$file_document_acred_como_repres = "NO";
 		} else {
@@ -1438,7 +1438,6 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 					}
 			}
 		} 
-
 		/* ----------------------------------------------------------------------------------------------------- */
 		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos------ */
  		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
@@ -1490,7 +1489,6 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 			}
 		} 
  		/* ----------------------------------------------------------------------------------------------------------------- */
-
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
 	 	foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_f'] as $documento_f)
 		 	{
@@ -1514,8 +1512,8 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 			 	}
 		 	}
 	 	} 
-  	/* ----------------------------------------------------------------------------------------------------------------- */
-
+  		/* ----------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------documentos apartado g.----------------------------------------------------------- */
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_g'] as $documento_g)
 				{
@@ -1539,8 +1537,8 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 						}
 				}
 			}
-  	/* ----------------------------------------------------------------------------------------------------------------- */
-
+  		/* ----------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------documentos apartado h.----------------------------------------------------------- */
 			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_h'] as $documento_h)
 				{
@@ -1564,8 +1562,8 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 					}
 				}
 		}
-  	/* ----------------------------------------------------------------------------------------------------------------- */
-
+  		/* ----------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------documentos apartado i.----------------------------------------------------------- */
 			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_i'] as $documento_i)
 				{
@@ -1590,7 +1588,7 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 				}
 		} 
 		/* ----------------------------------------------------------------------------------------------------------------- */
-
+		/* --------------------------------documentos apartado j.----------------------------------------------------------- */
 			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_j'] as $documento_j)
 				{
@@ -1614,8 +1612,8 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 					}
 				}
 		} 
-  	/* ----------------------------------------------------------------------------------------------------------------- */
-
+  		/* ----------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------documentos apartado k.----------------------------------------------------------- */
 			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_k'] as $documento_k)
 				{
@@ -1639,8 +1637,8 @@ if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 					}
 				}
 		} 
-  	/* ----------------------------------------------------------------------------------------------------------------- */
-
+  		/* ----------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------documentos apartado l.----------------------------------------------------------- */
 		 if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_l'] as $documento_l)
 				{

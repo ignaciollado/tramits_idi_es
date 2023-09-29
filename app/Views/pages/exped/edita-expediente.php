@@ -10,19 +10,23 @@
     use App\Models\ExpedientesModel;
 
     $modelDocumentosGenerados = new DocumentosGeneradosModel();
+  
     $modelMejorasSolicitud = new MejorasExpedienteModel();
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
    
     $modelExp = new ExpedientesModel();
 
-    echo '<div class="alert alert-warning" role="alert">
-    Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
+    /* if ($totalConvocatorias>1){ */
+        echo '<div class="alert alert-warning" role="alert">
+        Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
+    /* } */
 
 	$programa = $expedientes['tipo_tramite'];
 	$id = $expedientes['id'];
 	$nifcif = $expedientes['nif'];
-    $convocatoriaEnCurso =$configuracionLinea['convocatoria'];
+    $convocatoriaEnCurso = $configuracion['convocatoria'];
+
     $esAdmin = ($session->get('rol') == 'admin');
     $esConvoActual = ($convocatoria == $convocatoriaEnCurso);
 
@@ -32,12 +36,10 @@
     ];
     $session->set($expedienteID);
 
-/* Cuando no hay IMPORTE AYUDA, calcula el importe según el programa y 
-el número de convocatorias a las que se ha  presentado. La definición del importe
-está en la convo publicada en el BOIB 
-*/
+/* Si no hay IMPORTE AYUDA, Calcula el importe según el programa Y el número de convocatorias a las que se ha  presentado */
+
 if (!$expedientes['importeAyuda']) {
-    $objs = json_decode( $configuracionLinea['programa']);
+    $objs = json_decode( $configuracion['programa']);
     /**
      * object(stdClass)#88 (3) { 
      * ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
@@ -77,11 +79,11 @@ if (!$expedientes['importeAyuda']) {
             switch($totalConvocatorias) {
                 case 1:
                     $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
-                    echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
+                    //echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
                     break;
                 default:
                     $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
-                    echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
+                    //echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
             }
             break;
     }
@@ -492,7 +494,7 @@ if (!$expedientes['importeAyuda']) {
             <!-- Documentación opcional-->
             <h3>Documentació <strong>opcional</strong> de l'expedient:</h3>
               <div class="docsExpediente">
-  	                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
+  	                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
         	            <div >Rebut el</div>
 			            <div >Document</div>
     		            <div >Tràmit</div>
@@ -529,7 +531,7 @@ if (!$expedientes['importeAyuda']) {
                     }?>
 
                     <?php if ($docs_opc_item->docRequerido === 'NO') {?>
-  			            <div id ="fila" class = "detail-wrapper-docs general">
+  			            <div id ="fila" class = "detail-wrapper-docs-4 general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_opc_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_opc_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
       			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_opc_item->tipo_tramite; ?></span>
@@ -561,42 +563,42 @@ if (!$expedientes['importeAyuda']) {
                 ?>
             <br>
             <div class="alert alert-info">
-            <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
-            <?php
+                <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
+                <?php
 
-	//Compruebo el estado de la firma de la declaración responsable.
-    $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
-	if (isset($thePublicAccessId))
-		{
-		$PublicAccessId = $thePublicAccessId;
-	    $requestPublicAccessId = $PublicAccessId;
-        $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
-		$respuesta = json_decode ($request, true);
-		$estado_firma = $respuesta['status'];
+                	//Compruebo el estado de la firma de la declaración responsable.
+                    $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
+	                if (isset($thePublicAccessId))
+		                {
+		                    $PublicAccessId = $thePublicAccessId;
+	                        $requestPublicAccessId = $PublicAccessId;
+                            $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+		                    $respuesta = json_decode ($request, true);
+		                    $estado_firma = $respuesta['status'];
 
-			switch ($estado_firma)
-				{
-				case 'NOT_STARTED':
-				$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
-				break;
-				case 'REJECTED':
-				$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
-				$estado_firma .= "</a>";				
-				break;
-				case 'COMPLETED':
-				$estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		
-				$estado_firma .= "</a>";					
-				break;
-				case 'IN_PROCESS':
-				$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
-				$estado_firma .= "</a>";						
-				default:
-				$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
-				}
-			echo $estado_firma;
-		}?>
-            <br>
-            <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
+			                switch ($estado_firma)
+				                {
+				                    case 'NOT_STARTED':
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+				                        break;
+				                    case 'REJECTED':
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+				                        $estado_firma .= "</a>";				
+				                        break;
+				                    case 'COMPLETED':
+				                        $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		
+				                        $estado_firma .= "</a>";					
+				                        break;
+				                    case 'IN_PROCESS':
+                                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
+				                        $estado_firma .= "</a>";						
+				                    default:
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
+				                }
+			                echo $estado_firma;
+		                }?>
+                        <br>
+                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
             </div>
             
         </div>
@@ -658,7 +660,7 @@ if (!$expedientes['importeAyuda']) {
             </ol>
             <h3>Millores: <!-- <small class="alert alert-secondary" role="alert"><?php echo $ultimaMejoraSolicitud; ?></small> --></h3>
             <?php if($mejorasSolicitud): ?>
-                <div class = "header-wrapper-docs-3 detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-3 header-wrapper-docs-solicitud">
         	        <div >Data rec</div>
    	  	            <div >Referència rec</div>
    	  	            <div >Acciò</div>
@@ -692,7 +694,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
         	        <div >Pujat el</div>
    	  	            <div >Document</div>
                     <div >Estat</div>                         
@@ -706,7 +708,7 @@ if (!$expedientes['importeAyuda']) {
 		    	                $tipoMIME = $docSolicitud_item->type;
 			                    $nom_doc = $docSolicitud_item->name;
 			                ?>
-                            <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-solicitud">
+                            <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-solicitud-ils">
           	                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
        		                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                                    <?php
@@ -725,11 +727,11 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                                <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target = "#eliminaDocsExpediente"><strong>Elimina</strong></button>';?></span>		
+                                <?php if ($docSolicitud_item->estado!='Aprovat') {?>
+                                    <?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocsExpediente"><strong>Elimina</strong></button>';?>
     		                        <?php } else {?>
-	    		                        <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-    		                    <?php } ?>
+	    		                        <span class="detail-wrapper-docs-col small">No es pot esborrar</span>
+    		                    <?php } ?>                                
 	                        </div>
                         <?php 
                             }
@@ -737,11 +739,12 @@ if (!$expedientes['importeAyuda']) {
                 <?php endif; ?>
             </div>
 
-                <div id="eliminaDocsExpediente" class="modal">
+                <div id="eliminaDocsExpediente" class="modal" role="dialog">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <!-- Modal content-->
+                        <div class="modal-content" style = "width: 60%;">
                             <div class="modal-header">
-                                <h4 class="modal-title">Aquesta acció no es podrá desfer</h4>
+	    	                    Aquesta acció no es podrá desfer.
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -755,11 +758,12 @@ if (!$expedientes['importeAyuda']) {
                     </div>
                 </div>
 
-                <div id="modalEliminaMejora" class="modal">
+                <div id="modalEliminaMejora" class="modal" role="dialog">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <!-- Modal content-->
+                        <div class="modal-content" style = "width: 60%;">
                             <div class="modal-header">
-                                <h4 class="modal-title">Aquesta acció no es podrá desfer</h4>
+	    	                    Aquesta acció no es podrá desfer.
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -873,32 +877,33 @@ if (!$expedientes['importeAyuda']) {
                     </div>
                 <?php }?>                  
         </form>
-        </div> 
+        </div>        
+
         <?php 
-            $dias_fecha_lim_justificar = $configuracionLinea['dias_fecha_lim_justificar'];
-            $meses_fecha_lim_consultoria = $configuracionLinea['meses_fecha_lim_consultoria'];
+	    $dias_fecha_lim_justificar	= $configuracionLinea['dias_fecha_lim_justificar'];
+        $meses_fecha_lim_consultoria = $configuracionLinea['meses_fecha_lim_consultoria'];
 
-            $mesesPrograma = explode("#",$meses_fecha_lim_consultoria);
-            $mesesPrograma = str_replace("{","",$mesesPrograma);
-            $mesesPrograma = str_replace("}","",$mesesPrograma);
-            $programaI = explode(",",$mesesPrograma[0]);
-            $programaII = explode(",",$mesesPrograma[1]);
-            $programaIII = explode(",",$mesesPrograma[2]);
+        $mesesPrograma = explode("#",$meses_fecha_lim_consultoria);
+        $mesesPrograma = str_replace("{","",$mesesPrograma);
+        $mesesPrograma = str_replace("}","",$mesesPrograma);
+        $programaI = explode(",",$mesesPrograma[0]);
+        $programaII = explode(",",$mesesPrograma[1]);
+        $programaIII = explode(",",$mesesPrograma[2]);
 
-            switch ($expedientes['tipo_tramite']) {
-	            case 'Programa I':
-		            $add_meses = str_replace("'intervalo':'", "", $programaI[1]);
-		            $add_meses = str_replace("'", "", $add_meses);
-		            break;
-	            case 'Programa II':
-    		        $add_meses = str_replace("'intervalo':'", "", $programaII[1]);
-		            $add_meses = str_replace("'", "", $add_meses);
-		            break;
-	            case 'Programa III':
-    		        $add_meses = str_replace("'intervalo':'", "", $programaIII[1]);
-		            $add_meses = str_replace("'", "", $add_meses);
-		            break;
-	            }
+        switch ($expedientes['tipo_tramite']) {
+	        case 'Programa I':
+		        $add_meses = str_replace("'intervalo':'", "", $programaI[1]);
+		        $add_meses = str_replace("'", "", $add_meses);
+		        break;
+	        case 'Programa II':
+    		    $add_meses = str_replace("'intervalo':'", "", $programaII[1]);
+		        $add_meses = str_replace("'", "", $add_meses);
+		        break;
+	        case 'Programa III':
+    		    $add_meses = str_replace("'intervalo':'", "", $programaIII[1]);
+		        $add_meses = str_replace("'", "", $add_meses);
+		        break;
+	    }
         ?>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
@@ -951,7 +956,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
     	            <div >Pujat el</div>
    	  	            <div >Document</div>
 		            <div >Estat</div>                     
@@ -965,7 +970,7 @@ if (!$expedientes['importeAyuda']) {
 			        $tipoMIME = $docSolicitud_item->type;
 			        $nom_doc = $docSolicitud_item->name;?>
 
-                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-validacion">
+                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-validacion-ils">
       	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
    		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                            <?php
@@ -984,12 +989,11 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-
-        		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target = "#myModalDocValidacion"><strong>Elimina</strong></button>';?></span>		
-    		            <?php } else {?>
-            	    		<span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-                		<?php } ?>
+                            <?php if ($docSolicitud_item->estado!='Aprovat') {?>
+                                <?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><strong>Elimina</strong></button>';?>
+    		                    <?php } else {?>
+	    		                    <span class="detail-wrapper-docs-col small">No es pot esborrar</span>
+    		                <?php } ?>
 	                </div>
                 <?php }
                 endforeach; ?>
@@ -1146,7 +1150,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
     	            <div >Pujat el</div>
    	  	            <div >Document</div>
 		            <div >Estat</div>                     
@@ -1163,7 +1167,6 @@ if (!$expedientes['importeAyuda']) {
                     <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-ejecucion">
       	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
    		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <!--  <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
                        <?php
                             switch ($docSolicitud_item->estado) {
 				                case 'Pendent':
@@ -1180,10 +1183,10 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-        		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
+        		        <?php if ($docSolicitud_item->estado!='Aprovat') {?>
     	        		    <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocEjecucion"><strong>Elimina</strong></button>';?></span>		
         		        <?php } else {?>
-    	        		    <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
+    	        		    <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
         		        <?php } ?>			
 		            </div>
                     <?php }
@@ -1371,11 +1374,11 @@ if (!$expedientes['importeAyuda']) {
     					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
+                        <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                        <?php if ($docSolicitud_item->estado != 'Aprovat') {?>
                             <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: justificacion_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocJustificacion"><strong>Elimina</strong></button>';?></span>		
                         <?php } else {?>
-                            <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
+                            <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
                         <?php } ?>			
                     </div>
                 <?php }

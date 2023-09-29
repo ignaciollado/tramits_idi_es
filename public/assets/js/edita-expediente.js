@@ -260,6 +260,7 @@ function cambiaEstadoDoc(id) {
 			send_fase_0.innerHTML = "Actualitzar"
 			send_fase_0.className = "btn-itramits bth-success-itramits"
 			send_fase_0.disabled = false
+			location.reload();
 							}
 		}
 	)
@@ -510,99 +511,6 @@ function actualiza_fase_0_expediente(formName) {  //SE EMPLEA
 		}
 	);
 }
-function actualiza_fase_0_expediente_ils(formName) {  //SE EMPLEA
-	console.log("fase_0_ils")
-	if (!validateForm(formName)) {
-		return;
-	}
-
-	let id = document.getElementById("id").value;
-	let empresa = document.getElementById("empresa").value; // Nom o raó social
-	let publicar_en_web = document.getElementById("publicar_en_web").checked; // Publicado en la web de ILS */
-	let telefono_rep = document.getElementById("telefono_rep").value; // Mòbil a efectes de notificacions
-	let email_rep = document.getElementById("email_rep").value; // Adreça electrònica a efectes de notificacions
-	let nombre_rep = document.getElementById("nombre_rep").value; // Representant legal
-	let nif_rep = document.getElementById("nif_rep").value; // Representant legal NIF
-	let tecnicoAsignado = document.getElementById("tecnicoAsignado").value; // Tècnica asignada
-	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
-	let sitio_web_empresa = document.getElementById("sitio_web_empresa").value; // lloc web empresa
-	let video_empresa = document.getElementById("video_empresa").value; // video empresa
-
-
-	for (let step = 0; step < 16; step++) {
-		document.getElementsByClassName("form-group general")[step].style.opacity = "0.5";
-	}
-	
-	let send_fase_0 = document.getElementById("send_fase_0");
-	send_fase_0.innerHTML = "Un moment ...";
-	send_fase_0.className = "btn-itramits warning-msg";
-	send_fase_0.disabled = true;
-	send_fase_0.ariaReadOnly = true;
-
-	$.post(
-		"/public/assets/utils/actualiza_fase_0_expediente_ils.php",
-		{ id: id, empresa: empresa, publicar_en_web: publicar_en_web, telefono_rep: telefono_rep, email_rep: email_rep,
-			nombre_rep: nombre_rep, nif_rep, nif_rep, tecnicoAsignado: tecnicoAsignado, 
-			situacion_exped: situacion_exped, sitio_web_empresa: sitio_web_empresa, video_empresa: video_empresa },
-		
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				send_fase_0.innerHTML = "Actualitzar";
-				send_fase_0.className = "btn-itramits btn-success-itramits";
-				send_fase_0.disabled = false;
-			}
-			for (let step = 0; step < 15; step++) {
-				document.getElementsByClassName("form-group general")[step].style.opacity = "1.0";
-			}
-		}
-	);
-}
-
-function actualiza_fase_0_expediente_idi_isba(formName) {  //SE EMPLEA
-	console.log("fase_0_idi_isba")
-	if (!validateForm(formName)) {
-		return;
-	}
-
-	let id = document.getElementById("id").value;
-
-	let telefono_rep = document.getElementById("telefono_rep").value; // Mòbil a efectes de notificacions
-	let email_rep = document.getElementById("email_rep").value; // Adreça electrònica a efectes de notificacions
-
-	let tecnicoAsignado = document.getElementById("tecnicoAsignado").value; // Tècnica asignada
-	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
-
-
-	for (let step = 0; step < 30; step++) {
-		document.getElementsByClassName("form-group general")[step].style.opacity = "0.5";
-	}
-	
-	let send_fase_0 = document.getElementById("send_fase_0");
-	send_fase_0.innerHTML = "Un moment ...";
-	send_fase_0.className = "btn-itramits warning-msg";
-	send_fase_0.disabled = true;
-	send_fase_0.ariaReadOnly = true;
-
-	$.post(
-		"/public/assets/utils/actualiza_fase_0_expediente_idi_isba.php",
-		{ id: id, telefono_rep: telefono_rep, email_rep: email_rep,
-			tecnicoAsignado: tecnicoAsignado, 
-			situacion_exped: situacion_exped },
-		
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				send_fase_0.innerHTML = "Actualitzar";
-				send_fase_0.className = "btn-itramits btn-success-itramits";
-				send_fase_0.disabled = false;
-			}
-			for (let step = 0; step < 15; step++) {
-				document.getElementsByClassName("form-group general")[step].style.opacity = "1.0";
-			}
-		}
-	);
-}
 
 function actualiza_fase_1_solicitud_expediente(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
@@ -633,53 +541,6 @@ function actualiza_fase_1_solicitud_expediente(formName) {  //SE EMPLEA
 		{ id: id, fecha_solicitud: fecha_solicitud, fecha_completado: fecha_completado, fecha_REC: fecha_REC, ref_REC: ref_REC, 
 			fecha_REC_enmienda: fecha_REC_enmienda, ref_REC_enmienda: ref_REC_enmienda,
 			fecha_requerimiento: fecha_requerimiento, fecha_requerimiento_notif: fecha_requerimiento_notif },
-		
-		function (data) {
-			console.log(`${data}`)
-			$(".result").html(data);
-			if (data == 1) {
-				send_fase_1.innerHTML = "Actualitzar";
-				send_fase_1.className = "btn-itramits btn-success-itramits";
-				send_fase_1.disabled = false;
-			}
-			for (let step = 0; step < 6; step++) {
-				document.getElementsByClassName("form-group solicitud")[step].style.opacity = "1.0";
-			}
-		}
-	);
-}
-
-function actualiza_fase_1_solicitud_expediente_ils(formName) {  //SE EMPLEA
-	if (!validateForm(formName)) {
-		alert ("nada que actualizar")
-		return
-	}
-
-	let id = document.getElementById("id").value;
-	let fecha_solicitud = document.getElementById("fecha_solicitud").value; // Data REC sol·licitud
-	let fecha_completado = document.getElementById("fecha_completado").value; // Data complert
-	let fecha_REC = document.getElementById("fecha_REC").value; // Data REC sol·licitud
-	let ref_REC = document.getElementById("ref_REC").value; // Referència REC sol·licitud
-	let fecha_REC_enmienda = document.getElementById("fecha_REC_enmienda").value; // Data REC esmena
-	let ref_REC_enmienda = document.getElementById("ref_REC_enmienda").value; // ref_REC_enmienda
-	let fecha_requerimiento = document.getElementById("fecha_requerimiento").value; // Data firma requeriment
-	let fecha_requerimiento_notif = document.getElementById("fecha_requerimiento_notif").value; // Data notificació requeriment
-	let fecha_maxima_enmienda  = document.getElementById("fecha_maxima_enmienda").value; // Data màxima per esmenar
-
-	for (let step = 0; step < 6; step++) {
-		document.getElementsByClassName("form-group solicitud")[step].style.opacity = "0.5";
-	}
-
-	let send_fase_1 = document.getElementById("send_fase_1");
-	send_fase_1.innerHTML = "Un moment ...";
-	send_fase_1.className = "btn-itramits warning-msg";
-	send_fase_1.disabled = true;
-	console.log("actualizando ...")
-	$.post(
-		"/public/assets/utils/actualiza_fase_1_solicitud_expediente_ils.php",
-		{ id: id, fecha_solicitud: fecha_solicitud, fecha_completado: fecha_completado, fecha_REC: fecha_REC, ref_REC: ref_REC, 
-			fecha_REC_enmienda: fecha_REC_enmienda, ref_REC_enmienda: ref_REC_enmienda,
-			fecha_requerimiento: fecha_requerimiento, fecha_requerimiento_notif: fecha_requerimiento_notif, fecha_maxima_enmienda: fecha_maxima_enmienda },
 		
 		function (data) {
 			console.log(`${data}`)
@@ -736,43 +597,6 @@ function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 	);
 }
 
-function actualiza_fase_2_validacion_expediente_ils(formName) {  //SE EMPLEA
-	if (!validateForm(formName)) {
-		return;
-	}
-	let id = document.getElementById("id").value;
-	let fecha_infor_fav = document.getElementById("fecha_infor_fav").value; // Data firma informe favorable
-	let fecha_infor_desf = document.getElementById("fecha_infor_desf").value; // Data firma informe desfavorable
-	let fecha_resolucion = document.getElementById("fecha_resolucion").value; // Data firma resolución
-	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // Data notificació resolució
-
-	for (let step = 0; step < 4; step++) {
-		document.getElementsByClassName("form-group validacion")[step].style.opacity = "0.5";
-	}
-
-	let send_fase_2 = document.getElementById("send_fase_2");
-	send_fase_2.innerHTML = "Un moment ...";
-	send_fase_2.className = "btn-itramits warning-msg";
-	send_fase_2.disabled = true;
-	$.post(
-		"/public/assets/utils/actualiza_fase_2_validacion_expediente_ils.php",
-		{ id: id, fecha_infor_fav: fecha_infor_fav, fecha_infor_desf: fecha_infor_desf, 
-			fecha_resolucion: fecha_resolucion, fecha_notificacion_resolucion: fecha_notificacion_resolucion },
-		
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				send_fase_2.innerHTML = "Actualitzar";
-				send_fase_2.className = "btn-itramits btn-success-itramits";
-				send_fase_2.disabled = false;
-			}
-			for (let step = 0; step < 4; step++) {
-				document.getElementsByClassName("form-group validacion")[step].style.opacity = "1.0";
-			}
-		}
-	);
-}
-
 function actualiza_fase_3_ejecucion_expediente(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
@@ -818,47 +642,6 @@ function actualiza_fase_3_ejecucion_expediente(formName) {  //SE EMPLEA
 				send_fase_3.disabled = false;
 			}
 			for (let step = 0; step < 8; step++) {
-				document.getElementsByClassName("form-group ejecucion")[step].style.opacity = "1.0";
-			}
-		}
-	);
-}
-
-function actualiza_fase_3_ejecucion_expediente_ils(formName) {  //SE EMPLEA
-	if (!validateForm(formName)) {
-		return;
-	}
-	let id = document.getElementById("id").value;
-	let fecha_adhesion_ils = document.getElementById("fecha_adhesion_ils").value; // Data adhesió
-	let fecha_seguimiento_adhesion_ils = document.getElementById("fecha_seguimiento_adhesion_ils").value; // Data seguiment
-	let fecha_limite_presentacion = document.getElementById("fecha_limite_presentacion").value; // Data límit presentació
-	let fecha_rec_informe_seguimiento = document.getElementById("fecha_rec_informe_seguimiento").value; // Data REC informe seguiment
-	let ref_REC_informe_seguimiento = document.getElementById("ref_REC_informe_seguimiento").value; //Ref. REC informe seguiment 
-
-	for (let step = 0; step < 5; step++) {
-		document.getElementsByClassName("form-group ejecucion")[step].style.opacity = "0.5";
-	}
-
-	let send_fase_3 = document.getElementById("send_fase_3");
-	send_fase_3.innerHTML = "Un moment ...";
-	send_fase_3.className = "btn-itramits warning-msg";
-	send_fase_3.disabled = true;
-
-	$.post(
-		"/public/assets/utils/actualiza_fase_3_ejecucion_expediente_ils.php",
-		{ id: id, fecha_adhesion_ils: fecha_adhesion_ils, fecha_seguimiento_adhesion_ils: fecha_seguimiento_adhesion_ils,
-			fecha_limite_presentacion: fecha_limite_presentacion, fecha_rec_informe_seguimiento: fecha_rec_informe_seguimiento,
-			ref_REC_informe_seguimiento: ref_REC_informe_seguimiento
-		 },
-		
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				send_fase_3.innerHTML = "Actualitzar";
-				send_fase_3.className = "btn-itramits btn-success-itramits";
-				send_fase_3.disabled = false;
-			}
-			for (let step = 0; step < 5; step++) {
 				document.getElementsByClassName("form-group ejecucion")[step].style.opacity = "1.0";
 			}
 		}
@@ -951,9 +734,8 @@ function actualiza_fase_5_desestimiento_expediente(formName) {  //SE EMPLEA
 }
 
 function validateForm(formName) {
-	console.log (formName, document.forms[formName])
-	for(i=0; i<document.forms[formName].elements.length; i++){
-		if(document.forms[formName].elements[i].value.length==0 && document.forms[formName].elements[i].required){
+	for(i=0; i < document.getElementById(formName).elements.length; i++){
+		if(document.getElementById(formName).elements[i].value == "" && document.getElementById(formName).elements[i].required){
 			alert("Falta rellenar algún campo")
 			document.forms[formName].elements[i].focus()
 			return false		
@@ -1038,29 +820,6 @@ function actualizaFechaConsultoria(fechaAct, addMeses) {
 		});
 }
 
-function actualizaFechasILS(fechaAdhesion) {
-	let d = new Date(fechaAdhesion);
-	d.setFullYear(d.getFullYear() + 1) // Fecha seguimiento es fecha Adhesión + 1 año
-	let nuevaFechaSeguimientoAdhesion = d.toISOString().substr(0, 10)
-	d.setFullYear(d.getFullYear() + 2) // Fecha renovación es fecha seguimiento + 2 años
-	let nuevaFechaRenovacionAdhesion = d.toISOString().substr(0, 10)
-	
-	console.log ( nuevaFechaRenovacionAdhesion, nuevaFechaSeguimientoAdhesion )
-	let actualizaFechasILS = "/public/assets/utils/actualiza_fechas_ILS.php?"+ fechaAdhesion+"/"+nuevaFechaSeguimientoAdhesion+"/"+nuevaFechaRenovacionAdhesion+"/"+document.getElementById("id").value;
-	fetch(actualizaFechasILS)
-		.then((response) => response.text())
-		.then((data) => {
-			let resultadoP = document.getElementById("fecha_adhesion_ils");
-			let cell = document.createElement("span");
-			let cellText = document.createTextNode(data);
-			cell.appendChild(cellText);
-			resultadoP.appendChild(cell);
-			resultadoP.setAttribute("border", "2");
-			document.getElementById("fecha_seguimiento_adhesion_ils").value = nuevaFechaSeguimientoAdhesion;
-			document.getElementById("fecha_renovacion").value = nuevaFechaRenovacionAdhesion;
-		});
-}
-
 function actualizaFechas(fechaCierre, dias) {
 	let d = new Date(fechaCierre);
 	d.setDate(d.getDate() + dias);
@@ -1109,26 +868,6 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 			if (data == 1) {
 				document.getElementById("wrapper_motivoRequerimiento").remove = "ocultar";
 				document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
-				modal.style.display = "none";
-				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
-			}
-		}
-	);
-}
-function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
-	let textoMotivoReq = document.getElementById("motivoRequerimientoIls").value;
-	let id = document.getElementById("id").value;
-	let modal = document.getElementById("myRequerimientoIls");
-	
-	$.post(
-		"/public/assets/utils/actualiza_motivo_requerimiento_ils_en_expediente.php",
-		{ id: id, textoMotivoReq: textoMotivoReq },
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				document.getElementById("wrapper_motivoRequerimientoIls").remove = "ocultar";
-				document.getElementById("wrapper_motivoRequerimientoIls").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";

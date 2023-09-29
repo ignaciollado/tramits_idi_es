@@ -207,7 +207,7 @@ ol, ul {
 }
 .btn {
     border-radius: .5rem !important;
-    font-size: 1rem !important; 
+    font-size: .8rem !important; 
 	  word-break: break-all;
     vertical-align: middle;
     -webkit-user-select: none;
@@ -263,7 +263,7 @@ input:invalid:focus {
   max-height: 4rem;
 }
 .btn-primary {
-    min-width: 145px;
+    min-width: 120px;
     color: rgb(255, 255, 255)!important;
     background-color: rgb(0, 123, 255);
     border-color: rgb(0, 123, 255);

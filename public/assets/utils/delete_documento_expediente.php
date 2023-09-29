@@ -7,14 +7,13 @@ $result = mysqli_query($conn, $query);
             while($row = mysqli_fetch_assoc($result)) {
                $filename = $row["name"];
 			   $path = $row["created_at"];
-			   //echo "Name: " . $filename . "<br>";
-			   //echo "created at: " . $path . "<br>";
             }
 	} else {
         echo "0 results";
     }
 		 
 $query = "DELETE FROM pindust_documentos WHERE id = " . $_POST["id"];
+echo $query;
 $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 echo $result;

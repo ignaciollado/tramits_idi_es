@@ -2,16 +2,16 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
+<script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
 
 <?php
     use App\Models\DocumentosGeneradosModel;
     use App\Models\MejorasExpedienteModel;
+    use App\Models\ExpedientesModel;
 
     $modelDocumentosGenerados = new DocumentosGeneradosModel();
-  
     $modelMejorasSolicitud = new MejorasExpedienteModel();
+    $modelExp = new ExpedientesModel();
 
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
@@ -42,6 +42,7 @@
 </div>
 
 <?php echo "Data sol·licitud: ". $expedientes['fecha_solicitud'];?> <?php echo "Data complert: ". $expedientes['fecha_completado'];?>
+
 <div id="detall_tab" class="tab_fase_exp_content" style="display:block;" onload="javaScript:alert(id);">
     <div class="row">
         <div class="col docsExpediente">
@@ -123,10 +124,6 @@
                         <label for="nif_rep">Telèfon representant legal:</label>
                         <input type="text" name="telefono_contacto_rep" class="form-control" readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_contacto_rep" minlength = "9" maxlength = "9" placeholder = "Telèfon del representant" value = "<?php echo $expedientes['telefono_contacto_rep']; ?>">
                     </div>
-                   <!--  <div class="form-group general">
-                        <label for="condicion_rep">Condió que al·lega:</label>
-                        <input type="text" name="condicion_rep" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "condicion_rep" placeholder = "Condició que al·lega" value = "<?php echo $expedientes['condicion_rep']; ?>">
-                    </div> -->
                 </div>
                 <div class="col">      	     
                 <fieldset>
@@ -156,10 +153,6 @@
                         <label for="plazo_prestamo"><?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>:</label>
                         <input type="text" name="plazo_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "plazo_prestamo" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['plazo_prestamo']; ?>">
                     </div>
-                    <!--                     <div class="form-group general">
-                        <label for="carencia_prestamo"><?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>:</label>
-                        <input type="text" name="carencia_prestamo" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "carencia_prestamo" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba') ?>" value = "<?php echo $expedientes['carencia_prestamo']; ?>">
-                    </div> -->
                     <label for=''><u><?php echo lang('message_lang.operacion_financiera_aval_idi_isba') ?></u></label>
                     <div class="form-group general">
                         <label for="cuantia_aval_isba"><?php echo lang('message_lang.cuantia_prestamo_idi_isba') ?>:</label>
@@ -173,21 +166,6 @@
                         <label for="fecha_aval_isba"><?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>:</label>
                         <input type="text" name="fecha_aval_isba" class="form-control" readonly disabled  oninput = "javaScript: actualizaRequired(this.value);" readonly id = "fecha_aval_isba" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba') ?>" value = "<?php echo $expedientes['fecha_aval_isba']; ?>">
                     </div>
-
-                    <!-- <label class="alert alert-success" role="alert" for=''><?php echo lang('message_lang.proyecto_de_inversion_idi_isba') ?></label> -->
-                    <!--                    <div class="form-group general">
-                        <label for="finalidad_inversion_idi_isba"><?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>:</label>
-                        <input type="text" name="finalidad_inversion_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "finalidad_inversion_idi_isba" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad') ?>" value = "<?php echo $expedientes['finalidad_inversion_idi_isba']; ?>">
-                    </div> -->
-                    <!-- <label for=''><u><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba') ?></u></label> -->
-                        <!--                     <div class="form-group general">
-                        <label for="empresa_eco_idi_isba"><?php echo lang('message_lang.adherido_a_ils_si_no') ?>:</label>
-                        <input type="text" name="empresa_eco_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "empresa_eco_idi_isba" placeholder = "<?php echo lang('message_lang.adherido_a_ils_si_no') ?>" value = "<?php echo $expedientes['empresa_eco_idi_isba']; ?>">
-                    </div> -->
-                    <!--                     <div class="form-group general">
-                        <label for="importe_presupuesto_idi_isba"><?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>:</label>
-                        <input type="text" name="importe_presupuesto_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_presupuesto_idi_isba" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba') ?>" value = "<?php echo $expedientes['importe_presupuesto_idi_isba']; ?>">
-                    </div> -->
                     <div class="form-group general">
                         <label for="importe_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>:</label>
                         <input type="text" name="importe_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "importe_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba') ?>" value = "<?php echo $expedientes['importe_ayuda_solicita_idi_isba']; ?>">
@@ -198,14 +176,10 @@
                             <label for="intereses_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>:</label>
                             <input type="text" name="intereses_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "intereses_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>" value = "<?php echo $expedientes['intereses_ayuda_solicita_idi_isba']; ?>">
                         </li>
-                        <!--                     </div>
-                    <div class="form-group general"> -->
                         <li>
                             <label for="coste_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>:</label>
                             <input type="text" name="coste_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "coste_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>" value = "<?php echo $expedientes['coste_aval_solicita_idi_isba']; ?>">
                         </li>
-                    <!--                     </div>
-                    <div class="form-group general"> -->
                         <li>
                             <label for="gastos_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>:</label>
                             <input type="text" name="gastos_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "gastos_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>" value = "<?php echo $expedientes['gastos_aval_solicita_idi_isba']; ?>">
@@ -267,8 +241,9 @@
         </form>
     </div>    
     <div class="col docsExpediente">
-        <div class="col">  
+        <div>  
             <input type="hidden" name="doc_requeriment_auto_ils" class="form-control" id="doc_requeriment_auto_ils" value="<?php echo $expedientes['doc_requeriment_auto_ils']; ?>">
+            <!-- Documentación requerida -->
             <h3>Documentació <strong>requerida</strong> de l'expedient:</h3>
             <div class="docsExpediente">
   	            <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
@@ -284,7 +259,6 @@
                         $id_doc = $docs_item->id;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
-                    if ($convocatoria >= '2022') {
 			            switch ($docs_item->corresponde_documento) {
 	    			        case 'file_declaracionResponsable':
 					            $nom_doc = "Declaració responsable de l'empresa";
@@ -322,14 +296,12 @@
 			                default:
 					            $nom_doc = "¿ ".$docs_item->corresponde_documento." ?"; 
 			            } 
-                    } else {
-                            $nom_doc = $docs_item->name;
-                    }?>
-                    <?php if ($docs_item->docRequerido !== 'NO') {?>
+                    ?>
+                    <?php if ($docs_item->docRequerido == 'SI') {?>
   			            <div id ="fila" class = "detail-wrapper-docs general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-      			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite; ?></span>
+      			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite;?></span>
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
@@ -347,41 +319,61 @@
                             ?>
                             <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class="detail-wrapper-docs-col">
-                            <?php 
-                            switch ($docs_item->corresponde_documento) {
-                                case 'file_enviardocumentoIdentificacion':	
-                                    $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-identifica-solicitante.php'; 
-                                    break;
-                                case 'file_certificadoATIB':
-                                    $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-atib.php'; 
-                                    break;
-                                case 'file_certificadoSegSoc':	
-                                    $nom_doc = "Certificat estar al corrent obligacions amb la TGSS";
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-tgss.php'; 
-                                    break;     
-                                default:
-                                    $nom_doc = ">>".$docs_opc_item->corresponde_documento."<<";  
-                            } 
-                            ?>
+                                <?php if ($docs_item->estado!='Aprovat') {?>
+                                    <?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docs_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocRequeridoISBA"><strong>Elimina</strong></button>';?>
+    		                        <?php } else {?>
+	    		                       <span class="small">No es pot esborrar</span>
+    		                    <?php } ?>
                             </span>
   			            </div>
                     <?php }?>
                 <?php endforeach; ?>
-                        <div >
-                            <button class='hide-button' id="requeriment-button" onclick = "javaScript: generaRequerimiento(<?php echo $expedientes['id']; ?>);">Generar el requeriment</button>
-                            <button class='hide-button' id="adhesion-button" onclick = "javaScript: generaResolucionAdhesion(<?php echo $expedientes['id']; ?>);">Generar la resolució d'adhesió a ILS</button>
+
+                <div class="modal" id="eliminaDocRequeridoISBA">
+			        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+            		            <h4>Aquesta acció no es podrá desfer</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+           			            <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
+                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
+                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
                 <?php } else { 
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
+                <h5 class ="upload-docs-type-label">[.pdf]:</h5>
+                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/DetalleRequerido');?>" onsubmit="logSubmit('subeDocsDetalleRequeridoBtn')" name="subir_faseExpedDetalleRequerido" id="subir_faseExpedDetalleRequerido" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
+                <?php
+                if ( !$esAdmin && !$esConvoActual ) {?>
+                <?php }
+                else {?>
+                    <div class = "content-file-upload">
+                        <div>
+                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDetalleRequerido[]" id="nombrefaseExpedDetalleRequerido" size="20" accept=".pdf" multiple />
+                        </div>
+                        <div>
+                            <input id="subeDocsSolicitudBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                        </div>
+                    </div>
+                <?php }?>                    
+                </form>
+                <br>
             </div>
 
             <!-- Documentación opcional-->
             <h3>Documentació <strong>opcional</strong> de l'expedient:</h3>
-              <div class="docsExpediente">
+            <div class="docsExpediente">
   	                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
         	            <div >Rebut el</div>
 			            <div >Document</div>
@@ -394,7 +386,6 @@
 			                $path = $docs_opc_item->created_at;
 			                $parametro = explode ("/",$path);
 			                $tipoMIME = $docs_opc_item->type;
-                        if ($convocatoria >= '2022') {
 			                switch ($docs_opc_item->corresponde_documento) {
 				                case 'file_copiaNIF':
 					                $nom_doc = "Còpia del NIF al no autoritzar a IDI per comprobar";
@@ -411,11 +402,9 @@
 			                    default:
 					            $nom_doc = $docs_opc_item->corresponde_documento;
 			                } 
-                        } else {
-                            $nom_doc = $docs_opc_item->name;
-                        }?>
+                        ?>
 
-                        <?php if ($docs_opc_item->docRequerido === 'NO') {?>
+                        <?php if ($docs_opc_item->docRequerido == 'NO') {?>
   			            <div id ="fila" class = "detail-wrapper-docs general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_opc_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_opc_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
@@ -423,32 +412,115 @@
                             <?php
                             switch ($docs_opc_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                                 }
                             ?>
                             <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: docNoRequerido_click (this.id, this.name);" id="'.$id_doc = $docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#eliminaDocNoRequerido"><strong>Elimina</strong></button>';?></span>
+	        		        <span class = "detail-wrapper-docs-col">
+                               <?php if ($docs_opc_item->estado!='Aprovat') {?>
+                                    <?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocNoRequeridoISBA"><strong>Elimina</strong></button>';?>
+    		                        <?php } else {?>
+	    		                        <span class="small">No es pot esborrar</span>		
+    		                    <?php } ?>
+                            </span>
   			            </div>
                     <?php }?>
+                    
                     <?php endforeach; ?>
-                </div>
+
+                <h5 class ="upload-docs-type-label">[.pdf]:</h5>
+                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/DetalleNoRequerido');?>" onsubmit="logSubmit('subeDocsDetalleNoRequeridoBtn')" name="subir_faseExpedDetalleNoRequerido" id="subir_faseExpedDetalleNoRequerido" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
+                <?php
+                if ( !$esAdmin && !$esConvoActual ) {?>
+                <?php }
+                else {?>
+                    <div class = "content-file-upload">
+                        <div>
+                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDetalleNoRequerido[]" id="nombrefaseExpedDetalleNoRequerido" size="20" accept=".pdf" multiple />
+                        </div>
+                        <div>
+                            <input id="subeDocsSolicitudBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                        </div>
+                    </div>
+                <?php }?>                    
+                </form>
+
+                    <div class="modal" id="eliminaDocNoRequeridoISBA">
+			            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+            		                <h4>Aquesta acció no es podrá desfer</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+               			            <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
+                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
+                                        <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info">
+                <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
+                <?php
+
+                	//Compruebo el estado de la firma de la declaración responsable.
+                    $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
+	                if (isset($thePublicAccessId))
+		                {
+		                    $PublicAccessId = $thePublicAccessId;
+	                        $requestPublicAccessId = $PublicAccessId;
+                            $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+		                    $respuesta = json_decode ($request, true);
+		                    $estado_firma = $respuesta['status'];
+
+			                switch ($estado_firma)
+				                {
+				                    case 'NOT_STARTED':
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+				                        break;
+				                    case 'REJECTED':
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+				                        $estado_firma .= "</a>";				
+				                        break;
+				                    case 'COMPLETED':
+				                        $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		
+				                        $estado_firma .= "</a>";					
+				                        break;
+				                    case 'IN_PROCESS':
+                                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
+				                        $estado_firma .= "</a>";						
+				                    default:
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
+				                }
+			                echo $estado_firma;
+		                }?>
+                        <br>
+                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
+            </div>                
+
+            </div>
                 
                 <?php } else { 
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
+
+            
             <div class="modal" id="eliminaDocNoRequerido">
 			    <div class="modal-dialog">
-                    <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
         		            Aquesta acció no es podrá desfer.
@@ -463,7 +535,8 @@
                         </div>
                     </div>
                 </div>
-            </div>  	
+            </div> 
+
             <script>
                 function docNoRequerido_click (id, nombre) {
     	        document.cookie = "documento_actual = " + id;
@@ -498,46 +571,7 @@
                 return "";
                 }
             </script>
-            <br>
-            <div>
-                <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
-                <?php //Compruebo el estado de la firma del documento.
-	            $db = \Config\Database::connect();
-	            $sql = "SELECT PublicAccessId FROM pindust_expediente WHERE id=".$expedientes['id'];
-
-	            $query = $db->query($sql);
-	            $row = $query->getRow();
-	            if (isset($row))
-		            {
-		            $PublicAccessId = $row->PublicAccessId;
-	                $requestPublicAccessId = $PublicAccessId;
-                    $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
-		            $respuesta = json_decode ($request, true);
-		            $estado_firma = $respuesta['status'];
-			        switch ($estado_firma)
-    				{
-	    			case 'NOT_STARTED':
-				        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
-				        break;
-				    case 'REJECTED':
-				        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
-				        $estado_firma .= "</a>";				
-				        break;
-				    case 'COMPLETED':
-				        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signat</div>";		
-				        $estado_firma .= "</a>";					
-				        break;
-				    case 'IN_PROCESS':
-				        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
-				        $estado_firma .= "</a>";						
-				        default:
-				        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
-				    }
-			        echo $estado_firma;
-		        }?>
-                <br><a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud_idi_isba.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><span class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'><small>La declaració responsable i sol·licitud sense signar</small></span></a>
-            </div>
-
+  
         </div>
     </div>
     </div> <!-- Cierre fila Detalle -->
@@ -603,21 +637,21 @@
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
         	        <div >Pujat el</div>
    	  	            <div >Document</div>
                     <div >Estat</div>                         
       	            <div >Acció</div>
                 </div>
-                <?php if($documentosExpediente): ?>
-                <?php foreach($documentosExpediente as $docSolicitud_item): 
+                <?php if($documentos): ?>
+                <?php foreach($documentos as $docSolicitud_item): 
 			                if($docSolicitud_item->fase_exped == 'Solicitud') {
     			                $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 	    		                $parametro = explode ("/",$path);
 		    	                $tipoMIME = $docSolicitud_item->type;
 			                    $nom_doc = $docSolicitud_item->name;
 			                ?>
-                            <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-solicitud">
+                            <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-solicitud-ils">
           	                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
        		                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                                    <?php
@@ -636,14 +670,11 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                                <!--  <span id = "custodia" class = "detail-wrapper-docs-col">
-    	    		                <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
-	    	                    </span> -->
-                                <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
-    		                        <?php } else {?>
-	    		                        <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-    		                    <?php } ?>
+                            <?php if ($docSolicitud_item->estado!='Aprovat') {?>
+		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
+    		                <?php } else {?>
+	    		                    <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
+    		                <?php } ?>
 	                        </div>
                         <?php 
                             }
@@ -668,15 +699,15 @@
                             </div>
                         </div>
                     </div>
-                </div>  	
-                    <script>
+                </div>  
+
+                <script>
                         function myFunction_docs_IDI_click (id, nombre) {
         	                document.cookie = "documento_actual = " + id;
-    	                    console.log (id);
+                            console.log(id)
                             }
                         function opcion_seleccionada_click(respuesta) {
             	            document.cookie = "respuesta = " + respuesta;
-	                        console.log (respuesta);
                             }
                         function eliminaDocSolicitud_click() {
                 	        console.log (getCookie("documento_actual"));
@@ -689,6 +720,15 @@
                                 location.reload();
     	    		        });	
                             }
+                        function eliminaMejoraSolicitud_click() {
+                            let id = getCookie("documento_actual");
+                            document.getElementById(id).disabled= true;
+                            document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+                            let corresponde_documento = 'file_resguardoREC';
+                            $.post("/public/assets/utils/delete_mejora_solicitud.php",{ id: id }, function(data){
+                                location.reload();
+                            });	
+                        }
                         function getCookie(cname) {
                             var name = cname + "=";
                             var decodedCookie = decodeURIComponent(document.cookie);
@@ -704,7 +744,7 @@
                             }
                             return "";
                             }
-                    </script> 
+                </script> 
         
                 <h5 class ="upload-docs-type-label">[.pdf, .zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Solicitud');?>" onsubmit="logSubmit('subeDocsSolicitudBtn')" name="subir_faseExpedSolicitud" id="subir_faseExpedSolicitud" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
@@ -754,7 +794,7 @@
                 <?php }
                 else {?>
                     <div class="form-group">
-                        <button type="button"  onclick = "javaScript: actualiza_fase_2_validacion_expediente_ils('exped-fase-2');" id="send_fase_2" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button type="button"  onclick = "javaScript: actualiza_fase_2_validacion_expediente_idi_isba('exped-fase-2');" id="send_fase_2" class="btn-itramits btn-success-itramits">Actualitzar</button>
                     </div>
                 <?php }?>                  
         </form>
@@ -775,21 +815,21 @@
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
     	            <div >Pujat el</div>
    	  	            <div >Document</div>
 		            <div >Estat</div>                     
       	            <div >Acció</div>
                 </div>
-            <?php if($documentosExpediente): ?>
-            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
+            <?php if($documentos): ?>
+            <?php foreach($documentos as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Adhesion') {
 			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			        $parametro = explode ("/",$path);
 			        $tipoMIME = $docSolicitud_item->type;
 			        $nom_doc = $docSolicitud_item->name;?>
 
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-validacion">
+                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-validacion-ils">
       	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
    		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                            <?php
@@ -808,12 +848,11 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        <!-- <span id="custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
-        		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-	        		        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocValidacion"><strong>Elimina</strong></button>';?></span>		
-    		            <?php } else {?>
-            	    		<span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-                		<?php } ?>
+                            <?php if ($docSolicitud_item->estado!='Aprovat') {?>
+		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
+    		                <?php } else {?>
+	    		                    <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
+    		                <?php } ?>
 	                </div>
                 <?php }
                 endforeach; ?>
@@ -894,201 +933,15 @@
     </div><!--Cierre de la fila-->
 </div><!--Cierre del tab Validación-->
 
-<div id="ejecucion_tab" class="tab_fase_exp_content"> <!-- SEGUIMIENTO -->
-    <div class="row">
-        <div class="col-sm-2 docsExpediente">
-        <h3>Detall:</h3>
-        <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-3" id="exped-fase-3" method="post" accept-charset="utf-8">
-            <div class="row">
-                <div class="col">
-                    <div class="form-group ejecucion">
-                        <label for = "fecha_adhesion_ils"><strong>Data adhesió:</strong></label>
-                        <input type = "date" name = "fecha_adhesion_ils" class = "form-control send_fase_3" id = "fecha_adhesion_ils" onchange = "javaScript: actualizaFechasILS(this.value);" value = "<?php if ($expedientes['fecha_adhesion_ils'] != null) {echo date_format(date_create($expedientes['fecha_adhesion_ils']), 'Y-m-d');}?>">
-                    </div>
-                    <div class="form-group ejecucion">
-                        <label for = "fecha_seguimiento_adhesion_ils"><strong>Data seguiment:</strong></label>
-                        <input title="Es data adhesió mes UN ANY" type = "date" name = "fecha_seguimiento_adhesion_ils" class = "form-control send_fase_3" id = "fecha_seguimiento_adhesion_ils" value = "<?php if ($expedientes['fecha_seguimiento_adhesion_ils'] != null) {echo date_format(date_create($expedientes['fecha_seguimiento_adhesion_ils']), 'Y-m-d');}?>">
-                    </div>    
-                    <div class="form-group ejecucion">
-                        <label for = "fecha_limite_presentacion"><strong>Data límit presentació:</strong></label>
-                        <input title="Es data seguiment mes DOS MESOS" type = "date" name = "fecha_limite_presentacion" class = "form-control send_fase_3" id = "fecha_limite_presentacion" value = "<?php if ($expedientes['fecha_limite_presentacion'] != null) {echo date_format(date_create($expedientes['fecha_limite_presentacion']), 'Y-m-d');}?>">
-                    </div>                                        
-                    <div class="form-group ejecucion">
-                        <label for = "fecha_rec_informe_seguimiento"><strong>Data REC informe seguiment:</strong></label>
-                        <input title="Es data seguiment mes DOS MESOS" type = "date" name = "fecha_rec_informe_seguimiento" class = "form-control send_fase_3" id = "fecha_rec_informe_seguimiento" value = "<?php if ($expedientes['fecha_rec_informe_seguimiento'] != null) {echo date_format(date_create($expedientes['fecha_rec_informe_seguimiento']), 'Y-m-d');}?>">
-                    </div>     
-                    <div class="form-group ejecucion">
-                        <label for = "ref_REC_informe_seguimiento"><strong>Ref. REC informe seguiment:</strong></label>
-                        <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_informe_seguimiento" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_3" id = "ref_REC_informe_seguimiento"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_informe_seguimiento'];?>">
-                    </div>
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                        <div class="form-group">
-                            <button type="button" onclick = "javaScript: actualiza_fase_3_ejecucion_expediente_ils('exped-fase-3');" id="send_fase_3" class="btn-itramits btn-success-itramits">Actualitzar</button>
-                        </div>
-                <?php }?>
-
-                </div>
-            </div>
-        </form>
-        </div>
-        <div class="col docsExpediente">
-            <h3>Actes administratius:</h3>
-            <ol start="9">
-            <!-----------------------------------------15.-abril_Acta Kick off ------------------------------------>
-            <li>Enviar Modelo seguimiento [Pilar me pasará el texto del email]<?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-kickoff.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------17.-mayo_Acta de cierre ---->
-            </ol>
-        </div>
-
-        <div class="col docsExpediente">
-        <div class="col">
-            <h3>Documents de l'expedient:</h3>
-            <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
-    	            <div >Pujat el</div>
-   	  	            <div >Document</div>
-		            <div >Estat</div>                     
-      	            <div >Acció</div>
-                </div>
-            <?php if($documentosExpediente): ?>
-            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Seguimient') {
-			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
-			        $parametro = explode ("/",$path);
-			        $tipoMIME = $docSolicitud_item->type;
-			        $nom_doc = $docSolicitud_item->name;
-			        ?>
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-ejecucion">
-      	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-   		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <!--  <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
-                       <?php
-                            switch ($docSolicitud_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-        		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-    	        		    <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocEjecucion"><strong>Elimina</strong></button>';?></span>		
-        		        <?php } else {?>
-    	        		    <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-        		        <?php } ?>			
-		            </div>
-                    <?php }
-                endforeach; ?>
-            <?php endif; ?>
-            </div>
-            <div id="myModalDocEjecucion" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" style = "width: 60%;">
-                        <div class="modal-header">
-    		                Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-    	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                function myFunction_docs_IDI_click (id, nombre) {
-    	            document.cookie = "documento_actual = " + id;
-	                console.log (id);
-                    }
-                function opcion_seleccionada_click(respuesta) {
-        	        document.cookie = "respuesta = " + respuesta;
-	                console.log (respuesta);
-                    }
-                function eliminaDocValidacion_click() {
-    	            console.log (getCookie("documento_actual"));
-	                let id = getCookie("documento_actual");
-	                console.log (getCookie("nuevo_estado"));
-	                let corresponde_documento = 'file_resguardoREC';
-	                $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-    			        location.reload();
-			        });	
-                    }
-                function getCookie(cname) {
-                    var name = cname + "=";
-                    var decodedCookie = decodeURIComponent(document.cookie);
-                    var ca = decodedCookie.split(';');
-                    for(var i = 0; i <ca.length; i++) {
-                        var c = ca[i];
-                        while (c.charAt(0) == ' ') {
-                            c = c.substring(1);
-                        }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                    }
-                    return "";
-                    }
-            </script> 
-            <h5 class ="upload-docs-type-label">[.pdf]:</h5>
-            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Seguimient');?>" onsubmit="logSubmit('subeDocsEjecucionBtn')" name="subir_doc_faseExpedEjecucion" id="subir_doc_faseExpedEjecucion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                <div class = "content-file-upload">
-                    <div>
-                        <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedSeguimient[]" id="nombrefaseExpedSeguimient" size="20" accept=".pdf" multiple />
-                    </div>
-                    <div>
-                        <input id="subeDocsEjecucionBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                    </div>
-                </div>
-                <?php }?>
-            </form> 
-        </div> <!--Cierre columna documentos-->
-        </div>
-    </div><!-- cierre fila fase ejecución -->
-</div> <!-- Cierre tab fase ejecución-->
-
 <div id="justificacion_tab" class="tab_fase_exp_content"> <!-- RENOVACIÓN -->
     <div class="row">
         <div class="col-sm-2 docsExpediente">
         <h3>Detall:</h3>
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
-            <div class="col">  
-    		<div class="form-group justificacion">
-            <label for = "fecha_renovacion"><strong>Data renovació:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_renovacion" class = "form-control send_fase_4" id = "fecha_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_renovacion']), 'Y-m-d');?>">
-            </div>
-            <div class="form-group justificacion">
-            <label for = "fecha_renovacion_concesion"><strong>Data renovació concesió:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_renovacion_concesion" class = "form-control send_fase_4" id = "fecha_renovacion_concesion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_renovacion_concesion']), 'Y-m-d');?>">
-            </div>
-    		<div class="form-group justificacion">
-            <label for = "fecha_limite_presentacion_renovacion"><strong>Data límit presentació renovació:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_limite_presentacion_renovacion" class = "form-control send_fase_4" id = "fecha_limite_presentacion_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_limite_presentacion_renovacion']), 'Y-m-d');?>">
-            </div>                          
+            <div class="col">                         
             <div class="form-group justificacion">
             <label for = "fecha_REC_justificacion"><strong>Data REC justificació:</strong></label>
-			<!-- <input type = "datetime-local" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_justificacion']),"Y-m-d\Th:m");?>" /> -->
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
             </div>	
 		    <div class="form-group justificacion">
@@ -1125,7 +978,7 @@
                 <?php }
                     else {?>
                     <div class="form-group">
-                        <button type="button"  onclick = "javaScript: actualiza_fase_4_justificacion_expediente('exped-fase-4');" id="send_fase_4" onChange="avisarCambiosEnFormulario('send_fase_4', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button type="button"  onclick = "javaScript: actualiza_fase_4_justificacion_expediente_idi_isba('exped-fase-4');" id="send_fase_4" onChange="avisarCambiosEnFormulario('send_fase_4', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
                     </div>
                 <?php }?>
             
@@ -1151,25 +1004,24 @@
         </ol>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
                     <div >Pujat el</div>
                     <div >Document</div>
                     <div >Estat</div>               
                     <div >Acció</div>
                 </div>
 
-                <?php if($documentosExpediente): ?>
-                    <?php foreach($documentosExpediente as $docSolicitud_item): 			            
+                <?php if($documentos): ?>
+                    <?php foreach($documentos as $docSolicitud_item): 			            
                             if($docSolicitud_item->fase_exped == 'Renovacion') {
                                 $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
                                 $parametro = explode ("/",$path);
                                 $tipoMIME = $docSolicitud_item->type;
                                 $nom_doc = $docSolicitud_item->name;
                     ?>
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-justificacion">
+                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-justificacion">
                         <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
                         <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <!--  <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
                        <?php
                             switch ($docSolicitud_item->estado) {
 				                case 'Pendent':
@@ -1189,7 +1041,7 @@
                         <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
                             <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: justificacion_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocJustificacion"><strong>Elimina</strong></button>';?></span>		
                         <?php } else {?>
-                            <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
+                            <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
                         <?php } ?>			
                     </div>
                 <?php }
@@ -1444,6 +1296,7 @@
     </div>
 </div>
 
+
 <script>
     if (<?php echo $totalDocsJustifPlan;?> === 0) {
     	document.getElementById("tab_plan").classList.add ("warning-msg-justific");
@@ -1526,158 +1379,3 @@
         transition: max-height 0.2s ease-out;
     }
 </style>
-
-<div id="deses_ren_tab" class="tab_fase_exp_content">
-    <div class="row">
-        <div class="col-sm-2 docsExpediente">
-        <h3>Detall:</h3>
-        <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-5" id="exped-fase-5" method="post" accept-charset="utf-8">
-            <div class="form-group desistimiento">
-                <label for = "fecha_REC_desestimiento"><strong>Data REC desistiment:</strong></label>
-	    	    <!-- <input type = "datetime-local" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo date_format(date_create($expedientes['fecha_REC_desestimiento']),"Y-m-d\Th:m");?>"/> -->
-	    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_desestimiento']);?>"/>
-            </div>
-		    <div class="form-group desistimiento">
-                <label for = "ref_REC_desestimiento"><strong>Referència REC desistiment:</strong></label>
-                <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" maxlength = "16" name = "ref_REC_desestimiento" class = "form-control send_fase_5" id = "ref_REC_desestimiento" value = "<?php echo $expedientes['ref_REC_desestimiento'];?>">
-        	</div>
-	    	<div class="form-group desistimiento">
-                <label for = "fecha_firma_resolucion_desestimiento"><strong>Data firma resolució de desistiment:</strong></label>
-                <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_resolucion_desestimiento" class = "form-control send_fase_5" id = "fecha_firma_resolucion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_resolucion_desestimiento']), 'Y-m-d');?>">
-            </div>
-		    <div class="form-group desistimiento">
-                <label for = "fecha_notificacion_desestimiento"><strong>Data notificació desistiment:</strong></label>
-                <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_notificacion_desestimiento" class = "form-control send_fase_5" id = "fecha_notificacion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_desestimiento']), 'Y-m-d');?>">
-            </div>
-
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                <div class="form-group">
-                    <button type="button"  onclick = "javaScript: actualiza_fase_5_desestimiento_expediente('exped-fase-5');" id="send_fase_5" onChange="avisarCambiosEnFormulario('send_fase_5', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
-                </div>
-                <?php }?>
-
-            </form>
-        </div>
-
-        <div class="col docsExpediente">
-            <h3>Actes administratius:</h3>
-            <ol start="21">
-                <!----------------------------------------- 14.-abril_Resolució desistiment per renúncia SIN VIAFIRMA -------------->
-                <li><?php echo "Resolució desistiment per renúncia ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
-                <!------------------------------------------------------------------------------------------------------------------>
-            </ol>
-        </div>
-
-        <div class="col docsExpediente">
-        <div class="col">
-            <h3>Documents de l'expedient:</h3>
-            <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
-    	            <div >Pujat el</div>
-   	  	            <div >Document</div>
-		            <div >Custodia</div>               
-      	            <div >Acció</div>
-                </div>
-
-            <?php if($documentosExpediente): ?>
-            <?php foreach($documentosExpediente as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Desestimie') {
-			    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
-			    $parametro = explode ("/",$path);
-			    $tipoMIME = $docSolicitud_item->type;
-			    $nom_doc = $docSolicitud_item->name;
-			    ?>
-                <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-desestimiento">
-      	            <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-   		            <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                    <span id="custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span>
-    		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-    	    		    <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: desestimiento_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocDesestimiento"><strong>Elimina</strong></button>';?></span>		
-    		        <?php } else {?>
-        	    		<span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-        		    <?php } ?>			
-                </div>
-            <?php }
-            endforeach; ?>
-            <?php endif; ?>
-            </div>
-                <div id="myModalDocDesestimiento" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" style = "width: 60%;">
-                        <div class="modal-header">
-    		                Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-    	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocDesestimiento_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-            <script>
-                function desestimiento_docs_IDI_click (id, nombre) {
-    	            document.cookie = "documento_actual = " + id;
-	                console.log (id);
-                    }
-                function opcion_seleccionada_click(respuesta) {
-        	        document.cookie = "respuesta = " + respuesta;
-	                console.log (respuesta);
-                    }
-                function eliminaDocDesestimiento_click() {
-    	            console.log (getCookie("documento_actual"));
-	                let id = getCookie("documento_actual");
-                    document.getElementById(id).disabled= true;
-                    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	                console.log (getCookie("nuevo_estado"));
-	                let corresponde_documento = 'file_resguardoREC';
-	                $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-    			        location.reload();
-			        });	
-                    }
-                function getCookie(cname) {
-                    var name = cname + "=";
-                    var decodedCookie = decodeURIComponent(document.cookie);
-                    var ca = decodedCookie.split(';');
-                    for(var i = 0; i <ca.length; i++) {
-                        var c = ca[i];
-                        while (c.charAt(0) == ' ') {
-                            c = c.substring(1);
-                        }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                    }
-                    return "";
-                    }
-            </script> 
-            <h5 class ="upload-docs-type-label">[.pdf, .zip]:</h5>
-            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Desestimiento');?>" onsubmit="logSubmit('subeDocsDesestimientoBtn')" name="subir_doc_faseExpedDesestimiento" id="subir_doc_faseExpedDesestimiento" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                <div class = "content-file-upload">
-                    <div>
-                        <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDesestimiento[]" id="nombrefaseExpedDesestimiento" size="20" accept=".pdf, .zip" multiple />
-                    </div>
-                    <div>
-                        <input id="subeDocsDesestimientoBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                    </div>
-                </div>
-                <?php }?>
-
-            </form>             
-        </div>
-    </div>
-</div>
-</form>

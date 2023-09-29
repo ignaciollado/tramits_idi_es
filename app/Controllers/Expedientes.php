@@ -389,6 +389,7 @@ class Expedientes extends Controller
 		$tipo_tramite = $request->uri->getSegment(5);
 		$tipo_tramite = str_replace("%20", " ", $tipo_tramite);
 		$faseExped = $request->uri->getSegment(8);
+
 		/* 	$tipoJustDoc = $request->uri->getSegment(5); */
 
 
@@ -463,12 +464,47 @@ class Expedientes extends Controller
 				}
 			}
 		}
-		/* echo "---".$tipo_tramite."--".$faseExped."--".$tipoJustDoc."--"; */
-		/* return; */
-		// Sube los documentos según la fase del expediente
+
+		// Sube documentos en fase Detalle
+		if ($faseExped == "DetalleRequerido" || $faseExped == "DetalleNoRequerido") {
+			$documentosFile = $this->request->getFiles();
+			foreach ($documentosFile['file_faseExped' . $faseExped] as $nuevoDocumento) {
+				$fileName = $nuevoDocumento->getName();
+				$fullPath = WRITEPATH . 'documentos/' . $nif . '/' . $selloTiempo . '/';
+
+				if ($faseExped == 'DetalleRequerido') {
+					$esDocRequerido = 'SI';
+				}
+				if ($faseExped == 'DetalleNoRequerido') {
+					$esDocRequerido = 'NO';
+				}
+				if ($nuevoDocumento->isValid() && !$nuevoDocumento->hasMoved()) {
+					// $newName = $nuevoDocumento->getRandomName();
+					$nuevoDocumento->move($fullPath, str_replace(" ", "_", $fileName));
+					$data_file = [
+						'name' 						=> str_replace(" ", "_", $fileName),
+						'type' 						=> $nuevoDocumento->getClientMimeType(),
+						'cifnif_propietario' 		=> $nif,
+						'tipo_tramite' 				=> $tipo_tramite,
+						'corresponde_documento' 	=> 'file_faseExped' . $faseExped,
+						'datetime_uploaded' 		=> time(),
+						'convocatoria' 				=> $convocatoria,
+						'created_at' 				=> $nuevoDocumento->getTempName(),
+						'selloDeTiempo' 			=> $selloTiempo,
+						'id_sol'         			=> $id_sol,
+						'fase_exped'				=> '',
+						'docRequerido'			=> $esDocRequerido
+					];
+					$save = $docsExpediente->insert($data_file);
+				}
+			}
+			$data['resguardoREC_subido'] = true;
+		}
+
+		// Sube los documentos según la fase del expediente, excepto en fase Detalle
 		if ($faseExped == "Solicitud" || $faseExped == "Validacion" || $faseExped == "Ejecucion" || $faseExped == "Justificacion" || $faseExped == "Desestimiento" || $faseExped == "Adhesion" || $faseExped == "Seguimient" || $faseExped == "Renovacion") {
-			$documentosfile = $this->request->getFiles();
-			foreach ($documentosfile['file_faseExped' . $faseExped] as $resguardo) {
+			$documentosFile = $this->request->getFiles();
+			foreach ($documentosFile['file_faseExped' . $faseExped] as $resguardo) {
 				$fileName = $resguardo->getName();
 				$fullPath = WRITEPATH . 'documentos/' . $nif . '/' . $selloTiempo . '/';
 				if ($resguardo->isValid() && !$resguardo->hasMoved()) {
