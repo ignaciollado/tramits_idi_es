@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/public/assets/css/style-idi-ils.css"/>
 
 <?php
     $session = session();
@@ -382,27 +383,23 @@
                                 <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_opc_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                                 <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_opc_item->tipo_tramite; ?></span>
                                 <?php
-                                    switch ($docs_opc_item->estado) {
+                                switch ($docs_opc_item->estado) {
                                   case 'Pendent':
-                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
                                       break;
                                   case 'Aprovat':
-                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="Es una documentació correcta">Aprovat</button>';
+                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
                                       break;
                                   case 'Rebutjat':
-                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
                                       break;
                                   default:
-                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocIls(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                                      $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                                   }
                                 ?>
                                 <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                                 <span class = "detail-wrapper-docs-col">
-                                    <?php if ($docs_opc_item->estado!='Aprovat') {?>
-                                    <?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocNoRequeridoILS"><strong>Elimina</strong></button>';?>
-    		                        <?php } else {?>
-	    		                        <span class="small">No es pot esborrar</span>
-    		                        <?php } ?>
+                                    <button <?php if ($docs_opc_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docs_opc_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocNoRequeridoILS"><strong>Elimina</strong></button>
                                 </span>
                             </div>
                         <?php }?>
@@ -415,44 +412,22 @@
 
                     <div class="modal" id="eliminaDocNoRequeridoILS">
                         <div class="modal-dialog">
-                        <div class="modal-content" style = "width: 60%;">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Aquesta acció no es podrá desfer.</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-    			                <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            </div>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Aquesta acció no es podrá desfer.</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+        			                <h5 class="modal-title">Eliminar definitivament el document?</h5>
+                                </div>
+                                <div class="modal-footer">
+    		                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
+                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>  	
-                <script>
- 
-                    function opcion_seleccionada_click(respuesta) {
-                        document.cookie = "respuesta = " + respuesta;
-                        console.log (respuesta);
-                    }
 
-                    function getCookie(cname) {
-                        var name = cname + "=";
-                        var decodedCookie = decodeURIComponent(document.cookie);
-                        var ca = decodedCookie.split(';');
-                        for(var i = 0; i <ca.length; i++) {
-                            var c = ca[i];
-                            while (c.charAt(0) == ' ') {
-                                c = c.substring(1);
-                            }
-                            if (c.indexOf(name) == 0) {
-                                return c.substring(name.length, c.length);
-                            }
-                        }
-                        return "";
-                    }
-                </script>
                 <div>
                     <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
                     <?php //Compruebo el estado de la firma del documento.
@@ -510,7 +485,7 @@
 <!-- Inicio del tab SOLICITUD -->
 <div id="solicitud_tab" class="tab_fase_exp_content">
     <div class="row">
-        <div class="col-sm-2 docsExpediente" style="border:1px solid #0000ff;">
+        <div class="col-sm-2 docsExpediente">
             <h3>Detall:</h3>
            <form action="" onload = "javaScript: actualizaRequired();" name="exped-fase-1" id="exped-fase-1" method="post" accept-charset="utf-8">
                 <div class="form-group solicitud">
@@ -564,7 +539,7 @@
             <!-------------------------------------------------------------------------------------------------------------->
             </ol>
         </div>
-        <div class="col docsExpediente" style="border:1px solid #aaccff;">
+        <div class="col docsExpediente">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
@@ -600,11 +575,9 @@
                                 }
                                 ?>
                                 <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                                <?php if ($docSolicitud_item->estado!='Aprovat') {?>
-		                	            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
-    		                        <?php } else {?>
-	    		                        <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
-    		                    <?php } ?>
+                                <span class = "detail-wrapper-docs-col">
+                                    <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocSolicitud"><strong>Elimina</strong></button>
+                                </span>
 	                </div>
                         <?php 
                             }
@@ -614,58 +587,22 @@
 
                 <div id="myModalDocSolicitud" class="modal">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title">Aquesta acció no es podrá desfer.</h3>
+                                <h4 class="modal-title">Aquesta acció no es podrá desfer.</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-    		            		<h5 class="modal-title">Eliminar definitivament el document?</h5>
-                                <div class="modal-footer">
-		                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
-                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocSolicitud_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                                </div>
+                                <h5 class="modal-title">Eliminar definitivament el document?</h5>
+                            </div>
+                            <div class="modal-footer">
+		                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocSolicitud_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
                 </div>  	
-                <script>
-                        function myFunction_docs_IDI_click (id, nombre) {
-        	                document.cookie = "documento_actual = " + id;
-    	                    console.log (id);
-                            }
-                        function opcion_seleccionada_click(respuesta) {
-            	            document.cookie = "respuesta = " + respuesta;
-	                        console.log (respuesta);
-                            }
-                        function eliminaDocSolicitud_click() {
-                	        console.log (getCookie("documento_actual"));
-	                        let id = getCookie("documento_actual");
-                            document.getElementById(id).disabled= true;
-                            document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	                        console.log (getCookie("nuevo_estado"));
-    	                    let corresponde_documento = 'file_resguardoREC';
-	                        $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-                                location.reload();
-    	    		        });	
-                            }
-                        function getCookie(cname) {
-                            var name = cname + "=";
-                            var decodedCookie = decodeURIComponent(document.cookie);
-                            var ca = decodedCookie.split(';');
-                            for(var i = 0; i <ca.length; i++) {
-                                var c = ca[i];
-                                while (c.charAt(0) == ' ') {
-                                    c = c.substring(1);
-                                }
-                                if (c.indexOf(name) == 0) {
-                                    return c.substring(name.length, c.length);
-                                }
-                            }
-                            return "";
-                            }
-                </script> 
+    
         
                 <h5 class ="upload-docs-type-label">[.pdf, .zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Solicitud');?>" 
@@ -812,11 +749,9 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <?php if ($docSolicitud_item->estado!='Aprovat') {?>
-		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
-    		                <?php } else {?>
-	    		                    <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
-    		                <?php } ?>
+                            <span class = "detail-wrapper-docs-col">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><strong>Elimina</strong></button>
+                            </span>
 	                </div>
                 <?php }
                 endforeach; ?>
@@ -825,10 +760,9 @@
 
             <div id="myModalDocValidacion" class="modal">
                 <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" style = "width: 60%;">
+                    <div class="modal-content">
                         <div class="modal-header">
-        		            Aquesta acció no es podrá desfer.
+        		            <h4>Aquesta acció no es podrá desfer.</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
@@ -841,42 +775,7 @@
                     </div>
                 </div>
             </div>  	
-            <script>
-                function myFunction_docs_IDI_click (id, nombre) {
-    	        document.cookie = "documento_actual = " + id;
-	            console.log (id);
-                }
-                function opcion_seleccionada_click(respuesta) {
-    	        document.cookie = "respuesta = " + respuesta;
-	            console.log (respuesta);
-                }
-                function eliminaDocValidacion_click() {
-    	            console.log (getCookie("documento_actual"));
-	                let id = getCookie("documento_actual");
-                    document.getElementById(id).disabled= true;
-                    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	                console.log (getCookie("nuevo_estado"));
-	                let corresponde_documento = 'file_resguardoREC';
-	                $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-    			        location.reload();
-			        });	
-                }
-                function getCookie(cname) {
-                var name = cname + "=";
-                var decodedCookie = decodeURIComponent(document.cookie);
-                var ca = decodedCookie.split(';');
-                for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-                }
-                return "";
-                }
-            </script> 
+    
             <h5 class ="upload-docs-type-label">[.pdf]:</h5>
             <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Adhesion');?>" 
             onsubmit="logSubmit('subeDocsValidacionBtn')" name="subir_doc_faseExpedValidacion" id="subir_doc_faseExpedValidacion" 
@@ -972,7 +871,6 @@
                     <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-seguimiento-ils">
       	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
    		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <!--  <span id = "custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span> -->
                        <?php
                             switch ($docSolicitud_item->estado) {
 				                case 'Pendent':
@@ -989,11 +887,9 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <?php if ($docSolicitud_item->estado!='Aprovat') {?>
-		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
-    		                <?php } else {?>
-	    		                    <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
-    		                <?php } ?>
+                            <span class = "detail-wrapper-docs-col">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocEjecucion"><strong>Elimina</strong></button>
+                            </span>
 		            </div>
                     <?php }
                 endforeach; ?>
@@ -1001,49 +897,21 @@
             </div>
             <div id="myModalDocEjecucion" class="modal">
                 <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" style = "width: 60%;">
+                    <div class="modal-content">
                         <div class="modal-header">
-    		                Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+    		                <h4>Aquesta acció no es podrá desfer.</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
     	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                            </div>
+                        </div>                            
+                        <div class="modal-footer">
+    		                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
+                            <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocEjecucion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <script>
-                function myFunction_docs_IDI_click (id, nombre) {
-    	            document.cookie = "documento_actual = " + id;
-	                console.log (id);
-                    }
-                function opcion_seleccionada_click(respuesta) {
-        	        document.cookie = "respuesta = " + respuesta;
-	                console.log (respuesta);
-                    }
-
-                function getCookie(cname) {
-                    var name = cname + "=";
-                    var decodedCookie = decodeURIComponent(document.cookie);
-                    var ca = decodedCookie.split(';');
-                    for(var i = 0; i <ca.length; i++) {
-                        var c = ca[i];
-                        while (c.charAt(0) == ' ') {
-                            c = c.substring(1);
-                        }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                    }
-                    return "";
-                    }
-            </script> 
 
             <h5 class ="upload-docs-type-label">[.pdf]:</h5>
             <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Seguimient');?>" 
@@ -1073,7 +941,7 @@
     <div class="row">
         <div class="col-sm-2 docsExpediente">
         <h3>Detall:</h3>
-        <form action="" onload = "javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
+            <form action="" onload="javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
             <div class="col">  
     		<div class="form-group justificacion">
@@ -1129,7 +997,7 @@
             
             </div>
             </div>
-        </form>
+            </form>
         </div>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
@@ -1183,11 +1051,9 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: justificacion_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocJustificacion"><strong>Elimina</strong></button>';?></span>		
-                        <?php } else {?>
-                            <span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-                        <?php } ?>			
+                            <span class = "detail-wrapper-docs-col">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><strong>Elimina</strong></button>
+                            </span>	
                     </div>
                 <?php }
                     endforeach; ?>
@@ -1195,60 +1061,22 @@
 
                 <div id="myModalDocJustificacion" class="modal">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-content">
                             <div class="modal-header">
-                                Aquesta acció no es podrá desfer.
-                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                                <h4>Aquesta acció no es podrá desfer</h4>
+                                <button type="button" class="close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
-                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    function justificacion_docs_IDI_click (id, nombre) {
-                        document.cookie = "documento_actual = " + id;
-                        console.log (id);
-                    }
-                    function opcion_seleccionada_click(respuesta) {
-                        document.cookie = "respuesta = " + respuesta;
-                        console.log (respuesta);
-                    }
-                    function eliminaDocJustificacion_click() {
-                        console.log (getCookie("documento_actual"));
-                        let id = getCookie("documento_actual");
-                        document.getElementById(id).disabled= true;
-                        document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-                        console.log (getCookie("nuevo_estado"));
-                        let corresponde_documento = 'file_resguardoREC';
-                        $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-                            location.reload();
-                        });	
-                    }
-                    function getCookie(cname) {
-                        var name = cname + "=";
-                        var decodedCookie = decodeURIComponent(document.cookie);
-                        var ca = decodedCookie.split(';');
-                        for(var i = 0; i <ca.length; i++) {
-                            var c = ca[i];
-                            while (c.charAt(0) == ' ') {
-                                c = c.substring(1);
-                            }
-                            if (c.indexOf(name) == 0) {
-                                return c.substring(name.length, c.length);
-                            }
-                            }
-                        return "";
-                    }
-                </script> 
-                
+  
                 <h5 class ="upload-docs-type-label">[.zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Renovacion');?>" 
                 onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedRenovacion" id="subir_doc_faseExpedRenovacion" 
@@ -1443,6 +1271,46 @@
     </div>
 </div>
 
+<style>
+    .content-file-upload {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+        grid-auto-rows: minmax(50%, 50%);
+    }
+
+    .accordion-exped {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 1.4rem;
+        font-weight: bold;
+        transition: 0.4s;
+
+    }
+
+    .accordion-exped:hover {
+        font-weight: normal;
+    }
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .panel-exped {
+        /* padding: 0 18px; */
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+</style>
+
 <script>
     if (<?php echo $totalDocsJustifPlan;?> === 0) {
     	document.getElementById("tab_plan").classList.add ("warning-msg-justific");
@@ -1486,205 +1354,25 @@
     }
 </script>
 
-<style>
-    .content-file-upload {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 15px;
-        grid-auto-rows: minmax(50%, 50%);
+<script>
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
     }
-
-    .accordion-exped {
-        background-color: #eee;
-        color: #444;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 1.4rem;
-        font-weight: bold;
-        transition: 0.4s;
-
-    }
-
-    .accordion-exped:hover {
-        font-weight: normal;
-    }
-
-    .active, .accordion:hover {
-        background-color: #ccc;
-    }
-
-    .panel-exped {
-        /* padding: 0 18px; */
-        background-color: white;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-    }
-</style>
-
-<div id="deses_ren_tab" class="tab_fase_exp_content"> <!-- DESESTIMIENTO o RENUNCIA -->
-    <div class="row">
-        <div class="col-sm-2 docsExpediente">
-        <h3>Detall:</h3>
-        <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-5" id="exped-fase-5" method="post" accept-charset="utf-8">
-            <div class="form-group desistimiento">
-                <label for = "fecha_REC_desestimiento"><strong>Data REC desistiment:</strong></label>
-	    	    <!-- <input type = "datetime-local" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo date_format(date_create($expedientes['fecha_REC_desestimiento']),"Y-m-d\Th:m");?>"/> -->
-	    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_desestimiento']);?>"/>
-            </div>
-		    <div class="form-group desistimiento">
-                <label for = "ref_REC_desestimiento"><strong>Referència REC desistiment:</strong></label>
-                <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" maxlength = "16" name = "ref_REC_desestimiento" class = "form-control send_fase_5" id = "ref_REC_desestimiento" value = "<?php echo $expedientes['ref_REC_desestimiento'];?>">
-        	</div>
-	    	<div class="form-group desistimiento">
-                <label for = "fecha_firma_resolucion_desestimiento"><strong>Data firma resolució de desistiment:</strong></label>
-                <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_resolucion_desestimiento" class = "form-control send_fase_5" id = "fecha_firma_resolucion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_resolucion_desestimiento']), 'Y-m-d');?>">
-            </div>
-		    <div class="form-group desistimiento">
-                <label for = "fecha_notificacion_desestimiento"><strong>Data notificació desistiment:</strong></label>
-                <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_notificacion_desestimiento" class = "form-control send_fase_5" id = "fecha_notificacion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_desestimiento']), 'Y-m-d');?>">
-            </div>
-
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                <div class="form-group">
-                    <button type="button"  onclick = "javaScript: actualiza_fase_5_desestimiento_expediente_ils('exped-fase-5');" id="send_fase_5" onChange="avisarCambiosEnFormulario('send_fase_5', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
-                </div>
-                <?php }?>
-
-            </form>
-        </div>
-
-        <div class="col docsExpediente">
-            <h3>Actes administratius:</h3>
-            <ol start="21">
-                <!----------------------------------------- 14.-abril_Resolució desistiment per renúncia SIN VIAFIRMA -------------->
-                <li><?php echo "Resolució desistiment per renúncia ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
-                <!------------------------------------------------------------------------------------------------------------------>
-            </ol>
-        </div>
-
-        <div class="col docsExpediente">
-        <div class="col">
-            <h3>Documents de l'expedient:</h3>
-            <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
-    	            <div >Pujat el</div>
-   	  	            <div >Document</div>
-		            <div >Custodia</div>               
-      	            <div >Acció</div>
-                </div>
-
-            <?php if($documentos): ?>
-            <?php foreach($documentos as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Desestimie') {
-			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
-			        $parametro = explode ("/",$path);
-			        $tipoMIME = $docSolicitud_item->type;
-			        $nom_doc = $docSolicitud_item->name;
-			        ?>
-                <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-desestimiento">
-      	            <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-   		            <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                    <span id="custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span>
-    		        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-    	    		    <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: desestimiento_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocDesestimiento"><strong>Elimina</strong></button>';?></span>		
-    		        <?php } else {?>
-        	    		<span id = "accion" class = "detail-wrapper-docs-col">No es pot esborrar</span>			
-        		    <?php } ?>			
-                </div>
-            <?php }
-            endforeach; ?>
-            <?php endif; ?>
-            </div>
-                <div id="myModalDocDesestimiento" class="modal">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" style = "width: 60%;">
-                        <div class="modal-header">
-    		                Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-    	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel·la</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocDesestimiento_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-            <script>
-                function desestimiento_docs_IDI_click (id, nombre) {
-    	            document.cookie = "documento_actual = " + id;
-	                console.log (id);
-                    }
-                function opcion_seleccionada_click(respuesta) {
-        	        document.cookie = "respuesta = " + respuesta;
-	                console.log (respuesta);
-                    }
-                function eliminaDocDesestimiento_click() {
-    	            console.log (getCookie("documento_actual"));
-	                let id = getCookie("documento_actual");
-                    document.getElementById(id).disabled= true;
-                    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	                console.log (getCookie("nuevo_estado"));
-	                let corresponde_documento = 'file_resguardoREC';
-	                $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-    			        location.reload();
-			        });	
-                    }
-                function getCookie(cname) {
-                    var name = cname + "=";
-                    var decodedCookie = decodeURIComponent(document.cookie);
-                    var ca = decodedCookie.split(';');
-                    for(var i = 0; i <ca.length; i++) {
-                        var c = ca[i];
-                        while (c.charAt(0) == ' ') {
-                            c = c.substring(1);
-                        }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                    }
-                    return "";
-                    }
-            </script> 
-            <h5 class ="upload-docs-type-label">[.pdf, .zip]:</h5>
-            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Desestimiento');?>" 
-            onsubmit="logSubmit('subeDocsDesestimientoBtn')" name="subir_doc_faseExpedDesestimiento" id="subir_doc_faseExpedDesestimiento" 
-            method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                <div class = "content-file-upload">
-                    <div>
-                        <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDesestimiento[]" id="nombrefaseExpedDesestimiento" size="20" accept=".pdf, .zip" multiple />
-                    </div>
-                    <div>
-                        <input id="subeDocsDesestimientoBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                    </div>
-                </div>
-                <?php }?>
-
-            </form>             
-        </div>
-    </div>
-</div>
-<!-- </form> -->
-
-
+</script>
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="/public/assets/js/edita-expediente-ils.js"></script>
+<script src="https://kit.fontawesome.com/1a19d0e4f2.js" crossorigin="anonymous"></script>

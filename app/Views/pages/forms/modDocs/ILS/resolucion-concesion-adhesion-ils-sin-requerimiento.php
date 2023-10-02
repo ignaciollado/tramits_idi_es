@@ -1,7 +1,7 @@
 <!-- -------------------------------------- Resolución concesión adhesión ils sin requerimiento-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Resolució concesió adhesió <strong style="background-color:#c5eae2;padding:0.5rem;">sense</strong> requeriment
+    	 Resolució concesió adhesió <strong>sense</strong> requeriment
   	</div>
 	<div class="card-itramits-footer">
 
@@ -10,7 +10,7 @@
         <?php }
         else {?>
 			<span id="btn_222" class="">	
-    			<a id="generaResolucioConcesionSinReqILS" class = "btn btn-primary" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_resolucion_concesion_adhesion_ils');?>">Generar la resolució</a>
+    			<a id="generaResolucioConcesionSinReqILS" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_resolucion_concesion_adhesion_ils');?>"><i title="Generar la resolució" class="fa-solid fa-file-pdf fa-2xl" style="color: #365446;"></i></a>
 			</span>
 			<span id="spinner_222" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 		<?php }?>

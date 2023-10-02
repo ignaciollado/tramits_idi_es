@@ -4,14 +4,13 @@
     	Requeriment
   	</div>
 	<div class="card-itramits-footer">
-
 	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
 			<button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target= "#myRequerimientoIls" id="myBtnRequerimientoIls">Motiu del requeriment</button>
 			<span id="btn_3" class="">
-    			<a id ="wrapper_motivoRequerimientoIls" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment_ils');?>">Envia a signar el requeriment</a>
+    			<a id ="wrapper_motivoRequerimientoIls" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment_ils');?>"><i title="Enviar a signar el document" class="fa-solid fa-signature fa-2xl" style="color: #365446;"></i></a>
 			</span>
 			<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 	<?php }?>

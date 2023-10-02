@@ -1,7 +1,7 @@
 <!-- -------------------------------------- Informe desfavorable amb requeriment 2021 OK-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Informe desfavorable <strong style="background-color:#c5eae2;padding:0.5rem;">amb</strong> requeriment	
+    	Informe desfavorable <strong>amb</strong> requeriment
   	</div>
 	<div class="card-itramits-footer">
 
@@ -10,7 +10,7 @@
 		<?php }
 			else {?>
 				<span id="btn_4_ils" class="">	
-					<a id="generaInformeDesfConReq_ils" class = "btn btn-primary" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_con_requerimiento_ils');?>">Generar l'informe</a>
+					<a id="generaInformeDesfConReq_ils" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_con_requerimiento_ils');?>"><i title="Generar l'informe" class="fa-solid fa-file-pdf fa-2xl" style="color: #365446;"></i></a>
 				</span>
 				<span id="spinner_4_ils" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 		<?php }?>

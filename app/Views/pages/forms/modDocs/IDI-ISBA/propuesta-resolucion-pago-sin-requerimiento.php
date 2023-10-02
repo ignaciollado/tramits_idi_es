@@ -8,8 +8,7 @@
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<!-- 	<a class="btn-primary-itramits" href="<?php echo base_url('public/index.php/expedientes/generaInforme/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_prop_res_conces_sin_req'); ?>">Genera la proposta</a> -->
-			<button id="wrapper_propuestaResPagoSinReg" class='btn btn-secondary' onclick="enviaPropResolucionPagoSinReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
+			<button id="wrapper_propuestaResPagoSinReg" onclick="enviaPropResolucionPagoSinReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')"><i title="Genera la proposta" class="fa-solid fa-file-pdf fa-2xl" style="color: #00145c;"></i></button>
 			<div id='infoMissingDataDoc9' class="alert alert-danger ocultar"></div>
 			<span id="spinner_9" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>

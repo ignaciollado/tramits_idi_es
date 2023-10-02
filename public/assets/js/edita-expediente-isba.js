@@ -63,11 +63,11 @@ function openFaseExped(evt, faseName, backgroundColor, id) {
 }
 
 function logSubmit(btnID) {
-	document.getElementById(btnID).style.backgroundColor = "darkgray";
-	document.getElementById(btnID).disabled = true;
-	document.getElementById(btnID).value = "Un moment, estic pujant la documentació ...";
+	document.getElementById(btnID).style.backgroundColor = "darkgray"
+	document.getElementById(btnID).setAttribute("disabled", true)
+	document.getElementById(btnID).value = "Un moment, estic pujant la documentació ..."
 	for (let step = 0; step < 4; step++) {
-		document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "0.5";
+		document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "0.5"
 	}
 	//event.preventDefault();
 }
@@ -75,6 +75,7 @@ function logSubmit(btnID) {
 function cambiaEstadoDoc(id) {
 	let element = document.getElementById(id)
 	let buttonID = id.split("#")[3]
+	let elementDel = document.getElementById(id.split("#")[0]+"_del")
 	
 	switch (buttonID) {
 		case 'file_escritura_empresa':
@@ -125,6 +126,7 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_caducado")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
+		elementDel.removeAttribute("disabled")
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -136,6 +138,7 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_info")
 		element.classList.add("isa_success")
 		element.innerHTML = "Aprovat"
+		elementDel.setAttribute("disabled", true);
 		if (button) {
  			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -147,6 +150,7 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_success")
 		element.classList.add("isa_error")
 		element.innerHTML = "Rebutjat"
+		elementDel.removeAttribute("disabled")
 		if (button) {
 			button.style.display = 'block'
 			button.classList.add("btn-primary")
@@ -158,6 +162,7 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_error")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
+		elementDel.removeAttribute("disabled")
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -180,7 +185,6 @@ function cambiaEstadoDoc(id) {
 			send_fase_0.className = "btn-itramits bth-success-itramits"
 			send_fase_0.disabled = false
 							}
-            location.reload();
 		}
 	)
 }
@@ -481,7 +485,6 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	);
 }
 
-
 function validateForm(formName) {
 	for(i=0; i < document.getElementById(formName).elements.length; i++){
 		if(document.getElementById(formName).elements[i].value == "" && document.getElementById(formName).elements[i].required){
@@ -557,7 +560,6 @@ function actualizaRequired(valor) {
 
 }
 
-
 function actualizaMotivoRequerimiento_idi_isba_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimientoIdiIsba").value;
 	let id = document.getElementById("id").value;
@@ -581,6 +583,7 @@ function actualizaMotivoRequerimiento_idi_isba_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoInicioRequerimiento").value;
 	let id = document.getElementById("id").value;
@@ -603,6 +606,7 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimientoJustificacion").value;
 	let id = document.getElementById("id").value;
@@ -626,6 +630,7 @@ function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
 	let textoMotivoInforme = document.getElementById("motivoSobreSubsanacion").value;
 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value;
@@ -650,6 +655,7 @@ function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 	let textoMotivoRenuncia = document.getElementById("motivoDesestimientoRenuncia").value;
 	let id = document.getElementById("id").value;
@@ -673,6 +679,7 @@ function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoRevocacionPorNoJustificar_click() {  //SE EMPLEA
 	let textoRevocacionPorNoJustificar = document.getElementById("textoRevocacionPorNoJustificar").value;
 	let id = document.getElementById("id").value;
@@ -697,6 +704,7 @@ function actualizaMotivoRevocacionPorNoJustificar_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_7").value;
 	let id = document.getElementById("id").value;
@@ -720,6 +728,7 @@ function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_8").value;
 	let id = document.getElementById("id").value;
@@ -743,6 +752,7 @@ function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoResolucionRevocacionPorNoJustificar_click() {  //SE EMPLEA
 	let textoMotivoRevocacion = document.getElementById("motivoResolucionRevocacionPorNoJustificar").value;
 	let id = document.getElementById("id").value;
@@ -762,6 +772,7 @@ function actualizaMotivoResolucionRevocacionPorNoJustificar_click() {  //SE EMPL
 		}
 	);
 }
+
 function actualizaMotivoDesfavorable_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfSinReq").value;
 	let id = document.getElementById("id").value;
@@ -784,6 +795,7 @@ function actualizaMotivoDesfavorable_click() {
 		}
 	);
 }
+
 function actualizaMotivoDesfavorableConReqIls_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReqIls").value;
 	let id = document.getElementById("id").value;
@@ -806,6 +818,7 @@ function actualizaMotivoDesfavorableConReqIls_click() {
 		}
 	);
 }
+
 function actualizaMotivoDesfavorableConReq_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
 	let id = document.getElementById("id").value;
@@ -831,6 +844,7 @@ function actualizaMotivoDesfavorableConReq_click() {
 		}
 	);
 }
+
 function enviaAFirmaRequerimiento_click(parametro) {
 	$("#enviaAFirmaRequerimiento", parametro)
 		.html("Actualitzant, un moment per favor.")
@@ -838,6 +852,7 @@ function enviaAFirmaRequerimiento_click(parametro) {
 		.css("background-color", "orange")
 		.css("cursor", " progress");
 }
+
 function actualizaMotivoactaDeKickOff_click() {
 	let actaNumKickOff = document.getElementById("actaNumKickOff").value;
 	let fecha_kick_off = document.getElementById("fecha_kick_off_modal").value;
@@ -869,6 +884,7 @@ function actualizaMotivoactaDeKickOff_click() {
 		}
 	);
 }
+
 function actualizaActaCierre_click() {
 	let actaNumCierre = document.getElementById("actaNumCierre").value;
 	let fecha_reunion_cierre = document.getElementById("fecha_reunion_cierre_modal").value;
@@ -898,6 +914,7 @@ function actualizaActaCierre_click() {
 		}
 	);
 }
+
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarJustificador");
@@ -918,6 +935,7 @@ function enviaMailJustificacion_click() {
 		}
 	);
 }
+
 function enviaMailFormEmpresa_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarFormularioEmpresa");
@@ -937,6 +955,7 @@ function enviaMailFormEmpresa_click() {
 		}
 	);
 }
+
 function enviaMailEscrituraEmpresa_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
@@ -958,6 +977,7 @@ function enviaMailEscrituraEmpresa_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoIAE_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IAE").value;
@@ -979,6 +999,7 @@ function enviaMailCertificadoIAE_click() {
 		}
 	);
 }
+
 function enviaMailDocumentoIdentificacion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IDSOL").value;
@@ -1000,6 +1021,7 @@ function enviaMailDocumentoIdentificacion_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoSegSoc_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_TGSS").value;
@@ -1021,6 +1043,7 @@ function enviaMailCertificadoSegSoc_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoATIB_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ATIB").value;
@@ -1043,7 +1066,6 @@ function enviaMailCertificadoATIB_click() {
 	);
 }
 
-
 async function insertaMejoraEnSolicitud() {
 	let addMejora = document.getElementById('addMejora')
 	let idSol = document.getElementById('id')
@@ -1065,19 +1087,16 @@ async function insertaMejoraEnSolicitud() {
 
 }
 
-function myFunction_docs_IDI_click(id, nombre) {
-	document.cookie = "documento_actual = " + id;
+function myFunction_docs_IDI_click (id, nombre) {
+	localStorage.setItem("documento_actual", id);
 }
 
 function opcion_seleccionada_click(respuesta) {
 	document.cookie = "respuesta = " + respuesta;
-	console.log(respuesta);
 }
 
 function eliminaArchivoDocIDI_click() {
-	console.log(getCookie("documento_actual"));
 	let id = getCookie("documento_actual");
-	console.log(getCookie("nuevo_estado"));
 	let corresponde_documento = "file_resguardoREC";
 	$.post(
 		"/public/assets/utils/delete_documento_expediente.php",
@@ -1091,11 +1110,6 @@ function eliminaArchivoDocIDI_click() {
 function myFunction_click(id, nombre) {
 	document.cookie = "documento_actual = " + id;
 	console.log("++" + id + "++");
-}
-
-function opcion_seleccionada_click(respuesta) {
-	document.cookie = "respuesta = " + respuesta;
-	console.log(respuesta);
 }
 
 function eliminaArchivo_click() {
@@ -1347,28 +1361,69 @@ async function obtieneEstadoDelaFirma (publicId) {
 		default:
 			estadoFirma = "<div class = 'info-msg'><i class='fa fa-info-circle'></i> Desconegut</div>";
 		}
-		console.log (estadoFirma);
 		document.getElementById ("estat_signatura").innerHTML = estadoFirma;
 		});
 }
 
 function docNoRequerido_click (id, nombre) {
-	document.cookie = "documento_actual = " + id;
-	console.log (id);
+	localStorage.setItem("documento_actual", id);
 }
 
 function eliminaDocNoRequerido_click() {
-	let id = getCookie("documento_actual");
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
 	let corresponde_documento = 'file_resguardoREC';
-	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
 	location.reload();
 });
 }
 
 function eliminaDocRequerido_click() {
-	let id = getCookie("documento_actual");
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
 	let corresponde_documento = 'file_resguardoREC';
-	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
 	    location.reload();
     });
+}
+
+function eliminaDocValidacion_click() {
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+
+function eliminaDocJustificacion_click() {
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+function eliminaDocSolicitud_click() {
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+	}
+
+function activarUploadBtn(element, btnToActivate) {
+	localStorage.setItem("requiredDocumentToUpload", element.id)
+	document.getElementById(btnToActivate).removeAttribute("disabled")
 }

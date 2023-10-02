@@ -1,9 +1,6 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
-
+<link rel="stylesheet" type="text/css" href="/public/assets/css/style-idi-isba.css"/>
 <?php
     use App\Models\DocumentosGeneradosModel;
     use App\Models\MejorasExpedienteModel;
@@ -143,7 +140,7 @@
                     <label for=''><u><?php echo lang('message_lang.operacion_financiera_prestamo_idi_isba') ?></u></label>
                     <div class="form-group general">
                         <label for="nom_entidad"><?php echo lang('message_lang.entidad_financiera_idi_isba') ?>:</label>
-                        <input type="text" name="nom_entidad" class="form-control"readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "nom_entidad" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba') ?>" value = "<?php echo $expedientes['nom_entidad']; ?>">
+                        <input type="text" name="nom_entidad" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "nom_entidad" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba') ?>" value = "<?php echo $expedientes['nom_entidad']; ?>">
                     </div>
                     <div class="form-group general">
                         <label for="importe_prestamo"><?php echo lang('message_lang.importe_prestamo_entidad_idi_isba') ?>:</label>
@@ -319,11 +316,7 @@
                             ?>
                             <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class="detail-wrapper-docs-col">
-                                <?php if ($docs_item->estado!='Aprovat') {?>
-                                    <?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docs_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocRequeridoISBA"><strong>Elimina</strong></button>';?>
-    		                        <?php } else {?>
-	    		                       <span class="small">No es pot esborrar</span>
-    		                    <?php } ?>
+                                <button <?php if ($docs_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docs_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocRequeridoISBA"><strong>Elimina</strong></button>
                             </span>
   			            </div>
                     <?php }?>
@@ -339,10 +332,9 @@
                             <div class="modal-body">
            			            <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
                             </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
-                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                                </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
@@ -352,22 +344,86 @@
                     echo "<div class='alert alert-warning'>Cap documentació.</div>";
                     }   
                 ?>
-                <h5 class ="upload-docs-type-label">[.pdf]:</h5>
-                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/DetalleRequerido');?>" onsubmit="logSubmit('subeDocsDetalleRequeridoBtn')" name="subir_faseExpedDetalleRequerido" id="subir_faseExpedDetalleRequerido" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
-                <?php
-                if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                else {?>
-                    <div class = "content-file-upload">
-                        <div>
-                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDetalleRequerido[]" id="nombrefaseExpedDetalleRequerido" size="20" accept=".pdf" multiple />
-                        </div>
-                        <div>
-                            <input id="subeDocsSolicitudBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+
+                <button  name = "uploadRequiredISBADocument" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#uploadDocRequeridoISBA"><strong>Afegir un document</strong></button>
+                <div class="modal" id="uploadDocRequeridoISBA">
+			        <div class="modal-dialog">
+                        <div class="modal-content" style="width:125%;">
+                            <div class="modal-header">
+            		            <h3>Quin tipus de document vols pujar?</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_declaracionResponsable">
+                                    <label class="form-check-label" for="file_declaracionResponsable">Declaració responsable de l'empresa</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_document_acred_como_repres">
+                                    <label class="form-check-label" for="file_document_acred_como_repres">Documentació acreditativa de les facultats de representació de la persona que firma la sol·licitud d'ajut</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoATIB">
+                                    <label class="form-check-label" for="file_certificadoATIB">Certificat estar al corrent obligacions amb AEAT i ATIB</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_escrituraConstitucion">
+                                    <label class="form-check-label" for="file_escrituraConstitucion">Còpia escriptures de constitució de l'entitat sol·licitant</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_nifEmpresa">
+                                    <label class="form-check-label" for="file_nifEmpresa">Còpia del NIF de l'empresa</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoAEAT">
+                                    <label class="form-check-label" for="file_certificadoAEAT">Certificat d'estar al corrent de pagament amb la AEAT</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoIAE">
+                                    <label class="form-check-label" for="file_certificadoIAE">Documentació acreditativa alta cens IAE</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoSGR">
+                                    <label class="form-check-label" for="file_certificadoSGR">Certificat de la societat de garantia recíproca</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_contratoOperFinanc">
+                                    <label class="form-check-label" for="file_contratoOperFinanc">El contracte de l'operació financera</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_avalOperFinanc">
+                                    <label class="form-check-label" for="file_avalOperFinanc">El contracte o document d'aval de l'operació financera</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_copiaNIF">
+                                    <label class="form-check-label" for="file_copiaNIF">La fotocòpia del DNI de la persona que signa la sol.licitud</label>
+                                </div>                                  
+                            </div>
+                            <div class="modal-footer">
+                                <h5 class ="upload-docs-type-label">[.pdf]:</h5>
+                                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/DetalleRequerido');?>" onsubmit="logSubmit('subeDocsDetalleRequeridoBtn')" name="subir_faseExpedDetalleRequerido" id="subir_faseExpedDetalleRequerido" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
+                                    <?php
+                                    if ( !$esAdmin && !$esConvoActual ) {?>
+                                    <?php }
+                                    else {?>
+                                    <div class = "content-file-upload">
+                                        <div>
+                                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDetalleRequerido[]" id="nombrefaseExpedDetalleRequerido" size="20" accept=".pdf" multiple />
+                                        </div>
+                                        <div>
+                                            <input id="subeDocsDetalleRequeridoBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" disabled/>
+                                        </div>
+                                    </div>
+                                    <?php }?>                    
+                                </form>
+                            </div>
                         </div>
                     </div>
-                <?php }?>                    
-                </form>
+                </div>
                 <br>
             </div>
 
@@ -426,53 +482,84 @@
                             ?>
                             <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
 	        		        <span class = "detail-wrapper-docs-col">
-                               <?php if ($docs_opc_item->estado!='Aprovat') {?>
-                                    <?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docs_opc_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocNoRequeridoISBA"><strong>Elimina</strong></button>';?>
-    		                        <?php } else {?>
-	    		                        <span class="small">No es pot esborrar</span>		
-    		                    <?php } ?>
+                                <button <?php if ($docs_opc_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docs_opc_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocNoRequeridoISBA"><strong>Elimina</strong></button>
                             </span>
   			            </div>
                     <?php }?>
                     
                     <?php endforeach; ?>
-
-                <h5 class ="upload-docs-type-label">[.pdf]:</h5>
-                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/DetalleNoRequerido');?>" onsubmit="logSubmit('subeDocsDetalleNoRequeridoBtn')" name="subir_faseExpedDetalleNoRequerido" id="subir_faseExpedDetalleNoRequerido" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
-                <?php
-                if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                else {?>
-                    <div class = "content-file-upload">
-                        <div>
-                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDetalleNoRequerido[]" id="nombrefaseExpedDetalleNoRequerido" size="20" accept=".pdf" multiple />
-                        </div>
-                        <div>
-                            <input id="subeDocsSolicitudBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                        </div>
-                    </div>
-                <?php }?>                    
-                </form>
-
-                    <div class="modal" id="eliminaDocNoRequeridoISBA">
+                    <button  name = "uploadNotRequiredISBADocument" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#uploadDocNoRequeridoISBA"><strong>Afegir un document</strong></button>
+                    <div class="modal" id="uploadDocNoRequeridoISBA">
 			            <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content" style="width:125%;">
                                 <div class="modal-header">
-            		                <h4>Aquesta acció no es podrá desfer</h4>
+                		            <h3>Quin tipus de document vols pujar?</h3>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-               			            <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
-                                </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
-                                        <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+                                    <div class="form-check">
+                                        <input onclick="activarUploadBtn(this, 'subeDocsDetalleNoRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoIAE">
+                                        <label class="form-check-label" for="file_certificadoIAE">Documentació acreditativa alta cens IAE</label>
                                     </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoSGR">
+                                        <label class="form-check-label" for="file_certificadoSGR">Certificat de la societat de garantia recíproca</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input onclick="activarUploadBtn(this, 'subeDocsDetalleNoRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_contratoOperFinanc">
+                                        <label class="form-check-label" for="file_contratoOperFinanc">El contracte de l'operació financera</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input onclick="activarUploadBtn(this, 'subeDocsDetalleNoRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_avalOperFinanc">
+                                        <label class="form-check-label" for="file_avalOperFinanc">El contracte o document d'aval de l'operació financera</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input onclick="activarUploadBtn(this, 'subeDocsDetalleNoRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_copiaNIF">
+                                        <label class="form-check-label" for="file_copiaNIF">La fotocòpia del DNI de la persona que signa la sol.licitud</label>
+                                    </div>                                  
+                                </div>
+                                <div class="modal-footer">
+                                    <h5 class ="upload-docs-type-label">[.pdf]:</h5>
+                                    <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/DetalleNoRequerido');?>" onsubmit="logSubmit('subeDocsDetalleNoRequeridoBtn')" name="subir_faseExpedDetalleNoRequerido" id="subir_faseExpedDetalleNoRequerido" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
+                                        <?php
+                                            if ( !$esAdmin && !$esConvoActual ) {?>
+                                        <?php }
+                                        else {?>
+                                        <div class = "content-file-upload">
+                                            <div>
+                                                <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDetalleNoRequerido[]" id="nombrefaseExpedDetalleNoRequerido" size="20" accept=".pdf" multiple />
+                                            </div>
+                                            <div>
+                                                <input id="subeDocsDetalleNoRequeridoBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" disabled/>
+                                            </div>
+                                        </div>
+                                        <?php }?>                    
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="alert alert-info">
+
+                <div class="modal" id="eliminaDocNoRequeridoISBA">
+			        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+            		            <h4>Aquesta acció no es podrá desfer</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+               			        <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
+                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
+                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
                 <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
                 <?php
 
@@ -518,7 +605,6 @@
                     }   
                 ?>
 
-            
             <div class="modal" id="eliminaDocNoRequerido">
 			    <div class="modal-dialog">
                     <div class="modal-content">
@@ -535,43 +621,8 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 
-            <script>
-                function docNoRequerido_click (id, nombre) {
-    	        document.cookie = "documento_actual = " + id;
-	            console.log (id);
-                }
-                function opcion_seleccionada_click(respuesta) {
-    	        document.cookie = "respuesta = " + respuesta;
-	            console.log (respuesta);
-                }
-                function eliminaDocNoRequerido_click() {
-    	        console.log (getCookie("documento_actual"));
-	            let id = getCookie("documento_actual");
-	            console.log (getCookie("nuevo_estado"));
-	            let corresponde_documento = 'file_resguardoREC';
-	            $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-    			    location.reload();
-			    });	
-                }
-                function getCookie(cname) {
-                var name = cname + "=";
-                var decodedCookie = decodeURIComponent(document.cookie);
-                var ca = decodedCookie.split(';');
-                for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-                }
-                return "";
-                }
-            </script>
-  
         </div>
     </div>
     </div> <!-- Cierre fila Detalle -->
@@ -585,7 +636,6 @@
                 <div class="form-group solicitud">
                     <label for = "fecha_REC"><strong>Data REC sol·licitud:</strong></label>
 			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
-			        <!-- <input type = "text" placeholder = "aaaa-mm-dd hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php //echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/> -->
                 </div>
                 <div class="form-group solicitud">
                     <label for = "ref_REC"><strong>Referència REC sol·licitud:</strong></label>
@@ -593,7 +643,6 @@
                 </div>
                 <div class="form-group solicitud">
                     <label for = "fecha_REC_enmienda"><strong>Data REC esmena:</strong></label>
-		    	    <!-- <input type = "datetime-local" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_enmienda']),"Y-m-d\Th:m");?>"/> -->
 		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
                 </div>		
                 <div class="form-group solicitud">
@@ -670,11 +719,9 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <?php if ($docSolicitud_item->estado!='Aprovat') {?>
-		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
-    		                <?php } else {?>
-	    		                    <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
-    		                <?php } ?>
+                            <span class = "detail-wrapper-docs-col">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocSolicitud"><strong>Elimina</strong></button>
+                            </span>
 	                        </div>
                         <?php 
                             }
@@ -682,15 +729,14 @@
                 <?php endif; ?>
             </div>
 
-                <div id="myModalDocSolicitud" class="modal fade" role="dialog">
+                <div id="myModalDocSolicitud" class="modal">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-content">
                             <div class="modal-header">
-	    	                    Aquesta acció no es podrá desfer.
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	    	                    <h4>Aquesta acció no es podrá desfer.</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body"> 
     		            		<h5 class="modal-title">Eliminar definitivament el document?</h5>
                                 <div class="modal-footer">
 		                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
@@ -701,51 +747,6 @@
                     </div>
                 </div>  
 
-                <script>
-                        function myFunction_docs_IDI_click (id, nombre) {
-        	                document.cookie = "documento_actual = " + id;
-                            console.log(id)
-                            }
-                        function opcion_seleccionada_click(respuesta) {
-            	            document.cookie = "respuesta = " + respuesta;
-                            }
-                        function eliminaDocSolicitud_click() {
-                	        console.log (getCookie("documento_actual"));
-	                        let id = getCookie("documento_actual");
-                            document.getElementById(id).disabled= true;
-                            document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	                        console.log (getCookie("nuevo_estado"));
-    	                    let corresponde_documento = 'file_resguardoREC';
-	                        $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-                                location.reload();
-    	    		        });	
-                            }
-                        function eliminaMejoraSolicitud_click() {
-                            let id = getCookie("documento_actual");
-                            document.getElementById(id).disabled= true;
-                            document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-                            let corresponde_documento = 'file_resguardoREC';
-                            $.post("/public/assets/utils/delete_mejora_solicitud.php",{ id: id }, function(data){
-                                location.reload();
-                            });	
-                        }
-                        function getCookie(cname) {
-                            var name = cname + "=";
-                            var decodedCookie = decodeURIComponent(document.cookie);
-                            var ca = decodedCookie.split(';');
-                            for(var i = 0; i <ca.length; i++) {
-                                var c = ca[i];
-                                while (c.charAt(0) == ' ') {
-                                    c = c.substring(1);
-                                }
-                                if (c.indexOf(name) == 0) {
-                                    return c.substring(name.length, c.length);
-                                }
-                            }
-                            return "";
-                            }
-                </script> 
-        
                 <h5 class ="upload-docs-type-label">[.pdf, .zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Solicitud');?>" onsubmit="logSubmit('subeDocsSolicitudBtn')" name="subir_faseExpedSolicitud" id="subir_faseExpedSolicitud" method="post" accept-charset="utf-8" enctype="multipart/form-data">      
                 <?php
@@ -848,69 +849,32 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <?php if ($docSolicitud_item->estado!='Aprovat') {?>
-		                	        <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle = "modal" data-bs-target = "#myModalDocSolicitud"><strong>Elimina</strong></button>';?></span>		
-    		                <?php } else {?>
-	    		                    <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
-    		                <?php } ?>
+                            <span class = "detail-wrapper-docs-col">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><strong>Elimina</strong></button>
+                            </span>
 	                </div>
                 <?php }
                 endforeach; ?>
                 <?php endif; ?>
             </div>
 
-            <div id="myModalDocValidacion" class="modal fade" role="dialog">
+            <div id="myModalDocValidacion" class="modal">
                 <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" style = "width: 60%;">
+                    <div class="modal-content">
                         <div class="modal-header">
-        		            Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Aquesta acció no es podrá desfer</h4>
+                            <button type="button" class="close" data-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
     			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+    		                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                            <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
                         </div>
                     </div>
                 </div>
             </div>  	
-            <script>
-                function myFunction_docs_IDI_click (id, nombre) {
-    	        document.cookie = "documento_actual = " + id;
-	            console.log (id);
-                }
-                function opcion_seleccionada_click(respuesta) {
-    	        document.cookie = "respuesta = " + respuesta;
-	            console.log (respuesta);
-                }
-                function eliminaDocValidacion_click() {
-    	        console.log (getCookie("documento_actual"));
-	            let id = getCookie("documento_actual");
-	            console.log (getCookie("nuevo_estado"));
-	            let corresponde_documento = 'file_resguardoREC';
-	            $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-    			    location.reload();
-			    });	
-                }
-                function getCookie(cname) {
-                var name = cname + "=";
-                var decodedCookie = decodeURIComponent(document.cookie);
-                var ca = decodedCookie.split(';');
-                for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-                }
-                return "";
-                }
-            </script> 
             <h5 class ="upload-docs-type-label">[.pdf]:</h5>
             <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Adhesion');?>" onsubmit="logSubmit('subeDocsValidacionBtn')" name="subir_doc_faseExpedValidacion" id="subir_doc_faseExpedValidacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
  
@@ -964,7 +928,6 @@
             </div>	
             <div class="form-group justificacion">
             <label for = "fecha_REC_requerimiento_justificacion"><strong>Data REC requeriment justificació:</strong></label>
-			<!-- <input type = "datetime-local" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_REC_requerimiento_justificacion']),"Y-m-d\Th:m");?>" /> -->
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
 
             </div>	
@@ -1048,13 +1011,13 @@
                     endforeach; ?>
                 <?php endif; ?>
 
-                <div id="myModalDocJustificacion" class="modal fade" role="dialog">
+                <div id="myModalDocJustificacion" class="modal">
                     <div class="modal-dialog">
                         <!-- Modal content-->
-                        <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-content">
                             <div class="modal-header">
-                                Aquesta acció no es podrá desfer.
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4>Aquesta acció no es podrá desfer.</h4>
+                                <button type="button" class="close" data-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
@@ -1067,43 +1030,6 @@
                     </div>
                 </div>
 
-                <script>
-                    function justificacion_docs_IDI_click (id, nombre) {
-                        document.cookie = "documento_actual = " + id;
-                        console.log (id);
-                    }
-                    function opcion_seleccionada_click(respuesta) {
-                        document.cookie = "respuesta = " + respuesta;
-                        console.log (respuesta);
-                    }
-                    function eliminaDocJustificacion_click() {
-                        console.log (getCookie("documento_actual"));
-                        let id = getCookie("documento_actual");
-                        document.getElementById(id).disabled= true;
-                        document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-                        console.log (getCookie("nuevo_estado"));
-                        let corresponde_documento = 'file_resguardoREC';
-                        $.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-                            location.reload();
-                        });	
-                    }
-                    function getCookie(cname) {
-                        var name = cname + "=";
-                        var decodedCookie = decodeURIComponent(document.cookie);
-                        var ca = decodedCookie.split(';');
-                        for(var i = 0; i <ca.length; i++) {
-                            var c = ca[i];
-                            while (c.charAt(0) == ' ') {
-                                c = c.substring(1);
-                            }
-                            if (c.indexOf(name) == 0) {
-                                return c.substring(name.length, c.length);
-                            }
-                            }
-                        return "";
-                    }
-                </script> 
-                
                 <h5 class ="upload-docs-type-label">[.zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Renovacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedRenovacion" id="subir_doc_faseExpedRenovacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
@@ -1296,6 +1222,45 @@
     </div>
 </div>
 
+<style>
+    .content-file-upload {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+        grid-auto-rows: minmax(50%, 50%);
+    }
+
+    .accordion-exped {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 1.4rem;
+        font-weight: bold;
+        transition: 0.4s;
+
+    }
+
+    .accordion-exped:hover {
+        font-weight: normal;
+    }
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .panel-exped {
+        /* padding: 0 18px; */
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+</style>
 
 <script>
     if (<?php echo $totalDocsJustifPlan;?> === 0) {
@@ -1340,42 +1305,31 @@
     }
 </script>
 
-<style>
-    .content-file-upload {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 15px;
-        grid-auto-rows: minmax(50%, 50%);
+<script>
+    function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+                }
+                return "";
     }
+</script> 
 
-    .accordion-exped {
-        background-color: #eee;
-        color: #444;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 1.4rem;
-        font-weight: bold;
-        transition: 0.4s;
-
+<script>
+    function justificacion_docs_IDI_click (id, nombre) {
+        document.cookie = "documento_actual = " + id;
+        console.log (id);
     }
+</script>
 
-    .accordion-exped:hover {
-        font-weight: normal;
-    }
-
-    .active, .accordion:hover {
-        background-color: #ccc;
-    }
-
-    .panel-exped {
-        /* padding: 0 18px; */
-        background-color: white;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-    }
-</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
+<script src="https://kit.fontawesome.com/1a19d0e4f2.js" crossorigin="anonymous"></script>

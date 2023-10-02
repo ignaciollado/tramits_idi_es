@@ -1,16 +1,15 @@
 <!-- -------------------------------------- abril_Informe favorable sense requeriment 2021 OK-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Informe favorable <strong style="background-color:#c5eae2;padding:0.5rem;">sense</strong> requeriment
+    	Informe favorable <strong>sense</strong> requeriment
   	</div>
 	<div class="card-itramits-footer">
-
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
 			<span id="btn_2" class="">	
-    			<a id="generaInfFavSinReq" class = "btn btn-primary" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_sin_requerimiento_ils');?>">Generar l'informe</a>
+    			<a id="generaInfFavSinReq" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_sin_requerimiento_ils');?>"><i title="Genera l'informe" class="fa-solid fa-file-pdf fa-2xl" style="color: #365446;"></i></a>
 			</span>
 			<span id="spinner_2" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 		<?php }?>

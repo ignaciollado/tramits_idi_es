@@ -151,10 +151,11 @@ function logSubmit(btnID) {
 }
 
 function cambiaEstadoDoc(id) {
-
+	console.log (id)
 	let element = document.getElementById(id)
 	let buttonID = id.split("#")[3]
-	
+	let elementDel = document.getElementById(id.split("#")[0]+"_del")
+
 	switch (buttonID) {
 		case 'file_escritura_empresa':
 			buttonID = "myBtnEnviarFormularioEscrituraEmpresa"
@@ -204,6 +205,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_caducado")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
+		if(document.body.contains(document.getElementById(id.split("#")[0]+"_del"))){
+			elementDel.removeAttribute("disabled")
+		} 
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -215,6 +219,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_info")
 		element.classList.add("isa_success")
 		element.innerHTML = "Aprovat"
+		if(document.body.contains(document.getElementById(id.split("#")[0]+"_del"))){
+			elementDel.setAttribute("disabled", true);
+		}
 		if (button) {
  			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -226,6 +233,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_success")
 		element.classList.add("isa_error")
 		element.innerHTML = "Rebutjat"
+		if(document.body.contains(document.getElementById(id.split("#")[0]+"_del"))){
+			elementDel.removeAttribute("disabled")
+		}
 		if (button) {
 			button.style.display = 'block'
 			button.classList.add("btn-primary")
@@ -237,6 +247,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_error")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
+		if(document.body.contains(document.getElementById(id.split("#")[0]+"_del"))){
+			elementDel.removeAttribute("disabled")
+		}
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -260,63 +273,6 @@ function cambiaEstadoDoc(id) {
 			send_fase_0.innerHTML = "Actualitzar"
 			send_fase_0.className = "btn-itramits bth-success-itramits"
 			send_fase_0.disabled = false
-			location.reload();
-							}
-		}
-	)
-}
-
-function cambiaEstadoDocIls(id) {
-	let element = document.getElementById(id);
-	element.style.color = "yellow";
-	let estado = '';
-	let stateChanged = false;
-	if (element.innerHTML === 'Desconegut' && !stateChanged) {
-		element.classList.remove("isa_caducado");
-		element.classList.add("isa_info"); 
-		element.innerHTML = "Pendent";
-		estado = 'Pendent';
-		stateChanged = true;
-	}
-	if (element.innerHTML === 'Pendent' && !stateChanged) {
-		element.classList.remove("isa_info");
-		element.classList.add("isa_success"); 
-		element.innerHTML = "Aprovat";
-		estado = 'Aprovat';
-		stateChanged = true;
-	}
-	if (element.innerHTML === 'Aprovat' && !stateChanged) {
-		element.classList.remove("isa_success");
-		element.classList.add("isa_error"); 
-		element.innerHTML = "Rebutjat";
-		estado = 'Rebutjat';
-		stateChanged = true;
-		actualizaMotivoRequerimientoIls_click()
-	}
-	if (element.innerHTML === 'Rebutjat' && !stateChanged) {
-		element.classList.remove("isa_error");
-		element.classList.add("isa_info"); 
-		element.innerHTML = "Pendent";
-		estado = 'Pendent';
-		stateChanged = true;
-	}
-	stateChanged = false;
-	
-	urlUpdateDocState = "/public/assets/utils/actualiza_estado_documento.php"
-
-	fetch ( `${urlUpdateDocState}?id=${id.split("#")[0]}&estado=${estado}`, {
-		method: 'POST',
-		headers: {
-		  'Content-Type': 'application/json;charset=utf-8'
-		}} ).then(
-		data => {
-
-			if (data) {
-			
-			send_fase_0.innerHTML = "Actualitzar"
-			send_fase_0.className = "btn-itramits bth-success-itramits"
-			send_fase_0.disabled = false
-			compruebaEstadoDocumentosRequeridos ( id.split("#")[2])
 							}
 		}
 	)
@@ -352,11 +308,15 @@ function compruebaEstadoDocumentosRequeridos (idExp) {
 				// ( `3. Hay que actualizar el campo 'doc_requeriment_ils' de 'pindust_expediente' con ????????.` )
 
 				if ( data.split(',').some( item => item === 'Rebutjat') && !data.split(',').some( item => item === 'Pendent' ) ) {
-					requerimentButton.classList.remove ("hide-button")
-					requerimentButton.classList.add ("show-button")
+					if(document.body.contains(document.getElementById(requeriment-button))){
+						requerimentButton.classList.remove ("hide-button")
+						requerimentButton.classList.add ("show-button")
+					}
 				} else {
-					requerimentButton.classList.add ("hide-button")
-					requerimentButton.classList.remove ("show-button")
+					if(document.body.contains(document.getElementById(requeriment-button))){
+						requerimentButton.classList.add ("hide-button")
+						requerimentButton.classList.remove ("show-button")
+					}
 				}
 
 				/* Generar Informe favorable [determinar si con requerimiento o sin requerimiento] si todos están 'Aprovats' */
@@ -1486,16 +1446,15 @@ async function insertaMejoraEnSolicitud() {
 
 }
 function myFunction_docs_IDI_click(id, nombre) {
-	document.cookie = "documento_actual = " + id;
+	localStorage.setItem("documento_actual", id);
 }
 function opcion_seleccionada_click(respuesta) {
 	document.cookie = "respuesta = " + respuesta;
-	console.log(respuesta);
 }
 function eliminaArchivoDocIDI_click() {
-	console.log(getCookie("documento_actual"));
-	let id = getCookie("documento_actual");
-	console.log(getCookie("nuevo_estado"));
+
+	/* let id = getCookie("documento_actual"); */
+	let id = localStorage.getItem("documento_actual")
 	let corresponde_documento = "file_resguardoREC";
 	$.post(
 		"/public/assets/utils/delete_documento_expediente.php",
@@ -1508,11 +1467,6 @@ function eliminaArchivoDocIDI_click() {
 function myFunction_click(id, nombre) {
 	document.cookie = "documento_actual = " + id;
 	console.log("++" + id + "++");
-}
-
-function opcion_seleccionada_click(respuesta) {
-	document.cookie = "respuesta = " + respuesta;
-	console.log(respuesta);
 }
 
 function eliminaArchivo_click() {
@@ -1771,17 +1725,72 @@ async function obtieneEstadoDelaFirma (publicId) {
 
 
 function docNoRequerido_click (id, nombre) {
-	document.cookie = "documento_actual = " + id;
-	console.log (id);
+	localStorage.setItem("documento_actual", id)
 }
 
 function eliminaDocNoRequerido_click() {
-	console.log (getCookie("documento_actual"));
-	let id = getCookie("documento_actual");
-	console.log (getCookie("nuevo_estado"));
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
 	let corresponde_documento = 'file_resguardoREC';
-	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
-	location.reload();
-});	
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+
+function eliminaDocSolicitud_click() {
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+
+function eliminaMejoraSolicitud_click() {
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_mejora_solicitud.php",{ id: idDoc }, function(data){
+		location.reload();
+	});	
+}
+
+function eliminaDocValidacion_click() {
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+
+function eliminaDocEjecucion_click() {
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true)
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>"
+	let corresponde_documento = 'file_resguardoREC'
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload()
+	});	
+}
+
+function eliminaDocDesestimiento_click() {
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true)
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>"
+	let corresponde_documento = 'file_resguardoREC'
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
 }
 

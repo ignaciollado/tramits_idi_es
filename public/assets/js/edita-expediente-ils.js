@@ -15,79 +15,6 @@ $(document).ready(function () {
 			.css("background-color", "orange")
 			.css("cursor", " progress");
 	});
-
-	$("#muestraRequerimiento").click(function () {
-		$("#muestraRequerimiento").html(
-			"Creant requeriment, un moment per favor ..."
-		);
-		$("#muestraRequerimiento").attr("disabled", "disabled");
-		$("#muestraRequerimiento").css("background-color", "orange");
-		$("#muestraRequerimiento").css("cursor", " progress");
-	});
-
- 	$("#wrapper_motivoRequerimiento").click(function () {
-		$("#spinner_1").removeClass("ocultar");
-		$("#btn_1").addClass("ocultar");
-	}); 
-	$("#generaInfFavSinReq").click(function () {
-		$("#spinner_2").removeClass("ocultar");
-		$("#btn_2").addClass("ocultar");
-	});
-	$("#generadoc_res_conces_sin_req").click(function () {
-		$("#spinner_11").removeClass("ocultar");
-		$("#btn_11").addClass("ocultar");
-	});
-	$("#generadoc_res_denegacion_con_req").click(function () {
-		$("#spinner_12").removeClass("ocultar");
-		$("#btn_12").addClass("ocultar");
-	});
-	$("#generadoc_res_denegacion_sin_req").click(function () {
-		$("#spinner_13").removeClass("ocultar");
-		$("#btn_13").addClass("ocultar");
-	});
-	$("#generadoc_el_desestimiento").click(function () {
-		$("#spinner_14").removeClass("ocultar");
-		$("#btn_14").addClass("ocultar");
-	});
-	$("#wrapper_actaDeKickOff").click(function () {
-		$("#spinner_14").removeClass("ocultar");
-		$("#btn_14").addClass("ocultar");
-	});
-	$("#generadoc_res_denegacion_con_req").click(function () {
-		$("#spinner_16").removeClass("ocultar");
-		$("#btn_16").addClass("ocultar");
-	});
-	$("#wrapper_ActaDeCierre").click(function () {
-		$("#spinner_15").removeClass("ocultar");
-		$("#btn_15").addClass("ocultar");
-	});
-	$("#wrapper_inicio_req_subsanacion").click(function () {
-		$("#spinner_177").removeClass("ocultar");
-		$("#btn_177").addClass("ocultar");
-	});
-	$("#generaAcuerdoConfidencialidad").click(function () {
-		$("#spinner_18").removeClass("ocultar");
-	});	
-	$("#generadoc_res_conces_sin_req").click(function (e) {
-		$("#spinner_11").removeClass("ocultar");
-		$("#btn_11").addClass("ocultar");
-	});
-	$("#genera_desestimiento_ils").click(function (e) {
-		$("#spinner_21").removeClass("ocultar");
-		$("#btn_21").addClass("ocultar");
-	});
-	$("#generaInformeDesfConReq_ils").click(function () {
-		$("#spinner_4_ils").removeClass("ocultar");
-		$("#btn_4_ils").addClass("ocultar");
-	});
-	$("#generaResolucioConcesionSinReqILS").click(function () {
-		$("#spinner_222").removeClass("ocultar");
-		$("#btn_222").addClass("ocultar");
-	});
-	$("#generaResolucioConcesionConReqILS").click(function () {
-		$("#spinner_333").removeClass("ocultar");
-		$("#btn_333").addClass("ocultar");
-	});	
 });
 
 const form = document.getElementById('subir_faseExpedSolicitud');
@@ -141,11 +68,11 @@ function openFaseExped(evt, faseName, backgroundColor, id) {
 }
 
 function logSubmit(btnID) {
-	document.getElementById(btnID).style.backgroundColor = "darkgray";
-	document.getElementById(btnID).disabled = true;
-	document.getElementById(btnID).value = "Un moment, estic pujant la documentació ...";
+	document.getElementById(btnID).style.backgroundColor = "darkgray"
+	document.getElementById(btnID).setAttribute("disabled", true)
+	document.getElementById(btnID).value = "Un moment, estic pujant la documentació ..."
 	for (let step = 0; step < 4; step++) {
-		document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "0.5";
+		document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "0.5"
 	}
 	//event.preventDefault();
 }
@@ -153,6 +80,7 @@ function logSubmit(btnID) {
 function cambiaEstadoDoc(id) {
 	let element = document.getElementById(id)
 	let buttonID = id.split("#")[3]
+	let elementDel = document.getElementById(id.split("#")[0]+"_del")
 	
 	switch (buttonID) {
 		case 'file_escritura_empresa':
@@ -200,10 +128,12 @@ function cambiaEstadoDoc(id) {
 	element.style.color = "yellow";
 	let estado = '';
 	let stateChanged = false;
+
 	if (element.innerHTML === 'Desconegut' && !stateChanged) {
 		element.classList.remove("isa_caducado")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
+		elementDel.removeAttribute("disabled")
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -215,6 +145,7 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_info")
 		element.classList.add("isa_success")
 		element.innerHTML = "Aprovat"
+		elementDel.setAttribute("disabled", true);
 		if (button) {
  			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -226,6 +157,7 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_success")
 		element.classList.add("isa_error")
 		element.innerHTML = "Rebutjat"
+		elementDel.removeAttribute("disabled")
 		if (button) {
 			button.style.display = 'block'
 			button.classList.add("btn-primary")
@@ -237,6 +169,7 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_error")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
+		elementDel.removeAttribute("disabled")
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -258,65 +191,6 @@ function cambiaEstadoDoc(id) {
 			send_fase_0.innerHTML = "Actualitzar"
 			send_fase_0.className = "btn-itramits bth-success-itramits"
 			send_fase_0.disabled = false
-							}
-            location.reload();
-		}
-	)
-}
-
-function cambiaEstadoDocIls(id) {
-	let element = document.getElementById(id);
-	element.style.color = "yellow";
-	let estado = '';
-	let stateChanged = false;
-	if (element.innerHTML === 'Desconegut' && !stateChanged) {
-		element.classList.remove("isa_caducado");
-		element.classList.add("isa_info"); 
-		element.innerHTML = "Pendent";
-		estado = 'Pendent';
-		stateChanged = true;
-	}
-	if (element.innerHTML === 'Pendent' && !stateChanged) {
-		element.classList.remove("isa_info");
-		element.classList.add("isa_success"); 
-		element.innerHTML = "Aprovat";
-		estado = 'Aprovat';
-		stateChanged = true;
-	}
-	if (element.innerHTML === 'Aprovat' && !stateChanged) {
-		element.classList.remove("isa_success");
-		element.classList.add("isa_error"); 
-		element.innerHTML = "Rebutjat";
-		estado = 'Rebutjat';
-		stateChanged = true;
-		actualizaMotivoRequerimientoIls_click()
-	}
-	if (element.innerHTML === 'Rebutjat' && !stateChanged) {
-		element.classList.remove("isa_error");
-		element.classList.add("isa_info"); 
-		element.innerHTML = "Pendent";
-		estado = 'Pendent';
-		stateChanged = true;
-	}
-	stateChanged = false;
-	
-	urlUpdateDocState = "/public/assets/utils/actualiza_estado_documento.php"
-
-	fetch ( `${urlUpdateDocState}?id=${id.split("#")[0]}&estado=${estado}`, {
-		method: 'POST',
-		headers: {
-		  'Content-Type': 'application/json;charset=utf-8'
-		}} ).then(
-		data => {
-
-			if (data) {
-			
-			send_fase_0.innerHTML = "Actualitzar"
-			send_fase_0.className = "btn-itramits bth-success-itramits"
-			send_fase_0.disabled = false
-			location.reload();
-			compruebaEstadoDocumentosRequeridos ( id.split("#")[2])
-
 							}
 		}
 	)
@@ -941,7 +815,6 @@ function enviaAFirmaRequerimiento_click(parametro) {
 		.css("background-color", "orange")
 		.css("cursor", " progress");
 }
-
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarJustificador");
@@ -962,7 +835,6 @@ function enviaMailJustificacion_click() {
 		}
 	);
 }
-
 function enviaMailFormEmpresa_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarFormularioEmpresa");
@@ -982,7 +854,6 @@ function enviaMailFormEmpresa_click() {
 		}
 	);
 }
-
 function enviaMailEscrituraEmpresa_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
@@ -1004,7 +875,6 @@ function enviaMailEscrituraEmpresa_click() {
 		}
 	);
 }
-
 function enviaMailCertificadoIAE_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IAE").value;
@@ -1026,7 +896,6 @@ function enviaMailCertificadoIAE_click() {
 		}
 	);
 }
-
 function enviaMailDocumentoIdentificacion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IDSOL").value;
@@ -1048,7 +917,6 @@ function enviaMailDocumentoIdentificacion_click() {
 		}
 	);
 }
-
 function enviaMailCertificadoSegSoc_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_TGSS").value;
@@ -1070,7 +938,6 @@ function enviaMailCertificadoSegSoc_click() {
 		}
 	);
 }
-
 function enviaMailCertificadoATIB_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ATIB").value;
@@ -1092,7 +959,6 @@ function enviaMailCertificadoATIB_click() {
 		}
 	);
 }
-
 function enviaMailInformeResumen_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_RESUMEN").value;
@@ -1114,7 +980,6 @@ function enviaMailInformeResumen_click() {
 		}
 	);
 }
-
 function enviaMailCompromisoReduccion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_REDUCCION").value;
@@ -1138,7 +1003,6 @@ function enviaMailCompromisoReduccion_click() {
 		}
 	);
 }
-
 function enviaMailItinerarioFormativo_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ITINERARIO").value;
@@ -1160,7 +1024,6 @@ function enviaMailItinerarioFormativo_click() {
 		}
 	);
 }
-
 function enviaMailInformeGEH_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_GEH").value;
@@ -1182,7 +1045,6 @@ function enviaMailInformeGEH_click() {
 		}
 	);
 }
-
 function enviaMailManualYLogotipo_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarManualYLogotipo");
@@ -1202,7 +1064,6 @@ function enviaMailManualYLogotipo_click() {
 		}
 	);
 }
-
 async function insertaMejoraEnSolicitud() {
 	let addMejora = document.getElementById('addMejora')
 	let idSol = document.getElementById('id')
@@ -1224,42 +1085,53 @@ async function insertaMejoraEnSolicitud() {
 
 }
 
-function myFunction_docs_IDI_click(id, nombre) {
-	document.cookie = "documento_actual = " + id;
+function myFunction_docs_IDI_click (id, nombre) {
+	localStorage.setItem("documento_actual", id);
 }
 
 function opcion_seleccionada_click(respuesta) {
 	document.cookie = "respuesta = " + respuesta;
-	console.log(respuesta);
 }
 
 function eliminaArchivoDocIDI_click() {
-	console.log(getCookie("documento_actual"));
-	let id = getCookie("documento_actual");
-	console.log(getCookie("nuevo_estado"));
-	let corresponde_documento = "file_resguardoREC";
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
 	$.post(
 		"/public/assets/utils/delete_documento_expediente.php",
-		{ id: id, corresponde_documento: corresponde_documento },
+		{ id: idDoc, corresponde_documento: corresponde_documento },
 		function (data) {
 			location.reload();
 		}
 	);
 }
 
+function eliminaDocSolicitud_click() {
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+
 function opcion_seleccionada_click(respuesta) {
 	document.cookie = "respuesta = " + respuesta;
-	console.log(respuesta);
 }
 
 function eliminaArchivo_click() {
-	console.log(getCookie("documento_actual"));
-	let id = getCookie("documento_actual");
-	console.log(getCookie("nuevo_estado"));
-	let corresponde_documento = "file_resguardoREC";
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
 	$.post(
 		"/public/assets/utils/delete_documento_expediente.php",
-		{ id: id, corresponde_documento: corresponde_documento },
+		{ id: idDoc, corresponde_documento: corresponde_documento },
 		function (data) {
 			location.reload();
 		}
@@ -1507,23 +1379,50 @@ async function obtieneEstadoDelaFirma (publicId) {
 }
 
 function docNoRequerido_click (id, nombre) {
-	document.cookie = "documento_actual = " + id;
-	console.log (id);
+	localStorage.setItem("documento_actual", id);
 }
 
 function eliminaDocNoRequerido_click() {
-	let id = getCookie("documento_actual");
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
 	let corresponde_documento = 'file_resguardoREC';
-	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
 	location.reload();
 });
 }
 
 function eliminaDocValidacion_click() {
-	let id = getCookie("documento_actual");
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
 	let corresponde_documento = 'file_resguardoREC';
-	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: id, corresponde_documento: corresponde_documento}, function(data){
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
 		location.reload();
 	});	
-	}
+}
+
+function eliminaDocEjecucion_click() {
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+
+function eliminaDocJustificacion_click() {
+	let id = localStorage.getItem("documento_actual")
+    let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
 

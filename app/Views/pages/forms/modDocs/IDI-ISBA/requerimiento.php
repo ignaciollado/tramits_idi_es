@@ -11,7 +11,7 @@
         else {?>
 			<button type = "button" class = "btn-primary-itramits" data-bs-toggle="modal" data-bs-target="#myRequerimientoIdiIsba" id="myBtnRequerimientoIdiIsba">Motiu del requeriment</button>
 			<span id="btn_3" class="">
-    			<a id ="wrapper_motivoRequerimientoIdiIsba" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment');?>">Envia a signar el requeriment</a>
+    			<a id ="wrapper_motivoRequerimientoIdiIsba" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment');?>"><i title="Enviar a signar el document" class="fa-solid fa-signature fa-2xl" style="color: #00145c;"></i></a>
 			</span>
 			<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 	<?php }?>
