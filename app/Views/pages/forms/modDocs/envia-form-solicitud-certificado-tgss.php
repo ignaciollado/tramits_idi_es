@@ -25,9 +25,7 @@ foreach ($query->getResult('array') as $row)
                                                 </button>    
 		  <?php }?>
 
-
-  <!-- The Modal para generar el correo -->
-  <div id="myEnviarFormularioCertificadoSegSoc" class="modal" role="dialog">
+  <div id="myEnviarFormularioCertificadoSegSoc" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
@@ -36,7 +34,7 @@ foreach ($query->getResult('array') as $row)
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-							<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar la documentació?</span>
+							<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar el document?</span>
 						</div>	
 						<div class="form-group">
            			<button type="button" onclick = "javaScript: enviaMailCertificadoSegSoc_click();" id="enviaMailCertificadoSegSoc" class="btn-itramits btn-success-itramits">Enviar
@@ -48,33 +46,3 @@ foreach ($query->getResult('array') as $row)
 				</div>
 			</div>
 	</div>
-
-  <script>
-  // Get the modal
-  let modal_17_CertificadoSegSoc = document.getElementById("myEnviarFormularioCertificadoSegSoc");
-	// Get the button that opens the modal
-	let btn_17_CertificadoSegSoc = document.getElementById("myBtnEnviarFormularioCertificadoSegSoc");
-	// Get the <span> element that closes the modal
-	/* let span_17_CertificadoSegSoc = document.getElementsByClassName("close")[0]; */
-	// When the user clicks the button, open the modal 
-	btn_17_CertificadoSegSoc.onclick = function() {
-    modal_17_CertificadoSegSoc.style.display = "block";
-	}
-	// When the user clicks on <span> (x), close the modal
-	/* span_17_CertificadoSegSoc.onclick = function() {
-    modal_17_CertificadoSegSoc.style.display = "none";
-	} */
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-  	if (event.target == modal_17_CertificadoSegSoc) {
-      modal_17_CertificadoSegSoc.style.display = "none";
-  	}
-	}
-  </script>
-				
-
-				
-	
-
-<!-- </div> -->
-<!------------------------------------------------------------------------------------------------------>

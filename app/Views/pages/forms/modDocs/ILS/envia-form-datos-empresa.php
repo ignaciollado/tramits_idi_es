@@ -1,5 +1,4 @@
 <!----------------------------------------- Enviar formulario solicitud de datos adicionales de la emrpesa ILS -->
-<!-- <div class="card-itramits"> -->
 
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
@@ -7,20 +6,17 @@
         else {?>
 			  <button type = "button" class = "btn-primary-itramits" 
 			  	data-bs-toggle="modal" data-bs-target = "#myEnviarFormularioEmpresa" 
-				id="myBtnEnviarFormEmpresa">Enviar al sol·licitant el formulari de sol·licitud de dades per a la web de ILS</button>       
+				id="myBtnEnviarFormEmpresa">Sol·licitar dades adicionals per a la web de ILS</button>       
 		  <?php }?>
 
 
-  <!-- The Modal para generar el correo de justificación-->
   <div id="myEnviarFormularioEmpresa" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
-
 					<div class="modal-header">
-						<h4 class="modal-title">Sol·licitar dades adicionals d'empresa per a la web de ILS</h4>
+						<h4><strong>Sol·licitar dades adicionals d'empresa per a la web de ILS</strong></h4>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
-
     				<div class="modal-body">
 						<div class="form-group">
 							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè pugui afegir dades de l'empresa?</span>
@@ -35,34 +31,3 @@
 				</div>
 			</div>
 	</div>
-
-
-  <script>
-  	// Get the modal
-  	let modal_17ils_1 = document.getElementById("myEnviarFormularioEmpresa");
-		// Get the button that opens the modal
-		let btn_17ils_1 = document.getElementById("myBtnEnviarFormEmpresa");
-		// Get the <span> element that closes the modal
-		let span_17ils_1 = document.getElementsByClassName("close")[0];
-		// When the user clicks the button, open the modal 
-		btn_17ils_1.onclick = function() {
-	    modal_17ils_1.style.display = "block";
-		}
-		// When the user clicks on <span> (x), close the modal
-		span_17ils_1.onclick = function() {
-    	modal_17ils_1.style.display = "none";
-		}
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-	  	if (event.target == modal_17ils_1) {
-      	modal_17ils_1.style.display = "none";
-  		}
-		}
-  </script>
-				
-
-				
-	
-
-<!-- </div> -->
-<!------------------------------------------------------------------------------------------------------>

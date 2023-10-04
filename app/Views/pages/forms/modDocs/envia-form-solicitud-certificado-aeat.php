@@ -27,7 +27,7 @@ foreach ($query->getResult('array') as $row)
 
 
   <!-- The Modal para generar el correo -->
-  <div id="myEnviarFormularioCertAEAT" class="modal" role="dialog">
+  <div id="myEnviarFormularioCertAEAT" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
@@ -36,7 +36,7 @@ foreach ($query->getResult('array') as $row)
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-							<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar la documentació?</span>
+							<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar el document?</span>
 						</div>	
 						<div class="form-group">
            			<button type="button" onclick = "javaScript: enviaMailCertAEAT_click();" id="enviaMailCertAEAT" class="btn-itramits btn-success-itramits">Enviar
@@ -48,33 +48,3 @@ foreach ($query->getResult('array') as $row)
 				</div>
 			</div>
 	</div>
-
-  <script>
-  // Get the modal
-  let modal_17_CertAEAT = document.getElementById("myEnviarFormularioCertAEAT");
-	// Get the button that opens the modal
-	let btn_17_CertAEAT = document.getElementById("myBtnEnviarFormularioCertAEAT");
-	// Get the <span> element that closes the modal
-	let span_17_CertAEAT = document.getElementsByClassName("close")[0];
-	// When the user clicks the button, open the modal 
-	btn_17_CertAEAT.onclick = function() {
-    modal_17_CertAEAT.style.display = "block";
-	}
-	// When the user clicks on <span> (x), close the modal
-/* 	span_17_CertAEAT.onclick = function() {
-    modal_17_CertAEAT.style.display = "none";
-	} */
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-  	if (event.target == modal_17_CertAEAT) {
-      modal_17_CertAEAT.style.display = "none";
-  	}
-	}
-  </script>
-				
-
-				
-	
-
-<!-- </div> -->
-<!------------------------------------------------------------------------------------------------------>

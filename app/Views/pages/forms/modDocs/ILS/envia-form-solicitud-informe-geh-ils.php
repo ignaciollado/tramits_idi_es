@@ -1,6 +1,4 @@
 <!----------------------------------------- Enviar formulario solicitud del informe GEI ILS -->
-<!-- <div class="card-itramits"> -->
-
 <?php
 
 $totalNotifications = 0;
@@ -17,34 +15,31 @@ foreach ($query->getResult('array') as $row)
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
         else {
-					?>
-
-						<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
-						data-bs-toggle="modal" data-bs-target = "#myEnviarInformeGEH" 
-						id="myBtnEnviarInformeGEH" 
-						title="Torna a sol·licitar el document">Notifica 
-						<span class="badge text-bg-secondary"><?php echo $totalNotifications;?></span>
-            </button>
-						
+			?>
+			<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
+				data-bs-toggle="modal" data-bs-target = "#myEnviarInformeGEH" 
+				id="myBtnEnviarInformeGEH" 
+				title="Torna a sol·licitar el document">Notifica 
+				<span class="badge text-bg-secondary"><?php echo $totalNotifications;?></span>
+            </button>		
 		  <?php }?>
 
-  <!-- The Modal para generar el correo de justificación-->
   <div id="myEnviarInformeGEH" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<h4 class="modal-title">Sol·licitud de l'Informe d'Inventari de GEH segons la norma ISO 14.064-1 de ILS</h4>
+						<h4 ><strong>Sol·licitud de l'Informe d'Inventari de GEH segons la norma ISO 14.064-1 de ILS</strong></h4>
         				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè ens faci arribar l'Informe d'Inventari de GEH segons la norma ISO 14.064-1?</span>
+							<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar el document?</span>
 						</div>	
 						<div class="form-group">
            				    <button type="button" onclick = "javaScript: enviaMailInformeGEH_click();" id="enviaMailInformeGEH" class="btn-itramits btn-success-itramits">Enviar
-							   <span id="spinner_InformeGEH" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
-							   </button>
-							   <span id="mensajeInformeGEH" class ="ocultar info-msg"></span>
+								<span id="spinner_InformeGEH" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
+							</button>
+							<span id="mensajeInformeGEH" class ="ocultar info-msg"></span>
         				</div>	
 					</div>
 				</div>

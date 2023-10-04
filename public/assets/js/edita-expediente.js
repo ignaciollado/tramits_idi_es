@@ -5,9 +5,9 @@ $(document).ready(function () {
 
 	idExp = document.getElementById("id")
 	programa = document.getElementById("programa")
-	if (programa.value === "ILS") {
+/* 	if (programa.value === "ILS") {
 		compruebaEstadoDocumentosRequeridos(idExp.value)
-	}
+	} */
 	$("#exped-fase-1").submit(function () {
 		$("#send-exped-fase-1", this)
 			.html("Actualitzant, un moment per favor.")
@@ -72,22 +72,6 @@ $(document).ready(function () {
 		$("#spinner_11").removeClass("ocultar");
 		$("#btn_11").addClass("ocultar");
 	});
-	$("#genera_desestimiento_ils").click(function (e) {
-		$("#spinner_21").removeClass("ocultar");
-		$("#btn_21").addClass("ocultar");
-	});
-	$("#generaInformeDesfConReq_ils").click(function () {
-		$("#spinner_4_ils").removeClass("ocultar");
-		$("#btn_4_ils").addClass("ocultar");
-	});
-	$("#generaResolucioConcesionSinReqILS").click(function () {
-		$("#spinner_222").removeClass("ocultar");
-		$("#btn_222").addClass("ocultar");
-	});
-	$("#generaResolucioConcesionConReqILS").click(function () {
-		$("#spinner_333").removeClass("ocultar");
-		$("#btn_333").addClass("ocultar");
-	});	
 });
 
 const form = document.getElementById('subir_faseExpedSolicitud');
@@ -100,7 +84,7 @@ function openFaseExped(evt, faseName, backgroundColor, id) {
 	console.log (faseName)
 
 
-	compruebaEstadoDocumentosRequeridos(id);
+	/* compruebaEstadoDocumentosRequeridos(id); */
 
 	tabcontent = document.getElementsByClassName("tab_fase_exp_content");
 	for (i = 0; i < tabcontent.length; i++) {
@@ -163,19 +147,10 @@ function cambiaEstadoDoc(id) {
 		case 'file_certificadoIAE':
 			buttonID = "myBtnEnviarFormularioCertificadoIAE"
 			break
-		case 'file_informeResumenIls':
-			buttonID = "myBtnEnviarFormularioInformeResumen"
-			break
-		case 'file_informeInventarioIls':
-			buttonID = "myBtnEnviarInformeGEH"
-			break
 		case 'file_certificado_itinerario_formativo':
 			buttonID = "myBtnEnviarFormularioItinerarioFormativo"
 			break
-		case 'file_modeloEjemploIls':
-			buttonID = "myBtnEnviarFormularioCompromisoReduccion"
-			break
-		case 	'file_enviardocumentoIdentificacion':
+		case 'file_enviardocumentoIdentificacion':
 			buttonID = "myBtnEnviarFormularioDocumentoIdentificacion"
 			break
 		case 	'file_certificadoATIB':
@@ -278,7 +253,7 @@ function cambiaEstadoDoc(id) {
 	)
 }
 
-function compruebaEstadoDocumentosRequeridos (idExp) {
+function compruebaEstadoDocumentosRequeridos (idExp) { // no se usa en XECS
 	/* 
 		Si TODOS los estados de los documentos obligatorios del expediente están en situación
 		'Aprovat' entonces -> GENERAR INFORME FAVORABLE ¿con req / sin req? y cambiar situación expediente a 'IF+Resolució emesa'
@@ -352,7 +327,7 @@ function generaRequerimiento(idExp) {
 
 }
 
-function generaResolucionAdhesion(idExp) {
+/* function generaResolucionAdhesion(idExp) {
 	respuesta = confirm("¿Generar resolución concesión ¿con/sin requerimiento?, antes comprobar campo 'doc_requeriment_ils'")
 	if ( respuesta ) {
 		alert (`Generar 'IF+Resolució emesa': ${respuesta}`)
@@ -361,7 +336,7 @@ function generaResolucionAdhesion(idExp) {
 		alert (`Generar 'IF+Resolució emesa': ${respuesta}`)
 	}
 
-}
+} */
 
 function cambiaEstadoDocJustificacion(id) {
 	
@@ -424,8 +399,8 @@ function actualiza_fase_0_expediente(formName) {  //SE EMPLEA
 	}
 	let id = document.getElementById("id").value;
 	let empresa = document.getElementById("empresa").value; // Nom o raó social
+	let empresa_consultor = document.getElementById("empresa_consultor").value; //Empresa del consultor
 	let nif = document.getElementById("nif").value; // nif
-	let programa = document.getElementById("programa").value; // Programa
 	let telefono_rep = document.getElementById("telefono_rep").value; // Mòbil a efectes de notificacions
 	let email_rep = document.getElementById("email_rep").value; // Adreça electrònica a efectes de notificacions
 	let nom_consultor = document.getElementById("nom_consultor").value; // Nom del consultor
@@ -442,8 +417,8 @@ function actualiza_fase_0_expediente(formName) {  //SE EMPLEA
 	let fechaEnvioAdministracion = document.getElementById("fechaEnvioAdministracion").value; // Data enviament a administració
 	let fecha_de_pago = document.getElementById("fecha_de_pago").value; // Pagament
 
-	for (let step = 0; step < 21; step++) {
-		document.getElementsByClassName("form-group general")[step].style.opacity = "0.5";
+	for (let step = 0; step < 25; step++) {
+		document.getElementsByClassName("form-group general")[step].style.opacity = "0.1";
 	}
 	
 	let send_fase_0 = document.getElementById("send_fase_0");
@@ -453,7 +428,7 @@ function actualiza_fase_0_expediente(formName) {  //SE EMPLEA
 
 	$.post(
 		"/public/assets/utils/actualiza_fase_0_expediente.php",
-		{ id: id, empresa: empresa, nif: nif, programa: programa, telefono_rep: telefono_rep, email_rep: email_rep, nom_consultor: nom_consultor, mail_consultor: mail_consultor,
+		{ id: id, empresa: empresa, empresa_consultor: empresa_consultor, nif: nif, telefono_rep: telefono_rep, email_rep: email_rep, nom_consultor: nom_consultor, mail_consultor: mail_consultor,
 			tel_consultor: tel_consultor, tecnicoAsignado: tecnicoAsignado, nombre_rep: nombre_rep, nif_rep, nif_rep,
 			situacion_exped: situacion_exped, importeAyuda: importeAyuda, porcentajeConcedido: porcentajeConcedido, cc_datos_bancarios: cc_datos_bancarios, 
 			ordenDePago: ordenDePago, fechaEnvioAdministracion: fechaEnvioAdministracion, fecha_de_pago: fecha_de_pago },
@@ -465,7 +440,7 @@ function actualiza_fase_0_expediente(formName) {  //SE EMPLEA
 				send_fase_0.className = "btn-itramits btn-success-itramits";
 				send_fase_0.disabled = false;
 			}
-			for (let step = 0; step < 22; step++) {
+			for (let step = 0; step < 25; step++) {
 				document.getElementsByClassName("form-group general")[step].style.opacity = "1.0";
 			}
 		}
@@ -488,7 +463,7 @@ function actualiza_fase_1_solicitud_expediente(formName) {  //SE EMPLEA
 	let fecha_requerimiento_notif = document.getElementById("fecha_requerimiento_notif").value; // Data notificació requeriment
 
 	for (let step = 0; step < 6; step++) {
-		document.getElementsByClassName("form-group solicitud")[step].style.opacity = "0.5";
+		document.getElementsByClassName("form-group solicitud")[step].style.opacity = "0.1";
 	}
 
 	let send_fase_1 = document.getElementById("send_fase_1");
@@ -503,7 +478,6 @@ function actualiza_fase_1_solicitud_expediente(formName) {  //SE EMPLEA
 			fecha_requerimiento: fecha_requerimiento, fecha_requerimiento_notif: fecha_requerimiento_notif },
 		
 		function (data) {
-			console.log(`${data}`)
 			$(".result").html(data);
 			if (data == 1) {
 				send_fase_1.innerHTML = "Actualitzar";
@@ -530,7 +504,7 @@ function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // Data notificació resolució
 
 	for (let step = 0; step < 5; step++) {
-		document.getElementsByClassName("form-group validacion")[step].style.opacity = "0.5";
+		document.getElementsByClassName("form-group validacion")[step].style.opacity = "0.1";
 	}
 
 	let send_fase_2 = document.getElementById("send_fase_2");
@@ -574,7 +548,7 @@ function actualiza_fase_3_ejecucion_expediente(formName) {  //SE EMPLEA
 	let fecha_amp_termino = document.getElementById("fecha_amp_termino").value; // Data notificació ampliació termini
 
 	for (let step = 0; step < 8; step++) {
-		document.getElementsByClassName("form-group ejecucion")[step].style.opacity = "0.5";
+		document.getElementsByClassName("form-group ejecucion")[step].style.opacity = "0.1";
 	}
 
 	let send_fase_3 = document.getElementById("send_fase_3");
@@ -624,7 +598,7 @@ function actualiza_fase_4_justificacion_expediente(formName) {  //SE EMPLEA
 	let ref_REC_requerimiento_justificacion = document.getElementById("ref_REC_requerimiento_justificacion").value; // Referència REC requeriment justificació
 
 	for (let step = 0; step < 7; step++) {
-		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.5";
+		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
 	let send_fase_4 = document.getElementById("send_fase_4");
@@ -836,7 +810,6 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 	);
 }
 
-
 function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoInicioRequerimiento").value;
 	let id = document.getElementById("id").value;
@@ -859,6 +832,7 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimientoJustificacion").value;
 	let id = document.getElementById("id").value;
@@ -882,6 +856,7 @@ function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
 	let textoMotivoInforme = document.getElementById("motivoSobreSubsanacion").value;
 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value;
@@ -906,6 +881,7 @@ function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 	let textoMotivoRenuncia = document.getElementById("motivoDesestimientoRenuncia").value;
 	let id = document.getElementById("id").value;
@@ -929,6 +905,7 @@ function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoRevocacionPorNoJustificar_click() {  //SE EMPLEA
 	let textoRevocacionPorNoJustificar = document.getElementById("textoRevocacionPorNoJustificar").value;
 	let id = document.getElementById("id").value;
@@ -953,6 +930,7 @@ function actualizaMotivoRevocacionPorNoJustificar_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_7").value;
 	let id = document.getElementById("id").value;
@@ -976,6 +954,7 @@ function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_8").value;
 	let id = document.getElementById("id").value;
@@ -999,6 +978,7 @@ function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 		}
 	);
 }
+
 function actualizaMotivoResolucionRevocacionPorNoJustificar_click() {  //SE EMPLEA
 	let textoMotivoRevocacion = document.getElementById("motivoResolucionRevocacionPorNoJustificar").value;
 	let id = document.getElementById("id").value;
@@ -1018,6 +998,7 @@ function actualizaMotivoResolucionRevocacionPorNoJustificar_click() {  //SE EMPL
 		}
 	);
 }
+
 function actualizaMotivoDesfavorable_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfSinReq").value;
 	let id = document.getElementById("id").value;
@@ -1040,28 +1021,7 @@ function actualizaMotivoDesfavorable_click() {
 		}
 	);
 }
-function actualizaMotivoDesfavorableConReqIls_click() {
-	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReqIls").value;
-	let id = document.getElementById("id").value;
-	var modal = document.getElementById("mygeneraInformeDesfConReqIls");
 
-	$.post(
-		"/public/assets/utils/actualiza_motivo_generaInformeDesfReq_ils_en_expediente.php",
-		{ id: id, textoMotivo: textoMotivo },
-		function (data) {
-			$(".result").html(data);
-			console.log("## " + data + " ##");
-			if (data == 1) {
-				document.getElementById("wrapper_generaInformeDesfConReqIls").remove = "ocultar";
-				document.getElementById("wrapper_generaInformeDesfConReqIls").className = "btn btn-primary";				
-				document.getElementById("wrapper_motivogeneraInformeDesfConReqIls").remove = "ocultar";
-				document.getElementById("wrapper_motivogeneraInformeDesfConReqIls").className = "enviararchivo_ver";
-				modal.style.display = "none";
-				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-			}
-		}
-	);
-}
 function actualizaMotivoDesfavorableConReq_click() {
 	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
 	let id = document.getElementById("id").value;
@@ -1087,6 +1047,7 @@ function actualizaMotivoDesfavorableConReq_click() {
 		}
 	);
 }
+
 function enviaAFirmaRequerimiento_click(parametro) {
 	$("#enviaAFirmaRequerimiento", parametro)
 		.html("Actualitzant, un moment per favor.")
@@ -1094,6 +1055,7 @@ function enviaAFirmaRequerimiento_click(parametro) {
 		.css("background-color", "orange")
 		.css("cursor", " progress");
 }
+
 function actualizaMotivoactaDeKickOff_click() {
 	let actaNumKickOff = document.getElementById("actaNumKickOff").value;
 	let fecha_kick_off = document.getElementById("fecha_kick_off_modal").value;
@@ -1125,6 +1087,7 @@ function actualizaMotivoactaDeKickOff_click() {
 		}
 	);
 }
+
 function actualizaActaCierre_click() {
 	let actaNumCierre = document.getElementById("actaNumCierre").value;
 	let fecha_reunion_cierre = document.getElementById("fecha_reunion_cierre_modal").value;
@@ -1154,6 +1117,7 @@ function actualizaActaCierre_click() {
 		}
 	);
 }
+
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarJustificador");
@@ -1174,6 +1138,7 @@ function enviaMailJustificacion_click() {
 		}
 	);
 }
+
 function enviaMailFormEmpresa_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarFormularioEmpresa");
@@ -1193,6 +1158,7 @@ function enviaMailFormEmpresa_click() {
 		}
 	);
 }
+
 function enviaMailEscrituraEmpresa_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
@@ -1214,6 +1180,7 @@ function enviaMailEscrituraEmpresa_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoIAE_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IAE").value;
@@ -1235,6 +1202,7 @@ function enviaMailCertificadoIAE_click() {
 		}
 	);
 }
+
 function enviaMailDocumentoIdentificacion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IDSOL").value;
@@ -1256,6 +1224,7 @@ function enviaMailDocumentoIdentificacion_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoSegSoc_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_TGSS").value;
@@ -1277,6 +1246,7 @@ function enviaMailCertificadoSegSoc_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoATIB_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ATIB").value;
@@ -1298,111 +1268,7 @@ function enviaMailCertificadoATIB_click() {
 		}
 	);
 }
-function enviaMailInformeResumen_click() {
-	let id = document.getElementById("id").value;
-	let id_doc = document.getElementById("id_doc_RESUMEN").value;
 
-	var modal = document.getElementById("myEnviarFormularioInformeResumen");
-	document.getElementById("spinner_InformeResumen").classList.remove("ocultar");
-	document.getElementById("enviaMailInformeResumen").disabled.true;
-	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoInformeResumen.php",
-		{ id: id, id_doc:id_doc },
-		function (data) {
-			console.log(data);
-			if (data) {
-				document.getElementById("spinner_InformeResumen").classList.add("ocultar");
-				document.getElementById("enviaMailInformeResumen").style.display = "none";
-				document.getElementById("mensajeInformeResumen").classList.remove("ocultar");
-				document.getElementById("mensajeInformeResumen").innerHTML = data;
-			}
-		}
-	);
-}
-function enviaMailCompromisoReduccion_click() {
-	let id = document.getElementById("id").value;
-	let id_doc = document.getElementById("id_doc_REDUCCION").value;
-
-	var modal = document.getElementById("myEnviarFormularioCompromisoReduccion");
-	//document.getElementById("enviaMailCompromisoReduccion").innerText = "Enviant...";
-	document.getElementById("spinner_CompromisoReduccion").classList.remove("ocultar");
-	document.getElementById("enviaMailCompromisoReduccion").disabled = true;
-
-	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoCompromisoReduccion.php",
-		{ id: id, id_doc:id_doc },
-		function (data) {
-			console.log(data);
-			if (data) {
-				document.getElementById("spinner_CompromisoReduccion").classList.add("ocultar");
-				document.getElementById("enviaMailCompromisoReduccion").style.display = "none";
-				document.getElementById("mensajeCompromisoReduccion").classList.remove("ocultar");
-				document.getElementById("mensajeCompromisoReduccion").innerHTML = data;
-			}
-		}
-	);
-}
-function enviaMailItinerarioFormativo_click() {
-	let id = document.getElementById("id").value;
-	let id_doc = document.getElementById("id_doc_ITINERARIO").value;
-
-	var modal = document.getElementById("myEnviarFormularioItinerarioFormativo");
-	document.getElementById("spinner_ItinerarioFormativo").classList.remove("ocultar");
-	document.getElementById("enviaMailItinerarioFormativo").disabled.true;
-	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoItinerarioFormativo.php",
-		{ id: id, id_doc:id_doc },
-		function (data) {
-			console.log(data);
-			if (data) {
-				document.getElementById("spinner_ItinerarioFormativo").classList.add("ocultar");
-				document.getElementById("enviaMailItinerarioFormativo").style.display = "none";
-				document.getElementById("mensajeItinerarioFormativo").classList.remove("ocultar");
-				document.getElementById("mensajeItinerarioFormativo").innerHTML = data;
-			}
-		}
-	);
-}
-function enviaMailInformeGEH_click() {
-	let id = document.getElementById("id").value;
-	let id_doc = document.getElementById("id_doc_GEH").value;
-
-	var modal = document.getElementById("myEnviarInformeGEH");
-	document.getElementById("spinner_InformeGEH").classList.remove("ocultar");
-	document.getElementById("enviaMailInformeGEH").disabled.true;
-	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoInformeGEH.php",
-		{ id: id, id_doc:id_doc },
-		function (data) {
-			console.log(data);
-			if (data) {
-				document.getElementById("spinner_InformeGEH").classList.add("ocultar");
-				document.getElementById("enviaMailInformeGEH").style.display = "none";
-				document.getElementById("mensajeInformeGEH").classList.remove("ocultar");
-				document.getElementById("mensajeInformeGEH").innerHTML = data;
-			}
-		}
-	);
-}
-function enviaMailManualYLogotipo_click() {
-	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarManualYLogotipo");
-	document.getElementById("spinner_ManualYLogotipo").classList.remove("ocultar");
-	document.getElementById("enviaMailManualYLogotipo").disabled.true;
-	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoManualLogotipo.php",
-		{ id: id },
-		function (data) {
-			console.log(data);
-			if (data) {
-				document.getElementById("spinner_ManualYLogotipo").classList.add("ocultar");
-				document.getElementById("enviaMailManualYLogotipo").style.display = "none";
-				document.getElementById("mensajeManualYLogotipo").classList.remove("ocultar");
-				document.getElementById("mensajeManualYLogotipo").innerHTML = data;
-			}
-		}
-	);
-}
 async function insertaMejoraEnSolicitud() {
 	let addMejora = document.getElementById('addMejora')
 	let idSol = document.getElementById('id')
@@ -1423,6 +1289,7 @@ async function insertaMejoraEnSolicitud() {
 		})
 
 }
+
 function myFunction_docs_IDI_click(id, nombre) {
 	localStorage.setItem("documento_actual", id);
 }

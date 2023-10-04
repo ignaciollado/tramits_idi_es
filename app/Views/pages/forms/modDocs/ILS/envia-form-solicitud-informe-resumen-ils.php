@@ -1,5 +1,4 @@
 <!----------------------------------------- Enviar formulario solicitud del informe resumen ILS -->
-<!-- <div class="card-itramits"> -->
 <?php
 
 $totalNotifications = 0;
@@ -16,25 +15,23 @@ foreach ($query->getResult('array') as $row)
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
         else {?>
-				<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
+			<button type="button" <?php if ( $docs_item->estado === "Rebutjat" ) { echo 'class="btn btn-primary position-relative"'; } else {echo 'style="display:none;"';} ?> 
 				data-bs-toggle="modal" data-bs-target = "#myEnviarFormularioInformeResumen" 
 				id="myBtnEnviarFormularioInformeResumen" title="Torna a sol·licitar el document">
 				Notifica <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary"><?php echo $totalNotifications;?></span>
-                                                </button>    
+            </button>    
 		  <?php }?>
 
-
-  <!-- The Modal para generar el correo-->
   <div id="myEnviarFormularioInformeResumen" class="modal">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
-						<h4 class="modal-title">Sol·licitud de l'Informe resum ILS</h4>
+						<h4><strong>Sol·licitud de l'Informe resum ILS</strong></h4>
         				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè ens faci arribar l'informe resum?</span>
+							<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar el document?</span>
 						</div>	
 						<div class="form-group">
            			<button type="button" onclick = "javaScript: enviaMailInformeResumen_click();" id="enviaMailInformeResumen" class="btn-itramits btn-success-itramits">Enviar
@@ -46,34 +43,3 @@ foreach ($query->getResult('array') as $row)
 				</div>
 			</div>
 	</div>
-
-
-  <script>
-  // Get the modal
-  let modal_17ils_InformeResumen = document.getElementById("myEnviarFormularioInformeResumen");
-	// Get the button that opens the modal
-	let btn_17ils_InformeResumen = document.getElementById("myBtnEnviarFormularioInformeResumen");
-	// Get the <span> element that closes the modal
-	let span_17ils_InformeResumen = document.getElementsByClassName("close")[0];
-	// When the user clicks the button, open the modal 
-	btn_17ils_InformeResumen.onclick = function() {
-    modal_17ils_InformeResumen.style.display = "block";
-	}
-	// When the user clicks on <span> (x), close the modal
-	span_17ils_InformeResumen.onclick = function() {
-    modal_17ils_InformeResumen.style.display = "none";
-	}
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-  	if (event.target == modal_17ils_InformeResumen) {
-      modal_17ils_InformeResumen.style.display = "none";
-  	}
-	}
-  </script>
-				
-
-				
-	
-
-<!-- </div> -->
-<!------------------------------------------------------------------------------------------------------>

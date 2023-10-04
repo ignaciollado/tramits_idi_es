@@ -128,7 +128,7 @@ if (!$expedientes['importeAyuda']) {
                     </div>
     		        <div class="form-group general">
                         <label for="programa">Programa:</label>
-		    	        <input type="text" name="programa" list="listaProgramas" class="form-control send_fase_0" required readonly disabled <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "programa" value="<?php echo $expedientes['tipo_tramite'];?>">
+		    	        <input type="text" name="programa" class="form-control" id = "programa" list="listaProgramas" readonly disabled value="<?php echo $expedientes['tipo_tramite'];?>">
                     </div>
                     <datalist id="listaProgramas">
     			        <option value="Programa I">
@@ -1012,14 +1012,10 @@ if (!$expedientes['importeAyuda']) {
                     <div class="form-group ejecucion">
                         <label for = "fecha_max_desp_ampliacion"><strong>Data màxima després d'ampliació:</strong></label>
                         <input type = "date" name = "fecha_max_desp_ampliacion" class = "form-control send_fase_3" id = "fecha_max_desp_ampliacion" value = "<?php echo date_format(date_create($expedientes['fecha_max_desp_ampliacion']), 'Y-m-d');?>">
-                    </div>	                
-                <!--</div>
-                <div class="col">-->
+                    </div>
                     <div class="form-group ejecucion">
                         <label for = "fecha_REC_amp_termino"><strong>Data REC ampliació termini:</strong></label>
-		    	        <!-- <input type = "datetime-local" name = "fecha_REC_amp_termino" class = "form-control send_fase_3" id = "fecha_REC_amp_termino" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_amp_termino']),"Y-m-d\Th:m");?>"/> -->
 		    	        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_amp_termino" class = "form-control send_fase_3" id = "fecha_REC_amp_termino" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_amp_termino']);?>"/>
-
                     </div>
     		        <div class="form-group ejecucion">
                         <label for = "ref_REC_amp_termino"><strong>Referència REC ampliació termini:</strong></label>
@@ -1157,9 +1153,7 @@ if (!$expedientes['importeAyuda']) {
             <div class="col">            
             <div class="form-group justificacion">
             <label for = "fecha_REC_justificacion"><strong>Data REC justificació:</strong></label>
-			<!-- <input type = "datetime-local" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_justificacion']),"Y-m-d\Th:m");?>" /> -->
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
-
             </div>	
 		    <div class="form-group justificacion">
             <label for = "ref_REC_justificacion"><strong>Referència REC justificació:</strong></label>
@@ -1172,18 +1166,14 @@ if (!$expedientes['importeAyuda']) {
 		    <div class="form-group justificacion">
             <label for = "fecha_not_liquidacion"><strong>Data notificació liquidació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_liquidacion" class = "form-control send_fase_4" id = "fecha_not_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_liquidacion']), 'Y-m-d');?>">
-            </div>	
-            <!--</div>
-            <div class="col">    -->			
+            </div>			
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Data firma requeriment justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
             </div>	
             <div class="form-group justificacion">
             <label for = "fecha_REC_requerimiento_justificacion"><strong>Data REC requeriment justificació:</strong></label>
-			<!-- <input type = "datetime-local" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_REC_requerimiento_justificacion']),"Y-m-d\Th:m");?>" /> -->
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
-
             </div>	
 		    <div class="form-group justificacion">
             <label for = "ref_REC_requerimiento_justificacion"><strong>Referència REC requeriment justificació:</strong></label>
@@ -1224,7 +1214,7 @@ if (!$expedientes['importeAyuda']) {
         </ol>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
                     <div >Pujat el</div>
                     <div >Document</div>
                     <div >Estat</div>               
@@ -1239,7 +1229,7 @@ if (!$expedientes['importeAyuda']) {
                                 $tipoMIME = $docSolicitud_item->type;
                                 $nom_doc = $docSolicitud_item->name;
                     ?>
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-justificacion">
+                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-justificacion">
                         <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
                         <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                        <?php
@@ -1613,7 +1603,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs detail-wrapper-docs-justificacion">
+                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
     	            <div >Pujat el</div>
    	  	            <div >Document</div>
 		            <div >Custodia</div>               
@@ -1622,13 +1612,13 @@ if (!$expedientes['importeAyuda']) {
 
             <?php if($documentos): ?>
             <?php foreach($documentos as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Desestimie') {
+                if($docSolicitud_item->fase_exped == 'Desestimiento') {
 			    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			    $parametro = explode ("/",$path);
 			    $tipoMIME = $docSolicitud_item->type;
 			    $nom_doc = $docSolicitud_item->name;
 			    ?>
-                <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-desestimiento">
+                <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-desestimiento">
       	            <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
    		            <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                     <span id="custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span>

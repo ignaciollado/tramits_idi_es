@@ -474,7 +474,7 @@
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-manual-logotipos-ils.php';?>
                 <!------------------------------------------------------------------------------------------------------>
 
-                <br><a target="_blank" class = "btn btn-warning" href="<?php echo base_url('/public/index.php/home/datos_empresa_ils/'.$id.'/'.$expedientes['nif'].$programa.$convocatoria);?>"><small>Sol·licitud de dades adicionals per a la web de ILS (ús intern IDI)</small></span></a>
+                <br><a target="_blank" class = "btn-primary-itramits" href="<?php echo base_url('/public/index.php/home/datos_empresa_ils/'.$id.'/'.$expedientes['nif'].$programa.$convocatoria);?>"><small>Sol·licitud de dades adicionals per a la web de ILS (ús intern IDI)</small></span></a>
             </div>
             </div>
 
@@ -1247,13 +1247,6 @@
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>                        
                         
-                        <!-- <?php //if (!$documentosJustifPlan->publicAccessIdCustodiado) {?>
-			                <span id="custodia" class = "detail-wrapper-docs-col"> 
-    				            <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$documentosJustifPlan->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $documentosJustifPlan->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
-	    		            </span>
-		                <?php //} else {?>
-			                <span id = "accion" class = "detail-wrapper-docs-col">Pendent de custodiar</span>			
-		                <?php //} ?> -->
 
 		            </div>
                     <?php endforeach; ?>

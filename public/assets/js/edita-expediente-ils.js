@@ -133,7 +133,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_caducado")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
-		elementDel.removeAttribute("disabled")
+		if ( typeof(elementDel) != 'undefined' && elementDel != null ) {
+			elementDel.removeAttribute("disabled")
+		} 
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -145,7 +147,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_info")
 		element.classList.add("isa_success")
 		element.innerHTML = "Aprovat"
-		elementDel.setAttribute("disabled", true);
+		if ( typeof(elementDel) != 'undefined' && elementDel != null ) {
+			elementDel.setAttribute("disabled", true);
+		} 
 		if (button) {
  			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -157,7 +161,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_success")
 		element.classList.add("isa_error")
 		element.innerHTML = "Rebutjat"
-		elementDel.removeAttribute("disabled")
+		if ( typeof(elementDel) != 'undefined' && elementDel != null ) {
+			elementDel.removeAttribute("disabled")
+		} 
 		if (button) {
 			button.style.display = 'block'
 			button.classList.add("btn-primary")
@@ -169,7 +175,9 @@ function cambiaEstadoDoc(id) {
 		element.classList.remove("isa_error")
 		element.classList.add("isa_info")
 		element.innerHTML = "Pendent"
-		elementDel.removeAttribute("disabled")
+		if ( typeof(elementDel) != 'undefined' && elementDel != null ) {
+			elementDel.removeAttribute("disabled")
+		} 		
 		if (button) {
 			button.style.display = 'none'
 			button.classList.remove("btn-primary")
@@ -190,8 +198,8 @@ function cambiaEstadoDoc(id) {
 			if (data) {
 			send_fase_0.innerHTML = "Actualitzar"
 			send_fase_0.className = "btn-itramits bth-success-itramits"
-			send_fase_0.disabled = false
-							}
+			send_fase_0.removeAttribute("disabled")
+			}
 		}
 	)
 }
@@ -710,34 +718,6 @@ function actualizaFechasILS(fechaAdhesion) {
 		});
 }
 
-function actualizaFechas(fechaCierre, dias) {
-	let d = new Date(fechaCierre);
-	d.setDate(d.getDate() + dias);
-	if (d.getDay() == 6) {  //La fecha cae en Sábado hay que pasar la al primer lunes (+2 días)
-		d.setDate(d.getDate()+2);
-	}
-	if (d.getDay() == 0) {  //La fecha cae en Domingo hay que pasar la al primer lunes (+1 días)
-		d.setDate(d.getDate()+1);
-	}
-
-	document.getElementById("fecha_reunion_cierre_modal").value = fechaCierre;
-	document.getElementById("fecha_limite_justificacion").value = d.toISOString().substr(0, 10);
-	document.getElementById("fecha_limite_justificacion_modal").value = d.toISOString().substr(0, 10);
-
-	let valorFechaJustificacion = document.getElementById("fecha_limite_justificacion").value;
-	let actualizaKickOff = "/public/assets/utils/actualiza_fechas_Cierre.php?"+ fechaCierre+"/"+valorFechaJustificacion+"/"+document.getElementById("id").value;
-	fetch(actualizaKickOff)
-		.then((response) => response.text())
-		.then((data) => {
-			let resultadoP = document.getElementById("fecha_kick_off");
-			let cell = document.createElement("span");
-			let cellText = document.createTextNode(data);
-			cell.appendChild(cellText);
-			resultadoP.appendChild(cell);
-			resultadoP.setAttribute("border", "2");
-		});
-}
-
 function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 	let textoMotivoReq = document.getElementById("motivoRequerimientoIls").value;
 	let id = document.getElementById("id").value;
@@ -782,32 +762,6 @@ function actualizaMotivoDesfavorableConReqIls_click() {
 	);
 }
 
-function actualizaMotivoDesfavorableConReq_click() {
-	let textoMotivo = document.getElementById("motivogeneraInformeDesfConReq").value;
-	let id = document.getElementById("id").value;
-	var modal = document.getElementById("mygeneraInformeDesfConReq");
-	if ( textoMotivo === "") {
-		alert ( "Falta indicar el motiu")
-		return
-	}
-	$.post(
-		"/public/assets/utils/actualiza_motivo_generaInformeDesfReq_en_expediente.php",
-		{ id: id, textoMotivo: textoMotivo },
-		function (data) {
-			$(".result").html(data);
-			console.log("##" + data + "##");
-			if (data == 1) {
-				document.getElementById("wrapper_generaInformeDesfConReq").remove = "ocultar";
-				document.getElementById("wrapper_generaInformeDesfConReq").className = "btn btn-primary";				
-				document.getElementById("wrapper_motivogeneraInformeDesfConReq").remove = "ocultar";
-				document.getElementById("wrapper_motivogeneraInformeDesfConReq").className = "enviararchivo_ver";
-				modal.style.display = "none";
-				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-			}
-		}
-	);
-}
-
 function enviaAFirmaRequerimiento_click(parametro) {
 	$("#enviaAFirmaRequerimiento", parametro)
 		.html("Actualitzant, un moment per favor.")
@@ -815,6 +769,7 @@ function enviaAFirmaRequerimiento_click(parametro) {
 		.css("background-color", "orange")
 		.css("cursor", " progress");
 }
+
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarJustificador");
@@ -835,6 +790,7 @@ function enviaMailJustificacion_click() {
 		}
 	);
 }
+
 function enviaMailFormEmpresa_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarFormularioEmpresa");
@@ -854,6 +810,7 @@ function enviaMailFormEmpresa_click() {
 		}
 	);
 }
+
 function enviaMailEscrituraEmpresa_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
@@ -875,6 +832,7 @@ function enviaMailEscrituraEmpresa_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoIAE_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IAE").value;
@@ -896,6 +854,7 @@ function enviaMailCertificadoIAE_click() {
 		}
 	);
 }
+
 function enviaMailDocumentoIdentificacion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IDSOL").value;
@@ -917,6 +876,7 @@ function enviaMailDocumentoIdentificacion_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoSegSoc_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_TGSS").value;
@@ -938,6 +898,7 @@ function enviaMailCertificadoSegSoc_click() {
 		}
 	);
 }
+
 function enviaMailCertificadoATIB_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ATIB").value;
@@ -959,6 +920,7 @@ function enviaMailCertificadoATIB_click() {
 		}
 	);
 }
+
 function enviaMailInformeResumen_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_RESUMEN").value;
@@ -980,6 +942,7 @@ function enviaMailInformeResumen_click() {
 		}
 	);
 }
+
 function enviaMailCompromisoReduccion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_REDUCCION").value;
@@ -1003,6 +966,7 @@ function enviaMailCompromisoReduccion_click() {
 		}
 	);
 }
+
 function enviaMailItinerarioFormativo_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ITINERARIO").value;
@@ -1024,6 +988,7 @@ function enviaMailItinerarioFormativo_click() {
 		}
 	);
 }
+
 function enviaMailInformeGEH_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_GEH").value;
@@ -1045,6 +1010,7 @@ function enviaMailInformeGEH_click() {
 		}
 	);
 }
+
 function enviaMailManualYLogotipo_click() {
 	let id = document.getElementById("id").value;
 	var modal = document.getElementById("myEnviarManualYLogotipo");
@@ -1064,6 +1030,7 @@ function enviaMailManualYLogotipo_click() {
 		}
 	);
 }
+
 async function insertaMejoraEnSolicitud() {
 	let addMejora = document.getElementById('addMejora')
 	let idSol = document.getElementById('id')
@@ -1194,6 +1161,7 @@ async function configuraDetalle_OnLoad () {
 	}
 
 	document.getElementById(localStorage.getItem("currentTab")).style.display = "block";
+
 	switch(localStorage.getItem("currentTab")) {
 		case 'solicitud_tab':
 			document.getElementById('solicitud_tab_selector').className += " solicitud_tab";
@@ -1206,9 +1174,6 @@ async function configuraDetalle_OnLoad () {
 			break;
 		case 'justificacion_tab':
 			document.getElementById('justifiacion_tab_selector').className += " justificacion_tab";
-			break;
-		case 'deses_ren_tab':
-			document.getElementById('deses_ren_tab_selector').className += " deses_ren_tab";
 			break;
 		default:
 			document.getElementById('detall_tab_selector').className += " detall_tab";

@@ -4,8 +4,8 @@ require_once 'conectar_a_bbdd.php';
 $id = mysqli_real_escape_string($conn, $_POST["id"]);
 
 $empresa = mysqli_real_escape_string($conn, $_POST["empresa"]);
+$empresa_consultor = mysqli_real_escape_string($conn, $_POST["empresa_consultor"]);
 $nif = mysqli_real_escape_string($conn, $_POST["nif"]);
-$programa = mysqli_real_escape_string($conn, $_POST["programa"]);
 $telefono_rep = mysqli_real_escape_string($conn, $_POST["telefono_rep"]);
 $email_rep = mysqli_real_escape_string($conn, $_POST["email_rep"]);
 $nom_consultor = mysqli_real_escape_string($conn, $_POST["nom_consultor"]);
@@ -24,12 +24,12 @@ $fecha_de_pago = mysqli_real_escape_string($conn, $_POST["fecha_de_pago"]);
 
 $query = "UPDATE pindust_expediente 
     SET  
-    empresa = '" . mb_strtoupper($empresa) . "', 
-    nif = '" . mb_strtoupper($nif) . "', 
-    tipo_tramite = '" . $programa . "',
+    empresa = '" . mb_strtoupper($empresa) . "',
+    empresa_consultor = '" . mb_strtoupper($empresa_consultor) . "',
+    nif = '" . mb_strtoupper($nif) . "',
     telefono_rep  = '" . $telefono_rep . "',
     email_rep = '" . $email_rep . "',
-    nom_consultor = '" . mb_strtoupper($nom_consultor) . "', 
+    nom_consultor = '" . mb_strtoupper($nom_consultor) . "',
     mail_consultor = '" . $mail_consultor . "',
     tel_consultor = '" . $tel_consultor . "',
     tecnicoAsignado = '" . mb_strtoupper($tecnicoAsignado) . "',
