@@ -198,11 +198,11 @@
 					?>
   	<div id ="fila" class = "detail-wrapper">
    		<span id = "fechaComletado" class = "detail-wrapper-col"><?php if ($item['fecha_completado'] != '0000-00-00 00:00:00' && $item['fecha_completado'] != '1970-01-01 01:00:00') {echo $item['fecha_completado'];} ?></span>
-			<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
-			<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
-			<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
+		<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
+		<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
+		<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
 
-			<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
+		<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
 				<span id = "semaforo" class = "detail-wrapper-col">
 					<?php 
 					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
@@ -212,11 +212,11 @@
 					} 
 					?>
 				</span>
-			<?php } else {?>
+		<?php } else {?>
 				<span id = "publicar_en_web" class = "detail-wrapper-col">
 					<?php  If ( $item['publicar_en_web'] == 1 )  { echo 'SI'; } else {  echo 'NO'; };?>
 				</span>
-			<?php }?>
+		<?php }?>
 
 			<span id = "nombre_rep" class = "detail-wrapper-col"><?php echo $item['nombre_rep']; ?></span>
 

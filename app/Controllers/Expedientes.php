@@ -300,14 +300,17 @@ class Expedientes extends Controller
 		//-----------------------------Obtiene el detalle del Expediente----------------------------------------------
 
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
-		$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData('XECS');
-		$data['importeAyuda'] = $data['configuracionLinea']['programa'];
-
 		$idExp =  $data['expedientes']['idExp'];
 		$convocatoria = $data['expedientes']['convocatoria'];
 		$tipo_tramite = $data['expedientes']['tipo_tramite'];
 		$solicitante = mb_strtoupper($data['expedientes']['empresa']);
 		$nifcif = strtoupper($data['expedientes']['nif']);
+		if ($tipo_tramite == 'Programa III' || $tipo_tramite == 'Programa II' || $tipo_tramite == 'Programa I') {
+			$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData('XECS');
+		} else {
+			$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData($tipo_tramite);
+		}
+		$data['importeAyuda'] = $data['configuracionLinea']['programa'];
 
 		$data['totalConvocatorias'] = $modelExp->findNumberOfConvocatorias($nifcif, $tipo_tramite, $convocatoria);
 
@@ -993,7 +996,6 @@ class Expedientes extends Controller
 		$last_insert_id = $db->insertID();
 		$data['last_insert_id'] = $last_insert_id;
 		$dir = WRITEPATH . 'documentos/' . $request->uri->getSegment(6) . '/informes/';
-		$dir = WRITEPATH . 'documentos/B0000001/informes/';
 
 		if (!is_dir($dir)) {
 			mkdir($dir, 0775, true);
@@ -1575,6 +1577,175 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 		}
+	}
+
+	public function generainformeIDI_ISBA()
+	{
+		date_default_timezone_set("Europe/Madrid");
+		$selloDeTiempo = date("d_m_Y_h_i_sa");
+		$db = \Config\Database::connect();
+		$builder = $db->table('pindust_expediente');
+		$this->response->setHeader('Cache-Control', 'private');
+		$request = \Config\Services::request();
+		$id_sol =  $request->uri->getSegment(3);
+		$convocatoria = $request->uri->getSegment(4);
+
+		$data['id'] =  $id_sol;
+		$data['convocatoria'] = $convocatoria;
+		$data['programa'] = str_replace("%20", " ", $request->uri->getSegment(5));
+		$data['nifcif'] = mb_strtoupper($request->uri->getSegment(6));
+		$data['byCEOSigned'] = false;
+		$tipoDocumento = $request->uri->getSegment(7);
+
+		$query = $builder->select('idExp')->where('id', $id_sol)->get()->getResult();
+		foreach ($query as $row) {
+			$idExp = $row->idExp;
+		}
+
+		$nombreDocumento = $tipoDocumento . ".pdf";
+	
+		$data['nombreDocumento'] = str_replace("doc_", $idExp . "_" . $convocatoria . "_", $nombreDocumento);
+
+		$documentos = $db->table('pindust_documentos_generados');
+		$documentos->where('id_sol', $id_sol);
+		$documentos->where('corresponde_documento', $tipoDocumento);
+		$documentos->where('convocatoria', $convocatoria);
+		$documentos->delete();
+
+		$data_file = [
+			'id_sol' => $request->uri->getSegment(3),
+			'name' =>  $tipoDocumento . ".pdf",
+			'type' => 'application/pdf',
+			'cifnif_propietario' => $request->uri->getSegment(6),
+			'tipo_tramite' => str_replace("%20", " ", $request->uri->getSegment(5)),
+			'corresponde_documento' => $tipoDocumento,
+			'datetime_uploaded' => time(),
+			'convocatoria' => $request->uri->getSegment(4),
+			'created_at'  => WRITEPATH . 'documentos/' . $data['nifcif'] . '/informes/' . $selloDeTiempo . '/' . $tipoDocumento . ".pdf",
+			'selloDeTiempo'  => $selloDeTiempo
+		];
+
+		$documentos->insert($data_file);
+		$last_insert_id = $db->insertID();
+		$data['last_insert_id'] = $last_insert_id;
+		$dir = WRITEPATH . 'documentos/' . $request->uri->getSegment(6) . '/informes/';
+
+		if (!is_dir($dir)) {
+			mkdir($dir, 0775, true);
+		}
+
+		echo view('templates/header/header', $data);
+		switch ($tipoDocumento) {
+			case "doc_requeriment_idi_isba":  								//va a VIAFIRMA DOC 1 A TÉCNICO
+				$data_infor = [
+					'doc_requeriment' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " El requeriment",
+					'conVIAFIRMA' => true
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-requerimiento-idi-isba', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+				
+			case "doc_res_desestimiento_por_no_enmendar_idi_isba": 			//SIN VIAFIRMA DOC 2 A DIRECTOR GENERAL
+				$data_infor = [
+					'doc_res_desestimiento_por_no_enmendar' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Resolució desistiment per no esmenar",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-desestimiento-por-no-enmendar-idi-isba', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+			case "doc_prop_res_provisional_con_req_idi_isba": 				//SIN VIAFIRMA DOC 3 A DIRECTOR GENERAL
+				$data_infor = [
+					'doc_prop_res_provisional_con_req' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+	
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Proposta resolució provisional",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-provisional-idi-isba', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+			case "doc_prop_res_definitiva_con_req_idi_isba": 				//SIN VIAFIRMA DOC 4 A DIRECTOR GENERAL
+				$data_infor = [
+					'doc_prop_res_definitiva_con_req' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+	
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Proposta resolució definitiva",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-idi-isba', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;		
+			case "doc_res_denegacion_con_req_idi_isba": 					//SIN VIAFIRMA DOC 5 A DIRECTOR GENERAL
+				$data_infor = [
+					'doc_res_denegacion_con_req' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+				
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Resolució de denegació",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-denegacion-idi-isba', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;				
+			case "doc_res_pago_con_req_idi_isba": 							//SIN VIAFIRMA DOC 6 A DIRECTOR GENERAL
+				$data_infor = [
+					'doc_res_pago_con_req' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+			
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Resolució de pagament",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-pago-idi-isba', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+			case "doc_res_conces_con_req_idi_isba": 					//SIN VIAFIRMA DOC 7 A DIRECTOR GENERAL
+				$data_infor = [
+					'doc_res_conces_con_req' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+				
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Resolució de concessió",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-concesion-idi-isba', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;					
+			}
+		echo view('templates/footer/footer');
 	}
 
 	public function muestrasolicitudfirmada()

@@ -1421,9 +1421,29 @@ function eliminaDocSolicitud_click() {
 	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
 		location.reload();
 	});	
-	}
+}
 
 function activarUploadBtn(element, btnToActivate) {
 	localStorage.setItem("requiredDocumentToUpload", element.id)
 	document.getElementById(btnToActivate).removeAttribute("disabled")
+}
+
+function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
+	let textoMotivoReq = document.getElementById("motivoRequerimientoIdiIsba").value;
+	let id = document.getElementById("id").value;
+	/* let modal = document.getElementById("myRequerimientoIdiIsba"); */
+	if ( textoMotivoReq === "" ) {
+		alert ("Falta indicar el motiu.")
+		return;
+	}
+	$.post(
+		"/public/assets/utils/actualiza_motivo_requerimiento_en_expediente.php",
+		{ id: id, textoMotivoReq: textoMotivoReq },
+		function (data) {
+			$(".result").html(data);
+			if (data == 1) {
+				document.getElementById("wrapper_motivoRequerimientoIdiIsba").classList.remove("ocultar");
+			}
+		}
+	);
 }

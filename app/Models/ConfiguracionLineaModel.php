@@ -18,15 +18,11 @@ class ConfiguracionLineaModel extends Model
     'activeLineData' ];
 
     public function activeConfigurationLineData($line) {
-
-        $convoData = $this->asArray()->where(['activeLineData'=> 'SI', 'lineaAyuda'=> $line])->first();
-
+        $convoData = $this->asArray()->where(['activeLineData'=> 'SI', 'lineaAyuda' => $line])->first();
         if (!$convoData) {
             throw new \Exception('E000');
         }
-
         return $convoData;
-
     }
 
 }

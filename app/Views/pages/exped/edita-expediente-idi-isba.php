@@ -700,7 +700,7 @@
 		    	                $tipoMIME = $docSolicitud_item->type;
 			                    $nom_doc = $docSolicitud_item->name;
 			                ?>
-                            <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-solicitud-ils">
+                            <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-solicitud-isba">
           	                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
        		                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
                                    <?php
@@ -805,11 +805,15 @@
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="3">
-            <!-----------------------------------------Informe favorable sense requeriment -------------------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-favorable-sin-requerimiento.php';?></li>
-            <!-----------------------------------------Proposta de resolució i resolució de pagament sense requeriment SIN VAIFIRMA---------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-pago-sin-requerimiento.php';?></li>
-            <!-------------------------------------------------------------------------------------------------------------------------------->            
+            <!-----------------------------------------Proposta de resolució provisional SIN VAIFIRMA---------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-provisional.php';?></li> 
+            <!-----------------------------------------Proposta de resolució definitiva SIN VAIFIRMA---------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-definitiva.php';?></li> 
+            <!-----------------------------------------Resolució de denegació -------------------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-denegacion.php';?></li>
+            <!-----------------------------------------Resolució de pagament -------------------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago.php';?></li>   
+            <!-------------------------------------------------------------------------------------------------------------------------------->
         </ol>
         </div>
         <div class="col docsExpediente">
@@ -951,19 +955,10 @@
         </div>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
-        <ol start="17">
+        <ol start="7">
             <!----------------------------------------- Resolución de concesión ---------------------------------------------->
-            <li><?php echo "Resolució concessió ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe inicio requerimiento de subsanación -------------------------->
-            <li><?php echo "Informe inici requeriment d'esmena ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-subsanacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Requerimiento de subsanación ----------------------------------------->
-            <li><?php echo "Requeriment d'esmena ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento-subsanacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe sobre la subsanación de la documentación de justificación ---->
-            <li><?php echo "Informe sobre l'esmena de la documentació de justificació ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->                            
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-concesion.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->                         
         </ol>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
@@ -1013,7 +1008,6 @@
 
                 <div id="myModalDocJustificacion" class="modal">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4>Aquesta acció no es podrá desfer.</h4>
@@ -1021,10 +1015,10 @@
                             </div>
                             <div class="modal-body">
                                 <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
-                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
@@ -1032,21 +1026,19 @@
 
                 <h5 class ="upload-docs-type-label">[.zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Renovacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedRenovacion" id="subir_doc_faseExpedRenovacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                    <div class = "content-file-upload">
-                        <div>
-                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedJustificacion[]" id="file_faseExpedJustificacion" size="20" accept=".zip" multiple />
+                    <?php
+                        if ( !$esAdmin && !$esConvoActual ) {?>
+                    <?php }
+                        else {?>
+                        <div class = "content-file-upload">
+                            <div>
+                                <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedJustificacion[]" id="file_faseExpedJustificacion" size="20" accept=".zip" multiple />
+                            </div>
+                            <div>
+                                <input id="subeDocsJustificacionBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                            </div>
                         </div>
-                        <div>
-                            <input id="subeDocsJustificacionBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                        </div>
-                    </div>
-                <?php }?>
-
+                    <?php }?>
                 </form>             
         </div>
 

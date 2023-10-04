@@ -5,15 +5,16 @@
         $session = session();
         $empresa = $session->get('full_name');
         $nif = $nifcif;
-				$adreca_mail = $session->get('username');
-				$telefono_cont = $session->get('telefono');
+		$adreca_mail = $session->get('username');
+		$telefono_cont = $session->get('telefono');
+
 		if ( $byCEOSigned ) {
     		$useritramits = new UseriTramitsModel();
     		$data['useriTramits'] = $useritramits->where('rol', 'gerencia')->first();
-				$adreca_mail = $data['useriTramits']['user_name'];
-				$telefono_cont = $data['useriTramits']['telefono'];
- 			 	$adreca_mail = "ignacio.llado@idi.es";
-				$telefono_cont = "677234076";
+			$adreca_mail = $data['useriTramits']['user_name'];
+			$telefono_cont = $data['useriTramits']['telefono'];
+ 			$adreca_mail = "ignacio.llado@idi.es";
+			$telefono_cont = "677234076";
 		}
 
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
@@ -79,7 +80,6 @@
 		
 		// Adding a document to sign
 		$doc = new Document;
-
 		$doc->filename = $nombreDocumento;
 		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento)));	
 		//$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/informes/fichero_a_firmar.pdf')));
@@ -90,9 +90,7 @@
 		// Set json
 		$json = json_encode($request);
 		$json = str_replace(array('\r','\n'),'',$json)."<br>";
-		/* echo $json;  */
 		$resultRequest = execute("requests", $json, __FUNCTION__);
-		/* echo "<br><br>== ".$resultRequest." ==="; */
 		printResult($resultRequest, $last_insert_id, $nombreDocumento);
 
 	function execute($apiPath, $json, $methodName) {
@@ -129,14 +127,12 @@
 		
 		// Execute
 		$result = curl_exec($ch);
-		/* echo "**--** ".$result." **--**"; */
 		// Closing
 		curl_close($ch);
 		return $result;		
 	}	
 		
 	function printResult($result, $last_insert_id, $tipo_Doc) {
-		//echo "**** ".$result." ****";
 		$respuesta = json_decode ($result, true);
 		$db      = \Config\Database::connect();
 		$builder = $db->table('pindust_documentos_generados');

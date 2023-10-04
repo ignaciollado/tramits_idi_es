@@ -1112,15 +1112,15 @@ class SubirArchivo extends BaseController
 				}
 			else
 				{
-				mkdir(WRITEPATH.'documentos/consultor/'.$nif.'/'.$selloTiempo);
+				mkdir(WRITEPATH.'documentos/consultor/'.$nif.'/'.$selloTiempo, 0775, true);
 				// crea la subcarpeta $selloTiempo
 				}
 			// "Match found";
 		}
 		else
 		{
-			mkdir(WRITEPATH.'documentos/consultor/'.$nif);
-			mkdir(WRITEPATH.'documentos/consultor/'.$nif.'/'.$selloTiempo);
+			mkdir(WRITEPATH.'documentos/consultor/'.$nif, 0775, true);
+			mkdir(WRITEPATH.'documentos/consultor/'.$nif.'/'.$selloTiempo, 0775, true);
 			// crea la subcarpeta $nif;
 		}
 

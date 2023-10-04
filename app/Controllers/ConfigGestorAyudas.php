@@ -48,7 +48,7 @@ class ConfigGestorAyudas extends BaseController
 
         $crud->fieldType('lineaAyuda', 'dropdown', ['XECS' => 'XECS',
         'ILS' => 'ILS',
-        'ISBA' => 'ISBA']);
+        'IDI-ISBA' => 'IDI-ISBA']);
 
         $crud->fieldType('activeLineData', 'dropdown', ['SI' => 'SI',
         'NO' => 'NO']);

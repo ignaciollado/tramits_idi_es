@@ -2,11 +2,11 @@
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució desistiment per no esmenar ¿ToDo?
+  	Resolució desistiment per no esmenar
   </div>
 
   	<div class="card-itramits-footer">
-
+	  pre-tramits
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -22,7 +22,7 @@
 
   	<div class="card-itramits-footer">
 	<?php if ($expedientes['doc_res_desestimiento_por_no_enmendar'] !=0) { ?>
-        <a class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_no_enmendar');?>" target = "_self"><i class='fa fa-check'></i>El desistiment per no esmenar</a>	
+        <a class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_no_enmendar_idi_isba');?>" target = "_self"><i class='fa fa-check'></i>El desistiment per no esmenar</a>	
 		<?php }?>
 	<?php //} else {?>
         
@@ -37,10 +37,12 @@
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_requerimiento_notif= document.getElementById('fecha_requerimiento_notif')
 	
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let spinner_2 = document.getElementById('spinner_2')
+		let generaElDesestimiento = document.getElementById('generaElDesestimiento')
 		let infoMissingDataDoc2 = document.getElementById('infoMissingDataDoc2')
 		infoMissingDataDoc2.innerText = ""
+
 		if(!fecha_REC.value) {
 			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Data REC sol·licitud<br>"
 			todoBien = false
@@ -56,10 +58,10 @@
 
 		if (todoBien) {
 			infoMissingDataDoc2.classList.add('ocultar')
-			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
+			generaElDesestimiento.setAttribute("disabled", true)
+			generaElDesestimiento.innerHTML = "Generant la resolució ..."
 			spinner_2.classList.remove('ocultar')
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar'
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar_idi_isba'
 		} else {
 			infoMissingDataDoc2.classList.remove('ocultar')
 		}
