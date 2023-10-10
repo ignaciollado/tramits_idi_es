@@ -1,0 +1,10 @@
+CRITICAL - 2023-10-10 13:12:22 --> E000
+#0 /home/pre-tramitsidi/www/app/Views/templates/header/header_form_linea_idi_isba.php(22): App\Models\ConfiguracionLineaModel->activeConfigurationLineData('ISBA')
+#1 /home/pre-tramitsidi/www/system/View/View.php(246): include('/home/pre-trami...')
+#2 /home/pre-tramitsidi/www/system/Common.php(1087): CodeIgniter\View\View->render('templates/heade...', Array, true)
+#3 /home/pre-tramitsidi/www/app/Controllers/Home.php(309): view('templates/heade...')
+#4 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Home->solicitud_linea_idi_isba()
+#5 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

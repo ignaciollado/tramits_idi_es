@@ -300,7 +300,7 @@ class Home extends BaseController
 		$lineaConfig = new ConfiguracionLineaModel();
 
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ISBA');
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('IDI-ISBA');
 		   
 		$desde = $data['configuracionLinea']['convocatoria_desde'];
 		$hasta = $data['configuracionLinea']['convocatoria_hasta'];

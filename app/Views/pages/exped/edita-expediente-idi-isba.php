@@ -136,7 +136,7 @@
 			        <div class="alert alert-primary ocultar" role="alert" id="empresa_eco"></div>
 		        </fieldset>
                 <div style="margin-top:1.5rem;"></div> 
-                    <label class="alert alert-success" role="alert" for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?></label><br>
+                    <label class="alert alert-success" role="alert" for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?>:<br><strong><?php echo $expedientes['finalidad_inversion_idi_isba']; ?></strong></label><br>
                     <label for=''><u><?php echo lang('message_lang.operacion_financiera_prestamo_idi_isba') ?></u></label>
                     <div class="form-group general">
                         <label for="nom_entidad"><?php echo lang('message_lang.entidad_financiera_idi_isba') ?>:</label>

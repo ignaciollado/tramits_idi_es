@@ -19,7 +19,7 @@
 		$lineaConfig = new ConfiguracionLineaModel();
 
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ISBA');
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('IDI-ISBA');
 
 		$modelExp = new ExpedientesModel();
 		$db = \Config\Database::connect();
