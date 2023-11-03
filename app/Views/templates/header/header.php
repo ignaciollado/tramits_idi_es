@@ -110,15 +110,17 @@ ul { list-style-type: none; }
 			<?php }?>			
 			<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/dec_resp_consul/'); ?>" target = "_blank"><?php echo lang('message_lang.dec_resp_con_menu');?></a></li>				
 			<li class="menu-item"><a href="https://inbox.viafirma.com/inbox/app/idi/" target="_blank"><?php echo lang('message_lang.portafirmas_menu');?></a></li>	
-			<?php if ($session->get('rol')=='admin') {?>	
+<!-- 			<?php if ($session->get('rol')=='admin') {?>	
 				<li class="menu-item"><a href="https://fortress.viafirma.com/fortress/#" target="_blank">viaFirma fortress</a></li>		
-			<?php }?>
+			<?php }?> -->
 			<li class="menu-item"><a href="https://rec.redsara.es/registro/action/are/acceso.do" target="_blank">Registro Electrónico Común (REC)</a></li>
 			<li class="menu-item"><a href="https://notifica.redsara.es" target="_blank">Notifica</a></li>
 			<li class="menu-item"><a href="https://intranet.caib.es/notib/notificacio" target="_blank">Notificacions i comunicacions electròniques (NOTIB)</a></li>
 			<li class="menu-item"><a href="https://intranet.caib.es/pinbal/index" target="_blank">Plataforma d'interoperabilitat (PINBAL)</a></li>
 			<li class="menu-item"><a href="https://www.caib.es/seucaib/" target="_blank"><?php echo lang('message_lang.sede_caib_menu');?></a></li>	
-			<li class="menu-item"><a href="https://inbox.viafirma.com/inbox/app/idi/verificacion/index.jsf" target="_blank">Servei de consulta de CSV IDI</a></li>	
+			<li class="menu-item"><a href="https://inbox.viafirma.com/inbox/app/idi/verificacion/index.jsf" target="_blank">Servei de consulta de CSV IDI</a></li>
+			<li class="menu-item"><a href="https://valide.redsara.es/valide/validarCertificado/ejecutar.html" target="_blank">VALIDe (herramienta para verificar la validez de los documentos firmados</a></li>
+
 
 			<?php if ($session->get('rol')=='admin') {?>	
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/crud/customers_management'); ?>" target="_self">Crud</a></li>
