@@ -4,7 +4,6 @@
     	Resolució de concessió
 	</div>
 	<div class="card-itramits-footer">
-	pre-tramits
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -39,7 +38,7 @@
 		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
 		let ref_REC_justificacion = document.getElementById('ref_REC_justificacion')
 		let generadoc_res_conces_sin_req = document.getElementById('generadoc_res_conces_sin_req')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_17 = document.getElementById('spinner_17')
 		let infoMissingDataDoc17 = document.getElementById('infoMissingDataDoc17')
 		infoMissingDataDoc17.innerText = ""

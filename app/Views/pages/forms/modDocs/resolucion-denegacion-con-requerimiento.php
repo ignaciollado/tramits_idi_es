@@ -4,7 +4,6 @@
     Resolució de denegació amb requeriment
   </div>
   <div class="card-itramits-footer">
-  pre-tramits
   		<?php
       if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -33,7 +32,7 @@
 		let fecha_propuesta_resolucion_notif = document.getElementById('fecha_propuesta_resolucion_notif')
 	/*	let ref_REC_enmienda = document.getElementById('ref_REC_enmienda') */
 		let generadoc_res_denegacion_sin_req = document.getElementById('generadoc_res_denegacion_sin_req')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_11 = document.getElementById('spinner_11')
 		let infoMissingDataDoc11 = document.getElementById('infoMissingDataDoc11')
 		infoMissingDataDoc11.innerText = ""

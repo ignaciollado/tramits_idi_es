@@ -202,7 +202,7 @@ function generaRequerimiento(idExp) {
 						// actualiza el campo 'motivoRequerimientoIls' con los nombres de los documentos rechazados para, luego, generar el requerimiento
 						// actualizar el campo 'situación expediente' a "Requeriment signat"
 						function (data) {
-								window.open(`https://pre-tramits.idi.es/public/index.php/expedientes/generaInformeILS/${idExp}/${convocatoria.value}/ILS/${nif.value}/doc_requeriment_ils`, "_self", "width=300, height=300")
+								window.open(`https://tramits.idi.es/public/index.php/expedientes/generaInformeILS/${idExp}/${convocatoria.value}/ILS/${nif.value}/doc_requeriment_ils`, "_self", "width=300, height=300")
 								}
 								)
 			}

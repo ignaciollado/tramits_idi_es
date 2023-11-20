@@ -4,7 +4,6 @@
       Resolució de concessió amb requeriment (20b)
 	</div>
 	<div class="card-itramits-footer">
-	pre-tramits
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -41,7 +40,7 @@
 		let fecha_not_liquidacion = document.getElementById('fecha_not_liquidacion')
 
 		let generaResolucioConcesio20b = document.getElementById('generaResolucioConcesio20b')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_20b = document.getElementById('spinner_20b')
 		let infoMissingDataDoc20b = document.getElementById('infoMissingDataDoc20b')
 		infoMissingDataDoc20b.innerText = ""

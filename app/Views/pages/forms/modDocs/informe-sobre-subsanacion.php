@@ -4,7 +4,6 @@
       Informe post esmena justificació
 	</div>
 	<div class="card-itramits-footer">
-pre-tramits
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -96,7 +95,7 @@ pre-tramits
 		let fecha_firma_requerimiento_justificacion = document.getElementById('fecha_firma_requerimiento_justificacion')
 
 		let wrapper_informe_sobre_subsanacion = document.getElementById('wrapper_informe_sobre_subsanacion')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_20 = document.getElementById('spinner_20')
 		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
 		infoMissingDataDoc20.innerText = ""

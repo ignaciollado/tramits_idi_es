@@ -5,7 +5,6 @@
     	Acta de tancament
   	</div>
   	<div class="card-itramits-footer">
-	  pre-tramits
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -155,7 +154,7 @@
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
 
 		let wrapper_ActaDeCierre = document.getElementById('wrapper_ActaDeCierre')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_15 = document.getElementById('spinner_15')
 		let infoMissingDataDoc15 = document.getElementById('infoMissingDataDoc15')
 		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });

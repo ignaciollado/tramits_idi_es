@@ -4,7 +4,6 @@
     	Informe inici requeriment justificació
 	</div>
 	<div class="card-itramits-footer">
-	pre-tramits
 		<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -98,7 +97,7 @@
 		let fecha_max_desp_ampliacion = document.getElementById('fecha_max_desp_ampliacion')
 
 		let wrapper_inicio_req_subsanacion = document.getElementById('wrapper_inicio_req_subsanacion')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_18 = document.getElementById('spinner_18')
 		let infoMissingDataDoc18 = document.getElementById('infoMissingDataDoc18')
 		infoMissingDataDoc18.innerText = ""

@@ -2,7 +2,6 @@
 <div class="card-itramits">
   <div class="card-itramits-body">Proposta resolució revocació per no justificar</div>
   	<div class="card-itramits-footer">
-		pre-tramits
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -59,7 +58,7 @@
 			let ref_REC_justificacion = document.getElementById('ref_REC_justificacion')
 			let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif')
 
-			let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+			let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 			let spinner_23 = document.getElementById('spinner_23')
 			let infoMissingDataDoc23 = document.getElementById('infoMissingDataDoc23')
 			infoMissingDataDoc23.innerText = ""

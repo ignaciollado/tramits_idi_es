@@ -4,7 +4,6 @@
 		Proposta de resolució de denegació sense requeriment
 	</div>
 	<div class="card-itramits-footer" aria-label="generar informe">
-	pre-tramits
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
@@ -81,7 +80,7 @@
 		let fecha_propuesta_resolucion_notif = document.getElementById('fecha_propuesta_resolucion_notif') */
 
 		let wrapper_motivoDenegacion_8 = document.getElementById('wrapper_motivoDenegacion_8')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_8 = document.getElementById('spinner_8')
 		let infoMissingDataDoc8 = document.getElementById('infoMissingDataDoc8')
 		infoMissingDataDoc8.innerText = ""

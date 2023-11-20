@@ -2,7 +2,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">Resolució revocació per no justificar</div>
   	<div class="card-itramits-footer">
-		pre-tramits
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }

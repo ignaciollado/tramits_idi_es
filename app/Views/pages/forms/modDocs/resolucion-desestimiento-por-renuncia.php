@@ -2,7 +2,6 @@
 <div class="card-itramits">
   <div class="card-itramits-body">Resolució desistiment per renúncia</div>
   	<div class="card-itramits-footer">
-		pre-tramits
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -56,7 +55,7 @@
 		let ref_REC_desestimiento = document.getElementById('ref_REC_desestimiento')
 		
 		let wrapper_motivoDesestimientoRenuncia = document.getElementById('wrapper_motivoDesestimientoRenuncia')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_22 = document.getElementById('spinner_22')
 		let infoMissingDataDoc22 = document.getElementById('infoMissingDataDoc22')
 		infoMissingDataDoc22.innerText = ""
