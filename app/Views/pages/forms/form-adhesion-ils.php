@@ -160,7 +160,7 @@
 			</div>
 			
 			<label for = "consentimiento_certificadoATIB" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>
-				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
+				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
 				<span class = "w3docs"></span>
 			</label>
 			<div id = "enviarcertificadoATIB" class = "ocultar">
@@ -222,7 +222,7 @@
 
 		<div class="caja-grupo">
 			<label class="container-radio"><h6><?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?></h6>
-				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.informe_resumen_informe_inventario');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
+				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
 				<span id="informeCheck" class="checkmark checkmark-caja-grupo"></span>
 			</label>		
 		</div>
@@ -238,7 +238,7 @@
 						</div>
 		<div class="caja-grupo">						
 			<label class="container-radio"><h6><?php echo lang('message_lang.presentar_certificado_verificacion_ISO');?></h6>
-				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.prescertificado_verificacion_ISO');?>" id="certificado" onchange = "javaScript: presentarInformeOCertificado (this.id);">
+				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_certificado_verificacion_ISO');?>" id="certificado" onchange = "javaScript: presentarInformeOCertificado (this.id);">
 				<span id="certificadoCheck" class="checkmark checkmark-caja-grupo"></span>
 			</label>
 		</div>					

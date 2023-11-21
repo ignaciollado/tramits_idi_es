@@ -459,7 +459,7 @@ return [
    'declaracion_responsable_iv'      => "IV) Que no he rebut ajuts o subvencions d’altres administracions públiques, o d’altres ens públics o privats, nacionals o internacionals que, aïlladament o en concurrència, superi el 100 % del cost de l’activitat que hagi de desenvolupar l’empresa beneficiària.",
 
    'declaracion_responsable_x'         => "X) Que el consultor compleix amb el punt 7 de la convocatòria.",
-// 'doy_mi_consentimiento'          => "Que don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment adjunto el NIF del sol·licitant i de la persona autoritzada, si s'escau.",
+   'doy_mi_consentimiento'          => "Que don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment adjunto el NIF del sol·licitant i de la persona autoritzada, si s'escau.",
    'doy_mi_consentimiento_aeat_atib'   => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries. En cas contrari, adjunt declaració de no consentiment i adjunt els certificats i la documentació corresponent.",
    'certificado_corriente_pago_aeat'   => "Certificat d'estar al corrent de pagaments amb l'AEAT",
    'certificado_corriente_pago_ttss'   => "Certificat d'estar al corrent de pagaments amb la Tresoreria de la Seguretat Social",
