@@ -1588,10 +1588,22 @@ function eliminaDocSolicitud_click() {
 	let id = localStorage.getItem("documento_actual")
 	let idDoc = id.replace("_del", "")
 	document.getElementById(id).setAttribute("disabled", true);
-	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
-	let corresponde_documento = 'file_resguardoREC';
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>"
+	let corresponde_documento = 'file_resguardoREC'
 	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
-		location.reload();
+		location.reload()
+	});	
+}
+
+function eliminaDocJustificacion_click() {
+	let id = localStorage.getItem("documento_actual")
+	let idDoc = id.replace("_del", "")
+	console.log (id, idDoc)
+	document.getElementById(id).setAttribute("disabled", true);
+	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>"
+	let corresponde_documento = 'file_resguardoREC'
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload()
 	});	
 }
 

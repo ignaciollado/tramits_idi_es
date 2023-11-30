@@ -723,7 +723,7 @@ if (!$expedientes['importeAyuda']) {
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocsExpediente"><strong>Elimina</strong></button>
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocsExpedienteJustificacion"><strong>Elimina</strong></button>
                             </span>                            
 	                        </div>
                         <?php 
@@ -732,11 +732,11 @@ if (!$expedientes['importeAyuda']) {
                 <?php endif; ?>
             </div>
 
-                <div id="eliminaDocsExpediente" class="modal">
+                <div id="eliminaDocsExpedienteJustificacion" class="modal">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-	    	                    <h4>Aquesta acció no es podrá desfer.</h4>
+	    	                    <h4>¡Aquesta acció no es podrá desfer!</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
@@ -1261,7 +1261,7 @@ if (!$expedientes['importeAyuda']) {
                         <!-- Modal content-->
                         <div class="modal-content" style = "width: 60%;">
                             <div class="modal-header">
-                                Aquesta acció no es podrá desfer.
+                                ¡Aquesta acció no es podrá desfer!
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
