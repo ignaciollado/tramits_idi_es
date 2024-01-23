@@ -71,6 +71,7 @@ class Home extends BaseController
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
 		
+		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
 		$desde = $data['configuracionLinea']['convocatoria_desde'];
 		$hasta = $data['configuracionLinea']['convocatoria_hasta'];
 
@@ -80,6 +81,9 @@ class Home extends BaseController
 			echo view('templates/footer/footer_form');
 		} else {
 			$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_ca'];
+			if($isActiveLineData === 'NO') {
+				$data['activatedLine'] = "XECS consultoria<br><br>Linia d'ajuts NO ACTIVA";
+			}
 			$data['titulo'] = $data['configuracionLinea']['lineaAyuda'];
 			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
 			echo view('templates/footer/footer_form');
@@ -298,10 +302,11 @@ class Home extends BaseController
 
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
-
+		
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('IDI-ISBA');
-		   
+		  
+		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
 		$desde = $data['configuracionLinea']['convocatoria_desde'];
 		$hasta = $data['configuracionLinea']['convocatoria_hasta'];
    
@@ -312,8 +317,14 @@ class Home extends BaseController
 		} else {
 			if ($idioma === 'ca') {
 				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_ca'];
+				if($isActiveLineData === 'NO') {
+					$data['activatedLine'] = "IDI-ISBA<br><br>Linia d'ajuts NO ACTIVA";
+				}
 			} else {
 				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_es'];
+				if($isActiveLineData === 'NO') {
+					$data['activatedLine'] = "IDI-ISBA<br><br>Linea de ayudas NO ACTIVA";
+				}
 			}
 			$data['titulo'] = $data['configuracionLinea']['lineaAyuda'];
 			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);

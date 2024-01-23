@@ -18,7 +18,8 @@ class ConfiguracionLineaModel extends Model
     'activeLineData' ];
 
     public function activeConfigurationLineData($line) {
-        $convoData = $this->asArray()->where(['activeLineData'=> 'SI', 'lineaAyuda' => $line])->first();
+        $currentYear = date("Y");
+        $convoData = $this->asArray()->where(['convocatoria'=> $currentYear, 'lineaAyuda' => $line])->first();
         if (!$convoData) {
             throw new \Exception('E000');
         }

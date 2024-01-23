@@ -58,7 +58,7 @@ a:hover {
     position: relative;
     border: 1px solid transparent;
     border-radius: .25rem;
-	text-align: left;
+		text-align: center;
 }
 .alert-info {
     color: #fff;

@@ -16,16 +16,15 @@
 <div class="container">
   <div class="jumbotron">
     <h1>Nota informativa</h1>      
-    
     <div class="alert alert-warning">
-  <h1><?php echo $aviso;?></h1>
-</div>
-<div style="text-align:center;">
-    <a href="https://www.idi.es"><img width="50%" src="/public/assets/images/logo_idi_conselleria.jpg" 
-    title="Institut d'Innovació Empresrial de les Illes Balears"
-     alt="Institut d'Innovació Empresrial de les Illes Balears"/></a>
-</div>
-
+      <h1><?php echo $aviso;?></h1>
+      <h2><?php echo $activatedLine;?></h2>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://www.idi.es"><img width="50%" src="/public/assets/images/logo_idi_conselleria.jpg" 
+      title="Institut d'Innovació Empresrial de les Illes Balears"
+      alt="Institut d'Innovació Empresrial de les Illes Balears"/></a>
+    </div>
   </div>   
 </div>
 

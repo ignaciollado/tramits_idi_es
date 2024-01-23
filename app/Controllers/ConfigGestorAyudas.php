@@ -2,7 +2,7 @@
 
 // Add those two lines at the beginning of your controller
 use App\Libraries\GroceryCrud;
-/* use App\Models\ConfiguracionModel; */
+use App\Models\ConfiguracionModel;
 
 class ConfigGestorAyudas extends BaseController
 {
@@ -18,21 +18,14 @@ class ConfigGestorAyudas extends BaseController
             
                         ->displayAs('activeLineData', "Convocatòria activa?")
                         ->displayAs('lineaAyuda', "Linia d'ajuda")
-                        ->displayAs('programa', 'Programa')
                         ->displayAs('convocatoria', 'Convocatòria')
                         ->displayAs('num_BOIB', 'Num BOIB')
-                        ->displayAs('resPresidente', 'President IDI')
-                        ->displayAs('directorGeneralPolInd', 'Director General')
-                        ->displayAs('directorGerenteIDI', 'Director Gerent')
                         ->displayAs('codigoSIA', 'cod. SIA')
                         ->displayAs('dias_fecha_lim_justificar', "Màxim dies per justificar l'ajut rebut")
-                        ->displayAs('meses_fecha_lim_consultoria', "Meses fecha límite consultoría")
-
                         ->displayAs('convocatoria_aviso_ca', "Nota convocatòria pendent de publicació")
                         ->displayAs('convocatoria_aviso_es', "Nota convocatoria pendiente de publicación")
 
-
-            ->fields(['convocatoria', 'lineaAyuda', 'activeLineData', 'codigoSIA', 'num_BOIB', 'num_BOIB_modific', 'programa', 'convocatoria_desde', 'convocatoria_hasta', 'dias_fecha_lim_justificar', 'meses_fecha_lim_consultoria', 'convocatoria_aviso_ca', 'convocatoria_aviso_es'])
+            ->fields(['convocatoria', 'lineaAyuda', 'activeLineData', 'codigoSIA', 'num_BOIB', 'num_BOIB_modific', 'programa', 'convocatoria_desde', 'convocatoria_hasta', 'dias_fecha_lim_justificar', 'convocatoria_aviso_ca', 'convocatoria_aviso_es'])
 
             ->requiredFields(['convocatoria', 'activeLineData', 'lineaAyuda', 'codigoSIA', 'num_BOIB',  'convocatoria_desde', 'convocatoria_hasta', 'convocatoria_aviso_ca', 'convocatoria_aviso_es']);
 
