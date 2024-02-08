@@ -132,3 +132,8 @@ system/*.php
 composer.json
 
 app/Views/pages/forms/modDocs/pdf/
+
+#-------------------------
+# convo / Convos documentation
+#-------------------------
+/convo
