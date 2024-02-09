@@ -6,7 +6,7 @@ class ConfiguracionLineaModel extends Model
 {
     
     protected $DBGroup          = 'default';
-    protected $table = 'pindust_linea_ayuda';
+    protected $table            = 'pindust_linea_ayuda';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
  
@@ -24,7 +24,6 @@ class ConfiguracionLineaModel extends Model
         } else  {
             $convoData = $this->asArray()->where(['convocatoria'=> 2022, 'lineaAyuda' => $line])->first();
         }
-       
         if (!$convoData) {
             throw new \Exception('E000');
         }

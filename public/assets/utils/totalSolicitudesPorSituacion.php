@@ -10,9 +10,13 @@ $tipoTramite = str_replace("%22", "'", $itemsArray[1]);
 $tipoTramite = str_replace("%20", " ", $tipoTramite);
 $situacion = str_replace("%22", "'", $itemsArray[2]);
 
-$query = 'SELECT count(id) AS totalExpedientes FROM pindust_expediente WHERE ' .$situacion. ' AND '.$tipoTramite.' AND '.$convocatoria;
+if ($tipoTramite == "tipo_tramite='ILS'") {
+    $query = 'SELECT count(id) AS totalExpedientes FROM pindust_expediente WHERE ' .$situacion. ' AND '.$tipoTramite;
+} else {
+    $query = 'SELECT count(id) AS totalExpedientes FROM pindust_expediente WHERE ' .$situacion. ' AND '.$tipoTramite.' AND '.$convocatoria;
+}
 $result = mysqli_query($conn, $query);
-// echo $query;
+/* echo $query; */
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
        $totalExpedientes = $row["totalExpedientes"];

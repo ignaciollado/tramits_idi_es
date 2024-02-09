@@ -26,6 +26,12 @@ class Home extends BaseController
 	{
 		$modelConfig = new ConfiguracionModel();
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
+
+		$generalConfig = new ConfiguracionModel;
+		$lineaConfig = new ConfiguracionLineaModel();
+		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
 		$idioma =  $request->uri->getSegment(2); 
@@ -82,7 +88,7 @@ class Home extends BaseController
 		} else {
 			$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_ca'];
 			if($isActiveLineData === 'NO') {
-				$data['activatedLine'] = "XECS consultoria<br><br>Linia d'ajuts NO ACTIVA";
+				$data['activatedLine'] = "XECS consultoria <br>per a la competitivitat industrial de les Illes Balears <br>en matèria de <br>digitalització, internacionalització, sostenibilitat i gestió avançada<br><br>Linia d'ajuts NO ACTIVA";
 			}
 			$data['titulo'] = $data['configuracionLinea']['lineaAyuda'];
 			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);

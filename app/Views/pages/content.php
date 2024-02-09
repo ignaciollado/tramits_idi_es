@@ -9,16 +9,7 @@
     <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ILS');?>" target="_self">Expedients</a></h2>
 	  <fieldset>
       <div>
-        <span id="totalSolicitudesILS_2022"></span>
-        <span id="importeTotalILS_2022"></span>
-        <span id="importeConcedidoILS_2022"></span>
-      </div>
-      <div>
-          <span id="totalSolicitudesILSNoREC_2022"></span>
-          <span id="totalSolicitudesILSPendientes_2022"></span>
-          <span id="totalSolicitudesILSDenegadas_2022"></span>
-          <span id="totalSolicitudesILSAdheridas_2022"></span>
-        <!--   <span id="totalSolicitudesILSJustificado_2022"></span> -->
+        <span class="badge text-bg-success" id="totalSolicitudesILSAdheridas_2022"></span>
       </div>
 	  </fieldset>
   </section>
@@ -29,186 +20,224 @@
     $totalexpedAZero = "<span class='badge bg-secondary'>".$modelExp->getWithZeroIdSol()."</span>";
     ?>
 <!-----------------------------------------------------CHEQUES-------------------------------------------------------------->
-<button class="accordion"><h1>XECS</h1></button>
+<!-- <button class="accordion"><h1>XECS</h1></button> -->
 <!-- <div class="panel" style="display:block;"> -->
-<!------------------------------------------------------2023---------------------------------------------------------------->
-<button class="accordion accordion--convo"><h1>Convocatòria 2023</h1></button>
-  <div class="panel" style="display:block;">
-  
-    <section id="sectionProgramaI">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2023');?>" target="_self">Programa I</a></h2>
-	  <fieldset>
-      <div>
-        <span id="totalSolicitudesI_2023"></span>
-        <span id="importeTotalI_2023"></span>
-        <span id="importeConcedidoI_2023"></span>
-      </div>
-      <div>
-          <span id="totalSolicitudesINoREC_2023"></span>
-          <span id="totalSolicitudesIPendientes_2023"></span>
-          <span id="totalSolicitudesIDenegadas_2023"></span>
-          <span id="totalSolicitudesIFinalizadas_2023"></span>
-          <span id="totalSolicitudesIJustificado_2023"></span>
-      </div>
-	  </fieldset>
-    </section>
+<!------------------------------------------------------2024---------------------------------------------------------------->
+<button class="accordion accordion--convo"><h1>Xecs consultoria</h1></button>
 
-    <section id="sectionProgramaII">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2023');?>" target="_self">Programa II</a></pre></h2>
-	  <fieldset>
-      <div>
-        <span id="totalSolicitudesII_2023"></span>
-        <span id="importeTotalII_2023"></span>
-        <span id="importeConcedidoII_2023"></span>
+<div class="row">
+  <div class="col-sm-12 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Convocatòria 2024</h5>
+        <p class="d-inline-flex gap-1">
+          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PI" aria-expanded="false" aria-controls="convo2024PI">
+            Programa I (iDigital)
+          </button>
+        </p>
+        <div class="collapse" id="convo2024PI">
+          <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesI_2024"></span>
+            <span class="badge text-bg-success" id="importeConcedidoI_2024"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2024');?>" class="btn btn-primary">+info</a>
+          </div>
+        </div>
+        <p class="d-inline-flex gap-1">
+          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PII" aria-expanded="false" aria-controls="convo2024PII">
+            Programa II (iExporta)
+          </button>
+        </p>
+        <div class="collapse" id="convo2024PII">
+          <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesII_2024"></span>
+            <span class="badge text-bg-success" id="importeConcedidoII_2024"></span>
+          </div>
+            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2024');?>" class="btn btn-primary">+info</a>
+          </div>
+        </div>
+        <p class="d-inline-flex gap-1">
+          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PIII" aria-expanded="false" aria-controls="convo2024PIII">
+            Programa III (ISostenibilitat)
+          </button>
+        </p>
+        <div class="collapse" id="convo2024PIII">
+          <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesIII_2024"></span>
+            <span class="badge text-bg-success" id="importeConcedidoIII_2024"></span>
+          </div>
+            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2024');?>" class="btn btn-primary">+info</a>
+          </div>
+        </div>
+        <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PIV" aria-expanded="false" aria-controls="convo2024PIV">
+          Programa IV (IGestió)
+        </button>
+        </p>
+        <div class="collapse" id="convo2024PIV">
+          <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesIV_2024"></span>
+            <span class="badge text-bg-success" id="importeConcedidoIV_2024"></span>
+          </div>
+            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa IV/2024');?>" class="btn btn-primary">+info</a>
+          </div>
+        </div>
       </div>
-      <div>
-          <span id="totalSolicitudesIINoREC_2023"></span>
-          <span id="totalSolicitudesIIPendientes_2023"></span>
-          <span id="totalSolicitudesIIDenegadas_2023"></span>
-          <span id="totalSolicitudesIIFinalizadas_2023"></span>
-          <span id="totalSolicitudesIIJustificado_2023"></span>
-      </div>
-	  </fieldset>
-    </section>
-
-    <section id="sectionProgramaIII">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2023');?>" target="_self">Programa III</a></h2>
-	  <fieldset>
-      <div>
-        <span id="totalSolicitudesIII_2023"></span>
-        <span id="importeTotalIII_2023"></span>
-        <span id="importeConcedidoIII_2023"></span>
-      </div>
-      <div>
-          <span id="totalSolicitudesIIINoREC_2023"></span>
-          <span id="totalSolicitudesIIIPendientes_2023"></span>
-          <span id="totalSolicitudesIIIDenegadas_2023"></span>
-          <span id="totalSolicitudesIIIFinalizadas_2023"></span>
-          <span id="totalSolicitudesIIIJustificado_2023"></span>
-      </div>
-	  </fieldset>
-    </section>
-
+    </div> 
   </div> 
-<!-------------------------------------------------------------------------------------------------------------------------->
-<!------------------------------------------------------2022---------------------------------------------------------------->
-<button class="accordion accordion--convo"><h1>Convocatòria 2022</h1></button>
-  <div class="panel">
-
-    <section id="sectionProgramaI">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2022');?>" target="_self">Programa I</a></h2>
-	  <fieldset>
-      <div>
-        <span id="totalSolicitudesI_2022"></span>
-        <span id="importeTotalI_2022"></span>
-        <span id="importeConcedidoI_2022"></span>
-      </div>
-      <div>
-          <span id="totalSolicitudesINoREC_2022"></span>
-          <span id="totalSolicitudesIPendientes_2022"></span>
-          <span id="totalSolicitudesIDenegadas_2022"></span>
-          <span id="totalSolicitudesIFinalizadas_2022"></span>
-          <span id="totalSolicitudesIJustificado_2022"></span>
-      </div>
-	  </fieldset>
-    </section>
-
-    <section id="sectionProgramaII">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2022');?>" target="_self">Programa II</a></pre></h2>
-	  <fieldset>
-      <div>
-        <span id="totalSolicitudesII_2022"></span>
-        <span id="importeTotalII_2022"></span>
-        <span id="importeConcedidoII_2022"></span>
-      </div>
-      <div>
-          <span id="totalSolicitudesIINoREC_2022"></span>
-          <span id="totalSolicitudesIIPendientes_2022"></span>
-          <span id="totalSolicitudesIIDenegadas_2022"></span>
-          <span id="totalSolicitudesIIFinalizadas_2022"></span>
-          <span id="totalSolicitudesIIJustificado_2022"></span>
-      </div>
-	  </fieldset>
-    </section>
-
-    <section id="sectionProgramaIII">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2022');?>" target="_self">Programa III</a></h2>
-	  <fieldset>
-      <div>
-        <span id="totalSolicitudesIII_2022"></span>
-        <span id="importeTotalIII_2022"></span>
-        <span id="importeConcedidoIII_2022"></span>
-      </div>
-      <div>
-          <span id="totalSolicitudesIIINoREC_2022"></span>
-          <span id="totalSolicitudesIIIPendientes_2022"></span>
-          <span id="totalSolicitudesIIIDenegadas_2022"></span>
-          <span id="totalSolicitudesIIIFinalizadas_2022"></span>
-          <span id="totalSolicitudesIIIJustificado_2022"></span>
-      </div>
-	  </fieldset>
-    </section>
-  </div>  
-<!-------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------2021------------------------------------------------------------------>
-<button class="accordion accordion--convo"><h1>Convocatòria 2021</h1></button>
-  <div class="panel" >
-    <section id="sectionProgramaI">
-      <h2><a title="Consultar els expedients" href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2021');?>" target="_self">Programa I</a></h2>
-	    <fieldset>
-        <div>
-          <span id="totalSolicitudesI_2021"></span>
-          <span id="importeTotalI_2021"></span>
-          <span id="importeConcedidoI_2021"></span>
+  <div class="col-sm-12 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+      <h5 class="card-title">Convocatòria 2023</h5>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2023PI" aria-expanded="false" aria-controls="convo2023PI">
+          Programa I (iDigital)
+        </button>
+      </p>
+      <div class="collapse" id="convo2023PI">
+        <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesI_2023"></span>
+            <span class="badge text-bg-success" id="importeConcedidoI_2023"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2023');?>" class="btn btn-info">+info</a>
         </div>
-        <div>
-          <span id="totalSolicitudesINoREC_2021"></span>
-          <span id="totalSolicitudesIPendientes_2021"></span>
-          <span id="totalSolicitudesIDenegadas_2021"></span>
-          <span id="totalSolicitudesIFinalizadas_2021"></span>
-          <span id="totalSolicitudesIJustificado_2021"></span>
+      </div>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2023PII" aria-expanded="false" aria-controls="convo2023PII">
+          Programa II (iExporta)
+        </button>
+      </p>
+      <div class="collapse" id="convo2023PII">
+        <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesII_2023"></span>
+            <span class="badge text-bg-success" id="importeConcedidoII_2023"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2023');?>" class="btn btn-info">+info</a>
         </div>
-	    </fieldset>
-    </section>
-
-    <section id="sectionProgramaII">
-      <h2><a title="Consultar els expedients" href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2021');?>" target="_self">Programa II</a></h2>
-	    <fieldset>
-        <div>
-          <span id="totalSolicitudesII_2021"></span>
-          <span id="importeTotalII_2021"></span>
-          <span id="importeConcedidoII_2021"></span>
+      </div>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2023PIII" aria-expanded="false" aria-controls="convo2023PIII">
+          Programa III (ISostenibilitat)
+        </button>
+      </p>
+      <div class="collapse" id="convo2023PIII">
+        <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesIII_2023"></span>
+            <span class="badge text-bg-success" id="importeConcedidoIII_2023"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2023');?>" class="btn btn-info">+info</a>
         </div>
-        <div>
-            <span id="totalSolicitudesIINoREC_2021"></span>
-            <span id="totalSolicitudesIIPendientes_2021"></span>
-            <span id="totalSolicitudesIIDenegadas_2021"></span>
-            <span id="totalSolicitudesIIFinalizadas_2021"></span>
-            <span id="totalSolicitudesIIJustificado_2021"></span>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+      <h5 class="card-title">Convocatòria 2022</h5>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2022PI" aria-expanded="false" aria-controls="convo2022PI">
+          Programa I (iDigital)
+        </button>
+      </p>
+      <div class="collapse" id="convo2022PI">
+        <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesI_2022"></span>
+            <span class="badge text-bg-success" id="importeConcedidoI_2022"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2022');?>" class="btn btn-info">+info</a>
         </div>
-	    </fieldset>
-    </section>
-
-    <section id="sectionProgramaIII">
-      <h2><a title="Consultar els expedients" href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2021');?>" target="_self">Programa III</a></h2>
-	    <fieldset>
-        <div>
-          <span id="totalSolicitudesIII_2021"></span>
-          <span id="importeTotalIII_2021"></span>
-          <span id="importeConcedidoIII_2021"></span>
+      </div>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2022PII" aria-expanded="false" aria-controls="convo2022PII">
+          Programa II (IExporta)
+        </button>
+      </p>
+      <div class="collapse" id="convo2022PII">
+        <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesII_2022"></span>
+            <span class="badge text-bg-success" id="importeConcedidoII_2022"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2022');?>" class="btn btn-info">+info</a>
         </div>
-        <div>
-          <span id="totalSolicitudesIIINoREC_2021"></span>
-          <span id="totalSolicitudesIIIPendientes_2021"></span>
-          <span id="totalSolicitudesIIIDenegadas_2021"></span>
-          <span id="totalSolicitudesIIIFinalizadas_2021"></span>
-          <span id="totalSolicitudesIIIJustificado_2021"></span>
+      </div>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2022PIII" aria-expanded="false" aria-controls="convo2022PIII">
+          Programa III (ISostenibilitat)
+        </button>
+      </p>
+      <div class="collapse" id="convo2022PIII">
+        <div class="card card-body">
+          <div>          
+            <span class="badge text-bg-success" id="totalSolicitudesIII_2022"></span>
+            <span class="badge text-bg-success" id="importeConcedidoIII_2022"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2022');?>" class="btn btn-info">+info</a>
         </div>
-	    </fieldset>
-    </section>
-  </div>  
-  <!-------------------------------------------------------------------------------------------------------------------------->
-  <!-----------------------------------------------2020----------------------------------------------------------------------->
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+      <h5 class="card-title">Convocatòria 2021</h5>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2021PI" aria-expanded="false" aria-controls="convo2021PI">
+          Programa I (iDigital)
+        </button>
+      </p>
+      <div class="collapse" id="convo2021PI">
+        <div class="card card-body">
+          <div>
+            <span class="badge text-bg-success" id="totalSolicitudesI_2021"></span>
+            <span class="badge text-bg-success" id="importeConcedidoI_2021"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/202I');?>" class="btn btn-info">+info</a>
+        </div>
+      </div>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2021PII" aria-expanded="false" aria-controls="convo2021PII">
+          Programa II (iExporta)
+        </button>
+      </p>
+      <div class="collapse" id="convo2021PII">
+        <div class="card card-body">
+        <div>
+          <span class="badge text-bg-success" id="totalSolicitudesII_2021"></span>
+          <span class="badge text-bg-success" id="importeConcedidoII_2021"></span>
+        </div>
+        <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2021');?>" class="btn btn-info">+info</a>
+        </div>
+      </div>
+      <p class="d-inline-flex gap-1">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2021PIII" aria-expanded="false" aria-controls="convo2021PIII">
+          Programa III (ISostenibilitat)
+        </button>
+      </p>
+      <div class="collapse" id="convo2021PIII">
+        <div class="card card-body">
+          <div>         
+            <span class="badge text-bg-success" id="totalSolicitudesIII_2021"></span>
+            <span class="badge text-bg-success" id="importeConcedidoIII_2021"></span>
+          </div>
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2021');?>" class="btn btn-info">+info</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-----------------------------------------------2020----------------------------------------------------------------------->
 <button class="accordion accordion--convo"><h1>Convocatòria 2020</h1></button>
   <div class="panel">
     <section id="sectioniDigital2020">

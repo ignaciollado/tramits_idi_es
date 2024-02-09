@@ -202,7 +202,7 @@ async function listPrograma(year, stage) {
     if (stage == 'Programa III')  { resultadoP = document.getElementById("totalSolicitudesIII_"+year); }
     if (stage == 'ILS')  { resultadoP = document.getElementById("totalSolicitudesILS_"+year); }
 
-    resultadoP.innerHTML = "<code class='alert alert-info'>Num. sol·licituds: "+ totalSolicitudes + "</code>";
+    resultadoP.innerHTML = "Sol·licituds aprovades: "+ totalSolicitudes;
 }
 
 async function importeTotalSolicitadoPrograma(year, stage) {
@@ -215,7 +215,7 @@ async function importeTotalSolicitadoPrograma(year, stage) {
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeTotalI_"+year); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeTotalII_"+year); }
     if (stage == 'Programa III')  { resultadoP = document.getElementById("importeTotalIII_"+year); }
-    resultadoP.innerHTML = "<code class='alert alert-info'>Import total sol·licitat: "+ new Intl.NumberFormat().format(importeSolicitado) + " €</code>";
+    resultadoP.innerHTML = "Import total sol·licitat: "+ new Intl.NumberFormat().format(importeSolicitado) + " €";
 }
 
 async function importeTotalConcedidoPrograma(year, stage) {
@@ -227,7 +227,7 @@ async function importeTotalConcedidoPrograma(year, stage) {
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeConcedidoI_"+year); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeConcedidoII_"+year); }
     if (stage == 'Programa III')  { resultadoP = document.getElementById("importeConcedidoIII_"+year); }
-    resultadoP.innerHTML = "<code class='alert alert-info'>Import total concedit: "+ new Intl.NumberFormat().format(importeConcedido) + " €</code>";
+    resultadoP.innerHTML = "Import concedit: "+ new Intl.NumberFormat().format(importeConcedido) + " €";
 }
 
 async function totalSolicitudesPorSituacion(year, stage, situacion, elementID) {
@@ -236,32 +236,32 @@ async function totalSolicitudesPorSituacion(year, stage, situacion, elementID) {
 	const totalSolicitudes = await fetch(recurso).then(res => res.json());
     
     if (situacion == 'nohapasadoREC') {
-        situacion = '<code class="alert solicitud"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds NO HAN PASSAT PEL REC</code>'
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds NO HAN PASSAT PEL REC'
     }
 
     if (situacion == 'inicioConsultoria') {
-        situacion = '<code class="alert solicitud"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA</code>';
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA';
     }
 
     if (situacion == 'Denegado') {
-        situacion = '<code class="alert validacion"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds DENEGADES</code>'
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds DENEGADES'
     }
 
     if (situacion == 'empresaDenegada') {
-        situacion = '<code class="alert validacion"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds DENEGADES</code>'
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds DENEGADES'
     }
 
     if (situacion == 'Finalizado') {
-        situacion = '<code class="alert justificacion"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds FINALITZADES</code>'
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds FINALITZADES'
     }
 
     if (situacion == 'empresaAdherida') {
-        situacion = '<code class="alert justificacion"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> empreses ADHERIDES</code>'
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> empreses ADHERIDES'
     }
 
 
     if (situacion == 'Justificado') {
-        situacion = '<code class="alert justificacion"> <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds JUSTIFICADES</code>'
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds JUSTIFICADES'
     }
 
     console.log (`Total pendientes: ${year} ${stage} ${situacion} ${totalSolicitudes}`);

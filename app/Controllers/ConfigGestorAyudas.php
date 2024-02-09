@@ -14,7 +14,7 @@ class ConfigGestorAyudas extends BaseController
 	    $crud->setTable('pindust_linea_ayuda')
             ->setSubject('Linea de ayuda', 'Lineas de ayudas')
             ->columns(['id', 'codigoSIA', 'lineaAyuda', 'convocatoria', 'activeLineData', 
-                        'num_BOIB', 'convocatoria_desde', 'convocatoria_hasta'])
+                        'num_BOIB', 'convocatoria_desde', 'convocatoria_hasta', 'totalAmount'])
             
                         ->displayAs('activeLineData', "Convocatòria activa?")
                         ->displayAs('lineaAyuda', "Linia d'ajuda")
@@ -24,8 +24,9 @@ class ConfigGestorAyudas extends BaseController
                         ->displayAs('dias_fecha_lim_justificar', "Màxim dies per justificar l'ajut rebut")
                         ->displayAs('convocatoria_aviso_ca', "Nota convocatòria pendent de publicació")
                         ->displayAs('convocatoria_aviso_es', "Nota convocatoria pendiente de publicación")
+                        ->displayAs('totalAmount', "Import econòmic màxim")
 
-            ->fields(['convocatoria', 'lineaAyuda', 'activeLineData', 'codigoSIA', 'num_BOIB', 'num_BOIB_modific', 'programa', 'convocatoria_desde', 'convocatoria_hasta', 'dias_fecha_lim_justificar', 'convocatoria_aviso_ca', 'convocatoria_aviso_es'])
+            ->fields(['convocatoria', 'lineaAyuda', 'activeLineData', 'codigoSIA', 'num_BOIB', 'num_BOIB_modific', 'programa', 'convocatoria_desde', 'convocatoria_hasta', 'totalAmount', 'dias_fecha_lim_justificar', 'convocatoria_aviso_ca', 'convocatoria_aviso_es'])
 
             ->requiredFields(['convocatoria', 'activeLineData', 'lineaAyuda', 'codigoSIA', 'num_BOIB',  'convocatoria_desde', 'convocatoria_hasta', 'convocatoria_aviso_ca', 'convocatoria_aviso_es']);
 
