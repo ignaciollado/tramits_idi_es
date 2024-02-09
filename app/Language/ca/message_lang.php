@@ -97,17 +97,15 @@ return [
    'enviado_correo_electron_justif'   => "Us hem enviat un correu electrònic a l'adreça que ens va facilitar amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_con_dec_res' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la declaració responsable perquè la signeu electrònicament.",
    'enviado_correo_electron_con'      => "Si en la sol·licitud va marcar l'opció <strong>'Ja tinc CONSULTOR digital homologat, no necessito que el IDI m'assigni un'</strong>, hem enviat un correu electrònic al facilitador digital que ens heu indicat perquè empleni i ferm la seva declaració responsable.",
-   //'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</a>. En cas de no fer-ho, no la podrem processar.",
    'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no la podrem processar.",
-   //'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà del <a target = '_blank' href = 'https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586' title = 'Seu electrònica de CAIB'>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</a>. En cas de no fer-ho, no el podrem processar.",
    'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no el podrem processar.",
    
-      'contacto_idi_pindust'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
+   'contacto_idi_pindust'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
    'contacto_idi_ils'                  => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pjordi@idi.es i per telèfon: 971 17 61 61 + 62891 ",   
   
    'enviado_correo_ok'                 => "Hem enviat un correu electrònic a la adreça ",
    'una_vez_firmado'                   => "Una vegada la rebem, procedirem a tramitar-la.",
-   'intro_sol_idigital'			         => "Convocatòria per a la concessió d'ajuts de xecs de consultoria per impulsar la indústria de Balears en matèria de digitalització, internacionalització i sostenibilitat.",
+   'intro_sol_idigital'			         => "Convocatòria per a la concessió d'ajuts de xecs de consultoria per impulsar la indústria de Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
    'intro_ils'			                  => "Les indústries interessades a adherir-se al programa han d'emplenar el següent formulari de sol·licitud d'adhesió",
    'intro_ils_solicitud'			      => "Sol·licitud per a la concessió de la marca Indústria Local Sostenible",
 
@@ -155,13 +153,14 @@ return [
    'select_programa'                  => "Seleccionau un programa",
    'info_programa'              => "L'objecte de la convocatòria d'ajuts de xecs de consultoria per a l'elaboració i disseny de:
 											<ol>
-											<li><code>Programa I, «IDigital»:</code> Pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2023.</li>
-											<li><code>Programa II, «IExporta»:</code> Pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2023.</li>
-    										<li><code>Programa III, «ISostenibilitat»:</code> Informes de la petjada de carboni corporativa, dins el marc del programa «Isostenibilitat», per a l'any 2023.</li>                           
+											<li><code>Programa I, «IDigital»</code> pla de transformació digital en el marc del programa «Idigital».</li>
+											<li><code>Programa II, «IExporta»</code> pla d'internacionalització en el marc del programa «Iexporta».</li>
+    										<li><code>Programa III, «ISostenibilitat»</code> informes de la petjada de carboni en el marc del programa «Isostenibilitat».</li>
+    										<li><code>Programa IV, «IGestió»</code> anàlisi d’avaluació de l’estat dels processos i proposta d’un Pla de millora i la seva execució, en el marc del programa «IGestió».</li>
                                  </ol>",                            
-   'programaiDigital'      => "<code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2023.",
-   'programaiExporta'      => "<code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2023.",
-   'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible», per a l'any 2023.",
+   'programaiDigital'      => "<code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2024.",
+   'programaiExporta'      => "<code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2024.",
+   'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible», per a l'any 2024.",
    'programaIDIISBA'       => "Línia de finançament industrial IDI-ISBA",
    'info_tipo_empresa'                => "<ol>
    <li><code>Petita empresa:</code> Es considera petita empresa la que té menys de 50 treballadors i/o treballadores, un volum de negoci anual o un balanç general anual que no superi els 10 milions d’euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits per ser considerada PIME d’acord amb l’annex I del Reglament (CE) núm. 651/2014 de la Comissió Europea.</li>
@@ -209,9 +208,10 @@ return [
    'opc_iDigital'                     => "Programa I",
    'opc_iExporta'                     => "Programa II",
    'opc_iLs'                          => "Programa III",
+   'opc_iGestion'                     => "Programa IV",
 
    'solicitante_tipo'                 => "TIPUS DE SOL·LICITANT",
-   'solicitante_tipo_ils'                 => "1. TIPUS D'EMPRESA",
+   'solicitante_tipo_ils'             => "1. TIPUS D'EMPRESA",
 
    'solicitante_tipo_autonomo'        => "Autònom",
    'solicitante_tipo_pequenya'        => "Petita empresa",
@@ -249,7 +249,7 @@ return [
                                                    <dd>El certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                   <dt><strong>AUTORITZACIONS</strong>: (la sol·licitud implica l'autorització perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions amb l'Agència Tributària de les Illes Balears i amb la  Tresoreria General de la Seguretat Social, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació)</dt>
+                                                   <dt><strong>AUTORITZACIONS</strong>: (la sol·licitud implica l'autorització (article 28.2 de la Llei 39/2015) perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions amb l'Agència Tributària de les Illes Balears i amb la  Tresoreria General de la Seguretat Social, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació)</dt>
                                                       <dd><abbr title='Número d´identificació fiscal'>NIF</abbr> del sol·licitant i/o de la persona autoritzada i  els documents acreditatius, si és necessari.</dd>
                                                       <dd>Certificat d’estar al corrent de pagament amb l´<abbr title='Agència Tributaria de les Illes Balears'>ATIB</abbr>.</dd>
                                                       <dd>Certificat d’estar al corrent de pagament amb la <abbr title='Tresoreria General de la Seguretat Social'>TGSS</abbr>.</dd>

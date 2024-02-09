@@ -1557,10 +1557,10 @@ span.export {
   border: 1px solid;
 }
 code {
-	padding: 2px 4px;
+	padding: 4px 10px;
 	font-size: 90%;
 	color: #fff;
-	background-color: #00b74a;
+	background-color: #c4c4c4;
 	border-radius: 4px;
   }
 

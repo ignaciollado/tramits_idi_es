@@ -1,24 +1,22 @@
-let liveToast = document.getElementById('liveToast')
-let toastMessage = document.getElementById('toastMessage')
-let toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast)
-
 function averiguaTipoDocumento (valor) {
+	let toastMessage = document.getElementById('rest-result')
 	let formasJuridicas = document.querySelectorAll('input[name="tipo_solicitante"]');
 	let formaJuridaSelected
-
 	for (const formaJuridica of formasJuridicas) {
 		if (formaJuridica.checked) {
-			formaJuridaSelected = formaJuridica.value;
+			formaJuridaSelected = formaJuridica.value
 			break;
 		}
 	}
 
 	if(valor.length != 9)	{
-		toastMessage.innerHTML = "La longitud del número del documento identificador tiene que ser de 9 dígitos."
-		toastBootstrap.show()
-
-		document.getElementById("nif").value = "";
+		toastMessage.innerText = "La longitud del número del documento identificador tiene que ser de 9 dígitos."
+		toastMessage.classList.add("invalid")
+		document.getElementById("nif").value = ""
 		return;
+	} else {
+		toastMessage.innerText = ""
+		toastMessage.classList.remove("invalid")
 	}
 
 	if (formaJuridaSelected === "autonomo") {
@@ -46,7 +44,7 @@ function analizaCIF (cif) {
 	let numeracion_OK = false
 	let dControl_OK = false
 	let esCIF_OK = false
-
+	let toastMessage = document.getElementById('rest-result')
 	// Mostraré el resultado en el elemento HTML con id = info_lbl
 	/* document.getElementById("info_lbl").innerHTML = ""; */
 	// Creo los arrays con todos los posibles valores de organización, provincia y letras y números de control
@@ -80,6 +78,8 @@ function analizaCIF (cif) {
 	// Separo la parte correspondiente al dígito de control
 	let dControl = cif.substring(8, 9);
 
+	console.log(organizacion, provincia, numeracion, dControl)
+
 	// Verifico que el código de la organización sea un valor correcto, si es así, asigno el valor verdadero
 	if (organizacionCodigo.indexOf( organizacion ) != -1) {
 		organizacion_OK = true;
@@ -112,23 +112,22 @@ function analizaCIF (cif) {
 		motivo = "Alguna part del CIF no està correcta:\n";
 	}
 	if (!organizacion_OK) {
-		motivo = motivo + "<li>Organització equivocada (El primer caràcter)</li>";
+		motivo = motivo + "<li>Organització equivocada (el primer caràcter)</li>";
 	}
 	if (!provincia_OK) {
-		motivo = motivo + "<li>Provincia equivocada (El segon i el tercer caràcters)</li>";
+		motivo = motivo + "<li>Provincia equivocada (el segon i el tercer caràcters)</li>";
 	}
 	if (!numeracion_OK) {
-		motivo = motivo + "<li>Número sequencial erroni (Des-de el quart fins al vuité caràcters)</li>";
+		motivo = motivo + "<li>Número sequencial erroni (des-de el quart fins al vuité caràcters)</li>";
 	}
 	if (!dControl_OK) {
-		motivo = motivo + "<li>Dígit de control erroni (El darrer caràcter)</li>";
+		motivo = motivo + "<li>Dígit de control erroni (el darrer caràcter)</li>";
 	}
-	// Muestro el valor entrado en el elemento HTML con id = info_lbl
-	/* document.getElementById("info_lbl").innerHTML = document.getElementById("info_lbl").innerHTML + motivo; */
 
 	if (esCIF_OK) 
 	{
-		document.querySelector('#rest-result').innerHTML = "";
+		toastMessage.innerHTML = "";
+		toastMessage.classList.remove("invalid")
 		document.getElementById("nif").value = cif;
 
 		/* consultaExpediente ( 'nif', cif )  */
@@ -136,10 +135,8 @@ function analizaCIF (cif) {
 	else 
 	{
 		toastMessage.innerHTML = motivo
-		toastBootstrap.show()
-		document.querySelector('#rest-result').innerHTML = "";
+		toastMessage.classList.add("invalid")
 		document.getElementById("nif").focus();
-		document.getElementById("nif").value = "";
 	}
 	}
 
@@ -178,7 +175,7 @@ function analizaDNINIE (dninie) {
 	{
 		if (primerDigitoDNINIE!='X' && primerDigitoDNINIE!='Y' && primerDigitoDNINIE!='Z') // y tiene que ser X,Y,Z
 			{
-			toastMessage.innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z."
+			document.querySelector('#rest-result').innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z."
 			toastBootstrap.show()
 			document.getElementById("nif").value = ""
 			return;

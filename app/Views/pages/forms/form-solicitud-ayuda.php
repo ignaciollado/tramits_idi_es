@@ -1,6 +1,6 @@
 <!-- CONTENT -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/>
 	<script type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
@@ -26,25 +26,25 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<div class="stepContainer">
 		<span class="step">0</span>
 		<span class="step">1</span>
-  		<span class="step">2</span>
-  		<span class="step">3</span>
-  		<span class="step">4</span>
-  		<span class="step">5</span>
-  		<span class="step">6</span>
+  	<span class="step">2</span>
+  	<span class="step">3</span>
+  	<span class="step">4</span>
+  	<span class="step">5</span>
+  	<span class="step">6</span>
 		<span class="step">7</span> 
-	<div  class="buttonContainer" >
+		<div  class="buttonContainer" >
     	<button title="Anterior" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn" ><?php echo lang('message_lang.btn_previous');?></button>
     	<button title="Següent" onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn" ><?php echo lang('message_lang.btn_next');?></button>
-	</div>
+		</div>
 </div>
 
 <!-- One "tab" for each step in the form: -->
-<!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD --------------------------------------------------------------------->
+<!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD ---------------------------------->
 	<div class="tab">
 		<div class="p-2 bg-white text-center">
-		<div class="langtoggle btn-group">
-			<a title="Català" href="<?php echo base_url('/public/index.php/home/set_lang/ca'); ?>" class="btn btn-outline-light text-dark" role="button"> Català</a>
-			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/set_lang/es'); ?>" class="btn btn-outline-light text-dark" role="button"> Castellano</a>
+		<div class="btn-group" role="group" aria-label="lang toggle">
+			<a title="Català" href="<?php echo base_url('/public/index.php/home/set_lang/ca'); ?>" class="btn btn-outline-primary" role="button"> Català</a>
+			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/set_lang/es'); ?>" class="btn btn-outline-primary" role="button"> Castellano</a>
 		</div>
 		</div>
 		<div>
@@ -63,10 +63,9 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 
 		<fieldset>
     	<h3><?php echo lang('message_lang.documentacion_necesaria');?></h3>  
-		<?php echo lang('message_lang.documentacion_necesaria_autonomos');?>
-		<?php echo lang('message_lang.documentacion_necesaria_pymes');?>
-		<!--<?php echo lang('message_lang.documentacion_necesaria_cluster');?>-->
-		<?php echo lang('message_lang.documentacion_necesaria_si_no_autoriza');?>
+			<?php echo lang('message_lang.documentacion_necesaria_autonomos');?>
+			<?php echo lang('message_lang.documentacion_necesaria_pymes');?>
+			<?php echo lang('message_lang.documentacion_necesaria_si_no_autoriza');?>
 		</fieldset>
 	</div>
 
@@ -93,13 +92,11 @@ if (!get_cookie('itramitsCurrentLanguage')) {
   </div>
 </div>
 
-<!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------------------->
+<!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------->
 <div class="tab" id="programa">
 	<div id="formbox" class="formbox">
     <fieldset><span class="ocultar" id="aviso"><?php echo lang('message_lang.marque_una_opcion');?></span>
- 		<!--<legend>-->
 			 <h2><?php echo lang('message_lang.programa');?></h2>
-		<!--</legend>-->
 	 	<label class="container-radio"><h6><?php echo lang('message_lang.opc_iDigital');?></h6>
 			<input title="<?php echo lang('message_lang.opc_iDigital');?>" onChange="javaScript: opcionMarcada(this)" type="radio" required name="opc_programa" id="Programa_I" value="Programa I">
 			<span class="checkmark"></span>
@@ -112,6 +109,10 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<input title="<?php echo lang('message_lang.opc_iLs');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_III" value="Programa III">
 			<span class="checkmark"></span>
 		</label>
+		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iGestion');?></h6>
+			<input title="<?php echo lang('message_lang.opc_iGestion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_IV" value="Programa IV">
+			<span class="checkmark"></span>
+		</label>
 		<label class="container-radio">
 			<span class="tooltiptext_idi"> <?php echo lang('message_lang.info_programa');?> </span>
 		</label>
@@ -119,7 +120,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>
 </div>
 
-<!-------------------------- 2. TIPO DE EMPRESA --------------------------------------------------------------------->
+<!-------------------------- 2. TIPO DE EMPRESA ---------------------------------------------------------------->
 <div class="tab" id="empresa">
   	<div id="formbox2" class="formbox">
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
@@ -151,8 +152,8 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<fieldset id="interesado">
 		<h2><?php echo lang('message_lang.identificacion_sol_idigital');?></h2>
 
-		<input name = "nif" id = "nif" type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value); consultaExpediente ( 'dni', this.value );" title="NIF" placeholder = "NIF" aria-required="true" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
-		<span id='rest-result'></span>
+		<input name="nif" id="nif" type="text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value); consultaExpediente ( 'dni', this.value );" title="NIF" placeholder = "NIF" aria-required="true" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
+		<ul id="rest-result"></ul>
 		<div id ="spinner-idi-isba" class="spinner-border text-warning ocultar" role="status">
  			<span id ="text-isba" class="visually-hidden">Getting data from ISBA...</span>
 		</div>
@@ -166,7 +167,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>
 </div>
 
-<!-------------------------- 4. NOTIFICACIÓN --------------------------------------------------------------------->
+<!-------------------------- 4. NOTIFICACIÓN ------------------------------------------------------------------>
 <div class="tab">
 	<div id="formbox">
     <fieldset>
@@ -179,7 +180,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>
 </div>
 
-<!-------------------------- 5. DATOS DEL CONSULTOR --------------------------------------------------------------------->
+<!-------------------------- 5. DATOS DEL CONSULTOR ----------------------------------------------------------->
 <div class="tab">
 	<div  id="formbox">
     <fieldset>
@@ -446,43 +447,42 @@ function showTab(n) {
   var x = document.getElementsByClassName("tab");
   let itramitsCookies = document.cookie.split(";");
     
-    // Loop through the array elements
-    for(var i = 0; i < itramitsCookies.length; i++) {
-        var cookiePair = itramitsCookies[i].split("=");
-        /* Removing whitespace at the beginning of the cookie name
-        and compare it with the given string */
-        if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
-            // Decode the cookie value and return
-            let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
-        }
+  // Loop through the array elements
+  for(var i = 0; i < itramitsCookies.length; i++) {
+    var cookiePair = itramitsCookies[i].split("=");
+    /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
+    if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
+      // Decode the cookie value and return
+      let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
     }
+  }
 
   x[n].style.display = "block";
   //... and fix the Previous/Next buttons:
   if (n == 0) {
-    	document.getElementById("prevBtn").style.display = "none";
+    document.getElementById("prevBtn").style.display = "none";
   } else {
-    	document.getElementById("prevBtn").style.display = "inline";
+    document.getElementById("prevBtn").style.display = "inline";
   }
   
   let submitBTN = document.getElementById("nextBtn")
   // if (n == (x.length - 1)) {
 	if (n === 8) {	 
-	  	submitBTN.innerHTML = "Enviar";
-	  	submitBTN.setAttribute("title", "Enviar")
-	  	submitBTN.setAttribute("value", "Submit")
-	  	submitBTN.setAttribute("form", "xecs_form")
-	  	submitBTN.setAttribute("onclick", "onFormSubmit(this)")
-  	} else {
+	  submitBTN.innerHTML = "Enviar";
+	  submitBTN.setAttribute("title", "Enviar")
+	  submitBTN.setAttribute("value", "Submit")
+	  submitBTN.setAttribute("form", "xecs_form")
+	  submitBTN.setAttribute("onclick", "onFormSubmit(this)")
+  } else {
 		// console.log(cookie.value)
 		let currentLanguage = getCookie('itramitsCurrentLanguage')
 		if (currentLanguage === "ca") {
 			submitBTN.innerHTML = "Següent"
 		} else {
-		  	submitBTN.innerHTML = "Siguiente"
+		  submitBTN.innerHTML = "Siguiente"
 		}
 		submitBTN.setAttribute("onclick", "nextPrev(1)")
-  	}
+  }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
 }
@@ -527,13 +527,12 @@ function validateForm() {
   	// A loop that checks every INPUT field in the current tab:
   	for (let cell of inputs) {
 	    // If a field is empty and has required attribute ...
-		if (cell.id != "empresa_consultor") {
-			if ( (!cell.value ) && ( cell.getAttribute('aria-required')) ) {
+			if (cell.id != "empresa_consultor") {
+				if ( (!cell.value ) && ( cell.getAttribute('aria-required')) ) {
 	   			cell.setAttribute ('class','aviso');
-      			valid = false;
+      		valid = false;
     		}
-		}
-
+			}
   	}
  
   	selects = tabs[currentTab].getElementsByTagName("select");
@@ -541,16 +540,16 @@ function validateForm() {
   	for (let cell of selects) {
 	    // If a field is empty and has required attribute ...
     	if (cell.value === '') {
-	      	// add an "invalid" class to the field:
+	     	// add an "invalid" class to the field:
 	  		cell.setAttribute ('class','aviso');
-      		// and set the current valid status to false
-      		valid = false;
+      	// and set the current valid status to false
+      	valid = false;
     	} 
   	}
 
   if (currentTab===1) {
   	// Validar que un checkbox de '1. SELECCIONA EL PROGRAMA' esté activado
-  	if ( !document.getElementById("Programa_I").checked && !document.getElementById("Programa_II").checked && !document.getElementById("Programa_III").checked) {
+  	if ( !document.getElementById("Programa_I").checked && !document.getElementById("Programa_II").checked && !document.getElementById("Programa_III").checked && !document.getElementById("Programa_IV").checked) {
 		document.getElementById("aviso").className = 'aviso-lbl';
 		document.getElementById("formbox").className = 'aviso';
 		valid = false;

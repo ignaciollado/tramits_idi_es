@@ -77,7 +77,7 @@ function onFormSubmit(param){
 function opcionMarcada(valor) {
 	document.getElementById("aviso").remove('aviso');
 	document.getElementById("formbox").className = 'formbox';
-	}
+}
 
 function habilitarNextButton (valor) {
 	if (!valor) {
@@ -88,10 +88,9 @@ function habilitarNextButton (valor) {
 		document.getElementById("nextBtn").className = 'buttonAsistente';
 		document.getElementById("nextBtn").disabled = false;
 	}
-	}
+}
 
-function tipoSolicitante (valor)
-	{
+function tipoSolicitante (valor) {
 		let element = document.getElementById("interesado")
 
 		let elementDoc = document.getElementById("docTipoInteresado")
@@ -211,10 +210,10 @@ function tipoSolicitante (valor)
 				
 				elementDocNifEmpresa.appendChild(eChild)
 				break;
-		}
-		elementDoc.appendChild(dChild)
-		document.getElementById("formbox2").className = 'formbox'
 	}
+	elementDoc.appendChild(dChild)
+	document.getElementById("formbox2").className = 'formbox'
+}
 
 function limpiaInfo_lbl (valor) {
 	document.getElementById("info_lbl").innerHTML = ""

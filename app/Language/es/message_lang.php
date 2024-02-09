@@ -88,7 +88,6 @@ return [
    Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@idi.es y/o por teléfono: 971 17 61 61 + 62891",
    'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas de carácter industrial de las Islas Baleares para cubrir los gastos financieros de operaciones de financiación de inversiones productivas, eficiencia energética y transformación digital previstas en el Plan Estratégico Industrial 2018-2025",
 
-
    'subtitulo_justificacion_idigital'	 => "RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",     
    'enviado_correo_electron'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_ils'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de adhesión a ILS</strong> para que la firme electrónicamente.",
@@ -96,20 +95,15 @@ return [
    'enviado_correo_electron_justif'   => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_con_dec_res' => "Le hemos enviado un correo electrónico a la dirección que nos ha facilitado en la declaración responsable para que la firme electrónicamente.",
    'enviado_correo_electron_con'      => "Si en la solicitud marcó la opción <strong>'Ya tengo habilitador digital homologado, no necesito que el IDI me asigne uno'</strong>, hemos enviado un correo electrónico al facilitador digital que nos ha indicado para que rellene y firme su declaración responsable.",
-   //'nota_info_rec'					  => "Una vez firmada la solicitud, recibirá otro correo electrónico con una copia del documento que se acaba de generar. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <a target = '_blank' href = 'https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586/' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</a>. En caso de no hacerlo, no la podremos procesar.",
    'nota_info_rec'					  => "Una vez firmada la solicitud, recibirá otro correo electrónico con una copia del documento que se acaba de generar. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <strong>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</strong>. En caso de no hacerlo, no la podremos procesar.",
-
-   //'nota_info_rec_justif'			  => "Una vez firmado el requerimiento de justificación, recibirá un correo electrónico con una copia del documento firmado. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio del <a target = '_blank' href = 'https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586/' title = 'Sede electrónica de CAIB'>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</a>. En caso de no hacerlo, no lo podremos procesar.",
    'nota_info_rec_justif'			  => "Una vez firmado el requerimiento de justificación, recibirá un correo electrónico con una copia del documento firmado. Este documento, en formato pdf, nos lo tiene que hacer llegar al IDI por medio de la <strong>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</strong>. En caso de no hacerlo, no lo podremos procesar.",
 
-  
    'contacto_idi_pindust'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@idi.es o por teléfono: 971 17 61 61 + 62894 ",
    'contacto_idi_ils'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: pjordi@idi.es o por teléfono: 971 17 61 61 + 62891 ",   
 
-   
    'enviado_correo_ok'                => "Hemos enviado un correo electrónico a la dirección ",
    'una_vez_firmado'                  => "Una vez la recibamos por medio de la <strong>SEDE ELECTRÓNICA CAIB</strong>, procederemos a tramitarla.",
-   'intro_sol_idigital'			      => "Convocatoria para la concesión de ayudas de cheques de consultoría para impulsar a la industria de Baleares en materia de digitalización, internacionalización y sostenibilidad.",
+   'intro_sol_idigital'			      => "Convocatoria para la concesión de ayudas de cheques de consultoría para impulsar a la industria de Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada.",
    'intro_ils'			                  => "Las industrias interesadas en adherirse al programa han de rellenar el siguiente formulario de solicitud de adhesión",
    'intro_ils_solicitud'			     => "Solicitud para la concesión de la marca Indústria Local Sostenible",
 
@@ -156,10 +150,11 @@ return [
    'programa_continuacion'            => "(seleccione sólo una opción. Presente una solicitud para cada programa)",
    'select_programa'                  => "Seleccione un programa",
    'info_programa'              => "El objeto de la convocatoria de ayudas de cheques de consultoría para la elaboración y diseño de:<ol>
-
-                              <li><code>Programa I, «IDigital»:</code> Plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.
-                              <li><code>Programa II, «IExporta»:</code> Plan de internacionalización en el marco del programa «Iexporta», para el año 2023.
-                              <li><code>Programa III, «ISostenibilitat»:</code> Informes de la huella de carbono corporativa, dentro del marco del programa «Isostenibilitat», para el año 2023.</ol>",
+                     <li><code>Programa I, «IDigital»</code> plan de transformación digital en el marco del programa «Idigital».</li>
+                     <li><code>Programa II, «IExporta»</code> plan de internacionalitzación en el marco del programa «Iexporta».</li>
+                     <li><code>Programa III, «ISostenibilitat»</code> informes de la huella de carbono en el marco del programa «Isostenibilitat».</li>
+                     <li><code>Programa IV, «IGestió»</code> análisis de evaluación del estado de los procesos y propuesta de un plan de mijora y su ejecución, en el marco del programa «IGestió».</li>
+                  </ol>",
    
    'programaiDigital'       => "<code>Programa I:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.",
    'programaiExporta'       => "<code>Programa II:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2023.",
@@ -208,6 +203,7 @@ return [
    'opc_iDigital'                     => "Programa I",
    'opc_iExporta'                     => "Programa II",
    'opc_iLs'                          => "Programa III",
+   'opc_iGestion'                     => "Programa IV",
 
    'solicitante_tipo'                 => "TIPO DE SOLICITANTE",
    'solicitante_tipo_ils'                 => "1. TIPO DE EMPRESA",
@@ -249,7 +245,7 @@ return [
                                                    <dd>El certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                   <dt><strong>AUTORIZACIONES</strong>: (la solicitud implica la autorización para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones con la ATIB y la TGSS, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación)</dt>
+                                                   <dt><strong>AUTORIZACIONES</strong>: (la solicitud implica la autorización (artículo 28.2 de la Ley 39/2015) para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones con la ATIB y la TGSS, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación)</dt>
                                                       <dd><abbr title='Número de identificación fiscal'>NIF</abbr> del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.</dd>
                                                       <dd>Certificado de estar al corriente de pago con la <abbr title='Agència tributaria de les Illes Balears'>ATIB</abbr>.</dd>
                                                       <dd>Certificado de estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>TGSS</abbr>.</dd>
