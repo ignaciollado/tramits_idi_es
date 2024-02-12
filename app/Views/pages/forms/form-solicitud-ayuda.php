@@ -2,11 +2,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/>
-	<script type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
-	<script type="text/javascript" src="/public/assets/js/solicitud-ayuda.js"></script>	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/>
+<script type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
+<script type="text/javascript" src="/public/assets/js/solicitud-ayuda.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 <?php 
 
@@ -15,51 +15,47 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	service('request')->setLocale('ca');
 }
 ?>
-	<section id="formulario_solicitud">
+<section id="formulario_solicitud">
 	<div class="alert alert-info">
 		<?php echo lang('message_lang.intro_sol_idigital');?>
 	</div>
 
 <form name="xecs_form" id="xecs_form" action="<?php echo base_url('/public/index.php/subirarchivo/store/'.$viaSolicitud);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 <h1><?php echo lang('message_lang.asistente_de_tramitacion').$viaSolicitud;?></h1>
-
-	<div class="stepContainer">
-		<span class="step">0</span>
-		<span class="step">1</span>
-  	<span class="step">2</span>
-  	<span class="step">3</span>
-  	<span class="step">4</span>
-  	<span class="step">5</span>
-  	<span class="step">6</span>
-		<span class="step">7</span> 
-		<div  class="buttonContainer" >
-    	<button title="Anterior" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn" ><?php echo lang('message_lang.btn_previous');?></button>
-    	<button title="Següent" onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn" ><?php echo lang('message_lang.btn_next');?></button>
-		</div>
+<div class="stepContainer">
+	<span class="step">0</span>
+	<span class="step">1</span>
+ 	<span class="step">2</span>
+ 	<span class="step">3</span>
+ 	<span class="step">4</span>
+ 	<span class="step">5</span>
+ 	<span class="step">6</span>
+	<span class="step">7</span> 
+	<div  class="buttonContainer" >
+   	<button title="Anterior" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn" ><?php echo lang('message_lang.btn_previous');?></button>
+   	<button title="Següent" onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn" ><?php echo lang('message_lang.btn_next');?></button>
+	</div>
 </div>
 
 <!-- One "tab" for each step in the form: -->
 <!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD ---------------------------------->
-	<div class="tab">
-		<div class="p-2 bg-white text-center">
+<div class="tab">
+	<div class="p-2 bg-white text-center">
 		<div class="btn-group" role="group" aria-label="lang toggle">
 			<a title="Català" href="<?php echo base_url('/public/index.php/home/set_lang/ca'); ?>" class="btn btn-outline-primary" role="button"> Català</a>
 			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/set_lang/es'); ?>" class="btn btn-outline-primary" role="button"> Castellano</a>
 		</div>
-		</div>
-		<div>
+	</div>
+	<div>
 		<fieldset>
-    	<!--<legend><strong><?php echo lang('message_lang.rgpd');?></strong></legend>-->
-		<label for = "rgpd" class="main" >
-			<span ><?php echo lang('message_lang.rgpd_leido');?> 
-
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
-
-				<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
-			<span class="w3docs"></span>
-		</label>
+			<label for = "rgpd" class="main" >
+				<span ><?php echo lang('message_lang.rgpd_leido');?> 
+					<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
+					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
+				<span class="w3docs"></span>
+			</label>
 		</fieldset>
-		</div>
+	</div>
 
 		<fieldset>
     	<h3><?php echo lang('message_lang.documentacion_necesaria');?></h3>  
@@ -67,7 +63,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<?php echo lang('message_lang.documentacion_necesaria_pymes');?>
 			<?php echo lang('message_lang.documentacion_necesaria_si_no_autoriza');?>
 		</fieldset>
-	</div>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -97,6 +93,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<div id="formbox" class="formbox">
     <fieldset><span class="ocultar" id="aviso"><?php echo lang('message_lang.marque_una_opcion');?></span>
 			 <h2><?php echo lang('message_lang.programa');?></h2>
+
 	 	<label class="container-radio"><h6><?php echo lang('message_lang.opc_iDigital');?></h6>
 			<input title="<?php echo lang('message_lang.opc_iDigital');?>" onChange="javaScript: opcionMarcada(this)" type="radio" required name="opc_programa" id="Programa_I" value="Programa I">
 			<span class="checkmark"></span>
@@ -106,16 +103,25 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<span class="checkmark"></span>
 		</label>		
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs');?></h6>
-			<input title="<?php echo lang('message_lang.opc_iLs');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_III" value="Programa III">
-			<span class="checkmark"></span>
 		</label>
+		<ul>
+			<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_organizacion');?></h6>
+				<input title="<?php echo lang('message_lang.opc_iLs_organizacion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_corporativo" value="Programa III actuaciones corporativas">
+				<span class="checkmark"></span>
+			</label>		
+			<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_producto');?></h6>
+				<input title="<?php echo lang('message_lang.opc_iLs_producto');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_producto" value="Programa III actuaciones producto">
+				<span class="checkmark"></span>
+			</label>
+		</ul>
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iGestion');?></h6>
 			<input title="<?php echo lang('message_lang.opc_iGestion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_IV" value="Programa IV">
 			<span class="checkmark"></span>
 		</label>
-		<label class="container-radio">
+
+		<!-- <label class="container-radio">
 			<span class="tooltiptext_idi"> <?php echo lang('message_lang.info_programa');?> </span>
-		</label>
+		</label> -->
    </fieldset>  		
 	</div>
 </div>
@@ -520,36 +526,36 @@ function validateFormField(field, step=0) {
 
 function validateForm() {
   // This function deals with validation of the form fields
-  	var tabs, inputs, selects, i, valid = true;
-  	tabs = document.getElementsByClassName("tab");
-  	inputs = tabs[currentTab].getElementsByTagName("input");
-  	// inputs = tabs[currentTab].querySelector("requerido");
-  	// A loop that checks every INPUT field in the current tab:
-  	for (let cell of inputs) {
-	    // If a field is empty and has required attribute ...
-			if (cell.id != "empresa_consultor") {
-				if ( (!cell.value ) && ( cell.getAttribute('aria-required')) ) {
-	   			cell.setAttribute ('class','aviso');
-      		valid = false;
-    		}
-			}
-  	}
+  var tabs, inputs, selects, i, valid = true;
+  tabs = document.getElementsByClassName("tab");
+  inputs = tabs[currentTab].getElementsByTagName("input");
+  // inputs = tabs[currentTab].querySelector("requerido");
+  // A loop that checks every INPUT field in the current tab:
+  for (let cell of inputs) {
+	   // If a field is empty and has required attribute ...
+		if (cell.id != "empresa_consultor") {
+			if ( (!cell.value ) && ( cell.getAttribute('aria-required')) ) {
+	 			cell.setAttribute ('class','aviso');
+     		valid = false;
+   		}
+		}
+	}
  
-  	selects = tabs[currentTab].getElementsByTagName("select");
-  	// Same with every SELECT field in the current tab:
-  	for (let cell of selects) {
-	    // If a field is empty and has required attribute ...
-    	if (cell.value === '') {
-	     	// add an "invalid" class to the field:
-	  		cell.setAttribute ('class','aviso');
-      	// and set the current valid status to false
-      	valid = false;
-    	} 
-  	}
+  selects = tabs[currentTab].getElementsByTagName("select");
+  // Same with every SELECT field in the current tab:
+  for (let cell of selects) {
+	  // If a field is empty and has required attribute ...
+   	if (cell.value === '') {
+	   	// add an "invalid" class to the field:
+	 		cell.setAttribute ('class','aviso');
+     	// and set the current valid status to false
+     	valid = false;
+   	} 
+	}
 
   if (currentTab===1) {
   	// Validar que un checkbox de '1. SELECCIONA EL PROGRAMA' esté activado
-  	if ( !document.getElementById("Programa_I").checked && !document.getElementById("Programa_II").checked && !document.getElementById("Programa_III").checked && !document.getElementById("Programa_IV").checked) {
+  	if ( !document.getElementById("Programa_I").checked && !document.getElementById("Programa_II").checked && !document.getElementById("programa_III_actuaciones_corporativo").checked&& !document.getElementById("programa_III_actuaciones_producto").checked && !document.getElementById("Programa_IV").checked) {
 		document.getElementById("aviso").className = 'aviso-lbl';
 		document.getElementById("formbox").className = 'aviso';
 		valid = false;

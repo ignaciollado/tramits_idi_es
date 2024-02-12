@@ -3,8 +3,12 @@ helper('cookie');
 require_once('tcpdf/tcpdf.php');
 $defaultLanguage=get_cookie('itramitsCurrentLanguage');
 use App\Models\ConfiguracionModel;
-	$modelConfig = new ConfiguracionModel();
-	$data['configuracion'] = $modelConfig->where('convocatoria_activa', true)->first();	
+$modelConfig = new ConfiguracionModel();
+$data['configuracion'] = $modelConfig->where('activeGeneralData', 'SI')->first();	
+use App\Models\ConfiguracionLineaModel;
+$tipo_tramite = "XECS";
+$lineaConfig = new ConfiguracionLineaModel();
+$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
 
 class MYPDF extends TCPDF {
     //Page header
@@ -65,9 +69,7 @@ $pdf->AddPage();
 $html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi').$defaultLanguage."</b>";
 $html1 .= "<br>";
 $html1 .= lang('message_lang.codigo_dir3')." <b>".$data['configuracion']['emisorDIR3']."</b>";
-$html1 .= "<br>";
-$html1 .= lang('message_lang.codigo_sia')." <b>".$data['configuracion']['codigoSIA']."</b>";
-
+$html1 .= lang('message_lang.codigo_sia')." <b>".$data['configuracionLinea']['codigoSIA']."</b>";
 
 // set color for background
 $pdf->SetFillColor(230, 247, 255);
@@ -84,7 +86,7 @@ $pdf->writeHTML($html2, true, false, true, false, '');
 // --------------------------------------------------------------------------------------------------------------------------------------- //
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$html3 = lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']; // El año de la convocatoria de las ayudas
+$html3 = lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracionLinea']['convocatoria']; // El año de la convocatoria de las ayudas
 $pdf->writeHTML($html3, true, false, true, false, '');
 
 $currentY = $pdf->getY();
@@ -188,7 +190,7 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html14 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
-$html14 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']." </h4>";
+$html14 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracionLinea']['convocatoria']." </h4>";
 $pdf->SetFillColor(230, 247, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(90, '', 105, 20, $html14, 1, 1, 1, true, 'J', true);
@@ -238,10 +240,6 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html16, true, false, true, false, '');
 
-
-
-
-
 // ---------------------------------------------------------------------------------------------------------------------------- //
 // ----------------------------------------------7. AUTORIZACIONES------------------------------------------------------------- //
 $currentY = $pdf->getY();
@@ -270,7 +268,7 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html19 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
-$html19 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']." </h4>";
+$html19 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracionLinea']['convocatoria']." </h4>";
 $pdf->SetFillColor(230, 247, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(90, '', 105, 20, $html19, 1, 1, 1, true, 'J', true);
@@ -305,8 +303,6 @@ $html23 .= "</table>";
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html23, true, false, true, false, '');
-
-
 
 $html24 = lang('message_lang.declaracion_datos_bancarios_cabecera'); //"DECLARACIÓ RESPONSABLE DE VERACITAT DE DADES BANCÀRIES APORTADES";
 $pdf->Cell(0, 10, $html24, 1, 1, 'C');
@@ -359,7 +355,7 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html26 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
-$html26 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracion']['convocatoria']." </h4>";
+$html26 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracionLinea']['convocatoria']." </h4>";
 $pdf->SetFillColor(230, 247, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(90, '', 105, 20, $html26, 1, 1, 1, true, 'J', true);
@@ -494,10 +490,10 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 	.container {
     max-width: 1140px;
     border: 1px solid black;
-    background-color: #ffa500;
+    background-color: #50ed9f;
     color: #000;
     border-radius: .5rem;
-	padding: 1rem;
-	margin-bottom: 1rem;
+		padding: 1rem;
+		margin-bottom: 1rem;
 	}
 </style>

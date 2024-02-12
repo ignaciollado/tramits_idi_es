@@ -1,23 +1,24 @@
 <?php namespace App\Controllers;
 	
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 use App\Models\DocumentosModel;
 use App\Models\ExpedientesModel;
 
 class SubirArchivo extends BaseController
 {
 	public function store()
-   {
+  {
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
 		$idioma = get_cookie('CurrentLanguage');
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
-
-		$modelConfig = new ConfiguracionModel();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
-		$convocatoria =  $data['configuracion']['convocatoria'];
+		$tipo_tramite = "XECS";
+		$lineaConfig = new ConfiguracionLineaModel();
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
+		$convocatoria =  $data['configuracionLinea']['convocatoria'];
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 		$request = \Config\Services::request();
 		$viaSolicitud =  $request->uri->getSegment(3);
@@ -508,10 +509,10 @@ class SubirArchivo extends BaseController
 			echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud', $data_exp);
 		}
 		echo view('templates/footer/footer_form');
-   }
+  }
 
 	public function store_ils()
-	 {
+	{
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -521,10 +522,12 @@ class SubirArchivo extends BaseController
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
  
-		$modelConfig = new ConfiguracionModel();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first(); 
-		$convocatoria =   $data['configuracion']['convocatoria'];
+		/* $modelConfig = new ConfiguracionModel();
+		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();  */
 		$tipo_tramite =  'ILS';
+		$lineaConfig = new ConfiguracionLineaModel();
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
+		$convocatoria =   $data['configuracion']['convocatoria'];
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 	 
 		$db = \Config\Database::connect();
@@ -1041,17 +1044,16 @@ class SubirArchivo extends BaseController
 	 	echo view('pages/forms/solicitud-concesion-marca-ils', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-ils', $data_exp);
-	 }
+	}
 
 	public function envia_dec_resp_con ()
-	 {
+	{
 		helper('filesystem');	
 		helper(['form', 'url']); 
 		$request = \Config\Services::request();
 		$db = \Config\Database::connect();
 		$consultor = $db->table('pindust_consultor');
 	
-		$convocatoria = "2020";
 		date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
 
@@ -1129,10 +1131,10 @@ class SubirArchivo extends BaseController
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_consultor);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-dec-resp-con', $data_consultor);	
 		echo view('templates/footer/footer');
-	 }	
+	}	
 
 	public function store_idi_isba()
-		{
+	{
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -1142,12 +1144,12 @@ class SubirArchivo extends BaseController
 	
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
- 
-		$modelConfig = new ConfiguracionModel();
-
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first(); 
-		$convocatoria = date("Y"); // $data['configuracion']['convocatoria'];
 		$tipo_tramite =  'IDI-ISBA';
+
+		$lineaConfig = new ConfiguracionLineaModel();
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
+		$convocatoria = date("Y"); // $data['configuracionLinea']['convocatoria'];
+		
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 	 
 		$db = \Config\Database::connect();
@@ -1193,76 +1195,76 @@ class SubirArchivo extends BaseController
  		/* -------------------------------7. DOCUMENTACIÓN--------------------------------------------- */
  		$documentosfile = $this->request->getFiles(); 
 
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
 			$file_document_acred_como_repres = "NO";
 		} else {
 			$file_document_acred_como_repres = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_d'][0]->getName() ){
 			$file_copiaNIF = "NO";
 		} else {
 			$file_copiaNIF = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_e'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_e'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_e'][0]->getName() ){
 			$file_nifEmpresa = "NO";
 		} else {
 			$file_nifEmpresa = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_f'][0]->getName() ){
 			$file_escrituraConstitucion = "NO";
 		} else {
 			$file_escrituraConstitucion = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_g'][0]->getName() ){
 			$file_certificadoIAE = "NO";
 		} else {
 			$file_certificadoIAE = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_h'][0]->getName() ){
 			$file_certificadoAEAT = "NO";
 		} else {
 			$file_certificadoAEAT = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_i'][0]->getName() ){
 			$file_certificadoSGR = "NO";
 		} else {
 			$file_certificadoSGR = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_j'][0]->getName() ){
 			$file_contratoOperFinanc = "NO";
 		} else {
 			$file_contratoOperFinanc = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_k'][0]->getName() ){
 			$file_avalOperFinanc = "NO";
 		} else {
 			$file_avalOperFinanc = "SI";
 		}
-	}
-	if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_l'][0]->getName() ){
 			$file_certificadoInverECO = "NO";
 		} else {
 			$file_certificadoInverECO = "SI";
 		}
-	}
+		}
 
  		$nif = $this->request->getVar('nif');
 		$empresa = $this->request->getVar('denom_interesado');
@@ -1300,71 +1302,70 @@ class SubirArchivo extends BaseController
 		$gastos_aval_solicita_idi_isba = $this->request->getVar('gastos_aval_solicita_idi_isba');
 
 		$data_exp = [
-			 'idExp' => $idExp,
-			 'tipo_solicitante' => $tipoSolicitante,
-			 'fecha_completado' => date("Y-m-d H:i:s"),
-			 'empresa' => $empresa,
-			 'nif' => strtoupper($nif),
-			 'domicilio' => $domicilio,
-			 'localidad' => $localidad,
-			 'cpostal' => $cpostal,
-			 'telefono' => $this->request->getVar('telefono_cont'),
-			 'telefono_rep' => $tel_notificacion,  // se usa para notificar
-			 'email_rep' => $mail_notificacion,	// se usa para notificar
-			 'tipo_tramite' => $tipo_tramite,
-			 'iae' => $codigoIAE,
+			'idExp' => $idExp,
+			'tipo_solicitante' => $tipoSolicitante,
+			'fecha_completado' => date("Y-m-d H:i:s"),
+			'empresa' => $empresa,
+			'nif' => strtoupper($nif),
+			'domicilio' => $domicilio,
+			'localidad' => $localidad,
+			'cpostal' => $cpostal,
+			'telefono' => $this->request->getVar('telefono_cont'),
+			'telefono_rep' => $tel_notificacion,  // se usa para notificar
+			'email_rep' => $mail_notificacion,	// se usa para notificar
+			'tipo_tramite' => $tipo_tramite,
+			'iae' => $codigoIAE,
 
-			 'nombre_rep' 		=> $nom_representante,
-			 'nif_rep' 				=> $nif_representante,
-			 'domicilio_rep' 	=> $domicilio_rep,
-			 'telefono_contacto_rep' 	=> $telefono_contacto_rep, //uso este otro ya que en IDI-ISBA necesitan un teléfono de contacto
-			 'condicion_rep' 	=> $condicion_rep,
+			'nombre_rep' 		=> $nom_representante,
+			'nif_rep' 				=> $nif_representante,
+			'domicilio_rep' 	=> $domicilio_rep,
+			'telefono_contacto_rep' 	=> $telefono_contacto_rep, //uso este otro ya que en IDI-ISBA necesitan un teléfono de contacto
+			'condicion_rep' 	=> $condicion_rep,
 
-			 'declaro_idi_isba_que_cumple_1' 	=> $declaro_idi_isba_que_cumple_1,
-			 'declaro_idi_isba_que_cumple_2' 	=> $declaro_idi_isba_que_cumple_2,
-			 'declaro_idi_isba_que_cumple_3' 	=> $declaro_idi_isba_que_cumple_3,
-			 'declaro_idi_isba_que_cumple_4' 	=> $declaro_idi_isba_que_cumple_4,
-			 'declaro_idi_isba_que_cumple_5' 	=> $declaro_idi_isba_que_cumple_5,
-			 'declaro_idi_isba_que_cumple_6' 	=> $declaro_idi_isba_que_cumple_6,
-			 'declaro_idi_isba_que_cumple_7' 	=> $declaro_idi_isba_que_cumple_7,
-			 'declaro_idi_isba_que_cumple_8' 	=> $declaro_idi_isba_que_cumple_8,
+			'declaro_idi_isba_que_cumple_1' 	=> $declaro_idi_isba_que_cumple_1,
+			'declaro_idi_isba_que_cumple_2' 	=> $declaro_idi_isba_que_cumple_2,
+			'declaro_idi_isba_que_cumple_3' 	=> $declaro_idi_isba_que_cumple_3,
+			'declaro_idi_isba_que_cumple_4' 	=> $declaro_idi_isba_que_cumple_4,
+			'declaro_idi_isba_que_cumple_5' 	=> $declaro_idi_isba_que_cumple_5,
+			'declaro_idi_isba_que_cumple_6' 	=> $declaro_idi_isba_que_cumple_6,
+			'declaro_idi_isba_que_cumple_7' 	=> $declaro_idi_isba_que_cumple_7,
+			'declaro_idi_isba_que_cumple_8' 	=> $declaro_idi_isba_que_cumple_8,
 
-			 'file_document_acred_como_repres' => $file_document_acred_como_repres,
-			 'file_copiaNIF' => $file_copiaNIF,
-			 'file_nifEmpresa' => $file_nifEmpresa,
-			 'file_escrituraConstitucion' => $file_escrituraConstitucion,
-			 'file_certificadoIAE' => $file_certificadoIAE,
-			 'file_certificadoAEAT' => $file_certificadoAEAT ,
-			 'file_certificadoSGR' => $file_certificadoSGR,
-			 'file_contratoOperFinanc' => $file_contratoOperFinanc,
-			 'file_avalOperFinanc' => $file_avalOperFinanc,
-			 'file_certificadoInverECO' => $file_certificadoInverECO,
+			'file_document_acred_como_repres' => $file_document_acred_como_repres,
+			'file_copiaNIF' => $file_copiaNIF,
+			'file_nifEmpresa' => $file_nifEmpresa,
+			'file_escrituraConstitucion' => $file_escrituraConstitucion,
+			'file_certificadoIAE' => $file_certificadoIAE,
+			'file_certificadoAEAT' => $file_certificadoAEAT ,
+			'file_certificadoSGR' => $file_certificadoSGR,
+			'file_contratoOperFinanc' => $file_contratoOperFinanc,
+			'file_avalOperFinanc' => $file_avalOperFinanc,
+			'file_certificadoInverECO' => $file_certificadoInverECO,
 			 
-			 'nom_entidad' => $nom_entidad,
-			 'importe_prestamo' => $importe_prestamo,
-			 'plazo_prestamo' => $plazo_prestamo,
-			 'carencia_prestamo' => $carencia_prestamo,
-			 'cuantia_aval_isba' => $cuantia_aval_isba,
-			 'plazo_aval_isba' => $plazo_aval_isba,
-			 'carencia_idi_isba' => $carencia_idi_isba,
+			'nom_entidad' => $nom_entidad,
+			'importe_prestamo' => $importe_prestamo,
+			'plazo_prestamo' => $plazo_prestamo,
+			'carencia_prestamo' => $carencia_prestamo,
+			'cuantia_aval_isba' => $cuantia_aval_isba,
+			'plazo_aval_isba' => $plazo_aval_isba,
+			'carencia_idi_isba' => $carencia_idi_isba,
 
-			 'fecha_aval_isba' => $fecha_aval_isba,
-			 'finalidad_inversion_idi_isba' => $finalidad_inversion_idi_isba,
-			 'empresa_eco_idi_isba'  => $empresa_eco_idi_isba,//radio button
-			 'importe_presupuesto_idi_isba' => $importe_presupuesto_idi_isba,
-			 'importe_ayuda_solicita_idi_isba' => $importe_ayuda_solicita_idi_isba,
-			 'intereses_ayuda_solicita_idi_isba' => $intereses_ayuda_solicita_idi_isba,
-			 'coste_aval_solicita_idi_isba' => $coste_aval_solicita_idi_isba,
-			 'gastos_aval_solicita_idi_isba' => $gastos_aval_solicita_idi_isba,
-			 'ayudasSubvenSICuales_dec_resp' => $ayudasSubvenSICuales_dec_resp,
+			'fecha_aval_isba' => $fecha_aval_isba,
+			'finalidad_inversion_idi_isba' => $finalidad_inversion_idi_isba,
+			'empresa_eco_idi_isba'  => $empresa_eco_idi_isba,//radio button
+			'importe_presupuesto_idi_isba' => $importe_presupuesto_idi_isba,
+			'importe_ayuda_solicita_idi_isba' => $importe_ayuda_solicita_idi_isba,
+			'intereses_ayuda_solicita_idi_isba' => $intereses_ayuda_solicita_idi_isba,
+			'coste_aval_solicita_idi_isba' => $coste_aval_solicita_idi_isba,
+			'gastos_aval_solicita_idi_isba' => $gastos_aval_solicita_idi_isba,
+			'ayudasSubvenSICuales_dec_resp' => $ayudasSubvenSICuales_dec_resp,
 
-			 'selloDeTiempo' => $selloTiempo,
-			 'importeAyuda'	=> 0,
-			 'convocatoria' => $convocatoria
-			];
+			'selloDeTiempo' => $selloTiempo,
+			'importeAyuda'	=> 0,
+			'convocatoria' => $convocatoria
+		];
 	
 	 	$save_exp = $expediente->insert($data_exp);
-		/* var_dump($save_exp); */
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
@@ -1375,44 +1376,6 @@ class SubirArchivo extends BaseController
 			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0755, true);
 		}
 
-		/* 
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_c'], $nif, $selloTiempo, $tipo_tramite, '*file_document_acred_como_repres', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_d'], $nif, $selloTiempo, $tipo_tramite, 'file_copiaNIF', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_e'], $nif, $selloTiempo, $tipo_tramite, '*file_nifEmpresa', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_f'], $nif, $selloTiempo, $tipo_tramite, '*file_escrituraConstitucion', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_g'], $nif, $selloTiempo, $tipo_tramite, '*file_certificadoIAE', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_h'], $nif, $selloTiempo, $tipo_tramite, 'file_certificadoAEAT', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_i'], $nif, $selloTiempo, $tipo_tramite, '*file_certificadoSGR', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_j'], $nif, $selloTiempo, $tipo_tramite, '*file_contratoOperFinanc', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_k'], $nif, $selloTiempo, $tipo_tramite, '*file_avalOperFinanc', $convocatoria, 'SI', $last_insert_id);
-		subeDocumentoFormularioSolicitud($documentosfile['documentacion_adjunta_requerida_idi_isba_l'], $nif, $selloTiempo, $tipo_tramite, '*file_certificadoInverECO', $convocatoria, 'NO', $last_insert_id);
-
-
-		function subeDocumentoFormularioSolicitud( $documentoQueSube, $nifCif, $selloDeTiempo, $tipoTramite, $tipoDocumento, $convo, $esRequerido, $lastInsertId ) {
-			global $modelDocumentos;
-			foreach($documentoQueSube as $documentToUpload)
-			{
-				if (strlen(trim($documentToUpload->getName()))!=0)
-				{
-				$documentToUpload->move(WRITEPATH.'documentos/'.$nifCif.'/'.$selloDeTiempo.'/', $documentToUpload->getRandomName());
-				$data_file = [
-				'name' => $documentToUpload->getName(),					
-				'type' => $documentToUpload->getClientMimeType(),
-				'cifnif_propietario' => $nifCif,
-				'tipo_tramite' =>$tipoTramite,
-				'corresponde_documento' => $tipoDocumento,
-				'datetime_uploaded' => time(),
-				'convocatoria' 			=> $convo,
-				'docRequerido' 			=> $esRequerido,
-				'created_at'  			=> $documentToUpload->getTempName(),
-				'selloDeTiempo'  		=> $selloDeTiempo,
-				'id_sol'         		=> $lastInsertId
-				];
-				$modelDocumentos->insert($data_file);
-				}
-			}
-		} */
-		/* ------------------------------------------------------------------------------------------------------- */
 		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos------------ */
 
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
@@ -1512,7 +1475,7 @@ class SubirArchivo extends BaseController
 			 	}
 		 	}
 	 	} 
-  		/* ----------------------------------------------------------------------------------------------------------------- */
+  	/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado g.----------------------------------------------------------- */
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_g'] as $documento_g)
@@ -1537,9 +1500,9 @@ class SubirArchivo extends BaseController
 						}
 				}
 			}
-  		/* ----------------------------------------------------------------------------------------------------------------- */
+  	/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado h.----------------------------------------------------------- */
-			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_h'] as $documento_h)
 				{
 					if (strlen(trim($documento_h->getName()))!=0)
@@ -1562,9 +1525,9 @@ class SubirArchivo extends BaseController
 					}
 				}
 		}
-  		/* ----------------------------------------------------------------------------------------------------------------- */
+  	/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado i.----------------------------------------------------------- */
-			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_i'] as $documento_i)
 				{
 					if (strlen(trim($documento_i->getName()))!=0)
@@ -1589,7 +1552,7 @@ class SubirArchivo extends BaseController
 		} 
 		/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado j.----------------------------------------------------------- */
-			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_j'] as $documento_j)
 				{
 					if (strlen(trim($documento_j->getName()))!=0)
@@ -1612,9 +1575,9 @@ class SubirArchivo extends BaseController
 					}
 				}
 		} 
-  		/* ----------------------------------------------------------------------------------------------------------------- */
+  	/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado k.----------------------------------------------------------- */
-			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_k'] as $documento_k)
 				{
 					if (strlen(trim($documento_k->getName()))!=0)
@@ -1637,7 +1600,7 @@ class SubirArchivo extends BaseController
 					}
 				}
 		} 
-  		/* ----------------------------------------------------------------------------------------------------------------- */
+  	/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado l.----------------------------------------------------------- */
 		 if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_l'] as $documento_l)

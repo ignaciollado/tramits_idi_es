@@ -1905,7 +1905,6 @@ class Expedientes extends Controller
 
 	public function do_doc_informe_resumen_upload($id, $nif, $idioma, $convocatoria)
 	{
-
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Informe resumen
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -1981,7 +1980,6 @@ class Expedientes extends Controller
 
 	public function do_doc_compromiso_reduccion_upload($id, $nif, $idioma, $convocatoria)
 	{
-
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Informe resumen
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2057,7 +2055,6 @@ class Expedientes extends Controller
 
 	public function do_doc_itinerario_formativo_upload($id, $nif, $idioma, $convocatoria)
 	{
-
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un documento 
 				de itinerario formativo que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2133,7 +2130,6 @@ class Expedientes extends Controller
 
 	public function do_doc_informe_gei_upload($id, $nif, $idioma, $convocatoria)
 	{
-
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un informe GEI
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2209,7 +2205,6 @@ class Expedientes extends Controller
 
 	public function do_doc_escritura_empresa_upload($id, $nif, $idioma, $convocatoria)
 	{
-
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado una Escritura de la Empresa
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2285,7 +2280,6 @@ class Expedientes extends Controller
 
 	public function do_doc_certificado_iae_upload($id, $nif, $idioma, $convocatoria)
 	{
-
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Certificado IAE
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 

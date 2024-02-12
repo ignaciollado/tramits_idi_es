@@ -54,27 +54,29 @@ console.log (x);
 
 
 function onFormSubmit(param){
-  // Habilito los input checkbox porque, si están desabilitados, desde codeigniter no puedo leer el valor.
   console.log ("Se ha pulsado submit... desde: "+param.id)
   document.getElementById("declaracion_responsable_xii").setAttribute("disabled", false);
   //document.getElementById("declaracion_responsable_xiii").setAttribute("disabled", false);
   //document.getElementById("declaracion_responsable_xiv").setAttribute("disabled", false);
   //document.getElementById("declaracion_responsable_xv").setAttribute("disabled", false);
-
   let theElement=document.getElementById("nextBtn");
   let theForm=document.getElementById("xecs_form");
+	itramitsCurrentLanguage
   theElement.innerHTML="Enviant, un moment per favor... ";
   theElement.disabled=true;
   theElement.style.backgroundColor= "orange";
   theElement.style.cursor="progress";
   theForm.style.opacity =".2";
  
-  console.log ("quito la clase ocultar")
-  //document.getElementById("a_enviar").classList.remove('ocultar')
   theForm.submit();
 }
 
 function opcionMarcada(valor) {
+	/* if (valor.value == "Programa III") {
+		document.getElementById("programa_III_actuaciones").classList.remove("ocultar")
+	} else {
+		document.getElementById("Programa_III_actuacioens").classList.add("ocultar")
+	} */
 	document.getElementById("aviso").remove('aviso');
 	document.getElementById("formbox").className = 'formbox';
 }

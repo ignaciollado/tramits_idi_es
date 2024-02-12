@@ -21,6 +21,7 @@
 		<div class="form-group">
     		<input class="form-control-itramits" required placeholder="Convocatòria ..." type="text" list="convocatoria" name="convocatoria_fltr" id="convocatoria_fltr" minlength="4" maxlength="4" value = "<?php echo $session->get('convocatoria_fltr');?>">
   			<datalist id="convocatoria">
+				<option value="2024">	
 				<option value="2023">
     		<option value="2022">
 				<option value="2021">
@@ -41,10 +42,12 @@
   			<datalist id="programa">
 			  	<option value="Programa iDigital 20">
     			<option value="Programa I">
-				<option value="Programa II">
-    			<option value="Programa III">
-				<option value="ILS">
-				<option value="IDI-ISBA">
+					<option value="Programa II">
+    			<option value="Programa III actuaciones corporativas">
+    			<option value="Programa III actuaciones producto">
+					<option value="Programa IV">
+					<option value="ILS">
+					<option value="IDI-ISBA">
   			</datalist>
   		</div>
 	</div>

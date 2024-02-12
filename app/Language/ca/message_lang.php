@@ -151,6 +151,13 @@ return [
    'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITAU",
    'programa_continuacion'            => "(Seleccionau només una opció. Presenti una sol·licitud per a cada programa)",
    'select_programa'                  => "Seleccionau un programa",
+   'opc_programa_txt'                 => "Programes d'ajuts",
+   'opc_iDigital'                     => "<li><code>Programa I, «IDigital»</code> ajuts per la contractació de serveis d’assessorament externs per a l’elaboració d’un pla estratègic de transformació digital o per a l’assessorament i seguiment de les accions del pla de transformació digital en el marc del programa «IDigital, estratègia de digitalització industrial».</li>",
+   'opc_iExporta'                     => "<li><code>Programa II, «IExporta»</code> ajuts per la contractació de serveis d’assessorament externs per a l’elaboració i/o millora del pla estratègic d’internacionalització, o per a l’assessorament i seguiment de les accions del pla de màrqueting per a/als mercat/s objectiu/s en el marc del programa «IExporta, estratègia d’internacionalització».</li>",
+   'opc_iLs'                          => "<li><code>Programa III, «Isostenibilitat»</code> ajuts per la contractació de serveis d’assessorament externs per realitzar els informes de la petjada de carboni <u><strong>corporativa</strong></u> o informes de petjada de carboni de <u><strong>producte</strong></u> en el marc del programa «iSostenibilitat estratègia de millora de la sostenibilitat»</li>",
+   'opc_iLs_organizacion'             => "<li>Identificació i càlcul de les emissions de gasos amb efecte d’hivernacle <u><strong>corporativa</strong></u> (emissions directes i emissions indirectes per electricitat i energia consumida, abast 1 i 2). Proposta d’un pla de reducció de les emissions.</li>",
+   'opc_iLs_producto'                 => "<li>Identificació i càlcul de les emissions de gasos d’efecte d’hivernacle de <u><strong>producte</strong></u>. Càlcul de la petjada de carboni d'un producte HCP parcial seguint la norma ISO 14067:2018</li>",
+   'opc_iGestion'                     => "<li><code>Programa IV, «IGestió»</code> ajuts per la contractació de serveis d’assessorament externs per a l’elaboració d’un anàlisi d’avaluació de l’estat dels processos i proposta  d’un Pla de millora i la seva execució, en el marc del programa «IGestió, estratègia de millora de la gestió i optimització dels processos productius».</li>",
    'info_programa'              => "L'objecte de la convocatòria d'ajuts de xecs de consultoria per a l'elaboració i disseny de:
 											<ol>
 											<li><code>Programa I, «IDigital»</code> pla de transformació digital en el marc del programa «Idigital».</li>
@@ -203,13 +210,6 @@ return [
    'canales_comercializacion_empresa'  => "Breu explicació dels canals de comercialització de la seva empresa",
    'enviar_los_datos'                  => "Enviar les dades",
 
-
-   'opc_programa_txt'                 => "Programes d'ajuts",
-   'opc_iDigital'                     => "Programa I",
-   'opc_iExporta'                     => "Programa II",
-   'opc_iLs'                          => "Programa III",
-   'opc_iGestion'                     => "Programa IV",
-
    'solicitante_tipo'                 => "TIPUS DE SOL·LICITANT",
    'solicitante_tipo_ils'             => "1. TIPUS D'EMPRESA",
 
@@ -249,11 +249,11 @@ return [
                                                    <dd>El certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                   <dt><strong>AUTORITZACIONS</strong>: (la sol·licitud implica l'autorització (article 28.2 de la Llei 39/2015) perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions amb l'Agència Tributària de les Illes Balears i amb la  Tresoreria General de la Seguretat Social, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació)</dt>
-                                                      <dd><abbr title='Número d´identificació fiscal'>NIF</abbr> del sol·licitant i/o de la persona autoritzada i  els documents acreditatius, si és necessari.</dd>
-                                                      <dd>Certificat d’estar al corrent de pagament amb l´<abbr title='Agència Tributaria de les Illes Balears'>ATIB</abbr>.</dd>
-                                                      <dd>Certificat d’estar al corrent de pagament amb la <abbr title='Tresoreria General de la Seguretat Social'>TGSS</abbr>.</dd>
-                                                   </dl>",
+                                                <dt><strong>AUTORITZACIONS</strong>: la sol·licitud implica l'autorització (article 28.2 de la Llei 39/2015) perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions amb l'Agència Tributària de les Illes Balears i amb la  Tresoreria General de la Seguretat Social, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació:</dt>
+                                                   <dd><abbr title='Número d´identificació fiscal'>NIF</abbr> del sol·licitant i/o de la persona autoritzada i  els documents acreditatius, si és necessari.</dd>
+                                                   <dd>Certificat d’estar al corrent de pagament amb l´<abbr title='Agència Tributaria de les Illes Balears'>ATIB</abbr>.</dd>
+                                                   <dd>Certificat d’estar al corrent de pagament amb la <abbr title='Tresoreria General de la Seguretat Social'>TGSS</abbr>.</dd>
+                                                </dl>",
 
    "documentacion_necesaria_pymes_ils"     => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació relacionada amb el <strong>compliment dels requisits</strong>:</h3>
                                                 <ol class='formbox'>

@@ -149,6 +149,13 @@ return [
    'programa'                         => "1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA",
    'programa_continuacion'            => "(seleccione sólo una opción. Presente una solicitud para cada programa)",
    'select_programa'                  => "Seleccione un programa",
+   'opc_programa_txt'                 => "Programas de ayudas",
+   'opc_iDigital'                     => "<li><code>Programa I, «IDigital»</code> ayudas para la contratación de servicios de asesoramiento externos para la elaboración de un plan estratégico de transformación digital o para el asesoramiento y seguimiento de las acciones del plan de transformación digital en el marco del programa «IDigital, estratègia de digitalització industrial».</li>",
+   'opc_iExporta'                     => "<li><code>Programa II, «IExporta»</code> ayudas para la contratación de servicios de asesoramiento externos para la elaboración y/o mejora del plan estratégico de internacionalización, o para el asesoramiento y seguimiento de las acciones del plan de márquetin para el/los mercado/s objectivo/s en el marco del programa «IExporta, estratègia d’internacionalització».</li>",
+   'opc_iLs'                          => "<li><code>Programa III, «Isostenibilitat»</code> ayudas para la contratación de servicios de asesoramiento externos para realizar los informes de la huella de carbono <u><strong>corporativa</strong></u> o informes de la huella de carbono de <u><strong>producto</strong></u> en el marco del programa «iSostenibilitat estratègia de millora de la sostenibilitat»</li>",
+   'opc_iLs_organizacion'             => "<li>Identificación y cálculo de las emisiones de gases con efecto invernadero <u><strong>corporativa</strong></u> (emisiones directas y emisiones indirectas por electricidad y energía consumida, alcance 1 y 2). Propuesta de un plan de reducción de las emisiones.</li>",
+   'opc_iLs_producto'                 => "<li>Identificación y cálculo de las emisiones de gases con efecto invernadero del <u><strong>producto</strong></u>. Cálculo de la huella de carbono de un producto HCP parcial siguiendo la norma ISO 14067:2018</li>",
+   'opc_iGestion'                     => "<li><code>Programa IV, «IGestió»</code> ayudas para la contratación de servicios de asesoramiento externos para la elaboración de un análisis de avaluación del estado de los procesos y propuesta  de un plan de mejora y su ejecución, en el marco del programa «IGestió, estratègia de millora de la gestió i optimització dels processos productius».</li>",
    'info_programa'              => "El objeto de la convocatoria de ayudas de cheques de consultoría para la elaboración y diseño de:<ol>
                      <li><code>Programa I, «IDigital»</code> plan de transformación digital en el marco del programa «Idigital».</li>
                      <li><code>Programa II, «IExporta»</code> plan de internacionalitzación en el marco del programa «Iexporta».</li>
@@ -199,12 +206,6 @@ return [
    'canales_comercializacion_empresa'  => "Breve explicación de los canales de comercialización de su empresa",
    'enviar_los_datos'                  => "Enviar los datos",
 
-   'opc_programa_txt'                 => "Programas de ayudas",
-   'opc_iDigital'                     => "Programa I",
-   'opc_iExporta'                     => "Programa II",
-   'opc_iLs'                          => "Programa III",
-   'opc_iGestion'                     => "Programa IV",
-
    'solicitante_tipo'                 => "TIPO DE SOLICITANTE",
    'solicitante_tipo_ils'                 => "1. TIPO DE EMPRESA",
 
@@ -245,7 +246,7 @@ return [
                                                    <dd>El certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                   <dt><strong>AUTORIZACIONES</strong>: (la solicitud implica la autorización (artículo 28.2 de la Ley 39/2015) para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones con la ATIB y la TGSS, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación)</dt>
+                                                   <dt><strong>AUTORIZACIONES</strong>: la solicitud implica la autorización (artículo 28.2 de la Ley 39/2015) para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones con la ATIB y la TGSS, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación:</dt>
                                                       <dd><abbr title='Número de identificación fiscal'>NIF</abbr> del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.</dd>
                                                       <dd>Certificado de estar al corriente de pago con la <abbr title='Agència tributaria de les Illes Balears'>ATIB</abbr>.</dd>
                                                       <dd>Certificado de estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>TGSS</abbr>.</dd>
