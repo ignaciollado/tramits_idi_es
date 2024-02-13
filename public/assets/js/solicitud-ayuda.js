@@ -59,15 +59,17 @@ function onFormSubmit(param){
   //document.getElementById("declaracion_responsable_xiii").setAttribute("disabled", false);
   //document.getElementById("declaracion_responsable_xiv").setAttribute("disabled", false);
   //document.getElementById("declaracion_responsable_xv").setAttribute("disabled", false);
-  let theElement=document.getElementById("nextBtn");
-  let theForm=document.getElementById("xecs_form");
-	itramitsCurrentLanguage
-  theElement.innerHTML="Enviant, un moment per favor... ";
+  let theElement = document.getElementById("nextBtn")
+  let theForm = document.getElementById("xecs_form")
+	let theSpinnger = document.getElementById("spinner-loading")
+	theSpinnger.classList.remove("ocultar")
+	theForm.classList.add("progress")
+  theElement.innerHTML="Enviant, un moment per favor... "
   theElement.disabled=true;
   theElement.style.backgroundColor= "orange";
   theElement.style.cursor="progress";
   theForm.style.opacity =".2";
- 
+	
   theForm.submit();
 }
 

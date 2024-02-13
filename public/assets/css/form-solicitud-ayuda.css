@@ -23,6 +23,20 @@ section {
   padding: .5rem .75rem .5rem .75rem;
 }
 
+.spinner-grow{
+  display: block;
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  z-index: 9999; /* High z-index so it is on top of the page */
+  top: 50%;
+  right: 50%; /* or: left: 50%; */
+  margin-top: 100px; /* half of the elements height */
+  margin-right: 100px; /* half of the elements width */
+}
+
+.progress {cursor: progress;}
+
 #regForm {
   background-color: rgba(255, 255, 255, 1);
   padding: 3rem;

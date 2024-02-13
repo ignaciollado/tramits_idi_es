@@ -64,7 +64,7 @@ class Home extends BaseController
 		echo view('templates/footer/footer');
 	}
 	
-	public function solicitud_ayuda($page = 'forms/form-solicitud-ayuda')
+	public function solicitud_ayuda ($page = 'forms/form-solicitud-ayuda')
 	{
 		helper('form');
 		helper('filesystem');
@@ -96,7 +96,7 @@ class Home extends BaseController
 		}
 	}
 	
-	public function justificacion_cheques($id, $nif, $tipoTramite)
+	public function justificacion_cheques ($id, $nif, $tipoTramite)
 	{
 		helper('form');
 		helper('filesystem');
@@ -130,7 +130,7 @@ class Home extends BaseController
 		echo view('templates/footer/footer_form');
 	}
 
-	public function subsanacion_idigital($page = 'forms/form-subsanacion-idigital')
+	public function subsanacion_idigital ($page = 'forms/form-subsanacion-idigital')
 	{
 		helper('form');
 		helper('filesystem');

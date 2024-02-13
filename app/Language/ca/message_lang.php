@@ -165,9 +165,12 @@ return [
     										<li><code>Programa III, «ISostenibilitat»</code> informes de la petjada de carboni en el marc del programa «Isostenibilitat».</li>
     										<li><code>Programa IV, «IGestió»</code> anàlisi d’avaluació de l’estat dels processos i proposta d’un Pla de millora i la seva execució, en el marc del programa «IGestió».</li>
                                  </ol>",                            
-   'programaiDigital'      => "<code>Programa I:</code> pla de transformació digital en el marc del programa «Idigital, estratègia de digitalització industrial», per a l'any 2024.",
-   'programaiExporta'      => "<code>Programa II:</code> pla d'internacionalització en el marc del programa «Iexporta», per a l'any 2024.",
-   'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible», per a l'any 2024.",
+   'programaiDigital'      => "<code>Programa I:</code> «IDigital», estratègia per impulsar la digitalització en la indústria de les Illes Balears.",
+   'programaiExporta'      => "<code>Programa II:</code> «IExporta», estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.",
+   'programaiSostenibilitatCorp' => "<code>Programa III:</code> «ISostenibilitat», estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears. Actuació: gasos amb efecte d’hivernacle de l’organització.",
+   'programaiSostenibilitatProd' => "<code>Programa III:</code> «ISostenibilitat», estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears. Actuació: gasos d’efecte d’hivernacle de producte.",
+   'programaiGestio'             => "«IGestió» estratègia per impulsar la implantació d’eines de gestió avançada i optimització de processos de la indústria de les Illes Balears",
+   'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible».",
    'programaIDIISBA'       => "Línia de finançament industrial IDI-ISBA",
    'info_tipo_empresa'                => "<ol>
    <li><code>Petita empresa:</code> Es considera petita empresa la que té menys de 50 treballadors i/o treballadores, un volum de negoci anual o un balanç general anual que no superi els 10 milions d’euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits per ser considerada PIME d’acord amb l’annex I del Reglament (CE) núm. 651/2014 de la Comissió Europea.</li>

@@ -1,28 +1,26 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <?php
     use App\Models\DocumentosGeneradosModel;
     use App\Models\MejorasExpedienteModel;
     use App\Models\ExpedientesModel;
 
     $modelDocumentosGenerados = new DocumentosGeneradosModel();
-  
     $modelMejorasSolicitud = new MejorasExpedienteModel();
-    $session = session();
-	$convocatoria = $expedientes['convocatoria'];
-   
     $modelExp = new ExpedientesModel();
 
-    /* if ($totalConvocatorias>1){ */
-        echo '<div class="alert alert-warning" role="alert">
-        Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
-    /* } */
+    $session = session();
 
-	$programa = $expedientes['tipo_tramite'];
+	$convocatoria = $expedientes['convocatoria'];
+    $programa = $expedientes['tipo_tramite'];
 	$id = $expedientes['id'];
 	$nifcif = $expedientes['nif'];
-    $convocatoriaEnCurso = $configuracion['convocatoria'];
+
+    echo '<div class="alert alert-warning" role="alert">Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
+
+    /* $convocatoriaEnCurso = $configuracion['convocatoria']; */
+    $convocatoriaEnCurso = $configuracionLinea['convocatoria'];
 
     $esAdmin = ($session->get('rol') == 'admin');
     $esConvoActual = ($convocatoria == $convocatoriaEnCurso);
@@ -36,7 +34,8 @@
 /* Si no hay IMPORTE AYUDA, Calcula el importe según el programa Y el número de convocatorias a las que se ha  presentado */
 
 if (!$expedientes['importeAyuda']) {
-    $objs = json_decode( $configuracion['programa']);
+    /* $objs = json_decode( $configuracion['programa']); */
+    $objs = json_decode( $configuracionLinea['programa']);
     /**
      * object(stdClass)#88 (3) { 
      * ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
@@ -72,16 +71,49 @@ if (!$expedientes['importeAyuda']) {
                     $importeAyuda = $objs->Programa_II->edicion->Segunda[0]*($objs->Programa_II->edicion->Segunda[1]/100);
             }
             break;
-        case 'Programa III':
+        case 'Programa III': /* Mantengo esta opción por compatibilidad con las CONVOS anteriores a 2024 */
             switch($totalConvocatorias) {
                 case 1:
                     $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
-                    //echo "--".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."--";
+                    //echo "p3 ".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]." p3";
                     break;
                 default:
                     $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
-                    //echo "++".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]."++";
+                    //echo "p3 def ".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]." p3 def";
             }
+            break;
+        case 'Programa III actuaciones producto':
+            switch($totalConvocatorias) {
+                case 1:
+                    $importeAyuda = $objs->Programa_III_ap->edicion->Primera[0]*($objs->Programa_III_ap->edicion->Primera[1]/100);
+                    //echo "p3 ap ".$objs->Programa_III_ap->edicion->Primera[0]." ".$objs->Programa_III_ap->edicion->Primera[1]." p3 ap";
+                    break;
+                default:
+                    $importeAyuda = $objs->Programa_III_ap->edicion->Segunda[0]*($objs->Programa_III_ap->edicion->Segunda[1]/100);
+                    //echo "p3 ap def ".$objs->Programa_III_ap->edicion->Primera[0]." ".$objs->Programa_III_ap->edicion->Primera[1]." p3 ap def";
+                }
+            break;
+        case 'Programa III actuaciones corporativas':
+            switch($totalConvocatorias) {
+                case 1:
+                    $importeAyuda = $objs->Programa_III_ac->edicion->Primera[0]*($objs->Programa_III_ac->edicion->Primera[1]/100);
+                    //echo "p3 ac ".$objs->Programa_III_ac->edicion->Primera[0]." ".$objs->Programa_III_ac->edicion->Primera[1]." p3 ac";
+                    break;
+                default:
+                    $importeAyuda = $objs->Programa_III_ac->edicion->Segunda[0]*($objs->Programa_III_ac->edicion->Segunda[1]/100);
+                    //echo "p3 ac def ".$objs->Programa_III_ac->edicion->Primera[0]." ".$objs->Programa_III_ac->edicion->Primera[1]." p3 ac def";
+                }
+            break;
+        case 'Programa IV':
+            switch($totalConvocatorias) {
+                case 1:
+                    $importeAyuda = $objs->Programa_IV->edicion->Primera[0]*($objs->Programa_IV->edicion->Primera[1]/100);
+                    //echo "p4 ".$objs->Programa_IV->edicion->Primera[0]." ".$objs->Programa_IV->edicion->Primera[1]." p4";
+                    break;
+                default:
+                    $importeAyuda = $objs->Programa_IV->edicion->Segunda[0]*($objs->Programa_IV->edicion->Segunda[1]/100);
+                    //echo "p4 def ".$objs->Programa_IV->edicion->Primera[0]." ".$objs->Programa_IV->edicion->Primera[1]." p4 def";
+                }
             break;
     }
         $resultadoActualizar = $modelExp->updateImporteAyuda ($id, $importeAyuda);
@@ -90,7 +122,7 @@ if (!$expedientes['importeAyuda']) {
     }
 	?>
 
-    <!----------------------------------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --->
+    <!----------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --------------------------->
 	<?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/execute-curl.php';?>
     <!--------------------------------------------------------------------------------------------------------------------->
 

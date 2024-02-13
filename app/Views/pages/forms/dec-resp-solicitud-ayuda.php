@@ -6,9 +6,9 @@ use App\Models\ConfiguracionModel;
 $modelConfig = new ConfiguracionModel();
 $data['configuracion'] = $modelConfig->where('activeGeneralData', 'SI')->first();	
 use App\Models\ConfiguracionLineaModel;
-$tipo_tramite = "XECS";
+
 $lineaConfig = new ConfiguracionLineaModel();
-$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
+$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
 
 class MYPDF extends TCPDF {
     //Page header
@@ -68,7 +68,7 @@ $pdf->AddPage();
 
 $html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi').$defaultLanguage."</b>";
 $html1 .= "<br>";
-$html1 .= lang('message_lang.codigo_dir3')." <b>".$data['configuracion']['emisorDIR3']."</b>";
+$html1 .= lang('message_lang.codigo_dir3')." <b>".$data['configuracion']['emisorDIR3']."</b> ";
 $html1 .= lang('message_lang.codigo_sia')." <b>".$data['configuracionLinea']['codigoSIA']."</b>";
 
 // set color for background
@@ -93,15 +93,23 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $html4 =  lang('message_lang.programa'); // el programa de ayudas seleccionado
 $pdf->Cell(0, 10, $html4, 1, 1, 'C');
-
-if ($tipo_tramite == "iDigital") {
+if ($tipo_tramite == "Programa I") {
 	$tipo_tramite = lang('message_lang.programaiDigital');
+}
+else if ($tipo_tramite == "Programa II") {
+	$tipo_tramite = lang('message_lang.programaiExporta');
+}
+else if ($tipo_tramite == "Programa III actuaciones corporativas") {
+	$tipo_tramite = lang('message_lang.programaiSostenibilitatCorp');
+}
+else if ($tipo_tramite == "Programa III actuaciones producto") {
+	$tipo_tramite = lang('message_lang.programaiSostenibilitatProd');
+}
+else if ($tipo_tramite == "Programa IV") {
+	$tipo_tramite = lang('message_lang.programaiGestio');
 }
 else if ($tipo_tramite == "ILS") {
 	$tipo_tramite = lang('message_lang.programaILS');
-}
-else if ($tipo_tramite == "iExporta") {
-	$tipo_tramite = lang('message_lang.programaiExporta');
 }
 
 $html5 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";

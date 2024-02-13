@@ -9,7 +9,7 @@
     <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ILS');?>" target="_self">Expedients</a></h2>
 	  <fieldset>
       <div>
-        <span class="badge text-bg-success" id="totalSolicitudesILSAdheridas_2022"></span>
+        <span class="badge text-bg-success" id="totalSolicitudesILSAdheridas"></span>
       </div>
 	  </fieldset>
   </section>
@@ -19,76 +19,82 @@
     $modelExp = new ExpedientesModel();
     $totalexpedAZero = "<span class='badge bg-secondary'>".$modelExp->getWithZeroIdSol()."</span>";
     ?>
-<!-----------------------------------------------------CHEQUES-------------------------------------------------------------->
+<!-----------------------------------------------------CHEQUES---------------------------------------------------------------->
 <!-- <button class="accordion"><h1>XECS</h1></button> -->
 <!-- <div class="panel" style="display:block;"> -->
-<!------------------------------------------------------2024---------------------------------------------------------------->
+<!------------------------------------------------------2024------------------------------------------------------------------>
 <button class="accordion accordion--convo"><h1>Xecs consultoria</h1></button>
-
 <div class="row">
   <div class="col-sm-12 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Convocatòria 2024</h5>
-        <p class="d-inline-flex gap-1">
-          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PI" aria-expanded="false" aria-controls="convo2024PI">
-            Programa I (iDigital)
-          </button>
-        </p>
-        <div class="collapse" id="convo2024PI">
-          <div class="card card-body">
-          <div>
-            <span class="badge text-bg-success" id="totalSolicitudesI_2024"></span>
-            <span class="badge text-bg-success" id="importeConcedidoI_2024"></span>
-          </div>
-          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2024');?>" class="btn btn-primary">+info</a>
-          </div>
-        </div>
-        <p class="d-inline-flex gap-1">
-          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PII" aria-expanded="false" aria-controls="convo2024PII">
-            Programa II (iExporta)
-          </button>
-        </p>
-        <div class="collapse" id="convo2024PII">
-          <div class="card card-body">
-          <div>
-            <span class="badge text-bg-success" id="totalSolicitudesII_2024"></span>
-            <span class="badge text-bg-success" id="importeConcedidoII_2024"></span>
-          </div>
-            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2024');?>" class="btn btn-primary">+info</a>
-          </div>
-        </div>
-        <p class="d-inline-flex gap-1">
-          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PIII" aria-expanded="false" aria-controls="convo2024PIII">
-            Programa III (ISostenibilitat)
-          </button>
-        </p>
-        <div class="collapse" id="convo2024PIII">
-          <div class="card card-body">
-          <div>
-            <span class="badge text-bg-success" id="totalSolicitudesIII_2024"></span>
-            <span class="badge text-bg-success" id="importeConcedidoIII_2024"></span>
-          </div>
-            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2024');?>" class="btn btn-primary">+info</a>
-          </div>
-        </div>
-        <p class="d-inline-flex gap-1">
-        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#convo2024PIV" aria-expanded="false" aria-controls="convo2024PIV">
-          Programa IV (IGestió)
-        </button>
-        </p>
-        <div class="collapse" id="convo2024PIV">
-          <div class="card card-body">
-          <div>
-            <span class="badge text-bg-success" id="totalSolicitudesIV_2024"></span>
-            <span class="badge text-bg-success" id="importeConcedidoIV_2024"></span>
-          </div>
-            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa IV/2024');?>" class="btn btn-primary">+info</a>
+    <div class="accordion" id="accordionExample">
+      <h5 class="card-title">Convocatòria 2024</h5>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Programa I (iDigital)</button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>«IDigital»</strong>, estratègia per impulsar la digitalització en la indústria de les Illes Balears.<br>
+            <span class="badge text-bg-success" id="totalSolicitudesI_2024">0</span>
+            <span class="badge text-bg-success" id="importeConcedidoI_2024">0.00</span>
           </div>
         </div>
       </div>
-    </div> 
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Programa II (iExporta)</button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>«IExporta»</strong>, estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.<br>
+            <span class="badge text-bg-success" id="totalSolicitudesII_2024">0</span>
+            <span class="badge text-bg-success" id="importeConcedidoII_2024">0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Programa III (iSostenibilitat)</button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
+            <ol>
+              <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització:
+                <ol>
+                  <li><span class="badge text-bg-success" id="totalSolicitudesIII_org_2024">0</span></li>
+                  <li><span class="badge text-bg-success" id="importeConcedidoIII_org_2024">0.00</span></li>
+                </ol>
+              </li>
+              <li>Identificació i càlcul de les emissions de gasos d'efecte d'hivernacle de producte
+                <ol>
+                  <li><span class="badge text-bg-success" id="totalSolicitudesIII_prod_2024">0</span></li>
+                  <li><span class="badge text-bg-success" id="importeConcedidoIII_prod_2024">0.00</span></li>
+                </ol>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Programa IV (iGestió)</button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>«IGestió»</strong>, estratègia per impulsar la implantació d'eines de gestió avançada i optimització de processos de la indústria de les Illes Balears.<br>
+            <span class="badge text-bg-success" id="totalSolicitudesIV_2024">0</span>
+            <span class="badge text-bg-success" id="importeConcedidoIV_2024">0.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div> 
+
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="card">
       <div class="card-body">
@@ -237,7 +243,7 @@
     </div>
   </div>
 </div>
-<!-----------------------------------------------2020----------------------------------------------------------------------->
+<!------------------------------------------------------2020------------------------------------------------------------------>
 <button class="accordion accordion--convo"><h1>Convocatòria 2020</h1></button>
   <div class="panel">
     <section id="sectioniDigital2020">
@@ -272,9 +278,7 @@
 </div>
 </div>  
 <!-------------------------------------------------------------------------------------------------------------------------->
-
 </div>
-
 
 <script>
   var acc = document.getElementsByClassName("accordion");

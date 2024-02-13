@@ -163,9 +163,12 @@ return [
                      <li><code>Programa IV, «IGestió»</code> análisis de evaluación del estado de los procesos y propuesta de un plan de mijora y su ejecución, en el marco del programa «IGestió».</li>
                   </ol>",
    
-   'programaiDigital'       => "<code>Programa I:</code> plan de transformación digital en el marco del programa «Idigital, estrategia de digitalización industrial», para el año 2023.",
-   'programaiExporta'       => "<code>Programa II:</code> plan de internacionalización en el marco del programa «Iexporta», para el año 2023.",
-   'programaILS'            => "<code>Programa III:</code> informes de la huella de carbono corporativa, dentro del marco del programa «isostenibilitat, industria local sostenible», para el año 2023.",
+   'programaiDigital'      => "<code>Programa I:</code> «IDigital», estrategia para impulsar la digitalización en la industria de les Illes Balears.",
+   'programaiExporta'      => "<code>Programa II:</code> «IExporta», estrategia para impulsar la internacionalización de las empresas industriales de les Illes Balears.",
+   'programaiSostenibilitatCorp' => "<code>Programa III:</code> «ISostenibilitat», estrategia para impulsar la mejora de la sostenibilidad de la industria de les Illes Balears. Actuación: gases de efecto invernadero de la organización.",
+   'programaiSostenibilitatProd' => "<code>Programa III:</code> «ISostenibilitat», estrategia para impulsar la mejora de la sostenibilidad de la industria de les Illes Balears. Actuación: gases de efecto invernadero del producto.",
+   'programaiGestio'             => "«IGestió» estrategia para impulsar la implantación de herramientas de gestión avanzada y optimización de procesos de la industria de les Illes Balears.",
+   'programaILS'            => "<code>Programa III:</code> informes de la huella de carbono corporativa, dentro del marco del programa «isostenibilitat, industria local sostenible».",
    'programaIDIISBA'        => "Línea de financiación industrial IDI-ISBA",
    
    'info_tipo_empresa'                => "<ol>

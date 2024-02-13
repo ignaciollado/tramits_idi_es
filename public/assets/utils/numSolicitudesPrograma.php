@@ -10,7 +10,6 @@ $convocatoria = str_replace("%22", "'", $itemsArray[0]);
 $tipoTramite = str_replace("%22", "'", $itemsArray[1]);
 $tipoTramite = str_replace("%20", " ", $tipoTramite);
 $query = 'SELECT * FROM pindust_expediente WHERE (situacion="Finalizado") AND '.$tipoTramite.' AND '.$convocatoria;
-/* echo $query; */
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {

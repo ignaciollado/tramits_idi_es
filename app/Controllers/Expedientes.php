@@ -291,13 +291,13 @@ class Expedientes extends Controller
 
 		$db = \Config\Database::connect();
 
-		//-----------------------------------Comprueba si ya hay algún documento de justificación-------------------
+		//----------------------------------- Comprueba si ya hay algún documento de justificación --------------------
 
 		$data['totalDocsJustifPlan'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PlanTransformacionDigital', $id);
 		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
 		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
 
-		//-----------------------------Obtiene el detalle del Expediente----------------------------------------------
+		//-----------------------------Obtiene el detalle del Expediente-----------------------------------------------
 
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 		$idExp =  $data['expedientes']['idExp'];
@@ -306,7 +306,7 @@ class Expedientes extends Controller
 		$solicitante = mb_strtoupper($data['expedientes']['empresa']);
 		$nifcif = strtoupper($data['expedientes']['nif']);
 
-		if ($tipo_tramite == 'Programa III' || $tipo_tramite == 'Programa II' || $tipo_tramite == 'Programa I') {
+		if ($tipo_tramite == 'Programa III actuaciones corporativas' || $tipo_tramite == 'Programa III actuaciones producto' || $tipo_tramite == 'Programa II' || $tipo_tramite == 'Programa I') {
 			$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData('XECS');
 		} else {
 			$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData($tipo_tramite);
@@ -1905,6 +1905,7 @@ class Expedientes extends Controller
 
 	public function do_doc_informe_resumen_upload($id, $nif, $idioma, $convocatoria)
 	{
+
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Informe resumen
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -1980,6 +1981,7 @@ class Expedientes extends Controller
 
 	public function do_doc_compromiso_reduccion_upload($id, $nif, $idioma, $convocatoria)
 	{
+
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Informe resumen
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2055,6 +2057,7 @@ class Expedientes extends Controller
 
 	public function do_doc_itinerario_formativo_upload($id, $nif, $idioma, $convocatoria)
 	{
+
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un documento 
 				de itinerario formativo que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2130,6 +2133,7 @@ class Expedientes extends Controller
 
 	public function do_doc_informe_gei_upload($id, $nif, $idioma, $convocatoria)
 	{
+
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un informe GEI
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2205,6 +2209,7 @@ class Expedientes extends Controller
 
 	public function do_doc_escritura_empresa_upload($id, $nif, $idioma, $convocatoria)
 	{
+
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado una Escritura de la Empresa
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 
@@ -2280,6 +2285,7 @@ class Expedientes extends Controller
 
 	public function do_doc_certificado_iae_upload($id, $nif, $idioma, $convocatoria)
 	{
+
 		/* Puede ocurrir que la empresa, al solicitar la adhesión a ILs, nos haya enviado un Certificado IAE
 		 que no sea válido. Entonces, se lo solicitamos nuevamente. */
 

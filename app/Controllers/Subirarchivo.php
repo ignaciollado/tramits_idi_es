@@ -15,9 +15,9 @@ class SubirArchivo extends BaseController
 		$idioma = get_cookie('CurrentLanguage');
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
-		$tipo_tramite = "XECS";
+
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
 		$convocatoria =  $data['configuracionLinea']['convocatoria'];
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 		$request = \Config\Services::request();
@@ -202,7 +202,7 @@ class SubirArchivo extends BaseController
 		}
 		$hay_consultor = "si"; 
 		
-		$importeAyuda = explode(',', $data['configuracion']['programa']);
+		$importeAyuda = explode(',', $data['configuracionLinea']['programa']);
 		//------------------------------- Busco el importe de la ayuda correspondiente al programa y la convocatoria -------------------//
 		$programaImporteAyuda = 0;
 		foreach($importeAyuda as $x => $x_value) {  
@@ -214,7 +214,6 @@ class SubirArchivo extends BaseController
 
 		$importeAyuda = $programaImporteAyuda;			
 		//-----------------------------------------------------------------------------------------------------------------------------//
-		
 		$data_exp = [
 				'idExp' => $idExp,
 				'tipo_tramite' => $tipoTramite,
@@ -524,10 +523,11 @@ class SubirArchivo extends BaseController
  
 		/* $modelConfig = new ConfiguracionModel();
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();  */
-		$tipo_tramite =  'ILS';
+
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ILS');
 		$convocatoria =   $data['configuracion']['convocatoria'];
+		$tipo_tramite = 'ILS';
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 	 
 		$db = \Config\Database::connect();
@@ -542,7 +542,6 @@ class SubirArchivo extends BaseController
 		 	$idExp++;
 			}
 
-	 	$tipoTramite = "ILS"; // $this->request->getVar('opc_programa');
 	 	$tipoSolicitante = $this->request->getVar('tipo_solicitante');
  
 	 	date_default_timezone_set("Europe/Madrid");
@@ -671,7 +670,7 @@ class SubirArchivo extends BaseController
 			'telefono' => $this->request->getVar('telefono_cont'),
 			'telefono_rep' => $tel_representante,  // se usa para notificar
 			'email_rep' => $mail_representante,	// se usa para notificar
-			'tipo_tramite' => $tipoTramite,
+			'tipo_tramite' => $tipo_tramite,
 			'iae' => $this->request->getVar('codigoIAE'),
 			'hay_consultor' => $hay_consultor,
 			
@@ -729,7 +728,7 @@ class SubirArchivo extends BaseController
 						'name' => $copiaDocumentoIdentificacion->getName(),
 						'type' => $copiaDocumentoIdentificacion->getClientMimeType(),
 						'cifnif_propietario' => $nif,
-						'tipo_tramite' => $tipoTramite,
+						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_enviardocumentoIdentificacion',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
@@ -754,7 +753,7 @@ class SubirArchivo extends BaseController
 						'name' => $corrientePagoATIB->getName(),
 						'type' => $corrientePagoATIB->getClientMimeType(),
 						'cifnif_propietario' => $nif,
-						'tipo_tramite' => $tipoTramite,
+						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_certificadoATIB',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
@@ -780,7 +779,7 @@ class SubirArchivo extends BaseController
 					'name' => $sedeSocial->getName(),					
 					'type' => $sedeSocial->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' =>$tipoTramite,
+					'tipo_tramite' =>$tipo_tramite,
 					'corresponde_documento' => 'file_escritura_empresa',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
@@ -805,7 +804,7 @@ class SubirArchivo extends BaseController
 				 'name' => $memoriaTecnica->getName(),					
 				 'type' => $memoriaTecnica->getClientMimeType(),
 				 'cifnif_propietario' => $nif,
-				 'tipo_tramite' =>$tipoTramite,
+				 'tipo_tramite' =>$tipo_tramite,
 				 'corresponde_documento' => 'file_memoriaTecnica',
 				 'datetime_uploaded' => time(),
 				 'convocatoria' => $convocatoria,
@@ -830,7 +829,7 @@ class SubirArchivo extends BaseController
 					'name' => $certificadoIAE->getName(),					
 					'type' => $certificadoIAE->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' =>$tipoTramite,
+					'tipo_tramite' =>$tipo_tramite,
 					'corresponde_documento' => 'file_certificadoIAE',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
@@ -854,7 +853,7 @@ class SubirArchivo extends BaseController
 					 'name' => $nifEmpresa->getName(),
 					 'type' => $nifEmpresa->getClientMimeType(),
 					 'cifnif_propietario' => $nif,
-					 'tipo_tramite' => $tipoTramite,
+					 'tipo_tramite' => $tipo_tramite,
 					 'corresponde_documento' => 'file_nifEmpresa',
 					 'datetime_uploaded' => time(),
 					 'convocatoria' => $convocatoria,
@@ -879,7 +878,7 @@ class SubirArchivo extends BaseController
 					 'name' => $logotipoEmpresaIls->getName(),
 					 'type' => $logotipoEmpresaIls->getClientMimeType(),
 					 'cifnif_propietario' => $nif,
-					 'tipo_tramite' => $tipoTramite,
+					 'tipo_tramite' => $tipo_tramite,
 					 'corresponde_documento' => 'file_logotipoEmpresaIls',
 					 'datetime_uploaded' => time(),
 					 'convocatoria' => $convocatoria,
@@ -905,7 +904,7 @@ class SubirArchivo extends BaseController
 					 'name' => $declaracionResponsableIls->getName(),
 					 'type' => $declaracionResponsableIls->getClientMimeType(),
 					 'cifnif_propietario' => $nif,
-					 'tipo_tramite' => $tipoTramite,
+					 'tipo_tramite' => $tipo_tramite,
 					 'corresponde_documento' => 'file_lineaProduccionBalearesIls',
 					 'datetime_uploaded' => time(),
 					 'convocatoria' => $convocatoria,
@@ -929,7 +928,7 @@ class SubirArchivo extends BaseController
 					 'name' => $informeResumenIls->getName(),
 					 'type' => $informeResumenIls->getClientMimeType(),
 					 'cifnif_propietario' => $nif,
-					 'tipo_tramite' => $tipoTramite,
+					 'tipo_tramite' => $tipo_tramite,
 					 'corresponde_documento' => 'file_informeResumenIls',
 					 'datetime_uploaded' => time(),
 					 'convocatoria' => $convocatoria,
@@ -953,7 +952,7 @@ class SubirArchivo extends BaseController
 						'name' => $informeInventarioIls->getName(),
 						'type' => $informeInventarioIls->getClientMimeType(),
 						'cifnif_propietario' => $nif,
-						'tipo_tramite' => $tipoTramite,
+						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_informeInventarioIls',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
@@ -977,7 +976,7 @@ class SubirArchivo extends BaseController
 						'name' => $certificadoVerificacionISO->getName(),
 						'type' => $certificadoVerificacionISO->getClientMimeType(),
 						'cifnif_propietario' => $nif,
-						'tipo_tramite' => $tipoTramite,
+						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_certificado_verificacion_ISO',
 						'datetime_uploaded' => time(),
 						'convocatoria' 		=> $convocatoria,
@@ -1001,7 +1000,7 @@ class SubirArchivo extends BaseController
 						'name' => $certificadoItinerarioFormativo->getName(),
 						'type' => $certificadoItinerarioFormativo->getClientMimeType(),
 						'cifnif_propietario' => $nif,
-						'tipo_tramite' => $tipoTramite,
+						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_certificado_itinerario_formativo',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
@@ -1025,7 +1024,7 @@ class SubirArchivo extends BaseController
 						'name' => $modeloEjemploIls->getName(),
 						'type' => $modeloEjemploIls->getClientMimeType(),
 						'cifnif_propietario' => $nif,
-						'tipo_tramite' => $tipoTramite,
+						'tipo_tramite' => $tipo_tramite,
 						'corresponde_documento' => 'file_modeloEjemploIls',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,

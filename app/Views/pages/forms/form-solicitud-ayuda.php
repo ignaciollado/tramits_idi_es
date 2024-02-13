@@ -37,6 +37,11 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>
 </div>
 
+<div class="spinner-grow text-info ocultar" role="status" id="spinner-loading">
+  <span class="visually-hidden"><?php echo lang('message_lang.sending');?></span>
+</div>
+
+
 <!-- One "tab" for each step in the form: -->
 <!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD ---------------------------------->
 <div class="tab">
@@ -93,7 +98,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<div id="formbox" class="formbox">
     <fieldset><span class="ocultar" id="aviso"><?php echo lang('message_lang.marque_una_opcion');?></span>
 			 <h2><?php echo lang('message_lang.programa');?></h2>
-
+		<ul>
 	 	<label class="container-radio"><h6><?php echo lang('message_lang.opc_iDigital');?></h6>
 			<input title="<?php echo lang('message_lang.opc_iDigital');?>" onChange="javaScript: opcionMarcada(this)" type="radio" required name="opc_programa" id="Programa_I" value="Programa I">
 			<span class="checkmark"></span>
@@ -104,21 +109,21 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 		</label>		
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs');?></h6>
 		</label>
-		<ul>
-			<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_organizacion');?></h6>
-				<input title="<?php echo lang('message_lang.opc_iLs_organizacion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_corporativo" value="Programa III actuaciones corporativas">
-				<span class="checkmark"></span>
-			</label>		
-			<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_producto');?></h6>
-				<input title="<?php echo lang('message_lang.opc_iLs_producto');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_producto" value="Programa III actuaciones producto">
-				<span class="checkmark"></span>
-			</label>
-		</ul>
+		
+		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_organizacion');?></h6>
+			<input title="<?php echo lang('message_lang.opc_iLs_organizacion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_corporativo" value="Programa III actuaciones corporativas">
+			<span class="checkmark"></span>
+		</label>		
+		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_producto');?></h6>
+			<input title="<?php echo lang('message_lang.opc_iLs_producto');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_producto" value="Programa III actuaciones producto">
+			<span class="checkmark"></span>
+		</label>
+		
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iGestion');?></h6>
 			<input title="<?php echo lang('message_lang.opc_iGestion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_IV" value="Programa IV">
 			<span class="checkmark"></span>
 		</label>
-
+		</ul>
 		<!-- <label class="container-radio">
 			<span class="tooltiptext_idi"> <?php echo lang('message_lang.info_programa');?> </span>
 		</label> -->
@@ -443,7 +448,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>-->
 </div>
 </form>
-
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
