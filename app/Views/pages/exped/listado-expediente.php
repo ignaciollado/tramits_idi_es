@@ -16,7 +16,6 @@
 <form onsubmit ="guardaFiltrado();" action="<?php echo base_url('public/index.php/expedientes/filtrarexpedientes');?>" method="post"> 
 <div class="filter-area">
 	
-
 	<div class="filter-area-col">
 		<div class="form-group">
     		<input class="form-control-itramits" required placeholder="Convocatòria ..." type="text" list="convocatoria" name="convocatoria_fltr" id="convocatoria_fltr" minlength="4" maxlength="4" value = "<?php echo $session->get('convocatoria_fltr');?>">
@@ -43,6 +42,7 @@
 			  	<option value="Programa iDigital 20">
     			<option value="Programa I">
 					<option value="Programa II">
+					<option value="Programa III">	
     			<option value="Programa III actuaciones corporativas">
     			<option value="Programa III actuaciones producto">
 					<option value="Programa IV">
@@ -158,18 +158,17 @@
   <div class = "header-wrapper">
    	<div <?php echo($sort_by == 'fecha_completado' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_completado/" . (($sort_order == 'ASC' && $sort_by == 'fecha_completado') ? 'DESC' : 'ASC'), 'https');?>">Data complet</a>
-				</div>
-	<div <?php echo($sort_by == 'tipo_tramite' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		</div>
+		<div <?php echo($sort_by == 'tipo_tramite' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/tipo_tramite/" . (($sort_order == 'ASC' && $sort_by == 'tipo_tramite') ? 'DESC' : 'ASC'), 'https');?>">Programa</a>					
-        </div>
-	<div <?php echo($sort_by == 'idExp' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+    </div>
+		<div <?php echo($sort_by == 'idExp' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/idExp/" . (($sort_order == 'ASC' && $sort_by == 'idExp') ? 'DESC' : 'ASC'), 'https');?>">N. exped.</a>
-				</div>
-	<div <?php echo($sort_by == 'empresa' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		</div>
+		<div <?php echo($sort_by == 'empresa' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa/" . (($sort_order == 'ASC' && $sort_by == 'empresa') ? 'DESC' : 'ASC'), 'https');?>">Sol·licitant</a>					
-      	</div>
+    </div>
 	<div class="header-wrapper-col">
-
 		<?php if (  strtoupper($session->get('programa_fltr')) === 'ILS' ) {?>
 			 Visible a la web ILS
 		<?php } elseif ( strtoupper($session->get('programa_fltr')) === 'IDI-ISBA' ) {
@@ -178,11 +177,13 @@
 			<?php } else {?>
 				Import de l'ajuda
 		<?php }?>
-
   </div>
 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Representant legal</a>
-	</div>	
+	</div>
+	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Ordre pagament</a>
+	</div>
 	<div <?php echo($sort_by == 'situacion' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
 	</div>
@@ -201,10 +202,10 @@
 					?>
   	<div id ="fila" class = "detail-wrapper">
    		<span id = "fechaComletado" class = "detail-wrapper-col"><?php if ($item['fecha_completado'] != '0000-00-00 00:00:00' && $item['fecha_completado'] != '1970-01-01 01:00:00') {echo $item['fecha_completado'];} ?></span>
-		<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
-		<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
-		<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
-
+			<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
+			<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
+			<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa']; ?></span>
+			
 		<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
 				<span id = "semaforo" class = "detail-wrapper-col">
 					<?php 
@@ -222,7 +223,7 @@
 		<?php }?>
 
 			<span id = "nombre_rep" class = "detail-wrapper-col"><?php echo $item['nombre_rep']; ?></span>
-
+			<span id = "ordenDePago" class = "detail-wrapper-col"><?php echo $item['ordenDePago']; ?></span>
 			<span id = "situacion" class = "detail-wrapper-col">			
 			
 			<?php 

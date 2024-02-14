@@ -124,6 +124,7 @@ async function totalSolicitudesPrograma(convo, stage) {
     if (stage == 'Programa iDigital 20') { resultadoP = document.getElementById("totaliDigital2020"); }
     if (stage == 'Programa I') {resultadoP = document.getElementById("totalSolicitudesI_"+convo)}
     if (stage == 'Programa II') {resultadoP = document.getElementById("totalSolicitudesII_"+convo)}
+    if (stage == 'Programa III') {resultadoP = document.getElementById("totalSolicitudesIII_"+convo)}
     if (stage == 'Programa III actuaciones corporativas') {resultadoP = document.getElementById("totalSolicitudesIII_org_"+convo)}
     if (stage == 'Programa III actuaciones producto') {resultadoP = document.getElementById("totalSolicitudesIII_prod_"+convo)}
     if (stage == 'Programa IV') {resultadoP = document.getElementById("totalSolicitudesIV_"+convo)}
@@ -136,17 +137,14 @@ async function importeTotalSolicitadoPrograma(convo, stage) {
     let resultadoP;
 	let recurso = '/public/assets/utils/importeTotalSolicitadoPrograma.php?convocatoria="'+ convo + '"/tipo_tramite="' + stage +'"';
 	const importeSolicitado = await fetch(recurso).then(res => res.json());
-    /*     console.log(JSON.stringify(importeSolicitado));
-    console.log ("Importe total solicitado: "+convo+" "+stage+" "+importeSolicitado); */
     //if (stage == 'Programa iDigital 20')  { resultadoP = document.getElementById("importeTotaliDigital2020"); }
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeTotalI_"+convo); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeTotalII_"+convo); }
-    /* if (stage == 'Programa III')  { resultadoP = document.getElementById("importeTotalIII_"+convo); } */
+    if (stage == 'Programa III')  { resultadoP = document.getElementById("importeTotalIII_"+convo); }
     if (stage == 'Programa III actuaciones corporativas') { resultadoP = document.getElementById("importeTotalIII_org_"+convo); }
     if (stage == 'Programa III actuaciones producto') { resultadoP = document.getElementById("importeTotalIII_prod_"+convo); }
     if (stage == 'Programa IV') { resultadoP = document.getElementById("importeTotalIV_"+convo); }
-    console.log (`convo: ${convo} stage: ${stage} resultadoP: ${resultadoP}`)
-    //resultadoP.innerHTML = "Import total sol·licitat: "+ new Intl.NumberFormat().format(importeSolicitado) + " €";
+    resultadoP.innerHTML = "Import total sol·licitat: "+ new Intl.NumberFormat().format(importeSolicitado) + " €";
 }
 
 async function importeTotalConcedidoPrograma(convo, stage) {
@@ -156,7 +154,7 @@ async function importeTotalConcedidoPrograma(convo, stage) {
     //if (stage == 'Programa iDigital 20')  { resultadoP = document.getElementById("importeConcedidoiDigital2020"); }
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeConcedidoI_"+convo); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeConcedidoII_"+convo); }
-    /* if (stage == 'Programa III')  { resultadoP = document.getElementById("importeConcedidoIII_"+convo); } */
+    if (stage == 'Programa III')  { resultadoP = document.getElementById("importeConcedidoIII_"+convo); }
     if (stage == 'Programa III actuaciones corporativas') { resultadoP = document.getElementById("importeConcedidoIII_org_"+convo); }
     if (stage == 'Programa III actuaciones producto') { resultadoP = document.getElementById("importeConcedidoIII_prod_"+convo); }
     if (stage == 'Programa IV') { resultadoP = document.getElementById("importeConcedidoIV_"+convo); }
@@ -171,32 +169,25 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
     if (situacion == 'nohapasadoREC') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds pendents'
     }
-
     if (situacion == 'inicioConsultoria') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA';
     }
-
     if (situacion == 'Denegado') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds DENEGADES'
     }
-
     if (situacion == 'empresaDenegada') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds DENEGADES'
     }
-
     if (situacion == 'Finalizado') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds FINALITZADES'
     }
-
     if (situacion == 'empresaAdherida') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> empreses ADHERIDES'
     }
-
     if (situacion == 'Justificado') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds JUSTIFICADES'
     }
 
-    console.log (`Total pendientes: ${convo} ${stage} ${situacion} ${totalSolicitudes}`)
     if (stage == 'Programa iDigital 20')  { resultadoP = document.getElementById("totalSolicitudesiDigital2020Pendientes"); }
     if (stage == 'Programa I')  { resultadoP = document.getElementById(elementID); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById(elementID); }
@@ -206,7 +197,6 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
     if (stage == 'Programa IV')  { resultadoP = document.getElementById(elementID); }
 
     if (stage == 'ILS')  { resultadoP = document.getElementById(elementID); }
-    console.log ("situacion ", situacion)
     resultadoP.innerHTML = "<strong>" + situacion + "</strong>";
 
 }

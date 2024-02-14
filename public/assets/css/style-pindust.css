@@ -788,7 +788,7 @@ code {
 
 .header-wrapper {
 	display: inline-grid;
-  	grid-template-columns: 10% 10% 10% 20% 10% 20% 10% 10%;
+  	grid-template-columns: 10% 10% 10% 15% 10% 15% 10% 10% 10%;
   	/*background-color: #fda500;*/
   	padding-bottom: 10px;
 	width: 100%;
@@ -806,7 +806,7 @@ code {
 }
 
 .header-wrapper-col {
-  	background-color: #abadae; /*rgba(255, 255, 255, 0.8);*/
+  	background-color: rgba(171, 173, 174, 1); /*rgba(255, 255, 255, 0.8);*/
   	border: 1px solid rgba(0, 0, 0, 0.8);
   	padding: 10px;
   	text-align: left;
@@ -814,7 +814,7 @@ code {
 
 .detail-wrapper {
 	display: inline-grid;
-  	grid-template-columns: 10% 10% 10% 20% 10% 20% 10% 10%;
+  	grid-template-columns: 10% 10% 10% 15% 10% 15% 10% 10% 10%;
   	background-color: #f1efef;
   	padding: 2px;
 	width: 100%;
@@ -858,10 +858,10 @@ code {
 }
 }
 .detail-wrapper-col {
-  background-color: #1AB394; /*rgba(255, 255, 255, 0.8);*/
+  background-color: rgba(12, 60, 50, 1.0);
   color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 1.5rem;
+  padding: 1rem;
   font-size: 1em;
   text-align: left;
 }
@@ -952,7 +952,7 @@ code {
 	cursor: pointer;
 }
 .btn-itramits-info {
-	color: rgba(0, 0, 0, 1.0);
+	color: rgba(255, 255, 255, 1.0)!important;
 	width: 95%;
 	font-size: 1.2em !Important;
 }
