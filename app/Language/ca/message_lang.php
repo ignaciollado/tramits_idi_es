@@ -78,7 +78,7 @@ return [
 
    'titulo_justificacion_idigital'	  => "Ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears. Requeriment de justificació.",   
    'titulo_requerimiento_idigital'	  => "Requeriment documentació/informació adicional.",
-   'subtitulo_sol_idigital'			  => "La sol·licitud d'ajuda i/o subvenció per a l'any 2023 està pendent de signar, si us plau, entre en el document i signi'l. 
+   'subtitulo_sol_idigital'			  => "La sol·licitud d'ajuda i/o subvenció està pendent de signar, si us plau, entre en el document i signi'l. 
    RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
    https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586
    

@@ -76,7 +76,7 @@ return [
 
    'titulo_justificacion_idigital'	  => "Ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares. Requerimiento de justificación.",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
-   'subtitulo_sol_idigital'			  => "La solicitud de ayuda y/o subvención para el año 2023 está pendiente de firmar, por favor, entre en el documento y fírmela. 
+   'subtitulo_sol_idigital'			  => "La solicitud de ayuda y/o subvención está pendiente de firmar, por favor, entre en el documento y fírmela. 
    RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
 	https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586
    

@@ -498,7 +498,7 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 	.container {
     max-width: 1140px;
     border: 1px solid black;
-    background-color: #50ed9f;
+    background-color: #d9eee4;
     color: #000;
     border-radius: .5rem;
 		padding: 1rem;

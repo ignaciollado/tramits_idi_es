@@ -224,13 +224,14 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2024', 'Programa III actuaciones corporativas', 'inicioConsultoria', 'totalSolicitudesIIIPendientes_org_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuaciones producto', 'inicioConsultoria', 'totalSolicitudesIIIPendientes_prod_2024')
     totalSolicitudesPorSituacion('2024', 'Programa IV', 'inicioConsultoria', 'totalSolicitudesIIIPendientes_2024')
+*/
 
     totalSolicitudesPorSituacion('2024', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2024')
     totalSolicitudesPorSituacion('2024', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuaciones corporativas', 'nohapasadoREC', 'totalSolicitudesIIINoREC_org_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuaciones producto', 'nohapasadoREC', 'totalSolicitudesIIINoREC_prod_2024')
     totalSolicitudesPorSituacion('2024', 'Programa IV', 'nohapasadoREC', 'totalSolicitudesIIINoREC_2024')
-
+/*
     totalSolicitudesPorSituacion('2024', 'Programa I', 'Justificado', 'totalSolicitudesIJustificado_2024')
     totalSolicitudesPorSituacion('2024', 'Programa II', 'Justificado', 'totalSolicitudesIIJustificado_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuaciones corporativas', 'Justificado', 'totalSolicitudesIIIJustificado_org_2024')
@@ -245,7 +246,6 @@ async function totalSolicitudesPrograma(convo, stage) {
     let resultadoP;
 	let recurso = '/public/assets/utils/numSolicitudesPrograma.php?convocatoria="'+ convo + '"/tipo_tramite="' + stage +'"'
 	const totalSolicitudes = await fetch(recurso).then(res => res.json())
-    console.log (`${convo} ${stage} ${totalSolicitudes}`)
     if (stage == 'Programa iDigital 20') { resultadoP = document.getElementById("totaliDigital2020"); }
     if (stage == 'Programa I') {resultadoP = document.getElementById("totalSolicitudesI_"+convo)}
     if (stage == 'Programa II') {resultadoP = document.getElementById("totalSolicitudesII_"+convo)}
@@ -278,7 +278,6 @@ async function importeTotalConcedidoPrograma(convo, stage) {
     let resultadoP;
 	let recurso = '/public/assets/utils/importeTotalConcedidoPrograma.php?convocatoria="'+ convo + '"/tipo_tramite="' + stage +'"';
 	const importeConcedido = await fetch(recurso).then(res => res.json())
-    console.log ("Importe total concedido: "+convo+" "+stage+" "+importeConcedido)
     //if (stage == 'Programa iDigital 20')  { resultadoP = document.getElementById("importeConcedidoiDigital2020"); }
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeConcedidoI_"+convo); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeConcedidoII_"+convo); }
@@ -286,7 +285,6 @@ async function importeTotalConcedidoPrograma(convo, stage) {
     if (stage == 'Programa III actuaciones corporativas') { resultadoP = document.getElementById("importeConcedidoIII_org_"+convo); }
     if (stage == 'Programa III actuaciones producto') { resultadoP = document.getElementById("importeConcedidoIII_prod_"+convo); }
     if (stage == 'Programa IV') { resultadoP = document.getElementById("importeConcedidoIV_"+convo); }
-    console.log (`convo: ${convo} stage: ${stage} resultadoP: ${resultadoP}`)
     resultadoP.innerHTML = "Import concedit: "+ new Intl.NumberFormat().format(importeConcedido) + " €";
 }
 
@@ -296,7 +294,7 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
 	const totalSolicitudes = await fetch(recurso).then(res => res.json());
     
     if (situacion == 'nohapasadoREC') {
-        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds NO HAN PASSAT PEL REC'
+        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds pendents'
     }
 
     if (situacion == 'inicioConsultoria') {
@@ -323,17 +321,16 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds JUSTIFICADES'
     }
 
-    /* console.log (`Total pendientes: ${convo} ${stage} ${situacion} ${totalSolicitudes}`); */
+    console.log (`Total pendientes: ${convo} ${stage} ${situacion} ${totalSolicitudes}`)
     if (stage == 'Programa iDigital 20')  { resultadoP = document.getElementById("totalSolicitudesiDigital2020Pendientes"); }
     if (stage == 'Programa I')  { resultadoP = document.getElementById(elementID); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById(elementID); }
-    /* if (stage == 'Programa III')  { resultadoP = document.getElementById(elementID); } */
     if (stage == 'Programa III actuaciones corporativas')  { resultadoP = document.getElementById(elementID); }
     if (stage == 'Programa III actuaciones producto')  { resultadoP = document.getElementById(elementID); }
     if (stage == 'Programa IV')  { resultadoP = document.getElementById(elementID); }
 
     if (stage == 'ILS')  { resultadoP = document.getElementById(elementID); }
-
+    console.log ("situacion ", situacion)
     resultadoP.innerHTML = "<strong>" + situacion + "</strong>";
 
 }
