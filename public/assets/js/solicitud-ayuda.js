@@ -51,21 +51,15 @@ console.log (x);
 x = "Color Resolution: " + screen.pixelDepth; 
 console.log (x);
 
-
-
 function onFormSubmit(param){
   console.log ("Se ha pulsado submit... desde: "+param.id)
   document.getElementById("declaracion_responsable_xii").setAttribute("disabled", false);
-  //document.getElementById("declaracion_responsable_xiii").setAttribute("disabled", false);
-  //document.getElementById("declaracion_responsable_xiv").setAttribute("disabled", false);
-  //document.getElementById("declaracion_responsable_xv").setAttribute("disabled", false);
   let theElement = document.getElementById("nextBtn")
   let theForm = document.getElementById("xecs_form")
 	let theSpinnger = document.getElementById("spinner-loading")
 	theSpinnger.classList.remove("ocultar")
-	theForm.classList.add("progress")
-  theElement.innerHTML="Enviant, un moment per favor... "
-  theElement.disabled=true;
+  theElement.innerHTML = "Enviant, un moment per favor... "
+  theElement.disabled = true;
   theElement.style.backgroundColor= "orange";
   theElement.style.cursor="progress";
   theForm.style.opacity =".2";
@@ -74,11 +68,6 @@ function onFormSubmit(param){
 }
 
 function opcionMarcada(valor) {
-	/* if (valor.value == "Programa III") {
-		document.getElementById("programa_III_actuaciones").classList.remove("ocultar")
-	} else {
-		document.getElementById("Programa_III_actuacioens").classList.add("ocultar")
-	} */
 	document.getElementById("aviso").remove('aviso');
 	document.getElementById("formbox").className = 'formbox';
 }

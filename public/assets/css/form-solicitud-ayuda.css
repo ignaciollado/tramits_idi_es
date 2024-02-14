@@ -26,13 +26,13 @@ section {
 .spinner-grow{
   display: block;
   position: fixed;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   z-index: 9999; /* High z-index so it is on top of the page */
-  top: 50%;
-  right: 50%; /* or: left: 50%; */
-  margin-top: 100px; /* half of the elements height */
-  margin-right: 100px; /* half of the elements width */
+  top: 35%;
+  right: 40%; /* or: left: 50%; */
+  margin-top: 0; /* half of the elements height */
+  margin-right: 0; /* half of the elements width */
 }
 
 .progress {cursor: progress;}

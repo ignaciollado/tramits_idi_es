@@ -37,7 +37,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</div>
 </div>
 
-<div class="spinner-grow text-info ocultar" role="status" id="spinner-loading">
+<div class="spinner-grow text-info progress ocultar" role="status" id="spinner-loading">
   <span class="visually-hidden"><?php echo lang('message_lang.sending');?></span>
 </div>
 
