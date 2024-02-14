@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Reseteo del formato previo, para poder tener un mejor control posterior*/
 *, *:before, *:after {
   margin: 0;
@@ -8,13 +11,12 @@
 }
 
 html {
-  font-family: Alegreya, "Open Sans", sans-serif;
-  color: rgb(0, 0, 0);
+  /* color: rgb(0, 0, 0); */
   font-size: 12px;
   box-sizing: border-box; /* para obligar al navegador que use el modelo de cajas alternativo donde, al ancho y al alto de la caja NO hay que sumar padding, margin, border*/
 }
 html, body {
-  /*background-color: #f0f0f0;*/
+  font-family: Montserrat, Alegreya, "Open Sans", sans-serif;
   color: rgb(65,78,87);
   margin: 0!important;
   padding: 0!important;
