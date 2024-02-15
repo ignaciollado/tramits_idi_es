@@ -12,6 +12,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
     
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
 $data['expediente'] = $expediente->where('id', $id)->first();
     
 $db = \Config\Database::connect();
@@ -43,18 +44,6 @@ class MYPDF extends TCPDF {
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
 		$this->Cell(0, 5, "Institut d'Innovació Empresarial - Plaça Son Castelló 1 - Tel. 971 17 61 61 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
-        //$this->setX(-15);
-        //$this->setY(-25);
-       // $footer = "Plaça de Son Castelló, 1<br>";
-        //$footer .= "07009 Polígon de Son Castelló.<br>";
-        //$footer .= "Palma<br>";
-        //$footer .= "Tel. 971 17 61 61<br>";
-        //$footer .= "www.idi.es";
-        //$html = "<div style='width:100%;color:#000;text-align:left;font-size:8px;'>";
-        //$html .= $footer;
-        //$html .= "</div>";
-        //$this->writeHTML($html, true, false, true, false, '');
-
         $this->Cell(0, 15, $this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }

@@ -17,22 +17,22 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS'); 
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
 $data['expediente'] = $expediente->where('id', $id)->first();
+
 $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
 $ultimaMejora = explode("##",  $data['ultimaMejora']);
 
 $db = \Config\Database::connect();
 $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
-foreach ($query->getResult() as $row)
-    {
+foreach ($query->getResult() as $row)  {
     $nif = $row->cifnif_propietario;
-    }
+}
         
 $session = session();
-    if ($session->has('logged_in')) {  
-        $pieFirma =  $session->get('full_name');
-    }
+if ($session->has('logged_in')) {  
+    $pieFirma =  $session->get('full_name');
+}
 
 class MYPDF extends TCPDF {
     //Page header

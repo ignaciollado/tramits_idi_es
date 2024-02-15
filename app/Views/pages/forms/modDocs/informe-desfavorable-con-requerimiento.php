@@ -39,7 +39,7 @@
 			$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
 			break;
 			case 'REJECTED':
-			$estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><i class='fa fa-warning'></i>Signatura rebutjada";
+			$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
 			$estado_firma .= "</a>";				
 			break;
 			case 'COMPLETED':
@@ -47,7 +47,7 @@
 			$estado_firma .= "</a>";					
 			break;
 			case 'IN_PROCESS':
-			$estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>En curs";		
+			$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>En curs";		
 			$estado_firma .= "</a>";						
 			default:
 			$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
@@ -93,7 +93,7 @@
 	 	let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
-		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
+		let generaInfFavConReq = document.getElementById('wrapper_generaInformeDesfConReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_4 = document.getElementById('spinner_4')
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')

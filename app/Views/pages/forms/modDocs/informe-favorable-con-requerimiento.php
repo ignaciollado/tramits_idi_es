@@ -13,7 +13,6 @@
       else {
 	?>
 	  	<span id="btn_3" class="">
-			<!-- <a id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento');?>" class="btn-primary-itramits">Genera l'informe</a> -->
 			<button id="generaInfFavConReq" class = "btn btn-primary" onclick="enviaInformeFavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
 			<div id='infoMissingDataDoc3' class="alert alert-danger ocultar"></div>
 		</span>
@@ -38,8 +37,8 @@
 					$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
 					break;
 					case 'REJECTED':
-					$estado_firma = "<div class = 'warning-msg'><i class='fa fa-warning'></i><a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId).">Signatura rebutjada";
-					$estado_firma .= "</a></div>";				
+					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+					$estado_firma .= "</a>";				
 					break;
 					case 'COMPLETED':
 					$estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		

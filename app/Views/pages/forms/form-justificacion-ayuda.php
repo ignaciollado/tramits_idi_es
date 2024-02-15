@@ -1,17 +1,9 @@
 <!-- CONTENT -->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-
-
-<!-- <script async type="text/javascript" src="/public/assets/js/edita-expediente.js"></script> -->
-
-
 <?php 
 	use App\Models\ConfiguracionModel;
 	use App\Models\ExpedientesModel;
-	$configuracion = new ConfiguracionModel();
-	$modelExp = new ExpedientesModel();
+	use App\Models\ConfiguracionLineaModel;
+	
 	$db = \Config\Database::connect();
 	
 	$uri = new \CodeIgniter\HTTP\URI();
@@ -20,8 +12,13 @@
 	$language = \Config\Services::language();
 	$language->setLocale($idioma);
 
-	/* $data['configuracion'] = $modelConfig->where('tipo_tramite', 'iDigital')->first(); */
+
+	$configuracion = new ConfiguracionModel();
+	$configuracionLinea = new ConfiguracionLineaModel();
+	$modelExp = new ExpedientesModel();
+
 	$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+	$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
 	$data['expedientes'] = $modelExp->where('id', $id)->first();
 ?>
 
@@ -32,7 +29,7 @@
 <h5>Núm. REC GOIB: <?php echo $data['expedientes']['ref_REC'];?></h5>
 <h5><?php echo lang('message_lang.destino_solicitud');?>: <?php echo lang('message_lang.idi');?></h5>
 <h5><?php echo lang('message_lang.codigo_dir3');?> <?php echo $data['configuracion']['emisorDIR3'];?></h5>
-<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracion']['codigoSIA'];?></h5>
+<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
    </fieldset> 
 
 <div class="alert alert-info">
@@ -111,7 +108,7 @@ else {
 		</fieldset>
 	<!-- <?php //}?> -->
 	<div>
-		<button type="submit" class = "btn-success btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+		<button type="submit" class = "btn btn-secondary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
 	</div>
 </div>
 </form>

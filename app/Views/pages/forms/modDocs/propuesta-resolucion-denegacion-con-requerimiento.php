@@ -9,8 +9,7 @@
 		<?php } else { ?>
 			<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myDenegacion_7" id="myBtnResDenegacionConReq">Motiu de la denegació</button>
 			<span id="btn_7" class="">
-				<!-- <a id="wrapper_motivoDenegacion_7" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_prop_res_denegacion_con_req'); ?>" class="btn btn-primary-itramits">Envia a la firma <br>de Gerència IDI</a> -->
-				<button id="wrapper_motivoDenegacion_7" class='btn btn-primary ocultar' onclick="enviaPropuestaResDenegacionConRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a la firma <br>de Gerència IDI</button>
+				<button id="wrapper_motivoDenegacion_7" class='btn btn-primary ocultar' onclick="enviaPropuestaResDenegacionConRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a signar</button>
 				<div id='infoMissingDataDoc7' class="alert alert-danger ocultar"></div>
 			</span>
 			<span id="spinner_7" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
@@ -29,14 +28,14 @@
 				$estado_firma = $respuesta['status'];
 				switch ($estado_firma) {
 					case 'NOT_STARTED':
-						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar<br>per Gerència IDI</div>";
+						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";
 						break;
 					case 'REJECTED':
-						$estado_firma = "<div class = 'warning-msg'><i class='fa fa-warning'></i><a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . ">Signatura rebutjada<br>per Gerència IDI";
-						$estado_firma .= "</a></div>";
+						$estado_firma = "<a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . "><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+						$estado_firma .= "</a>";
 						break;
 					case 'COMPLETED':
-						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " ><i class='fa fa-check'></i>Signat per Gerència IDI";
+						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " ><i class='fa fa-check'></i>Signat";
 						$estado_firma .= "</a>";
 						break;
 					case 'IN_PROCESS':
@@ -116,7 +115,7 @@
 		if (todoBien) {
 			infoMissingDataDoc7.classList.add('ocultar')
 			wrapper_motivoDenegacion_7.disabled = true
-			wrapper_motivoDenegacion_7.innerHTML = "Generant ..."
+			wrapper_motivoDenegacion_7.innerHTML = "Enviant ..."
 			spinner_7.classList.remove('ocultar')
 			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_denegacion_con_req'
 		} else {

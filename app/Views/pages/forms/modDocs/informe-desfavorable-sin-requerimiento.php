@@ -11,16 +11,14 @@
         else {?>
 			<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mygeneraInformeDesfSinReq" id="myBtngeneraInformeDesfSinReq">Motiu de la denegació</button>
 			<span id="btn_5" class="">		
-			<!-- 				<a id ="wrapper_generaInformeDesfSinReq" class="" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_sin_requerimiento');?>">Envia a signar l'informe</a> -->
 				<button id="wrapper_generaInformeDesfSinReq" class='btn btn-primary ocultar' onclick="enviaInformeDesfavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
 				<div id='infoMissingDataDoc5' class="alert alert-danger ocultar"></div>
 			</span>
-			<span id="spinner_5" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>	
-		<?php }?>			
+				<span id="spinner_5" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>	
+			<?php }?>			
   	
-	</div>
+		</div>
   	<div class="card-itramits-footer">
-	<!--<?php //if ($expedientes['doc_informe_desfavorable_sin_requerimiento'] !=0) { ?>-->
 	<?php 
 		$db = \Config\Database::connect();
 		$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_desfavorable_sin_requerimiento.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";// AND tipo_tramite='".$expedientes['tipo_tramite']."'";
@@ -88,7 +86,7 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
+		let generaInfFavSinReq = document.getElementById('wrapper_generaInformeDesfSinReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_5 = document.getElementById('spinner_5')
 		let infoMissingDataDoc5 = document.getElementById('infoMissingDataDoc5')
@@ -105,8 +103,8 @@
 
 		if (todoBien) {
 			infoMissingDataDoc5.classList.add('ocultar')
-			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
+			generaInfFavSinReq.disabled = true
+			generaInfFavSinReq.innerHTML = "Generant ..."
 			spinner_5.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_desfavorable_sin_requerimiento'
 		} else {

@@ -1,19 +1,19 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <?php	
-        use App\Models\UseriTramitsModel;
+    use App\Models\UseriTramitsModel;
 
-        $session = session();
-        $empresa = $session->get('full_name');
-        $nif = $nifcif;
+    $session = session();
+    $empresa = $session->get('full_name');
+    $nif = $nifcif;
 		$adreca_mail = $session->get('username');
 		$telefono_cont = $session->get('telefono');
 
 		if ( $byCEOSigned ) {
-    		$useritramits = new UseriTramitsModel();
-    		$data['useriTramits'] = $useritramits->where('rol', 'gerencia')->first();
+    	$useritramits = new UseriTramitsModel();
+    	$data['useriTramits'] = $useritramits->where('rol', 'gerencia')->first();
 			$adreca_mail = $data['useriTramits']['user_name'];
 			$telefono_cont = $data['useriTramits']['telefono'];
- 			$adreca_mail = "ignacio.llado@idi.es";
+ 			$adreca_mail = "illado@idi.caib.es";
 			$telefono_cont = "677234076";
 		}
 

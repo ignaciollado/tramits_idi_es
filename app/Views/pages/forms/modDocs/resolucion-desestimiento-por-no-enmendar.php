@@ -1,4 +1,4 @@
-<!----------------------------------------- Resolució desistiment por no enmendar DOC 2 SIN VIAFIRMA--------->
+<!----------------------------------------- Resolució desistiment por no enmendar DOC 2--------->
 <div class="card-itramits">
 
   <div class="card-itramits-body">
@@ -12,8 +12,7 @@
         <?php }
         else {?>
 				<span id="btn_2" class="">
-					<!-- <a href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_no_enmendar');?>" class="btn-primary-itramits">Genera el desistiment per no esmenar</a> -->
-					<button id="wrapper_desestimientoPorNoEnmendar" class = "btn btn-primary" onclick="enviaDesestimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
+					<button id="wrapper_desestimientoPorNoEnmendar" class = "btn btn-primary" onclick="enviaDesestimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
 					<div id='infoMissingDataDoc2' class="alert alert-danger ocultar"></div>
 				</span>
 					<span id="spinner_2" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
@@ -21,14 +20,38 @@
 
 	</div>
 
-  	<div class="card-itramits-footer">
-	<?php if ($expedientes['doc_res_desestimiento_por_no_enmendar'] !=0) { ?>
-        <a class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_no_enmendar');?>" target = "_self"><i class='fa fa-check'></i>El desistiment per no esmenar</a>	
-		<?php }?>
-	<?php //} else {?>
-        
-	<?php //}?>
-  	</div>
+  <div class="card-itramits-footer">
+		<?php if ($expedientes['doc_res_desestimiento_por_no_enmendar'] != 0) { ?>
+			<?php
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_res_desestimiento_por_no_enmendar.pdf');
+			if (isset($tieneDocumentosGenerados)) {
+				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
+				$requestPublicAccessId = $PublicAccessId;
+				$request = execute("requests/" . $requestPublicAccessId, null, __FUNCTION__);
+				$respuesta = json_decode($request, true);
+				$estado_firma = $respuesta['status'];
+				switch ($estado_firma) {
+					case 'NOT_STARTED':
+						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";
+						break;
+					case 'REJECTED':
+						$estado_firma = "<a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . "><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+						$estado_firma .= "</a>";
+						break;
+					case 'COMPLETED':
+						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " ><i class='fa fa-check'></i>Signat";
+						$estado_firma .= "</a>";
+						break;
+					case 'IN_PROCESS':
+						$estado_firma = "<div class='info-msg'><i class='fa fa-check'></i><a href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " >En curs";
+						$estado_firma .= "</a></div>";
+					default:
+						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
+				}
+				echo $estado_firma;
+			}	?>
+		<?php } ?>
+  </div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
@@ -57,8 +80,8 @@
 		}
 		if (todoBien) {
 			infoMissingDataDoc2.classList.add('ocultar')
-			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
+			wrapper_desestimientoPorNoEnmendar.disabled = true
+			wrapper_desestimientoPorNoEnmendar.innerHTML = "Enviant ..."
 			spinner_2.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar'
 		} else {

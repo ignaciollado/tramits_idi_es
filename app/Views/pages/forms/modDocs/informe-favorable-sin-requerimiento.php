@@ -10,8 +10,7 @@
         <?php }
         else {?>
 				<span id="btn_4" class="">	
-    			<!-- <a id="generaInfFavSinReq" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_sin_requerimiento');?>" class="btn-primary-itramits">Generar l'informe</a> -->
-					<button id="generaInfFavConReq" class = "btn btn-primary" onclick="enviaInformeFavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
+					<button id="generaInfFavSinReq" class = "btn btn-primary" onclick="enviaInformeFavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
 					<div id='infoMissingDataDoc4' class="alert alert-danger ocultar"></div>
 				</span>
 			<span id="spinner_4" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
@@ -19,7 +18,7 @@
 	
 	</div>  
   	<div class="card-itramits-footer">
-	<?php //if ($expedientes['doc_informe_favorable_sin_requerimiento'] !=0) { 
+	<?php 
 		$db = \Config\Database::connect();
 		$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_favorable_sin_requerimiento.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";// AND tipo_tramite='".$expedientes['tipo_tramite']."'";
 		$query = $db->query($sql);
@@ -63,7 +62,7 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
+		let generaInfFavSinReq = document.getElementById('generaInfFavSinReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_4 = document.getElementById('spinner_4')
 		let infoMissingDataDoc4 = document.getElementById('infoMissingDataDoc4')
@@ -80,8 +79,8 @@
 
 		if (todoBien) {
 			infoMissingDataDoc4.classList.add('ocultar')
-			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
+			generaInfFavSinReq.disabled = true
+			generaInfFavSinReq.innerHTML = "Generant ..."
 			spinner_4.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_sin_requerimiento'
 		} else {

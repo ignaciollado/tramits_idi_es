@@ -61,9 +61,10 @@ a:hover {
 		text-align: center;
 }
 .alert-info {
-    color: #fff;
+	margin-top: 1rem;
+/*     color: #fff;
     background-color: #39c0ed;
-    border-color: #39c0ed;
+    border-color: #39c0ed; */
 }
 .alert-warning {
     color: #856404;

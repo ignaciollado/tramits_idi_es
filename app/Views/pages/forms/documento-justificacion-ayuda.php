@@ -53,23 +53,23 @@ $pdf->setFontSubsetting(false);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
 
-	$modelExp = new ExpedientesModel();
-	$configuracion = new ConfiguracionModel();
-	$db = \Config\Database::connect();
-	$uri = new \CodeIgniter\HTTP\URI();
-	$request = \Config\Services::request();
+$modelExp = new ExpedientesModel();
+$configuracion = new ConfiguracionModel();
+$configuracionLinea = new ConfiguracionLineaModel();
 
-	//$id_sol = get_cookie ('pindust_id');
-	//$nif = get_cookie ('nif');
-	$tipoTramite = get_cookie ('tipoTramite');
+$db = \Config\Database::connect();
+$uri = new \CodeIgniter\HTTP\URI();
+$request = \Config\Services::request();
+
+$tipoTramite = get_cookie ('tipoTramite');
 	
-	
-	$query = $db->query("SELECT * FROM pindust_documentos_justificacion WHERE selloDeTiempo ='" . $selloTiempo."'");
-	$justificacion = $query->getResult();
-	$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-	$data['expedientes'] = $modelExp->where('id', $id)->first();
+$query = $db->query("SELECT * FROM pindust_documentos_justificacion WHERE selloDeTiempo ='" . $selloTiempo."'");
+$justificacion = $query->getResult();
+$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['expedientes'] = $modelExp->where('id', $id)->first();
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -80,7 +80,7 @@ $html = lang('message_lang.justificacion_doc').": ".lang('message_lang.justifica
 $html .= "Núm. Expedient: ". $data['expedientes']['idExp']."/".$data['expedientes']['convocatoria']."<br>";
 $html .= "Núm. REC GOIB: ". $data['expedientes']['ref_REC']."<br>";
 $html .=  lang('message_lang.codigo_dir3').":".$data['configuracion']['emisorDIR3']."<br>";
-$html .=  lang('message_lang.codigo_sia').":".$data['configuracion']['codigoSIA']."<br>";
+$html .=  lang('message_lang.codigo_sia').":".$data['configuracionLinea']['codigoSIA']."<br>";
 $html .= "Projecte: ".$data['expedientes']['tipo_tramite']."<br><br>";
 
 // set membrete

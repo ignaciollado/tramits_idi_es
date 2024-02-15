@@ -149,7 +149,6 @@ if ($ultimaMejora[2] && $ultimaMejora[3]) {
 $parrafo_3 = str_replace("%FECHADESESTIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('message_lang.doc_resolucion_desestimiento_no_enmendar_p3'));
 $parrafo_3 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_3);
 $parrafo_3 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_3);
-/* $parrafo_3 = str_replace("%NUMDESESTIMIENTO%", $data['expediente']['ref_REC_desestimiento'], $parrafo_3); */
 $parrafo_3 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_3);
 $parrafo_3 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_3);
 $html .= "<li>". $parrafo_3 ."</li>";

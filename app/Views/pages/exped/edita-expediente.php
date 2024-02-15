@@ -892,11 +892,11 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------Informe favorable sense requeriment--------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Informe desfavorable sense requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Informe desfavorable amb requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-con-requerimiento.php';?></li>
+            <!------------------------------------------------------------------------------------------------------>
+            <!-----------------------------------------Informe desfavorable sense requeriment-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta resolucio concessió ajut_ amb requeriment SIN VIAFIRMA-->
             <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-concesion-con-requerimiento.php';?>
@@ -910,11 +910,11 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------Proposta resolucio denegació ajut_ sin requeriment SIN VIAFIRMA-->
 	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta de resolució i resolució de pagament sense requeriment SIN VAIFIRMA-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-pago-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta de resolució i resolució de pagament amb requeriment SIN VIAFIRMA-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-pago-con-requerimiento.php';?></li>
+            <!------------------------------------------------------------------------------------------------------>
+            <!-----------------------------------------Proposta de resolució i resolució de pagament sense requeriment SIN VAIFIRMA-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-pago-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Resolució denegació amb requeriment SIN VIAFIRMA-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-con-requerimiento.php';?></li>

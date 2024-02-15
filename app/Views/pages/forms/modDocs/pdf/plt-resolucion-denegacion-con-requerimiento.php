@@ -17,10 +17,10 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['expediente'] = $expediente->where('id', $id)->first();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS'); 
-$data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
+$data['expediente'] = $expediente->where('id', $id)->first();
 
+$data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
 $ultimaMejora = explode("##",  $data['ultimaMejora']);    
 
 $db = \Config\Database::connect();
