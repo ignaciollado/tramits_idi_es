@@ -1,12 +1,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <?php
     use App\Models\DocumentosGeneradosModel;
-    use App\Models\MejorasExpedienteModel;
+use App\Models\DocumentosJustificacionModel;
+use App\Models\MejorasExpedienteModel;
     use App\Models\ExpedientesModel;
 
     $modelDocumentosGenerados = new DocumentosGeneradosModel();
     $modelMejorasSolicitud = new MejorasExpedienteModel();
     $modelExp = new ExpedientesModel();
+    $modelJustificacion = new DocumentosJustificacionModel();
 
     $session = session();
 
@@ -590,7 +592,6 @@ if (!$expedientes['importeAyuda']) {
             <div class="alert alert-info">
                 <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
                 <?php
-
                 	//Compruebo el estado de la firma de la declaración responsable.
                     $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
 	                if (isset($thePublicAccessId))
@@ -1092,10 +1093,10 @@ if (!$expedientes['importeAyuda']) {
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-    	            <div >Pujat el</div>
-   	  	            <div >Document</div>
-		            <div >Estat</div>                     
-      	            <div >Acció</div>
+    	            <div>Pujatel</div>
+   	  	            <div>Docuent</div>
+		            <div>Estt</div>                     
+      	            <div>Ació</div>
                 </div>
             <?php if($documentos): ?>
             <?php foreach($documentos as $docSolicitud_item): 			            
@@ -1288,7 +1289,6 @@ if (!$expedientes['importeAyuda']) {
 
                 <div id="myModalDocJustificacion" class="modal" role="dialog">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
                         <div class="modal-content" style = "width: 60%;">
                             <div class="modal-header">
                                 ¡Aquesta acció no es podrá desfer!
@@ -1307,7 +1307,6 @@ if (!$expedientes['importeAyuda']) {
 
                 <h5 class ="upload-docs-type-label">[.zip]:</h5>
                 <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Justificacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedJustificacion" id="subir_doc_faseExpedJustificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-
                 <?php
                     if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -1321,7 +1320,6 @@ if (!$expedientes['importeAyuda']) {
                         </div>
                     </div>
                 <?php }?>
-
                 </form>             
         </div>
 
@@ -1492,7 +1490,43 @@ if (!$expedientes['importeAyuda']) {
                 if (isset($selloDeTiempo)) {
                     echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_justificacion_solicitud_ayuda.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');
                 }
-            ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a></div>
+                ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a>
+            </div>
+            <div class="alert alert-info">
+                <small>Estat de la signatura de la declaració responsable de la justificació:</small>
+                <?php
+                	//Compruebo el estado de la firma de la declaración responsable.
+                    $thePublicAccessId = $modelJustificacion->getPublicAccessId ($expedientes['id']);
+	                if (isset($thePublicAccessId))
+		                {
+		                    $PublicAccessId = $thePublicAccessId;
+	                        $requestPublicAccessId = $PublicAccessId;
+                            $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+		                    $respuesta = json_decode ($request, true);
+		                    $estado_firma = $respuesta['status'];
+
+			                switch ($estado_firma)
+				                {
+				                    case 'NOT_STARTED':
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+				                        break;
+				                    case 'REJECTED':
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+				                        $estado_firma .= "</a>";				
+				                        break;
+				                    case 'COMPLETED':
+				                        $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		
+				                        $estado_firma .= "</a>";					
+				                        break;
+				                    case 'IN_PROCESS':
+                                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
+				                        $estado_firma .= "</a>";						
+				                    default:
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
+				                }
+			                echo $estado_firma;
+		                }?>
+            </div>
         </div>
     </div>
 </div>

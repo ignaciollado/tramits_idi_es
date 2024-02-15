@@ -4,7 +4,11 @@
 		$nif = $_POST["nif"];
 		$adreca_mail = $email_not;
 		$telefono_cont = $telefono_not;
-			
+		
+		//$adreca_mail = "ignacio.llado@idi.es";
+		//$adreca_mail = "pindust@idi.es";
+		//$telefono_cont = "677234076";
+		
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 		require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
 		require_once dirname(__FILE__) . '/model/AddresseeLine.php';
@@ -57,7 +61,7 @@
 		$request->subject = lang('message_lang.titulo_justificacion_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
 		$request->message = lang('message_lang.subtitulo_justificacion_idigital'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 		$request->senderNotificationLevel = "ALL";
-		$request->stampName = "qr_code";
+		$request->stampName = "bar_code";
 		//$request->useDefaultStamp = true;
 		// URL para los callbacks tras realizar una acción con la petición. Será un GET con los parámetros:
 		// action (String con el tipo de acción), label (String con la public access id de la petición) y finished=ok (si está finalizada la petición. En caso contrario, no se incluirá).
@@ -66,7 +70,7 @@
 		// Adding a document to sign
 		$doc = new Document;
 
-		$doc->filename = $nif.'_justificacion_solicitud_ayuda.pdf';
+		$doc->filename = $nif.'_dec_res_solicitud_iDigital.pdf';
 		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/justificacion/'.$selloTiempo.'/'.$nif.'_justificacion_solicitud_ayuda.pdf')));	
 
 		$documentsToSign = array ($doc);
@@ -133,7 +137,7 @@
 		$builder->where('id', $last_insert_id);
 		$builder->update($data);	
 		
-		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_justif').": <strong>".$adreca_mail."</strong></div>";
+		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_justif')." <strong>".$adreca_mail."</strong></div>";
 		echo "<div class='alert alert-warning'>".lang('message_lang.nota_info_rec_justif')."</div>";
 		echo "<div class='alert alert-info'>".lang('message_lang.contacto_idi_pindust')."</div>";		
 		echo "<div class='alert alert-info'>".lang('message_lang.una_vez_firmado')."</div>";

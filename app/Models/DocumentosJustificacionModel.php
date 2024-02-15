@@ -33,4 +33,18 @@ class DocumentosJustificacionModel extends Model
 	
     }
 
+    public function getPublicAccessId ($id) {
+        $sql = 'SELECT publicAccessIdCustodiado FROM pindust_documentos_justificacion WHERE id="'.$id.'"';
+        echo $sql;
+        $query = $this->query($sql); 
+        $row = $query->getRow();
+
+        return $row->PublicAccessId;
+        if (isset($row)) {
+            return $row->PublicAccessId;
+        } else {
+            return "nada";
+        }
+    }
+
 }
