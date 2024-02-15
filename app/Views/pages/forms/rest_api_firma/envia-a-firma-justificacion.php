@@ -80,7 +80,7 @@
 		$json = json_encode($request);
 		// echo $json;
 		$resultRequest = execute("requests", $json, __FUNCTION__);
-		printResult($resultRequest, $last_insert_id, $tipo_Doc, $adreca_mail);
+		printResult($resultRequest, $id_sol, $tipo_Doc, $adreca_mail);
 
 	
 	function execute($apiPath, $json, $methodName) {
@@ -123,7 +123,7 @@
 		return $result;		
 	}	
 		
-	function printResult($result, $last_insert_id, $tipo_Doc, $adreca_mail) {
+	function printResult($result, $id_sol, $tipo_Doc, $adreca_mail) {
 		echo "<content>";
 		echo "<section>";
 		$respuesta = json_decode ($result, true);
@@ -132,9 +132,9 @@
 		$db      = \Config\Database::connect();
 		$builder = $db->table('pindust_expediente');
 		$data = [
-        'PublicAccessId' => $respuesta['publicAccessId'],
+        'publicAccessIdjustificado' => $respuesta['publicAccessId'],
 		];
-		$builder->where('id', $last_insert_id);
+		$builder->where('id', $id_sol);
 		$builder->update($data);	
 		
 		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_justif')." <strong>".$adreca_mail."</strong></div>";

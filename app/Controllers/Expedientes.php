@@ -677,6 +677,7 @@ class Expedientes extends Controller
 				];
 				$save = $documentosJustif->insert($data_file);
 				$last_insert_id = $save->connID->insert_id;
+				$data ['id_sol'] = $id;
 			}
 		}
 		/* if ($tipo_tramite == "Programa I" || $tipo_tramite == 'Programa iDigital 20') { */

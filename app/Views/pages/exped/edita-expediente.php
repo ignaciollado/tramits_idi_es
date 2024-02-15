@@ -590,7 +590,7 @@ if (!$expedientes['importeAyuda']) {
                 ?>
             <br>
             <div class="alert alert-info">
-                <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
+                <small>Estat de la declaració responsable i de la sol·licitud</small>
                 <?php
                 	//Compruebo el estado de la firma de la declaración responsable.
                     $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
@@ -612,7 +612,7 @@ if (!$expedientes['importeAyuda']) {
 				                        $estado_firma .= "</a>";				
 				                        break;
 				                    case 'COMPLETED':
-				                        $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signades</div>";		
 				                        $estado_firma .= "</a>";					
 				                        break;
 				                    case 'IN_PROCESS':
@@ -1493,7 +1493,7 @@ if (!$expedientes['importeAyuda']) {
                 ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a>
             </div>
             <div class="alert alert-info">
-                <small>Estat de la signatura de la declaració responsable de la justificació:</small>
+                <small>Estat de la declaració responsable de la justificació</small>
                 <?php
                 	//Compruebo el estado de la firma de la declaración responsable.
                     $thePublicAccessId = $modelJustificacion->getPublicAccessId ($expedientes['id']);
@@ -1515,7 +1515,7 @@ if (!$expedientes['importeAyuda']) {
 				                        $estado_firma .= "</a>";				
 				                        break;
 				                    case 'COMPLETED':
-				                        $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signat";		
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signada</div>";		
 				                        $estado_firma .= "</a>";					
 				                        break;
 				                    case 'IN_PROCESS':
