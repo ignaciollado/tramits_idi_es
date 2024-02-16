@@ -1461,7 +1461,7 @@ async function configuraDetalle_OnLoad () {
 		inputsform_f2[i].addEventListener('input', function(){
 			 avisarCambiosEnFormulario('send_fase_2', this.id);
 		 }, false);
-		 inputsform_f2[i].style.backgroundColor = "#b23cfd";
+		 inputsform_f2[i].style.backgroundColor = "#1ecbe1";
 		 inputsform_f2[i].style.color = "white";
 		  }
 	
