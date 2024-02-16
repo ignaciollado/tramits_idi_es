@@ -1,8 +1,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <?php
     use App\Models\DocumentosGeneradosModel;
-use App\Models\DocumentosJustificacionModel;
-use App\Models\MejorasExpedienteModel;
+    use App\Models\DocumentosJustificacionModel;
+    use App\Models\MejorasExpedienteModel;
     use App\Models\ExpedientesModel;
 
     $modelDocumentosGenerados = new DocumentosGeneradosModel();
@@ -260,8 +260,8 @@ if (!$expedientes['importeAyuda']) {
                             <option <?php if ($expedientes['situacion'] == "emitidoDesEnmienda") { echo "selected"; }?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per esmena emès</option>
                             <option <?php if ($expedientes['situacion'] == "Desestimiento") { echo "selected"; }?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
-                        <optgroup style="background-color:#e44097;color:#000;" label="Fase validació:">
-                            <optgroup style="background-color:#fff;color:#e44097;" label="En el cas d'expedients favorables:">
+                        <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients favorables:">
         		                <option <?php if ($expedientes['situacion'] == "emitirIFPRPago") { echo "selected";}?> value = "emitirIFPRPago" class="sitValidacion"> IF + PR Pagament emetre</option>
     				            <option <?php if ($expedientes['situacion'] == "emitidoIFPRPago") { echo "selected";}?> value = "emitidoIFPRPago" class="sitValidacion"> IF + PR Pagament emés</option>
 	    			            <option <?php if ($expedientes['situacion'] == "enviadoPRPago") { echo "selected";}?> value = "enviadoPRPago" class="sitValidacion"> PR Pagament enviat</option>
@@ -269,7 +269,7 @@ if (!$expedientes['importeAyuda']) {
                                 <option <?php if ($expedientes['situacion'] == "emitirPagoReqIDPD") { echo "selected";}?> value = "emitirPagoReqIDPD" class="sitValidacion"> ID+PD pagament amb requeriment emetre</option>                                
             		            <option <?php if ($expedientes['situacion'] == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
                             </optgroup>   
-                            <optgroup style="background-color:#fff;color:#e44097;" label="En el cas d'expedients desfavorables:">
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients desfavorables:">
                                 <option <?php if ($expedientes['situacion'] == "emitirIDPD") { echo "selected";}?> value = "emitirIDPD" class="sitValidacion"> ID + PD emetre</option>
 				                <option <?php if ($expedientes['situacion'] == "emitidoIDPD") { echo "selected";}?> value = "emitidoIDPD" class="sitValidacion"> ID + PD emés</option>
     				            <option <?php if ($expedientes['situacion'] == "enviadoFirmaPD") { echo "selected";}?> value = "enviadoFirmaPD" class="sitValidacion"> PD enviat a firmar</option>
@@ -697,7 +697,7 @@ if (!$expedientes['importeAyuda']) {
                         <div id ="mejora_<?php echo $mejorasSolicitud_item['id'];?>" class = "detail-wrapper-docs-3 detail-wrapper-docs-solicitud">
                             <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['fecha_rec_mejora'] ;?></span>
                             <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['ref_rec_mejora'] ;?></span>
-                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$mejorasSolicitud_item['id'].'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#modalEliminaMejora"><strong>Elimina</strong></button>';?></span>
+                            <span class = "detail-wrapper-docs-col trash"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$mejorasSolicitud_item['id'].'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#modalEliminaMejora"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>';?></span>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -721,10 +721,10 @@ if (!$expedientes['importeAyuda']) {
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
-        	        <div >Pujat el</div>
-   	  	            <div >Document</div>
-                    <div >Estat</div>                         
-      	            <div >Acció</div>
+        	        <div>Pujat el</div>
+   	  	            <div>Document</div>
+                    <div>Estat</div>                         
+      	            <div>Acció</div>
                 </div>
                 <?php if($documentos): ?>
                 <?php foreach($documentos as $docSolicitud_item): 
@@ -753,8 +753,8 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocsExpedienteJustificacion"><strong>Elimina</strong></button>
+                            <span class = "detail-wrapper-docs-col trash">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocsExpedienteJustificacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                             </span>                            
 	                        </div>
                         <?php 
@@ -956,8 +956,8 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><strong>Elimina</strong></button>
+                            <span class = "detail-wrapper-docs-col trash">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                             </span>      
 	                </div>
                 <?php }
@@ -1107,8 +1107,8 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocEjecucion"><strong>Elimina</strong></button>
+                            <span class = "detail-wrapper-docs-col trash">
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocEjecucion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                             </span>    	
 		            </div>
                     <?php }
@@ -1261,8 +1261,8 @@ if (!$expedientes['importeAyuda']) {
                     }
                     ?>
                     <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                    <span class = "detail-wrapper-docs-col">
-                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><strong>Elimina</strong></button>
+                    <span class = "detail-wrapper-docs-col trash">
+                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                     </span>  			
                 </div>
                 <?php }
@@ -1682,8 +1682,8 @@ if (!$expedientes['importeAyuda']) {
                     }
                     ?>
                     <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                    <span class = "detail-wrapper-docs-col">
-                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocDesestimiento"><strong>Elimina</strong></button>
+                    <span class = "detail-wrapper-docs-col trash">
+                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocDesestimiento"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                     </span> 
                 </div>
             <?php }

@@ -1039,7 +1039,7 @@ code {
 	border-radius: 0!important;
 }
 .sitValidacion {
-	background-color: #b23cfd;
+	background-color: #1ecbe1;
 	color:#fff;
 	padding-left: .5rem;
 	padding-right: .5rem;
@@ -1049,7 +1049,7 @@ code {
 	border-radius: 0!important;
 }
 .validacion-lbl {
-	background-color: #b23cfd;
+	background-color: #1ecbe1;
 	color:#fff;
 	padding-left: .5rem;
 	padding-right: .5rem;
@@ -1059,7 +1059,7 @@ code {
 	border-radius: 0!important;
 }
 .validacion-final {
-	background-color: #b23cfd;
+	background-color: #1ecbe1;
     color: #fff;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -1070,14 +1070,14 @@ code {
     border: 3px solid #fff!important;
 }
 .sitAdhesion_cab_ils{
-	background-color: #b23cfd;
+	background-color: #1ecbe1;
 	color: #fff;
 }
 .sitAdhesion_ils{
 	color: #fff;
 }
 .adhesion-lbl{
-	background-color: #b23cfd;
+	background-color: #1ecbe1;
     color: #fff;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -1440,7 +1440,7 @@ span.export {
 	background-color: #00ff00;
 }
 .detail-wrapper-docs-validacion-ils {
-	background-color: #b23cfd;
+	background-color: #1ecbe1;
   }
 
 .detail-wrapper-docs-ejecucion {
@@ -1491,8 +1491,8 @@ span.export {
 @media screen and (max-width: 625px) {
 .detail-wrapper-docs {	
 	display: inline-grid;
-  	grid-template-columns: auto;
-  	background-color: #ffa500;
+  grid-template-columns: auto;
+  background-color: #ffa500;
 	padding: 10px;
  	margin: 5px;
 	width: 100%;
@@ -1503,8 +1503,12 @@ span.export {
 .detail-wrapper-docs-col {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: .4rem;
-  font-size: 1.2rem;
+  padding: .1rem;
+  font-size: 1rem;
+}
+
+.trash{
+	text-align: center;
 }
 
 .date-docs-col {
@@ -1593,11 +1597,11 @@ code {
 		color: #fff!important;
     }
 	.adhesion_tab {
-        background-color: #b23cfd!important;
+        background-color: #1ecbe1!important;
 		color: #fff!important;
     }
   .validacion_tab {
-        background-color: #b23cfd!important; 
+        background-color: #1ecbe1!important; 
         color: #fff;
     }
     .ejecucion_tab {

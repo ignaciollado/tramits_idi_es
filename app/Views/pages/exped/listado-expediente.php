@@ -69,8 +69,8 @@
                             <option <?php if ($session->get('situacion_fltr') == "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per <br>esmena emès</option>
 							<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
-                        <optgroup style="background-color:#e44097;color:#000;" label="Fase validació:">
-                            <optgroup style="background-color:#fff;color:#e44097;" label="En el cas d'expedients favorables:">
+                        <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients favorables:">
         		                <option <?php if ($session->get('situacion_fltr') == "emitirIFPRPago") { echo "selected";}?> value = "emitirIFPRPago" class="sitValidacion"> IF + PR_Pagament emetre</option>
     				            <option <?php if ($session->get('situacion_fltr') == "emitidoIFPRPago") { echo "selected";}?> value = "emitidoIFPRPago" class="sitValidacion"> IF + PR_Pagament emés</option>
 	    			            <option <?php if ($session->get('situacion_fltr') == "enviadoPRPago") { echo "selected";}?> value = "enviadoPRPago" class="sitValidacion"> PR Pagament enviat</option>
@@ -78,7 +78,7 @@
                                 <option <?php if ($session->get('situacion_fltr') == "emitirPagoReqIDPD") { echo "selected";}?> value = "emitirPagoReqIDPD" class="sitValidacion"> ID+PD pagament amb <br>requeriment emetre</option>								
             		            <option <?php if ($session->get('situacion_fltr') == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
                             </optgroup>   
-                            <optgroup style="background-color:#fff;color:#e44097;" label="En el cas d'expedients desfavorables:">
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients desfavorables:">
                                 <option <?php if ($session->get('situacion_fltr') == "emitirIDPD") { echo "selected";}?> value = "emitirIDPD" class="sitValidacion"> ID + PD emetre</option>
 				                <option <?php if ($session->get('situacion_fltr') == "emitidoIDPD") { echo "selected";}?> value = "emitidoIDPD" class="sitValidacion"> ID + PD emés</option>
     				            <option <?php if ($session->get('situacion_fltr') == "enviadoFirmaPD") { echo "selected";}?> value = "enviadoFirmaPD" class="sitValidacion"> PD enviat a firmar</option>
