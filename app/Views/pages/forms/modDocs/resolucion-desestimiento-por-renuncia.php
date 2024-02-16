@@ -6,9 +6,9 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-secondary" data-bs-toggle = "modal" data-bs-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Motiu del desestiment</button>  
+			<button type = "button" class = "btn btn-secondary btn-acto-admin" data-bs-toggle = "modal" data-bs-target = "#myDesestimientoRenuncia" id="myBtnDesestimientoRenuncia">Motiu del desestiment</button>  
 			<span id="btn_22" class="">
-					<button id="wrapper_motivoDesestimientoRenuncia" class='btn btn-primary ocultar' onclick="generaResolucionPorDesestimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
+					<button id="wrapper_motivoDesestimientoRenuncia" class='btn btn-primary ocultar btn-acto-admin' onclick="generaResolucionPorDesestimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
 					<div id='infoMissingDataDoc22' class="alert alert-danger ocultar"></div>
 			</span>		
 			<span id="spinner_22" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
@@ -16,7 +16,7 @@
 	</div>
   	<div class="card-itramits-footer">
 			<?php if ($expedientes['doc_res_desestimiento_por_renuncia'] !=0) { ?>
-        <a class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" target = "_self">La resolució de desistiment</a>	
+        <a class='btn btn-success btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_desestimiento_por_renuncia');?>" target = "_self">La resolució de desistiment</a>	
 			<?php }?>
   	</div>
 </div>

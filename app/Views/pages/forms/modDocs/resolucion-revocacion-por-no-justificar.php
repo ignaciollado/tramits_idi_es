@@ -6,17 +6,16 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<!--<a id="generadoc_el_desestimiento" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>" class="btn-primary-itramits">Genera el desistiment</a>-->
-		 	<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myRevocacionPorNoJustificar" id="myBtnRevocacionPorNoJustificar">Motiu de la revocació</button>
+		 	<button type="button" class="btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myRevocacionPorNoJustificar" id="myBtnRevocacionPorNoJustificar">Motiu de la revocació</button>
 			<span id="btn_24" class="">
-    			<a id ="wrapper_motivoRevocacionPorNoJustificar" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Genera la resolució</a>
+    			<a id ="wrapper_motivoRevocacionPorNoJustificar" class="ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Genera la resolució</a>
 			</span>
 			<span id="spinner_24" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	</div>
   	<div class="card-itramits-footer">
 		<?php if ($expedientes['doc_res_revocacion_por_no_justificar'] !=0) { ?>
-	        <a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>" target = "_self"><i class='fa fa-check'></i>La resolució</a>	
+	      <a	class='btn btn-success btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>" target = "_self"><i class='fa fa-check'></i>La resolució</a>	
 		<?php }?>
   	</div>
 </div>

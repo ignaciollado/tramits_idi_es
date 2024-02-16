@@ -167,7 +167,7 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
 	const totalSolicitudes = await fetch(recurso).then(res => res.json());
     
     if (situacion == 'nohapasadoREC') {
-        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds pendents'
+        situacion = 'Sol·licituds pendents: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
     }
     if (situacion == 'inicioConsultoria') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA';
@@ -197,6 +197,6 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
     if (stage == 'Programa IV')  { resultadoP = document.getElementById(elementID); }
 
     if (stage == 'ILS')  { resultadoP = document.getElementById(elementID); }
-    resultadoP.innerHTML = "<strong>" + situacion + "</strong>";
+    resultadoP.innerHTML = situacion;
 
 }

@@ -8,15 +8,14 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-				<button type = "button" id="btn_ActaDeCierre" class = "btn btn-primary" id="myBtnActaDeCierre" onclick="enviaActaDeCierre(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera l'acta</button>    
+				<button type = "button" id="btn_ActaDeCierre" class = "btn btn-primary btn-acto-admin" id="myBtnActaDeCierre" onclick="enviaActaDeCierre(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera l'acta</button>    
 			<?php }?>
 
 			<span id="btn_15" class="">
-    		<a id="wrapper_ActaDeCierre" class = "ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>   
-				<button type = "button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
+    		<a id="wrapper_ActaDeCierre" class = "ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>   
+				<button type = "button" id="enviar-a-justificar" class = "btn btn-dark btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
 			</span>	
 			<div id='infoMissingDataDoc15' class = "alert alert-danger ocultar"></div>
-			<span id="spinner_15" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		</div>
   	<div class="card-itramits-footer">
 			<?php if ($expedientes['doc_acta_de_cierre'] !=0) { ?>
@@ -30,25 +29,24 @@
 	   			$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 	   			$respuesta = json_decode ($request, true);
       		$estado_firma = $respuesta['status'];
-					switch ($estado_firma)
-					{
-					case 'NOT_STARTED':
-						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+					switch ($estado_firma) {
+						case 'NOT_STARTED':
+						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
 						break;
-					case 'REJECTED':
-						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+						case 'REJECTED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
 						$estado_firma .= "</a>";				
 						break;
-					case 'COMPLETED':
-					  $estado_firma = "<a class='btn btn-ver-itramits' href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><i class='fa fa-check'></i>Signada";		
+						case 'COMPLETED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i>Signat</div>";		
 						$estado_firma .= "</a>";					
 						break;
-					case 'IN_PROCESS':
-				  	$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
+						case 'IN_PROCESS':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i>En curs</div>";		
 						$estado_firma .= "</a>";						
 						default:
-						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
-					}
+						$estado_firma = "<div class='btn btn-light btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
+						}
 					echo $estado_firma;
 				}
 			?>
@@ -126,7 +124,7 @@
 				<div class="modal-content">	
 					<div class="modal-header">
 						<h4 class="modal-title">Enviar correu electrònic per justificació</h4>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   				</div>
     				<div class="modal-body">
 						<div class="form-group">
@@ -150,12 +148,11 @@
 		let todoBien = true
 		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
-
 		let wrapper_ActaDeCierre = document.getElementById('wrapper_ActaDeCierre')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_15 = document.getElementById('spinner_15')
 		let infoMissingDataDoc15 = document.getElementById('infoMissingDataDoc15')
 		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });
+
 		infoMissingDataDoc15.innerText = ""
 
 		if (!fecha_reunion_cierre.value) {
@@ -169,11 +166,6 @@
 		if (todoBien) {
 			infoMissingDataDoc15.classList.add('ocultar')
 			myActaDeCierre.show()
-			//infoMissingDataDoc15.classList.add('ocultar')
-			//wrapper_ActaDeCierre.disabled = true
-			//wrapper_ActaDeCierre.innerHTML = "Generant ..."
-			//spinner_15.classList.remove('ocultar')
-			/* window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_conces_con_req' */
 		} else {
 			infoMissingDataDoc15.classList.remove('ocultar')
 		}

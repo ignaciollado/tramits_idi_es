@@ -9,7 +9,7 @@
         <?php }
         else {?>
 			<span id="btn_17" class="">
-					<button id="generadoc_res_conces_sin_req" class='btn btn-primary' onclick="generaResolucionConcesion(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
+					<button id="generadoc_res_conces_sin_req" class='btn btn-primary btn-acto-admin' onclick="generaResolucionConcesion(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
 					<div id='infoMissingDataDoc17' class="alert alert-danger ocultar"></div>
 				</span>	
 			<span id="spinner_17" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
@@ -18,7 +18,7 @@
 	</div>
 	<div class="card-itramits-footer">
 	<?php if ($expedientes['doc_res_conces_sin_req'] !=0) { ?>
-		<a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_conces_sin_req');?>" target = "_self"><i class='fa fa-check'></i>La resolució de concessió</a>		
+		<a	class='btn btn-success btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_conces_sin_req');?>" target = "_self"><i class='fa fa-check'></i>La resolució de concessió</a>		
 		<?php }	?>	
   	</div>
 </div>

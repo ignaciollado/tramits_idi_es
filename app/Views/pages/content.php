@@ -37,9 +37,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2024');?>">
             <strong>«IDigital»</strong>, estratègia per impulsar la digitalització en la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2024">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesI_2024">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoI_2024">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2024">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesI_2024">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoI_2024">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -53,9 +55,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2024');?>">            
             <strong>«IExporta»</strong>, estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2024">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesII_2024">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoII_2024">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2024">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesII_2024">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoII_2024">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -68,7 +72,7 @@
         <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">           
             <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
-            <ol>
+            <ul>
             <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuaciones corporativas/2024');?>">               
               <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.<br>
                   <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_org_2024">0</span>
@@ -83,7 +87,7 @@
                   <span class="badge text-bg-success" id="importeConcedidoIII_prod_2024">0.00</span>
               </li>
             </a>
-            </ol>
+            </ul>
           </div>
         </div>
       </div>
@@ -96,9 +100,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa IV/2024');?>">              
             <strong>«IGestió»</strong>, estratègia per impulsar la implantació d'eines de gestió avançada i optimització de processos de la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2024">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesIV_2024">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoIV_2024">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2024">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesIV_2024">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoIV_2024">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -118,9 +124,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2023');?>">
             <strong>«IDigital»</strong>, estratègia per impulsar la digitalització en la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2023">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesI_2023">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoI_2023">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2023">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesI_2023">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoI_2023">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -134,9 +142,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2023');?>">            
             <strong>«IExporta»</strong>, estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2023">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesII_2023">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoII_2023">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2023">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesII_2023">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoII_2023">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -150,9 +160,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2023');?>">            
             <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2023">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesIII_2023">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoIII_2023">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2023">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesIII_2023">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoIII_2023">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -172,9 +184,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2022');?>">
             <strong>«IDigital»</strong>, estratègia per impulsar la digitalització en la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2022">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesI_2022">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoI_2022">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2022">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesI_2022">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoI_2022">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -188,9 +202,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2022');?>">            
             <strong>«IExporta»</strong>, estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2022">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesII_2022">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoII_2022">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2022">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesII_2022">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoII_2022">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -204,9 +220,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2022');?>">            
             <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2022">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesIII_2022">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoIII_2022">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2022">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesIII_2022">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoIII_2022">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -226,9 +244,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2021');?>">
             <strong>«IDigital»</strong>, estratègia per impulsar la digitalització en la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2021">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesI_2021">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoI_2021">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2021">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesI_2021">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoI_2021">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -242,9 +262,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2021');?>">            
             <strong>«IExporta»</strong>, estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2021">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesII_2021">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoII_2021">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2021">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesII_2021">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoII_2021">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>
@@ -258,9 +280,11 @@
           <div class="accordion-body">
           <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III/2021');?>">            
             <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
-            <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2021">0</span>
-            <span class="badge text-bg-success" id="totalSolicitudesIII_2021">0</span>
-            <span class="badge text-bg-success" id="importeConcedidoIII_2021">0.00</span>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_2021">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesIII_2021">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoIII_2021">0.00</span>
+            </li></ul>
           </a>
           </div>
         </div>

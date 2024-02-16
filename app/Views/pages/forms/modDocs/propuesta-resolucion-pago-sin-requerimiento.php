@@ -7,8 +7,8 @@
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="wrapper_propuestaResPagoSinReg" class='btn btn-primary' onclick="enviaPropResolucionPagoSinReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
-			<div id='infoMissingDataDoc9' class="alert alert-danger ocultar"></div>
+			<button id="wrapper_propuestaResPagoSinReg" class='btn btn-primary btn-acto-admin' onclick="enviaPropResolucionPagoSinReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
+			<div id='infoMissingDataDoc9' class="alert alert-danger ocultar btn-acto-admin"></div>
 			<span id="spinner_9" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>
 
@@ -25,22 +25,22 @@
 				$estado_firma = $respuesta['status'];
 				switch ($estado_firma) {
 					case 'NOT_STARTED':
-						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";
-						break;
+					$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+					break;
 					case 'REJECTED':
-						$estado_firma = "<a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . "><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
-						$estado_firma .= "</a>";
-						break;
+					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+					$estado_firma .= "</a>";				
+					break;
 					case 'COMPLETED':
-						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " ><i class='fa fa-check'></i>Signat";
-						$estado_firma .= "</a>";
-						break;
+					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i>Signat</div>";		
+					$estado_firma .= "</a>";					
+					break;
 					case 'IN_PROCESS':
-						$estado_firma = "<div class='info-msg'><i class='fa fa-check'></i><a href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " >En curs";
-						$estado_firma .= "</a></div>";
+					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i>En curs</div>";		
+					$estado_firma .= "</a>";						
 					default:
-						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
-				}
+					$estado_firma = "<div class='btn btn-light btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
+					}
 				echo $estado_firma;
 			}	?>
 

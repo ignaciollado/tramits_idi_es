@@ -712,7 +712,7 @@ if (!$expedientes['importeAyuda']) {
                 <div class="mb-3">
                     <input type='text' placeholder = "El número del REC [GOIBE539761_2021]" name = "refRecMejora" class='form-control form-control-sm' id="refRecMejora" maxlength = "16"/>
                 </div>
-                    <button class="btn btn-success btn-lg btn-block btn-docs" onclick="insertaMejoraEnSolicitud()" id="addMejora">Afegir</button>
+                    <button class="btn-itramits btn-success-itramits btn-lg btn-block btn-docs" onclick="insertaMejoraEnSolicitud()" id="addMejora">Afegir</button>
             </div>          
         </div>
         
@@ -811,7 +811,7 @@ if (!$expedientes['importeAyuda']) {
                             <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedSolicitud[]" id="nombrefaseExpedSolicitud" size="20" accept=".pdf, .zip" multiple />
                         </div>
                         <div>
-                            <input id="subeDocsSolicitudBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                            <input id="subeDocsSolicitudBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
                         </div>
                     </div>
                 <?php }?>                    
@@ -899,12 +899,6 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------Informe desfavorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta resolucio concessió ajut_ amb requeriment SIN VIAFIRMA-->
-            <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-concesion-con-requerimiento.php';?>
-            <!-------------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------Proposta resolucio concessió ajut_ sense requeriment SIN VIAFIRMA-->
-            <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-concesion-sin-requerimiento.php';?>
-            <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta resolucio denegació ajut_ amb requeriment SIN VIAFIRMA-->
 	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
@@ -923,12 +917,6 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------Resolució denegació_ sense requeriment SIN VIAFIRMA-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Resolució concesió adhesió ILS sense requeriment--------->
-            <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-adhesion-ils-sin-requerimiento.php';?></li> -->
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Resolució de concessió SIN VIAFIRMA-->
-            <?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento.php';?>
-            <!------------------------------------------------------------------------------------------------------>            
         </ol>
         </div>
         <div class="col docsExpediente">
@@ -1007,7 +995,7 @@ if (!$expedientes['importeAyuda']) {
                         <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedValidacion[]" id="nombrefaseExpedValidacion" size="20" accept=".pdf" multiple />
                     </div>
                     <div>
-                        <input id="subeDocsValidacionBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                        <input id="subeDocsValidacionBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
                     </div>
                 </div>
                 <?php }?>
@@ -1079,12 +1067,6 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------17.-mayo_Acta de cierre ---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-cierre.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------18.-mayo_Acord de confidencialitat ------------------------------------>
-            <!--<li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acuerdo-de-confidencialidad.php';?></li>-->
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------19.-resolución ampliación plazo ------------------------------------>
-            <!-- <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-ampliacion-plazo.php';?></li> -->
-            <!---------------------------------------------------------------------------------------------------------------->
             </ol>
         </div>
 
@@ -1093,10 +1075,10 @@ if (!$expedientes['importeAyuda']) {
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-    	            <div>Pujatel</div>
-   	  	            <div>Docuent</div>
-		            <div>Estt</div>                     
-      	            <div>Ació</div>
+    	            <div>Pujat el</div>
+   	  	            <div>Document</div>
+		            <div>Estat</div>                     
+      	            <div>Acció</div>
                 </div>
             <?php if($documentos): ?>
             <?php foreach($documentos as $docSolicitud_item): 			            
@@ -1165,7 +1147,7 @@ if (!$expedientes['importeAyuda']) {
                         <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedEjecucion[]" id="nombrefaseExpedEjecución" size="20" accept=".pdf" multiple />
                     </div>
                     <div>
-                        <input id="subeDocsEjecucionBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                        <input id="subeDocsEjecucionBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
                     </div>
                 </div>
                 <?php }?>
@@ -1243,46 +1225,46 @@ if (!$expedientes['importeAyuda']) {
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento-20b.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->                                      
         </ol>    
-            <h3>Documents de l'expedient:</h3>
-            <div class="docsExpediente">
-                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-                    <div >Pujat el</div>
-                    <div >Document</div>
-                    <div >Estat</div>               
-                    <div >Acció</div>
-                </div>
+        <h3>Documents de l'expedient:</h3>
+        <div class="docsExpediente">
+            <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
+                <div >Pujat el</div>
+                <div >Document</div>
+                <div >Estat</div>               
+                <div >Acció</div>
+            </div>
 
-                <?php if($documentos): ?>
-                    <?php foreach($documentos as $docSolicitud_item): 			            
-                            if($docSolicitud_item->fase_exped == 'Justificac') {
-                                $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
-                                $parametro = explode ("/",$path);
-                                $tipoMIME = $docSolicitud_item->type;
-                                $nom_doc = $docSolicitud_item->name;
+        <?php if($documentos): ?>
+            <?php foreach($documentos as $docSolicitud_item): 			            
+                if($docSolicitud_item->fase_exped == 'Justificac') {
+                    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
+                    $parametro = explode ("/",$path);
+                    $tipoMIME = $docSolicitud_item->type;
+                    $nom_doc = $docSolicitud_item->name;
+            ?>
+            <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-justificacion">
+                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
+                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
+                    <?php
+                    switch ($docSolicitud_item->estado) {
+				        case 'Pendent':
+    			            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+					        break;
+    				    case 'Aprovat':
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+					        break;
+	    			    case 'Rebutjat':
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+					        break;
+                        default:
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                    }
                     ?>
-                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-justificacion">
-                        <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-                        <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <?php
-                            switch ($docSolicitud_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                        <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        <span class = "detail-wrapper-docs-col">
-                            <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><strong>Elimina</strong></button>
-                        </span>  			
-                    </div>
+                    <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                    <span class = "detail-wrapper-docs-col">
+                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><strong>Elimina</strong></button>
+                    </span>  			
+                </div>
                 <?php }
                     endforeach; ?>
                 <?php endif; ?>
@@ -1316,7 +1298,7 @@ if (!$expedientes['importeAyuda']) {
                             <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedJustificacion[]" id="file_faseExpedJustificacion" size="20" accept=".zip" multiple />
                         </div>
                         <div>
-                            <input id="subeDocsJustificacionBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                            <input id="subeDocsJustificacionBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
                         </div>
                     </div>
                 <?php }?>
@@ -1666,11 +1648,11 @@ if (!$expedientes['importeAyuda']) {
         <div class="col">
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-    	            <div >Pujat el</div>
-   	  	            <div >Document</div>
-		            <div >Custodia</div>               
-      	            <div >Acció</div>
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
+    	            <div>Pujat el</div>
+   	  	            <div>Document</div>
+   	  	            <div>Estat</div>
+      	            <div>Acció</div>
                 </div>
 
             <?php if($documentos): ?>
@@ -1684,7 +1666,22 @@ if (!$expedientes['importeAyuda']) {
                 <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-desestimiento">
       	            <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
    		            <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                    <span id="custodia" class = "detail-wrapper-docs-col"><a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$docSolicitud_item->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $docSolicitud_item->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a></span>
+                    <?php
+                    switch ($docSolicitud_item->estado) {
+				        case 'Pendent':
+    			            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+					        break;
+    				    case 'Aprovat':
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+					        break;
+	    			    case 'Rebutjat':
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+					        break;
+                        default:
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                    }
+                    ?>
+                    <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                     <span class = "detail-wrapper-docs-col">
                         <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocDesestimiento"><strong>Elimina</strong></button>
                     </span> 
@@ -1724,7 +1721,7 @@ if (!$expedientes['importeAyuda']) {
                         <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDesestimiento[]" id="nombrefaseExpedDesestimiento" size="20" accept=".pdf, .zip" multiple />
                     </div>
                     <div>
-                        <input id="subeDocsDesestimientoBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                        <input id="subeDocsDesestimientoBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
                     </div>
                 </div>
                 <?php }?>
