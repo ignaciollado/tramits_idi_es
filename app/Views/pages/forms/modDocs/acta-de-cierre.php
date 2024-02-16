@@ -8,11 +8,11 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-				<button type = "button" id="btn_ActaDeCierre" class = "btn btn-primary btn-acto-admin" id="myBtnActaDeCierre" onclick="enviaActaDeCierre(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera l'acta</button>    
+				<button type = "button" id="btn_ActaDeCierre" class = "btn btn-secondary btn-acto-admin" id="myBtnActaDeCierre" onclick="actaDeCierre(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera l'acta</button>    
 			<?php }?>
 
 			<span id="btn_15" class="">
-    		<a id="wrapper_ActaDeCierre" class = "ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" class="btn-primary-itramits">Envia a signar l'acta</a>   
+    		<a id="wrapper_ActaDeCierre" class = "btn btn-primary ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" onclick="enviaActaDeCierre()">Envia a signar l'acta</a>   
 				<button type = "button" id="enviar-a-justificar" class = "btn btn-dark btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
 			</span>	
 			<div id='infoMissingDataDoc15' class = "alert alert-danger ocultar"></div>
@@ -63,7 +63,7 @@
 					<div class="modal-header">
 						<h4 class="modal-title">Dades per generar l'acta de tancament</h4>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  					</div>
+  				</div>
 
     					<div class="modal-body">
                 <div class="form-group">
@@ -72,22 +72,22 @@
 						    	placeholder="Acta número" value = "<?php echo $expedientes['actaNumCierre']; ?>">
         			  </div>
 					
-                        <div class="form-group">
+                      <div class="form-group">
                             <label style = "color: orange;"  for = "fecha_reunion_cierre_modal"><strong>Data reunió tancament:</strong></label>
                             <input type = "date" readonly width="50%" name = "fecha_reunion_cierre_modal" class = "form-control" id = "fecha_reunion_cierre_modal" value = "<?php if ($expedientes['fecha_reunion_cierre'] != null) {echo date_format(date_create($expedientes['fecha_reunion_cierre']), 'Y-m-d');}?>">
                         </div>
 
-					    <div class="form-group">
+					    				<div class="form-group">
                             <label style = "color: orange;" for = "fecha_limite_justificacion_modal"><strong>Data límit per justificar l'ajut rebut: </strong></label>
                             <input type = "date" readonly name = "fecha_limite_justificacion_modal" class = "form-control" id = "fecha_limite_justificacion_modal" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
                         </div>
 
-  		    			<div class="form-group">
+  		    						<div class="form-group">
                             <label style = "color: orange;" for = "horaInicioActaCierre"><strong>Hora inici:</strong></label>
                             <input type = "time" required width="50%" name = "horaInicioActaCierre" class = "form-control" id = "horaInicioActaCierre" value = "<?php echo $expedientes['horaInicioActaCierre'];?>">
                         </div>
   					
-  					    <div class="form-group">
+  					    			<div class="form-group">
                             <label style = "color: orange;" for = "horaFinActaCierre"><strong>Hora acabament:</strong></label>
                             <input type = "time" required width="50%" name = "horaFinActaCierre" class = "form-control" id = "horaFinActaCierre" value = "<?php echo $expedientes['horaFinActaCierre'];?>">
                         </div>
@@ -97,7 +97,7 @@
                             <input type = "text" required name = "lugarActaCierre" class = "form-control" id = "lugarActaCierre" value = "<?php echo $expedientes['lugarActaCierre']; ?>">
                         </div>
 
-				  	    <div class="form-group">
+				  	    			<div class="form-group">
                         	<label style = "color: orange;" for = "asistentesActaCierre"><strong>Assistents: </strong></label>
                         	<textarea rows="5" cols="40" required name="asistentesActaCierre" class="form-control" id = "asistentesActaCierre" 
 														placeholder="Assistents"><?php echo $expedientes['asistentesActaCierre']; ?></textarea>
@@ -109,10 +109,10 @@
 						    							placeholder="Observacions"><?php echo $expedientes['observacionesActaCierre']; ?></textarea>
                         </div>	 					
 
-					    <div class="form-group">
-           				    <button type="button" onclick = "javaScript: actualizaActaCierre_click();" id="guardaMotivoActaDeCierre" 
-											class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
-        				</div>	
+					    				<div class="form-group">
+           				    	<button type="button" onclick = "javaScript: actualizaActaCierre_click();" id="guardaMotivoActaDeCierre" 
+												class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
+        							</div>	
 					</div>
 				</div>
 			</div>
@@ -144,11 +144,11 @@
   	</div>
 </div>
 <script>
-	function enviaActaDeCierre(id, convocatoria, programa, nifcif) {
+	function actaDeCierre(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
-		let wrapper_ActaDeCierre = document.getElementById('wrapper_ActaDeCierre')
+		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc15 = document.getElementById('infoMissingDataDoc15')
 		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });
@@ -169,5 +169,11 @@
 		} else {
 			infoMissingDataDoc15.classList.remove('ocultar')
 		}
+	}
+
+	function enviaActaDeCierre() {
+		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
+		myBtnActaDeCierre.disabled = true
+		myBtnActaDeCierre.innerHTML = "Enviant ..."
 	}
 </script>

@@ -86,7 +86,8 @@ $pdf->AddPage();
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: informe desfavorable<br>";
-$html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
+$html .= "Programa: " .$data['expediente']['tipo_tramite']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -171,7 +172,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 9);
+$pdf->setY($currentY + 5);
 $firma = "El/la tècnic/a<br><br>".  $pieFirma;
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

@@ -1,4 +1,4 @@
-﻿<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <?php
 	$requestPublicAccessId = $PublicAccessId; // document public access id
 	$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
@@ -46,35 +46,31 @@
 	}	
 		
 	function printResult($result) {
-		
-		// echo '<div>- ';
-		// echo $result;
-		// echo ' -</div>';
-
+	
 		$respuesta = json_decode ($result, true);
-		//var_dump($respuesta);
+		
 		echo "<div class='further'>";
 		echo "<div class='container'>";
-		echo "<pre><code>Ref. pùblica: ".$respuesta['publicAccessId']."</code></pre>";				
-		echo "<pre><code>Assumpte: ".$respuesta['subject']."</code></pre>";
-		echo "<pre><code>Missatge: ".$respuesta['message']."</code></pre>";
-		echo "<pre><code>Data de creació: ".gmdate("d-m-Y H:i:s", intval ($respuesta['creationDate']/1000))."</code></pre>";
-		echo "<pre><code>Data d'enviament: ".gmdate("d-m-Y H:i:s",intval ($respuesta['sendDate']/1000))."</code></pre>";
+		echo "<pre>Ref. pùblica: ".$respuesta['publicAccessId']."</pre>";				
+		echo "<pre>Assumpte: ".$respuesta['subject']."</pre>";
+		echo "<pre>Missatge: ".$respuesta['message']."</pre>";
+		echo "<pre>Data de creació: ".gmdate("d-m-Y H:i:s", intval ($respuesta['creationDate']/1000))."</pre>";
+		echo "<pre>Data d'enviament: ".gmdate("d-m-Y H:i:s",intval ($respuesta['sendDate']/1000))."</pre>";
 		
-		echo "<pre><code>Segell electrònic: ".$respuesta['stampName']."</code></pre>";
-		echo "<pre><code>";
+		echo "<pre>Segell electrònic: ".$respuesta['stampName']."</pre>";
+		echo "<pre>";
 		if ($respuesta['status'] == "REJECTED") {
 			echo "<div class = 'warning-msg'><i class='fa fa-warning'></i><strong>SOL·LICITUD DE SIGNATURA REBUTJADA.</strong></div>";
 		}
-		echo "</code></pre>";
+		echo "</pre>";
 
-		echo "<div class='alert alert-info'><pre><code>".$respuesta['rejectInfo']['rejectType']."</code></pre></div>";
-		echo "<div class='alert alert-info'><pre><code>".$respuesta['rejectInfo']['rejectReason']."</code></pre></div>";
-		echo "<pre><code>Data rebuig: ".gmdate("d-m-Y H:i:s", intval ($respuesta['rejectInfo']['rejectDate']/1000))."</code></pre>";
-		echo "<pre><code>".$respuesta['rejectInfo']['autoReminderPeriodicity']."</code></pre>";	
-		echo "<pre><code>".$respuesta['rejectInfo']['autoReminderAttempts']."</code></pre>";	
-		echo "<pre><code>Nom del document a signar: ".$respuesta['documentsToSign'][0]['filename']."</code></pre>";
-		echo "<div><button class='btn btn-primary-itramits' onclick='goBack()'>Tornar</button></div>";
+		echo "<div class='alert alert-info'><pre>".$respuesta['rejectInfo']['rejectType']."</pre></div>";
+		echo "<div class='alert alert-info'><pre>".$respuesta['rejectInfo']['rejectReason']."</pre></div>";
+		echo "<pre>Data rebuig: ".gmdate("d-m-Y H:i:s", intval ($respuesta['rejectInfo']['rejectDate']/1000))."</pre>";
+		echo "<pre>".$respuesta['rejectInfo']['autoReminderPeriodicity']."</pre>";	
+		echo "<pre>".$respuesta['rejectInfo']['autoReminderAttempts']."</pre>";	
+		echo "<pre>Nom del document a signar: ".$respuesta['documentsToSign'][0]['filename']."</pre>";
+		echo "<div><button class='btn btn-secondary' onclick='goBack()'>Tornar</button></div>";
 		echo "</div>";
 		echo "</div>";
 

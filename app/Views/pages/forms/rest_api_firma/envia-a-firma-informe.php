@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <?php	
-    use App\Models\UseriTramitsModel;
+    use App\Models\ConfiguracionModel;
 
     $session = session();
     $empresa = $session->get('full_name');
@@ -9,10 +9,10 @@
 		$telefono_cont = $session->get('telefono');
 
 		if ( $byCEOSigned ) {
-    	$useritramits = new UseriTramitsModel();
-    	$data['useriTramits'] = $useritramits->where('rol', 'gerencia')->first();
-			$adreca_mail = $data['useriTramits']['user_name'];
-			$telefono_cont = $data['useriTramits']['telefono'];
+    	$configuracion = new ConfiguracionModel();
+    	$data['ceoData'] = $configuracion->where('activeGeneralData', 'SI')->first();
+			$adreca_mail = $data['ceoData']['eMailDGerente'];
+			$telefono_cont = $data['ceoData']['telDGerente'];
  			$adreca_mail = "illado@idi.caib.es";
 			$telefono_cont = "677234076";
 		}

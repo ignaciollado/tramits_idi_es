@@ -88,7 +88,8 @@ $pdf->AddPage();
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: Acta núm. ".$data['expediente']['actaNumCierre']."<br>";
-$html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
+$html .= "Programa: " .$data['expediente']['tipo_tramite']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -135,8 +136,16 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
+// align: T (top), M (middle), B (bottom), N (next line)
+$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
+$pdf->setY($currentY + 20);
 $parrafo_1 = lang('message_lang.doc_acta_cierre_desarrollo_sesion');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";

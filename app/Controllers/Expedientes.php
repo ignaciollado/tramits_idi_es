@@ -985,7 +985,7 @@ class Expedientes extends Controller
 			'id_sol' => $request->uri->getSegment(3),
 			'name' =>  $tipoDocumento . ".pdf",
 			'type' => 'application/pdf',
-			'cifnif_propietario' => $request->uri->getSegment(6),
+			'cifnif_propietario' => $data['nifcif'],
 			'tipo_tramite' => str_replace("%20", " ", $request->uri->getSegment(5)),
 			'corresponde_documento' => $tipoDocumento,
 			'datetime_uploaded' => time(),
@@ -997,7 +997,7 @@ class Expedientes extends Controller
 		$documentos->insert($data_file);
 		$last_insert_id = $db->insertID();
 		$data['last_insert_id'] = $last_insert_id;
-		$dir = WRITEPATH . 'documentos/' . $request->uri->getSegment(6) . '/informes/';
+		$dir = WRITEPATH . 'documentos/' . $data['nifcif'] . '/informes/';
 
 		if (!is_dir($dir)) {
 			mkdir($dir, 0775, true);
