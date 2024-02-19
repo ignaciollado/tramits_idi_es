@@ -22,15 +22,15 @@ class Expedientes extends Controller
 		$language->setLocale('ca');
 		$session = session();
 
-		$where = "";
+		$where = "convocatoria = ".date("Y");
 
 		$rol =  $session->get('rol');
 
 		$modelExp = new ExpedientesModel();
-		if ($rol == 'admin') {
+		if ($rol == 'admin') {/* 
 			if ($session->get('convocatoria_fltr')) {
 				$where = "convocatoria = " . $session->get('convocatoria_fltr');
-			}
+			} */
 			if ($session->get('programa_fltr')) {
 				$where = "tipo_tramite = '" . $session->get('programa_fltr') . "'";
 			}
