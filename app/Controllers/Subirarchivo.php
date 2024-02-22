@@ -135,6 +135,7 @@ class SubirArchivo extends BaseController
 			$datos_bancarios = $this->request->getVar('cc');
 		} else {
 			$datos_bancarios = $this->request->getVar('cc2');
+			$datos_bancarios_pais = $this->request->getVar('cc2Country');
 		}
 
 		$declaracion_responsable_iii = "SI ";
@@ -266,6 +267,7 @@ class SubirArchivo extends BaseController
 				'veracidad_datos_bancarios_2'  => $veracidad_datos_bancarios_2,
 				'veracidad_datos_bancarios_3'  => $veracidad_datos_bancarios_3,			
 				'cc_datos_bancarios'           => $datos_bancarios,
+				'pais_datos_bancarios'				 => $datos_bancarios_pais,
 				'opcion_banco'                 => $this->request->getVar('opcion_banco'),
 				'ayudasSubven_dec_resp'  			 => $declaracion_responsable_iii,
 				'noHaRecibidoAyudas_otra_admin'  	=> $declaracion_responsable_iv,

@@ -124,9 +124,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<span class="checkmark"></span>
 		</label>
 		</ul>
-		<!-- <label class="container-radio">
-			<span class="tooltiptext_idi"> <?php echo lang('message_lang.info_programa');?> </span>
-		</label> -->
    </fieldset>  		
 	</div>
 </div>
@@ -135,9 +132,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 <div class="tab" id="empresa">
   	<div id="formbox2" class="formbox">
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
- 	<!--<legend>-->
-		 <h2><?php echo lang('message_lang.solicitante_tipo');?></h2>
-	<!--</legend>-->  
+		 <h2><?php echo lang('message_lang.solicitante_tipo');?></h2> 
 		<label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_autonomo');?></h6>
 			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_autonomo');?>" id="autonomo" onchange = "javaScript: tipoSolicitante (this.id);" value="autonomo">
 			<span class="checkmark"></span>
@@ -162,7 +157,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	<div id="formbox">
 	<fieldset id="interesado">
 		<h2><?php echo lang('message_lang.identificacion_sol_idigital');?></h2>
-
 		<input name="nif" id="nif" type="text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value); consultaExpediente ( 'dni', this.value );" title="NIF" placeholder = "NIF" aria-required="true" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
 		<ul id="rest-result"></ul>
 		<div id ="spinner-idi-isba" class="spinner-border text-warning ocultar" role="status">
@@ -182,11 +176,9 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 <div class="tab">
 	<div id="formbox">
     <fieldset>
-	   	<!--<legend>-->
-			   <h2><?php echo lang('message_lang.titulo_notificiaciones');?></h2>
-		<!--</legend>-->
-		<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" ><p id="mensaje_tel"></p>
-		<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">		 
+			<h2><?php echo lang('message_lang.titulo_notificiaciones');?></h2>
+			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" ><p id="mensaje_tel"></p>
+			<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">		 
 	</fieldset>
 	</div>
 </div>
@@ -195,9 +187,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 <div class="tab">
 	<div  id="formbox">
     <fieldset>
-      <!--<legend>-->
-			  <h2><?php echo lang('message_lang.datos_cons_sol_idigital');?></h2>
-			<!--</legend>-->
+			<h2><?php echo lang('message_lang.datos_cons_sol_idigital');?></h2>
 			<div id = "verDatosConsultor">
 				<div><input type = "text"  onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.empresa_consultor');?>" aria-required="false" placeholder = "<?php echo lang('message_lang.empresa_consultor');?>" name = "empresa_consultor" id = "empresa_consultor"></div>
 				<div><input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.nombre_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.nombre_consultor');?>"  name = "nom_consultor" id = "nom_consultor"></div>
@@ -207,6 +197,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</fieldset>
 	</div>
 </div>
+
 <!-------------------------- 6. DOCUMENTACIÓN ADJUNTA --------------------------------------------------------------------->
 <div class="tab">
 	<div id="formbox">
@@ -265,13 +256,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 				 <code>[.pdf]:</code>
 				<input type = "file" id="file_certificadoIAE" name="file_certificadoIAE[]" title="Selecciona el certificat d'IAE" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>
-			<fieldset>
-				<label for = "certificadoIAEEnIDI" class="main" >
-					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-					<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "certificadoIAEEnIDI" id = "certificadoIAEEnIDI">
-					<span class="w3docs"></span>
-				</label>
-			</fieldset>
 
 			<h3 id="pFisica" class="ocultar"><?php echo lang('message_lang.eres_persona_fisica');?></h3>
 			<h3 id="pJuridica" class="ocultar"><?php echo lang('message_lang.eres_persona_juridica');?></h3>
@@ -315,41 +299,40 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 <div class="tab">
 	<div id="formbox">
 	<fieldset>
-		<!--<legend>-->
-			<h2><?php echo lang('message_lang.autorizaciones_solicitud');?></h2>
-		<!--</legend>-->
+		<h2><?php echo lang('message_lang.autorizaciones_solicitud');?></h2>
+		<label for = "consentimientoLey392015" class = "main"><?php echo lang('message_lang.consentimientoLey392015');?></label><br>
 			
-			<!--<label for = "consentimientocopiaNIF" class = "main"><?php echo lang('message_lang.autorizaciones_personas_fisicas');?>
-				<input title = "<?php echo lang('message_lang.copia_dni');?>" checked type = "checkbox" name = "consentimientocopiaNIF" id = "consentimientocopiaNIF" onchange = "javaScript: muestraSubeArchivo(this.id);">
-				<span class = "w3docs"></span>
-			</label>
-			<div id = "enviarcopiaNIF" class = "ocultar">
-				<label for = "file_copiaNIF"><h5><?php echo lang('message_lang.documento_copiaNIF');?></h5><code>[.pdf]:</code>
-			</div>-->
+		<label for = "consentimientocopiaNIF" class = "main"><?php echo lang('message_lang.autorizaciones_personas_fisicas');?>
+			<input title = "<?php echo lang('message_lang.copia_dni');?>" checked type = "checkbox" name = "consentimientocopiaNIF" id = "consentimientocopiaNIF" onchange = "javaScript: muestraSubeArchivo(this.id);">
+			<span class = "w3docs"></span>
+		</label>
+		<div id = "enviarcopiaNIF" class = "ocultar">
+			<label for = "file_copiaNIF"><h5><?php echo lang('message_lang.no_doy_consentimiento');?></h5><code>[.pdf]:</code>
+		</div>
 
-			<label for = "consentimiento_identificacion" class="main"><?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>
+		<label for = "consentimiento_certificadoATIB" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>
+			<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
+			<span class = "w3docs"></span>
+		</label>
+		<div id = "enviarcertificadoATIB" class = "ocultar">
+			<label for = "file_certificadoATIB"><h5><?php echo lang('message_lang.no_doy_consentimiento');?></h5><code>[.pdf]:</code> 
+		</div>
+
+		<!-- 	<label for = "consentimiento_identificacion" class="main"><?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>
 				<input title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked type="checkbox" name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
 				<span class = "w3docs"></span>
 			</label>
 			<div id = "enviardocumentoIdentificacion" class = "ocultar">
 				<label for = "file_enviardocumentoIdentificacion"><h5><?php echo lang('message_lang.document_identificativos');?></h5><code>[.pdf]:</code>
-			</div>
-			
-			<label for = "consentimiento_certificadoATIB" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>
-				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
-				<span class = "w3docs"></span>
-			</label>
-			<div id = "enviarcertificadoATIB" class = "ocultar">
-				<label for = "file_certificadoATIB"><h5><?php echo lang('message_lang.certificado_document_correspon');?></h5><code>[.pdf]:</code> 
-			</div>
+			</div> -->
 
-			<!--<label for = "consentimiento_certificadoSegSoc" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_seg_soc');?>
-				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoSegSoc" id="consentimiento_certificadoSegSoc" onchange = "javaScript: muestraSubeArchivo(this.id);">
-				<span class = "w3docs"></span>
-			</label>
-			<div id = "enviarcertificadosegSoc" class = "ocultar">
-				<label for = "file_certificadoSegSoc"><h5><?php echo lang('message_lang.certificado_document_correspon');?></h5><code>[.pdf]:</code>
-			</div>-->				
+		<label for = "consentimiento_certificadoSegSoc" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_seg_soc');?>
+			<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoSegSoc" id="consentimiento_certificadoSegSoc" onchange = "javaScript: muestraSubeArchivo(this.id);">
+			<span class = "w3docs"></span>
+		</label>
+		<div id = "enviarcertificadosegSoc" class = "ocultar">
+			<label for = "file_certificadoSegSoc"><h5><?php echo lang('message_lang.no_doy_consentimiento');?></h5><code>[.pdf]:</code>
+		</div>			
 	</fieldset>
 	</div>
 	<div id="formbox">	
@@ -361,9 +344,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 <div class="tab">
 	<div id="formbox">
 	<fieldset>   	
-	<!--<legend>-->
 		<h2><?php echo lang('message_lang.declaracion_responsable');?></h2>
-	<!--</legend>-->
 		    <label for = "declaracion_responsable_i" class="main"><?php echo lang('message_lang.declaracion_responsable_i');?>
 				<input title = "<?php echo lang('message_lang.declaracion_responsable_i');?>" disabled checked type="checkbox" name="declaracion_responsable_i" id="declaracion_responsable_i" />
 				<span class = "w3docs"></span>
@@ -377,10 +358,10 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</fieldset>
 
 	<fieldset>		
-		    <label for = "declaracion_responsable_iii" class="main"><?php echo lang('message_lang.declaracion_responsable_iii');?>
+			<!-- 		    <label for = "declaracion_responsable_iii" class="main"><?php echo lang('message_lang.declaracion_responsable_iii');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_iii');?>" disabled checked type="checkbox" name="declaracion_responsable_iii" id="declaracion_responsable_iii" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
-			</label>
+			</label> -->
 		    
 			<label for = "declaracion_responsable_iv" class="main"><?php echo lang('message_lang.declaracion_responsable_iv');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_iv');?>" disabled checked type="checkbox" name="declaracion_responsable_iv" id="declaracion_responsable_iv" onchange = "javaScript: muestraSubeArchivo(this.id);">

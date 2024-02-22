@@ -1,4 +1,4 @@
-<select title = "<?php echo lang('message_lang.localidad_sol_idigital');?>" id = "localidad"  name = "localidad" size="1" required>
+<select aria-required="true" onblur="javaScript: validateFormField(this);" id = "localidad"  name = "localidad" required>
 <option value=""><?php echo lang('message_lang.select_poblacion');?></option>
 <optgroup label="Mallorca"  class="mallorca">
 	<option value="Mallorca#Alaró">

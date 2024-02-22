@@ -240,9 +240,15 @@ function opcionBanco (valor)
 		document.getElementById("2_opcion_banco_h5").setAttribute("class", "container-radio-valid");	
 		let eelement = document.getElementById("verBancoOpcion")
 		let cChild = document.createElement('input')
+		let cChildCountry = document.createElement('input')
+
 		cChild.setAttribute("aria-required", true)
 		cChild.setAttribute("type", "text")
 		cChild.setAttribute("onblur", "validateFormField(this);")    
+
+		cChildCountry.setAttribute("aria-required", true)
+		cChildCountry.setAttribute("type", "text")
+		cChildCountry.setAttribute("onblur", "validateFormField(this);")    
 
 		if (valor == "1") 
 		{
@@ -275,6 +281,13 @@ function opcionBanco (valor)
 		cChild.setAttribute("placeholder", "999999999999999999999999")	
 		cChild.setAttribute("pattern", "[0-9]{24}")
 		eelement.appendChild(cChild)
+		cChildCountry.setAttribute("id", "cc2Country")
+		cChildCountry.setAttribute("name", "cc2Country")
+		cChildCountry.setAttribute("size" ,"100")
+		cChildCountry.setAttribute("maxlength" ,"100")
+		cChildCountry.setAttribute("placeholder", "Country")	
+		cChildCountry.setAttribute("pattern", "[a-z]{100}")
+		eelement.appendChild(cChildCountry)
 		}
 
 	}	

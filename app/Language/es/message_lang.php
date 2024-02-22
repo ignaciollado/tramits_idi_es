@@ -110,9 +110,9 @@ return [
    'convocatoria_sol_idigital'	      => "Convocatoria ",
    'titulo_sol_idigital_consul'       => "Declaración responsable del consultor para el programa de transformación digital<br>en el marco del programa 'Idigital'",
    'titulo_rep_legal'                 => "REPRESENTANTE LEGAL",   
-   'titulo_notificiaciones'           => "CANAL PREFERENTE DE NOTIFICACIÓN <br><small>De acuerdo con el apartado 17 de la convocatoria, las notificaciones y las comunicaciones a la persona
+   'titulo_notificiaciones'           => "CANAL PREFERENTE DE NOTIFICACIÓN <br><br><small>De acuerdo con el apartado 17 de la convocatoria, las notificaciones y las comunicaciones a la persona
    solicitante se realizarán por vía telemática a la dirección de correo electrónico que haya designado la persona solicitante.
-   Los avisos de la puesta a disposición de la notificación en la Carpeta Ciutadana del <a target='_blank' href='https://sede.administracion.gob.es/carpeta/clave.html'>Punto de Acceso General del Estado</a> se enviarán a la dirección de correo
+   Los avisos de la puesta a disposición de la notificación en la Carpeta Ciutadana del <a target='_blank' href='https://sede.administracion.gob.es/carpeta/clave.html'>Punto de Acceso General electrónico (Mi carpeta)</a> se enviarán a la dirección de correo
     electrónico que ha designado en los datos del declarante.</small>",   
    'titulo_dec_resp_consul'           => "DECLARACIÓN RESPONSABLE DEL CONSULTOR",
    'select_poblacion'                 => "Seleccione una población",
@@ -209,17 +209,17 @@ return [
    'canales_comercializacion_empresa'  => "Breve explicación de los canales de comercialización de su empresa",
    'enviar_los_datos'                  => "Enviar los datos",
 
-   'solicitante_tipo'                 => "TIPO DE SOLICITANTE",
-   'solicitante_tipo_ils'                 => "1. TIPO DE EMPRESA",
+   'solicitante_tipo'                  => "TIPO DE SOLICITANTE",
+   'solicitante_tipo_ils'              => "1. TIPO DE EMPRESA",
 
-   'solicitante_tipo_autonomo'             => "Autónomo",
-   'solicitante_tipo_pequenya'             => "Pequeña empresa",
-   'solicitante_tipo_mediana'             => "Mediana empresa",   
-   'solicitante_tipo_grande'             => "Grande",
-   'convocatoria_activa'            => "Convocatoria en curso.",
-   'solicitante_tipo_cluster_ct'             => "Clúster / Centro Tecnológico",
+   'solicitante_tipo_autonomo'         => "Autónomo",
+   'solicitante_tipo_pequenya'         => "Pequeña empresa",
+   'solicitante_tipo_mediana'          => "Mediana empresa",   
+   'solicitante_tipo_grande'           => "Grande",
+   'convocatoria_activa'               => "Convocatoria en curso.",
+   'solicitante_tipo_cluster_ct'       => "Clúster / Centro Tecnológico",
    
-   'cuantia_ayuda_info'               => "  <div>4.2. El número de horas subvencionadas oscilará entre un mínimo de 40 horas, 60 horas y un máximo de 80 horas. La empresa podrá decidir el número de horas que necesita, en función del tamaño y de la complejidad de sus procesos productivos. Para cada 10 horas de consultoría, 2 tendrán que ser horas de consultoría presenciales. Así:</div>
+   'cuantia_ayuda_info'                => "  <div>4.2. El número de horas subvencionadas oscilará entre un mínimo de 40 horas, 60 horas y un máximo de 80 horas. La empresa podrá decidir el número de horas que necesita, en función del tamaño y de la complejidad de sus procesos productivos. Para cada 10 horas de consultoría, 2 tendrán que ser horas de consultoría presenciales. Así:</div>
 	<ul>
     <li> Si la empresa define una consultoría necesaria de 40 horas, 8 horas serían presenciales y 32 horas serían de consultoría en linea para la elaboración del plan de transformación digital, con un coste de 3.000 €. El IDI librará un 80 % del coste (2.400 €) y la empresa el 20 % restante (600 €).</li>
     <li> Si la empresa define una consultoría necesaria de 60 horas, 12 horas serían presenciales y 48 horas serían de consultoría en linea para la elaboración del plan de transformación digital, con un coste de 4.500 €. El IDI librará un 80 % del coste (3.600 €) y la empresa el 20 % restante (900 €).</li>
@@ -228,19 +228,19 @@ return [
 	</ul>",
    "documentacion_necesaria"           => "Antes de empezar, le recomendamos tener preparada la siguiente documentación ya que, a lo largo de este asistente, se la solicitaremos:",
    "documentacion_necesaria_autonomos" => "<dl class='formbox'>
-                                             <dt>En el caso de personas autónomas (personas físicas)</dt>
-                                                <dd>Una descripción de la empresa y de su actividad, así como el modelo de negocio.</dd>
-                                                <dd>El certificado de estar de alta en el <abbr title='Régimen especial de trabajadores autónomos'>RETA</abbr> o en un régimen alternativo equivalente.</dd>
-                                                <dd>El certificado de alta del <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
-                                                <dd>Certificado de estar al corriente de pago con la <abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
+                                             <dt>En el caso de personas físicas (autónomos):</dt>
+                                                <dd>Descripción de la empresa y su actividad, el modelo de negocio y necesidades en función del programa al que se presenta.</dd>
+                                                <dd>Certificado de estar de alta en el <abbr title='Régimen especial de trabajadores autónomos'>RETA</abbr> o en un régimen alternativo equivalente.</dd>
+                                                <dd>Certificado de alta del <abbr title='Impuesto de actividades empresariales'>IAE</abbr> actualizado en el momento de la solicitud.</dd>
+                                                <dd>Certificado de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria <abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_pymes"     => "<dl class='formbox'>
-                                                <dt>En el caso de PYMES (pequeñas y medianas)</dt>
-                                                <dd>Memoria técnica de su actividad.</dd>
-                                                <dd>Documentación acreditativa de las facultades de representación de la persona que firma la solicitud de ayuda como representante de la empresa beneficiaria.</dd>
-                                                <dd>Certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
+                                                <dt>En el caso de personas jurídicas (<abbr title='Pequeñas y Medianas Empresas'>PYMES</abbr>):</dt>
+                                                <dd>Descripción de la empresa y su actividad, el modelo de negocio y necesidades en función del programa al que se presenta.</dd>
+                                                <dd>Certificado de <abbr title='Impuesto de actividades empresariales'>IAE</abbr> actualizado en el momento de la solicitud.</dd>
                                                 <dd>Copia del <abbr title='Número de identificación fiscal'>NIF</abbr> de la empresa.</dd>
-                                                <dd>Certificado de estar al corriente de pago con la <abbr title='Agencia Estatal de Administración Tributaria'>AEAT</abbr>.</dd>
+                                                <dd>Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.</dd>
+                                                <dd>Documento fehaciente que acredite la representación de la persona que actúa en nombre de la entidad solicitante.</dd>
                                           </dl>",
    "documentacion_necesaria_cluster"   => "<dl class='formbox'>
                                                 <dt>Para los clusters y/o centros tecnológicos</dt>
@@ -302,8 +302,8 @@ return [
    'declaracion_minimis'                  => "DECLARACIÓN DE MINIMIS",
    'declaro'                              => "Declaro:",
    'adjunto'                              => "Declaro que adjunto la siguiente documentación como justificación de la convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2023:",   
-   'declaracion_responsable_i'            => "I) Que cumplo con el reglamento (UE) núm. 1407/2013 de la Comisión de 18 de Diciembre de 2013, relativo a la aplicación de los artículos 107 y 108 del Tratado de Funcionamiento de la Unión Europea de las ayudas de minimis.",
-   'declaracion_responsable_ii'           => "II) Que durante los ejercicios fiscales 2021, 2022 y 2023 he recibido un importe total de ayudas de minimis de:", 
+   'declaracion_responsable_i'            => "I) Que cumplo el reglamento (UE) núm.1407/2013 de la Comisión de 18 de diciembre de 2013, relativo a la aplicación de los artículos 107 y 108 del Tratado de Funcionamiento de la Unión Europea de las ayudas de minimis y el reglamento (UE) 2023/2831 de la comisión, de 13 de diciembre de 2023, relativo a la aplicación de los artículos 107 y 108 del Tratado.",
+   'declaracion_responsable_ii'           => "II) Que durante los ejercicios fiscales 2022, 2023 y 2024 he recibido un importe total de ayudas de minimis de:", 
    'declaracion_datos_bancarios_cabecera'          => "DECLARACIÓN RESPONSABLE DE VERACIDAD DE DATOS BANCARIOS APORTADOS",
    'nom_entidad'						         => "Nombre de la entidad bancaria",
    'domicilio_sucursal'				         => "Domicilio de la sucursal / oficina",
@@ -336,7 +336,7 @@ return [
 
    'informe_autodiagnostico'			    => "Informe autodiagnóstico Digital",
    'memoria_tecnica'                    => "6.1. <strong>Descripción de la empresa y de su actividad</strong>: <ul>
-                                             <li>En el caso de personas físicas y/o jurídicas: adjuntar en formato PDF una descripción de la empresa y su actividad, así como el modelo de negocio, y necesidades de la empresa en función del programa al que se presente (necesidades digitales, necesidades de internacionalización o en materia de sostenibilidad).</li>
+                                             <li>En el caso de personas físicas y/o jurídicas: adjuntar en formato PDF una descripción de la empresa y su actividad, así como el modelo de negocio, y necesidades de la empresa en función del programa al que se presente (necesidades digitales, necesidades de internacionalización o en materia de sostenibilidad o en materia de gestión avanzada).</li>
                                              </ul>
    ",
    'declaracion_datos_bancarios'        => "6.2. <strong>La veracidad de los datos bancarios</strong>. De conformidad con el Decreto 6/2013, de 8 de febrero, de medidas de simplificación documental de los procedimientos administrativos, y la relación de documentos del Catálogo de Simplificación Documental sustituibles por la presentación de esta declaración,
@@ -376,12 +376,10 @@ return [
                                                 <li>Adjuntar en PDF el documento constitutivo de la entidad inscrita adecuadamente en el registro correspondiente, con las modificaciones necesarias, si procede, para la acreditación de la personalidad jurídica del solicitante, así como poder suficiente a favor del firmante, en caso de que éste no figure acreditado en la escritura, o certificado actualizado del registro correspondiente, en el que se especifiquen, en los supuestos en que sea procedente, la fecha de constitución, el objeto, el capital y la sede social, la composición del consejo de administración o la junta directiva, los apoderados y los socios que dispongan de más de un 10% y las participaciones.	</li>
                                                 </ul>",
 
-   'autorizaciones_personas_fisicas'    => "Para personas físicas (autónomos):
-                                             autorización para que el IDI pueda comprobar de oficio la identificación de la persona solicitante y/o la persona autorizada por la empresa, excepto en el caso de denegación expresa del consentimiento. En este caso, la persona o la entidad tiene que aportar una copia del DNI del solicitante y de la persona autorizada, si procede, en formato PDF.
-                                             ",
+   'autorizaciones_personas_fisicas'    => "Documento identificativo de la persona solicitante o persona autorizada por la empresa en representación de la misma.",
    'copia_dni'                          => "Una copia del documento nacional de identidad del solicitante o de la persona autorizada, si procede, y de su poder correspondiente",
    'documento'                          => "Documento",
-   'documento_copiaNIF'                 => "Al no dar consentimiento, por favor, adjunte una copia de su NIF",
+   'no_doy_consentimiento'              => "No doy mi consentimiento / Me opongo a / No concedo / Deniego mi autorización para que se consulten los datos y documentos necesarios para la tramitación de esta solicitud. Por eso, presento el documento:",
    'personas_juridicas'                 => "En el caso de personas jurídicas",
    'cluster_centroTecnologico'          => "En el caso de clústeres y/o centros tecnológicos",
    'docConstitutivoCluster'             => "Adjuntar en PDF el documento constitutivo de la entidad inscrita adecuadamente en el registro correspondiente, con las modificaciones necesarias, si procede, para la acreditación de la personalidad jurídica del solicitante, así como poder suficiente a favor del firmante, en caso de que éste no figure acreditado en la escritura, o certificado actualizado del registro correspondiente, en el que se especifiquen, en los supuestos en que sea procedente, la fecha de constitución, el objeto, el capital y la sede social, la composición del consejo de administración o la junta directiva, los apoderados y los socios que dispongan de más de un 10% y las participaciones.",
@@ -439,23 +437,23 @@ return [
    'documento_informe_resumen_ils' => "Por favor, seleccione el archivo o los archivos que contienen el Informe resúmen de la huella de carbono:",
    'documento_compromiso_reduccion_ils' => "Por favor, seleccione el archivo o los archivos que contienen el Compromiso de reducción de las emisiones de gases de efecto invernadero:",
 
+   'consentimientoLey392015' => "De acuerdo con el artículo 28.2 de la Ley 39/2015, de 1 de octubre, del procedimiento administrativo común de las administraciones públicas, se entiende otorgado el consentimiento para obtener datos de documentos elaborados por otras administraciones que puedan consultarse mediante redes corporativas o sistemas electrónicos habilitados al efecto, y que sean necesarias para tramitar esta solicitud. En caso de no dar el consentimiento para realizar la consulta, desmárquelo:",
    'consentimiento_identificacion_solicitante' => "Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears (IDI) pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa. En caso contrario, adjunto declaración de no consentimiento y adjunto el nif del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.",
    'consentimiento_identificacion_solicitante_pdf'	=> " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa.",
 
-'declaracion_responsable_iii'      => "III) Que no he recibido ninguna subvención otorgada por alguna entidad, pública o privada, nacional o extranjera, relacionada con la realización de planes de transformación digital, planes  de internacionalización, o bien con la realización de informes de la huella de carbono corporativa.",
-'declaracion_responsable_iv'      => "IV) Que no he recibido ayudas o subvenciones de otras administraciones públicas, o de otros entes públicos o privados,  nacionales e internacionales que, aisladamente o en concurrencia, supere el 100 % del coste de la actividad que tenga de desarrollar la empresa beneficiaria.",
+'declaracion_responsable_iii'    => "III) Que no he recibido ninguna subvención otorgada por alguna entidad, pública o privada, nacional o extranjera, relacionada con la realización de planes de transformación digital, planes  de internacionalización, o bien con la realización de informes de la huella de carbono corporativa.",
+'declaracion_responsable_iv'     => "IV) Que no he recibido ayudas o subvenciones de otras administraciones públicas, o de otros entes públicos o privados,  nacionales e internacionales que, aisladamente o en concurrencia, supere el 100 % del coste de la actividad que tenga de desarrollar la empresa beneficiaria.",
 
-'declaracion_responsable_x'            => "X) Que el consultor cumple con el punto 7 de la convocatoria.",
+'declaracion_responsable_x'      => "X) Que el consultor cumple con el puntos 7.2 y 7.3 de la convocatoria.",
 'doy_mi_consentimiento'          => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares pueda comprobar de oficio la identificación de la persona solicitante y/o la persona autorizada por la empresa. En caso de denegación expresa del consentimiento adjunto el NIF del solicitante y de la persona autorizada, si se tercia.",    
 'doy_mi_consentimiento_aeat_atib'   => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias (de la ATIB). En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
-'certificado_corriente_pago_aeat'   => "Certificado de estar al corriente de pagos con la AEAT",
+'certificado_corriente_pago_aeat'   => "Certificado de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria (<abbr title='Agencia Estatal de la Administración Tributaria'>AEAT</abbr>)",
 'certificado_corriente_pago_ttss'   => "Certificado de estar al corriente de pagos con la Tesorería de la Seguridad Social",
 'documentos_opcionales_si_ya_los_tiene_admin' => "Los documentos anteriores no se deberán aportar cuando ya consten en el otro expediente, o la Administración los pueda solicitar directamente.",
-'doy_mi_consentimiento_seg_soc'     =>"Respecto a la acreditación del requisito de estar al corriente de las obligaciones con la Seguridad Social, la solicitud de las ayudas implica la autorización para que el IDI pueda obtener de la Tesorería General de la Seguridad Social la información acreditativa del cumplimiento de esta obligación, excepto en caso de denegación expresa del consentimiento, supuesto en que la persona o la entidad solicitante tiene que aportar el certificado correspondiente, junto con la solicitud de las ayudas en formato PDF.",
-'doy_mi_consentimiento_pdf'      => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias con la <abbr title='Agència Tributària de las Illes Balears'>ATIB</abbr> y la <abbr title='Tesorería General de la Seguridad Social'>TGSS</abbr>. En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
+'doy_mi_consentimiento_seg_soc'     =>"Certificado de la Tesorería General de la Seguridad Social (<abbr title='Tesorería General de la Seguridad Social'>TGSS</abbr>) de estar al corriente de pago de sus obligaciones.",
+'doy_mi_consentimiento_pdf'      => " Certificado de la Agencia Tributaria de las Illes Balears (<abbr title='Agència Tributària de les Illes Balears'>ATIB</abbr>) de estar al corriente de las obligaciones tributarias con la comunidad autónoma de las Islas Baleares.",
 
 'declaracion_no_consentimiento'  => "Al no dar consentimiento, por favor, adjunte certificado de cumplimiento con mis obligaciones tributarias y con la Tesorería de la Seguridad Social",
-'certificado_document_correspon' => "Al no dar consentimiento, por favor, adjunte los certificados y la documentación identificativa correspondiente.",
 'rgpd'  => "Reglamento de protección de datos personales",
 'rgpd_leido' => "He leído y acepto las condiciones del ",
 'cierra' => "Cierra",
