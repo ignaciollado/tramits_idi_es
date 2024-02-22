@@ -19,15 +19,14 @@ class MYPDF extends TCPDF {
 	}
     // Page footer
     public function Footer() {
-        // Logo
-
+    // Logo
 		// Position at 15 mm from bottom
-        $this->SetY(-15);
-        // Set font
-        $this->SetFont('helvetica', 'I', 8);
-        // Address and Page number
-		$this->Cell(0, 5, "Institut d'Innovació Empresarial - Plaça Son Castelló 1 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
-        $this->Cell(0, 15, 'Pàgina '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+      $this->SetY(-15);
+    // Set font
+      $this->SetFont('helvetica', 'I', 8);
+    // Address and Page number
+			$this->Cell(0, 5, "Institut d'Innovació Empresarial - Plaça Son Castelló 1 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
+    	$this->Cell(0, 15, 'Pàgina '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
 
@@ -332,24 +331,7 @@ if ( $veracidad_datos_bancarios_2 == "SI ") {
 if ( $veracidad_datos_bancarios_3 == "SI ") {
 	$html25 .= "<p>".lang('message_lang.declaracion_datos_bancarios_5')."</p>";
 }
-/* if ( $noHaRecibidoAyudas_dec_resp == "SI ") {
-	$html25 .= "<p>".lang('message_lang.declaracion_responsable_iii')."</p>";
-}
-if ( $noHaRecibidoAyudas_otra_admin == "SI ") {
-	$html25 .= "<p>".lang('message_lang.declaracion_responsable_iv')."</p>";
-}
-if ( $cumpleRequisitos_dec_resp == "SI ") {
-	$html25 .= "<p>".lang('message_lang.declaracion_responsable_v')."</p>";
-}
-if ( $noArticulo_10_dec_resp == "SI ") {
-	$html25 .= "<p>".lang('message_lang.declaracion_responsable_vi')."</p>";
-}
-if ( $epigrafeIAE_dec_resp == "SI ") {
-	$html25 .= "<p>".lang('message_lang.declaracion_responsable_vii')."</p>";
-}
-if ( $registroIndustrialMinero_dec_resp == "SI ") {
-	$html25 .= "<p>".lang('message_lang.declaracion_responsable_viii')."</p>";
-} */
+
 $html25 .= "</td></tr>";
 $html25 .= "</table>";
 $currentY = $pdf->getY();
@@ -407,18 +389,7 @@ if ( $declaracion_responsable_xi == "SI ") { */
 if ( $declaracion_responsable_xii == "SI ") { */
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xii')."</p>";
 /* } */
-/* if ( $declaracion_responsable_xiii == "SI ") {
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xiii')."</p>";
-}
-if ( $declaracion_responsable_xiv == "SI ") {
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xiv')."</p>";
-}
-if ( $declaracion_responsable_xv == "SI ") {
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xv')."</p>";
-}
-if ( $declaracion_responsable_xvi == "SI ") {
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xvi')."</p>";
-} */
+
 $html28 .= "</ul></td></tr>";
 $html28 .= "</table>";
 
@@ -432,7 +403,12 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $pdf->SetFont('helvetica', '', 7);
-$rgpd = lang('message_lang.rgpd_txt');
+/* $rgpd = lang('message_lang.rgpd_txt'); */
+if (service('request')->getLocale()==="es") {
+	$rgpd = include 'includes/clausulaProteccionDatos-es.html';
+} else {
+	$rgpd = include 'includes/clausulaProteccionDatos.html';
+}
 $html29 = "<br>";
 $html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
 $html29 .= "<tr><td style='text-align:center;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
@@ -448,7 +424,6 @@ $pdf->WriteHTML($html29, true, false, true, false, '');
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud.pdf', 'F');
 
 ?>
-
 
 <div class="container">
 	<div><?php echo $html1;?></div>
