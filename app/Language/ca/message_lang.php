@@ -474,21 +474,37 @@ return [
 'rgpd'  => "Reglament de protecció de dades personals",
 'rgpd_leido' => "He llegit i accept les condicions del ",
 'cierra' => "Tanca",
-'rgpd_txt' => "<p>L'Institut d'Innovació Empresarial de les Illes Balears garanteix la confidencialitat i la protecció de les dades personals que es faciliten a través d'aquest assistent de tramitació en el termes que estableix el Reglament UE 2016/679 de Protecció de Dades i la legislació vigent en matèria de protecció de dades.</p>
-<p><strong>Finalitat del tractament i base jurídica</strong>: pagaments a tercers derivats de procediments amb l’Administració de la Comunitat Autònoma de les Illes Balears, d’acord amb la Llei 14/2014, de 29 de desembre, de finances de la Comunitat Autònoma de les Illes Balears, i la Llei 7/2010, de 21 de juliol, del sector públic instrumental de la Comunitat Autònoma de les Illes Balears.</p>
-<p><strong>Responsable del tractament</strong>: l’Institut d’Innovació Empresarial de les Illes Balears (IDI), a qui correspon la tramitació dels pagaments, i la Intervenció General, com a òrgan responsable de la base de dades de tercers de la Comunitat Autònoma de les Illes Balears.</p>
-<p><strong>Destinataris de les dades personals</strong>: no se cediran les dades personals a tercers, tret que hi hagi obligació legal o interès legítim de fer-ho d’acord amb el Reglament general de protecció de dades o la Llei orgànica 3/2018, de 5 de desembre, de protecció de dades personals i garantia dels drets digitals.</p>
-<p><strong>Termini de conservació de les dades personals</strong>: les dades es conservaran indefinidament en el sistema comptable de l’IDI.</p>
-<p><strong>Exercici de drets i reclamacions</strong>: la persona afectada pel tractament de dades personals pot exercir els seus drets d’informació, d’accés, de rectificació, de supressió, de limitació, de portabilitat, d’oposició i de no inclusió en tractaments automatitzats (i, fins i tot, de retirar el consentiment, si escau, en els termes que estableix la normativa vigent) davant el responsable del tractament, mitjançant un missatge de correu electrònic a l’adreça electrònica dpd@idi.es.</p>
-<p>Una vegada rebuda la resposta del responsable o en el cas que no hi hagi resposta en el termini d’un mes, la persona afectada pel tractament de les dades personals pot presentar la «Reclamació de tutela de drets» davant l’Agència Espanyola de Protecció de Dades.</p>
-<p><strong>Delegació de Protecció de Dades</strong>: la Delegació de Protecció de Dades de l’IDI té la seu a la plaça de Son Castelló, 1. 07009 Palma. Adreça electrònica: dpd@idi.es.</p>",
+'rgpd_txt' => "<label class='c1_ctl'><br><strong>PROTECCIÓ DE DADES PERSONALS:</strong><br/><br/>
+<ul>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tractament</strong>: INSTITUT D´INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacte Delegat Protecció de Dades</strong>: dpd@idi.es</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span></li>
+
+<span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓ D’AJUTS DE CONSULTORIA</u></span>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>BASE LEGÍTIMA</strong>: obligació legal (art. 6.1. c) del RGPD</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORIA D'INTERESSATS</strong>: sol·licitants</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TIPOLOGIA DE DADES</strong>: dades bàsiques: nom i cognoms, telèfon, NIF, adreça postal, adreça electrònica, signatura</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>FINALITAT</strong>: tramitació d'expedients derivats de la concessió d'ajudes de consultoria per a la competitivitat industrial, en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada de les empreses industrials de les Illes Balears.</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORIES DELS DESTINATARIS</strong>: Agència Tributària, Bancs, Caixes i Organismes i/o administració pública amb competència en la matèria</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TRANSFERÈNCIES INTERNACIONALS</strong>: No es realitzen transferències internacionals de dades.</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>MESURES TÈCNIQUES I ORGANITZATIVES</strong>: previstes en els documents de Mesures per a compliment normatiu i Polítiques per a compliment normativa de seguretat.</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TERMINIS DE SUPRESSIÓ</strong>: durant el termini estrictament necessari per a complir amb els preceptes esmentats amb anterioritat, excepte obligació legal de conservació.</span></li>
+<span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>Al seu torn, li informem que pot contactar amb el Delegat de Protecció de Dades, dirigint-se per escrit a l'adreça de correu dpd@idi.es o al telèfon +34 971176161.</span>
+</ul>
+<strong>EXERCICI DE DRETS</strong>:<br><br>
+<ul>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'INSTITUT D’INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS informa als usuaris que poden exercir els drets d’accés, rectificació, limitació, supressió, portabilitat i oposició al tractament de les seves dades de caràcter personal davant el Responsable del tractament, així com la retirada del consentiment prestat. El Responsable li facilitarà un formulari adequat, a presentar en l'adreça a dalt indicada o bé mitjançant l’adreça de correu electrònic dpd@idi.es.</span></li>
+  <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'INSTITUT D’INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS l’informa que té dret a presentar una reclamació davant l'AEPD si considera que no s'ha atès convenientment l'exercici dels seus drets (www.aepd.es).</span></li>
+</ul>
+</label>
+<br/>",
 
 'documentoEnIDI' => "Aquest document ja es troba en poder de l'IDI i no ha sofert modificacions <strong>(en aquest cas no cal aportar-lo)</strong>.",
 'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, aquest document ja es troba en poder de l'IDI",
 'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, aquest document ja es troba en poder de l'IDI",
 'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, aquest document ja es troba en poder de l'IDI.",
 'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, aquest document ja es troba en poder de l'IDI.",
-'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació, en IDI.",
+'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació ja es troba en poder de l'IDI.",
 
 'clausula_idi'  => "CLÀUSULA USUARI IDI",
 'texto_mail_intro_1' => "Hem rebut una sol·licitud d'ajudes per al disseny de plans de transformació digital de",

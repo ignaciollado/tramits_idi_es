@@ -62,7 +62,7 @@ $pdf->SetFont('helvetica', '', 9);
 $pdf->setFontSubsetting(false);
 
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// -----------------------------------------------------------------------------------Página 1/5---------------------------------------------------------------------------- //
 $pdf->AddPage();
 
 $html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi').$defaultLanguage."</b>";
@@ -240,7 +240,6 @@ if ( trim($copiaNIFSociedadEnIDI) === "SI") { /* OK */
 if ( trim($file_certificadoAEAT) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.certificado_corriente_pago_aeat')."</li>";		
 }
-
 $html16 .= "</ol></td></tr>";
 $html16 .= "</table>";
 $currentY = $pdf->getY();
@@ -257,10 +256,10 @@ $pdf->Cell(0, 10, $html17, 1, 1, 'C');
 $html18 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html18 .= "<tr><td></td></tr>";
 $html18 .= "<tr><td><ul>";
-// $html18 .= "<li><b>".$file_copiaNIF."</b> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";		
+$html18 .= "<li><b>".$file_copiaNIF."</b> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";		
 $html18 .= "<li><b>".$file_enviardocumentoIdentificacion."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";		
 $html18 .= "<li><b>".$file_certificadoATIB."</b> ".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
-// $html18 .= "<li><b>".$file_certificadoSegSoc."</b> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";		
+$html18 .= "<li><b>".$file_certificadoSegSoc."</b> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";		
 $html18 .= "</ul></td></tr>";
 $html18 .= "</table>";
 $currentY = $pdf->getY();
@@ -268,8 +267,8 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTML($html18, true, false, true, false, '');
 
 
-// ----------------------------------------------------------------------------------------------------------------------------------------------------- //
-// ----------------------------------------------8. DECLARACIÓN RESPONSABLE------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------------------------ //
+// ----------------------------------------------8. DECLARACIÓN RESPONSABLE------------------------------------------------------ //
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
@@ -323,7 +322,7 @@ if ( $opcion_banco == "1") {
 	$html25 .= "<p>".lang('message_lang.declaracion_datos_bancarios_2')." : $cc_datos_bancarios</p>";
 }
 else {
-	$html25 .= "<p>".lang('message_lang.declaracion_datos_bancarios_3')." : $cc_datos_bancarios</p>";
+	$html25 .= "<p>".lang('message_lang.declaracion_datos_bancarios_3')." : $cc_datos_bancarios - $pais_datos_bancarios</p>";
 }
 if ( $veracidad_datos_bancarios_2 == "SI ") {
 	$html25 .= "<p>".lang('message_lang.declaracion_datos_bancarios_4')."</p>";
@@ -339,7 +338,7 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTML($html25, true, false, true, false, '');
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------- //
-// ----------------------------------------------La declaración responsable del solicitante (2)------------------------------------------------------------- //
+// ----------------------------------------------La declaración responsable del solicitante (2)--------------------------------------------------------- //
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
@@ -360,7 +359,7 @@ $html28 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>
 $html28 .= "<tr><td ><ul>";
 
 /* if ( $declaracion_responsable_iii == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_iii')."</p>";
+	//$html28 .= "<p>".lang('message_lang.declaracion_responsable_iii')."</p>";
 /* }
 if ( $declaracion_responsable_iv == "SI ") { */
 	$html28 .= "<p>".lang('message_lang.declaracion_responsable_iv')."</p>";
@@ -403,58 +402,48 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $pdf->SetFont('helvetica', '', 7);
-/* $rgpd = lang('message_lang.rgpd_txt'); */
-if (service('request')->getLocale()==="es") {
-	$rgpd = include 'includes/clausulaProteccionDatos-es.html';
-} else {
-	$rgpd = include 'includes/clausulaProteccionDatos.html';
-}
+$rgpd = lang('message_lang.rgpd_txt');
 $html29 = "<br>";
 $html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
-$html29 .= "<tr><td style='text-align:center;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
+$html29 .= "<tr><td style='background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
 $html29 .= "</table>";
 $currentY = $pdf->getY();
 $pdf->setY($currentY+40);
 $pdf->WriteHTML($html29, true, false, true, false, '');
-//$html29 .= "</section>";
-//$html29 .= "</content>";
+
 // ------------------------------------------------------------------------------------ //
 // ------------------------------------------------------------------------------------ //
 
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud.pdf', 'F');
 
 ?>
-
 <div class="container">
 	<div><?php echo $html1;?></div>
 	<div><?php echo $html2;?></div>
 	<div><?php echo $html3;?></div>
 	<div class="cabecera-apartado"><?php echo $html4;?></div>
-	<div ><?php echo $html5;?></div>
+	<div><?php echo $html5;?></div>
 	<div class="cabecera-apartado"><?php echo $html6;?></div>
-	<div ><?php echo $html7;?></div>
+	<div><?php echo $html7;?></div>
 	<div class="cabecera-apartado"><?php echo $html8;?></div>
-	<div ><?php echo $html9;?></div>
+	<div><?php echo $html9;?></div>
 	<div class="cabecera-apartado"><?php echo $html10;?></div>
-	<div ><?php echo $html11;?></div>
+	<div><?php echo $html11;?></div>
 	<div class="cabecera-apartado"><?php echo $html12;?></div>
-	<div ><?php echo $html13;?></div>
-	<!--<div><?php echo $html14;?></div>-->
+	<div><?php echo $html13;?></div>
 	<div class="cabecera-apartado"><?php echo $html15;?></div>
-	<div ><?php echo $html16;?></div>
-	<div ><?php echo $html17;?></div>
-	<div ><?php echo $html18;?></div>
-	<!--<div><?php echo $html19;?></div>-->
-	<div ><?php echo $html20;?></div>
-	<div ><?php echo $html21;?></div>
+	<div><?php echo $html16;?></div>
+	<div><?php echo $html17;?></div>
+	<div><?php echo $html18;?></div>
+	<div><?php echo $html20;?></div>
+	<div><?php echo $html21;?></div>
 	<div class="cabecera-apartado"><?php echo $html22;?></div>
-	<div ><?php echo $html23;?></div>
-	<div ><?php echo $html24;?></div>
-	<div ><?php echo $html25;?></div>
-	<!--<div><?php echo $html26;?></div>-->
-	<div ><?php echo $html27;?></div>
-	<div ><?php echo $html28;?></div>
-	<div ><?php echo $html29;?></div>
+	<div><?php echo $html23;?></div>
+	<div><?php echo $html24;?></div>
+	<div><?php echo $html25;?></div>
+	<div><?php echo $html27;?></div>
+	<div><?php echo $html28;?></div>
+	<div><?php echo $html29;?></div>	
 </div>
 <style>
 	html, body {

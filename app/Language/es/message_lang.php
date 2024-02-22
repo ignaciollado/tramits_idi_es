@@ -457,21 +457,38 @@ return [
 'rgpd'  => "Reglamento de protección de datos personales",
 'rgpd_leido' => "He leído y acepto las condiciones del ",
 'cierra' => "Cierra",
-'rgpd_txt' => "<p>El Instituto de Innovación empresarial de las Islas Baleares garantiza la confidencialidad y la protección de los datos personales que se facilitan a través de este asistente de tramitación en los términos que establece el Reglamento UE 2016/679 de Protección de Datos y la legislación vigente en materia de protección de datos.</p>
-<p><strong>Finalidad del tratamiento y base jurídica</strong>: pagos a terceros derivados de procedimientos con la Administración de la Comunidad Autónoma de las Islas Baleares, de acuerdo con la Ley 14/2014, de 29 de diciembre, de finanzas de la Comunidad Autónoma de las Islas Baleares, y la Ley 7/2010, de 21 de julio, del sector público instrumental de la Comunidad Autónoma de las Islas Baleares.</p>
-<p><strong>Responsable del tratamiento</strong>: el Instituto de Innovación Empresarial de las Islas Baleares (IDI), a quienes corresponde la tramitación de los pagos, y la Intervención General, como órgano responsable de la base de datos de terceros de la Comunidad Autónoma de las Islas Baleares.</p>
-<p><strong>Destinatarios de los datos personales</strong>: no se cederán los datos personales a terceros, salvo que haya obligación legal o interés legítimo de hacerlo de acuerdo con el Reglamento general de protección de datos o la Ley Orgánica 3/2018, de 5 de diciembre, de protección de datos personales y garantía de los derechos digitales.</p>
-<p><strong>Plazo de conservación de los datos personales</strong>: los datos se conservarán indefinidamente en el sistema contable del IDI.</p>
-<p><strong>Ejercicio de derechos y reclamaciones</strong>: la persona afectada por el tratamiento de datos personales puede ejercer sus derechos de información, de acceso, de rectificación, de supresión, de limitación, de portabilidad, de oposición y de no inclusión en tratamientos automatizados (y, incluso, de retirar el consentimiento, si procede, en los términos que establece la normativa vigente) ante el responsable del tratamiento, mediante un mensaje de correo electrónico a la dirección electrónica dpd@idi.es.</p>
-<p>Una vez recibida la respuesta del responsable o en el supuesto de que no haya respondido en el plazo de un mes, la persona afectada por el tratamiento de los datos personales puede presentar la «Reclamación de tutela de derechos» ante la Agencia Española de Protección de Datos.</p>
-<p><strong>Delegación de Protección de Datos</strong>: la Delegación de Protección de Datos del IDI tiene la sede en la Plaça de Son Castelló, 1. 07009 Palma. Dirección electrónica: dpd@idi.es.</p>",
+'rgpd_txt' => "<label class='c1_ctl'>
+<br>
+<strong>PROTECCIÓN DE DATOS PERSONALES:</strong><br/><br/>
+<ul>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tratamiento</strong>: INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacto delegado de protección de datos</strong>: dpd@idi.es</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span></li>
+  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓN DE AYUDAS DE CONSULTORÍA</u></span>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>BASE LEGÍTIMA</strong>: obligación legal (art. 6.1. c) del RGPD</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORIA DE INTERESADOS</strong>: solicitantes.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TIPOLOGIA DE DATOS</strong>: datos básicos: nombre y apellidos, teléfono, NIF, dirección postal, dirección electrónica, firma.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>FINALIDAD</strong>: tramitación de expedientes derivados de la concesión de ayudas de consultoría para la competitividad industrial, en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada de las empresas industriales de las Islas Baleares.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORÍAS DE LOS DESTINATARIOS</strong>: Agencia Tributaria, Bancos, Cajas y Organismos y/o administración pública con competencia en la materia.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TRANSFERENCIAS INTERNACIONALES</strong>: No se realizan transferencias internacionales de datos.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>MEDIDAS TÉCNICAS Y ORGANIZATIVAS</strong>: revistas en los documentos de Medidas para cumplimiento normativo y Políticas para cumplimiento normativa de seguridad.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>PLAZOS DE SUPRESIÓN</strong>: durante el plazo estrictamente necesario para cumplir con los preceptos citados con anterioridad, salvo obligación legal de conservación.</span></li>
+  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>A su vez, le informamos que puede contactar con el Delegado de Protección de Datos, dirigiéndose por escrito a la dirección de correo dpd@idi.es o al teléfono +34 971176161.</span>
+</ul>
+<strong>EJERCICIO DE DERECHOS</strong>:<br><br>
+<ul>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES informa a los usuarios que pueden ejercer los derechos de acceso, rectificación, limitación, supresión, portabilidad y oposición al tratamiento de sus datos de carácter personal ante el Responsable del tratamiento, así como la retirada del consentimiento prestado. El Responsable le facilitará un formulario adecuado, a presentar en la dirección arriba indicada o mediante la dirección de correo electrónico dpd@idi.es.</span></li>
+  <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES le informa que tiene derecho a presentar una reclamación ante la AEPD si considera que no se ha atendido convenientemente el ejercicio de sus derechos (www.aepd.es).</span></li>
+</ul>
+</label>
+<br/>",
 
 'documentoEnIDI' => "Este documento ya se encuentra en el IDI y no ha sufrido modificacioness <strong>(en este caso no hace falta aportarlo)</strong>.",
 'memoriaTecnicaEnIDI_sinCambios' => "Memoria técnica, este documento ya se encuentra en el IDI",
 'altaRetaDocAcredEnIDI_sinCambios' => "Documento acreditativo alta en RETA, este documento ya se encuentra en el IDI",
 'certificadoIAEEnIDI_sinCambios' => "Certificado IAE, este documento ya se encuentra en el IDI.",
 'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, este documento ya se encuentra en el IDI.",
-'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Documento acreditativo de representación, en IDI.",
+'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Documento acreditativo de representación, este documento ya se encuentra en el IDI.",
 
 'clausula_idi'   => "CLÁUSULA USUARIO IDI",
 'texto_mail_intro_1' => "Hemos recibido una solicitud de ayudas para el diseño de planes de transformación digital de",

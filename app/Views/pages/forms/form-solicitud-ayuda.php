@@ -78,13 +78,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-			<?php
-						if (service('request')->getLocale()==="es") {
-							include 'includes/clausulaProteccionDatos-es.html';
-						} else {
-							include 'includes/clausulaProteccionDatos.html';
-						}
-						?>
+				<?php echo lang('message_lang.rgpd_txt'); ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

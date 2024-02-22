@@ -43,7 +43,7 @@ class SubirArchivo extends BaseController
 		/* -----------------------------DOCUMENTACIÓN LINEA CHEQUES----------------------------------------------- */
 
 		$documentosfile = $this->request->getFiles();
-		
+
 		if ( !$documentosfile['file_memoriaTecnica'][0]->getName() ){
 			$file_memoriaTecnica = "NO";
 	 	} else {
@@ -56,25 +56,29 @@ class SubirArchivo extends BaseController
 			$file_certificadoIAE = "SI";
 	 	}
 
+		if ( !$documentosfile['file_nifEmpresa'][0]->getName() ){
+			$file_nifEmpresa = "NO";
+	 	} else {
+			$file_nifEmpresa = "SI";
+	 	}
+
+		if ( !$documentosfile['file_document_acred_como_repres'][0]->getName() ){
+			$file_document_acred_como_repres = "NO";
+	 	} else {
+			$file_document_acred_como_repres = "SI";
+	 	}
+
 		if ( !$documentosfile['file_certificadoAEAT'][0]->getName() ){
 			$file_certificadoAEAT = "NO";
 	 	} else {
 			$file_certificadoAEAT = "SI";
-	 	}		
+	 	}
 
 		if ($tipoSolicitante === 'autonomo'){
 			if ( !$documentosfile['file_altaAutonomos'][0]->getName() ){
 				$file_altaAutonomos = "NO";
 	 		} else {
 				$file_altaAutonomos = "SI";
-	 		}
-		}
-
-		if ($tipoSolicitante != 'autonomo'){		
-			if ( !$documentosfile['file_nifEmpresa'][0]->getName() ){
-				$file_nifEmpresa = "NO";
-	 		} else {
-				$file_nifEmpresa = "SI";
 	 		}
 		}
 
@@ -100,27 +104,25 @@ class SubirArchivo extends BaseController
 				$pJuridicaDocAcreditativaEnIDI = 'NO';
 			}
 		}
-		
-		if ($tipoSolicitante != 'autonomo'){		
-			if ( !$documentosfile['file_document_acred_como_repres'][0]->getName() ){
-				$file_document_acred_como_repres = "NO ";
-			} else {
-				$file_document_acred_como_repres = "SI ";
-			}
-		}
 
-		$cumpleRequisitos_dec_resp = "";	
-		//7. AUTORIZACIONES: si/no da el consentimiento para comprobar la identificación de la persona solicitante
-		if ($this->request->getPost('consentimiento_identificacion') === 'on'){
-			$file_enviardocumentoIdentificacion = "SI ";
+		$cumpleRequisitos_dec_resp = "";
+		//7. AUTORIZACIONES: si/no da el consentimiento para comprobar la autorizaciones_personas_fisicas
+		if ($this->request->getPost('consentimientocopiaNIF') === 'on'){
+			$file_copiaNIF = "SI ";
 		} else {
-			$file_enviardocumentoIdentificacion = "NO ";
+			$file_copiaNIF = "NO ";
 		}
-		//7. AUTORIZACIONES: si/no da el consentimiento cumplimiento obligaciones tributarias
+		//7. AUTORIZACIONES: si/no da el consentimiento consentimiento_certificadoATIB
 		if ($this->request->getPost('consentimiento_certificadoATIB') === 'on'){
 			$file_certificadoATIB = "SI ";
 		} else {
 			$file_certificadoATIB = "NO ";
+		}
+		//7. AUTORIZACIONES: si/no da el consentimiento cumplimiento consentimiento_certificadoSegSoc
+		if ($this->request->getPost('consentimiento_certificadoSegSoc') === 'on'){
+			$file_certificadoSegSoc = "SI ";
+		} else {
+			$file_certificadoSegSoc = "NO ";
 		}
 
 		$declaracion_responsable_i = "SI ";
@@ -242,19 +244,19 @@ class SubirArchivo extends BaseController
 				'tel_consultor' => $this->request->getVar('tel_consultor'),
 				'mail_consultor'=> $this->request->getVar('mail_consultor'),
 
-				'memoriaTecnicaEnIDI' => $memoriaTecnicaEnIDI,
-				'certificadoIAEEnIDI' => $certificadoIAEEnIDI,
+				'memoriaTecnicaEnIDI' 	=> $memoriaTecnicaEnIDI,
+				'certificadoIAEEnIDI' 	=> $certificadoIAEEnIDI,
 				'copiaNIFSociedadEnIDI' => $copiaNIFSociedadEnIDI,
 				'pJuridicaDocAcreditativaEnIDI' => $pJuridicaDocAcreditativaEnIDI,
 
 				'file_memoriaTecnica' => $file_memoriaTecnica,
-				'file_altaAutonomos' => $file_altaAutonomos,
-				'file_nifEmpresa' => $file_nifEmpresa,
 				'file_certificadoIAE' => $file_certificadoIAE,
-				'file_document_acred_como_repres' => $file_document_acred_como_repres,
-				'file_enviardocumentoIdentificacion' => $file_enviardocumentoIdentificacion ,
-				'file_certificadoATIB' => $file_certificadoATIB,
-				'file_certificadoAEAT' => $file_certificadoAEAT,
+				'file_nifEmpresa' 		=> $file_nifEmpresa,
+				'file_document_acred_como_repres' => $file_document_acred_como_repres,		
+				'file_certificadoAEAT' 	=> $file_certificadoAEAT,		
+				'file_altaAutonomos' 		=> $file_altaAutonomos,
+
+				'file_certificadoATIB' 	=> $file_certificadoATIB,
 
 				'cumpleRequisitos_participacion_dec_resp' => $cumpleRequisitos_dec_resp,
 				'ayudasSubvenSICuales_dec_resp' => $this->request->getVar('ayudasSubvenSICuales_dec_resp'),
@@ -283,7 +285,6 @@ class SubirArchivo extends BaseController
 				'declaracion_responsable_xiv' => $declaracion_responsable_xiv,
 				'declaracion_responsable_xv' => $declaracion_responsable_xv,
 				'declaracion_responsable_xvi' => $declaracion_responsable_xvi,
-				'file_enviardocumentoIdentificacion'   => $file_enviardocumentoIdentificacion,
 			
 				'selloDeTiempo' => $selloTiempo,
 				'importeAyuda'	=> $importeAyuda,
