@@ -1,8 +1,5 @@
 <?php
-//include ("PHPMailer_5.2.0/class.phpmailer.php");
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/rest_api_firma/PHPMailer_5.2.0/class.phpmailer.php';
-/* require_once 'conectar_a_bbdd.php';
-$query = "SELECT email_rep, empresa, nif, tipo_tramite, convocatoria FROM pindust_expediente WHERE  id = " . $_POST["id"]; */
 
 $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
@@ -21,10 +18,10 @@ $mail->IsSMTP();
 
 // As this email.php script lives on the same server as our email server
 // we are setting the HOST to localhost
-$mail->SMTPSecure = 'tls';
-$mail->Host = "smtp.gmail.com";  // specify main and backup server
-$mail->CharSet = 'UTF-8';  // para la correcta codificación de acentos y otros caracteres extendidos
-$mail->XMailer = 'idi.es';
+//$mail->SMTPSecure = 'tls';
+$mail->Host = "localhost";  // specify main and backup server
+$mail->CharSet = 'UTF-8';
+$mail->XMailer = 'ADR Balears';
 $mail->SMTPAuth = true;     // turn on SMTP authentication
 // When sending email using PHPMailer, you need to send from a valid email address
 // In this case, we setup a test email account with the following credentials:
@@ -41,9 +38,6 @@ $mail->SetFrom("noreply@tramits.idi.es","IDI");
 // La dirección a la que contestará el destinatario
 $mail->AddReplyTo("response@tramits.idi.es","IDI"); 
 
-// Con copia oculta
-$mail->AddBCC("info@idi.es", "Servei de comucicació de l'IDI");
-
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
 $mail->WordWrap = 50;
@@ -51,8 +45,19 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 
-$mail->Subject = "Contacte des-de la web - IDI";
-$mensajeLayout = file_get_contents('contents.html');
+
+if ($asunto == 'appILS') {
+	$mensajeLayout = file_get_contents('contents-ils.html');	
+	$mail->Subject = "Nuevo mensaje desde APP Sostenibilitat";
+	// Con copia oculta
+	$mail->AddBCC("ignacio.llado@idi.es", "Sistemes d'Informació");
+} else {
+	$mensajeLayout = file_get_contents('contents.html');
+	$mail->Subject = "Nuevo mensaje desde IDI";
+	// Con copia oculta
+	$mail->AddBCC("info@idi.es", "Servei de comunicació");
+}
+
 $mensajeLayout = str_replace("%USUARIOIDI%", $solicitante, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOMAIL%", $correoDestino, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOPHONE%", $contactPhone, $mensajeLayout);
@@ -74,10 +79,8 @@ if(!$mail->Send())
 }
 else 
 {
-	$result = "<strong>Missatge enviat correctament a la adreça: " .$correoDestino."</strong>";
+	$result = "Missatge enviat correctament a la adreça " .$correoDestino;
 }
 
-
-// mysqli_close($conn);
-return $result;
+echo $result;
 ?>
