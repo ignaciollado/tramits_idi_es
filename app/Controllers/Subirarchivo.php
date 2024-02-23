@@ -40,8 +40,7 @@ class SubirArchivo extends BaseController
 
 		date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
-		/* -----------------------------DOCUMENTACIÓN LINEA CHEQUES----------------------------------------------- */
-
+		//ADJUNTA DOCUMENTACIÓN LINEA CHEQUES----------------------------------------------- 
 		$documentosfile = $this->request->getFiles();
 
 		if ( !$documentosfile['file_memoriaTecnica'][0]->getName() ){
@@ -55,18 +54,20 @@ class SubirArchivo extends BaseController
 	 	} else {
 			$file_certificadoIAE = "SI";
 	 	}
-
-		if ( !$documentosfile['file_nifEmpresa'][0]->getName() ){
-			$file_nifEmpresa = "NO";
-	 	} else {
-			$file_nifEmpresa = "SI";
-	 	}
-
-		if ( !$documentosfile['file_document_acred_como_repres'][0]->getName() ){
-			$file_document_acred_como_repres = "NO";
-	 	} else {
-			$file_document_acred_como_repres = "SI";
-	 	}
+		if ($tipoSolicitante != 'autonomo'){
+			if ( !$documentosfile['file_nifEmpresa'][0]->getName() ){
+				$file_nifEmpresa = "NO";
+	 		} else {
+				$file_nifEmpresa = "SI";
+	 		}
+		}
+		if ($tipoSolicitante != 'autonomo'){
+			if ( !$documentosfile['file_document_acred_como_repres'][0]->getName() ){
+				$file_document_acred_como_repres = "NO";
+	 		} else {
+				$file_document_acred_como_repres = "SI";
+		 	}
+		}
 
 		if ( !$documentosfile['file_certificadoAEAT'][0]->getName() ){
 			$file_certificadoAEAT = "NO";
@@ -106,19 +107,19 @@ class SubirArchivo extends BaseController
 		}
 
 		$cumpleRequisitos_dec_resp = "";
-		//7. AUTORIZACIONES: si/no da el consentimiento para comprobar la autorizaciones_personas_fisicas
+		//7. AUTORIZA: si/no da el consentimiento para comprobar la autorizaciones_personas_fisicas
 		if ($this->request->getPost('consentimientocopiaNIF') === 'on'){
 			$file_copiaNIF = "SI ";
 		} else {
 			$file_copiaNIF = "NO ";
 		}
-		//7. AUTORIZACIONES: si/no da el consentimiento consentimiento_certificadoATIB
+		//7. AUTORIZA: si/no da el consentimiento consentimiento_certificadoATIB
 		if ($this->request->getPost('consentimiento_certificadoATIB') === 'on'){
 			$file_certificadoATIB = "SI ";
 		} else {
 			$file_certificadoATIB = "NO ";
 		}
-		//7. AUTORIZACIONES: si/no da el consentimiento cumplimiento consentimiento_certificadoSegSoc
+		//7. AUTORIZA: si/no da el consentimiento cumplimiento consentimiento_certificadoSegSoc
 		if ($this->request->getPost('consentimiento_certificadoSegSoc') === 'on'){
 			$file_certificadoSegSoc = "SI ";
 		} else {
@@ -249,14 +250,16 @@ class SubirArchivo extends BaseController
 				'copiaNIFSociedadEnIDI' => $copiaNIFSociedadEnIDI,
 				'pJuridicaDocAcreditativaEnIDI' => $pJuridicaDocAcreditativaEnIDI,
 
-				'file_memoriaTecnica' => $file_memoriaTecnica,
-				'file_certificadoIAE' => $file_certificadoIAE,
-				'file_nifEmpresa' 		=> $file_nifEmpresa,
+				'file_memoriaTecnica' 	=> $file_memoriaTecnica,
+				'file_certificadoIAE' 	=> $file_certificadoIAE,
+				'file_nifEmpresa' 			=> $file_nifEmpresa,
 				'file_document_acred_como_repres' => $file_document_acred_como_repres,		
 				'file_certificadoAEAT' 	=> $file_certificadoAEAT,		
 				'file_altaAutonomos' 		=> $file_altaAutonomos,
 
+				'file_copiaNIF'					=> $file_copiaNIF,
 				'file_certificadoATIB' 	=> $file_certificadoATIB,
+				'file_certificadoSegSoc'=> $file_certificadoSegSoc,
 
 				'cumpleRequisitos_participacion_dec_resp' => $cumpleRequisitos_dec_resp,
 				'ayudasSubvenSICuales_dec_resp' => $this->request->getVar('ayudasSubvenSICuales_dec_resp'),
@@ -302,7 +305,7 @@ class SubirArchivo extends BaseController
 		}
 
 		/* ------------------------------------------------------------------------------------------------------------ */	
-		/* --------------------------------memoria técnica, múltiples documentos------------------OK------------------- */
+		/* -------------adjunta memoria técnica, múltiples documentos------------------OK------------------- */
 		if (isset($documentosfile['file_memoriaTecnica'])) {
 			foreach($documentosfile['file_memoriaTecnica'] as $memoriaTecnica)
 				{
@@ -327,7 +330,7 @@ class SubirArchivo extends BaseController
 				}
 		}
 		/* --------------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------sube certificado IAE, múltiples documentos--------------OK--------------------- */
+		/* -------------adjunta certificado IAE, múltiples documentos--------------OK--------------------- */
 		if (isset($documentosfile['file_certificadoIAE'])) {
 			foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
 				{
@@ -351,7 +354,7 @@ class SubirArchivo extends BaseController
 				}
 		}
 		/* ---------------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------alta autónomos, múltiples documentos--------------------OK----------------------- */
+		/* -------------adjunta alta autónomos, múltiples documentos--------------------OK----------------------- */
 		if (isset($documentosfile['file_altaAutonomos'])) {
 			foreach($documentosfile['file_altaAutonomos'] as $altaAutonomos)
 				{	
@@ -375,7 +378,7 @@ class SubirArchivo extends BaseController
 				}
 		}
 		/* ----------------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------nif empresa, múltiples documentos-----------------------OK----------------------- */
+		/* -------------adjunta nif empresa, múltiples documentos-----------------------OK----------------------- */
 		if (isset($documentosfile['file_nifEmpresa'])) {
 			foreach($documentosfile['file_nifEmpresa'] as $nifEmpresa)
 				{
@@ -400,7 +403,7 @@ class SubirArchivo extends BaseController
 				}
 		}
 		/* ---------------------------------------------------------------------------------------------------------------- */
-		/* --------------------------------documento acreditativo como rep legal, múltiples documentos--------OK------------ */
+		/* ------------adjunta documento acreditativo como rep legal, múltiples documentos--------OK------------ */
 		if (isset($documentosfile['file_document_acred_como_repres'])) {
 			foreach($documentosfile['file_document_acred_como_repres'] as $documentoAcreditativo)
 				{
@@ -424,7 +427,7 @@ class SubirArchivo extends BaseController
 				}
 		}
 		/* ------------------------------------------------------------------------------------------------------------------ */
-		/* ---------- corriente pago obligaciones AEAT, múltiples documentos--------OK---------- */
+		/* ------------adjunta certificado AEAT, múltiples documentos--------OK---------- */
 		if (isset($documentosfile['file_certificadoAEAT'])) {
 			foreach($documentosfile['file_certificadoAEAT'] as $certificadoAEAT)
 				{
@@ -449,32 +452,32 @@ class SubirArchivo extends BaseController
 				}
 		}	
 		/* ------------------------------------------------------------------------------------------------------------------- */
-		/* -------------------- documento identificativo al NO autorización a IDI comprobar dni, múltiples documentos---OK--- */
-		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
-			foreach($documentosfile['file_enviardocumentoIdentificacion'] as $enviardocumentoIdentificacion)
+		/* ---------- copia NIF cuando NO AUTORIZA a IDI comprobarlo, múltiples documentos--------OK---------- */
+		if (isset($documentosfile['file_copiaNIF'])) {
+			foreach($documentosfile['file_copiaNIF'] as $certificadoATIB)
 				{
-				if ($enviardocumentoIdentificacion->isValid() && ! $enviardocumentoIdentificacion->hasMoved())
-					{
-					$enviardocumentoIdentificacion->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $enviardocumentoIdentificacion->getRandomName());
-					$data_file = [
-					'name' => $enviardocumentoIdentificacion->getName(),
-					'type' => $enviardocumentoIdentificacion->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipoTramite,
-					'corresponde_documento' => 'file_enviardocumentoIdentificacion',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'docRequerido' => 'NO',
-					'created_at'  => $enviardocumentoIdentificacion->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $last_insert_id
-					];
-					$save = $documentos->insert($data_file);
-					}
+					if ($certificadoATIB->isValid() && ! $certificadoATIB->hasMoved())
+						{
+							$certificadoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoATIB->getRandomName());
+							$data_file = [
+							'name' => $certificadoATIB->getName(),
+							'type' => $certificadoATIB->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipoTramite,
+							'corresponde_documento' => 'file_copiaNIF',
+							'datetime_uploaded' => time(),
+							'convocatoria' => $convocatoria,
+							'docRequerido' => 'NO',
+							'created_at'  => $certificadoATIB->getTempName(),
+							'selloDeTiempo'  => $selloTiempo,
+							'id_sol'         => $last_insert_id
+							];
+						$save = $documentos->insert($data_file);
+						}
 				}
-		}
+		}	
 		/* ------------------------------------------------------------------------------------------------------------------- */
-		/* ---------- corriente pago obligaciones ATIB NO autoriza a IDI comprobarlo, múltiples documentos--------OK---------- */
+		/* ---------- certificado ATIB cuando NO AUTORIZA a IDI comprobarlo, múltiples documentos--------OK---------- */
 		if (isset($documentosfile['file_certificadoATIB'])) {
 			foreach($documentosfile['file_certificadoATIB'] as $certificadoATIB)
 				{
@@ -499,7 +502,32 @@ class SubirArchivo extends BaseController
 				}
 			}	
 		/* ------------------------------------------------------------------------------------------------------------------- */
-
+		/* ---------- certificado TGSS cuando NO AUTORIZA a IDI comprobarlo, múltiples documentos--------OK---------- */
+		if (isset($documentosfile['file_certificadoSegSoc'])) {
+			foreach($documentosfile['file_certificadoSegSoc'] as $certificadoATIB)
+				{
+				if ($certificadoATIB->isValid() && ! $certificadoATIB->hasMoved())
+					{
+						$certificadoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoATIB->getRandomName());
+						$data_file = [
+						'name' => $certificadoATIB->getName(),
+						'type' => $certificadoATIB->getClientMimeType(),
+						'cifnif_propietario' => $nif,
+						'tipo_tramite' => $tipoTramite,
+						'corresponde_documento' => 'file_certificadoSegSoc',
+						'datetime_uploaded' => time(),
+						'convocatoria' => $convocatoria,
+						'docRequerido' => 'NO',
+						'created_at'  => $certificadoATIB->getTempName(),
+						'selloDeTiempo'  => $selloTiempo,
+						'id_sol'         => $last_insert_id
+						];
+						$save = $documentos->insert($data_file);
+					}
+				}
+			}	
+		/* ------------------------------------------------------------------------------------------------------------------- */
+		
 		$data_file['titulo'] = "Resumen de la solicitud de Cheques de consultoría";
 		echo view('templates/header/header_form_solicitud_resultado', $data_file);
 		echo view('pages/forms/dec-resp-solicitud-ayuda', $data_exp);
@@ -1133,7 +1161,7 @@ class SubirArchivo extends BaseController
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_consultor);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-dec-resp-con', $data_consultor);	
 		echo view('templates/footer/footer');
-	}	
+	}
 
 	public function store_idi_isba()
 	{

@@ -312,14 +312,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<label for = "file_certificadoATIB"><h5><?php echo lang('message_lang.no_doy_consentimiento');?></h5><code>[.pdf]:</code> 
 		</div>
 
-		<!-- 	<label for = "consentimiento_identificacion" class="main"><?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>
-				<input title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked type="checkbox" name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
-				<span class = "w3docs"></span>
-			</label>
-			<div id = "enviardocumentoIdentificacion" class = "ocultar">
-				<label for = "file_enviardocumentoIdentificacion"><h5><?php echo lang('message_lang.document_identificativos');?></h5><code>[.pdf]:</code>
-			</div> -->
-
 		<label for = "consentimiento_certificadoSegSoc" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_seg_soc');?>
 			<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoSegSoc" id="consentimiento_certificadoSegSoc" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>

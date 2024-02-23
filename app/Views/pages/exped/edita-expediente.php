@@ -199,10 +199,35 @@ if (!$expedientes['importeAyuda']) {
                     <label for="iae">Activitat econòmica (IAE):</label>
                     <input type="text" name="iae" class="form-control" readonly disabled id = "iae" maxlength = "4" size="4" placeholder="IAE" value="<?php echo $expedientes['iae']; ?>">
                 </div>
+                
+                <div class="form-group general">
+                    <label for="importe_minimis">Importe minimis:</label>
+                    <input type="text" name="importe_minimis" class="form-control" readonly disabled id = "importe_minimis" maxlength = "4" size="4" placeholder="Import minimis" value="<?php echo $expedientes['importe_minimis']; ?>">
+                </div>                
 		        <div class="form-group general">
                     <label for="nombre_rep">Representant legal:</label>
                     <input type="text" name="nombre_rep" class="form-control send_fase_0" oninput = "javaScript: actualizaRequired(this.value);" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nombre_rep" placeholder = "Nom del representant" value = "<?php echo $expedientes['nombre_rep']; ?>">
                 </div>
+                <h3>Autoritza a consultar:</h3>
+                <label for = "file_copiaNIF" class="main" >
+					<span >Document identificatiu de la persona sol·licitant o persona autoritzada:</span>
+						<input type="checkbox" <?php if ($expedientes['file_copiaNIF'] === "SI") { echo "checked";}?> disabled readonly name = "file_copiaNIF" id = "file_copiaNIF">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "file_certificadoATIB" class="main" >
+					<span >Certificat de l'Agència Tributària de les Illes Balears:</span>
+						<input type="checkbox" <?php if ($expedientes['file_certificadoATIB'] === "SI") { echo "checked";}?> disabled readonly name = "file_certificadoATIB" id = "file_certificadoATIB">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "file_certificadoSegSoc" class="main" >
+					<span >Certificat de la Tresoreria General de la Seguretat Social:</span>
+						<input type="checkbox" <?php if ($expedientes['file_certificadoSegSoc'] === "SI") { echo "checked";}?> disabled readonly name = "file_certificadoSegSoc" id = "file_certificadoSegSoc">
+					<span class="w3docs"></span>
+				</label>
+      
+                
                 </div>
                 <div class="col">
                 <div class="form-group general">
@@ -301,7 +326,7 @@ if (!$expedientes['importeAyuda']) {
                         </optgroup>
 			        </select>
 		        </div>
-		    
+                <h3>L'administració ja desposa de:</h3>
                 <label for = "memoriaTecnicaEnIDI" class="main" >
 					<span ><?php echo lang('message_lang.memoriaTecnicaEnIDI_sinCambios');?> </span>
 						<input type="checkbox" <?php if ($expedientes['memoriaTecnicaEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "memoriaTecnicaEnIDI" id = "memoriaTecnicaEnIDI">

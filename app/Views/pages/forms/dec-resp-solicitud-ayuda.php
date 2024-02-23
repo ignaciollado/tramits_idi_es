@@ -257,7 +257,7 @@ $html18 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'
 $html18 .= "<tr><td></td></tr>";
 $html18 .= "<tr><td><ul>";
 $html18 .= "<li><b>".$file_copiaNIF."</b> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";		
-$html18 .= "<li><b>".$file_enviardocumentoIdentificacion."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>";		
+/* $html18 .= "<li><b>".$file_enviardocumentoIdentificacion."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>"; */		
 $html18 .= "<li><b>".$file_certificadoATIB."</b> ".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
 $html18 .= "<li><b>".$file_certificadoSegSoc."</b> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";		
 $html18 .= "</ul></td></tr>";
