@@ -1071,8 +1071,7 @@ if (!$expedientes['importeAyuda']) {
                     </div>
 
                 <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
+                    if ( !$esAdmin && !$esConvoActual ) { }
                     else {?>
                         <div class="form-group">
                             <button type="button"  onclick = "javaScript: actualiza_fase_3_ejecucion_expediente('exped-fase-3');" id="send_fase_3" class="btn-itramits btn-success-itramits">Actualitzar</button>
@@ -1159,10 +1158,8 @@ if (!$expedientes['importeAyuda']) {
                 </div>
             </div>
 
-       
             <h5 class ="upload-docs-type-label">[.pdf]:</h5>
             <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Ejecucion');?>" onsubmit="logSubmit('subeDocsEjecucionBtn')" name="subir_doc_faseExpedEjecucion" id="subir_doc_faseExpedEjecucion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                
                 <?php
                     if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -1253,13 +1250,13 @@ if (!$expedientes['importeAyuda']) {
         <h3>Documents de l'expedient:</h3>
         <div class="docsExpediente">
             <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-                <div >Pujat el</div>
-                <div >Document</div>
-                <div >Estat</div>               
-                <div >Acció</div>
+                <div>Pujatel</div>
+                <div>Docuent</div>
+                <div>Estt</div>               
+                <div>Ació</div>
             </div>
 
-        <?php if($documentos): ?>
+            <?php if($documentos): ?>
             <?php foreach($documentos as $docSolicitud_item): 			            
                 if($docSolicitud_item->fase_exped == 'Justificac') {
                     $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
@@ -1269,8 +1266,8 @@ if (!$expedientes['importeAyuda']) {
             ?>
             <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-justificacion">
                 <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                    <?php
+                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
+                <?php
                     switch ($docSolicitud_item->estado) {
 				        case 'Pendent':
     			            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
@@ -1284,39 +1281,38 @@ if (!$expedientes['importeAyuda']) {
                         default:
     					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                     }
-                    ?>
-                    <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                    <span class = "detail-wrapper-docs-col trash">
-                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
-                    </span>  			
-                </div>
-                <?php }
-                    endforeach; ?>
-                <?php endif; ?>
-
-                <div id="myModalDocJustificacion" class="modal" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style = "width: 60%;">
-                            <div class="modal-header">
-                                ¡Aquesta acció no es podrá desfer!
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-                                <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
-                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                                </div>
+                ?>
+                <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                <span class = "detail-wrapper-docs-col trash">
+                    <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
+                </span>  			
+            </div>
+            <?php } 
+                endforeach; ?>
+            <?php endif; ?>
+            <div id="myModalDocJustificacion" class="modal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-header">
+                            ¡Aquesta acció no es podrá desfer!
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <h5 class ="upload-docs-type-label">[.zip]:</h5>
-                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Justificacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedJustificacion" id="subir_doc_faseExpedJustificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                <?php
+            <h5 class ="upload-docs-type-label">[.zip]:</h5>
+            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Justificacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedJustificacion" id="subir_doc_faseExpedJustificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <?php
                     if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
+                    <?php }
                     else {?>
                     <div class = "content-file-upload">
                         <div>
@@ -1326,13 +1322,13 @@ if (!$expedientes['importeAyuda']) {
                             <input id="subeDocsJustificacionBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
                         </div>
                     </div>
-                <?php }?>
-                </form>             
+                    <?php }?>
+            </form>             
         </div>
 
         </div>
         <div class="col docsExpediente">
-        <h3>Justificants:</h3>
+            <h3>Justificacions:</h3>
             <div id = "tab_plan">
                 <button class="accordion-exped">
                 <?php
@@ -1360,8 +1356,8 @@ if (!$expedientes['importeAyuda']) {
 			            $nom_doc = $docsJustif_item->name;
 			        ?>
   	                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
-      	                <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
-   		                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
+      	                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
+   		                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
                            <?php
                             switch ($docsJustif_item->estado) {
 				                case 'Pendent':
@@ -1378,7 +1374,6 @@ if (!$expedientes['importeAyuda']) {
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        
                         </div>
                         <?php endforeach; ?>
                         <?php endif; ?> 

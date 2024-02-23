@@ -56,22 +56,17 @@
 
 	<div>  
 		<fieldset>
-			<!-- <?php //if ($data['expedientes']['tipo_tramite'] =='Programa I' || $data['expedientes']['tipo_tramite'] =='Programa iDigital 20') {?> -->
 			<legend><h4><?php echo lang('message_lang.justificacion_plan_p1');?>:</h4> </legend>
-		<!-- <?php //} else {?>
-			<legend><h4><strong><?php echo lang('message_lang.justificacion_plan_p2_p3');?></strong></h4> </legend>
-		<?php //}?>	 -->	
-		<div class="panel-justificacion">
-			<div class = "content-file-upload">
-				<h5>[.pdf]:</h5>
-				<div>
-					<input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_PlanTransformacionDigital" name="file_PlanTransformacionDigital[]" required size="20" accept=".pdf" multiple />
+			<div class="panel-justificacion">
+				<div class = "content-file-upload">
+					<h5>[.pdf]:</h5>
+					<div>
+						<input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_PlanTransformacionDigital" name="file_PlanTransformacionDigital[]" required size="20" accept=".pdf" multiple />
+					</div>
 				</div>
 			</div>
-		</div>
 		</fieldset>
 
-		<!-- <?php //if ($data['expedientes']['tipo_tramite'] =='Programa I' || $data['expedientes']['tipo_tramite'] =='Programa iDigital 20') {?> -->
 		<fieldset>
 			<legend><h4><?php echo lang('message_lang.justificacion_facturas_doc');?>:</h4> </legend>
 			<div class="panel-justificacion">
@@ -83,7 +78,22 @@
 				</div>
 			</div>
 		</fieldset>
-	
+		<fieldset>
+			<div class="container-lines" id="container-lines"></div>
+		</fieldset>
+		<fieldset class="container-add-line">
+			<h4>Llista enumerativa de despeses:</h4>
+			<input type = "text" name="num_factura" id="num_factura"><br>
+			<input type = "date" name="data_factura" id="data_factura"><br>
+			<input type = "text" name="proveedor" id="proveedor"><br>
+			<input type = "text" name="concepto" id="concepto"><br>
+			<input type = "number" name="base_imponible" id="base_imponible"><br>
+			<input type = "number" name="importe_iva" id="importe_iva"><br>
+			<input type = "text" name="importe_factura" id="importe_factura"><br>
+			<input type = "date" name="fecha_pago" id="fecha_pago"><br>
+			<button>Afegir</button>
+		</fieldset>
+
 		<fieldset> 
 			<legend><h4><?php echo lang('message_lang.justificacion_justificantes_doc');?>:</h4> </legend>
 			<div class="panel-justificacion">
@@ -95,10 +105,11 @@
 				</div>		
 			</div>
 		</fieldset>
-	<!-- <?php //}?> -->
+
 	<div>
 		<button type="submit" class = "btn btn-secondary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
 	</div>
+
 </div>
 </form>
 <div class="alert alert-info"> 
