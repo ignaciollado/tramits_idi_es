@@ -47,12 +47,12 @@ return [
    'nombre_solicitante'            => 'Nom del sol·licitant',
    'expediente_menu'			        => 'Expedients',
    'resol_expediente_menu'			  => 'Resolucions',
-   'expediente_justificacion_menu'	   => 'Justificació',
-   'sol_idigital_menu'                 => 'Sol·licitud xecs consultoria',
-   'sol_adhesion_ils_menu'             => 'Sol·licitud adhesió a ILS',
-   'sol_linea_idi_isba_menu'             => 'Sol·licitud linia IDI-ISBA',
+   'expediente_justificacion_menu' => 'Justificació',
+   'sol_idigital_menu'             => 'Sol·licitud xecs consultoria',
+   'sol_adhesion_ils_menu'         => 'Sol·licitud adhesió a ILS',
+   'sol_linea_idi_isba_menu'       => 'Sol·licitud linia IDI-ISBA',
 
-   'asistente_de_tramitacion'          => 'Assistent de tramitació',
+   'asistente_de_tramitacion'      => 'Assistent de tramitació',
    'btn_next'                      => 'Següent',
    'btn_previous'                  => 'Anterior',
    'her_diag_menu'					  => 'Autodiagnosi Digital',
@@ -76,7 +76,7 @@ return [
    'tramite_procedimiento'          => "Tràmit o procediment",
    'tramite_procedimiento_texto'    => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
 
-   'titulo_justificacion_idigital'	  => "Ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears. Requeriment de justificació.",   
+   'titulo_justificacion_idigital'	  => "Sol·licitud de pagament de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
    'titulo_requerimiento_idigital'	  => "Requeriment documentació/informació adicional.",
    'subtitulo_sol_idigital'			  => "La sol·licitud d'ajuda i/o subvenció està pendent de signar, si us plau, entre en el document i signi'l. 
    RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
@@ -136,16 +136,16 @@ return [
    'mail_sol_idigital'      		     => "Adreça electrònica de contacte",
    'notificacion'					        => "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)",
    'notificacion_corto'				     => "NOTIFICACIÓ",
-   'justificacion_titulo'			     => "JUSTIFICACIÓ",
+   'justificacion_titulo'			     => "Sol·licitud de pagament",
    'justificacion_doc'			        => "Document",
    'justificacion_exp'			        => "Expedient",   
    'justificacion_declaracion'        => ", declar que adjunt la següent documentació com a justificació de la convocatòria per a la concessió d’ajuts de xecs de consultoria",
    'justificacion_declaracion_PII_PIII'        => ", declar que he aplicat els fons percebuts al pagament objecte de la convocatòria segons el punt 12.2 de la mateixa, i adjunt la següent documentació com a justificació",
   
-   'justificacion_plan_p1'            => "El pla o els informes",
+   'justificacion_plan_p1'            => "El pla o els informes d'acord amb el programa que justifico",
    'justificacion_plan_p2_p3'         => "El pla o els informes",
-   'justificacion_facturas_doc'       => "Les factures del consultor o del facilitador digital",
-   'justificacion_justificantes_doc'  => "Els justificants de pagament",
+   'justificacion_facturas_doc'       => "Les factures emeses pel consultor",
+   'justificacion_justificantes_doc'  => "Els justificants de pagaments realitzats al consultor",
 
    'enviar_documentacion'  			  => "Enviar la documentació",
    'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITAU",
@@ -478,9 +478,9 @@ return [
 <ul>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tractament</strong>: INSTITUT D´INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacte Delegat Protecció de Dades</strong>: dpd@idi.es</span></li>
-<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span><br>
 
-<span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓ D’AJUTS DE CONSULTORIA</u></span>
+<span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓ D’AJUTS DE CONSULTORIA</u></span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>BASE LEGÍTIMA</strong>: obligació legal (art. 6.1. c) del RGPD</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORIA D'INTERESSATS</strong>: sol·licitants</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TIPOLOGIA DE DADES</strong>: dades bàsiques: nom i cognoms, telèfon, NIF, adreça postal, adreça electrònica, signatura</span></li>

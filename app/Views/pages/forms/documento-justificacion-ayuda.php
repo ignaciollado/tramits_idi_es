@@ -76,11 +76,18 @@ $data['expedientes'] = $modelExp->where('id', $id)->first();
 $pdf->AddPage();
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
+$pdf->setY($currentY + 20);
+
+$html =  lang('message_lang.titulo_justificacion_idigital')."<br>";
+$html .=  lang('message_lang.destino_solicitud').": Institut d'Innovació Empresarial de les Illes Balears<br>";
+$html .=  lang('message_lang.codigo_dir3')." ".$data['configuracion']['emisorDIR3']."<br>";
+$pdf->SetFillColor(255, 255, 255);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->writeHTMLCell(180, '', 20, 40, $html, 0, 1, 1, true, 'J', true);
+
 $html = lang('message_lang.justificacion_doc').": ".lang('message_lang.justificacion_titulo')."<br>";
 $html .= "Núm. Expedient: ". $data['expedientes']['idExp']."/".$data['expedientes']['convocatoria']."<br>";
 $html .= "Núm. REC GOIB: ". $data['expedientes']['ref_REC']."<br>";
-$html .=  lang('message_lang.codigo_dir3')." ".$data['configuracion']['emisorDIR3']."<br>";
 $html .=  lang('message_lang.codigo_sia').": ".$data['configuracionLinea']['codigoSIA']."<br>";
 $html .= "Projecte: ".$data['expedientes']['tipo_tramite']."<br><br>";
 
@@ -89,7 +96,7 @@ $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
-$pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(90, '', 120, 60, $html, 0, 1, 1, true, 'J', true);
 
 echo "<content><section>".$html;
 
@@ -100,44 +107,34 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 // $pdf->Cell(0, 10, $html, 1, 1, 'C');
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-// $pdf->Cell(0, 10, lang('message_lang.solicitante'), 1, 1, 'C');
+/* $currentY = $pdf->getY();
+$pdf->setY($currentY + 5); */
+
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $data['expedientes']['empresa'] ."</b> ";
 $html .= lang('message_lang.conCIF')."<b> " . $data['expedientes']['nif']."</b>";
-//if ($data['expedientes']['tipo_tramite'] == "Programa I" || $data['expedientes']['tipo_tramite'] == "Programa iDigital 20")	{
-	$html .= lang('message_lang.justificacion_declaracion').":</td></tr>";
-//} 
-//else {
-//	$html .= lang('message_lang.justificacion_declaracion_PII_PIII').":</td></tr>";
-//}
+$html .= lang('message_lang.justificacion_declaracion').":</td></tr>";
 $html .= "</table>";
 echo $html;
+
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$html = "<br><br>";
-$html .= "<table cellpadding='5' style='border: 1px solid #ffffff;'>";
+$html = "<table cellpadding='5' style='border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>";
 $html .= "<ul>";
+
 foreach($justificacion as $docsJustif_item):
 	if ( $docsJustif_item->corresponde_documento == "file_PlanTransformacionDigital") {
-		//if ($data['expedientes']['tipo_tramite'] == "Programa I" || $data['expedientes']['tipo_tramite'] == "Programa iDigital 20")	{
 			$html .= "<li>".lang('message_lang.justificacion_plan_p1').".</li>";
-		//} else {
-		//	$html .= "<li>".lang('message_lang.justificacion_plan_p2_p3').".</li>";	
-		//}
 	}
-//if ($data['expedientes']['tipo_tramite'] == "Programa I" || $data['expedientes']['tipo_tramite'] == "Programa iDigital 20")	{
 	if ( $docsJustif_item->corresponde_documento == "file_FactTransformacionDigital") {
 		$html .= "<li>".lang('message_lang.justificacion_facturas_doc').".</li>";
 	}
 	if ( $docsJustif_item->corresponde_documento == "file_PagosTransformacionDigital") {
 		$html .= "<li>".lang('message_lang.justificacion_justificantes_doc').".</li>";
 	}
-//}
 endforeach;
 $html .= "</ul>";
 $html .= "</td></tr>";
@@ -151,9 +148,9 @@ $pdf->WriteHTML($html, true, false, true, false, '');
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
 
-$html = "<br><br>";
+$html = "<br>";
 $html .= "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='text-align:center;background-color:#f2f2f2;color:#000;font-size:8px;'>$rgpd</td></tr><br>";
+$html .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:8px;'>$rgpd</td></tr><br>";
 $html .= "</table>";
 
 echo $html;

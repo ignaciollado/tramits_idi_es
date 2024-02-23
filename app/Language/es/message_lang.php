@@ -74,7 +74,7 @@ return [
    'tramite_procedimiento'          => "Trámite o procedimiento",
    'tramite_procedimiento_texto'    => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratégico Industrial 2018-2025",
 
-   'titulo_justificacion_idigital'	  => "Ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares. Requerimiento de justificación.",
+   'titulo_justificacion_idigital'	  => "Solicitud de pago de la ayuda de cheques de consultoría para la competitividad industrial de las Islas Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada.",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
    'subtitulo_sol_idigital'			  => "La solicitud de ayuda y/o subvención está pendiente de firmar, por favor, entre en el documento y fírmela. 
    RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
@@ -134,16 +134,16 @@ return [
    'mail_sol_idigital'      		     => "Correo electrónico de contacto",
    'notificacion'					        => "NOTIFICACIÓN (en esta dirección de correo y en este teléfono recibirá los avisos de las notificaciones corresponentes al procedimiento)",
    'notificacion_corto'				     => "NOTIFICACIÓN",
-   'justificacion_titulo'			     => "JUSTIFICACIÓN",
+   'justificacion_titulo'			     => "Solicitud de pago",
    'justificacion_doc'			        => "Documento",
    'justificacion_exp'			        => "Expediente",   
    'justificacion_declaracion'        => ", declaro que adjunto la siguiente documentación como justificación de la convocatoria para la concesión de ayudas de cheques de consultoría",
    'justificacion_declaracion_PII_PIII'        => ", declaro que he aplicado los fondos percibidos al pago objeto de la convocatoria según el punto 12.2 las bases y adjunto la siguiente documentación como justificación",
     
-   'justificacion_plan_p1'            => "El plan o los informes",
+   'justificacion_plan_p1'            => "El plan o los informes de acuerdo con el programa que justifico",
    'justificacion_plan_p2_p3'         => "El plan o los informes",
-   'justificacion_facturas_doc'       => "Las facturas del consultor o del facilitador digital",
-   'justificacion_justificantes_doc'  => "Los justificantes de pago",
+   'justificacion_facturas_doc'       => "Las facturas emitidas por el consultor",
+   'justificacion_justificantes_doc'  => "Los justificantes de pagos realizados al consultor",
 
    'enviar_documentacion'  			  => "Enviar la documentación",   
    'programa'                         => "1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA",
@@ -463,8 +463,8 @@ return [
 <ul>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tratamiento</strong>: INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacto delegado de protección de datos</strong>: dpd@idi.es</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span></li>
-  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓN DE AYUDAS DE CONSULTORÍA</u></span>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span><br>
+  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓN DE AYUDAS DE CONSULTORÍA</u></span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>BASE LEGÍTIMA</strong>: obligación legal (art. 6.1. c) del RGPD</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORIA DE INTERESADOS</strong>: solicitantes.</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TIPOLOGIA DE DATOS</strong>: datos básicos: nombre y apellidos, teléfono, NIF, dirección postal, dirección electrónica, firma.</span></li>
@@ -472,8 +472,8 @@ return [
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORÍAS DE LOS DESTINATARIOS</strong>: Agencia Tributaria, Bancos, Cajas y Organismos y/o administración pública con competencia en la materia.</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TRANSFERENCIAS INTERNACIONALES</strong>: No se realizan transferencias internacionales de datos.</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>MEDIDAS TÉCNICAS Y ORGANIZATIVAS</strong>: revistas en los documentos de Medidas para cumplimiento normativo y Políticas para cumplimiento normativa de seguridad.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>PLAZOS DE SUPRESIÓN</strong>: durante el plazo estrictamente necesario para cumplir con los preceptos citados con anterioridad, salvo obligación legal de conservación.</span></li>
-  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>A su vez, le informamos que puede contactar con el Delegado de Protección de Datos, dirigiéndose por escrito a la dirección de correo dpd@idi.es o al teléfono +34 971176161.</span>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>PLAZOS DE SUPRESIÓN</strong>: durante el plazo estrictamente necesario para cumplir con los preceptos citados con anterioridad, salvo obligación legal de conservación.</span><br>
+  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>A su vez, le informamos que puede contactar con el Delegado de Protección de Datos, dirigiéndose por escrito a la dirección de correo dpd@idi.es o al teléfono +34 971176161.</span></li>
 </ul>
 <strong>EJERCICIO DE DERECHOS</strong>:<br><br>
 <ul>

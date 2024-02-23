@@ -23,52 +23,41 @@
 ?>
 
 <section>
-    <fieldset>
-<h5><?php echo lang('message_lang.justificacion_doc');?>: <strong><?php echo lang('message_lang.justificacion_titulo');?></strong></h5>
-<h5><?php echo lang('message_lang.justificacion_exp');?>:  <?php echo $data['expedientes']['idExp'];?> / <?php echo $data['expedientes']['convocatoria'];?></h5>
-<h5>Núm. REC GOIB: <?php echo $data['expedientes']['ref_REC'];?></h5>
-<h5><?php echo lang('message_lang.destino_solicitud');?>: <?php echo lang('message_lang.idi');?></h5>
-<h5><?php echo lang('message_lang.codigo_dir3');?> <?php echo $data['configuracion']['emisorDIR3'];?></h5>
-<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
-   </fieldset> 
+  <fieldset class="alert alert-info">
+		<h5><?php echo lang('message_lang.justificacion_doc');?>: <strong><?php echo lang('message_lang.justificacion_titulo');?></strong></h5>
+		<h5><?php echo lang('message_lang.justificacion_exp');?>:  <?php echo $data['expedientes']['idExp'];?> / <?php echo $data['expedientes']['convocatoria'];?></h5>
+		<h5>Núm. REC GOIB: <?php echo $data['expedientes']['ref_REC'];?></h5>
+		<h5><?php echo lang('message_lang.destino_solicitud');?>: <?php echo lang('message_lang.idi');?></h5>
+		<h5><?php echo lang('message_lang.codigo_dir3');?> <?php echo $data['configuracion']['emisorDIR3'];?></h5>
+		<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
+  </fieldset> 
 
-<div class="alert alert-info">
-	<?php echo lang('message_lang.intro_sol_idigital');?>
-</div>
+	<!-- <div class="alert alert-info">
+		<?php echo lang('message_lang.intro_sol_idigital');?>
+	</div> -->
 
-<?php 
-//$attributes = ['id' => 'form_justificacion'];
-//echo form_open_multipart('public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$nif.'/'.$tipoTramite, $attributes);?>
+	<?php 
+	//$attributes = ['id' => 'form_justificacion'];
+	//echo form_open_multipart('public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$nif.'/'.$tipoTramite, $attributes);?>
 
-<form action="<?php echo base_url('/public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form action="<?php echo base_url('/public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
-<input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
+	<input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
 
-<div>
-<fieldset> 
-<div><h4><?php echo lang('message_lang.solicitante');?>
-<span><?php echo $data['expedientes']['empresa'];?></span> <?php echo lang('message_lang.conCIF');?><span><?php echo $data['expedientes']['nif'];?></span>
-		<input type = "hidden" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" readonly 
-		placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" class="grid-item-profesor" required minlength = "4" name="empresa" id="empresa" value = "<?php echo $data['expedientes']['empresa'];?>" >
-		<input type = "hidden" title="NIF del consultor digital" readonly  placeholder = "NIF" class="grid-item-profesor" required name="nif" id="nif" maxlength = "9" value = "<?php echo $data['expedientes']['nif'];?>">
+	<fieldset>
+		<h4><?php echo lang('message_lang.solicitante');?>
+			<span><strong><?php echo $data['expedientes']['empresa'];?></strong></span> <?php echo lang('message_lang.conCIF');?><span><?php echo $data['expedientes']['nif'];?></span>
+			<input type = "hidden" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" readonly 
+			placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" class="grid-item-profesor" required minlength = "4" name="empresa" id="empresa" value = "<?php echo $data['expedientes']['empresa'];?>" >
+			<input type = "hidden" title="NIF del consultor digital" readonly  placeholder = "NIF" class="grid-item-profesor" required name="nif" id="nif" maxlength = "9" value = "<?php echo $data['expedientes']['nif'];?>">
+			<?php echo lang('message_lang.justificacion_declaracion').": ";?>
+		</h4>
+	</fieldset>
 
-<?php 
-/* if ($data['expedientes']['tipo_tramite'] =='Programa I') { */
-	echo lang('message_lang.justificacion_declaracion').": ";
-/* }
-else {
-	echo lang('message_lang.justificacion_declaracion_PII_PIII').": ";
-} */
-?>
-</h4>
-</div>
-</fieldset> 
-</div>
-
-<div>  
-	<fieldset>  
-		<!-- <?php //if ($data['expedientes']['tipo_tramite'] =='Programa I' || $data['expedientes']['tipo_tramite'] =='Programa iDigital 20') {?> -->
-			<legend><h4><strong><?php echo lang('message_lang.justificacion_plan_p1');?></strong></h4> </legend>
+	<div>  
+		<fieldset>
+			<!-- <?php //if ($data['expedientes']['tipo_tramite'] =='Programa I' || $data['expedientes']['tipo_tramite'] =='Programa iDigital 20') {?> -->
+			<legend><h4><?php echo lang('message_lang.justificacion_plan_p1');?>:</h4> </legend>
 		<!-- <?php //} else {?>
 			<legend><h4><strong><?php echo lang('message_lang.justificacion_plan_p2_p3');?></strong></h4> </legend>
 		<?php //}?>	 -->	
@@ -80,11 +69,11 @@ else {
 				</div>
 			</div>
 		</div>
-	</fieldset>
+		</fieldset>
 
-	<!-- <?php //if ($data['expedientes']['tipo_tramite'] =='Programa I' || $data['expedientes']['tipo_tramite'] =='Programa iDigital 20') {?> -->
-		<fieldset> 
-			<legend><h4><strong><?php echo lang('message_lang.justificacion_facturas_doc');?></strong></h4> </legend>
+		<!-- <?php //if ($data['expedientes']['tipo_tramite'] =='Programa I' || $data['expedientes']['tipo_tramite'] =='Programa iDigital 20') {?> -->
+		<fieldset>
+			<legend><h4><?php echo lang('message_lang.justificacion_facturas_doc');?>:</h4> </legend>
 			<div class="panel-justificacion">
 				<div class = "content-file-upload">
 				<h5>[.pdf]:</h5>
@@ -96,7 +85,7 @@ else {
 		</fieldset>
 	
 		<fieldset> 
-			<legend><h4><strong><?php echo lang('message_lang.justificacion_justificantes_doc');?></strong></h4> </legend>
+			<legend><h4><?php echo lang('message_lang.justificacion_justificantes_doc');?>:</h4> </legend>
 			<div class="panel-justificacion">
 				<div class = "content-file-upload">
 				<h5>[.pdf]:</h5>
