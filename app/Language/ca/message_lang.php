@@ -56,29 +56,29 @@ return [
    'btn_next'                      => 'Següent',
    'btn_previous'                  => 'Anterior',
    'her_diag_menu'					  => 'Autodiagnosi Digital',
-   'dec_resp_con_menu'                => 'Declaració responsable consultor',
-   'portafirmas_menu'                 => 'Portafirmes IDI',
-   'sede_caib_menu'                   => 'Seu electrònica CAIB',
+   'dec_resp_con_menu'             => 'Declaració responsable consultor',
+   'portafirmas_menu'              => 'Portafirmes IDI',
+   'sede_caib_menu'                => 'Seu electrònica CAIB',
    'config_general'                => 'Configuració global',
    'config_linea'                  => 'Configuració línies ajuda',
 
-   'salida'                         => 'Finalitzar',
-   'todas_las_solicitudes'			   => 'Totes les sol·licituds',
-   'timbrado_de_documentos'         => 'Segellament electrònic de la documentació adjuntada a la sol·licitud',
-   'generado_correctamente'         => "S'ha generat correctament la ",
-   'titulo_sol_form'	               => "Formulari de sol·licitud",
-   'titulo_sol_form_ils'	         => "Programa d'adhesió a Industria Local Sostenible (ILS)",
+   'salida'                        => 'Finalitzar',
+   'todas_las_solicitudes'			  => 'Totes les sol·licituds',
+   'timbrado_de_documentos'        => 'Segellament electrònic de la documentació adjuntada a la sol·licitud',
+   'generado_correctamente'        => "S'ha generat correctament la ",
+   'titulo_sol_form'	              => "Formulari de sol·licitud",
+   'titulo_sol_form_ils'	        => "Programa d'adhesió a Industria Local Sostenible (ILS)",
 
-   'titulo_sol_idigital'			   => "Sol·licitud ajut i/o subvenció",
-   'titulo_adhesion_ils'			   => "Sol·licitud d'adhesió a ILS",
-   'titulo_solicitud_idi_isba'      => "Ajuts a les despeses financeres a través de l'aval d'ISBA",
-   'Codi_SIA'                       => "Codi SIA",
-   'tramite_procedimiento'          => "Tràmit o procediment",
-   'tramite_procedimiento_texto'    => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
+   'titulo_sol_idigital'			  => "Sol·licitud ajut i/o subvenció",
+   'titulo_adhesion_ils'			  => "Sol·licitud d'adhesió a ILS",
+   'titulo_solicitud_idi_isba'     => "Ajuts a les despeses financeres a través de l'aval d'ISBA",
+   'Codi_SIA'                      => "Codi SIA",
+   'tramite_procedimiento'         => "Tràmit o procediment",
+   'tramite_procedimiento_texto'   => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
 
-   'titulo_justificacion_idigital'	  => "Sol·licitud de pagament de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
-   'titulo_requerimiento_idigital'	  => "Requeriment documentació/informació adicional.",
-   'subtitulo_sol_idigital'			  => "La sol·licitud d'ajuda i/o subvenció està pendent de signar, si us plau, entre en el document i signi'l. 
+   'titulo_justificacion_idigital' => "Sol·licitud de pagament de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
+   'titulo_requerimiento_idigital' => "Requeriment documentació/informació adicional.",
+   'subtitulo_sol_idigital'		  => "La sol·licitud d'ajuda i/o subvenció està pendent de signar, si us plau, entre en el document i signi'l. 
    RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
    https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586
    
@@ -122,7 +122,7 @@ return [
    'select_cuantia_ayuda'          => "Seleccionau la quantia de la ajuda",
    'select_generico'               => "Seleccionau una opció", 
    'identificacion_sol_ils'        => "3. DADES GENERALS", 
-   'identificacion_sol_idigital'   => "3. INTERESSAT",   
+   'identificacion_sol_idigital'   => "INTERESSAT",   
    'identificacion_empresa_ils'    => "2. DADES DE L'EMPRESA",   
 
    'nif_solicitante'               => "NIF del sol·licitant",
@@ -139,8 +139,8 @@ return [
    'justificacion_titulo'			     => "Sol·licitud de pagament",
    'justificacion_doc'			        => "Document",
    'justificacion_exp'			        => "Expedient",   
-   'justificacion_declaracion'        => ", declar que adjunt la següent documentació com a justificació de la convocatòria per a la concessió d’ajuts de xecs de consultoria",
-   'justificacion_declaracion_PII_PIII'        => ", declar que he aplicat els fons percebuts al pagament objecte de la convocatòria segons el punt 12.2 de la mateixa, i adjunt la següent documentació com a justificació",
+   'justificacion_declaracion'        => "Que he aportat la documentació següent com a justificació de la convocatòria d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en materèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
+   'justificacion_declaracion_PII_PIII' => ", declar que he aplicat els fons percebuts al pagament objecte de la convocatòria segons el punt 12.2 de la mateixa, i adjunt la següent documentació com a justificació",
   
    'justificacion_plan_p1'            => "El pla o els informes d'acord amb el programa que justifico",
    'justificacion_plan_p2_p3'         => "El pla o els informes",
@@ -151,6 +151,10 @@ return [
    'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITAU",
    'programa_continuacion'            => "(Seleccionau només una opció. Presenti una sol·licitud per a cada programa)",
    'select_programa'                  => "Seleccionau un programa",
+   'select_programa_justificacion'    => "<b>Indicau el programa</b> que justificau (només es pot indicar un per sol·licitud)",
+   'importe_total_justificacion'    => "<b>Import total justificat</b> (sense IVA)",
+
+
    'opc_programa_txt'                 => "Programes d'ajuts",
    'opc_iDigital'                     => "<li><code>Programa I, «IDigital»</code> ajuts per la contractació de serveis d’assessorament externs per a l’elaboració d’un pla estratègic de transformació digital o per a l’assessorament i seguiment de les accions del pla de transformació digital en el marc del programa «IDigital, estratègia de digitalització industrial».</li>",
    'opc_iExporta'                     => "<li><code>Programa II, «IExporta»</code> ajuts per la contractació de serveis d’assessorament externs per a l’elaboració i/o millora del pla estratègic d’internacionalització, o per a l’assessorament i seguiment de les accions del pla de màrqueting per a/als mercat/s objectiu/s en el marc del programa «IExporta, estratègia d’internacionalització».</li>",
@@ -306,10 +310,27 @@ return [
    'nom_habilitador_sol_idigital'         => "Nom complet de la persona que realitzarà la consultoria",
    'aclaracion_habilitador_sol_idigital'  => "A aquesta adreça de correu electrònic s'enviarà un correu amb un enllaç perquè, el facilitador digital, pugui emplenar la declaració responsable, i el ferm electrònicament.",
    'declaracion_minimis'                  => "DECLARACIÓ DE MINIMIS",
-   'declaro'                              => "Declar:",
+   'declaro'                              => "DECLAR:",
    'adjunto'                              => "Declaro que adjunt la següent documentació com a justificació de la convocatòria per a la concessió d'ajuts per al disseny de plans de transformació digital per a l'any 2023:",  
    'declaracion_responsable_i'            => "I) Que complesc el reglament (UE) núm.1407/2013 de la Comissió de 18 de desembre de 2013, relatiu a l’aplicació dels articles 107 i 108 del Tractat de Funcionament de la Unió Europea de les ajudes de minimis i el reglament (UE) 2023/2831 de la comissió, de 13 de desembre de 2023, relatiu a l’aplicació dels articles 107 i 108 del Tractat.",
    'declaracion_responsable_ii'           => "II) Que durant els exercicis fiscals 2022, 2023 i 2024 he rebut un import total d’ajuts de minimis de:",
+   'declaracion_responsable_iii'    => "III) Que no he rebut cap subvenció atorgada per alguna entitat, pública o privada, nacional o estrangera, relacionada amb la realització de plans de transformació digital, plans  d’internacionalització, o bé amb la realització d’informes de la petjada de carboni corporativa.",
+   'declaracion_responsable_iv'     => "III) Que no he rebut ajuts o subvencions d’altres administracions públiques, o d’altres ens públics o privats, nacionals o internacionals que, aïlladament o en concurrència, superi el 100 % del cost de l’activitat que hagi de desenvolupar l’empresa beneficiària.",
+
+   'declaracion_responsable_v'           => "IV) Que dispòs de la capacitat de representació suficient, degudament acreditada, per dur a terme la tramitació indicada. ",
+   'declaracion_responsable_vi'            => "V) Que no em trob en cap  de les circumstàncies especificades a l’article 10 del Decret legislatiu 2/2005, de 28 de desembre, pel qual s’aprova el Text refós de la Llei de subvencions, que s’ha d’incloure en la sol·licitud.",
+	'declaracion_responsable_vii'            => "VI) Que l’entitat beneficiària està inscrita en el Registre Industrial o en el Registre Miner de les Illes Balears, si escau.",
+   'declaracion_responsable_viii'            => "VII) Que complesc amb les exigències establertes per la normativa en matèria de seguretat industrial i minera, i qualsevol altra que hi sigui aplicable; en el cas de les empreses industrials s’ha d’incloure en la sol·licitud.",
+   'declaracion_responsable_ix'            => "VIII) Que les dades consignades en aquest document són certes, que complesc amb tots els requisits exigits en la convocatòria, i que presento adjunta la documentació corresponent, d’acord amb la resolució de la convocatòria.",
+   'declaracion_responsable_x'      => "IX) Que el consultor compleix amb el punts 7.2 i 7.3 de la convocatòria.",
+
+   'declaracion_responsable_xi'  => "X) Que he iniciat, en un temps superior a dos anys, una activitat econòmica en el territori de les Illes Balears, amb domicili a les Illes Balears, i que no supero els paràmetres de la condició de pime.",
+   'declaracion_responsable_xii'  => "XI) Que no tinc la consideració d’empresa en crisi d’acord amb l’article 2.18 del Reglament ( UE) 651/2014 de la comissió de dia 17 de juny de 2014.",
+   'declaracion_responsable_xiii'  => "XII) En el cas de  persones físiques o jurídiques que estan iniciant o ja han iniciat, en un temps superior a 2 anys, una activitat econòmica en el territori de les Illes Balears, amb domicili a les Illes Balears, i sempre que no superin els paràmetres de la condició de mitjana empresa.",
+   'declaracion_responsable_xiv'  => "XIII) En el cas de persona física, declar estar  d'estar inscrita en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.",
+   'declaracion_responsable_xv'  => "XIV) En el cas de centres tecnològics i clústers de caràcter industrial, declar que els meus representants/associats tenen com a mínim un 40 % d'empreses amb IAE comprès entre els epígrafs punt 3.1 i 3.2  d’aquesta convocatòria. ",
+   'declaracion_responsable_xvi'  => "XV) En el cas que s’hagi presentat una sol·licitud en el programa III, Indústria Local i Sostenible, declar que he presentat la sol·licitud d’adhesió al programa ILS  abans de la sol·licitud d’aquesta convocatòria i que complesc els requisits del programa ILS. ",
+
    'declaracion_datos_bancarios_cabecera'        => "DECLARACIÓ RESPONSABLE DE VERACITAT DE DADES BANCÀRIES APORTADES",
    'nom_entidad'						=> "Nom de la entitat bancària",
 	'domicilio_sucursal'				=> "Domicili de la sucursal / oficina",
@@ -398,16 +419,9 @@ return [
    'declaracion_responsable_asesor'     => "Que compta amb una experiència mínima de dos anys d’assessorament en matèria d’estratègia empresarial.",
    'declaracion_responsable_experiencia' => "Que compta amb experiència en treballs o projectes de transformació digital a indústries.",
    'declaracion_responsable_formacion'   => "Que té estudis de formació professional o de formació universitària en els àmbits S.T.E.M. (ciències, tecnologia, enginyeria o matemàtiques), economia o administració d’empreses.",
-   'declaracion_responsable_xi'  => "XI) Que he iniciat, en un temps superior a dos anys, una activitat econòmica en el territori de les Illes Balears, amb domicili a les Illes Balears, i que no supero els paràmetres de la condició de pime.",
-   'declaracion_responsable_xii'  => "XII) Que no tinc la consideració d’empresa en crisi d’acord amb l’article 2.18 del Reglament ( UE) 651/2014 de la comissió de dia 17 de juny de 2014.",
-   'declaracion_responsable_xiii'  => "XIII) En el cas de  persones físiques o jurídiques que estan iniciant o ja han iniciat, en un temps superior a 2 anys, una activitat econòmica en el territori de les Illes Balears, amb domicili a les Illes Balears, i sempre que no superin els paràmetres de la condició de mitjana empresa.",
-   'declaracion_responsable_xiv'  => "XIV) En el cas de persona física, declar estar  d'estar inscrita en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.",
-   'declaracion_responsable_xv'  => "XV) En el cas de centres tecnològics i clústers de caràcter industrial, declar que els meus representants/associats tenen com a mínim un 40 % d'empreses amb IAE comprès entre els epígrafs punt 3.1 i 3.2  d’aquesta convocatòria. ",
-   'declaracion_responsable_xvi'  => "XVI) En el cas que s’hagi presentat una sol·licitud en el programa III, Indústria Local i Sostenible, declar que he presentat la sol·licitud d’adhesió al programa ILS  abans de la sol·licitud d’aquesta convocatòria i que complesc els requisits del programa ILS. ",
 
    'domicilio_notifica_dec_resp'        => " amb domicili a efectes de notificacions ",
-   'declaracion_responsable_v'           => "V) Que dispòs de la capacitat de representació suficient, degudament acreditada, per dur a terme la tramitació indicada. ",
-   
+
    'declaracion_responsable_i_ils' => "I) Que l'empresa compta amb una línia de producció activa a les Illes Balears.",
 
    'declaracion_responsable_v_ils'           => "II) Que dispòs de la capacitat de representació suficient, degudament acreditada, per dur a terme la tramitació indicada. ",
@@ -415,16 +429,12 @@ return [
    'declaracion_responsable_ils_v'           => "II) Que dispòs de la capacitat de representació suficient, degudament acreditada, per dur a terme la tramitació indicada. ",
 
    'datos_consignados'            => "Que les dades consignades en aquest document són certes, que complesc amb tots els requisits exigits en el programa, i que present adjunta la documentació que pertoca.",
-   'declaracion_responsable_vi'            => "VI) Que no em trob en cap  de les circumstàncies especificades a l’article 10 del Decret legislatiu 2/2005, de 28 de desembre, pel qual s’aprova el Text refós de la Llei de subvencions, que s’ha d’incloure en la sol·licitud.",
-	'declaracion_responsable_vii'            => "VII) Que l’entitat beneficiària està inscrita en el Registre Industrial o en el Registre Miner de les Illes Balears, si escau.",
 	'declaracion_responsable_vii_ils'            => "III) Que l’entitat beneficiària està inscrita en el Registre Industrial o en el Registre Miner de les Illes Balears, si escau.",
 
 	'declaracion_responsable_ils_vii'            => "III) Que l’entitat beneficiària està inscrita en el Registre Industrial o en el Registre Miner de les Illes Balears, si escau.",
 
-	'declaracion_responsable_viii'            => "VIII) Que complesc amb les exigències establertes per la normativa en matèria de seguretat industrial i minera, i qualsevol altra que hi sigui aplicable; en el cas de les empreses industrials s’ha d’incloure en la sol·licitud.",
 	'declaracion_responsable_ils_viii'            => "IV) Que complesc amb les exigències establertes per la normativa en matèria de seguretat industrial i minera, i qualsevol altra que hi sigui aplicable; en el cas de les empreses industrials s’ha d’incloure en la sol·licitud.",
 
-	'declaracion_responsable_ix'            => "IX) Que les dades consignades en aquest document són certes, que complesc amb tots els requisits exigits en la convocatòria, i que presento adjunta la documentació corresponent, d’acord amb la resolució de la convocatòria.",
 	'declaracion_responsable_ix_ils'            => "IV) Que les dades consignades en aquest document són certes, que complesc amb tots els requisits exigits en la convocatòria, i que presento adjunta la documentació corresponent, d’acord amb la resolució de la convocatòria.",
 
 	'declaracion_responsable_ils_ix'            => "V) Que les dades consignades en aquest document són certes, que complesc amb tots els requisits exigits en la convocatòria, i que presento adjunta la documentació corresponent, d’acord amb la resolució de la convocatòria.",
@@ -457,10 +467,6 @@ return [
    'consentimiento_identificacion_solicitante'	=> " Don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment, adjunt el NIF del sol·licitant i/o de la persona autoritzada i els documents acreditatius,  si s'escau.",
    'consentimiento_identificacion_solicitante_pdf'	=> " Don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa.",
 
-   'declaracion_responsable_iii'    => "III) Que no he rebut cap subvenció atorgada per alguna entitat, pública o privada, nacional o estrangera, relacionada amb la realització de plans de transformació digital, plans  d’internacionalització, o bé amb la realització d’informes de la petjada de carboni corporativa.",
-   'declaracion_responsable_iv'     => "IV) Que no he rebut ajuts o subvencions d’altres administracions públiques, o d’altres ens públics o privats, nacionals o internacionals que, aïlladament o en concurrència, superi el 100 % del cost de l’activitat que hagi de desenvolupar l’empresa beneficiària.",
-
-   'declaracion_responsable_x'      => "X) Que el consultor compleix amb el punts 7.2 i 7.3 de la convocatòria.",
    'doy_mi_consentimiento'          => "Que don el meu consentiment perquè l’Institut d’Innovació Empresarial de les Illes Balears pugui comprovar d'ofici la identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa. En cas de denegació expressa del consentiment adjunto el NIF del sol·licitant i de la persona autoritzada, si s'escau.",
    'doy_mi_consentimiento_aeat_atib'   => " Don el meu consentiment perquè l'Institut d'Innovació Empresarial de les Illes Balears obtengui, dels òrgans competents, la informació relativa al compliment de les meves obligacions tributàries. En cas contrari, adjunt declaració de no consentiment i adjunt els certificats i la documentació corresponent.",
    'certificado_corriente_pago_aeat'   => "Certificat d’estar al corrent de les obligacions tributàries amb l’Agència Estatal de l’Administració Tributària (<abbr title='Agencia Estatal de la Administración Tributaria'>AEAT</abbr>)",

@@ -40,8 +40,7 @@
 	//$attributes = ['id' => 'form_justificacion'];
 	//echo form_open_multipart('public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$nif.'/'.$tipoTramite, $attributes);?>
 
-	<form action="<?php echo base_url('/public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-
+<form action="<?php echo base_url('/public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	<input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
 
 	<fieldset>
@@ -78,20 +77,48 @@
 				</div>
 			</div>
 		</fieldset>
-		<fieldset>
-			<div class="container-lines" id="container-lines"></div>
-		</fieldset>
+		
 		<fieldset class="container-add-line">
 			<h4>Llista enumerativa de despeses:</h4>
-			<input type = "text" name="num_factura" id="num_factura"><br>
-			<input type = "date" name="data_factura" id="data_factura"><br>
-			<input type = "text" name="proveedor" id="proveedor"><br>
-			<input type = "text" name="concepto" id="concepto"><br>
-			<input type = "number" name="base_imponible" id="base_imponible"><br>
-			<input type = "number" name="importe_iva" id="importe_iva"><br>
-			<input type = "text" name="importe_factura" id="importe_factura"><br>
-			<input type = "date" name="fecha_pago" id="fecha_pago"><br>
-			<button>Afegir</button>
+			<div class="form-floating">
+  			<input type="text" class="form-control" required id="num-factura" placeholder="Num. factura">
+  			<label for="num-factura">Num. factura</label>
+			</div>
+			<div class="form-floating">
+  			<input type="date" class="form-control" required id="fecha-factura" placeholder="Fecha factura">
+  			<label for="fecha-factura">Fecha factura</label>
+			</div>
+			<div class="form-floating">
+  			<input type="text" class="form-control" required id="proveedor" placeholder="Proveedor">
+  			<label for="proveedor">Proveedor</label>
+			</div>
+			<div class="form-floating">
+  			<input type="text" class="form-control" required id="concepto" placeholder="Concepto">
+  			<label for="concepto">Concepto</label>
+			</div>
+			<div class="form-floating">
+  				<input type="number" class="form-control" required id="base-imponible" onblur="setTotalInvoice()" placeholder="Base imponible">
+  				<label for="base-imponible">Base imponible</label>
+			</div>
+			<div class="form-floating">
+  			<input type="number" class="form-control" required id="importe-iva" onblur="setTotalInvoice()" placeholder="Importe IVA">
+  			<label for="importe-iva">Importe IVA</label>
+			</div>
+			<div class="form-floating">
+  			<input type="number" class="form-control" disabled readonly required id="importe-factura" placeholder="Importe factura">
+  			<label for="importe-factura">Importe factura</label>
+			</div>
+			<div class="form-floating">
+  			<input type="date" class="form-control" required id="fecha-pago" placeholder="Data pago">
+  			<label for="fecha-pago">Data pago</label>
+			</div>
+			<button type="button" class="btn btn-secondary" onclick="addInvoiceLine()">Afegir</button>
+		</fieldset>
+
+		<fieldset>
+			<div class="container-lines" id="container-lines"></div>
+			<input type='hidden' id="invoice-lines" name="invoice-lines">
+			<input type='number' id="total-invoice-lines" name="total-invoice-lines">
 		</fieldset>
 
 		<fieldset> 
@@ -105,12 +132,9 @@
 				</div>		
 			</div>
 		</fieldset>
-
-	<div>
 		<button type="submit" class = "btn btn-secondary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
-	</div>
 
-</div>
+	</div>
 </form>
 <div class="alert alert-info"> 
 	<i class="fa fa-info-circle" style="font-size:24px;color:red;"></i> info

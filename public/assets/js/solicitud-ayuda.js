@@ -58,7 +58,7 @@ function onFormSubmit(param){
   let theForm = document.getElementById("xecs_form")
 	let theSpinnger = document.getElementById("spinner-loading")
 	theSpinnger.classList.remove("ocultar")
-  theElement.innerHTML = "Enviant, un moment per favor... "
+  theElement.value = "Enviant, un moment per favor... "
   theElement.disabled = true;
   theElement.style.backgroundColor= "orange";
   theElement.style.cursor="progress";
@@ -210,10 +210,9 @@ function tipoSolicitante (valor) {
 
 function limpiaInfo_lbl (valor) {
 	document.getElementById("info_lbl").innerHTML = ""
-	}
+}
 
-function tieneRepresentanteLegal (valor)
-	{
+function tieneRepresentanteLegal (valor) {
 	if (valor == "representanteLegal")
 		{
 		if (document.getElementById("representanteLegal").checked) {
@@ -227,34 +226,33 @@ function tieneRepresentanteLegal (valor)
 			document.getElementById("verRepresentanteLegal").className = 'ocultar';		
 		}
 		}
-	}
+}
 
-function tieneConsultor (valor) 
-	{
-		console.log (valor);
-	}
+function tieneConsultor (valor) {
+	console.log (valor);
+}
 	
-function opcionBanco (valor) 
-	{
-		document.getElementById("1_opcion_banco_h5").setAttribute("class", "container-radio-valid");
-		document.getElementById("2_opcion_banco_h5").setAttribute("class", "container-radio-valid");	
-		let eelement = document.getElementById("verBancoOpcion")
-		let cChild = document.createElement('input')
-		let cChildCountry = document.createElement('input')
+function opcionBanco (valor) {
+	document.getElementById("1_opcion_banco_h5").setAttribute("class", "container-radio-valid");
+	document.getElementById("2_opcion_banco_h5").setAttribute("class", "container-radio-valid");	
+	let eelement = document.getElementById("verBancoOpcion")
+	let cChild = document.createElement('input')
+	let cChildCountry = document.createElement('input')
 
-		cChild.setAttribute("aria-required", true)
-		cChild.setAttribute("type", "text")
-		cChild.setAttribute("onblur", "validateFormField(this);")    
+	cChild.setAttribute("aria-required", true)
+	cChild.setAttribute("type", "text")
+	cChild.setAttribute("onblur", "validateFormField(this);")    
 
-		cChildCountry.setAttribute("aria-required", true)
-		cChildCountry.setAttribute("type", "text")
-		cChildCountry.setAttribute("onblur", "validateFormField(this);")    
-
-		if (valor == "1") 
-		{
+	cChildCountry.setAttribute("aria-required", true)
+	cChildCountry.setAttribute("type", "text")
+	cChildCountry.setAttribute("onblur", "validateFormField(this);")    
+	if (document.contains(document.getElementById("cc2Country"))) {
+		document.getElementById("cc2Country").remove();
+	}	
+	if (valor == "1") {
 		if (document.contains(document.getElementById("cc2"))) {
-				document.getElementById("cc2").remove();
-			}	
+			document.getElementById("cc2").remove();
+		}	
 		cChild.setAttribute("id", "cc")
 		cChild.setAttribute("name", "cc")
 		cChild.setAttribute("size" ,"24")
@@ -268,12 +266,11 @@ function opcionBanco (valor)
 			elem.nextSibling.innerText = elem.validationMessage;
 		  }) 
 		eelement.appendChild(cChild)
-		}
-		else
-		{
+	}
+	else {
 		if (document.contains(document.getElementById("cc"))) {
-				document.getElementById("cc").remove();
-			}	
+			document.getElementById("cc").remove();
+		}	
 		cChild.setAttribute("id", "cc2")
 		cChild.setAttribute("name", "cc2")
 		cChild.setAttribute("size" ,"24")
@@ -285,15 +282,13 @@ function opcionBanco (valor)
 		cChildCountry.setAttribute("name", "cc2Country")
 		cChildCountry.setAttribute("size" ,"100")
 		cChildCountry.setAttribute("maxlength" ,"100")
-		cChildCountry.setAttribute("placeholder", "Country")	
+		cChildCountry.setAttribute("placeholder", "País")	
 		cChildCountry.setAttribute("pattern", "[a-z]{100}")
 		eelement.appendChild(cChildCountry)
-		}
-
-	}	
+	}
+}	
 	
-function activaayudasSubvenSICuales_dec_resp (valor)
-	{
+function activaayudasSubvenSICuales_dec_resp (valor) {
 		console.log (valor);
 		if (valor == "si") 
 		{
@@ -304,10 +299,9 @@ function activaayudasSubvenSICuales_dec_resp (valor)
 		{
 		document.getElementById("ayudasSubvenSICuales_dec_resp").disabled = true;
 		}
-	}
+}
 	
-function muestraSubeArchivo (id) 
-	{
+function muestraSubeArchivo (id) {
 		// enviar_iDigital.disabled = true
 		console.log ("-"+id+"-")
 		let elementA = document.getElementById("enviarnifEmpresa")
@@ -473,7 +467,7 @@ function muestraSubeArchivo (id)
 				let elementContenedorImporte = document.getElementById("contenedor_importe_minimis")
 				let contenedorImporte = document.createElement('input')
 				contenedorImporte.setAttribute("aria-required", true)
-				contenedorImporte.setAttribute("placeholder" ,"10000.0")
+				contenedorImporte.setAttribute("placeholder" ,"Importe minimis recibido")
 				contenedorImporte.setAttribute("minlength" ,"1")
 				contenedorImporte.setAttribute("maxlength" ,"6")
 				contenedorImporte.setAttribute("step" ,"0.01")
@@ -565,7 +559,7 @@ function muestraSubeArchivo (id)
 					document.getElementsByName("file_nifRepresentante").value = "";				
 				}
 				}
-	}
+}
 			
 $("#telefono_cont").focusout(function() {
 		var inputValue = $(this).val();
@@ -596,7 +590,7 @@ $("#telefono_cont").keyup(function() {
 				txt = "";
 				document.getElementById("mensaje_tel").innerHTML = txt;				
 				}
-	});
+});
 
 function getCookie(cname) {
 		var name = cname + "=";
@@ -612,7 +606,7 @@ function getCookie(cname) {
 			}
 		}
 		return "";
-	}
+}
 
 function consultaExpediente ( buscaPor, identificador ) {
 		let end_point = ""
@@ -688,9 +682,9 @@ function consultaExpediente ( buscaPor, identificador ) {
 		spinner.classList.add("ocultar")
 	});
 
-	}
+}
 
-function deshabilitarSubidaDocumento(checkObj) {
+function deshabilitarSubidaDocumento (checkObj) {
 		console.log (checkObj.name, checkObj.checked)
 		switch (checkObj.name) {
 			case 'memoriaTecnicaEnIDI':
@@ -749,4 +743,55 @@ function deshabilitarSubidaDocumento(checkObj) {
 					}						
 					break						
 		}
-	}
+}
+
+function addInvoiceLine() {
+	let numFactura = document.getElementById("num-factura")
+	let fechaFacturaInput = document.getElementById("fecha-factura")
+	let proveedor = document.getElementById("proveedor")
+	let concepto = document.getElementById("concepto")
+	let baseImponible = document.getElementById("base-imponible")
+	let importeIVA = document.getElementById("importe-iva")
+	let importeFactura = document.getElementById("importe-factura")
+	let fechaPagoInput = document.getElementById("fecha-pago")
+
+	const fechaFactura = new Date(fechaFacturaInput.value)
+	const fechaPago = new Date(fechaPagoInput.value)
+
+	const node = document.createElement("div")
+	const textnode = document.createTextNode(numFactura.value+" " + formatDate(fechaFactura).toString()+" " + proveedor.value+" " + concepto.value+" " + baseImponible.value+" " + importeIVA.value+" " + importeFactura.value+" " + formatDate(fechaPago).toString())
+	node.appendChild(textnode)
+	document.getElementById("container-lines").appendChild(node)
+	document.getElementById('invoice-lines').value = document.getElementById('container-lines').innerHTML
+
+	numFactura.value = ""
+	fechaFacturaInput.value = ""
+	proveedor.value = ""
+	concepto.value = ""
+	baseImponible.value = ""
+	importeIVA.value = ""
+	importeFactura.value = ""
+	fechaPagoInput.value = ""
+	document.getElementById('total-invoice-lines').value = parseFloat(importeFacturaTotal)
+}
+let importeFacturaTotal = 0
+function setTotalInvoice() {
+	let baseImponible = document.getElementById("base-imponible")
+	let importeIVA = document.getElementById("importe-iva")
+	let importeFactura = document.getElementById("importe-factura")
+	
+	importeFactura.value = parseFloat(baseImponible.value) + parseFloat(importeIVA.value)
+	importeFacturaTotal += parseFloat(baseImponible.value)
+}
+
+function formatDate(date) {
+	return [
+	  padTo2Digits(date.getDate()),
+	  padTo2Digits(date.getMonth() + 1),
+	  date.getFullYear(),
+	].join('/');
+  }
+
+function padTo2Digits(num) {
+	return num.toString().padStart(2, '0');
+  }

@@ -70,9 +70,9 @@ return [
    'titulo_sol_idigital'			  => "Solicitud de ayuda y/o subvención",
    'titulo_adhesion_ils'			  => "Solicitud de adhesión a ILS",
    'titulo_solicitud_idi_isba'     => "Ayudas a los gastos financieros a través del aval de ISBA",
-   'Codi_SIA'                       => "Código SIA",
-   'tramite_procedimiento'          => "Trámite o procedimiento",
-   'tramite_procedimiento_texto'    => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratégico Industrial 2018-2025",
+   'Codi_SIA'                      => "Código SIA",
+   'tramite_procedimiento'         => "Trámite o procedimiento",
+   'tramite_procedimiento_texto'   => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratégico Industrial 2018-2025",
 
    'titulo_justificacion_idigital'	  => "Solicitud de pago de la ayuda de cheques de consultoría para la competitividad industrial de las Islas Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada.",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
@@ -120,7 +120,7 @@ return [
    'select_cuantia_ayuda'             => "Seleccione la cuantía de la ayuda",   
    'select_generico'                  => "Seleccione una opción",
    'identificacion_sol_ils'           => "3. DATOS GENERALES", 
-   'identificacion_sol_idigital'      => "3. INTERESADO",
+   'identificacion_sol_idigital'      => "INTERESADO",
    'identificacion_empresa_ils'           => "2. DATOS DE LA EMPRESA",   
 
    'solicitante_sol_idigital'         => "Nombre ó razón social",
@@ -137,8 +137,8 @@ return [
    'justificacion_titulo'			     => "Solicitud de pago",
    'justificacion_doc'			        => "Documento",
    'justificacion_exp'			        => "Expediente",   
-   'justificacion_declaracion'        => ", declaro que adjunto la siguiente documentación como justificación de la convocatoria para la concesión de ayudas de cheques de consultoría",
-   'justificacion_declaracion_PII_PIII'        => ", declaro que he aplicado los fondos percibidos al pago objeto de la convocatoria según el punto 12.2 las bases y adjunto la siguiente documentación como justificación",
+   'justificacion_declaracion'        => "Que he aportado la documentación siguiente como justificación de la convocatoria de ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada:",
+   'justificacion_declaracion_PII_PIII' => ", declaro que he aplicado los fondos percibidos al pago objeto de la convocatoria según el punto 12.2 las bases y adjunto la siguiente documentación como justificación",
     
    'justificacion_plan_p1'            => "El plan o los informes de acuerdo con el programa que justifico",
    'justificacion_plan_p2_p3'         => "El plan o los informes",
@@ -149,6 +149,9 @@ return [
    'programa'                         => "1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA",
    'programa_continuacion'            => "(seleccione sólo una opción. Presente una solicitud para cada programa)",
    'select_programa'                  => "Seleccione un programa",
+   'select_programa_justificacion'    => "<b>Indique el programa</b> que justifica (sólo se puede indicar uno por solicitud)",
+   'importe_total_justificacion'    => "<b>Importe total justificado</b> (sin IVA)",
+
    'opc_programa_txt'                 => "Programas de ayudas",
    'opc_iDigital'                     => "<li><code>Programa I, «IDigital»</code> ayudas para la contratación de servicios de asesoramiento externos para la elaboración de un plan estratégico de transformación digital o para el asesoramiento y seguimiento de las acciones del plan de transformación digital en el marco del programa «IDigital, estratègia de digitalització industrial».</li>",
    'opc_iExporta'                     => "<li><code>Programa II, «IExporta»</code> ayudas para la contratación de servicios de asesoramiento externos para la elaboración y/o mejora del plan estratégico de internacionalización, o para el asesoramiento y seguimiento de las acciones del plan de márquetin para el/los mercado/s objectivo/s en el marco del programa «IExporta, estratègia d’internacionalització».</li>",
@@ -300,10 +303,25 @@ return [
    'nom_habilitador_sol_idigital'         => "Nombre completo de la persona que realizará la consultoría", 
    'aclaracion_habilitador_sol_idigital'  => "A esta dirección de correo electrónico se enviará un mensaje con un enlace para que, el habilitador digital, pueda rellenar la declaración responsable y luego la firme electrónicamente.",   
    'declaracion_minimis'                  => "DECLARACIÓN DE MINIMIS",
-   'declaro'                              => "Declaro:",
+   'declaro'                              => "DECLARO:",
    'adjunto'                              => "Declaro que adjunto la siguiente documentación como justificación de la convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2023:",   
    'declaracion_responsable_i'            => "I) Que cumplo el reglamento (UE) núm.1407/2013 de la Comisión de 18 de diciembre de 2013, relativo a la aplicación de los artículos 107 y 108 del Tratado de Funcionamiento de la Unión Europea de las ayudas de minimis y el reglamento (UE) 2023/2831 de la comisión, de 13 de diciembre de 2023, relativo a la aplicación de los artículos 107 y 108 del Tratado.",
    'declaracion_responsable_ii'           => "II) Que durante los ejercicios fiscales 2022, 2023 y 2024 he recibido un importe total de ayudas de minimis de:", 
+   'declaracion_responsable_iii'    => "III) Que no he recibido ninguna subvención otorgada por alguna entidad, pública o privada, nacional o extranjera, relacionada con la realización de planes de transformación digital, planes  de internacionalización, o bien con la realización de informes de la huella de carbono corporativa.",
+   'declaracion_responsable_iv'     => "III) Que no he recibido ayudas o subvenciones de otras administraciones públicas, o de otros entes públicos o privados,  nacionales e internacionales que, aisladamente o en concurrencia, supere el 100 % del coste de la actividad que tenga de desarrollar la empresa beneficiaria.",
+   'declaracion_responsable_v'            => "IV) Que dispongo de la capacidad de representación suficiente, debidamente acreditada, para llevar a término la tramitación indicada.",
+   'declaracion_responsable_vi'            => "V) Que no me encuentro en ninguna de les circunstancias especificadas en el artículo 10 del Decreto legislativo 2/2005, de 28 de Diciembre, por el cual se aprueba el texto refundido de la Ley de subvenciones, que se tiene que incluir en la solicitud.",
+   'declaracion_responsable_vii'            => "VI) Que la entidad beneficiaria está inscrita en el Registro Industrial o en el Registro Minero de las Islas Baleares, si hace falta.",
+   'declaracion_responsable_viii'            => "VII) Que cumplo con las exigencias establecidas por la normativa en materia de seguridad industrial y minera, y cualquier otra que sea aplicable. En el caso de las empresas industriales se tiene que incluir en la solicitud.",
+   'declaracion_responsable_ix'            => "VIII) Que los datos consignados en este documento son ciertos, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
+   'declaracion_responsable_x'      => "IX) Que el consultor cumple con el puntos 7.2 y 7.3 de la convocatoria.",   
+   'declaracion_responsable_xi'  => "X) Que he iniciado, en un tiempo superior a dos años, una actividad económica en el territorio de las Islas Baleares, con domicilio en las Islas Baleares, y que no supera los parámetros de la condición de empresa pyme.",
+   'declaracion_responsable_xii'  => "XI) Que no tengo la consideración de empresa en crisis de acuerdo con el artículo 2.18 del Reglamento ( UE) 651/2014 de la comisión de día 17 de Junio de 2014.",
+   'declaracion_responsable_xiii'  => "XII) En el caso de personas físicas o jurídicas que están iniciando o ya han iniciado, en un tiempo superior a 2 años, una actividad económica en el territorio de las Islas Baleares, con domicilio en las Islas Baleares, y siempre que no superen los parámetros de la condición de media emprendida.",
+   'declaracion_responsable_xiv'  => "XIII) En el caso de persona física y declaro estar inscrita en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.",
+   'declaracion_responsable_xv'  => "XIV) En el caso de centros tecnológicos y clusters de carácter industrial, declaro que sus mis representantes/asociados tienen como mínimo un 40% de empresas con IAE comprendido entre los epígrafes punto 3.1 y 3.2 de esta convocatoria.",
+   'declaracion_responsable_xvi'  => "XV) En el supuesto de que se haya presentado una solicitud en el programa III, Industria Local y Sostenible, declaro que he presentado la solicitud de adhesión en el programa ILS antes de la solicitud de esta convocatoria y que cumplo con los requisitos del programa ILS.",
+   
    'declaracion_datos_bancarios_cabecera'          => "DECLARACIÓN RESPONSABLE DE VERACIDAD DE DATOS BANCARIOS APORTADOS",
    'nom_entidad'						         => "Nombre de la entidad bancaria",
    'domicilio_sucursal'				         => "Domicilio de la sucursal / oficina",
@@ -391,30 +409,22 @@ return [
    'declaracion_responsable_asesor'     => "Que cuenta con una experiencia mínima de dos años de asesoramiento en materia de estrategia empresarial.",
    'declaracion_responsable_experiencia' => "Que cuenta con experiencia en trabajos o proyectos de transformación digital a industrias.",
    'declaracion_responsable_formacion'   => "Que tiene estudios de formación profesional o de formación universitaria en los ámbitos S.T.E.M. (ciencias, tecnología, ingeniería o matemáticas), economía o administración de empresas.",   
-   'declaracion_responsable_xi'  => "XI) Que he iniciado, en un tiempo superior a dos años, una actividad económica en el territorio de las Islas Baleares, con domicilio en las Islas Baleares, y que no supera los parámetros de la condición de empresa pyme.",
-   'declaracion_responsable_xii'  => "XII) Que no tengo la consideración de empresa en crisis de acuerdo con el artículo 2.18 del Reglamento ( UE) 651/2014 de la comisión de día 17 de Junio de 2014.",
-   'declaracion_responsable_xiii'  => "XIII) En el caso de personas físicas o jurídicas que están iniciando o ya han iniciado, en un tiempo superior a 2 años, una actividad económica en el territorio de las Islas Baleares, con domicilio en las Islas Baleares, y siempre que no superen los parámetros de la condición de media emprendida.",
-   'declaracion_responsable_xiv'  => "XIV) En el caso de persona física y declaro estar inscrita en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.",
-   'declaracion_responsable_xv'  => "XV) En el caso de centros tecnológicos y clusters de carácter industrial, declaro que sus mis representantes/asociados tienen como mínimo un 40% de empresas con IAE comprendido entre los epígrafes punto 3.1 y 3.2 de esta convocatoria.",
-   'declaracion_responsable_xvi'  => "XVI) En el supuesto de que se haya presentado una solicitud en el programa III, Industria Local y Sostenible, declaro que he presentado la solicitud de adhesión en el programa ILS antes de la solicitud de esta convocatoria y que cumplo con los requisitos del programa ILS.",
-   
+
    'domicilio_notifica_dec_resp'        => " con domicilio a efectos de notificaciones ",   
-   'declaracion_responsable_v'            => "V) Que dispongo de la capacidad de representación suficiente, debidamente acreditada, para llevar a término la tramitación indicada.",
+   
    'declaracion_responsable_v_ils'            => "II) Que dispongo de la capacidad de representación suficiente, debidamente acreditada, para llevar a término la tramitación indicada.",
 
    'declaracion_responsable_i_ils' => "I) Que la empresa cuenta con una linea de producción activa en las Islas Baleares.",
 
    'declaracion_responsable_ils_v'            => "II) Que dispongo de la capacidad de representación suficiente, debidamente acreditada, para llevar a término la tramitación indicada.",
    'datos_consignados'            => "Que los datos consignados en este documento su ciertas, que cumplo con todos los requisitos exigidos en el programa, y que presente adjunta la documentación que corresponde.",
-   'declaracion_responsable_vi'            => "VI) Que no me encuentro en ninguna de les circunstancias especificadas en el artículo 10 del Decreto legislativo 2/2005, de 28 de Diciembre, por el cual se aprueba el texto refundido de la Ley de subvenciones, que se tiene que incluir en la solicitud.",
-   'declaracion_responsable_vii'            => "VII) Que la entidad beneficiaria está inscrita en el Registro Industrial o en el Registro Minero de las Islas Baleares, si hace falta.",
+  
    'declaracion_responsable_vii_ils'            => "III) Que la entidad beneficiaria está inscrita en el Registro Industrial o en el Registro Minero de las Islas Baleares, si hace falta.",
 
    'declaracion_responsable_ils_vii'            => "III) Que la entidad beneficiaria está inscrita en el Registro Industrial o en el Registro Minero de las Islas Baleares, si hace falta.",
-   'declaracion_responsable_viii'            => "VIII) Que cumplo con las exigencias establecidas por la normativa en materia de seguridad industrial y minera, y cualquier otra que sea aplicable. En el caso de las empresas industriales se tiene que incluir en la solicitud.",
+ 
    'declaracion_responsable_ils_viii'            => "IV) Que cumplo con las exigencias establecidas por la normativa en materia de seguridad industrial y minera, y cualquier otra que sea aplicable. En el caso de les empresas industriales se tiene que incluir en la solicitud.",
 
-   'declaracion_responsable_ix'            => "IX) Que los datos consignados en este documento son ciertos, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
    'declaracion_responsable_ix_ils'            => "IV) Que los datos consignados en este documento son ciertos, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
 
    'declaracion_responsable_ils_ix'            => "V) Que los datos consignados en este documento son ciertos, que cumplo con todos los requisitos exigidos en la convocatoria, y que presento adjunta la documentación correspondiente, de acuerdo con la resolución de la convocatoria.",
@@ -441,10 +451,6 @@ return [
    'consentimiento_identificacion_solicitante' => "Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears (IDI) pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa. En caso contrario, adjunto declaración de no consentimiento y adjunto el nif del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.",
    'consentimiento_identificacion_solicitante_pdf'	=> " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Illes Balears pueda comprobar de oficio la identificación de la persona solicitante y/o persona autorizada por la empresa.",
 
-'declaracion_responsable_iii'    => "III) Que no he recibido ninguna subvención otorgada por alguna entidad, pública o privada, nacional o extranjera, relacionada con la realización de planes de transformación digital, planes  de internacionalización, o bien con la realización de informes de la huella de carbono corporativa.",
-'declaracion_responsable_iv'     => "IV) Que no he recibido ayudas o subvenciones de otras administraciones públicas, o de otros entes públicos o privados,  nacionales e internacionales que, aisladamente o en concurrencia, supere el 100 % del coste de la actividad que tenga de desarrollar la empresa beneficiaria.",
-
-'declaracion_responsable_x'      => "X) Que el consultor cumple con el puntos 7.2 y 7.3 de la convocatoria.",
 'doy_mi_consentimiento'          => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares pueda comprobar de oficio la identificación de la persona solicitante y/o la persona autorizada por la empresa. En caso de denegación expresa del consentimiento adjunto el NIF del solicitante y de la persona autorizada, si se tercia.",    
 'doy_mi_consentimiento_aeat_atib'   => " Doy mi consentimiento para que el Instituto de Innovación Empresarial de las Islas Baleares obtenga, de los órganos competentes, la información relativa al cumplimiento de mis obligaciones tributarias (de la ATIB). En caso contrario, adjunto declaración de no consentimiento y adjunto los certificados y la documentación correspondiente.",
 'certificado_corriente_pago_aeat'   => "Certificado de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria (<abbr title='Agencia Estatal de la Administración Tributaria'>AEAT</abbr>)",

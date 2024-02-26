@@ -657,6 +657,10 @@ class Expedientes extends Controller
 		$selloTiempo = date("d_m_Y_h_i_sa");
 		$tipo_tramite = str_replace("%20", " ", $tipo_tramite);
 
+		$lineas_facturacion = $this->request->getVar('invoice-lines');
+
+		echo $lineas_facturacion;
+
 		// Sube el plan
 		$documentosfile = $this->request->getFiles();
 		foreach ($documentosfile['file_PlanTransformacionDigital'] as $plan) {
@@ -680,7 +684,6 @@ class Expedientes extends Controller
 				$data ['id_sol'] = $id;
 			}
 		}
-		/* if ($tipo_tramite == "Programa I" || $tipo_tramite == 'Programa iDigital 20') { */
 
 		// Sube las facturas
 		$documentosfile = $this->request->getFiles();
@@ -727,7 +730,7 @@ class Expedientes extends Controller
 				$last_insert_id = $save->connID->insert_id;
 			}
 		}
-		/* } */
+		
 		/* ------------------ actualiza el estado del expediente a 'pendienteRECJustificar' ---------------*/
 		$sql = 'UPDATE pindust_expediente SET situacion="pendienteRECJustificar" WHERE id =' . $id;
 		$db->simpleQuery($sql);

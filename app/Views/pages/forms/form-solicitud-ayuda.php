@@ -150,7 +150,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 <div class="tab">
 	<div id="formbox">
 	<fieldset id="interesado">
-		<h2><?php echo lang('message_lang.identificacion_sol_idigital');?></h2>
+		<h2>3. <?php echo lang('message_lang.identificacion_sol_idigital');?></h2>
 		<input name="nif" id="nif" type="text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value); consultaExpediente ( 'dni', this.value );" title="NIF" placeholder = "NIF" aria-required="true" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
 		<ul id="rest-result"></ul>
 		<div id ="spinner-idi-isba" class="spinner-border text-warning ocultar" role="status">
@@ -344,10 +344,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	</fieldset>
 
 	<fieldset>		
-			<!-- 		    <label for = "declaracion_responsable_iii" class="main"><?php echo lang('message_lang.declaracion_responsable_iii');?>
-			<input title = "<?php echo lang('message_lang.declaracion_responsable_iii');?>" disabled checked type="checkbox" name="declaracion_responsable_iii" id="declaracion_responsable_iii" onchange = "javaScript: muestraSubeArchivo(this.id);">
-			<span class = "w3docs"></span>
-			</label> -->
 		    
 			<label for = "declaracion_responsable_iv" class="main"><?php echo lang('message_lang.declaracion_responsable_iv');?>
 			<input title = "<?php echo lang('message_lang.declaracion_responsable_iv');?>" disabled checked type="checkbox" name="declaracion_responsable_iv" id="declaracion_responsable_iv" onchange = "javaScript: muestraSubeArchivo(this.id);">
@@ -407,7 +403,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<span class = "w3docs"></span>
 					</label>-->								
 	</fieldset>
-<!--</div>-->
 
 <!-------------------------- ENVIAR LA SOLICITUD --------------------------------------------------------------------->
 	<!--<div id = "enviardeocumentacion">	

@@ -1,0 +1,18 @@
+CRITICAL - 2024-02-26 09:35:29 --> Call to a member function getName() on null
+#0 /home/tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\SubirArchivo->store()
+#1 /home/tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SubirArchivo))
+#2 /home/tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2024-02-26 11:49:31 --> Call to a member function getName() on null
+#0 /home/tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\SubirArchivo->store()
+#1 /home/tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SubirArchivo))
+#2 /home/tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2024-02-26 12:00:49 --> Call to a member function getName() on null
+#0 /home/tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\SubirArchivo->store()
+#1 /home/tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SubirArchivo))
+#2 /home/tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /home/tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
