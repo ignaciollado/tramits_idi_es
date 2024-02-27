@@ -246,13 +246,13 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			</script>
 
 			<h3>6.3. <strong><?php echo lang('message_lang.certificado_IAE');?></strong></h3>
-			<div id = "file_certificadoIAE_container">
-				 <code>[.pdf]:</code>
+			<div id="file_certificadoIAE_container">
+				<code>[.pdf]:</code>
 				<input type = "file" id="file_certificadoIAE" name="file_certificadoIAE[]" title="Selecciona el certificat d'IAE" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>
 
 			<h3 id="pFisica" class="ocultar"><?php echo lang('message_lang.eres_persona_fisica');?></h3>
-			<h3 id="pJuridica" class="ocultar"><?php echo lang('message_lang.eres_persona_juridica');?></h3>
+			<h3 id="pJuridica" class="ocultar">6.4 a) <strong><?php echo lang('message_lang.eres_persona_juridica');?></strong></h3>
 			<h3 id="pJuridicaNIFEmpresa" class='ocultar'><?php echo lang('message_lang.eres_persona_juridica_nif_empresa');?></h3>
 			<div id="docTipoInteresadoNifEmpresa" class="ocultar">
 				<code>[.pdf]:</code>	
@@ -260,25 +260,31 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<fieldset id="copiaNIFSociedadFieldSet" class="ocultar">
 				<label for = "copiaNIFSociedadEnIDI" class="main" >
 				<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-						<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "copiaNIFSociedadEnIDI" id = "copiaNIFSociedadEnIDI">
+					<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "copiaNIFSociedadEnIDI" id = "copiaNIFSociedadEnIDI">
 					<span class="w3docs"></span>
 				</label>
 			</fieldset>
-			<h3 id="pJuridicaDocAcreditativa" class='ocultar'><?php echo lang('message_lang.eres_persona_juridica_doc_acreditativa');?></h3>
+			<h3 id="pJuridicaDocAcreditativa" class='ocultar'>6.4 b) <strong><?php echo lang('message_lang.eres_persona_juridica_doc_acreditativa');?></strong></h3>
 			<div id="docTipoInteresado">
 				<code>[.pdf]:</code>	
 			</div>
 			<fieldset id="pJuridicaDocAcreditativaFieldSet" class="ocultar">
 				<label for = "pJuridicaDocAcreditativaEnIDI" class="main" >
 				<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-						<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "pJuridicaDocAcreditativaEnIDI" id = "pJuridicaDocAcreditativaEnIDI">
+					<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "pJuridicaDocAcreditativaEnIDI" id = "pJuridicaDocAcreditativaEnIDI">
 					<span class="w3docs"></span>
 				</label>
 			</fieldset>
 
+			<h3 id="pJuridicaDocFehaciente" class='ocultar'>6.4 c) <strong><?php echo lang('message_lang.eres_persona_juridica_doc_fehaciente');?></strong></h3>
+			<div id = "file_doc_fehaciente_container" class='ocultar'>
+				<code>[.pdf]:</code>
+				<input type = "file" id="file_document_acred_como_repres" name="file_document_acred_como_repres[]" title="Selecciona el documento que acredite la representación" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
+			</div>
+
 			<h3>6.5. <strong><?php echo lang('message_lang.certificado_corriente_pago_aeat');?></strong></h3>
 			<div id = "file_certificadoAEAT_container" class="">
-				 <code>[.pdf]:</code>
+				<code>[.pdf]:</code>
 				<input type = "file" id="file_certificadoAEAT" name="file_certificadoAEAT[]" size="50" accept=".pdf" multiple required aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>		
 

@@ -188,7 +188,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html13, true, false, true, false, '');
 
-// ------------------------------------------------------------------6. DOCUMENTACIÓN ADJUNTA OBLIGATORIA--------------------------------------------------------------- //
+// ----------------------------------------------------------------6. DOCUMENTACIÓN ADJUNTA OBLIGATORIA--------------------------------------------------------------- //
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 // remove default header/footer
 $pdf->setPrintHeader(false);
@@ -256,16 +256,38 @@ $pdf->Cell(0, 10, $html17, 1, 1, 'C');
 $html18 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html18 .= "<tr><td></td></tr>";
 $html18 .= "<tr><td><ul>";
-$html18 .= "<li><b>".$file_copiaNIF."</b> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";		
-/* $html18 .= "<li><b>".$file_enviardocumentoIdentificacion."</b> ".lang('message_lang.consentimiento_identificacion_solicitante')."</li>"; */		
-$html18 .= "<li><b>".$file_certificadoATIB."</b> ".lang('message_lang.doy_mi_consentimiento_aeat_atib')."</li>";		
-$html18 .= "<li><b>".$file_certificadoSegSoc."</b> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";		
+if (trim($file_copiaNIF)=="SI" OR trim($file_certificadoATIB)=="SI" OR trim($file_certificadoSegSoc)=="SI") {
+	$html18 .= lang('message_lang.autorizaciones_solicitud_si_autoriza')."<br>";
+	/* if (trim($file_copiaNIF)=="SI") {
+		$html18 .= "<li><strong>".$file_copiaNIF."</strong> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";
+	}
+	if (trim($file_certificadoATIB)=="SI") {
+		$html18 .= "<li><strong>".$file_certificadoATIB."</strong> ".lang('message_lang.doy_mi_consentimiento_pdf')."</li>";
+	}
+	if (trim($file_certificadoSegSoc)=="SI") {
+		$html18 .= "<li><strong>".$file_certificadoSegSoc."</strong> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";
+	} */
+} 
+if (trim($file_copiaNIF)=="NO" OR trim($file_certificadoATIB)=="NO" OR trim($file_certificadoSegSoc)=="NO") {
+	$html18 .= "<br><br>".lang('message_lang.autorizaciones_solicitud_no_autoriza')."<br>";
+	if (trim($file_copiaNIF)=="NO") {
+		//$html18 .= "<li><strong>".$file_copiaNIF."</strong> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";
+		$html18 .= "<li>".lang('message_lang.autorizaciones_personas_fisicas')."</li>";
+	}
+	if (trim($file_certificadoATIB)=="NO") {
+		//$html18 .= "<li><strong>".$file_certificadoATIB."</strong> ".lang('message_lang.doy_mi_consentimiento_pdf')."</li>";
+		$html18 .= "<li>".lang('message_lang.doy_mi_consentimiento_pdf')."</li>";
+	}
+	if (trim($file_certificadoSegSoc)=="NO") {
+		//$html18 .= "<li><strong>".$file_certificadoSegSoc."</strong> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";
+		$html18 .= "<li>".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";
+	}
+}		
 $html18 .= "</ul></td></tr>";
 $html18 .= "</table>";
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html18, true, false, true, false, '');
-
 
 // ------------------------------------------------------------------------------------------------------------------------------ //
 // ----------------------------------------------8. DECLARACIÓN RESPONSABLE------------------------------------------------------ //
@@ -298,9 +320,8 @@ $pdf->Cell(0, 10, $html22, 1, 1, 'C');
 
 $html23 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html23 .= "<tr><td>".lang('message_lang.declaro');
-/* if ( $cumpleNormativaMinimos_dec_resp_1 == "SI ") { */
-	$html23 .= "<p>".lang('message_lang.declaracion_responsable_i')."</p>";
-/* } */
+$html23 .= "<p>".lang('message_lang.declaracion_responsable_i')."</p>";
+
 if ( $importe_minimis != 0) {
 	$html23 .= "<p>".lang('message_lang.declaracion_responsable_ii')."<br> $importe_minimis €</p>";
 }
@@ -314,7 +335,7 @@ $html24 = lang('message_lang.declaracion_datos_bancarios_cabecera'); //"DECLARAC
 $pdf->Cell(0, 10, $html24, 1, 1, 'C');
 
 $html25 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html25 .= "<tr><td>".lang('message_lang.declaro'); //."<ul style ='text-decoration: none;'>";
+$html25 .= "<tr><td>".lang('message_lang.declaro');
 if ( $veracidad_datos_bancarios_1 == "SI ") {
 	$html25 .= "<p>".lang('message_lang.declaracion_datos_bancarios_1')."</p>";
 }
@@ -358,36 +379,15 @@ $html28 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'
 $html28 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.declaro')."</td></tr>";
 $html28 .= "<tr><td ><ul>";
 
-/* if ( $declaracion_responsable_iii == "SI ") { */
-	//$html28 .= "<p>".lang('message_lang.declaracion_responsable_iii')."</p>";
-/* }
-if ( $declaracion_responsable_iv == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_iv')."</p>";
-/* }
-if ( $declaracion_responsable_v == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_v')."</p>";
-/* }
-if ( $declaracion_responsable_vi == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_vi')."</p>";
-/* }
-if ( $declaracion_responsable_vii == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_vii')."</p>";
-/* }
-if ( $declaracion_responsable_viii == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_viii')."</p>";
-/* }
-if ( $declaracion_responsable_ix == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_ix')."</p>";
-/* }
-if ( $declaracion_responsable_x == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_x')."</p>";
-/* }
-if ( $declaracion_responsable_xi == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xi')."</p>";
-/* }
-if ( $declaracion_responsable_xii == "SI ") { */
-	$html28 .= "<p>".lang('message_lang.declaracion_responsable_xii')."</p>";
-/* } */
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_iv')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_v')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_vi')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_vii')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_viii')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_ix')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_x')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_xi')."</p>";
+$html28 .= "<p>".lang('message_lang.declaracion_responsable_xii')."</p>";
 
 $html28 .= "</ul></td></tr>";
 $html28 .= "</table>";

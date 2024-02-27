@@ -62,6 +62,13 @@ class SubirArchivo extends BaseController
 	 		}
 		}
 		if ($tipoSolicitante != 'autonomo'){
+			if ( !$documentosfile['file_escritura_empresa'][0]->getName() ){
+				$file_escritura_empresa = "NO";
+	 		} else {
+				$file_escritura_empresa = "SI";
+		 	}
+		}
+		if ($tipoSolicitante != 'autonomo'){
 			if ( !$documentosfile['file_document_acred_como_repres'][0]->getName() ){
 				$file_document_acred_como_repres = "NO";
 	 		} else {
@@ -255,6 +262,7 @@ class SubirArchivo extends BaseController
 				'file_nifEmpresa' 			=> $file_nifEmpresa,
 				'file_document_acred_como_repres' => $file_document_acred_como_repres,		
 				'file_certificadoAEAT' 	=> $file_certificadoAEAT,		
+				'file_escritura_empresa'=> $file_escritura_empresa,
 				'file_altaAutonomos' 		=> $file_altaAutonomos,
 
 				'file_copiaNIF'					=> $file_copiaNIF,

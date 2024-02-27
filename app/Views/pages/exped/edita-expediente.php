@@ -434,25 +434,16 @@ if (!$expedientes['importeAyuda']) {
 					            $nom_doc = "La memòria tècnica";
 					            break;
                             case 'file_document_acred_como_repres':
-                                $nom_doc = "Documentació acreditativa de les facultats de representació de la persona que firma la sol·licitud d'ajut";
-                                break;
-				            case 'file_docConstitutivoCluster':	
-					            $nom_doc = "Document constitutiu clústers i/o centres tecnològics";
-					            break;    					
+                                $nom_doc = "Documentació fefaent que acrediti la representació de la persona que actua en nom de l'entitat sol·licitant";
+                                break; 
 				            case 'file_certigicadoSegSoc':
 					            $nom_doc = "Certificat de la Seguretat Social";
 					            break;
 				            case 'file_certificadoATIB':
 					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
-					            break;				
-				            case 'file_copiaNIF':
-					            $nom_doc = "Còpia del NIF al no autoritzar a IDI per comprobar";
-					            break;				
+					            break;
 				            case 'file_altaAutonomos':	
 					            $nom_doc = "Còpia documentació acreditativa alta d'autònoms";
-					            break;	
-				            case 'file_escrituraConstitucion':	
-					            $nom_doc = "Còpia escriptura de constitució de l'entitat";
 					            break;
 				            case 'file_nifEmpresa':	
 					            $nom_doc = "Còpia del NIF de l'empresa";
@@ -469,9 +460,6 @@ if (!$expedientes['importeAyuda']) {
 				            case 'file_enviardocumentoIdentificacion':	
 					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
 					            break;
-                            case 'file_certificadoSegSoc':	
-                                $nom_doc = "Certificat estar al corrent obligacions amb la Tesoreria de la Seguridad Social";
-                                break;
                             case 'file_resguardoREC':	
                                 $nom_doc = "Justificant de presentació pel REC";
                                 break;
@@ -531,7 +519,7 @@ if (!$expedientes['importeAyuda']) {
                                     break;
                                 case 'file_memoriaTecnica':
                                     include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-memoria-tecnica.php'; 
-                                     break;                                                                      
+                                    break;                                 
                             } 
                             ?>
                             </span>                            
@@ -564,6 +552,9 @@ if (!$expedientes['importeAyuda']) {
 			    	        case 'file_memoriaTecnica':
 					            $nom_doc = "La memòria tècnica";
 					            break;
+                            case 'file_copiaNIF':
+                                $nom_doc = "Còpia del NIF";
+                                break;	                                
 				            case 'file_certificadoATIB':
 					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
 					            break;
@@ -576,6 +567,9 @@ if (!$expedientes['importeAyuda']) {
                             case 'file_logotipoEmpresaIls':	
                                 $nom_doc = "Logotip de l'empresa";
                                 break;
+                            case 'file_certificadoSegSoc':
+                                $nom_doc = "Certificat estar al corrent obligacions amb la TGSS";
+                                break;                                    
 			                default:
 					        $nom_doc = $docs_opc_item->corresponde_documento; 
 			            } 

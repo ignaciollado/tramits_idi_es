@@ -171,7 +171,7 @@ return [
                                  </ol>",                            
    'programaiDigital'      => "<code>Programa I:</code> «IDigital», estratègia per impulsar la digitalització en la indústria de les Illes Balears.",
    'programaiExporta'      => "<code>Programa II:</code> «IExporta», estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.",
-   'programaiSostenibilitatCorp' => "<code>Programa III:</code> «ISostenibilitat», estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears. Actuació: gasos amb efecte d’hivernacle de l’organització.",
+   'programaiSostenibilitatCorp' => "<code>Programa III:</code> «ISostenibilitat», estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears. Actuació: gasos amb efecte d’hivernacle de la corporació.",
    'programaiSostenibilitatProd' => "<code>Programa III:</code> «ISostenibilitat», estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears. Actuació: gasos d’efecte d’hivernacle de producte.",
    'programaiGestio'             => "«IGestió» estratègia per impulsar la implantació d’eines de gestió avançada i optimització de processos de la indústria de les Illes Balears",
    'programaILS'           => "<code>Programa III:</code> informes de la petjada de carboni corporativa, dins el marc del programa «isostenibilitat, indústria local sostenible».",
@@ -341,9 +341,9 @@ return [
    'declaracion_datos_bancarios_4'      => "b) La possibilitat d'acreditar documentalment les dades que s'esmenten en el punt (a) d'aquesta declaració queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
    'declaracion_datos_bancarios_5'      => "c) Que l'IDI, una vegada fets els ingressos en el compte indicat en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
    'descripcion_empresa_ils'            => "Descripció de l'empresa",
-   'fecha_creacion_empresa_ils'        => "Data creació empresa",
-   'comercializacion_empresa_ils'      => "Canals de comercialització",
-   'sitio_web_empresa_ils'             => "Lloc web de l'empresa",
+   'fecha_creacion_empresa_ils'         => "Data creació empresa",
+   'comercializacion_empresa_ils'       => "Canals de comercialització",
+   'sitio_web_empresa_ils'              => "Lloc web de l'empresa",
    'documentacion_adjunta_requerida_ils'          => "DOCUMENTACIÓ RELACIONADA AMB EL COMPLIMENT DE REQUISITS",
    'documentacion_adjunta_opcional_ils'          => "ALTRA DOCUMENTACIÓ OPCIONAL",
 
@@ -353,13 +353,16 @@ return [
    <li>S’ha d’adjuntar un document descriptiu de l’empresa i de la seva activitat.</li>
    </ul>
                                           ",
-   'documentacion_adjunta'              => "6. DOCUMENTACIÓ ADJUNTA",
-   'autorizaciones_solicitud'           => "7. AUTORITZACIONS",
-   'expongo_cabecera_ils'                        => "EXPÒS",
-   'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓ REQUERIDA ADJUNTADA",
-   'documentacion_adjuntada_opcional_ils'       => "4.2. ALTRA DOCUMENTACIÓ OPCIONAL",
+   'documentacion_adjunta'                => "6. DOCUMENTACIÓ ADJUNTA",
+   'autorizaciones_solicitud'             => "7. AUTORITZACIONS",
+   'autorizaciones_solicitud_si_autoriza' => "D’acord amb l’article 28.2 de la Llei 39/2015, d’1 d’octubre, del procediment administratiu comú de les administracions públiques, s’entén atorgat el consentiment per obtenir dades de documents elaborats per altres administracions que es puguin consultar mitjançant xarxes corporatives o sistemes electrònics habilitats a aquest efecte, i que siguin necessàries per tramitar aquesta sol·licitud.",
+   'autorizaciones_solicitud_no_autoriza' => "Expresament no don el meu consentiment / M’opòs a / No concedesc / Deneg la meva autorització perquè es consultin les dades i documents necessaris per la tramitació d’aquesta sol·licitud. Per això, present els documents que consten a continuació:",
 
-   'autorizaciones_solicitud_ils'           => "5. AUTORITZACIONS",
+   'expongo_cabecera_ils'                 => "EXPÒS",
+   'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓ REQUERIDA ADJUNTADA",
+   'documentacion_adjuntada_opcional_ils' => "4.2. ALTRA DOCUMENTACIÓ OPCIONAL",
+
+   'autorizaciones_solicitud_ils'         => "5. AUTORITZACIONS",
 
    'informe_autodiagnostico'			=> "Informe Autodiagnosi Digital",
    'memoria_tecnica'                    => "6.1. <strong>Descripció de l’empresa i de l’activitat</strong>: <ul>
@@ -372,7 +375,7 @@ return [
                                                 <li>El certificat d’estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.</li>
                                                </ul>",
    
-   'certificado_IAE'                    => "Certificat de l’IAE.",
+   'certificado_IAE'                    => "Certificat de l’IAE actualitzat.",
    'cif_empresa'                        => "El CIF de l’empresa.",
    'doc_Memoria_Tecnica'                => "Memòria tècnica de la seva activitat.",
    'doc_Sede_Social'                    => "Document acreditatiu de tenir la seu social a les Illes Balears.",
@@ -396,9 +399,9 @@ return [
    'solicito_cabecera_ils'              => "SOL·LICIT",
    'solicito_ils'                       => "Sol·licit la tramitació de la sol·licitud i la concessió de la marca ILS de l'empresa que represent.",
 
-   'eres_persona_juridica'              => "6.4 a)",
-   'eres_persona_juridica_nif_empresa'  =>   "Còpia del nùmero d'identificació fiscal de la societat.",
-   'eres_persona_juridica_doc_acreditativa'  =>   "6.4 b) Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d'ajuda com a representant de l'empresa beneficiària, com pot ser l'escriptura de poders de representació, la signatura de la sol·licitud amb el certificat digital de representació de l'empresa o documents similars.",   
+   'eres_persona_juridica'              => "Còpia del nùmero d'identificació fiscal de la societat.",
+   'eres_persona_juridica_doc_acreditativa'  => "Escriptura pública i estatuts, degudament inscrits en el registre corresponent.",
+   'eres_persona_juridica_doc_fehaciente'  =>   "Document fefaent que acrediti la representació de la persona que actua en nom de l'entitat sol·licitant.",
 
    'eres_cluster_o_ct'                  => "6.5. <strong>Si ets un clústers i/o centre tecnològic</strong>, adjuntar:<ul>
                                                 <li>Adjuntar en PDF el document constitutiu de l'entitat inscrita adequadament en el registre corresponent, amb les modificacions necessàries, si escau, per a l'acreditació de la personalitat jurídica del sol·licitant, així com poder suficient a favor del signant, en cas que aquest no figuri acreditat en l'escriptura, o certificat actualitzat del registre corresponent, en el qual s'especifiquin, en els supòsits en què sigui procedent, la data de constitució, l'objecte, el capital i la seu social, la composició del consell d'administració o la junta directiva, els apoderats i els socis que disposin de més d'un 10% i les participacions.	</li>

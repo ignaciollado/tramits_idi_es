@@ -168,7 +168,7 @@ return [
    
    'programaiDigital'      => "<code>Programa I:</code> «IDigital», estrategia para impulsar la digitalización en la industria de les Illes Balears.",
    'programaiExporta'      => "<code>Programa II:</code> «IExporta», estrategia para impulsar la internacionalización de las empresas industriales de les Illes Balears.",
-   'programaiSostenibilitatCorp' => "<code>Programa III:</code> «ISostenibilitat», estrategia para impulsar la mejora de la sostenibilidad de la industria de les Illes Balears. Actuación: gases de efecto invernadero de la organización.",
+   'programaiSostenibilitatCorp' => "<code>Programa III:</code> «ISostenibilitat», estrategia para impulsar la mejora de la sostenibilidad de la industria de les Illes Balears. Actuación: gases de efecto invernadero de la corporación.",
    'programaiSostenibilitatProd' => "<code>Programa III:</code> «ISostenibilitat», estrategia para impulsar la mejora de la sostenibilidad de la industria de les Illes Balears. Actuación: gases de efecto invernadero del producto.",
    'programaiGestio'             => "«IGestió» estrategia para impulsar la implantación de herramientas de gestión avanzada y optimización de procesos de la industria de les Illes Balears.",
    'programaILS'            => "<code>Programa III:</code> informes de la huella de carbono corporativa, dentro del marco del programa «isostenibilitat, industria local sostenible».",
@@ -346,11 +346,14 @@ return [
 ",
    'documentacion_adjunta'              => "6. DOCUMENTACIÓN ADJUNTA",      
    'autorizaciones_solicitud'           => "7. AUTORIZACIONES",
-   'expongo_cabecera_ils'                        => "EXPONGO",
-   'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓN REQUERIDA ADJUNTADA",
-   'documentacion_adjuntada_opcional_ils'       => "4.2. OTRA DOCUMENTACIÓN OPCIONAL",
+   'autorizaciones_solicitud_si_autoriza' => "De acuerdo con el artículo 28.2 de la Ley 39/2015, de 1 de octubre, del procedimiento administrativo común de las administraciones públicas, se entiende otorgado el consentimiento para obtener datos de documentos elaborados por otras administraciones que puedan consultarse mediante redes corporativas o sistemas electrónicos habilitados al efecto, y que sean necesarias para tramitar esta solicitud.",
+   'autorizaciones_solicitud_no_autoriza' => "Expresamente no doy mi consentimiento / Me opongo a / No concedo / Deniego mi autorización para que se consulten los datos y documentos necesarios para la tramitación de esta solicitud. Por eso, presento los documentos que constan a continuación:",
 
-   'autorizaciones_solicitud_ils'           => "5. AUTORIZACIONES",
+   'expongo_cabecera_ils'                 => "EXPONGO",
+   'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓN REQUERIDA ADJUNTADA",
+   'documentacion_adjuntada_opcional_ils' => "4.2. OTRA DOCUMENTACIÓN OPCIONAL",
+
+   'autorizaciones_solicitud_ils'         => "5. AUTORIZACIONES",
 
    'informe_autodiagnostico'			    => "Informe autodiagnóstico Digital",
    'memoria_tecnica'                    => "6.1. <strong>Descripción de la empresa y de su actividad</strong>: <ul>
@@ -366,7 +369,7 @@ return [
    'cif_empresa'                        => "El CIF de la empresa.",
    'doc_Memoria_Tecnica'                => "La memoria técnica.",
    'doc_Sede_Social'                    => "Documento acreditativo de tener la sede social en las Islas Baleares.",
-   'doc_certificado_IAE'                => "El certificado de IAE.",
+   'doc_certificado_IAE'                => "El certificado de IAE actualizado",
    'doc_alta_RETA'                      => "Certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente",
    'doc_Acreditativa_Repres'            => "Documentación acreditativa de las facultades de representación de la persona que firma la solicitud de ayuda",
    'doc_Constitutivo_cluster'           => "Documentación de constitución del cluster.",
@@ -386,9 +389,9 @@ return [
    'presentar_certificado_verificacion_ISO' => "Presentar certificado de verificación ISO 14064-1",   
    'certificado_verificacion_ISO' => "Certificado de verificación ISO 14064-1",
    'certificado_itinerario_formativo' => "Certificado de haber realizado el itinerario formativo",
-   'eres_persona_juridica'              => "6.4 a)",
-   'eres_persona_juridica_nif_empresa'  =>   "Cópia del número de identificación fiscal de la sociedad.",
-   'eres_persona_juridica_doc_acreditativa'  =>   "6.4 b) Documentación acreditativa de las facultades de representación de la persona que firma la solicitud de ayuda como representante de la empresa beneficiaria, como puede ser la escritura de poderes de representación, la firma de la solicitud con el certificado digital de representación de la empresa o documentos similares.",   
+   'eres_persona_juridica'              => "Cópia del número de identificación fiscal de la sociedad.",
+   'eres_persona_juridica_doc_acreditativa'  => "Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.",
+   'eres_persona_juridica_doc_fehaciente'  =>   "Documento fehaciente que acredite la representación de la persona que actúa en nombre de la entidad solicitante.",
 
    'eres_cluster_o_ct'                  => "6.5. <strong>Si eres un clusters y/o centro tecnológico</strong>, adjuntar:<ul>
                                                 <li>Adjuntar en PDF el documento constitutivo de la entidad inscrita adecuadamente en el registro correspondiente, con las modificaciones necesarias, si procede, para la acreditación de la personalidad jurídica del solicitante, así como poder suficiente a favor del firmante, en caso de que éste no figure acreditado en la escritura, o certificado actualizado del registro correspondiente, en el que se especifiquen, en los supuestos en que sea procedente, la fecha de constitución, el objeto, el capital y la sede social, la composición del consejo de administración o la junta directiva, los apoderados y los socios que dispongan de más de un 10% y las participaciones.	</li>
@@ -457,7 +460,7 @@ return [
 'certificado_corriente_pago_ttss'   => "Certificado de estar al corriente de pagos con la Tesorería de la Seguridad Social",
 'documentos_opcionales_si_ya_los_tiene_admin' => "Los documentos anteriores no se deberán aportar cuando ya consten en el otro expediente, o la Administración los pueda solicitar directamente.",
 'doy_mi_consentimiento_seg_soc'     =>"Certificado de la Tesorería General de la Seguridad Social (<abbr title='Tesorería General de la Seguridad Social'>TGSS</abbr>) de estar al corriente de pago de sus obligaciones.",
-'doy_mi_consentimiento_pdf'      => " Certificado de la Agencia Tributaria de las Illes Balears (<abbr title='Agència Tributària de les Illes Balears'>ATIB</abbr>) de estar al corriente de las obligaciones tributarias con la comunidad autónoma de las Islas Baleares.",
+'doy_mi_consentimiento_pdf'      => "Certificado de la Agencia Tributaria de las Illes Balears (<abbr title='Agència Tributària de les Illes Balears'>ATIB</abbr>) de estar al corriente de las obligaciones tributarias con la comunidad autónoma de las Islas Baleares.",
 
 'declaracion_no_consentimiento'  => "Al no dar consentimiento, por favor, adjunte certificado de cumplimiento con mis obligaciones tributarias y con la Tesorería de la Seguridad Social",
 'rgpd'  => "Reglamento de protección de datos personales",
