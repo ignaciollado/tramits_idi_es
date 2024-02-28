@@ -422,7 +422,7 @@ if (!$expedientes['importeAyuda']) {
 					            $nom_doc = "Informe autodiagnosi digital";
 					            break;
     				        case 'file_certificadoIAE':
-					            $nom_doc = "Certificat d'alta d'IAE";
+					            $nom_doc = lang('message_lang.doc_certificado_IAE');
 					            break;
 	    			        case 'file_declaracionResponsable':
 					            $nom_doc = "Declaració responsable de l'empresa";
@@ -431,10 +431,10 @@ if (!$expedientes['importeAyuda']) {
 					            $nom_doc = "Declaració responsable del consultor";
 					            break;
 			    	        case 'file_memoriaTecnica':
-					            $nom_doc = "La memòria tècnica";
+					            $nom_doc = lang('message_lang.doc_Memoria_Tecnica');
 					            break;
                             case 'file_document_acred_como_repres':
-                                $nom_doc = "Documentació fefaent que acrediti la representació de la persona que actua en nom de l'entitat sol·licitant";
+                                $nom_doc = lang('message_lang.doc_Acreditativa_Repres');
                                 break; 
 				            case 'file_certigicadoSegSoc':
 					            $nom_doc = "Certificat de la Seguretat Social";
@@ -443,10 +443,10 @@ if (!$expedientes['importeAyuda']) {
 					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
 					            break;
 				            case 'file_altaAutonomos':	
-					            $nom_doc = "Còpia documentació acreditativa alta d'autònoms";
+					            $nom_doc = lang('message_lang.doc_alta_RETA');
 					            break;
 				            case 'file_nifEmpresa':	
-					            $nom_doc = "Còpia del NIF de l'empresa";
+					            $nom_doc = lang('message_lang.eres_persona_juridica');
 					            break;
 				            case 'file_nifRepresentante':	
 					            $nom_doc = "Còpia del NIF del representant de la societat";
@@ -458,7 +458,7 @@ if (!$expedientes['importeAyuda']) {
 					            $nom_doc = "Declaració de no consentiment";
           			            break;
 				            case 'file_enviardocumentoIdentificacion':	
-					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
+					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l'empresa";
 					            break;
                             case 'file_resguardoREC':	
                                 $nom_doc = "Justificant de presentació pel REC";
@@ -467,10 +467,10 @@ if (!$expedientes['importeAyuda']) {
                                 $nom_doc = "Document pujat des-de l'IDI";
                                 break;
                             case 'file_escritura_empresa':	
-                                $nom_doc = "Escriptures del registre Mercantil";
+                                $nom_doc = lang('message_lang.eres_persona_juridica_doc_acreditativa');
                                 break;
                             case 'file_certificadoAEAT':	
-                                $nom_doc = "Certificat d'estar al corrent de pagament amb la AEAT";
+                                $nom_doc = lang('message_lang.certificado_corriente_pago_aeat');
                                 break;
                             case 'file_altaCensoAEAT':	
                                 $nom_doc = "Documentació acreditativa alta cens AEAT";
@@ -550,16 +550,16 @@ if (!$expedientes['importeAyuda']) {
                     if ($convocatoria >= '2022') {
 			            switch ($docs_opc_item->corresponde_documento) {
 			    	        case 'file_memoriaTecnica':
-					            $nom_doc = "La memòria tècnica";
+					            $nom_doc = lang('message_lang.doc_Memoria_Tecnica');
 					            break;
                             case 'file_copiaNIF':
-                                $nom_doc = "Còpia del NIF";
+                                $nom_doc = lang('message_lang.eres_persona_juridica');
                                 break;	                                
 				            case 'file_certificadoATIB':
 					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
 					            break;
 				            case 'file_nifEmpresa':	
-					            $nom_doc = "Còpia del NIF de l'empresa";
+					            $nom_doc = lang('message_lang.eres_persona_juridica');
 					            break;
 				            case 'file_enviardocumentoIdentificacion':	
 					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";

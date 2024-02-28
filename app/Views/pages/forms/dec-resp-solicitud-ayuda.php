@@ -188,7 +188,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html13, true, false, true, false, '');
 
-// ----------------------------------------------------------------6. DOCUMENTACIÓN ADJUNTA OBLIGATORIA--------------------------------------------------------------- //
+// ----------------------------------------------------------------6. DOCUMENTACIÓN ADJUNTA --------------------------------------------------------------- //
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 // remove default header/footer
 $pdf->setPrintHeader(false);
@@ -232,7 +232,10 @@ if ( trim($pJuridicaDocAcreditativaEnIDI) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.pJuridicaDocAcreditativaEnIDI_sinCambios')."</li>";		
 }
 if ( trim($file_nifEmpresa) === "SI") { /* OK */
-	$html16 .= "<li>".lang('message_lang.eres_persona_juridica_nif_empresa')."</li>";		
+	$html16 .= "<li>".lang('message_lang.eres_persona_juridica')."</li>";		
+}
+if ( trim($file_escritura_empresa) === "SI") { /* OK */
+	$html16 .= "<li>".lang('message_lang.eres_persona_juridica_doc_acreditativa')."</li>";		
 }
 if ( trim($copiaNIFSociedadEnIDI) === "SI") { /* OK */
 	$html16 .= "<li>".lang('message_lang.copiaNIFSociedadEnIDI_sinCambios')."</li>";		

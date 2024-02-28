@@ -459,24 +459,49 @@ class SubirArchivo extends BaseController
 						}
 				}
 		}	
-		/* ------------------------------------------------------------------------------------------------------------------- */
+		/* --------------------------------------------------------------------------------------------------------------- */
+		/* ------------adjunta Escritura empresa, múltiples documentos--------OK---------- */
+		if (isset($documentosfile['file_escritura_empresa'])) {
+			foreach($documentosfile['file_escritura_empresa'] as $escritura_empresa)
+				{
+					if ($escritura_empresa->isValid() && ! $escritura_empresa->hasMoved())
+						{
+						$escritura_empresa->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $escritura_empresa->getRandomName());
+						$data_file = [
+							'name' => $escritura_empresa->getName(),
+							'type' => $escritura_empresa->getClientMimeType(),
+							'cifnif_propietario' => $nif,
+							'tipo_tramite' => $tipoTramite,
+							'corresponde_documento' => 'file_escritura_empresa',
+							'datetime_uploaded' => time(),
+							'convocatoria' => $convocatoria,
+							'docRequerido' => 'SI',
+							'created_at'  => $escritura_empresa->getTempName(),
+							'selloDeTiempo'  => $selloTiempo,
+							'id_sol'         => $last_insert_id
+							];
+							$save = $documentos->insert($data_file);
+						}
+				}
+		}	
+		/* --------------------------------------------------------------------------------------------------------------- */
 		/* ---------- copia NIF cuando NO AUTORIZA a IDI comprobarlo, múltiples documentos--------OK---------- */
 		if (isset($documentosfile['file_copiaNIF'])) {
-			foreach($documentosfile['file_copiaNIF'] as $certificadoATIB)
+			foreach($documentosfile['file_copiaNIF'] as $copiaNIF)
 				{
-					if ($certificadoATIB->isValid() && ! $certificadoATIB->hasMoved())
+					if ($copiaNIF->isValid() && ! $copiaNIF->hasMoved())
 						{
-							$certificadoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoATIB->getRandomName());
+							$copiaNIF->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $copiaNIF->getRandomName());
 							$data_file = [
-							'name' => $certificadoATIB->getName(),
-							'type' => $certificadoATIB->getClientMimeType(),
+							'name' => $copiaNIF->getName(),
+							'type' => $copiaNIF->getClientMimeType(),
 							'cifnif_propietario' => $nif,
 							'tipo_tramite' => $tipoTramite,
 							'corresponde_documento' => 'file_copiaNIF',
 							'datetime_uploaded' => time(),
 							'convocatoria' => $convocatoria,
 							'docRequerido' => 'NO',
-							'created_at'  => $certificadoATIB->getTempName(),
+							'created_at'  => $copiaNIF->getTempName(),
 							'selloDeTiempo'  => $selloTiempo,
 							'id_sol'         => $last_insert_id
 							];
@@ -512,21 +537,21 @@ class SubirArchivo extends BaseController
 		/* ------------------------------------------------------------------------------------------------------------------- */
 		/* ---------- certificado TGSS cuando NO AUTORIZA a IDI comprobarlo, múltiples documentos--------OK---------- */
 		if (isset($documentosfile['file_certificadoSegSoc'])) {
-			foreach($documentosfile['file_certificadoSegSoc'] as $certificadoATIB)
+			foreach($documentosfile['file_certificadoSegSoc'] as $certificadoSegSoc)
 				{
-				if ($certificadoATIB->isValid() && ! $certificadoATIB->hasMoved())
+				if ($certificadoSegSoc->isValid() && ! $certificadoSegSoc->hasMoved())
 					{
-						$certificadoATIB->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoATIB->getRandomName());
+						$certificadoSegSoc->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $certificadoSegSoc->getRandomName());
 						$data_file = [
-						'name' => $certificadoATIB->getName(),
-						'type' => $certificadoATIB->getClientMimeType(),
+						'name' => $certificadoSegSoc->getName(),
+						'type' => $certificadoSegSoc->getClientMimeType(),
 						'cifnif_propietario' => $nif,
 						'tipo_tramite' => $tipoTramite,
 						'corresponde_documento' => 'file_certificadoSegSoc',
 						'datetime_uploaded' => time(),
 						'convocatoria' => $convocatoria,
 						'docRequerido' => 'NO',
-						'created_at'  => $certificadoATIB->getTempName(),
+						'created_at'  => $certificadoSegSoc->getTempName(),
 						'selloDeTiempo'  => $selloTiempo,
 						'id_sol'         => $last_insert_id
 						];

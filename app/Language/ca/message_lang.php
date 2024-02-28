@@ -371,15 +371,13 @@ return [
    ",
    'declaracion_datos_bancarios'      => "6.2. <strong>La veracitat de les dades bancàries</strong>. De conformitat amb el Decret 6/2013, de 8 de febrer, de mesures de simplificació documental dels procediments administratius, i la relació de documents del Catàleg de Simplificació Documental substituïbles per la presentació d’aquesta declaració,
    DECLAR:",
-   'eres_persona_fisica'                => "6.4. <strong>Si sou una persona física</strong>, s’ha d’adjuntar:<ul>
-                                                <li>El certificat d’estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.</li>
-                                               </ul>",
+   'eres_persona_fisica'                => "<strong>El certificat d’estar en el règim especial de treballadors autònoms (<abbr title='Régimen Especial de Trabajadores Autónomos'>RETA</abbr>) o en un règim alternatiu equivalent.</strong>",
    
-   'certificado_IAE'                    => "Certificat de l’IAE actualitzat.",
-   'cif_empresa'                        => "El CIF de l’empresa.",
-   'doc_Memoria_Tecnica'                => "Memòria tècnica de la seva activitat.",
+   'certificado_IAE'                    => "Certificat de l’<abbr title='Impueto sobre Actividades Económicas'>IAE</abbr> actualitzat.",
+   'cif_empresa'                        => "El <abbr title='Código de Identificación Fiscal'>CIF</abbr> de l’empresa.",
+   'doc_Memoria_Tecnica'                => "Descripció de l'empresa i de la seva activitat.",
    'doc_Sede_Social'                    => "Document acreditatiu de tenir la seu social a les Illes Balears.",
-   'doc_certificado_IAE'                => "El certificat de l’IAE.",
+   'doc_certificado_IAE'                => "El certificat de l’<abbr title='Impueto sobre Actividades Económicas'>IAE</abbr>.",
    'doc_alta_RETA'                      => "Certificat d’estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.",
    'doc_Acreditativa_Repres'            => "Documentació acreditativa de les facultats de representació de la persona que signa la sol·licitud d'ajuda.",
    'doc_Constitutivo_cluster'           => "Documentació de constitució del clúster.",
@@ -399,7 +397,7 @@ return [
    'solicito_cabecera_ils'              => "SOL·LICIT",
    'solicito_ils'                       => "Sol·licit la tramitació de la sol·licitud i la concessió de la marca ILS de l'empresa que represent.",
 
-   'eres_persona_juridica'              => "Còpia del nùmero d'identificació fiscal de la societat.",
+   'eres_persona_juridica'              => "Còpia del <abbr title='Número de identificación fiscal'>NIF</abbr> de l'empresa.",
    'eres_persona_juridica_doc_acreditativa'  => "Escriptura pública i estatuts, degudament inscrits en el registre corresponent.",
    'eres_persona_juridica_doc_fehaciente'  =>   "Document fefaent que acrediti la representació de la persona que actua en nom de l'entitat sol·licitant.",
 
@@ -415,7 +413,7 @@ return [
    'cluster_centroTecnologico'          => "En el cas de clústers i/o centres tecnològics",
    'docConstitutivoCluster'             => "S’ha d’adjuntar en PDF el document constitutiu de l'entitat inscrita adequadament en el registre corresponent, amb les modificacions necessàries, si escau, per a l'acreditació de la personalitat jurídica del sol·licitant, així com poder suficient a favor del signant, en cas que aquest no figuri acreditat en l'escriptura, o certificat actualitzat del registre corresponent, en el qual s'especifiquin, en els supòsits en què sigui procedent, la data de constitució, l'objecte, el capital i la seu social, la composició del consell d'administració o la junta directiva, els apoderats i els socis que disposin de més d'un 10 % i les participacions.",
    'copia_dni_representante'            => "Còpia del document nacional d’identitat del representant de la societat, persona o persones autoritzada/es.",
-   'copia_nif'                          => "Còpia del número d’identificació fiscal de la societat.",
+   'copia_nif'                          => "Còpia del <abbr title='Número de identificación fiscal'>NIF</abbr> de l'empresa.",
    'documentacion_acreditativa'         => "Documentació acreditativa de les facultats de representació de la persona.",
    'declaracion_responsable'            => "8. DECLARACIÓ RESPONSABLE",
    'declaracion_responsable_txt'        => "Declaració responsable del consultor proposat per l'empresa beneficiària per a la convocatòria de la concessió d'ajudes per al disseny de plans de transformació digital en el marc del programa",

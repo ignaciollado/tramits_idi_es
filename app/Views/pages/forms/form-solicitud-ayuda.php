@@ -32,8 +32,8 @@ if (!get_cookie('itramitsCurrentLanguage')) {
  	<span class="step">6</span>
 	<span class="step">7</span> 
 	<div  class="buttonContainer" >
-   	<button title="Anterior" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn" ><?php echo lang('message_lang.btn_previous');?></button>
-   	<button title="Següent" onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn" ><?php echo lang('message_lang.btn_next');?></button>
+   	<button onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn" ><?php echo lang('message_lang.btn_previous');?></button>
+   	<button onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn" ><?php echo lang('message_lang.btn_next');?></button>
 	</div>
 </div>
 
@@ -251,9 +251,9 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 				<input type = "file" id="file_certificadoIAE" name="file_certificadoIAE[]" title="Selecciona el certificat d'IAE" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>
 
-			<h3 id="pFisica" class="ocultar"><?php echo lang('message_lang.eres_persona_fisica');?></h3>
-			<h3 id="pJuridica" class="ocultar">6.4 a) <strong><?php echo lang('message_lang.eres_persona_juridica');?></strong></h3>
-			<h3 id="pJuridicaNIFEmpresa" class='ocultar'><?php echo lang('message_lang.eres_persona_juridica_nif_empresa');?></h3>
+			<h3 id="pFisica" class="ocultar">6.4. <?php echo lang('message_lang.eres_persona_fisica');?></h3>
+			<h3 id="pJuridica" class="ocultar">6.4.a. <strong><?php echo lang('message_lang.eres_persona_juridica');?></strong></h3>
+			<!-- <h3 id="pJuridicaNIFEmpresa" class='ocultar'><?php echo lang('message_lang.eres_persona_juridica_nif_empresa');?></h3> -->
 			<div id="docTipoInteresadoNifEmpresa" class="ocultar">
 				<code>[.pdf]:</code>	
 			</div>
@@ -264,7 +264,8 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 					<span class="w3docs"></span>
 				</label>
 			</fieldset>
-			<h3 id="pJuridicaDocAcreditativa" class='ocultar'>6.4 b) <strong><?php echo lang('message_lang.eres_persona_juridica_doc_acreditativa');?></strong></h3>
+
+			<h3 id="pJuridicaDocEscritura" class='ocultar'>6.4.b. <strong><?php echo lang('message_lang.eres_persona_juridica_doc_acreditativa');?></strong></h3>
 			<div id="docTipoInteresado">
 				<code>[.pdf]:</code>	
 			</div>
@@ -276,10 +277,9 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 				</label>
 			</fieldset>
 
-			<h3 id="pJuridicaDocFehaciente" class='ocultar'>6.4 c) <strong><?php echo lang('message_lang.eres_persona_juridica_doc_fehaciente');?></strong></h3>
-			<div id = "file_doc_fehaciente_container" class='ocultar'>
-				<code>[.pdf]:</code>
-				<input type = "file" id="file_document_acred_como_repres" name="file_document_acred_como_repres[]" title="Selecciona el documento que acredite la representación" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
+			<h3 id="pJuridicaDocAcreditativa" class='ocultar'>6.4.c. <strong><?php echo lang('message_lang.eres_persona_juridica_doc_fehaciente');?></strong></h3>
+			<div id="docAcreditativoRepresentatividad" class="ocultar">
+				<code>[.pdf]:</code>	
 			</div>
 
 			<h3>6.5. <strong><?php echo lang('message_lang.certificado_corriente_pago_aeat');?></strong></h3>
@@ -469,6 +469,7 @@ function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
+	console.log ("validateForm()", validateForm(), currentTab)
   if (n == 1 && !validateForm()) return false;
   // Hide the current tab:
   x[currentTab].style.display = "none";
@@ -497,6 +498,7 @@ function validateFormField(field, step=0) {
 }
 
 function validateForm() {
+	console.log ("currentTab", currentTab)
   // This function deals with validation of the form fields
   var tabs, inputs, selects, i, valid = true;
   tabs = document.getElementsByClassName("tab");
@@ -554,15 +556,15 @@ function validateForm() {
   }
 
   if (currentTab===6) {
-	if ( !document.getElementById("1_opcion_banco").checked && !document.getElementById("2_opcion_banco").checked) {
-		document.getElementById("1_opcion_banco_h5").setAttribute("class", "container-radio-invalid");
-		document.getElementById("2_opcion_banco_h5").setAttribute("class", "container-radio-invalid");
-		valid = false;
-	}
-	else {
-		document.getElementById("1_opcion_banco_h5").setAttribute("class", "container-radio-valid");
-		document.getElementById("2_opcion_banco_h5").setAttribute("class", "container-radio-valid");		
-	}
+		if ( !document.getElementById("1_opcion_banco").checked && !document.getElementById("2_opcion_banco").checked) {
+			document.getElementById("1_opcion_banco_h5").setAttribute("class", "container-radio-invalid");
+			document.getElementById("2_opcion_banco_h5").setAttribute("class", "container-radio-invalid");
+			valid = false;
+		}
+		else {
+			document.getElementById("1_opcion_banco_h5").setAttribute("class", "container-radio-valid");
+			document.getElementById("2_opcion_banco_h5").setAttribute("class", "container-radio-valid");		
+		}
   }
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
