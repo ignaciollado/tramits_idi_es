@@ -120,6 +120,8 @@ if (!$expedientes['importeAyuda']) {
     } else {
         $importeAyuda = $expedientes['importeAyuda'];
     }
+    $importeAyuda = number_format($importeAyuda, 2, ',', '.');
+    $importe_minimis = number_format($expedientes['importe_minimis'], 2, ',', '.');
 	?>
 
     <!----------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --------------------------->
@@ -189,20 +191,20 @@ if (!$expedientes['importeAyuda']) {
                     </div> 
                 <div class="form-group general">
                     <label for="cpostal">Codi postal:</label>
-                    <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal']; ?>">
+                    <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal'];?>">
                 </div>      	  		            	  
                 <div class="form-group general">
                     <label for="telefono">Telèfon mòbil de contacte:</label>
-                    <input type="tel" name="telefono" class="form-control" readonly id = "telefono" required disabled placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono']; ?>">
+                    <input type="tel" name="telefono" class="form-control" readonly id = "telefono" required disabled placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono'];?>">
                 </div> 
                 <div class="form-group general">
                     <label for="iae">Activitat econòmica (IAE):</label>
-                    <input type="text" name="iae" class="form-control" readonly disabled id = "iae" maxlength = "4" size="4" placeholder="IAE" value="<?php echo $expedientes['iae']; ?>">
+                    <input type="text" name="iae" class="form-control" readonly disabled id = "iae" maxlength = "4" size="4" placeholder="IAE" value="<?php echo $expedientes['iae'];?>">
                 </div>
                 
                 <div class="form-group general">
-                    <label for="importe_minimis">Importe minimis:</label>
-                    <input type="text" name="importe_minimis" class="form-control" readonly disabled id = "importe_minimis" maxlength = "4" size="4" placeholder="Import minimis" value="<?php echo $expedientes['importe_minimis']; ?>">
+                    <label for="importe_minimis">Importe minimis (€):</label>
+                    <input type="text" name="importe_minimis" class="form-control" readonly disabled id = "importe_minimis" maxlength = "4" size="4" placeholder="Import minimis" value="<?php echo $importe_minimis;?>">
                 </div>                
 		        <div class="form-group general">
                     <label for="nombre_rep">Representant legal:</label>
@@ -265,7 +267,6 @@ if (!$expedientes['importeAyuda']) {
 				        <option value="María del Carmen Muñoz Adrover">
 				        <option value="Marta Riutord">
 				        <option value="Pilar Jordi Amorós">
-				        <option value="Vanessa Rosselló Garí">
   			        </datalist>
 		        </div>
 
@@ -352,8 +353,8 @@ if (!$expedientes['importeAyuda']) {
 				</label>
 
                 <div class="form-group general">
-                    <label for="importeAyuda">Import de l'ajuda:</label>
-                    <input type="number" name="importeAyuda" readonly disabled class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $importeAyuda; ?>">
+                    <label for="importeAyuda">Import de l'ajuda (€):</label>
+                    <input type="text" name="importeAyuda" readonly disabled class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $importeAyuda;?>">
                 </div>
                 <div class="form-group general">
                     <label for="porcentajeConcedido">Percentatje de l'ajuda:</label>

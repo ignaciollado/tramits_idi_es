@@ -25,7 +25,7 @@
 	<div class="menu">
 		<div>
 			<a href="http://www.idi.es" target="_blank">
-				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_idi_conselleria.jpg";?>" />
+				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_idi_conselleria.png";?>" />
 			</a>
 		</div>
 		<div>

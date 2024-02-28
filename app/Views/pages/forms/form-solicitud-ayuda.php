@@ -183,7 +183,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
     <fieldset>
 			<h2><?php echo lang('message_lang.datos_cons_sol_idigital');?></h2>
 			<div id = "verDatosConsultor">
-				<div><input type = "text"  onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.empresa_consultor');?>" aria-required="false" placeholder = "<?php echo lang('message_lang.empresa_consultor');?>" name = "empresa_consultor" id = "empresa_consultor"></div>
+				<div><input type = "text"  onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.empresa_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.empresa_consultor');?>" name = "empresa_consultor" id = "empresa_consultor"></div>
 				<div><input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.nombre_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.nombre_consultor');?>"  name = "nom_consultor" id = "nom_consultor"></div>
 				<div><input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.telefono_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.telefono_consultor');?>" name = "tel_consultor" id = "tel_consultor" maxlength = "9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"><p id="mensaje_dni"></p></div>
  				<div><input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_consultor');?>" aria-required="true" placeholder = "<?php echo lang('message_lang.mail_consultor');?>" name = "mail_consultor" id = "mail_consultor"></div>
@@ -253,7 +253,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 
 			<h3 id="pFisica" class="ocultar">6.4. <?php echo lang('message_lang.eres_persona_fisica');?></h3>
 			<h3 id="pJuridica" class="ocultar">6.4.a. <strong><?php echo lang('message_lang.eres_persona_juridica');?></strong></h3>
-			<!-- <h3 id="pJuridicaNIFEmpresa" class='ocultar'><?php echo lang('message_lang.eres_persona_juridica_nif_empresa');?></h3> -->
 			<div id="docTipoInteresadoNifEmpresa" class="ocultar">
 				<code>[.pdf]:</code>	
 			</div>
@@ -285,7 +284,7 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 			<h3>6.5. <strong><?php echo lang('message_lang.certificado_corriente_pago_aeat');?></strong></h3>
 			<div id = "file_certificadoAEAT_container" class="">
 				<code>[.pdf]:</code>
-				<input type = "file" id="file_certificadoAEAT" name="file_certificadoAEAT[]" size="50" accept=".pdf" multiple required aria-required="true" onblur="javaScript: validateFormField(this);"/>
+				<input type = "file" id="file_certificadoAEAT" name="file_certificadoAEAT[]" size="50" accept=".pdf" title="<?php echo lang('message_lang.certificado_corriente_pago_aeat');?>" multiple required aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>		
 
 		</fieldset>		

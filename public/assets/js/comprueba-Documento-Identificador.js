@@ -129,7 +129,6 @@ function analizaCIF (cif) {
 		toastMessage.innerHTML = "";
 		toastMessage.classList.remove("invalid")
 		document.getElementById("nif").value = cif;
-
 		/* consultaExpediente ( 'nif', cif )  */
 	}
 	else 
@@ -176,7 +175,7 @@ function analizaDNINIE (dninie) {
 		if (primerDigitoDNINIE!='X' && primerDigitoDNINIE!='Y' && primerDigitoDNINIE!='Z') // y tiene que ser X,Y,Z
 			{
 			document.querySelector('#rest-result').innerHTML = "El primer dígito tiene que ser una número o una de las letras X, Y o Z."
-			toastBootstrap.show()
+			/* toastBootstrap.show() */
 			document.getElementById("nif").value = ""
 			return;
 			}

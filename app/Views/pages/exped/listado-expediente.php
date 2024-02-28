@@ -175,7 +175,7 @@
 			?>
 			Import ajut sol·licitat
 			<?php } else {?>
-				Import de l'ajuda
+				Import de l'ajuda (€)
 		<?php }?>
   </div>
 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
@@ -210,7 +210,8 @@
 				<span id = "semaforo" class = "detail-wrapper-col">
 					<?php 
 					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
-						echo $item['importeAyuda']." €";
+						$importeAyuda = number_format($item['importeAyuda'], 2, ',', '.');
+						echo $importeAyuda;
 					} else {
 						echo $item['importe_ayuda_solicita_idi_isba'];
 					} 
