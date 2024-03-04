@@ -69,7 +69,7 @@ $tipoTramite = get_cookie ('tipoTramite');
 $query = $db->query("SELECT * FROM pindust_documentos_justificacion WHERE selloDeTiempo ='" . $selloTiempo."'");
 $justificacion = $query->getResult();
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS'); 
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $data['configuracion']['convocatoria']); 
 $data['expedientes'] = $modelExp->where('id', $id)->first();
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------- //

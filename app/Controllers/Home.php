@@ -30,7 +30,7 @@ class Home extends BaseController
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+		/* $data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS'); */
 
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
@@ -74,8 +74,9 @@ class Home extends BaseController
 		service('request')->setLocale('ca');
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+		$data['configuracion'] = $generalConfig->configuracionGeneral();
+		$currentYear = date("Y");
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $currentYear);
 		
 		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
 		$desde = $data['configuracionLinea']['convocatoria_desde'];
@@ -162,8 +163,9 @@ class Home extends BaseController
 
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+		$data['configuracion'] = $generalConfig->configuracionGeneral();
+		$currentYear = date("Y");
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $currentYear);
 		 
 		$desde = $data['configuracionLinea']['convocatoria_desde'];
 		$hasta = $data['configuracionLinea']['convocatoria_hasta'];
@@ -309,8 +311,9 @@ class Home extends BaseController
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
 		
-		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('IDI-ISBA');
+		$data['configuracion'] = $generalConfig->configuracionGeneral();
+
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('IDI-ISBA',	2024 );
 		  
 		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
 		$desde = $data['configuracionLinea']['convocatoria_desde'];

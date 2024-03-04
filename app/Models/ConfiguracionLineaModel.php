@@ -17,10 +17,9 @@ class ConfiguracionLineaModel extends Model
     'updateInterval', 'convocatoria_aviso_ca', 'convocatoria_aviso_es',
     'activeLineData' ];
 
-    public function activeConfigurationLineData($line) {
-        $currentYear = date("Y");
+    public function activeConfigurationLineData($line, $convocatoria) {
         if ($line != 'ILS') {
-            $convoData = $this->asArray()->where(['convocatoria'=> $currentYear, 'lineaAyuda' => $line])->first();
+            $convoData = $this->asArray()->where(['convocatoria'=> $convocatoria, 'lineaAyuda' => $line])->first();
         } else  {
             $convoData = $this->asArray()->where(['convocatoria'=> 2022, 'lineaAyuda' => $line])->first();
         }
