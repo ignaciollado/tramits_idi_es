@@ -24,8 +24,9 @@ class Home extends BaseController
 
 	public function ca ()
 	{
-		$modelConfig = new ConfiguracionModel();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
+		/* $modelConfig = new ConfiguracionModel();
+		$data['configuracion'] =  $modelConfig->configuracionGeneral(); */
+		/* $data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first(); */
 
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
@@ -72,10 +73,11 @@ class Home extends BaseController
 		$language = \Config\Services::language();
 		$language->setLocale('ca');
 		service('request')->setLocale('ca');
-		$generalConfig = new ConfiguracionModel;
+		$modelConfig = new ConfiguracionModel;
+		$generalConfig = $modelConfig->configuracionGeneral();
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracion'] = $generalConfig->configuracionGeneral();
-		$currentYear = date("Y");
+		$data['configuracion'] = $modelConfig->configuracionGeneral();
+		$currentYear = $generalConfig['convocatoria'];
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $currentYear);
 		
 		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
@@ -159,12 +161,13 @@ class Home extends BaseController
 			'expire' => '7200',                                                                                   
 			'secure' => TRUE
 			);
-   		set_cookie($cookie);
+   	set_cookie($cookie);
 
-		$generalConfig = new ConfiguracionModel;
+		$modelConfig = new ConfiguracionModel();
+		$generalConfig =  $modelConfig->configuracionGeneral();
 		$lineaConfig = new ConfiguracionLineaModel();
 		$data['configuracion'] = $generalConfig->configuracionGeneral();
-		$currentYear = date("Y");
+		$currentYear = $generalConfig['convocatoria'];
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $currentYear);
 		 
 		$desde = $data['configuracionLinea']['convocatoria_desde'];

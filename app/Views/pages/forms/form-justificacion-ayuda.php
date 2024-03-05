@@ -12,7 +12,7 @@
 	$language = \Config\Services::language();
 	$language->setLocale($idioma);
 
-
+	echo "**".$_COOKIE['itramitsCurrentLanguage']."**";
 	$configuracion = new ConfiguracionModel();
 	$configuracionLinea = new ConfiguracionLineaModel();
 	$modelExp = new ExpedientesModel();

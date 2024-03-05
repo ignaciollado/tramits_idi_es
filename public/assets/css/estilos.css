@@ -43,6 +43,9 @@ ol, ul {
 	border: 1px solid #2e9c96; 
 	border-radius: 5px;
 }
+.btn-acto-admin{
+  min-width: 8rem;
+}
 #container {
   min-height:100%;
   position:relative;

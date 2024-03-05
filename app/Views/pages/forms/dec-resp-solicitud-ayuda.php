@@ -1,14 +1,17 @@
 <?php
 helper('cookie');
+$language = \Config\Services::language();
+echo "***".$_COOKIE['itramitsCurrentLanguage']."***";
 require_once('tcpdf/tcpdf.php');
-$defaultLanguage=get_cookie('itramitsCurrentLanguage');
+
 use App\Models\ConfiguracionModel;
 $modelConfig = new ConfiguracionModel();
+$generalConfig =  $modelConfig->configuracionGeneral();
 $data['configuracion'] = $modelConfig->where('activeGeneralData', 'SI')->first();	
 use App\Models\ConfiguracionLineaModel;
 
 $lineaConfig = new ConfiguracionLineaModel();
-$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $generalConfig['convocatoria']);
 
 class MYPDF extends TCPDF {
     //Page header
@@ -65,7 +68,7 @@ $pdf->setFontSubsetting(false);
 // -----------------------------------------------------------------------------------Página 1/5---------------------------------------------------------------------------- //
 $pdf->AddPage();
 
-$html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi').$defaultLanguage."</b>";
+$html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi')."</b>";
 $html1 .= "<br>";
 $html1 .= lang('message_lang.codigo_dir3')." <b>".$data['configuracion']['emisorDIR3']."</b> ";
 $html1 .= lang('message_lang.codigo_sia')." <b>".$data['configuracionLinea']['codigoSIA']."</b>";

@@ -3,7 +3,7 @@
 		$empresa = $_POST["empresa"];
 		$nif = $_POST["nif"];
 		$domicilio = $_POST["domicilio"];
-		$adreca_mail = $_POST["mail_representante"];
+		$mail_address = $_POST["mail_representante"];
 		$telefono_cont = $_POST["tel_representante"];
 		
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
@@ -35,7 +35,7 @@
 
 		$user = new AddresseeUserEntity;
 		$user->action = "SIGN";  
-		$user->userCode = $adreca_mail; //"ignacio.llado@idi.es";   
+		$user->userCode = $mail_address; //"ignacio.llado@idi.es";   
 		$user->entityCode = "default"; 
 		/* $user->userName = $empresa; // "wwwwwwwwwwwwwwww";
 		$user->userSurname1 = $nif; // "43036826P";

@@ -1,12 +1,17 @@
 * {
-			transition: background-color 300ms ease, color 300ms ease;
-		}
+	transition: background-color 300ms ease, color 300ms ease;
+}
 *:focus {
 	background-color: #a3d4db;
 	outline: none;
 }
 button:hover {
 	cursor:pointer!important;
+}
+.main-header {
+  display: grid;
+  grid-template-columns: auto auto auto;
+	justify-content: space-between;
 }
 
 dl {

@@ -6,8 +6,8 @@ class ConfiguracionModel extends Model
 {
     protected $table = 'pindust_configuracion';
  
-    protected $allowedFields = ['id',  
-    'respresidente', 'directorGeneralPolInd', 'directorGerenteIDI', 'eMailPresidente',
+    protected $allowedFields = ['id', 'convocatoria', 'lineaAyuda',
+    'respresidente', 'directorGeneralPolInd', 'directorGerenteIDI', 'eMailPresidente',  
     'eMailDGeneral', 'eMailDGerente',
     'emisorDIR3',
     'activeGeneralData' ];

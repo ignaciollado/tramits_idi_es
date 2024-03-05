@@ -21,16 +21,14 @@ class Expedientes extends Controller
 		$language = \Config\Services::language();
 		$language->setLocale('ca');
 		$session = session();
-
-		$where = "convocatoria = ".date("Y");
+		$modelConfig = new ConfiguracionModel();
+		$generalConfig = $modelConfig->configuracionGeneral();
+		$where = "convocatoria = ".$generalConfig['convocatoria'];
 
 		$rol =  $session->get('rol');
 
 		$modelExp = new ExpedientesModel();
-		if ($rol == 'admin') {/* 
-			if ($session->get('convocatoria_fltr')) {
-				$where = "convocatoria = " . $session->get('convocatoria_fltr');
-			} */
+		if ($rol == 'admin') {
 			if ($session->get('programa_fltr')) {
 				$where = "tipo_tramite = '" . $session->get('programa_fltr') . "'";
 			}
@@ -515,18 +513,18 @@ class Expedientes extends Controller
 					// $newName = $resguardo->getRandomName();
 					$resguardo->move($fullPath, str_replace(" ", "_", $fileName));
 					$data_file = [
-						'name' 						=> str_replace(" ", "_", $fileName),
-						'type' 						=> $resguardo->getClientMimeType(),
-						'cifnif_propietario' 		=> $nif,
+						'name' 								=> str_replace(" ", "_", $fileName),
+						'type' 								=> $resguardo->getClientMimeType(),
+						'cifnif_propietario' 	=> $nif,
 						'tipo_tramite' 				=> $tipo_tramite,
 						'corresponde_documento' 	=> 'file_faseExped' . $faseExped,
-						'datetime_uploaded' 		=> time(),
+						'datetime_uploaded' 	=> time(),
 						'convocatoria' 				=> $convocatoria,
-						'created_at' 				=> $resguardo->getTempName(),
+						'created_at' 					=> $resguardo->getTempName(),
 						'selloDeTiempo' 			=> $selloTiempo,
 						'id_sol'         			=> $id_sol,
-						'fase_exped'				=> $faseExped,
-						'docRequerido'			=> 'NO'
+						'fase_exped'					=> $faseExped,
+						'docRequerido'				=> 'NO'
 					];
 					$save = $docsExpediente->insert($data_file);
 				}
@@ -764,7 +762,6 @@ class Expedientes extends Controller
 
 		$fechacompletado = $this->request->getVar('fecha_solicitud');
 		$fechaREC = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $this->request->getVar('fecha_REC'))));
-		//$fechaEnmienda = date('Y-m-d H:i:s',strtotime(str_replace("/","-",$this->request->getVar('fecha_enmienda'))));
 		$fechaEnmienda = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $this->request->getVar('fecha_REC_enmienda'))));
 		if (strlen($fechaREC > 0) && $fechaREC != '1970-01-01 01:00:00' && $fechaEnmienda != '0000-00-00 00:00:00') {
 			if ($fechaREC > $fechacompletado) {

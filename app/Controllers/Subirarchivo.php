@@ -13,11 +13,14 @@ class SubirArchivo extends BaseController
 		helper(['form', 'url']);
 		helper('cookie');
 		$idioma = get_cookie('CurrentLanguage');
+
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
-
+		$modelConfig = new ConfiguracionModel();
+		$generalConfig =  $modelConfig->configuracionGeneral();
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS');
+		 
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $generalConfig['convocatoria']);
 		$convocatoria =  $data['configuracionLinea']['convocatoria'];
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 		$request = \Config\Services::request();
@@ -48,7 +51,6 @@ class SubirArchivo extends BaseController
 	 	} else {
 			$file_memoriaTecnica = "SI";
 	 	}
-
 		if ( !$documentosfile['file_certificadoIAE'][0]->getName() ){
 			$file_certificadoIAE = "NO";
 	 	} else {
@@ -75,13 +77,11 @@ class SubirArchivo extends BaseController
 				$file_document_acred_como_repres = "SI";
 		 	}
 		}
-
 		if ( !$documentosfile['file_certificadoAEAT'][0]->getName() ){
 			$file_certificadoAEAT = "NO";
 	 	} else {
 			$file_certificadoAEAT = "SI";
 	 	}
-
 		if ($tipoSolicitante === 'autonomo'){
 			if ( !$documentosfile['file_altaAutonomos'][0]->getName() ){
 				$file_altaAutonomos = "NO";
@@ -89,7 +89,6 @@ class SubirArchivo extends BaseController
 				$file_altaAutonomos = "SI";
 	 		}
 		}
-
 		if ($this->request->getPost('memoriaTecnicaEnIDI') === 'on') {
 				$memoriaTecnicaEnIDI = 'SI';
 		} else {
@@ -589,7 +588,8 @@ class SubirArchivo extends BaseController
 		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();  */
 
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ILS');
+		$currentYear = date("Y");
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ILS', $currentYear);
 		$convocatoria =   $data['configuracion']['convocatoria'];
 		$tipo_tramite = 'ILS';
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
@@ -1208,9 +1208,9 @@ class SubirArchivo extends BaseController
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
 		$tipo_tramite =  'IDI-ISBA';
-
+		$currentYear = date("Y");
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite);
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite, $currentYear);
 		$convocatoria = date("Y"); // $data['configuracionLinea']['convocatoria'];
 		
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente

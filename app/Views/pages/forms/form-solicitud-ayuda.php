@@ -8,7 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
-<?php 
+<?php
 
 if (!get_cookie('itramitsCurrentLanguage')) {
 	setcookie("itramitsCurrentLanguage", 'ca');
