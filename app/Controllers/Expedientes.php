@@ -642,7 +642,6 @@ class Expedientes extends Controller
 		helper('cookie');
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
-
 		set_cookie('pindust_id', $id, '3600');
 		set_cookie('nif', $nif, '3600');
 		set_cookie('tipoTramite', $tipo_tramite, '3600');

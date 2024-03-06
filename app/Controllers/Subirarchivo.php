@@ -12,7 +12,7 @@ class SubirArchivo extends BaseController
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
-		$idioma = get_cookie('CurrentLanguage');
+		$idioma = get_cookie('itramitsCurrentLanguage');
 
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);

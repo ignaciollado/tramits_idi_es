@@ -122,7 +122,7 @@ class Home extends BaseController
 
 		$data = [
 			'id' => $id,
-            'nif' => $nif,
+      'nif' => $nif,
 			'tipoTramite' => $tipoTramite,
 			'idioma' => $idioma,
 			'titulo' => $titulo
@@ -146,7 +146,6 @@ class Home extends BaseController
 	public function set_lang () 
 	{
 		helper('cookie');
-		// $uri = new \CodeIgniter\HTTP\URI();	
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
 		$idioma =  $request->uri->getSegment(3); 
@@ -154,7 +153,6 @@ class Home extends BaseController
 		service('request')->setLocale($idioma);
 		helper('form');
 		helper('filesystem');
-
 		$cookie = array(
 			'name'   => 'CurrentLanguage',
 			'value'  => $idioma,                            
@@ -162,11 +160,11 @@ class Home extends BaseController
 			'secure' => TRUE
 			);
    	set_cookie($cookie);
-
+		
 		$modelConfig = new ConfiguracionModel();
-		$generalConfig =  $modelConfig->configuracionGeneral();
 		$lineaConfig = new ConfiguracionLineaModel();
-		$data['configuracion'] = $generalConfig->configuracionGeneral();
+		$generalConfig =  $modelConfig->configuracionGeneral();
+		$data['configuracion'] = $modelConfig->configuracionGeneral();
 		$currentYear = $generalConfig['convocatoria'];
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $currentYear);
 		 
@@ -205,23 +203,31 @@ class Home extends BaseController
 
 	public function set_lang_justific ($idioma, $id, $nif, $tipoTramite)
 	{
+		helper('cookie');
+		$language = \Config\Services::language();
+		$request = \Config\Services::request();
+		$idioma =  $request->uri->getSegment(3);
+		$language->setLocale($idioma);
+		service('request')->setLocale($idioma);
 		helper('form');
 		helper('filesystem');
-		helper('cookie');
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => $idioma,                            
+			'expire' => '7200',                                                                                   
+			'secure' => TRUE
+			);
+   	set_cookie($cookie);
 		$data = [
 			'idioma' => $idioma,
 			'id' => $id,
-            'nif' => $nif,
+      'nif' => $nif,
 			'tipoTramite' => $tipoTramite,
-			'titulo' => "Convocatòria iDigital - Requeriment"
+			'titulo' => "Convocatòria Xecs - Requeriment"
 		];
 
-		$uri = new \CodeIgniter\HTTP\URI();	
-		$language = \Config\Services::language();
-		$request = \Config\Services::request();
-		$idioma =  $request->uri->getSegment(3); 
-		$language->setLocale($idioma); 
-
+		/* $uri = new \CodeIgniter\HTTP\URI();	 */
+		
 		$data['titulo'] = lang('message_lang.titulo_sol_idigital');
 		echo view('templates/header/header-form-justificacion', $data);
 		echo view('pages/forms/form-justificacion-ayuda', $data);

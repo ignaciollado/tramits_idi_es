@@ -9,11 +9,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 <?php
-
 if (!get_cookie('itramitsCurrentLanguage')) {
 	setcookie("itramitsCurrentLanguage", 'ca');
 	service('request')->setLocale('ca');
 }
+echo "**".$_COOKIE['itramitsCurrentLanguage']."**";
 ?>
 <section id="formulario_solicitud">
 	<div class="alert alert-info">

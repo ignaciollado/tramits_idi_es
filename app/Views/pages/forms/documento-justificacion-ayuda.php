@@ -81,7 +81,7 @@ $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(180, '', 20, 60, $html, 0, 1, 1, true, 'J', true);
 
-$html = "<strong>".lang('message_lang.titulo_justificacion_idigital')."</strong><br><br>";
+$html = "<strong>".lang('message_lang.titulo_justificacion_idigital')."</strong>".$idioma."<br><br>";
 $html .= "<strong>".lang('message_lang.destino_solicitud').": Institut d'Innovació Empresarial de les Illes Balears</strong><br><br>";
 $html .= "<strong>".lang('message_lang.codigo_dir3')."</strong>".$data['configuracion']['emisorDIR3']."<br>";
 $pdf->SetFillColor(255, 255, 255);

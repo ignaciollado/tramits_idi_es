@@ -12,7 +12,6 @@
 	$language = \Config\Services::language();
 	$language->setLocale($idioma);
 
-	echo "**".$_COOKIE['itramitsCurrentLanguage']."**";
 	$configuracion = new ConfiguracionModel();
 	$configuracionLinea = new ConfiguracionLineaModel();
 	$modelExp = new ExpedientesModel();
@@ -81,43 +80,43 @@
 		<fieldset class="container-add-line">
 			<h4>Llista enumerativa de despeses:</h4>
 			<div class="form-floating">
-  			<input type="text" class="form-control" required id="num-factura" placeholder="Num. factura">
-  			<label for="num-factura">Num. factura</label>
+  			<input type="text" class="form-control" id="num-factura" placeholder="Num. factura">
+  			<label for="num-factura"><?php echo lang('message_lang.numFactura');?></label>
 			</div>
 			<div class="form-floating">
-  			<input type="date" class="form-control" required id="fecha-factura" placeholder="Fecha factura">
-  			<label for="fecha-factura">Fecha factura</label>
+  			<input type="date" class="form-control" id="fecha-factura" placeholder="Fecha factura">
+  			<label for="fecha-factura"><?php echo lang('message_lang.fechaFactura');?></label>
 			</div>
 			<div class="form-floating">
-  			<input type="text" class="form-control" required id="proveedor" placeholder="Proveedor">
-  			<label for="proveedor">Proveedor</label>
+  			<input type="text" class="form-control" id="proveedor" placeholder="Proveedor">
+  			<label for="proveedor"><?php echo lang('message_lang.proveedor');?></label>
 			</div>
 			<div class="form-floating">
-  			<input type="text" class="form-control" required id="concepto" placeholder="Concepto">
-  			<label for="concepto">Concepto</label>
+  			<input type="text" class="form-control" id="concepto" placeholder="Concepto">
+  			<label for="concepto"><?php echo lang('message_lang.concepto');?></label>
 			</div>
 			<div class="form-floating">
-  				<input type="number" class="form-control" required id="base-imponible" onblur="setTotalInvoice()" placeholder="Base imponible">
-  				<label for="base-imponible">Base imponible</label>
+  				<input type="number" class="form-control" id="base-imponible" onblur="setTotalInvoice()" placeholder="Base imponible">
+  				<label for="base-imponible"><?php echo lang('message_lang.baseImponible');?></label>
 			</div>
 			<div class="form-floating">
-  			<input type="number" class="form-control" required id="importe-iva" onblur="setTotalInvoice()" placeholder="Importe IVA">
-  			<label for="importe-iva">Importe IVA</label>
+  			<input type="number" class="form-control" id="importe-iva" onblur="setTotalInvoice()" placeholder="Importe IVA">
+  			<label for="importe-iva"><?php echo lang('message_lang.importeIVA');?></label>
 			</div>
 			<div class="form-floating">
   			<input type="number" class="form-control" disabled readonly required id="importe-factura" placeholder="Importe factura">
-  			<label for="importe-factura">Importe factura</label>
+  			<label for="importe-factura"><?php echo lang('message_lang.importeFactura');?></label>
 			</div>
 			<div class="form-floating">
-  			<input type="date" class="form-control" required id="fecha-pago" placeholder="Data pago">
-  			<label for="fecha-pago">Data pago</label>
+  			<input type="date" class="form-control" id="fecha-pago" placeholder="Data pago">
+  			<label for="fecha-pago"><?php echo lang('message_lang.fechaPago');?></label>
 			</div>
-			<button type="button" class="btn btn-secondary" onclick="addInvoiceLine()">Afegir</button>
+			<button type="button" class="btn btn-secondary" onclick="addInvoiceLine()"><?php echo lang('message_lang.addLine');?></button>
 		</fieldset>
 
 		<fieldset>
 			<div class="container-lines" id="container-lines"></div>
-			<input type='hidden' id="invoice-lines" name="invoice-lines">
+			<input type='text' id="invoice-lines" name="invoice-lines">
 			<input type='number' id="total-invoice-lines" name="total-invoice-lines">
 		</fieldset>
 
