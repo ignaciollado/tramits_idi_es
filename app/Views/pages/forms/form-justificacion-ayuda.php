@@ -116,8 +116,8 @@
 
 		<fieldset>
 			<div class="container-lines" id="container-lines"></div>
-			<input type='text' id="invoice-lines" name="invoice-lines">
-			<input type='number' id="total-invoice-lines" name="total-invoice-lines" value="0">
+			<input type='hidden' id="invoice-lines" name="invoice-lines">
+			<input type='hidden' id="total-invoice-lines" name="total-invoice-lines" value="0">
 		</fieldset>
 
 		<fieldset> 
