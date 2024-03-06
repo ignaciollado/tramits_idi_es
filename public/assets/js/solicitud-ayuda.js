@@ -758,11 +758,12 @@ function addInvoiceLine() {
 	fechaFacturaInput.value = ""
 	proveedor.value = ""
 	concepto.value = ""
-	baseImponible.value = ""
-	importeIVA.value = ""
-	importeFactura.value = ""
+	baseImponible.value = 0
+	importeIVA.value = 0
+	importeFactura.value = 0
 	fechaPagoInput.value = ""
 	document.getElementById('total-invoice-lines').value = parseFloat(importeFacturaTotal)
+	setTotalInvoice()
 }
 
 function setTotalInvoice() {
@@ -780,8 +781,8 @@ function formatDate(date) {
 	  padTo2Digits(date.getMonth() + 1),
 	  date.getFullYear(),
 	].join('/');
-  }
+}
 
 function padTo2Digits(num) {
 	return num.toString().padStart(2, '0');
-  }
+}

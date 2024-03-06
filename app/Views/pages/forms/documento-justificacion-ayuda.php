@@ -81,12 +81,12 @@ $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(180, '', 20, 60, $html, 0, 1, 1, true, 'J', true);
 
-$html = "<strong>".lang('message_lang.titulo_justificacion_idigital')."</strong>".$idioma."<br><br>";
+$html = "<strong>".lang('message_lang.titulo_justificacion_idigital')."</strong><br><br>";
 $html .= "<strong>".lang('message_lang.destino_solicitud').": Institut d'Innovació Empresarial de les Illes Balears</strong><br><br>";
 $html .= "<strong>".lang('message_lang.codigo_dir3')."</strong>".$data['configuracion']['emisorDIR3']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->writeHTMLCell(180, '', 20, 70, $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(167, '', 20, 70, $html, 0, 1, 1, true, 'J', true);
 
 echo "<content><section>".$html;
 
@@ -99,49 +99,62 @@ $html .= "</table>";
 echo $html;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(180, '', 20, '', $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_total_justificacion').": ".$totalImporteIVA."<br>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_total_justificacion').": ".money_format("%i ", $importeTotalJustificado)." €<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(180, '', 20, '', $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.declaro')."<br><br>".lang('message_lang.justificacion_declaracion')."<br>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.declaro')."<br><br>".lang('message_lang.justificacion_declaracion').":<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(180, '', 20, '', $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
 $html = "<table cellpadding='5' style='border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>";
 $html .= "<ul>";
-
 foreach($justificacion as $docsJustif_item):
 	if ( $docsJustif_item->corresponde_documento == "file_PlanTransformacionDigital") {
-			$html .= "<li>".lang('message_lang.justificacion_plan_p1').".</li>";
-	}
-	if ( $docsJustif_item->corresponde_documento == "file_FactTransformacionDigital") {
-		$html .= "<li>".lang('message_lang.justificacion_facturas_doc').".</li>";
-	}
-	if ( $docsJustif_item->corresponde_documento == "file_PagosTransformacionDigital") {
-		$html .= "<li>".lang('message_lang.justificacion_justificantes_doc').".</li>";
+		$html .= "<li>".lang('message_lang.justificacion_plan_doc').".</li>";
 	}
 endforeach;
+$html .= "<li>".lang('message_lang.justificacion_mem_econom').":<ul>";
+foreach($justificacion as $docsJustif_item):
+    if ( $docsJustif_item->corresponde_documento == "file_FactTransformacionDigital") {
+        $html .= "<li>".lang('message_lang.justificacion_facturas_dec_resp')."</li>";
+    }
+    if ( $docsJustif_item->corresponde_documento == "file_PagosTransformacionDigital") {
+        $html .= "<li>".lang('message_lang.justificacion_justificantes_dec_resp')."</li>";
+    }
+endforeach;
+$html .= "</ul></li>";
 $html .= "</ul>";
+$html .= "</td></tr>";
+$html .= "</table><br>";
+echo $html;
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$pdf->writeHTMLCell(158, '', 20, '', $html, 0, 1, 1, true, 'J', true);
+
+$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
+$html .= "<tr><td>";
+$html .= "<strong>".lang('message_lang.justificacion_mem_econom_titulo').":</strong><br>";
+$html .= $memoriaEconomicaJustificativa;
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
-
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$pdf->WriteHTML($html, true, false, true, false, '');
+$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
 
 $pdf->setPrintHeader(false);
@@ -160,7 +173,7 @@ $html .= "</table>";
 echo $html;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(180, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
 
 // --------------------------------------------------------------------------------------------------------------------------------------------- //
 // Lo guarda todo en una carpeta del servidor para, luego, enviarlo por correo electrónico.

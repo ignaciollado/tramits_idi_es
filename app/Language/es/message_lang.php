@@ -141,9 +141,14 @@ return [
    'justificacion_declaracion_PII_PIII' => ", declaro que he aplicado los fondos percibidos al pago objeto de la convocatoria según el punto 12.2 las bases y adjunto la siguiente documentación como justificación",
     
    'justificacion_plan_p1'            => "El plan o los informes de acuerdo con el programa que justifico",
+   'justificacion_plan_doc'           => "Memoria técnica de actuación: El <strong>plan o informe</strong> de acuerdo con el programa que justifico",
    'justificacion_plan_p2_p3'         => "El plan o los informes",
+   'justificacion_mem_econom_titulo'  => "Memoria económica justificativa",
+   'justificacion_mem_econom'         => "Memoria económica justificativa (anexo 7) junto con",
    'justificacion_facturas_doc'       => "Las facturas emitidas por el consultor",
+   'justificacion_facturas_dec_resp'  => "Las <strong>facturas emitidas por el consultor</strong> en las cuales figuran: la fecha de la factura, el destinatario de la misma, el importe y el concepto de la consultoría realizada según el programa.",
    'justificacion_justificantes_doc'  => "Los justificantes de pagos realizados al consultor",
+   'justificacion_justificantes_dec_resp'  => "Los <strong>justificantes de pago realizados al consultor</strong> en los términos establecidos en la convocatória.",
 
    'enviar_documentacion'  			  => "Enviar la documentación",   
    'programa'                         => "1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA",

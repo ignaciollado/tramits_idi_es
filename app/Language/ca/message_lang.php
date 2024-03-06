@@ -143,9 +143,15 @@ return [
    'justificacion_declaracion_PII_PIII' => ", declar que he aplicat els fons percebuts al pagament objecte de la convocatòria segons el punt 12.2 de la mateixa, i adjunt la següent documentació com a justificació",
   
    'justificacion_plan_p1'            => "El pla o els informes d'acord amb el programa que justifico",
+   'justificacion_plan_doc'           => "Memòria tècnica d'actuació: El <strong>pla o informe</strong> d'acord amb el programa que justifico",
+
    'justificacion_plan_p2_p3'         => "El pla o els informes",
+   'justificacion_mem_econom_titulo'  => "Memòria econòmica justificativa",
+   'justificacion_mem_econom'         => "Memòria econòmica justificativa (annex 7) juntament amb",
    'justificacion_facturas_doc'       => "Les factures emeses pel consultor",
+   'justificacion_facturas_dec_resp'       => "Les <strong>factures emeses pel consultor</strong> en les quals figuren: la data de la factura, el destinatari de la mateixa, l'import i el concepte de la consultoria realitzada segons el programa.",
    'justificacion_justificantes_doc'  => "Els justificants de pagaments realitzats al consultor",
+   'justificacion_justificantes_dec_resp'  => "Els <strong>justificants de pagaments realitzats al consultor</strong> en els terminis establerts en la convocatòria.",
 
    'enviar_documentacion'  			  => "Enviar la documentació",
    'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITAU",

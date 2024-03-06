@@ -654,9 +654,8 @@ class Expedientes extends Controller
 		$selloTiempo = date("d_m_Y_h_i_sa");
 		$tipo_tramite = str_replace("%20", " ", $tipo_tramite);
 
-		$lineas_facturacion = $this->request->getVar('invoice-lines');
-
-		echo $lineas_facturacion;
+		$listaEnumerativaDeGastos = $this->request->getVar('invoice-lines');
+		$totalEnvoiceLines = $this->request->getVar(('total-invoice-lines'));
 
 		// Sube el plan
 		$documentosfile = $this->request->getFiles();
@@ -694,6 +693,8 @@ class Expedientes extends Controller
 					'cifnif_propietario' => $nif,
 					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
 					'corresponde_documento' => 'file_FactTransformacionDigital',
+					'listaEnumerativaDeGastos' => $listaEnumerativaDeGastos,
+					'importeTotalJustificado' => $totalEnvoiceLines,
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
 					'created_at'  => $factura->getTempName(),
@@ -743,6 +744,8 @@ class Expedientes extends Controller
 		endforeach;
 		$data['selloTiempo'] = $selloTiempo;
 		$data['id'] = $id;
+		$data['memoriaEconomicaJustificativa'] = $listaEnumerativaDeGastos;
+		$data['importeTotalJustificado'] = $totalEnvoiceLines;
 		echo view('templates/header/header_form_requerimiento_resultado', $data);
 		echo view('pages/forms/documento-justificacion-ayuda', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);

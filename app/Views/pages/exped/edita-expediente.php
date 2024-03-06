@@ -1323,15 +1323,15 @@ if (!$expedientes['importeAyuda']) {
 
         </div>
         <div class="col docsExpediente">
-            <h3>Justificacions:</h3>
+            <h3><?php echo lang('message_lang.justificacion_titulo');?>:</h3>
             <div id = "tab_plan">
                 <button class="accordion-exped">
                 <?php
                     if ($expedientes['tipo_tramite'] =='Programa I') {
-	                    echo lang('message_lang.justificacion_plan_p1').": ";
+	                    echo lang('message_lang.justificacion_plan_p1');
                     }
                     else {
-	                    echo lang('message_lang.justificacion_plan_p2_p3').": ";
+	                    echo lang('message_lang.justificacion_plan_p2_p3');
                     }
                 ?>
                 </button>
@@ -1376,7 +1376,7 @@ if (!$expedientes['importeAyuda']) {
             </div>
 
             <div id = "tab_facturas">
-                <button class="accordion-exped">Factures de l'habilitador digital:</button>
+                <button class="accordion-exped"><?php echo lang('message_lang.justificacion_facturas_doc');?></button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
@@ -1385,11 +1385,11 @@ if (!$expedientes['importeAyuda']) {
                     </div>
                 <?php if($documentosJustifFact): ?>
                 <?php foreach($documentosJustifFact as $docsJustif_item):
-
 			        $path =  $docsJustif_item->created_at;
 			        $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			        $tipoMIME = $docsJustif_item->type;
 			        $nom_doc = $docsJustif_item->name;
+                    $listaEnumerativaDeGastos = $docsJustif_item->listaEnumerativaDeGastos;
 			    ?>
   	                <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
       	                <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
@@ -1423,12 +1423,13 @@ if (!$expedientes['importeAyuda']) {
 
 	                </div>
                 <?php endforeach; ?>
+                <?php echo $listaEnumerativaDeGastos;?>
                 <?php endif; ?>
                 </div>
             </div>
 
             <div id = "tab_pagos" class="active">
-                <button class="accordion-exped">Justificants de pagament a l'habilitador digital:</button>
+                <button class="accordion-exped"><?php echo lang('message_lang.justificacion_justificantes_doc');?></button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
 		                <div >Rebut el</div>

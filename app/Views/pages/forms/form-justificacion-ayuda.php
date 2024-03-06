@@ -96,11 +96,11 @@
   			<label for="concepto"><?php echo lang('message_lang.concepto');?></label>
 			</div>
 			<div class="form-floating">
-  				<input type="number" class="form-control" id="base-imponible" onblur="setTotalInvoice()" placeholder="Base imponible">
+  				<input type="number" class="form-control" id="base-imponible" value="0" placeholder="Base imponible">
   				<label for="base-imponible"><?php echo lang('message_lang.baseImponible');?></label>
 			</div>
 			<div class="form-floating">
-  			<input type="number" class="form-control" id="importe-iva" onblur="setTotalInvoice()" placeholder="Importe IVA">
+  			<input type="number" class="form-control" id="importe-iva" value="0" onblur="setTotalInvoice()" placeholder="Importe IVA">
   			<label for="importe-iva"><?php echo lang('message_lang.importeIVA');?></label>
 			</div>
 			<div class="form-floating">
@@ -117,7 +117,7 @@
 		<fieldset>
 			<div class="container-lines" id="container-lines"></div>
 			<input type='text' id="invoice-lines" name="invoice-lines">
-			<input type='number' id="total-invoice-lines" name="total-invoice-lines">
+			<input type='number' id="total-invoice-lines" name="total-invoice-lines" value="0">
 		</fieldset>
 
 		<fieldset> 
@@ -162,45 +162,23 @@
 
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-		<h4 class="modal-title"><?php echo lang('message_lang.clausula_idi');?></h4>
+				<h4 class="modal-title"><?php echo lang('message_lang.clausula_idi');?></h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <div><span style='font-size:8pt'><span style='font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>
-<?php echo lang('message_lang.rgpd_txt');?>
-      </span></div>
-      <div class="modal-footer">
-        <button type = "button" id = "documentacion_justificacion" class = "btn btn-default" data-dismiss="modal"><?php echo lang('message_lang.cierra');?></button>
-      </div>
-    </div>
-  </div>
-</div>
+				<?php echo lang('message_lang.rgpd_txt');?>
+      	</span></div>
+      	<div class="modal-footer">
+        	<button type = "button" id = "documentacion_justificacion" class = "btn btn-default" data-dismiss="modal"><?php echo lang('message_lang.cierra');?></button>
+      	</div>
+    	</div>
+  	</div>
+	</div>
 </div>
 </section>
-
-<script>
-	//var acc = document.getElementsByClassName("accordion");
-	//var i;
-
-	//for (i = 0; i < acc.length; i++) {
-  	//	acc[i].addEventListener("click", function() {
-	//    /* Toggle between adding and removing the "active" class,
-    //	to highlight the button that controls the panel */
-    //	this.classList.toggle("active");
-
-    //	/* Toggle between hiding and showing the active panel */
-    //	var panel = this.nextElementSibling;
-    //	if (panel.style.display === "block") {
-    //  		panel.style.display = "none";
-    //	} else {
-    //  		panel.style.display = "block";
-    //	}
-  	//});
-	//}
-</script>
 
 <script>
 	$(document).ready(function(){
