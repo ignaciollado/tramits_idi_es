@@ -375,8 +375,8 @@ if (!$expedientes['importeAyuda']) {
 	    	    <div class="form-group general">
                     <label for = "ordenDePago"><strong>Enviar a pagament:</strong></label>
                     <select class="form-control send_fase_0" id = "ordenDePago" name = "ordenDePago" required>
-    		    		    <option <?php if ($expedientes['ordenDePago'] == "NO") { echo "selected";}?> value = "NO"><span>NO</span></option>
-                            <option <?php if ($expedientes['ordenDePago'] == "SI") { echo "selected";}?> value = "SI" class="solicitud">SI</option>
+    		    		<option <?php if ($expedientes['ordenDePago'] == "NO") { echo "selected";}?> value = "NO"><span>NO</span></option>
+                        <option <?php if ($expedientes['ordenDePago'] == "SI") { echo "selected";}?> value = "SI" class="solicitud">SI</option>
 			        </select>
                 </div>
 	    	    <div class="form-group general">
@@ -405,10 +405,10 @@ if (!$expedientes['importeAyuda']) {
         <div class="col">
             <h3>Documentació <strong>requerida</strong> de l'expedient:</h3>
             <div class="docsExpediente">
-  	            <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
+  	            <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
         	        <div>Rebut el</div>
 			        <div>Document</div>
-    		        <div>Tràmit</div>
+    		        <!-- <div>Tràmit</div> -->
 			        <div>Estat</div>
   		        </div>
                 <?php if($documentosDetalle){ ?>
@@ -483,10 +483,10 @@ if (!$expedientes['importeAyuda']) {
                             $nom_doc = $docs_item->name;
                         }?>
                     <?php if ($docs_item->docRequerido !== 'NO') {?>
-  			            <div id ="fila" class = "detail-wrapper-docs general">
+  			            <div id ="fila" class = "detail-wrapper-docs-4 general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-      			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite; ?></span>
+      			            <!-- <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite; ?></span> -->
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
@@ -536,10 +536,10 @@ if (!$expedientes['importeAyuda']) {
             <!-- Documentación opcional-->
             <h3>Documentació <strong>opcional</strong> de l'expedient:</h3>
               <div class="docsExpediente">
-  	                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
+  	                <div class = "header-wrapper-docs-3 header-wrapper-docs-solicitud">
         	            <div >Rebut el</div>
 			            <div >Document</div>
-    		            <div >Tràmit</div>
+    		            <!-- <div >Tràmit</div> -->
 			            <div >Estat</div>
   		            </div>
                     <?php if($documentosDetalle){ ?>
@@ -579,10 +579,10 @@ if (!$expedientes['importeAyuda']) {
                     }?>
 
                     <?php if ($docs_opc_item->docRequerido === 'NO') {?>
-  			            <div id ="fila" class = "detail-wrapper-docs-4 general">
+  			            <div id ="fila" class = "detail-wrapper-docs-3 general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_opc_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_opc_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-      			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_opc_item->tipo_tramite; ?></span>
+      			            <!-- <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_opc_item->tipo_tramite; ?></span> -->
                             <?php
                             switch ($docs_opc_item->estado) {
 				                case 'Pendent':

@@ -1365,13 +1365,6 @@ span.export {
 	width: 100%;
 	color: #fff;
 }
-.header-wrapper-docs {
-	display: grid;
-	grid-template-columns: 20% 40% 10% 10% 20%;
-	padding: .4rem;
-	width: 100%;
-	color: #fff;
-}
 
 .header-wrapper-docs-3 {
 	display: grid;
