@@ -1,7 +1,6 @@
 <?php
 helper('cookie');
 $language = \Config\Services::language();
-echo "***".$_COOKIE['itramitsCurrentLanguage']."***";
 require_once('tcpdf/tcpdf.php');
 
 use App\Models\ConfiguracionModel;
@@ -264,28 +263,16 @@ $html18 .= "<tr><td></td></tr>";
 $html18 .= "<tr><td><ul>";
 if (trim($file_copiaNIF)=="SI" OR trim($file_certificadoATIB)=="SI" OR trim($file_certificadoSegSoc)=="SI") {
 	$html18 .= lang('message_lang.autorizaciones_solicitud_si_autoriza')."<br>";
-	/* if (trim($file_copiaNIF)=="SI") {
-		$html18 .= "<li><strong>".$file_copiaNIF."</strong> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";
-	}
-	if (trim($file_certificadoATIB)=="SI") {
-		$html18 .= "<li><strong>".$file_certificadoATIB."</strong> ".lang('message_lang.doy_mi_consentimiento_pdf')."</li>";
-	}
-	if (trim($file_certificadoSegSoc)=="SI") {
-		$html18 .= "<li><strong>".$file_certificadoSegSoc."</strong> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";
-	} */
 } 
 if (trim($file_copiaNIF)=="NO" OR trim($file_certificadoATIB)=="NO" OR trim($file_certificadoSegSoc)=="NO") {
 	$html18 .= "<br><br>".lang('message_lang.autorizaciones_solicitud_no_autoriza')."<br>";
 	if (trim($file_copiaNIF)=="NO") {
-		//$html18 .= "<li><strong>".$file_copiaNIF."</strong> ".lang('message_lang.autorizaciones_personas_fisicas')."</li>";
 		$html18 .= "<li>".lang('message_lang.autorizaciones_personas_fisicas')."</li>";
 	}
 	if (trim($file_certificadoATIB)=="NO") {
-		//$html18 .= "<li><strong>".$file_certificadoATIB."</strong> ".lang('message_lang.doy_mi_consentimiento_pdf')."</li>";
 		$html18 .= "<li>".lang('message_lang.doy_mi_consentimiento_pdf')."</li>";
 	}
 	if (trim($file_certificadoSegSoc)=="NO") {
-		//$html18 .= "<li><strong>".$file_certificadoSegSoc."</strong> ".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";
 		$html18 .= "<li>".lang('message_lang.doy_mi_consentimiento_seg_soc')."</li>";
 	}
 }		
@@ -423,6 +410,12 @@ $pdf->WriteHTML($html29, true, false, true, false, '');
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud.pdf', 'F');
 
 ?>
+<div class="container">
+	<div class='alert alert-info'><?php echo lang('message_lang.enviado_correo_electron');?></div>
+	<div class='alert alert-warning'><?php echo lang('message_lang.nota_info_rec');?></div>
+	<div class='alert alert-info'><?php echo lang('message_lang.contacto_idi_pindust');?></div>	
+	<div class='alert alert-info'><?php echo lang('message_lang.una_vez_firmado');?></div>
+</div>
 <div class="container">
 	<div><?php echo $html1;?></div>
 	<div><?php echo $html2;?></div>

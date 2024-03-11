@@ -13,7 +13,6 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 	setcookie("itramitsCurrentLanguage", 'ca');
 	service('request')->setLocale('ca');
 }
-echo "**".$_COOKIE['itramitsCurrentLanguage']."**";
 ?>
 <section id="formulario_solicitud">
 	<div class="alert alert-info">
@@ -202,9 +201,9 @@ echo "**".$_COOKIE['itramitsCurrentLanguage']."**";
 					<code>[.pdf]:</code>
 					<input type = "file" id="file_memoriaTecnica" name="file_memoriaTecnica[]" size="50" accept=".pdf" multiple aria-required="true" onblur="javaScript: validateFormField(this);"/>
 			</div>
-			<label for = "memoriaTecnicaEnIDI" class="main" >
+			<label for="memoriaTecnicaEnIDI" class="main" >
 				<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-					<input type="checkbox" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required name = "memoriaTecnicaEnIDI" id = "memoriaTecnicaEnIDI">
+				<input type="checkbox" id="memoriaTecnicaEnIDI" name="memoriaTecnicaEnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
 				<span class="w3docs"></span>
 			</label>
 

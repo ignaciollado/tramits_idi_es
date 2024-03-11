@@ -86,7 +86,6 @@ function habilitarNextButton (valor) {
 
 function tipoSolicitante (valor) {
 	let element = document.getElementById("interesado")
-
 	let elementDoc = document.getElementById("docTipoInteresado")
 	let elementDocNifEmpresa = document.getElementById("docTipoInteresadoNifEmpresa")
 	let elementDocAcreditativoRepresentatividad = document.getElementById("docAcreditativoRepresentatividad")
@@ -135,7 +134,11 @@ function tipoSolicitante (valor) {
 	fChild.setAttribute("accept", ".pdf")
 	fChild.setAttribute("multiple", "true")
 	fChild.setAttribute("onblur", "validateFormField(this);")
-		
+	
+	document.getElementById('memoriaTecnicaEnIDI').checked = false
+	document.getElementById('copiaNIFSociedadEnIDI').checked = false
+	document.getElementById('pJuridicaDocAcreditativaEnIDI').checked = false
+
 	if (document.contains(document.getElementById("nif_representante"))) {
 		document.getElementById("nif_representante").remove();
 	}
@@ -160,14 +163,24 @@ function tipoSolicitante (valor) {
 	if (document.contains(document.getElementById("file_document_acred_como_repres"))) {
 		document.getElementById("file_document_acred_como_repres").remove();
 	}
+	if (document.contains(document.getElementById("file_escritura_empresa"))) {
+		document.getElementById("file_escritura_empresa").remove();
+	}
+
 	switch (valor) {
 		case 'autonomo':
 			document.getElementById("pFisica").classList.remove('ocultar')
+			document.getElementById("docTipoInteresado").classList.remove('ocultar')
+			document.getElementById("enviarmemoriaTecnica").classList.remove('ocultar')
 			document.getElementById("pJuridica").classList.add('ocultar')
 			document.getElementById("copiaNIFSociedadFieldSet").classList.add('ocultar')
 			document.getElementById("pJuridicaDocEscritura").classList.add('ocultar')
 			document.getElementById("pJuridicaDocAcreditativa").classList.add('ocultar')
 			document.getElementById("pJuridicaDocAcreditativaFieldSet").classList.add('ocultar')
+			document.getElementById("docTipoInteresadoNifEmpresa").classList.add('ocultar')
+			document.getElementById("pJuridicaDocEscritura").classList.add('ocultar')
+			document.getElementById("docAcreditativoRepresentatividad").classList.add('ocultar')
+		
 			dChild.setAttribute("id", "file_altaAutonomos")
 			dChild.setAttribute("name", "file_altaAutonomos[]")
 			dChild.setAttribute("placeholder", "Selecciona l'alta en el RETA o en un règim alternatiu equivalent")
@@ -177,12 +190,13 @@ function tipoSolicitante (valor) {
 			document.getElementById("declaracion_responsable_xii_lbl").style.display = "block";
 			document.getElementById("nif").placeholder = 'DNI / NIE';
 			document.getElementById("nif").title = 'DNI / NIE';
-			if (document.contains(document.getElementById("file_escritura_empresa"))) {
+			/* if (document.contains(document.getElementById("file_escritura_empresa"))) {
 				document.getElementById("file_escritura_empresa").remove();
-			}
+			} */
 			if (document.contains(document.getElementById("file_document_acred_como_repres"))) {
 				document.getElementById("file_document_acred_como_repres").remove();
 			}
+			elementDoc.appendChild(dChild)
 			break;
 		case 'pequenya':
 		case 'mediana':
@@ -196,11 +210,16 @@ function tipoSolicitante (valor) {
 			document.getElementById("pJuridicaDocEscritura").classList.remove('ocultar')
 			document.getElementById("pJuridicaDocAcreditativa").classList.remove('ocultar')
 			document.getElementById("pJuridicaDocAcreditativaFieldSet").classList.remove('ocultar')
-
+			document.getElementById("enviarmemoriaTecnica").classList.remove('ocultar')
+/* 			if (document.contains(document.getElementById("file_escritura_empresa"))) {
+				document.getElementById("file_escritura_empresa").classList.remove('ocultar')
+			} */
 			dChild.setAttribute("id", "file_escritura_empresa")
 			dChild.setAttribute("name", "file_escritura_empresa[]")
 			dChild.setAttribute("placeholder", "Selecciona las escrituras de la empresa")
 			dChild.setAttribute("title", "Selecciona las escrituras de la empresa")
+			dChild.remove('ocultar')
+			console.log ("he quitado ocultar de file_escritura_empresa")
 
 			eChild.setAttribute("id", "file_nifEmpresa")
 			eChild.setAttribute("name", "file_nifEmpresa[]")
@@ -219,11 +238,11 @@ function tipoSolicitante (valor) {
 			document.getElementById("denom_interesado").setAttribute("placeholder", "Raó social");
 			document.getElementById("denom_interesado").setAttribute("title", "Raó social");	
 				
+			elementDoc.appendChild(dChild)
 			elementDocNifEmpresa.appendChild(eChild)
 			elementDocAcreditativoRepresentatividad.appendChild(fChild)
 			break;
 	}
-	elementDoc.appendChild(dChild)
 	document.getElementById("formbox2").className = 'formbox'
 }
 
@@ -528,7 +547,6 @@ function muestraSubeArchivo (id) {
 
 			if (id == "nifRepresentante")
 				{
-				// if (document.getElementById("nifEmpresa").checked || document.getElementById("nifRepresentante").checked || document.getElementById("document_acred_como_repres").checked) {
 				if (document.getElementById("nifEmpresa").checked || document.getElementById("nifRepresentante").checked) {
 					document.getElementById("copiaNIF").disabled = true;		
 				}
@@ -539,8 +557,7 @@ function muestraSubeArchivo (id) {
 			
 				if (document.getElementById("nifRepresentante").checked) {
 					document.getElementById("enviarnifRepresentante").remove = 'ocultar';
-					document.getElementById("enviarnifRepresentante").className = 'enviararchivo_ver';
-					// document.getElementsByName("file_nifRepresentante").focus();				
+					document.getElementById("enviarnifRepresentante").className = 'enviararchivo_ver';			
 				}
 				else
 				{
@@ -551,7 +568,7 @@ function muestraSubeArchivo (id) {
 				}
 }
 			
-$("#telefono_cont").focusout(function() {
+	$("#telefono_cont").focusout(function() {
 		var inputValue = $(this).val();
 		var txt = "";
 		if (inputValue == "" || document.getElementById("telefono_cont").validity.patternMismatch)
@@ -568,7 +585,7 @@ $("#telefono_cont").focusout(function() {
 			}
 	})
 			
-$("#telefono_cont").keyup(function() {
+	$("#telefono_cont").keyup(function() {
 			if( jQuery(this).val() == "" || document.getElementById("telefono_cont").validity.patternMismatch)
 				{
 				txt = "Hauria de ser un telèfon vàlid !!!";
@@ -723,12 +740,12 @@ function deshabilitarSubidaDocumento (checkObj) {
 				break
 			case 'pJuridicaDocAcreditativaEnIDI':
 				if (checkObj.checked) {
-					document.getElementById('file_document_acred_como_repres').removeAttribute("required")
-				 	document.getElementById('file_document_acred_como_repres').removeAttribute("aria-required")
+					document.getElementById('file_escritura_empresa').removeAttribute("required")
+				 	document.getElementById('file_escritura_empresa').removeAttribute("aria-required")
 				 	document.getElementById('docTipoInteresado').classList.add("ocultar")
 				} else {
-				 	document.getElementById('file_document_acred_como_repres').setAttribute('required', '')
-				 	document.getElementById('file_document_acred_como_repres').setAttribute('aria-required', 'true')
+					document.getElementById('file_escritura_empresa').setAttribute('required', '')
+				 	document.getElementById('file_escritura_empresa').setAttribute('aria-required', 'true')
 					document.getElementById('docTipoInteresado').classList.remove("ocultar")
 				}
 				break

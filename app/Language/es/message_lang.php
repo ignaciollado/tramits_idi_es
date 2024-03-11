@@ -149,7 +149,7 @@ return [
    'justificacion_facturas_dec_resp'  => "Las <strong>facturas emitidas por el consultor</strong> en las cuales figuran: la fecha de la factura, el destinatario de la misma, el importe y el concepto de la consultoría realizada según el programa.",
    'justificacion_justificantes_doc'  => "Los justificantes de pagos realizados al consultor",
    'justificacion_justificantes_dec_resp'  => "Los <strong>justificantes de pago realizados al consultor</strong> en los términos establecidos en la convocatória.",
-
+   'firmo_documento_justificacion'    => "Firmo este documento al efecto de justificar la convocatoria de ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares para el año 2024 y solicitar el pago de la subvención concedida.",
    'enviar_documentacion'  			  => "Enviar la documentación",   
    'programa'                         => "1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA",
    'programa_continuacion'            => "(seleccione sólo una opción. Presente una solicitud para cada programa)",
@@ -245,6 +245,7 @@ return [
    "documentacion_necesaria_pymes"     => "<dl class='formbox'>
                                                 <dt>En el caso de personas jurídicas (<abbr title='Pequeñas y Medianas Empresas'>PYMES</abbr>):</dt>
                                                 <dd>Descripción de la empresa y su actividad, el modelo de negocio y necesidades en función del programa al que se presenta.</dd>
+                                                <dd>Certificado de estar al corriente con las obligaciones tributarias de la <abbr title='Agencia Estatal de la Administración Tributaria'>AEAT</abbr>.</dd>
                                                 <dd>Certificado de <abbr title='Impuesto de actividades empresariales'>IAE</abbr> actualizado en el momento de la solicitud.</dd>
                                                 <dd>Copia del <abbr title='Número de identificación fiscal'>NIF</abbr> de la empresa.</dd>
                                                 <dd>Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.</dd>
@@ -257,7 +258,7 @@ return [
                                                    <dd>El certificado de alta <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                   <dt><strong>AUTORIZACIONES</strong>: la solicitud implica la autorización (artículo 28.2 de la Ley 39/2015) para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones con la ATIB y la TGSS, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación:</dt>
+                                                   <dt><strong>AUTORIZACIONES</strong>: la solicitud implica la autorización (artículo 28.2 de la Ley 39/2015) para que el <abbr title='Instituto de innovación empresarial de las Islas Baleares'>IDI</abbr> pueda comprobar de oficio que el solicitante está al corriente de las obligaciones con la <abbr title='Agència tributaria de les Illes Balears'>ATIB</abbr> y la <abbr title='Tesorería general de la seguridad social'>TGSS</abbr>, excepto en caso de denegación expresa. En este caso, el beneficiario tendrá que aportar la siguiente documentación:</dt>
                                                       <dd><abbr title='Número de identificación fiscal'>NIF</abbr> del solicitante y/o de la persona autorizada y los documentos acreditativos, si es necesario.</dd>
                                                       <dd>Certificado de estar al corriente de pago con la <abbr title='Agència tributaria de les Illes Balears'>ATIB</abbr>.</dd>
                                                       <dd>Certificado de estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>TGSS</abbr>.</dd>
@@ -340,9 +341,9 @@ return [
    'fecha_creacion_empresa_ils'        => "Fecha de creación de la empresa",
    'comercializacion_empresa_ils'      => "Canales de comercialización",
    'sitio_web_empresa_ils'             => "Sitio web de la empresa",
-   'documentacion_adjunta_requerida_ils'          => "DOCUMENTACIÓN RELACIONADA CON EL CUMPLIMIENTO DE REQUISITOS",
-   'documentacion_adjunta_opcional_ils'          => "OTRA DOCUMENTACIÓN OPCIONAL",
-   'declaracion_responsable_cabecera_ils'       => "DECLARACIÓN RESPONSABLE",
+   'documentacion_adjunta_requerida_ils'   => "DOCUMENTACIÓN RELACIONADA CON EL CUMPLIMIENTO DE REQUISITOS",
+   'documentacion_adjunta_opcional_ils'    => "OTRA DOCUMENTACIÓN OPCIONAL",
+   'declaracion_responsable_cabecera_ils'  => "DECLARACIÓN RESPONSABLE",
 
    'escritura_empresa_ils'                    => "Escritura de constitución de la empresa",
    'memoria_tecnica_ils'               => "Documento descriptivo de la empresa y de su actividad: <ul>

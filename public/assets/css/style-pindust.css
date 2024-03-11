@@ -22,11 +22,6 @@ button:hover {
 .container-add-line > button{
 	text-align: right;
  }
-input[type="text"], input[type="date"], input[type="number"] {
-  background: transparent;
-  border: 1px dotted #a8a8a8;
-	margin-bottom: .5rem;
-}
 .container-lines{
 	margin-top: .25rem;
 	margin-bottom: .25rem;

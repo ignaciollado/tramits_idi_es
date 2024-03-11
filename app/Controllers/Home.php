@@ -71,8 +71,20 @@ class Home extends BaseController
 		helper('filesystem');
 		helper('cookie');
 		$language = \Config\Services::language();
-		$language->setLocale('ca');
-		service('request')->setLocale('ca');
+		$request = \Config\Services::request();
+
+		if ($request->uri->getSegment(3)){
+			$idioma =  $request->uri->getSegment(3);
+			$language->setLocale($idioma);
+		}
+
+	/* 	if ($request->getLocale()){
+			$idioma = $request->getLocale();
+		} else {
+			$idioma =  $request->uri->getSegment(3);
+			$language->setLocale($idioma);
+		} */
+		
 		$modelConfig = new ConfiguracionModel;
 		$generalConfig = $modelConfig->configuracionGeneral();
 		$lineaConfig = new ConfiguracionLineaModel();
@@ -107,6 +119,8 @@ class Home extends BaseController
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
 		
+		echo "---".$request->uri->getSegment(7)."---";
+
 		if ($request->getLocale()){
 			$idioma = $request->getLocale();
 		} else {

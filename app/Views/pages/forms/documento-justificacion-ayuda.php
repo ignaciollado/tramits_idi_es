@@ -175,6 +175,15 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
 
+$html .= "<table cellpadding='5' style='font-size: 7px; width: 100%; border: 1px solid #fff;'>";
+$html .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:8px;'>".lang('message_lang.firmo_documento_justificacion')."</td></tr><br>";
+$html .= "</table>";
+
+echo $html;
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 15);
+$pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
+
 // --------------------------------------------------------------------------------------------------------------------------------------------- //
 // Lo guarda todo en una carpeta del servidor para, luego, enviarlo por correo electrónico.
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/justificacion/'.$selloTiempo.'/'.$nif.'_justificacion_solicitud_ayuda.pdf', 'F');

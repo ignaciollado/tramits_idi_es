@@ -152,6 +152,7 @@ return [
    'justificacion_facturas_dec_resp'       => "Les <strong>factures emeses pel consultor</strong> en les quals figuren: la data de la factura, el destinatari de la mateixa, l'import i el concepte de la consultoria realitzada segons el programa.",
    'justificacion_justificantes_doc'  => "Els justificants de pagaments realitzats al consultor",
    'justificacion_justificantes_dec_resp'  => "Els <strong>justificants de pagaments realitzats al consultor</strong> en els terminis establerts en la convocatòria.",
+   'firmo_documento_justificacion'    => "Sign aquest document a l'efecte de justificar la convocatòria d'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears per l'any 2024 i sol·licitar el pagament de la subvenció concedida.",
 
    'enviar_documentacion'  			  => "Enviar la documentació",
    'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITAU",
@@ -250,6 +251,7 @@ return [
    "documentacion_necesaria_pymes"     => "<dl class='formbox'>
                                                 <dt>En el cas de persones jurídiques (<abbr title='Petites i mitjanes empreses'>PIMES</abbr>):</dt>
                                                 <dd>Una descripció de l’empresa i la seva activitat, el model de negoci i necessitats en funció del programa a què es presenta.</dd>
+                                                <dd>Certificat d’estar al corrent de les obligacions tributàries amb l'<abbr title='Agencia Estatal de la Administración Tributaria'>AEAT</abbr>.</dd>
                                                 <dd>Certificat d’alta d'<abbr title='Impuesto de actividades empresariales'>IAE</abbr> actualitzat en el moment de la sol·licitud.</dd>
                                                 <dd>Còpia del <abbr title='Número de identificación fiscal'>NIF</abbr> de l'empresa.</dd>
                                                 <dd>Escriptura pública i estatuts, degudament inscrits en el registre corresponent.</dd>
@@ -262,7 +264,7 @@ return [
                                                    <dd>El certificat d’alta de <abbr title='Impuesto de actividades empresariales'>IAE</abbr>.</dd>
                                              </dl>",
    "documentacion_necesaria_si_no_autoriza" => "<dl class='formbox'>
-                                                <dt><strong>AUTORITZACIONS</strong>: la sol·licitud implica l'autorització (article 28.2 de la Llei 39/2015) perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions amb l'Agència Tributària de les Illes Balears i amb la  Tresoreria General de la Seguretat Social, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació:</dt>
+                                                <dt><strong>AUTORITZACIONS</strong>: la sol·licitud implica l'autorització (article 28.2 de la Llei 39/2015) perquè l’<abbr title='Institut Innovació empresarial de les Illes Balears'>IDI</abbr> pugui comprovar d'ofici que el sol·licitant està al corrent de les obligacions amb <abbr title='Agència Tributaria de les Illes Balears'>ATIB</abbr> i amb la <abbr title='Tresoreria General de la Seguretat Social'>TGSS</abbr>, excepte en cas de denegació expressa. En aquest cas, el beneficiari haurà d'aportar la següent documentació:</dt>
                                                    <dd><abbr title='Número d´identificació fiscal'>NIF</abbr> del sol·licitant i/o de la persona autoritzada i  els documents acreditatius, si és necessari.</dd>
                                                    <dd>Certificat d’estar al corrent de pagament amb l´<abbr title='Agència Tributaria de les Illes Balears'>ATIB</abbr>.</dd>
                                                    <dd>Certificat d’estar al corrent de pagament amb la <abbr title='Tresoreria General de la Seguretat Social'>TGSS</abbr>.</dd>
