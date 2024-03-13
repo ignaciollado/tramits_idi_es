@@ -275,7 +275,7 @@ if (!$expedientes['importeAyuda']) {
 	    		    <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onChange="avisarCambiosEnFormulario('send_fase_0', this.id)">
     		    		<option disabled <?php if ($expedientes['situacion'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
                         <optgroup style="background-color:#F51720;color:#000;" label="Fase sol·licitud:">
-                            <option <?php if ($expedientes['situacion'] == "nohapasadoREC") { echo "selected"; }?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat pel REC</option>
+                            <option <?php if ($expedientes['situacion'] == "nohapasadoREC") { echo "selected"; }?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per SEU electrònica</option>
                             <option <?php if ($expedientes['situacion'] == "pendiente") { echo "selected"; }?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
                             <option <?php if ($expedientes['situacion'] == "comprobarAnt") { echo "selected"; }?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
                             <option <?php if ($expedientes['situacion'] == "comprobarAntReg") { echo "selected"; }?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb requeriment pendent</option>
@@ -287,15 +287,15 @@ if (!$expedientes['importeAyuda']) {
                             <option <?php if ($expedientes['situacion'] == "Desestimiento") { echo "selected"; }?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients favorables:">
-        		                <option <?php if ($expedientes['situacion'] == "emitirIFPRPago") { echo "selected";}?> value = "emitirIFPRPago" class="sitValidacion"> IF + PR Pagament emetre</option>
-    				            <option <?php if ($expedientes['situacion'] == "emitidoIFPRPago") { echo "selected";}?> value = "emitidoIFPRPago" class="sitValidacion"> IF + PR Pagament emés</option>
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
+        		                <option <?php if ($expedientes['situacion'] == "emitirIFPRPago") { echo "selected";}?> value = "emitirIFPRPago" class="sitValidacion"> IF + PR provisional emetre</option>
+    				            <option <?php if ($expedientes['situacion'] == "emitidoIFPRPago") { echo "selected";}?> value = "emitidoIFPRPago" class="sitValidacion"> IF + PR provisional emesa</option>
 	    			            <option <?php if ($expedientes['situacion'] == "enviadoPRPago") { echo "selected";}?> value = "enviadoPRPago" class="sitValidacion"> PR Pagament enviat</option>
                                 <option <?php if ($expedientes['situacion'] == "emitirPagoReqIFPR") { echo "selected";}?> value = "emitirPagoReqIFPR" class="sitValidacion"> IF+PR Pagament amb requeriment emetre</option>
                                 <option <?php if ($expedientes['situacion'] == "emitirPagoReqIDPD") { echo "selected";}?> value = "emitirPagoReqIDPD" class="sitValidacion"> ID+PD pagament amb requeriment emetre</option>                                
             		            <option <?php if ($expedientes['situacion'] == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
                             </optgroup>   
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients desfavorables:">
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
                                 <option <?php if ($expedientes['situacion'] == "emitirIDPD") { echo "selected";}?> value = "emitirIDPD" class="sitValidacion"> ID + PD emetre</option>
 				                <option <?php if ($expedientes['situacion'] == "emitidoIDPD") { echo "selected";}?> value = "emitidoIDPD" class="sitValidacion"> ID + PD emés</option>
     				            <option <?php if ($expedientes['situacion'] == "enviadoFirmaPD") { echo "selected";}?> value = "enviadoFirmaPD" class="sitValidacion"> PD enviat a firmar</option>
@@ -309,7 +309,7 @@ if (!$expedientes['importeAyuda']) {
                         <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase execució / justificació:">
                             <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de justificació correcte:">
                 		        <option <?php if ($expedientes['situacion'] == "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion"> Pendent de justificar</option>
-                		        <option <?php if ($expedientes['situacion'] == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent REC justificant</option>
+                		        <option <?php if ($expedientes['situacion'] == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent SEU justificant</option>
             	    	        <option <?php if ($expedientes['situacion'] == "Justificado") { echo "selected";}?> value = "Justificado" class="sitEjecucion"> Justificat</option>
         	    	            <option <?php if ($expedientes['situacion'] == "emitidoResJustificacion") { echo "selected";}?> value = "emitidoResJustificacion" class="sitEjecucion"> Resolució justificació emesa</option>
         	    	            <option <?php if ($expedientes['situacion'] == "Finalizado") { echo "selected";}?> value = "Finalizado" class="sitEjecucion"> Finalitzat</option>
@@ -462,7 +462,7 @@ if (!$expedientes['importeAyuda']) {
 					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l'empresa";
 					            break;
                             case 'file_resguardoREC':	
-                                $nom_doc = "Justificant de presentació pel REC";
+                                $nom_doc = "Justificant de presentació pel SEU";
                                 break;
                             case 'file_DocumentoIDI':	
                                 $nom_doc = "Document pujat des-de l'IDI";
@@ -658,22 +658,22 @@ if (!$expedientes['importeAyuda']) {
             <h3>Detall:</h3>
            <form action="" onload = "javaScript: actualizaRequired();" name="exped-fase-1" id="exped-fase-1" method="post" accept-charset="utf-8">
                 <div class="form-group solicitud">
-                    <label for = "fecha_REC"><strong>Data REC sol·licitud:</strong></label>
+                    <label for = "fecha_REC"><strong>Data SEU sol·licitud:</strong></label>
 			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
 			        <!-- <input type = "text" placeholder = "aaaa-mm-dd hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php //echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/> -->
                 </div>
                 <div class="form-group solicitud">
-                    <label for = "ref_REC"><strong>Referència REC sol·licitud:</strong></label>
-                    <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
+                    <label for = "ref_REC"><strong>Referència SEU sol·licitud:</strong></label>
+                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
                 </div>
                 <div class="form-group solicitud">
-                    <label for = "fecha_REC_enmienda"><strong>Data REC esmena:</strong></label>
+                    <label for = "fecha_REC_enmienda"><strong>Data SEU esmena:</strong></label>
 		    	    <!-- <input type = "datetime-local" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_enmienda']),"Y-m-d\Th:m");?>"/> -->
 		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
                 </div>		
                 <div class="form-group solicitud">
-                    <label for = "ref_REC_enmienda"><strong>Referència REC esmena:</strong></label>
-                    <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
+                    <label for = "ref_REC_enmienda"><strong>Referència SEU esmena:</strong></label>
+                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento"><strong>Data firma requeriment:</strong></label>
@@ -707,8 +707,8 @@ if (!$expedientes['importeAyuda']) {
             <h3>Millores: <!-- <small class="alert alert-secondary" role="alert"><?php echo $ultimaMejoraSolicitud; ?></small> --></h3>
             <?php if($mejorasSolicitud): ?>
                 <div class = "header-wrapper-docs-3 header-wrapper-docs-solicitud">
-        	        <div >Data rec</div>
-   	  	            <div >Referència rec</div>
+        	        <div >Data SEU</div>
+   	  	            <div >Referència SEU</div>
    	  	            <div >Acciò</div>
                 </div>
                
@@ -730,7 +730,7 @@ if (!$expedientes['importeAyuda']) {
                     <input type='datetime-local' title = "dd/mm/aaaa hh:mm:ss" name = "fechaRecMejora" class='form-control form-control-sm' id="fechaRecMejora"/>
                 </div>
                 <div class="mb-3">
-                    <input type='text' placeholder = "El número del REC [GOIBE539761_2021]" name = "refRecMejora" class='form-control form-control-sm' id="refRecMejora" maxlength = "16"/>
+                    <input type='text' placeholder = "El número del SEU [GOIBE539761_2021]" name = "refRecMejora" class='form-control form-control-sm' id="refRecMejora" maxlength = "16"/>
                 </div>
                     <button class="btn-itramits btn-success-itramits btn-lg btn-block btn-docs" onclick="insertaMejoraEnSolicitud()" id="addMejora">Afegir</button>
             </div>          
@@ -1053,12 +1053,12 @@ if (!$expedientes['importeAyuda']) {
                         <input type = "date" name = "fecha_max_desp_ampliacion" class = "form-control send_fase_3" id = "fecha_max_desp_ampliacion" value = "<?php echo date_format(date_create($expedientes['fecha_max_desp_ampliacion']), 'Y-m-d');?>">
                     </div>
                     <div class="form-group ejecucion">
-                        <label for = "fecha_REC_amp_termino"><strong>Data REC ampliació termini:</strong></label>
+                        <label for = "fecha_REC_amp_termino"><strong>Data SEU ampliació termini:</strong></label>
 		    	        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_amp_termino" class = "form-control send_fase_3" id = "fecha_REC_amp_termino" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_amp_termino']);?>"/>
                     </div>
     		        <div class="form-group ejecucion">
-                        <label for = "ref_REC_amp_termino"><strong>Referència REC ampliació termini:</strong></label>
-                        <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_amp_termino" class = "form-control send_fase_3" id = "ref_REC_amp_termino"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_amp_termino'];?>">
+                        <label for = "ref_REC_amp_termino"><strong>Referència SEU ampliació termini:</strong></label>
+                        <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_amp_termino" class = "form-control send_fase_3" id = "ref_REC_amp_termino"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_amp_termino'];?>">
         	        </div>
     		        <div class="form-group ejecucion">
                         <label for = "fecha_amp_termino"><strong>Data notificació ampliació termini:</strong></label>
@@ -1182,12 +1182,12 @@ if (!$expedientes['importeAyuda']) {
             <div class="row">
             <div class="col">            
             <div class="form-group justificacion">
-            <label for = "fecha_REC_justificacion"><strong>Data REC justificació:</strong></label>
+            <label for = "fecha_REC_justificacion"><strong>Data SEU justificació:</strong></label>
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
             </div>	
 		    <div class="form-group justificacion">
-            <label for = "ref_REC_justificacion"><strong>Referència REC justificació:</strong></label>
-            <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
+            <label for = "ref_REC_justificacion"><strong>Referència SEU justificació:</strong></label>
+            <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
         	</div>
     		<div class="form-group justificacion">
             <label for = "fecha_res_liquidacion"><strong>Data resolució de concessió:</strong></label>
@@ -1202,12 +1202,12 @@ if (!$expedientes['importeAyuda']) {
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
             </div>	
             <div class="form-group justificacion">
-            <label for = "fecha_REC_requerimiento_justificacion"><strong>Data REC requeriment justificació:</strong></label>
+            <label for = "fecha_REC_requerimiento_justificacion"><strong>Data SEU requeriment justificació:</strong></label>
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
             </div>	
 		    <div class="form-group justificacion">
-            <label for = "ref_REC_requerimiento_justificacion"><strong>Referència REC requeriment justificació:</strong></label>
-            <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
+            <label for = "ref_REC_requerimiento_justificacion"><strong>Referència SEU requeriment justificació:</strong></label>
+            <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
         	</div>
 
                 <?php
@@ -1617,12 +1617,12 @@ if (!$expedientes['importeAyuda']) {
         <h3>Detall:</h3>
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-5" id="exped-fase-5" method="post" accept-charset="utf-8">
             <div class="form-group desistimiento">
-                <label for = "fecha_REC_desestimiento"><strong>Data REC desistiment:</strong></label>
+                <label for = "fecha_REC_desestimiento"><strong>Data SEU desistiment:</strong></label>
 	    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_desestimiento']);?>"/>
             </div>
 		    <div class="form-group desistimiento">
-                <label for = "ref_REC_desestimiento"><strong>Referència REC desistiment:</strong></label>
-                <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" maxlength = "16" name = "ref_REC_desestimiento" class = "form-control send_fase_5" id = "ref_REC_desestimiento" value = "<?php echo $expedientes['ref_REC_desestimiento'];?>">
+                <label for = "ref_REC_desestimiento"><strong>Referència SEU desistiment:</strong></label>
+                <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" maxlength = "16" name = "ref_REC_desestimiento" class = "form-control send_fase_5" id = "ref_REC_desestimiento" value = "<?php echo $expedientes['ref_REC_desestimiento'];?>">
         	</div>
 	    	<div class="form-group desistimiento">
                 <label for = "fecha_firma_resolucion_desestimiento"><strong>Data firma resolució de desistiment:</strong></label>

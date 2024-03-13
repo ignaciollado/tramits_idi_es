@@ -17,7 +17,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
 $ultimaMejora = explode("##",  $data['ultimaMejora']);
@@ -25,14 +25,14 @@ $ultimaMejora = explode("##",  $data['ultimaMejora']);
 $db = \Config\Database::connect();
 $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
 foreach ($query->getResult() as $row)
-    {
+{
     $nif = $row->cifnif_propietario;
-    }
+}
         
 $session = session();
-        if ($session->has('logged_in')) {  
-           $pieFirma =  $session->get('full_name');
-        }
+if ($session->has('logged_in')) {  
+    $pieFirma =  $session->get('full_name');
+}
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -109,7 +109,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_resolucion_desestimiento_no_enmendar_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('2_resolucion_desestimiento_por_no_enmendar.2_intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -119,7 +119,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_resolucion_desestimiento_no_enmendar_antecedentes') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('2_resolucion_desestimiento_por_no_enmendar.2_p1') ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 

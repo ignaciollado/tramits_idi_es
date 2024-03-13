@@ -36,7 +36,7 @@
  *
  * @codeCoverageIgnore
  */
-
+/* include '2m_resolucion_desestimiento_por_no_enmendar.php'; */
 return [
    'destino_solicitud'				  => 'Destinació',
    'codigo_dir3'				        => 'Emissor (DIR3): ',

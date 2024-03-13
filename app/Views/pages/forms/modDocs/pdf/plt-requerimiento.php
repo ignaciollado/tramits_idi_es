@@ -13,7 +13,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -111,13 +111,13 @@ $pdf->writeHTMLCell(90, '', 125, 40, $html, 0, 1, 1, true, 'J', true);
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_requerimiento_asunto') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('1_requerimiento.1_requerimiento_asunto')."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('message_lang.doc_requerimiento_p1'));
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('1_requerimiento.1_requerimiento_p1'));
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";
@@ -132,7 +132,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_2 = lang('message_lang.doc_requerimiento_p2');
+$parrafo_2 = lang('1_requerimiento.1_p2');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_2 ."</td></tr>";
 $html .= "</table>";
@@ -140,7 +140,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_solicitud']),"d/m/Y"), lang('message_lang.doc_requerimiento_p4'));
+$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_solicitud']),"d/m/Y"), lang('1_requerimiento.1_p3'));
 $parrafo_4 = str_replace("%EMPRESA%", $data['expediente']['empresa'], $parrafo_4);
 $parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
 $parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4);
@@ -153,7 +153,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 
-$firma = "El/la tècnic/a<br><br>".  $pieFirma;
+$firma = lang('1_requerimiento.1_firma').  $pieFirma;
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";

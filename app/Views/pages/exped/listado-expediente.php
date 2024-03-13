@@ -58,7 +58,7 @@
 				<option disabled <?php if ($session->get('situacion_fltr') == "") { echo "selected";}?> value = ""><span>Selecciona una situació</span></option>
 				<?php if (  strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>																																																
                         <optgroup style="background-color:#F51720;color:#000;" label="Fase sol·licitud:">
-                            <option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat pel REC</option>
+                            <option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la SEU electrònica</option>
                             <option <?php if ($session->get('situacion_fltr') == "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
                             <option <?php if ($session->get('situacion_fltr') == "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
                             <option <?php if ($session->get('situacion_fltr') == "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb <br>requeriment pendent</option>
@@ -70,7 +70,7 @@
 							<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients favorables:">
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
         		                <option <?php if ($session->get('situacion_fltr') == "emitirIFPRPago") { echo "selected";}?> value = "emitirIFPRPago" class="sitValidacion"> IF + PR_Pagament emetre</option>
     				            <option <?php if ($session->get('situacion_fltr') == "emitidoIFPRPago") { echo "selected";}?> value = "emitidoIFPRPago" class="sitValidacion"> IF + PR_Pagament emés</option>
 	    			            <option <?php if ($session->get('situacion_fltr') == "enviadoPRPago") { echo "selected";}?> value = "enviadoPRPago" class="sitValidacion"> PR Pagament enviat</option>
@@ -78,7 +78,7 @@
                                 <option <?php if ($session->get('situacion_fltr') == "emitirPagoReqIDPD") { echo "selected";}?> value = "emitirPagoReqIDPD" class="sitValidacion"> ID+PD pagament amb <br>requeriment emetre</option>								
             		            <option <?php if ($session->get('situacion_fltr') == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
                             </optgroup>   
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="En el cas d'expedients desfavorables:">
+                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
                                 <option <?php if ($session->get('situacion_fltr') == "emitirIDPD") { echo "selected";}?> value = "emitirIDPD" class="sitValidacion"> ID + PD emetre</option>
 				                <option <?php if ($session->get('situacion_fltr') == "emitidoIDPD") { echo "selected";}?> value = "emitidoIDPD" class="sitValidacion"> ID + PD emés</option>
     				            <option <?php if ($session->get('situacion_fltr') == "enviadoFirmaPD") { echo "selected";}?> value = "enviadoFirmaPD" class="sitValidacion"> PD enviat a firmar</option>
@@ -92,7 +92,7 @@
                         <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase execució / justificació:">
                             <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de justificació correcte:">
                 		        <option <?php if ($session->get('situacion_fltr') == "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion"> Pendent de justificar</option>
-                		        <option <?php if ($session->get('situacion_fltr') == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent REC justificant</option>
+                		        <option <?php if ($session->get('situacion_fltr') == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent SEU justificant</option>
             	    	        <option <?php if ($session->get('situacion_fltr') == "Justificado") { echo "selected";}?> value = "Justificado" class="sitEjecucion"> Justificat</option>
         	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResJustificacion") { echo "selected";}?> value = "emitidoResJustificacion" class="sitEjecucion"> Resolució justificació emesa</option>
         	    	            <option <?php if ($session->get('situacion_fltr') == "Finalizado") { echo "selected";}?> value = "Finalizado" class="sitEjecucion"> Finalitzat</option>
@@ -110,7 +110,7 @@
                         </optgroup>
 						<?php } else {?>
 						<optgroup class="sitSolicitud_cab_ils" label="Fase sol·licitud:">
-                           	<option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud_ils"> No ha passat pel REC</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud_ils"> No ha passat per la SEU</option>
                            	<option <?php if ($session->get('situacion_fltr') === "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud_ils"> Pendent de validar</option>
                            	<option <?php if ($session->get('situacion_fltr') === "reqFirmado") { echo "selected";}?> value = "reqFirmado" class="sitSolicitud_ils"> Requeriment signat</option>
                            	<option <?php if ($session->get('situacion_fltr') === "reqNotificado") { echo "selected";}?> value = "reqNotificado" class="sitSolicitud_ils"> Requeriment notificat + 30 dies per subsanar</option>
@@ -232,7 +232,7 @@
 				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent de validació"><strong>Pendent de validar</strong></span></div>'; 
 			}
 			else if ($item['situacion'] == "nohapasadoREC") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud No ha passat pel REC"><strong>No ha passat<br>pel REC</strong></span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud No ha passat per la SEU electrònica"><strong>No ha passat<br>per la SEU electrònica</strong></span></div>'; 
 			}
 			else if ($item['situacion'] == "comprobarAnt") {
 				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic"><strong>Comprovar Antonia</strong></span></div>'; 
@@ -310,7 +310,7 @@
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta pendent de justificar"><strong>Pendent de justificar</strong></span></div>';
 			}
 			else if ($item['situacion'] == "pendienteRECJustificar") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta pendent de que, el sol·licitant, la passi pel REC">Pendent <span style="color:red;font-weight:bolder;">REC</span> justificant</span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta pendent de que, el sol·licitant, la passi per la SEU">Pendent <span style="color:red;font-weight:bolder;">SEU</span> justificant</span></div>';
 			}
 			else if ($item['situacion'] == "Justificado" ) {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-justificado" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta justificada"><strong>Justificat</strong></span></div>';
