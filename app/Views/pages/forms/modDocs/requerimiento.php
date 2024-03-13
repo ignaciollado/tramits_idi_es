@@ -79,35 +79,3 @@
 
   </div>  
 </div>
-
-<script>
-
-/* 	function enviaRequerimiento(id, convocatoria, programa, nifcif) {
-		let todoBien = true
-		let fecha_REC = document.getElementById('fecha_REC')
-		let ref_REC = document.getElementById('ref_REC')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_3 = document.getElementById('spinner_3')
-		let infoMissingDataDoc1 = document.getElementById('infoMissingDataDoc1')
-		infoMissingDataDoc1.innerText = ""
-		if(!fecha_REC.value) {
-			infoMissingDataDoc1.innerHTML = infoMissingDataDoc1.innerHTML + "Data REC sol·licitud<br>"
-			todoBien = false
-		}
-		if(!ref_REC.value) {
-			infoMissingDataDoc1.innerHTML = infoMissingDataDoc1.innerHTML + "Referència REC sol·licitud<br>"
-			todoBien = false
-		}
-
-		if (todoBien) {
-			infoMissingDataDoc1.classList.add('ocultar')
-			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
-			spinner_3.classList.remove('ocultar')
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment'
-		} else {
-			infoMissingDataDoc1.classList.remove('ocultar')
-		}
-	}
- */
-</script>
