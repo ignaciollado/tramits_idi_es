@@ -78,8 +78,7 @@ return [
 
    'titulo_justificacion_idigital' => "Sol·licitud de pagament de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
    'titulo_requerimiento_idigital' => "Requeriment documentació/informació adicional.",
-   'subtitulo_sol_idigital'		  => "La sol·licitud d'ajuda i/o subvenció està pendent de signar, si us plau, entre en el document i signi'l. 
-   RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
+   'subtitulo_sol_idigital'		  => "RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
    https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/5624586
    
    Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i/o per telèfon: 971 17 61 61 + 62894",

@@ -43,8 +43,8 @@
     			<option value="Programa I">
 					<option value="Programa II">
 					<option value="Programa III">	
-    			<option value="Programa III actuaciones corporativas">
-    			<option value="Programa III actuaciones producto">
+    			<option value="Programa III actuacions corporatives">
+    			<option value="Programa III actuacions producte">
 					<option value="Programa IV">
 					<option value="ILS">
 					<option value="IDI-ISBA">

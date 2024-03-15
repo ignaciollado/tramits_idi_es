@@ -17,8 +17,8 @@ class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
-        $image_file = K_PATH_IMAGES.'logo_idi_conselleria.jpg';
-        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $image_file = K_PATH_IMAGES.'logo_idi_conselleria.png';
+        $this->Image($image_file, 10, 10, 90, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
@@ -149,7 +149,7 @@ $html8 = lang('message_lang.identificacion_sol_idigital'); // DADES DE LA PERSON
 $pdf->Cell(0, 10, $html8, 1, 1, 'C');
 
 // ------------------------------------------------------------------3. INTERESADO---------------------------------------------------------------------- //
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------------------------------------------- //
 /* $currentY = $pdf->getY();
 $pdf->setY($currentY + 5); */
 $html9 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -172,8 +172,8 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html11, true, false, true, false, '');
 
-// ------------------------------------------------------------------5. DATOS DEL CONSULTOR--------------------------------------------------------------------------- //
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------5. DATOS DEL CONSULTOR--------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $html12 = lang('message_lang.datos_cons_sol_idigital'); // "DADES DEL CONSULTOR";
 $pdf->Cell(0, 10, $html12, 1, 1, 'C');
 
@@ -192,12 +192,12 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTML($html13, true, false, true, false, '');
 
 // ----------------------------------------------------------------6. DOCUMENTACIÓN ADJUNTA --------------------------------------------------------------- //
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------------------------------------------------------------------------------------- //
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html14 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
 $html14 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracionLinea']['convocatoria']." </h4>";
@@ -287,7 +287,7 @@ $pdf->writeHTML($html18, true, false, true, false, '');
 // ----------------------------------------------8. DECLARACIÓN RESPONSABLE------------------------------------------------------ //
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html19 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
 $html19 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracionLinea']['convocatoria']." </h4>";
@@ -356,7 +356,7 @@ $pdf->writeHTML($html25, true, false, true, false, '');
 // ----------------------------------------------La declaración responsable del solicitante (2)--------------------------------------------------------- //
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html26 = "<h4>".lang('message_lang.intro_sol_idigital')."</h4>";
 $html26 .= "<h4>".lang('message_lang.convocatoria_sol_idigital')." ".$data['configuracionLinea']['convocatoria']." </h4>";
@@ -393,7 +393,7 @@ $pdf->writeHTML($html28, true, false, true, false, '');
 // ---------------------------------------------------------RGDP----------------------------------------------------------------- //
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
