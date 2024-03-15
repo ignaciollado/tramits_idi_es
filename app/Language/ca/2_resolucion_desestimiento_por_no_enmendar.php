@@ -42,8 +42,8 @@ return [
   '2_antecedentes_tit' => "Antecedents",
   '2_antecedentes_1_2' => "<ol>
                            <li>El dia %FECHAPUBBOIB% es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
-                           <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al programa %PROGRAMA%.</li><br>",
-  '2_antecedentes_3_m' => "<li>En data %FECHAREC%, l'IDI va rebre documentació  per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMREC%</li><br>", 
+                           <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTE%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al %PROGRAMA%.</li><br>",
+  '2_antecedentes_3_m' => "<li>En data %FECHARECM%, l'IDI va rebre documentació  per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMRECM%</li><br>", 
   '2_antecedentes_4_5' => "<li>En data %DATANOTREQ%, l'IDI va notificar un requeriment a %SOLICITANTE%, amb NIF %NIF% perquè esmenés deficiències o aportàs documentació imprescindible per a continuar la tramitació de l'expedient de referència.</li><br> 
                            <li>En l'expedient consta el justificant de recepció del requeriment, i ha transcorregut el termini atorgat sense que el sol·licitant hagi esmenat les deficiències o hagi aportat els documents exigits.</li></ol>",
 

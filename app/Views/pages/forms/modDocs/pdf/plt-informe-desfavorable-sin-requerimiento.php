@@ -12,7 +12,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
     
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
     
 $db = \Config\Database::connect();
@@ -103,7 +103,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_info_desfavorable_sin_req_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('5_informe_desfavorable_sin_requerimiento.5_intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -113,42 +113,44 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_info_desfavorable_sin_req_hechos') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('5_informe_desfavorable_sin_requerimiento.5_hechos_tit') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_info_desfavorable_sin_req_p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
-$html = "<ol>";
-$html .= "<li>". $parrafo_1 ."</li>";
-$html .= "<br>";
-
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('message_lang.doc_info_desfavorable_sin_req_p2'));
-$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
-$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
-$parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_2);
-$parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
-$html .= "<li>". $parrafo_2 ."</li>";
-$html .= "<br>";
+$parrafo_1_2 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('5_informe_desfavorable_sin_requerimiento.5_hechos_1_2'));
+$parrafo_1_2 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%CONVO%", $convocatoria, $parrafo_1_2);
+$parrafo_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1_2);
+$parrafo_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1_2);
+$parrafo_1_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_1_2);
+$html = $parrafo_1_2;
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_info_desfavorable_sin_req_p3m'));
+    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('5_informe_desfavorable_sin_requerimiento.5_hechos_3_m'));
     $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
-    $html .= "<li>". $parrafo_3m ."</li>";
-    $html .= "<br>";
+    $html .= $parrafo_3m;
 }
 
-$parrafo_3 = str_replace("%TEXTOLIBRE%", $data['expediente']['motivoDenegacion'], lang('message_lang.doc_info_desfavorable_sin_req_p3'));
-$html .= "<li>". $parrafo_3 ."</li>";
-$html .= "</ol>";
+$parrafo_4 = str_replace("%TEXTOLIBRE%", $data['expediente']['motivoDenegacion'], lang('5_informe_desfavorable_sin_requerimiento.5_hechos_4'));
+$html .= $parrafo_4;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_pre = str_replace("%SALTOLINEA%", "<br><br>", lang('message_lang.doc_info_desfavorable_sin_req_conclusion'));
+$parrafo_pre = lang('5_informe_desfavorable_sin_requerimiento.5_conclusion_tit');
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'><b>". $parrafo_pre ."</b></td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$parrafo_pre = lang('5_informe_desfavorable_sin_requerimiento.5_conclusionTxt');
 $parrafo_pre = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_pre);
 $parrafo_pre = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_pre);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -158,7 +160,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$firma = "El/la tècnic/a<br><br>".  $pieFirma;
+$firma = lang('5_informe_desfavorable_sin_requerimiento.5_firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";

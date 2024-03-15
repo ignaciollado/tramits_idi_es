@@ -73,24 +73,20 @@ class Home extends BaseController
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
 
-		if ($request->uri->getSegment(3)){
-			$idioma =  $request->uri->getSegment(3);
-			$language->setLocale($idioma);
-		}
-
-	/* 	if ($request->getLocale()){
+		if ($request->getLocale()){
 			$idioma = $request->getLocale();
 		} else {
 			$idioma =  $request->uri->getSegment(3);
 			$language->setLocale($idioma);
-		} */
-		
+		}
+
 		$modelConfig = new ConfiguracionModel;
 		$generalConfig = $modelConfig->configuracionGeneral();
 		$lineaConfig = new ConfiguracionLineaModel();
 		$data['configuracion'] = $modelConfig->configuracionGeneral();
 		$currentYear = $generalConfig['convocatoria'];
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $currentYear);
+		$data['idioma'] = $idioma;
 		
 		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
 		$desde = $data['configuracionLinea']['convocatoria_desde'];
@@ -118,13 +114,11 @@ class Home extends BaseController
 		helper('cookie');
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
-		
-		echo "---".$request->uri->getSegment(7)."---";
 
 		if ($request->getLocale()){
 			$idioma = $request->getLocale();
 		} else {
-			$idioma =  $request->uri->getSegment(7);
+			$idioma = $request->uri->getSegment(7);
 			$language->setLocale($idioma);
 		}
 		
@@ -162,7 +156,7 @@ class Home extends BaseController
 		helper('cookie');
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
-		$idioma =  $request->uri->getSegment(3); 
+		$idioma =  $request->uri->getSegment(3);
 		$language->setLocale($idioma);
 		service('request')->setLocale($idioma);
 		helper('form');
@@ -181,12 +175,12 @@ class Home extends BaseController
 		$data['configuracion'] = $modelConfig->configuracionGeneral();
 		$currentYear = $generalConfig['convocatoria'];
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $currentYear);
-		 
+		$data['idioma'] = $idioma; 
 		$desde = $data['configuracionLinea']['convocatoria_desde'];
 		$hasta = $data['configuracionLinea']['convocatoria_hasta'];
 		if ( date("Y-m-d")>= $desde && date("Y-m-d")<= $hasta) {
 			echo view('templates/header/header_form', $data);
-			echo view('pages/forms/form-solicitud-ayuda');
+			echo view('pages/forms/form-solicitud-ayuda', $data);
 			echo view('templates/footer/footer_form');
 		} else {
 			if ($idioma === 'ca') {

@@ -12,7 +12,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
     
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
     
 $db = \Config\Database::connect();
@@ -104,7 +104,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_info_favorable_con_req_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('3_informe_favorable_con_requerimiento.3_intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -114,55 +114,38 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_info_favorable_con_req_hechos') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('3_informe_favorable_con_requerimiento.3_hechos_tit') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_info_favorable_con_req_p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
-$html = "<ol>";
-$html .= "<li>". $parrafo_1 ."</li>";
-$html .= "<br>";
+$parrafo_12 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('3_informe_favorable_con_requerimiento.3_hechos_1_2'));
+$parrafo_12 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_12);
+$parrafo_12 = str_replace("%CONVO%", $convocatoria, $parrafo_12);
+$parrafo_12 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_12);
+$parrafo_12 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_12);
+$parrafo_12 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_12);
+$parrafo_12 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_12);
+$parrafo_12 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_12);
+$parrafo_12 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_12);
 
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_info_favorable_con_req_p2'));
-$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
-$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
-$parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_2);
-$parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
-$html .= "<li>". $parrafo_2 ."</li>";
-$html .= "<br>";
+$html = $parrafo_12;
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_info_favorable_con_req_p3m'));
+    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('3_informe_favorable_con_requerimiento.3_hechos_3_m'));
     $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
-    $html .= "<li>". $parrafo_3m ."</li>";
-    $html .= "<br>";
-}
+    $html .= $parrafo_3m;
+} 
 
-$parrafo_3 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('message_lang.doc_info_favorable_con_req_p3'));
-$html .= "<li>". $parrafo_3 ."</li>";
-$html .= "<br>";
-
-$parrafo_4 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , lang('message_lang.doc_info_favorable_con_req_p4'));
-$parrafo_4 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4);
-$parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
-$parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC_enmienda'], $parrafo_4);
-$parrafo_4 = str_replace("%IMPORTE%",  money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4);
-$parrafo_4 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_4);
-$html .= "<li>". $parrafo_4 ."</li>";
-$html .= "<br>";
-
-$parrafo_5 =  lang('message_lang.doc_info_favorable_con_req_p5');
-$html .= "<li>". $parrafo_5 ."</li>";
-$html .= "<br>";
-
-$parrafo_6 =  lang('message_lang.doc_info_favorable_con_req_p6');
-$html .= "<li>". $parrafo_6 ."</li>";
-$html .= "</ol>";
-$html .= "<br>";
+$parrafo_4_7 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('3_informe_favorable_con_requerimiento.3_hechos_4_7'));
+$parrafo_4_7 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , $parrafo_4_7);
+$parrafo_4_7 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4_7);
+$parrafo_4_7 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4_7);
+$parrafo_4_7 = str_replace("%NUMREC%", $data['expediente']['ref_REC_enmienda'], $parrafo_4_7);
+$parrafo_4_7 = str_replace("%IMPORTE%",  money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4_7);
+$parrafo_4_7 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_4_7);
+$html .= $parrafo_4_7;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
@@ -171,11 +154,11 @@ $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 // $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
 // align: T (top), M (middle), B (bottom), N (next line)
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '30', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$parrafo_pre = lang('message_lang.doc_info_favorable_con_req_preconclusion');
+$parrafo_pre = "<b>".lang('3_informe_favorable_con_requerimiento.3_conclusion_tit')."</b>";
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_pre ."</td></tr>";
 $html .= "</table>";
@@ -183,7 +166,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_info_favorable_con_req_conclusion'));
+$parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('3_informe_favorable_con_requerimiento.3_conclusionTxt'));
 $parrafo_conclusion = str_replace("%SALTOLINEA%", "<br><br>", $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%IMPORTE%",  money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_conclusion);
@@ -195,7 +178,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-$firma = "El/la tècnic/a<br><br>".  $pieFirma;
+$firma = lang('3_informe_favorable_con_requerimiento.3_firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";

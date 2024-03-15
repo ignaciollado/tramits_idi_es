@@ -1,6 +1,7 @@
 <?php
 helper('cookie');
 $language = \Config\Services::language();
+$language->setLocale($idioma);
 require_once('tcpdf/tcpdf.php');
 
 use App\Models\ConfiguracionModel;

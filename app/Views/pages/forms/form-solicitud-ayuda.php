@@ -9,17 +9,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 <?php
-if (!get_cookie('itramitsCurrentLanguage')) {
-	setcookie("itramitsCurrentLanguage", 'ca');
-	service('request')->setLocale('ca');
-}
+	$language = \Config\Services::language();
+	$language->setLocale($idioma);
 ?>
 <section id="formulario_solicitud">
 	<div class="alert alert-info">
 		<?php echo lang('message_lang.intro_sol_idigital');?>
 	</div>
 
-<form name="xecs_form" id="xecs_form" action="<?php echo base_url('/public/index.php/subirarchivo/store/'.$viaSolicitud);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form name="xecs_form" id="xecs_form" action="<?php echo base_url('/public/index.php/subirarchivo/store/'.$idioma);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 <h1><?php echo lang('message_lang.asistente_de_tramitacion').$viaSolicitud;?></h1>
 <div class="stepContainer">
 	<span class="step">0</span>
@@ -104,11 +102,11 @@ if (!get_cookie('itramitsCurrentLanguage')) {
 		</label>
 		
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_organizacion');?></h6>
-			<input title="<?php echo lang('message_lang.opc_iLs_organizacion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_corporativo" value="Programa III actuaciones corporativas">
+			<input title="<?php echo lang('message_lang.opc_iLs_organizacion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_corporativo" value="Programa III actuacions corporatives">
 			<span class="checkmark"></span>
 		</label>		
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iLs_producto');?></h6>
-			<input title="<?php echo lang('message_lang.opc_iLs_producto');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_producto" value="Programa III actuaciones producto">
+			<input title="<?php echo lang('message_lang.opc_iLs_producto');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="programa_III_actuaciones_producto" value="Programa III actuacions producte">
 			<span class="checkmark"></span>
 		</label>
 		

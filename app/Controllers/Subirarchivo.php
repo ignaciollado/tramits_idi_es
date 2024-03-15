@@ -7,21 +7,21 @@ use App\Models\ExpedientesModel;
 
 class SubirArchivo extends BaseController
 {
-	public function store()
+	public function store($idioma = 'ca')
   {
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
-		$idioma = get_cookie('itramitsCurrentLanguage');
-
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
+		set_cookie('idioma', $idioma, '3600');
+
 		$modelConfig = new ConfiguracionModel();
 		$generalConfig =  $modelConfig->configuracionGeneral();
 		$lineaConfig = new ConfiguracionLineaModel();
 		 
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS', $generalConfig['convocatoria']);
-		$convocatoria =  $data['configuracionLinea']['convocatoria'];
+		$convocatoria = $data['configuracionLinea']['convocatoria'];
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 		$request = \Config\Services::request();
 		$viaSolicitud =  $request->uri->getSegment(3);
@@ -43,6 +43,7 @@ class SubirArchivo extends BaseController
 
 		date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
+
 		//ADJUNTA DOCUMENTACIÓN LINEA CHEQUES----------------------------------------------- 
 		$documentosfile = $this->request->getFiles();
 
@@ -302,9 +303,11 @@ class SubirArchivo extends BaseController
 				];
 
 		$save_exp = $expediente->insert($data_exp);
+		/* var_dump($save_exp); */
 		$last_insert_id = $save_exp->connID->insert_id;
 		$data_exp ['selloDeTiempo'] = $selloTiempo;
 		$data_exp ['last_insert_id'] = $last_insert_id;
+		$data_exp ['idioma'] = $idioma;
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
 		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
