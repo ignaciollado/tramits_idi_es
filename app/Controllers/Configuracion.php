@@ -11,7 +11,7 @@ class Configuracion extends Controller
 		$language->setLocale('ca');
 		$modelConfig = new ConfiguracionModel();
 		$db = \Config\Database::connect();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
+		$data['configuracion'] = $modelConfig->configuracionGeneral();
 		$data['titulo'] = "Configuració del gestor d'ajuts i de subvencions";
 		echo view('templates/header/header', $data);	
         echo view('pages/exped/configurador-gestor');
@@ -20,32 +20,30 @@ class Configuracion extends Controller
 	
     public function configurador_update()
     {
-        helper(['form', 'url']);
+    helper(['form', 'url']);
 		$db      = \Config\Database::connect();
 		$builder = $db->table('pindust_configuracion');
-        $data = [
+    $data 	 = [
 			'respresidente' => $this->request->getVar('respresidente'),
 			'directorGeneralPolInd' => $this->request->getVar('directorGeneralPolInd'),
 			'directorGerenteIDI' => $this->request->getVar('directorGerenteIDI'),
 			'eMailPresidente' => $this->request->getVar('eMailPresidente'),
 			'eMailDGeneral' => $this->request->getVar('eMailDGeneral'),
 			'eMailDGerente' => $this->request->getVar('eMailDGerente'),
-            'convocatoria_aviso_es' => $this->request->getVar('convocatoria_aviso_es'),
-            'convocatoria_aviso_ca' => $this->request->getVar('convocatoria_aviso_ca'),
-            'convocatoria_activa' => 1,
+      'convocatoria_aviso_es' => $this->request->getVar('convocatoria_aviso_es'),
+      'convocatoria_aviso_ca' => $this->request->getVar('convocatoria_aviso_ca'),
 			'emisorDIR3' => $this->request->getVar('emisorDIR3')
-            ];
+    ];
  
-        $builder->where('id', $this->request->getVar('id'));
+  	$builder->where('activeGeneralData', 'SI');
 		$save = $builder->update($data);
-		
 		
 		$modelConfig = new ConfiguracionModel();
 		$db = \Config\Database::connect();
-		$data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();		
+		$data['configuracion'] = $modelConfig->configuracionGeneral();
 		$data['titulo'] = "Configuració actualitzada !!";
 		echo view('templates/header/header', $data);	
-        echo view('pages/exped/resultado-accion', $data);
+    echo view('pages/exped/resultado-accion', $data);
 		echo view('templates/footer/footer');	
     } 	
 	

@@ -101,10 +101,10 @@ if ($tipo_tramite == "Programa I") {
 else if ($tipo_tramite == "Programa II") {
 	$tipo_tramite = lang('message_lang.programaiExporta');
 }
-else if ($tipo_tramite == "Programa III actuaciones corporativas") {
+else if ($tipo_tramite == "Programa III actuacions corporatives") {
 	$tipo_tramite = lang('message_lang.programaiSostenibilitatCorp');
 }
-else if ($tipo_tramite == "Programa III actuaciones producto") {
+else if ($tipo_tramite == "Programa III actuacions producte") {
 	$tipo_tramite = lang('message_lang.programaiSostenibilitatProd');
 }
 else if ($tipo_tramite == "Programa IV") {

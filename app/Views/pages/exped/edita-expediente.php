@@ -907,18 +907,21 @@ if (!$expedientes['importeAyuda']) {
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="3">
-            <!-----------------------------------------Informe favorable amb requeriment------------>
+            <!-----------------------------------------3. Informe favorable amb requeriment------------>
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Informe favorable sense requeriment--------->
+            <!-----------------------------------------4. Informe favorable sense requeriment--------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Informe desfavorable amb requeriment-->
+            <!-----------------------------------------5. Informe desfavorable amb requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Informe desfavorable sense requeriment-->
+            <!-----------------------------------------6. Informe desfavorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
+            <!-----------------------------------------7. Proposta de resolució PROVISIONAL favorable sense requeriment SIN VIAFIRMA-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-favorable-sin-requerimiento.php';?></li>
+            <!------------------------------------------------------------------------------------------------------>            
             <!-----------------------------------------Proposta resolucio denegació ajut_ amb requeriment SIN VIAFIRMA-->
 	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>

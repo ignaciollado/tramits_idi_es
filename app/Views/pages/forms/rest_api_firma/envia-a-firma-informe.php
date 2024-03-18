@@ -13,8 +13,9 @@
     	$data['ceoData'] = $configuracion->where('activeGeneralData', 'SI')->first();
 			$adreca_mail = $data['ceoData']['eMailDGerente'];
 			$telefono_cont = $data['ceoData']['telDGerente'];
- 			$adreca_mail = "illado@idi.caib.es";
-			$telefono_cont = "677234076";
+			echo "****".$adreca_mail."***".$telefono_cont."***";
+ 		/* 	$adreca_mail = "illado@idi.caib.es";
+			$telefono_cont = "677234076"; */
 		}
 
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
