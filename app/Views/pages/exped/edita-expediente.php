@@ -82,7 +82,7 @@ if (!$expedientes['importeAyuda']) {
                     //echo "p3 def ".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]." p3 def";
             }
             break;
-        case 'Programa III actuaciones producto':
+        case 'Programa III actuacions producte':
             switch($totalConvocatorias) {
                 case 1:
                     $importeAyuda = $objs->Programa_III_ap->edicion->Primera[0]*($objs->Programa_III_ap->edicion->Primera[1]/100);
@@ -93,7 +93,7 @@ if (!$expedientes['importeAyuda']) {
                     //echo "p3 ap def ".$objs->Programa_III_ap->edicion->Primera[0]." ".$objs->Programa_III_ap->edicion->Primera[1]." p3 ap def";
                 }
             break;
-        case 'Programa III actuaciones corporativas':
+        case 'Programa III actuacions corporatives':
             switch($totalConvocatorias) {
                 case 1:
                     $importeAyuda = $objs->Programa_III_ac->edicion->Primera[0]*($objs->Programa_III_ac->edicion->Primera[1]/100);

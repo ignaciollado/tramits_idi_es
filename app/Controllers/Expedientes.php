@@ -304,7 +304,7 @@ class Expedientes extends Controller
 		$solicitante = mb_strtoupper($data['expedientes']['empresa']);
 		$nifcif = strtoupper($data['expedientes']['nif']);
 
-		if ($tipo_tramite == 'Programa IV' || $tipo_tramite == 'Programa III actuaciones corporativas' || $tipo_tramite == 'Programa III actuaciones producto' || $tipo_tramite == 'Programa III' || $tipo_tramite == 'Programa II' || $tipo_tramite == 'Programa I') {
+		if ($tipo_tramite == 'Programa IV' || $tipo_tramite == 'Programa III actuacions corporatives' || $tipo_tramite == 'Programa III actuacions producte' || $tipo_tramite == 'Programa III' || $tipo_tramite == 'Programa II' || $tipo_tramite == 'Programa I') {
 			$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData('XECS', $convocatoria);
 		} else {
 			$data['configuracionLinea'] = $modelConfigLinea->activeConfigurationLineData($tipo_tramite, $convocatoria);
