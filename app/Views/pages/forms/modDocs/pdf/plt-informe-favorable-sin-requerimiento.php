@@ -6,12 +6,12 @@ use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
 use App\Models\MejorasExpedienteModel;
         
-$configuracion = new ConfiguracionModel();
+$modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
-$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
@@ -77,8 +77,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
-// -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------ Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
 $currentY = $pdf->getY();
@@ -96,7 +96,7 @@ $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
-$pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(90, '', 100, 40, $html, 0, 1, 1, true, 'J', true);
 
 $pdf->SetFont('helvetica', '', 11);
 $pdf->setFontSubsetting(false);
@@ -136,16 +136,16 @@ if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $html .= $parrafo_3m;
 }
 
-$parrafo_4_7 = lang('4_informe_favorable_sin_requerimiento.4_hechos_4_7');
-$parrafo_4_7 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y"), $parrafo_4_7);
-$parrafo_4_7 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4_7);
-$parrafo_4_7 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4_7);
-$parrafo_4_7 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_4_7);
-$parrafo_4_7 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4_7);
-$parrafo_4_7 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4_7);
-$parrafo_4_7 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_4_7);
+$parrafo_4_5 = lang('4_informe_favorable_sin_requerimiento.4_hechos_4_5');
+$parrafo_4_5 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y"), $parrafo_4_5);
+$parrafo_4_5 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4_5);
+$parrafo_4_5 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4_5);
+$parrafo_4_5 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_4_5);
+$parrafo_4_5 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4_5);
+$parrafo_4_5 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4_5);
+$parrafo_4_5 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_4_5);
 
-$html .= $parrafo_4_7;
+$html .= $parrafo_4_5;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer

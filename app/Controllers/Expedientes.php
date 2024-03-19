@@ -956,6 +956,9 @@ class Expedientes extends Controller
 		$selloDeTiempo = date("d_m_Y_h_i_sa");
 		$db = \Config\Database::connect();
 		$builder = $db->table('pindust_expediente');
+
+		$modelMejorasSolicitud = new MejorasExpedienteModel();
+
 		$this->response->setHeader('Cache-Control', 'private');
 		$request = \Config\Services::request();
 		$id_sol =  $request->uri->getSegment(3);
@@ -983,6 +986,11 @@ class Expedientes extends Controller
 		$documentos->where('convocatoria', $convocatoria);
 		$documentos->delete();
 
+		/* Lista de las MEJORAS de la solicitud */
+		/* $data['mejorasSolicitud'] = $modelMejorasSolicitud->selectAllMejorasExpediente($id_sol); */
+		$ultimaMejora = $modelMejorasSolicitud->selectLastMejorasExpediente($id_sol);
+		$data['ultimaMejora'] = explode("##", $ultimaMejora);
+
 		$data_file = [
 			'id_sol' => $request->uri->getSegment(3),
 			'name' =>  $tipoDocumento . ".pdf",
@@ -1007,7 +1015,7 @@ class Expedientes extends Controller
 
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
-			case "doc_requeriment":  								//DOC 1 - CON VIAFIRMA. A TÉCNICO
+			case "doc_requeriment":  														//DOC 1 - CON VIAFIRMA. A TÉCNICO
 				$data_infor = [
 					'doc_requeriment' => $last_insert_id
 				];
@@ -1025,7 +1033,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 				
-			case "doc_res_desestimiento_por_no_enmendar": 			//DOC 2 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+			case "doc_res_desestimiento_por_no_enmendar": 			//DOC 2 - CON VIAFIRMA. A GERENCIA
 				$data_infor = [
 					'doc_res_desestimiento_por_no_enmendar' => $last_insert_id
 				];
@@ -1116,25 +1124,26 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_prop_res_denegacion_con_req": 						//DOC 7 - CON VIAFIRMA. A GERENCIA
+			case "doc_prop_res_provisional_favorable_sin_req": 						//DOC 7 - CON VIAFIRMA. A GERENCIA
 				$data_infor = [
-					'doc_prop_res_denegacion_con_req' => $last_insert_id
+					'doc_prop_res_provisional_favorable_sin_req' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
 				$data['byCEOSigned'] = true;
 				$data_footer = [
-					'tipoDoc' => "<h4>Proposta de resolució de denegació amb requeriment</h4>",
+					'tipoDoc' => "<h4>Proposta de resolució PROVISIONAL FAVORABLE sense requeriment</h4>",
 					'conVIAFIRMA' => true
 				];
-				echo "<h4>Proposta de resolució de denegació amb requeriment</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-denegacion-con-requerimiento', $data);
+				echo "<h4>Proposta de resolució PROVISIONAL FAVORABLE sense requeriment</h4>";
+				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-provisional-favorable-sin-requerimiento', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_prop_res_denegacion_sin_req": // DOC 8 - CON VIAFIRMA. A GERENCIA
+			
+				case "doc_prop_res_denegacion_sin_req": // DOC 8 - CON VIAFIRMA. A GERENCIA
 				$data_infor = [
 					'doc_prop_res_denegacion_sin_req' => $last_insert_id
 				];
@@ -1152,7 +1161,8 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_prop_res_conces_con_req":  // DOC 9 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+			
+				case "doc_prop_res_conces_con_req":  // DOC 9 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
 				$data_infor = [
 					'doc_prop_res_conces_con_req' => $last_insert_id
 				];

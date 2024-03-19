@@ -100,20 +100,20 @@ window.addEventListener('load', (event) => {
     //convo 2024
     totalSolicitudesPrograma('2024', 'Programa I')
     totalSolicitudesPrograma('2024', 'Programa II')
-    totalSolicitudesPrograma('2024', 'Programa III actuaciones corporativas')
-    totalSolicitudesPrograma('2024', 'Programa III actuaciones producto')
+    totalSolicitudesPrograma('2024', 'Programa III actuacions corporatives')
+    totalSolicitudesPrograma('2024', 'Programa III actuacions producte')
     totalSolicitudesPrograma('2024', 'Programa IV')
 
     importeTotalConcedidoPrograma('2024', 'Programa I')
     importeTotalConcedidoPrograma('2024', 'Programa II')
-    importeTotalConcedidoPrograma('2024', 'Programa III actuaciones corporativas')
-    importeTotalConcedidoPrograma('2024', 'Programa III actuaciones producto')
+    importeTotalConcedidoPrograma('2024', 'Programa III actuacions corporatives')
+    importeTotalConcedidoPrograma('2024', 'Programa III actuacions producte')
     importeTotalConcedidoPrograma('2024', 'Programa IV')
 
     totalSolicitudesPorSituacion('2024', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2024')
     totalSolicitudesPorSituacion('2024', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2024')
-    totalSolicitudesPorSituacion('2024', 'Programa III actuaciones corporativas', 'nohapasadoREC', 'totalSolicitudesIIINoREC_org_2024')
-    totalSolicitudesPorSituacion('2024', 'Programa III actuaciones producto', 'nohapasadoREC', 'totalSolicitudesIIINoREC_prod_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'nohapasadoREC', 'totalSolicitudesIIINoREC_org_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'nohapasadoREC', 'totalSolicitudesIIINoREC_prod_2024')
     totalSolicitudesPorSituacion('2024', 'Programa IV', 'nohapasadoREC', 'totalSolicitudesIIINoREC_2024')
 });
 
@@ -125,8 +125,8 @@ async function totalSolicitudesPrograma(convo, stage) {
     if (stage == 'Programa I') {resultadoP = document.getElementById("totalSolicitudesI_"+convo)}
     if (stage == 'Programa II') {resultadoP = document.getElementById("totalSolicitudesII_"+convo)}
     if (stage == 'Programa III') {resultadoP = document.getElementById("totalSolicitudesIII_"+convo)}
-    if (stage == 'Programa III actuaciones corporativas') {resultadoP = document.getElementById("totalSolicitudesIII_org_"+convo)}
-    if (stage == 'Programa III actuaciones producto') {resultadoP = document.getElementById("totalSolicitudesIII_prod_"+convo)}
+    if (stage == 'Programa III actuacions corporatives') {resultadoP = document.getElementById("totalSolicitudesIII_org_"+convo)}
+    if (stage == 'Programa III actuacions producte') {resultadoP = document.getElementById("totalSolicitudesIII_prod_"+convo)}
     if (stage == 'Programa IV') {resultadoP = document.getElementById("totalSolicitudesIV_"+convo)}
     if (stage == 'ILS')  { resultadoP = document.getElementById("totalSolicitudesILSAdheridas"); }
     resultadoP.innerHTML = "Sol·licituds aprovades: "+ totalSolicitudes;
@@ -141,8 +141,8 @@ async function importeTotalSolicitadoPrograma(convo, stage) {
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeTotalI_"+convo); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeTotalII_"+convo); }
     if (stage == 'Programa III')  { resultadoP = document.getElementById("importeTotalIII_"+convo); }
-    if (stage == 'Programa III actuaciones corporativas') { resultadoP = document.getElementById("importeTotalIII_org_"+convo); }
-    if (stage == 'Programa III actuaciones producto') { resultadoP = document.getElementById("importeTotalIII_prod_"+convo); }
+    if (stage == 'Programa III actuacions corporatives') { resultadoP = document.getElementById("importeTotalIII_org_"+convo); }
+    if (stage == 'Programa III actuacions producte') { resultadoP = document.getElementById("importeTotalIII_prod_"+convo); }
     if (stage == 'Programa IV') { resultadoP = document.getElementById("importeTotalIV_"+convo); }
     resultadoP.innerHTML = "Import total sol·licitat: "+ new Intl.NumberFormat().format(importeSolicitado) + " €";
 }
@@ -155,8 +155,8 @@ async function importeTotalConcedidoPrograma(convo, stage) {
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeConcedidoI_"+convo); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeConcedidoII_"+convo); }
     if (stage == 'Programa III')  { resultadoP = document.getElementById("importeConcedidoIII_"+convo); }
-    if (stage == 'Programa III actuaciones corporativas') { resultadoP = document.getElementById("importeConcedidoIII_org_"+convo); }
-    if (stage == 'Programa III actuaciones producto') { resultadoP = document.getElementById("importeConcedidoIII_prod_"+convo); }
+    if (stage == 'Programa III actuacions corporatives') { resultadoP = document.getElementById("importeConcedidoIII_org_"+convo); }
+    if (stage == 'Programa III actuacions producte') { resultadoP = document.getElementById("importeConcedidoIII_prod_"+convo); }
     if (stage == 'Programa IV') { resultadoP = document.getElementById("importeConcedidoIV_"+convo); }
     resultadoP.innerHTML = "Import concedit: "+ new Intl.NumberFormat().format(importeConcedido) + " €";
 }
@@ -192,8 +192,8 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
     if (stage == 'Programa I')  { resultadoP = document.getElementById(elementID); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById(elementID); }
     if (stage == 'Programa III')  { resultadoP = document.getElementById(elementID); }
-    if (stage == 'Programa III actuaciones corporativas')  { resultadoP = document.getElementById(elementID); }
-    if (stage == 'Programa III actuaciones producto')  { resultadoP = document.getElementById(elementID); }
+    if (stage == 'Programa III actuacions corporatives')  { resultadoP = document.getElementById(elementID); }
+    if (stage == 'Programa III actuacions producte')  { resultadoP = document.getElementById(elementID); }
     if (stage == 'Programa IV')  { resultadoP = document.getElementById(elementID); }
 
     if (stage == 'ILS')  { resultadoP = document.getElementById(elementID); }

@@ -50,6 +50,6 @@ return [
                     <li>Hi ha crèdit adequat i suficient per atendre aquesta sol·licitud d'ajut.</li></ol><br>
                     <p>Aquest informe serveix de base per a la proposta de resolució i resolució de concessió de l'ajut.</p>",
   '3_conclusion_tit' => "Conclusió",
-  '3_conclusionTxt'  => "Atès que el sol·licitant compleix amb els requisits establerts en la convocatòria, propòs a la directora gerent i al president de l'IDI que dictin una proposta de resolució i resolució de concessió respectivament, a favor de %SOLICITANTE%, amb NIF %NIF%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%, equivalent a hores de consultoria especialitzada, d'acord amb el punT 3.1 de la convocatòria.",
+  '3_conclusionTxt'  => "Atès que el sol·licitant compleix amb els requisits establerts en la convocatòria, propòs a la directora gerent i al president de l'IDI que dictin una proposta de resolució i resolució de concessió respectivament, a favor de %SOLICITANTE%, amb NIF %NIF%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%, equivalent a hores de consultoria especialitzada, d'acord amb el punt 3.1 de la convocatòria.",
   '3_firma' => "Palma, en data de la signatura electrònica<br><br>El/la tècnic/a"
 ];

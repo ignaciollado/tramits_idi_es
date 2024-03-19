@@ -11,12 +11,12 @@ use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
 use App\Models\MejorasExpedienteModel;
 
-$configuracion = new ConfiguracionModel();
+$modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
-$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
@@ -103,7 +103,7 @@ $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
-$pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(90, '', 100, 40, $html, 0, 1, 1, true, 'J', true);
 $pdf->SetFont('helvetica', '', 11);
 $pdf->setFontSubsetting(false);
 

@@ -62,11 +62,11 @@
 		infoMissingDataDoc9.innerText = ""
 
 		if (!fecha_REC.value) {
-			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!ref_REC.value) {
-			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!fecha_infor_fav_desf.value) {
@@ -79,7 +79,7 @@
 			wrapper_propuestaResPagoSinReg.disabled = true
 			wrapper_propuestaResPagoSinReg.innerHTML = "Enviant ..."
 			spinner_9.classList.remove('ocultar')
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_conces_sin_req'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_favorable_sin_req'
 		} else {
 			infoMissingDataDoc9.classList.remove('ocultar')
 		}

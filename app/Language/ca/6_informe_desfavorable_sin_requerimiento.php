@@ -41,12 +41,10 @@ return [
   '6_intro' => "Informe desfavorable sobre la sol·licitud de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada a favor de %SOLICITANTE%, amb NIF %NIF%",
   '6_hechos_tit' => "Fets",
   '6_hechos_1_2' => "<ol>
-                    <li>Mitjançant la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) %RESPRESIDENTE%, es va aprovar la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada (BOIB núm. %BOIBNUM%).</li><br>.
+                    <li>Mitjançant la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) %RESPRESIDENTE%, es va aprovar la convocatòria per a l'any %CONVO% de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada (BOIB núm. %BOIBNUM%).</li><br>.
                     <li>En data %FECHAREC%, l'IDI va rebre la sol·licitud de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %NUMREC%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%.</li><br>",
-  '6_hechos_3_m' => "<li>En data %FECHAREC%, l'IDI va rebre documentació  per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMREC%.</li><br>", 
-  '6_hechos_4_6' => "<li>En data %FECHAREQUERIMIENTO% es va notificar un requeriment al sol·licitant.</li>
-                     <li>En data %FECHAENMIENDA% l'IDI va rebre l'esmena de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %NUMREC%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%.</li>
-                     <li>Una vegada revisada la sol·licitud d'ajut s'ha comprovat que l'entitat sol·licitant no compleix amb els requisits establerts en la convocatòria, concretament perquè %TEXTOLIBRE%.</li></ol><br>",
+  '6_hechos_3_m' => "<li>En data %FECHAREC%, l'IDI va rebre documentació per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMREC%.</li><br>", 
+  '6_hechos_4'   => "<li>Una vegada revisada la sol·licitud d'ajut s'ha comprovat que l'entitat sol·licitant no compleix amb els requisits establerts en la convocatòria, concretament perquè %TEXTOLIBRE%.</li></ol><br>",
   '6_conclusion_tit' => "Conclusió",
   '6_conclusionTxt'  => "Per tot això, propòs la denegació de l'ajut sol·licitat per %SOLICITANTE%, amb NIF %NIF%, perquè no compleix els requisits prevists en la convocatòria.",
   '6_firma' => "Palma, en data de la signatura electrònica<br><br>El/la tècnic/a"

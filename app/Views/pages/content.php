@@ -73,14 +73,14 @@
           <div class="accordion-body">           
             <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
             <ul>
-            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuaciones corporativas/2024');?>">               
+            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions corporatives/2024');?>">               
               <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.<br>
                   <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_org_2024">0</span>
                   <span class="badge text-bg-success" id="totalSolicitudesIII_org_2024">0</span>
                   <span class="badge text-bg-success" id="importeConcedidoIII_org_2024">0.00</span>
               </li>
             </a>
-            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuaciones producto/2024');?>">               
+            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions producte/2024');?>">               
               <li>Identificació i càlcul de les emissions de gasos d'efecte d'hivernacle de producte.<br>
                   <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_prod_2024">0</span>
                   <span class="badge text-bg-success" id="totalSolicitudesIII_prod_2024">0</span>
