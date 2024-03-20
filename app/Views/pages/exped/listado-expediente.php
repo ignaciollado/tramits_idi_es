@@ -67,44 +67,44 @@
                             <option <?php if ($session->get('situacion_fltr') == "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitSolicitud"> Requeriment notificat</option>
                             <option <?php if ($session->get('situacion_fltr') == "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment <br>per esmena</option>
                             <option <?php if ($session->get('situacion_fltr') == "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per <br>esmena emès</option>
-							<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
+														<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
                             <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
-        		                <option <?php if ($session->get('situacion_fltr') == "emitirIFPRPago") { echo "selected";}?> value = "emitirIFPRPago" class="sitValidacion"> IF + PR_Pagament emetre</option>
-    				            <option <?php if ($session->get('situacion_fltr') == "emitidoIFPRPago") { echo "selected";}?> value = "emitidoIFPRPago" class="sitValidacion"> IF + PR_Pagament emés</option>
-	    			            <option <?php if ($session->get('situacion_fltr') == "enviadoPRPago") { echo "selected";}?> value = "enviadoPRPago" class="sitValidacion"> PR Pagament enviat</option>
-								<option <?php if ($session->get('situacion_fltr') == "emitirPagoReqIFPR") { echo "selected";}?> value = "emitirPagoReqIFPR" class="sitValidacion"> IF+PR Pagament amb <br>requeriment emetre</option>
-                                <option <?php if ($session->get('situacion_fltr') == "emitirPagoReqIDPD") { echo "selected";}?> value = "emitirPagoReqIDPD" class="sitValidacion"> ID+PD pagament amb <br>requeriment emetre</option>								
-            		            <option <?php if ($session->get('situacion_fltr') == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
+        		            		<option <?php if ($session->get('situacion_fltr') == "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
+    				            		<option <?php if ($session->get('situacion_fltr') == "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
+	    			            		<option <?php if ($session->get('situacion_fltr') == "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva emetre</option>
+														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva emesa</option>
+                        		<option <?php if ($session->get('situacion_fltr') == "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió emetre</option>
+                        		<option <?php if ($session->get('situacion_fltr') == "emitidaResConcesion") { echo "selected";}?> value = "emitidaResConcesion" class="sitValidacion"> Resolució de concessió emesa</option>
+            		        		<option <?php if ($session->get('situacion_fltr') == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
                             </optgroup>   
                             <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
-                                <option <?php if ($session->get('situacion_fltr') == "emitirIDPD") { echo "selected";}?> value = "emitirIDPD" class="sitValidacion"> ID + PD emetre</option>
-				                <option <?php if ($session->get('situacion_fltr') == "emitidoIDPD") { echo "selected";}?> value = "emitidoIDPD" class="sitValidacion"> ID + PD emés</option>
-    				            <option <?php if ($session->get('situacion_fltr') == "enviadoFirmaPD") { echo "selected";}?> value = "enviadoFirmaPD" class="sitValidacion"> PD enviat a firmar</option>
-            		            <option <?php if ($session->get('situacion_fltr') == "notificadoPD") { echo "selected";}?> value = "notificadoPD" class="sitValidacion"> PD notificada</option>
-            		            <option <?php if ($session->get('situacion_fltr') == "emitirRD") { echo "selected";}?> value = "emitirRD" class="sitValidacion"> RD emetre</option>	
-                                <option <?php if ($session->get('situacion_fltr') == "emitidoRD") { echo "selected";}?> value = "emitidoRD" class="sitValidacion"> RD emés</option>
-                                <option <?php if ($session->get('situacion_fltr') == "enviadoFirmaRD") { echo "selected";}?> value = "enviadoFirmaRD" class="sitValidacion"> RD enviat a signar</option>
-                                <option <?php if ($session->get('situacion_fltr') == "Denegado") { echo "selected";}?> value = "Denegado" class="sitValidacion"> Denegat</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitirIDPDenProv") { echo "selected";}?> value = "emitirIDPDenProv" class="sitValidacion"> ID + P denegació provisional emetre</option>
+				                		<option <?php if ($session->get('situacion_fltr') == "emitidoIDPDenProv") { echo "selected";}?> value = "emitidoIDPDenProv" class="sitValidacion"> ID + P denegació provisional emesa</option>
+    				            		<option <?php if ($session->get('situacion_fltr') == "emitirPDenDef") { echo "selected";}?> value = "emitirPDenDef" class="sitValidacion"> P denegació definitiva emetre</option>
+            		            <option <?php if ($session->get('situacion_fltr') == "emitidoPDenDef") { echo "selected";}?> value = "emitidoPDenDef" class="sitValidacion"> P denegació definitiva emesa</option>
+            		            <option <?php if ($session->get('situacion_fltr') == "emitirResDen") { echo "selected";}?> value = "emitirResDen" class="sitValidacion"> Resolució de denegació emetre</option>	
+                            <option <?php if ($session->get('situacion_fltr') == "emitidoResDen") { echo "selected";}?> value = "emitidoResDen" class="sitValidacion"> Resolució de denegació emesa</option>
+                            <option <?php if ($session->get('situacion_fltr') == "Denegado") { echo "selected";}?> value = "Denegado" class="sitValidacion"> Denegat</option>
                             </optgroup>
                         </optgroup>
-                        <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase execució / justificació:">
-                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de justificació correcte:">
+                        <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase justificació pagament:">
+                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="Justificació correcta:">
                 		        <option <?php if ($session->get('situacion_fltr') == "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion"> Pendent de justificar</option>
-                		        <option <?php if ($session->get('situacion_fltr') == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent SEU justificant</option>
+                		        <option <?php if ($session->get('situacion_fltr') == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent SEU justificat</option>
             	    	        <option <?php if ($session->get('situacion_fltr') == "Justificado") { echo "selected";}?> value = "Justificado" class="sitEjecucion"> Justificat</option>
-        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResJustificacion") { echo "selected";}?> value = "emitidoResJustificacion" class="sitEjecucion"> Resolució justificació emesa</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitirResPagoyJust") { echo "selected";}?> value = "emitirResPagoyJust" class="sitEjecucion"> Resolució de pagament i justificació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResPagoyJust") { echo "selected";}?> value = "emitidoResPagoyJust" class="sitEjecucion"> Resolució de pagament i justificació emesa</option>
         	    	            <option <?php if ($session->get('situacion_fltr') == "Finalizado") { echo "selected";}?> value = "Finalizado" class="sitEjecucion"> Finalitzat</option>
                             </optgroup>   
-                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de requeriment en la justificació:">
-            		            <option <?php if ($session->get('situacion_fltr') == "emitidoReqJust") { echo "selected";}?> value = "emitidoReqJust" class="sitEjecucion"> Emès requeriment justificació</option>
-        	    	            <option <?php if ($session->get('situacion_fltr') == "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitEjecucion"> Requeriment notificat</option>
-        	    	            <option <?php if ($session->get('situacion_fltr') == "inicioRevocacion") { echo "selected";}?> value = "inicioRevocacion" class="sitEjecucion"> Inici de revocació</option>
-        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoPropRevocacion") { echo "selected";}?> value = "emitidoPropRevocacion" class="sitEjecucion"> Emès proposta de revocació</option>
-        	    	            <option <?php if ($session->get('situacion_fltr') == "notificadoPropRevocacion") { echo "selected";}?> value = "notificadoPropRevocacion" class="sitEjecucion"> Notificat proposta de revocació</option>
-        	    	            <option <?php if ($session->get('situacion_fltr') == "emitirResRevocacion") { echo "selected";}?> value = "emitirResRevocacion" class="sitEjecucion"> Emetre la resolució de revocació</option>
-        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emès</option>
+                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de requeriment:">
+            		            <option <?php if ($session->get('situacion_fltr') == "emitirReqJust") { echo "selected";}?> value = "emitirReqJust" class="sitEjecucion"> Requeriment de justificació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoReqJust") { echo "selected";}?> value = "emitidoReqJust" class="sitEjecucion"> Requeriment de justificació emes</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitirPropRevocacion") { echo "selected";}?> value = "emitirPropRevocacion" class="sitEjecucion"> Proposta de revocació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoPropRevocacion") { echo "selected";}?> value = "emitidoPropRevocacion" class="sitEjecucion"> Proposta de revocació emes</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitirResRevocacion") { echo "selected";}?> value = "emitirResRevocacion" class="sitEjecucion"> Resolució de revocació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emesa</option>
         	    	            <option <?php if ($session->get('situacion_fltr') == "revocado") { echo "selected";}?> value = "revocado" class="sitEjecucion"> Revocat</option>
                             </optgroup>                          
                         </optgroup>

@@ -275,54 +275,54 @@ if (!$expedientes['importeAyuda']) {
 	    		    <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onChange="avisarCambiosEnFormulario('send_fase_0', this.id)">
     		    		<option disabled <?php if ($expedientes['situacion'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
                         <optgroup style="background-color:#F51720;color:#000;" label="Fase sol·licitud:">
-                            <option <?php if ($expedientes['situacion'] == "nohapasadoREC") { echo "selected"; }?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per SEU electrònica</option>
-                            <option <?php if ($expedientes['situacion'] == "pendiente") { echo "selected"; }?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
-                            <option <?php if ($expedientes['situacion'] == "comprobarAnt") { echo "selected"; }?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
-                            <option <?php if ($expedientes['situacion'] == "comprobarAntReg") { echo "selected"; }?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb requeriment pendent</option>
-                            <option <?php if ($expedientes['situacion'] == "emitirReq") { echo "selected"; }?> value = "emitirReq" class="sitSolicitud"> Emetre requeriment</option>
-                            <option <?php if ($expedientes['situacion'] == "firmadoReq") { echo "selected"; }?> value = "firmadoReq" class="sitSolicitud"> Requeriment signat</option>
-                            <option <?php if ($expedientes['situacion'] == "notificadoReq") { echo "selected"; }?> value = "notificadoReq" class="sitSolicitud"> Requeriment notificat</option>
-                            <option <?php if ($expedientes['situacion'] == "emitirDesEnmienda") { echo "selected"; }?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment per esmena</option>
-                            <option <?php if ($expedientes['situacion'] == "emitidoDesEnmienda") { echo "selected"; }?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per esmena emès</option>
-                            <option <?php if ($expedientes['situacion'] == "Desestimiento") { echo "selected"; }?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
+                            <option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la SEU electrònica</option>
+                            <option <?php if ($session->get('situacion_fltr') == "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
+                            <option <?php if ($session->get('situacion_fltr') == "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
+                            <option <?php if ($session->get('situacion_fltr') == "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb <br>requeriment pendent</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitirReq") { echo "selected";}?> value = "emitirReq" class="sitSolicitud"> Emetre requeriment</option>
+                            <option <?php if ($session->get('situacion_fltr') == "firmadoReq") { echo "selected";}?> value = "firmadoReq" class="sitSolicitud"> Requeriment signat</option>
+                            <option <?php if ($session->get('situacion_fltr') == "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitSolicitud"> Requeriment notificat</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment <br>per esmena</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per <br>esmena emès</option>
+							<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
                             <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
-        		                <option <?php if ($expedientes['situacion'] == "emitirIFPRPago") { echo "selected";}?> value = "emitirIFPRPago" class="sitValidacion"> IF + PR provisional emetre</option>
-    				            <option <?php if ($expedientes['situacion'] == "emitidoIFPRPago") { echo "selected";}?> value = "emitidoIFPRPago" class="sitValidacion"> IF + PR provisional emesa</option>
-	    			            <option <?php if ($expedientes['situacion'] == "enviadoPRPago") { echo "selected";}?> value = "enviadoPRPago" class="sitValidacion"> PR Pagament enviat</option>
-                                <option <?php if ($expedientes['situacion'] == "emitirPagoReqIFPR") { echo "selected";}?> value = "emitirPagoReqIFPR" class="sitValidacion"> IF+PR Pagament amb requeriment emetre</option>
-                                <option <?php if ($expedientes['situacion'] == "emitirPagoReqIDPD") { echo "selected";}?> value = "emitirPagoReqIDPD" class="sitValidacion"> ID+PD pagament amb requeriment emetre</option>                                
-            		            <option <?php if ($expedientes['situacion'] == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
+    				            <option <?php if ($session->get('situacion_fltr') == "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
+	    			            <option <?php if ($session->get('situacion_fltr') == "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva emetre</option>
+								<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva emesa</option>
+                        		<option <?php if ($session->get('situacion_fltr') == "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió emetre</option>
+                        		<option <?php if ($session->get('situacion_fltr') == "emitidaResConcesion") { echo "selected";}?> value = "emitidaResConcesion" class="sitValidacion"> Resolució de concessió emesa</option>
+            		        	<option <?php if ($session->get('situacion_fltr') == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
                             </optgroup>   
                             <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
-                                <option <?php if ($expedientes['situacion'] == "emitirIDPD") { echo "selected";}?> value = "emitirIDPD" class="sitValidacion"> ID + PD emetre</option>
-				                <option <?php if ($expedientes['situacion'] == "emitidoIDPD") { echo "selected";}?> value = "emitidoIDPD" class="sitValidacion"> ID + PD emés</option>
-    				            <option <?php if ($expedientes['situacion'] == "enviadoFirmaPD") { echo "selected";}?> value = "enviadoFirmaPD" class="sitValidacion"> PD enviat a firmar</option>
-            		            <option <?php if ($expedientes['situacion'] == "notificadoPD") { echo "selected";}?> value = "notificadoPD" class="sitValidacion"> PD notificada</option>
-            		            <option <?php if ($expedientes['situacion'] == "emitirRD") { echo "selected";}?> value = "emitirRD" class="sitValidacion"> Emetre RD</option>	
-                                <option <?php if ($expedientes['situacion'] == "emitidoRD") { echo "selected";}?> value = "emitidoRD" class="sitValidacion"> RD emés</option>
-                                <option <?php if ($expedientes['situacion'] == "enviadoFirmaRD") { echo "selected";}?> value = "enviadoFirmaRD" class="sitValidacion"> RD enviada a signar</option>
-                                <option <?php if ($expedientes['situacion'] == "denegado") { echo "selected";}?> value = "Denegado" class="sitValidacion"> Denegat</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitirIDPDenProv") { echo "selected";}?> value = "emitirIDPDenProv" class="sitValidacion"> ID + P denegació provisional emetre</option>
+				                <option <?php if ($session->get('situacion_fltr') == "emitidoIDPDenProv") { echo "selected";}?> value = "emitidoIDPDenProv" class="sitValidacion"> ID + P denegació provisional emesa</option>
+    				            <option <?php if ($session->get('situacion_fltr') == "emitirPDenDef") { echo "selected";}?> value = "emitirPDenDef" class="sitValidacion"> P denegació definitiva emetre</option>
+            		            <option <?php if ($session->get('situacion_fltr') == "emitidoPDenDef") { echo "selected";}?> value = "emitidoPDenDef" class="sitValidacion"> P denegació definitiva emesa</option>
+            		            <option <?php if ($session->get('situacion_fltr') == "emitirResDen") { echo "selected";}?> value = "emitirResDen" class="sitValidacion"> Resolució de denegació emetre</option>	
+                                <option <?php if ($session->get('situacion_fltr') == "emitidoResDen") { echo "selected";}?> value = "emitidoResDen" class="sitValidacion"> Resolució de denegació emesa</option>
+                                <option <?php if ($session->get('situacion_fltr') == "Denegado") { echo "selected";}?> value = "Denegado" class="sitValidacion"> Denegat</option>
                             </optgroup>
                         </optgroup>
-                        <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase execució / justificació:">
-                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de justificació correcte:">
-                		        <option <?php if ($expedientes['situacion'] == "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion"> Pendent de justificar</option>
-                		        <option <?php if ($expedientes['situacion'] == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent SEU justificant</option>
-            	    	        <option <?php if ($expedientes['situacion'] == "Justificado") { echo "selected";}?> value = "Justificado" class="sitEjecucion"> Justificat</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "emitidoResJustificacion") { echo "selected";}?> value = "emitidoResJustificacion" class="sitEjecucion"> Resolució justificació emesa</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "Finalizado") { echo "selected";}?> value = "Finalizado" class="sitEjecucion"> Finalitzat</option>
+                        <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase justificació pagament:">
+                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="Justificació correcta:">
+                            <option <?php if ($session->get('situacion_fltr') == "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion"> Pendent de justificar</option>
+                		        <option <?php if ($session->get('situacion_fltr') == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent SEU justificat</option>
+            	    	        <option <?php if ($session->get('situacion_fltr') == "Justificado") { echo "selected";}?> value = "Justificado" class="sitEjecucion"> Justificat</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitirResPagoyJust") { echo "selected";}?> value = "emitirResPagoyJust" class="sitEjecucion"> Resolució de pagament i justificació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResPagoyJust") { echo "selected";}?> value = "emitidoResPagoyJust" class="sitEjecucion"> Resolució de pagament i justificació emesa</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "Finalizado") { echo "selected";}?> value = "Finalizado" class="sitEjecucion"> Finalitzat</option>
                             </optgroup>   
-                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de requeriment en la justificació:">
-            		            <option <?php if ($expedientes['situacion'] == "emitidoReqJust") { echo "selected";}?> value = "emitidoReqJust" class="sitEjecucion"> Emès requeriment justificació</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitEjecucion"> Requeriment notificat</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "inicioRevocacion") { echo "selected";}?> value = "inicioRevocacion" class="sitEjecucion"> Inici de revocació</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "emitidoPropRevocacion") { echo "selected";}?> value = "emitidoPropRevocacion" class="sitEjecucion"> Emès proposta de revocació</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "notificadoPropRevocacion") { echo "selected";}?> value = "notificadoPropRevocacion" class="sitEjecucion"> Notificat proposta de revocació</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "emitirResRevocacion") { echo "selected";}?> value = "emitirResRevocacion" class="sitEjecucion"> Emetre la resolució de revocació</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emès</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "revocado") { echo "selected";}?> value = "revocado" class="sitEjecucion"> Revocat</option>
+                            <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de requeriment:">
+            		            <option <?php if ($session->get('situacion_fltr') == "emitirReqJust") { echo "selected";}?> value = "emitirReqJust" class="sitEjecucion"> Requeriment de justificació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoReqJust") { echo "selected";}?> value = "emitidoReqJust" class="sitEjecucion"> Requeriment de justificació emes</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitirPropRevocacion") { echo "selected";}?> value = "emitirPropRevocacion" class="sitEjecucion"> Proposta de revocació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoPropRevocacion") { echo "selected";}?> value = "emitidoPropRevocacion" class="sitEjecucion"> Proposta de revocació emes</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitirResRevocacion") { echo "selected";}?> value = "emitirResRevocacion" class="sitEjecucion"> Resolució de revocació emetre</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emesa</option>
+        	    	            <option <?php if ($session->get('situacion_fltr') == "revocado") { echo "selected";}?> value = "revocado" class="sitEjecucion"> Revocat</option>
                             </optgroup>                          
                         </optgroup>
 			        </select>
@@ -851,16 +851,24 @@ if (!$expedientes['importeAyuda']) {
 		            <input type = "date" name = "fecha_infor_fav_desf" class = "form-control send_fase_2" id = "fecha_infor_fav_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_desf']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
-                    <label for = "fecha_propuesta_resolucion"><strong>Data firma proposta resolució:</strong></label>
-                    <input type = "date" name = "fecha_propuesta_resolucion" class = "form-control send_fase_2" id = "fecha_propuesta_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_propuesta_resolucion']), 'Y-m-d');?>">
+                    <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Data firma proposta resolució provisional:</strong></label>
+                    <input type = "date" name = "fecha_firma_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_prov']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
-                    <label for = "fecha_propuesta_resolucion_notif"><strong>Data notificació proposta resolució:</strong></label>
-                    <input type = "date" name = "fecha_propuesta_resolucion_notif" class = "form-control send_fase_2" id = "fecha_propuesta_resolucion_notif" value = "<?php echo date_format(date_create($expedientes['fecha_propuesta_resolucion_notif']), 'Y-m-d');?>">
+                    <label for = "fecha_not_propuesta_resolucion_prov"><strong>Data notificació proposta resolució provisional:</strong></label>
+                    <input type = "date" name = "fecha_not_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_propuesta_resolucion_notif']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
-                    <label for = "fecha_resolucion"><strong>Data firma resolució:</strong></label>
-                    <input type = "date" name = "fecha_resolucion" class = "form-control send_fase_2" id = "fecha_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_resolucion']), 'Y-m-d');?>">
+                    <label for = "fecha_firma_propuesta_resolucion_def"><strong>Data firma proposta resolució definitiva:</strong></label>
+                    <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
+                </div>
+		        <div class="form-group validacion">
+                    <label for = "fecha_not_propuesta_resolucion_def"><strong>Data notificació proposta resolució definitiva:</strong></label>
+                    <input type = "date" name = "fecha_not_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
+                </div>                
+		        <div class="form-group validacion">
+                    <label for = "fecha_firma_res"><strong>Data firma resolució:</strong></label>
+                    <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
                 </div>
     		    <div class="form-group validacion">
                     <label for = "fecha_notificacion_resolucion"><strong>Data notificació resolució:</strong></label>
@@ -1193,17 +1201,21 @@ if (!$expedientes['importeAyuda']) {
             <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
         	</div>
     		<div class="form-group justificacion">
-            <label for = "fecha_res_liquidacion"><strong>Data resolució de concessió:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_liquidacion" class = "form-control send_fase_4" id = "fecha_res_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_liquidacion']), 'Y-m-d');?>">
+            <label for = "fecha_firma_res_pago_just"><strong>Data firma resolució de pagament / justificació:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
-            <label for = "fecha_not_liquidacion"><strong>Data notificació liquidació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_liquidacion" class = "form-control send_fase_4" id = "fecha_not_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_liquidacion']), 'Y-m-d');?>">
+            <label for = "fecha_not_res_pago"><strong>Data notificació resolució de pagament:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
             </div>			
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Data firma requeriment justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
-            </div>	
+            </div>
+		    <div class="form-group justificacion">
+            <label for = "fecha_not_req_just"><strong>Data notificació requeriment de justificació:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_req_just" class = "form-control send_fase_4" id = "fecha_not_req_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_req_just']), 'Y-m-d');?>">
+            </div>            
             <div class="form-group justificacion">
             <label for = "fecha_REC_requerimiento_justificacion"><strong>Data SEU requeriment justificació:</strong></label>
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
@@ -1212,7 +1224,14 @@ if (!$expedientes['importeAyuda']) {
             <label for = "ref_REC_requerimiento_justificacion"><strong>Referència SEU requeriment justificació:</strong></label>
             <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
         	</div>
-
+		    <div class="form-group justificacion">
+            <label for = "fecha_propuesta_rev"><strong>Proposta de revocació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_propuesta_rev" class = "form-control send_fase_4" id = "fecha_propuesta_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_propuesta_rev'];?>">
+        	</div>
+            <div class="form-group justificacion">
+            <label for = "fecha_resolucion_rev"><strong>Resolució de revocació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_resolucion_rev" class = "form-control send_fase_4" id = "fecha_resolucion_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_resolucion_rev'];?>">
+        	</div>
                 <?php
                     if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }

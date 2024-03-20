@@ -5,11 +5,16 @@ $id = mysqli_real_escape_string($conn, $_POST["id"]);
 $fecha_completado = mysqli_real_escape_string($conn, $_POST["fecha_completado"]);
 $fecha_REC_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_REC_justificacion"]);
 $ref_REC_justificacion = mysqli_real_escape_string($conn, $_POST["ref_REC_justificacion"]);
-$fecha_res_liquidacion = mysqli_real_escape_string($conn, $_POST["fecha_res_liquidacion"]);
-$fecha_not_liquidacion = mysqli_real_escape_string($conn, $_POST["fecha_not_liquidacion"]);
+$fecha_firma_res_pago_just = mysqli_real_escape_string($conn, $_POST["fecha_firma_res_pago_just"]);
+$fecha_not_res_pago = mysqli_real_escape_string($conn, $_POST["fecha_not_res_pago"]);
 $fecha_firma_requerimiento_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_firma_requerimiento_justificacion"]);
+$fecha_not_req_just = mysqli_real_escape_string($conn, $_POST["fecha_not_req_just"]);
 $fecha_REC_requerimiento_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_REC_requerimiento_justificacion"]);
 $ref_REC_requerimiento_justificacion = mysqli_real_escape_string($conn, $_POST["ref_REC_requerimiento_justificacion"]);
+$fecha_propuesta_rev = mysqli_real_escape_string($conn, $_POST["fecha_propuesta_rev"]);
+$fecha_resolucion_rev = mysqli_real_escape_string($conn, $_POST["fecha_resolucion_rev"]);
+
+
 
 /* Si hay / entonces convertir De 21/11/2021 08:00:00 a 2021-11-21 08:00:00 */
 if (strpos($fecha_REC_justificacion, "/") > 0) {
@@ -47,18 +52,20 @@ if ( (strlen($date_REC_requerimiento_justificacion) != 0) && ($date_REC_requerim
 
 $query = "UPDATE pindust_expediente 
     SET  
-    fecha_REC_justificacion = '" . $date_REC_justificacion ."', 
-    ref_REC_justificacion = '" . mb_strtoupper($ref_REC_justificacion) ."', 
-    fecha_res_liquidacion = '" . $fecha_res_liquidacion ."', 
-    fecha_not_liquidacion = '" . $fecha_not_liquidacion ."', 
-    fecha_firma_requerimiento_justificacion = '" . $fecha_firma_requerimiento_justificacion ."', 
-    fecha_REC_requerimiento_justificacion = '" . $date_REC_requerimiento_justificacion ."',
     fecha_completado = '" . $fecha_completado ."',
-    ref_REC_requerimiento_justificacion = '" . mb_strtoupper($ref_REC_requerimiento_justificacion) ."'
-
+    fecha_REC_justificacion = '" . $date_REC_justificacion ."',
+    ref_REC_justificacion = '" . mb_strtoupper($ref_REC_justificacion) ."',
+    fecha_firma_res_pago_just = '" . $fecha_firma_res_pago_just ."',
+    fecha_not_res_pago = '" . $fecha_not_res_pago ."', 
+    fecha_firma_requerimiento_justificacion = '" . $fecha_firma_requerimiento_justificacion ."',
+    fecha_not_req_just = '" . $fecha_not_req_just ."',
+    fecha_REC_requerimiento_justificacion = '" . $date_REC_requerimiento_justificacion ."',
+    ref_REC_requerimiento_justificacion = '" . mb_strtoupper($ref_REC_requerimiento_justificacion) ."',
+    fecha_propuesta_rev = '" . $fecha_propuesta_rev . "',
+    fecha_resolucion_rev = '" . $fecha_resolucion_rev . "' 
     WHERE  id = " . $id;
 
-/* echo $query; */
+echo $query;
 $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 echo $result;

@@ -497,11 +497,13 @@ function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 	}
 	let id = document.getElementById("id").value;
 	let fecha_infor_fav_desf = document.getElementById("fecha_infor_fav_desf").value; // Data firma informe favorable / desfavorable
-	let fecha_propuesta_resolucion = document.getElementById("fecha_propuesta_resolucion").value; // Data firma proposta resolució
-	let fecha_propuesta_resolucion_notif = document.getElementById("fecha_propuesta_resolucion_notif").value; // Data notificació proposta resolució
-	let fecha_resolucion = document.getElementById("fecha_resolucion").value; // ref_REC_enmienda
-	let fecha_requerimiento = document.getElementById("fecha_requerimiento").value; // Data firma resolució
-	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // Data notificació resolució
+	let fecha_firma_propuesta_resolucion_prov = document.getElementById("fecha_firma_propuesta_resolucion_prov").value; // Data firma proposta resolució
+	let fecha_not_propuesta_resolucion_prov = document.getElementById("fecha_not_propuesta_resolucion_prov").value; // Data notificació resolució
+	let fecha_firma_propuesta_resolucion_def = document.getElementById("fecha_firma_propuesta_resolucion_def").value; // Data firma poposta resolució definitiva
+	let fecha_not_propuesta_resolucion_def = document.getElementById("fecha_not_propuesta_resolucion_def").value; // Data notificació poposta resolució definitiva
+	let fecha_firma_res = document.getElementById("fecha_firma_res").value; // Data notificació proposta resolució
+	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // ref_REC_enmienda
+	
 
 	for (let step = 0; step < 5; step++) {
 		document.getElementsByClassName("form-group validacion")[step].style.opacity = "0.1";
@@ -513,9 +515,14 @@ function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 	send_fase_2.disabled = true;
 	$.post(
 		"/public/assets/utils/actualiza_fase_2_validacion_expediente.php",
-		{ id: id, fecha_infor_fav_desf: fecha_infor_fav_desf, fecha_propuesta_resolucion: fecha_propuesta_resolucion, 
-			fecha_propuesta_resolucion_notif: fecha_propuesta_resolucion_notif, fecha_resolucion: fecha_resolucion,
-			fecha_requerimiento: fecha_requerimiento, fecha_notificacion_resolucion: fecha_notificacion_resolucion },
+		{ id: id, fecha_infor_fav_desf: fecha_infor_fav_desf, 
+			fecha_firma_propuesta_resolucion_prov: fecha_firma_propuesta_resolucion_prov, 
+			fecha_not_propuesta_resolucion_prov: fecha_not_propuesta_resolucion_prov,
+			fecha_firma_propuesta_resolucion_def: fecha_firma_propuesta_resolucion_def,
+			fecha_not_propuesta_resolucion_def: fecha_not_propuesta_resolucion_def,
+			fecha_firma_res: fecha_firma_res,
+			fecha_notificacion_resolucion: fecha_notificacion_resolucion
+		},
 		
 		function (data) {
 			$(".result").html(data);
@@ -524,7 +531,7 @@ function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 				send_fase_2.className = "btn-itramits btn-success-itramits";
 				send_fase_2.disabled = false;
 			}
-			for (let step = 0; step < 5; step++) {
+			for (let step = 0; step < 7; step++) {
 				document.getElementsByClassName("form-group validacion")[step].style.opacity = "1.0";
 			}
 		}
@@ -589,15 +596,18 @@ function actualiza_fase_4_justificacion_expediente(formName) {  //SE EMPLEA
 	let id = document.getElementById("id").value;
 	let fecha_solicitud = document.getElementById("fecha_solicitud").value; // Data REC sol·licitud
 	let fecha_completado = document.getElementById("fecha_completado").value; // Data complert
-	let fecha_REC_justificacion = document.getElementById("fecha_REC_justificacion").value; // Data REC justificació
-	let ref_REC_justificacion = document.getElementById("ref_REC_justificacion").value; // Referència REC justificació
-	let fecha_res_liquidacion = document.getElementById("fecha_res_liquidacion").value; // Data informe liquidació
-	let fecha_not_liquidacion = document.getElementById("fecha_not_liquidacion").value; // Data notificació liquidació
+	let fecha_REC_justificacion = document.getElementById("fecha_REC_justificacion").value; // Data SEU justificació
+	let ref_REC_justificacion = document.getElementById("ref_REC_justificacion").value; // Referència SEU justificació
+	let fecha_firma_res_pago_just = document.getElementById("fecha_firma_res_pago_just").value; // Data notificació resolucio de pagament
+	let fecha_not_res_pago = document.getElementById("fecha_not_res_pago").value; // Data firma resolució de pagament / justificació
 	let fecha_firma_requerimiento_justificacion = document.getElementById("fecha_firma_requerimiento_justificacion").value; // Data firma requeriment justificació
+	let fecha_not_req_just = document.getElementById("fecha_not_req_just").value // Data notificació requeriment justificació
 	let fecha_REC_requerimiento_justificacion = document.getElementById("fecha_REC_requerimiento_justificacion").value; // Data REC requeriment justificació
 	let ref_REC_requerimiento_justificacion = document.getElementById("ref_REC_requerimiento_justificacion").value; // Referència REC requeriment justificació
-
-	for (let step = 0; step < 7; step++) {
+	let fecha_propuesta_rev = document.getElementById("fecha_propuesta_rev").value; // Data propuesta revocació
+	let fecha_resolucion_rev = document.getElementById("fecha_resolucion_rev").value; // Data resolución revocació
+	
+	for (let step = 0; step < 10; step++) {
 		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
@@ -607,12 +617,16 @@ function actualiza_fase_4_justificacion_expediente(formName) {  //SE EMPLEA
 	send_fase_4.disabled = true;
 	$.post(
 		"/public/assets/utils/actualiza_fase_4_justificacion_expediente.php",
-		{ id: id, fecha_solicitud: fecha_solicitud, fecha_completado: fecha_completado, fecha_REC_justificacion: fecha_REC_justificacion, 
-			ref_REC_justificacion:ref_REC_justificacion,
-			fecha_res_liquidacion: fecha_res_liquidacion, fecha_not_liquidacion: fecha_not_liquidacion,
+		{ id: id, fecha_solicitud: fecha_solicitud, fecha_completado: fecha_completado, 
+			fecha_REC_justificacion: fecha_REC_justificacion, 
+			ref_REC_justificacion:ref_REC_justificacion, fecha_firma_res_pago_just: fecha_firma_res_pago_just,
+			fecha_not_res_pago: fecha_not_res_pago, 
 			fecha_firma_requerimiento_justificacion: fecha_firma_requerimiento_justificacion,
+			fecha_not_req_just: fecha_not_req_just,
 			fecha_REC_requerimiento_justificacion: fecha_REC_requerimiento_justificacion,
-			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion
+			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion,
+			fecha_propuesta_rev: fecha_propuesta_rev,
+			fecha_resolucion_rev: fecha_resolucion_rev
 		},
 		
 		function (data) {
@@ -622,7 +636,7 @@ function actualiza_fase_4_justificacion_expediente(formName) {  //SE EMPLEA
 				send_fase_4.className = "btn-itramits btn-success-itramits";
 				send_fase_4.disabled = false;
 			}
-			for (let step = 0; step < 7; step++) {
+			for (let step = 0; step < 10; step++) {
 				document.getElementsByClassName("form-group justificacion")[step].style.opacity = "1.0";
 			}			
 		}
