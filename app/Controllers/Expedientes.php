@@ -1124,7 +1124,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_prop_res_provisional_favorable_sin_req": 						//DOC 7 - CON VIAFIRMA. A GERENCIA
+			case "doc_prop_res_provisional_favorable_sin_req":  //DOC 7 - CON VIAFIRMA. A GERENCIA
 				$data_infor = [
 					'doc_prop_res_provisional_favorable_sin_req' => $last_insert_id
 				];
@@ -1132,30 +1132,28 @@ class Expedientes extends Controller
 				$builder->update($data_infor);
 				$data['byCEOSigned'] = true;
 				$data_footer = [
-					'tipoDoc' => "<h4>Proposta de resolució PROVISIONAL FAVORABLE sense requeriment</h4>",
+					'tipoDoc' => "<h4>Proposta de resolució PROVISIONAL favorable sense requeriment</h4>",
 					'conVIAFIRMA' => true
 				];
-				echo "<h4>Proposta de resolució PROVISIONAL FAVORABLE sense requeriment</h4>";
+				echo "<h4>Proposta de resolució PROVISIONAL favorable sense requeriment</h4>";
 				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-provisional-favorable-sin-requerimiento', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-
-			
-				case "doc_prop_res_denegacion_sin_req": // DOC 8 - CON VIAFIRMA. A GERENCIA
+			case "doc_prop_res_provisional_favorable_con_req": // DOC 8 - CON VIAFIRMA. A GERENCIA
 				$data_infor = [
-					'doc_prop_res_denegacion_sin_req' => $last_insert_id
+					'doc_prop_res_provisional_favorable_con_req' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
 				$data['byCEOSigned'] = true;
 				$data_footer = [
-					'tipoDoc' => " Proposta de resolució de denegació sense requeriment",
+					'tipoDoc' => " Proposta de resolució PROVISIONAL favorable amb requeriment",
 					'conVIAFIRMA' => true
 				];
-				echo "<h4>Proposta de resolució de denegació sense requeriment</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-denegacion-sin-requerimiento', $data);
+				echo "<h4>Proposta de resolució PROVISIONAL favorable amb requeriment</h4>";
+				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-provisional-favorable-con-requerimiento', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
@@ -1180,7 +1178,9 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_prop_res_conces_sin_req": //DOC 10 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+			
+			
+				case "doc_prop_res_conces_sin_req": //DOC 10 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
 				$data_infor = [
 					'doc_prop_res_conces_sin_req' => $last_insert_id
 				];

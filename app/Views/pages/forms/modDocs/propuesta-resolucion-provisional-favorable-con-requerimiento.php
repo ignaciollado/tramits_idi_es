@@ -1,21 +1,21 @@
-<!----------------------------------------- Proposta de resolució provisional favorable sense requeriment DOC 7 --------------------------------->
+<!----------------------------------------- Proposta resolució provisional favorable amb requeriment DOC 8------------------------------------------------>
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució PROVISIONAL FAVORABLE<br>sense requeriment
+		Proposta de resolució PROVISIONAL FAVORABLE<br>amb requeriment
 	</div>
 	<div class="card-itramits-footer">
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="btnPropResProvfavSinReq" class='btn btn-primary btn-acto-admin' onclick="enviaPropResolucionProvisionalFavorableSinReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
-			<div id='infoMissingData7' class="alert alert-danger ocultar btn-acto-admin"></div>
+			<button id="btnPropResProvfavConReq" class='btn btn-primary btn-acto-admin' onclick="enviaPropResolucionProvisionalFavorableConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
+			<div id='infoMissingDataDoc8' class="alert alert-danger ocultar btn-acto-admin"></div>
 		<?php } ?>
 
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_provisional_favorable_sin_req'] != 0) { ?>
+		<?php if ($expedientes['doc_prop_res_provisional_favorable_con_req'] != 0) { ?>
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_prop_res_provisional_favorable_sin_req.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_prop_res_provisional_favorable_con_req.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -49,36 +49,36 @@
 <!------------------------------------------------------------------------------------------------------>
 
 <script>
-	function enviaPropResolucionProvisionalFavorableSinReg(id, convocatoria, programa, nifcif) {
+	function enviaPropResolucionProvisionalFavorableConReg(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
-		let btnPropResProvfavSinReq = document.getElementById('btnPropResProvfavSinReq')
+		let btnPropResProvfavConReq = document.getElementById('btnPropResProvfavConReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let infoMissingData7 = document.getElementById('infoMissingData7')
-		infoMissingData7.innerText = ""
+		let infoMissingDataDoc8 = document.getElementById('infoMissingDataDoc8')
+		infoMissingDataDoc8.innerText = ""
 
 		if (!fecha_REC.value) {
-			infoMissingData7.innerHTML = infoMissingData7.innerHTML + "Data SEU sol·licitud<br>"
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!ref_REC.value) {
-			infoMissingData7.innerHTML = infoMissingData7.innerHTML + "Referència SEU sol·licitud<br>"
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!fecha_infor_fav_desf.value) {
-			infoMissingData7.innerHTML = infoMissingData7.innerHTML + "Data firma informe favorable / desfavorable<br>"
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
 
 		if (todoBien) {
-			infoMissingData7.classList.add('ocultar')
-			btnPropResProvfavSinReq.disabled = true
-			btnPropResProvfavSinReq.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_favorable_sin_req'
+			infoMissingDataDoc8.classList.add('ocultar')
+			btnPropResProvfavConReq.disabled = true
+			btnPropResProvfavConReq.innerHTML = "Generant i enviant ..."
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_favorable_con_req'
 		} else {
-			infoMissingData7.classList.remove('ocultar')
+			infoMissingDataDoc8.classList.remove('ocultar')
 		}
 	}
 </script>

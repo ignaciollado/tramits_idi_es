@@ -927,11 +927,11 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------6. Informe desfavorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------7. Proposta de resolució PROVISIONAL favorable sense requeriment SIN VIAFIRMA-->
+            <!-----------------------------------------7. Proposta de resolució PROVISIONAL favorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-favorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>            
-            <!-----------------------------------------Proposta resolucio denegació ajut_ amb requeriment SIN VIAFIRMA-->
-	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-con-requerimiento.php';?></li>
+            <!-----------------------------------------8. Proposta de resolució PROVISIONAL favorable amb requeriment-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-favorable-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta resolucio denegació ajut_ sin requeriment SIN VIAFIRMA-->
 	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-denegacion-sin-requerimiento.php';?></li>
