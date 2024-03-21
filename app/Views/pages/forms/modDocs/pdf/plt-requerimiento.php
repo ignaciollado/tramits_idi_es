@@ -10,7 +10,6 @@ use App\Models\MejorasExpedienteModel;
 $modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
-$mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);

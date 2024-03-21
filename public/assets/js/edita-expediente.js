@@ -818,7 +818,6 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 				document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
 			}
 		}
 	);

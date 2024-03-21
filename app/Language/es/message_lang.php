@@ -77,7 +77,7 @@ return [
    'titulo_justificacion_idigital'	  => "Solicitud de pago de la ayuda de cheques de consultoría para la competitividad industrial de las Islas Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada.",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
    'subtitulo_sol_idigital'			  => "RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
-	https://www.caib.es/seucaib/es/200/persones/tramites/tramite/5624586
+	https://www.caib.es/seucaib/es/200/persones/tramites/tramite/6087813/
    
    Si necesita contactarnos, puede hacerlo por correo electrónico: pindust@idi.es y/o por teléfono: 971 17 61 61 + 62894", 
    'subtitulo_adhesion_ils'			  => "La solicitud de adhesión a ILS esta pendiente de firmar, por favor, entre en el documento y fírmelo.
