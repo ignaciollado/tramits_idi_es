@@ -1,6 +1,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Requeriment
+    	Requeriment sol·licitud
   	</div>
 	<div class="card-itramits-footer">
 

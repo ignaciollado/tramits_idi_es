@@ -1,21 +1,19 @@
-<!----------------------------------------- Proposta de resolució i resolució de pagament amb requeriment. DOC 10. SIN VIAFIRMA OK-->
+<!----------------------------------------- Proposta de resolució definitiva favorable amb requeriment. DOC 12. SIN VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució i resolució de pagament amb requeriment
+	Proposta de resolució definitiva favorable<br> amb requeriment
 	</div>
 	<div class="card-itramits-footer">
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="wrapper_propuestaResPagoConReq" class='btn btn-primary btn-acto-admin' onclick="enviaPropResolucionPagoConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
-			<div id='infoMissingDataDoc10' class="alert alert-danger ocultar btn-acto-admin"></div>
-			<span id="spinner_10" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			<button id="btnPropResDefFavConReq" class='btn btn-primary btn-acto-admin' onclick="enviaPropResolucionDefFavConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Genera la proposta</button>
+			<div id='infoMissingDataDoc12' class="alert alert-danger ocultar btn-acto-admin"></div>
 		<?php } ?>
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_conces_con_req'] != 0) { ?>
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_conces_con_req.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_def_favorable_con_req.pdf');
 
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
@@ -43,55 +41,51 @@
 					}
 				echo $estado_firma;
 			}	?>
-
-		<?php } ?>
 	</div>
 </div>
 <!-------------------------------------------------------------------------------------------------------------------->
 
 <script>
-	function enviaPropResolucionPagoConReg(id, convocatoria, programa, nifcif) {
+	function enviaPropResolucionDefFavConReg(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
-		let wrapper_propuestaResPagoConReq = document.getElementById('wrapper_propuestaResPagoConReq')
+		let btnPropResDefFavConReq = document.getElementById('btnPropResDefFavConReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_10 = document.getElementById('spinner_10')
-		let infoMissingDataDoc10 = document.getElementById('infoMissingDataDoc10')
-		infoMissingDataDoc10.innerText = ""
+		let infoMissingDataDoc11 = document.getElementById('infoMissingDataDoc11')
+		infoMissingDataDoc11.innerText = ""
 
 		if (!fecha_REC.value) {
-			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!ref_REC.value) {
-			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!fecha_infor_fav_desf.value) {
-			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Data firma informe favorable / desfavorable<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
 		if (!fecha_REC_enmienda.value) {
-			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Data REC esmena<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
 		if (!ref_REC_enmienda.value) {
-			infoMissingDataDoc10.innerHTML = infoMissingDataDoc10.innerHTML + "Referència REC esmena<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Referència SEU esmena<br>"
 			todoBien = false
 		}
 
 		if (todoBien) {
-			infoMissingDataDoc10.classList.add('ocultar')
-			wrapper_propuestaResPagoConReq.disabled = true
-			wrapper_propuestaResPagoConReq.innerHTML = "Enviant ..."
-			spinner_10.classList.remove('ocultar')
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_conces_con_req'
+			infoMissingDataDoc11.classList.add('ocultar')
+			btnPropResDefFavConReq.disabled = true
+			btnPropResDefFavConReq.innerHTML = "Generant i enviant ..."
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_def_favorable_con_req'
 		} else {
-			infoMissingDataDoc10.classList.remove('ocultar')
+			infoMissingDataDoc11.classList.remove('ocultar')
 		}
 	}
 </script>

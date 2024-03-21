@@ -921,11 +921,11 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------4. Informe favorable sense requeriment--------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------5. Informe desfavorable amb requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------6. Informe desfavorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
+            <!------------------------------------------------------------------------------------------------------>   
+            <!-----------------------------------------5. Informe desfavorable amb requeriment-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-con-requerimiento.php';?></li>         
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------7. Proposta de resolució PROVISIONAL favorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-favorable-sin-requerimiento.php';?></li>
@@ -939,9 +939,12 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------10. Proposta de resolució PROVISIONAL desfavorable amb requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-desfavorable-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta de resolució i resolució de pagament sense requeriment SIN VAIFIRMA-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-pago-sin-requerimiento.php';?></li>
+            <!-----------------------------------------11. Proposta de resolució definitiva favorable sense requeriment-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-favorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
+            <!-----------------------------------------12. Proposta de resolució definitiva favorable amb requeriment-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-favorable-con-requerimiento.php';?></li>
+            <!------------------------------------------------------------------------------------------------------>            
             <!-----------------------------------------Resolució denegació amb requeriment SIN VIAFIRMA-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>

@@ -2,7 +2,7 @@
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució desistiment per no esmenar
+  	Resolució de desistiment per no esmenar
   </div>
 
   	<div class="card-itramits-footer">

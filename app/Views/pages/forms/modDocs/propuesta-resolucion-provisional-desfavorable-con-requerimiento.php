@@ -13,10 +13,8 @@
 				<div id='infoMissingDataDoc10' class="alert alert-danger ocultar"></div>
 			</span>
 		<?php } ?>
-
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_prov_desf_con_req'] != 0) { ?> <!--Si existe el documento PDF muetra el enlace -->
 			<?php
 			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_prop_res_prov_desf_con_req.pdf');
 			if (isset($tieneDocumentosGenerados)) {
@@ -45,8 +43,6 @@
 					}
 				echo $estado_firma;
 			}	?>
-
-		<?php } ?>
 		<?php //} else {
 		?> <!-- En caso de no existir el documento PDF muestra el botón para generarlo-->
 		<div id="wrapper_generaDenegacion_10" class="">

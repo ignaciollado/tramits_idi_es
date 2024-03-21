@@ -19,8 +19,6 @@ $mejorasSolicitud = new MejorasExpedienteModel();
 $data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
-$data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
-$ultimaMejora = explode("##",  $data['ultimaMejora']);
 
 $db = \Config\Database::connect();
 $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
@@ -126,7 +124,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$antecedentes_1_2 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_1_2'));
+$antecedentes_1_2 = str_replace("%RESPRESIDENTE%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_1_2'));
 $antecedentes_1_2 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $antecedentes_1_2);
 
 $antecedentes_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , $antecedentes_1_2);
