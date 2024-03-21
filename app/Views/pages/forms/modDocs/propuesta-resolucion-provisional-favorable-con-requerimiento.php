@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta resolució provisional favorable amb requeriment DOC 8------------------------------------------------>
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució PROVISIONAL FAVORABLE<br>amb requeriment
+		Proposta de resolució provisional favorable<br>amb requeriment
 	</div>
 	<div class="card-itramits-footer">
 		<?php

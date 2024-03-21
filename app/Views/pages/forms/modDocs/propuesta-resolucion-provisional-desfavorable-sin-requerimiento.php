@@ -1,25 +1,24 @@
-<!---------------------------- Proposta resolució denegació ajut sin requeriment. DOC 8. FIRMA GERENTE ------------------------>
+<!---------------------------- Proposta resolució provisional desfavorable sin requerimiento DOC-9 ------------------------>
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució de denegació sense requeriment
+	Proposta resolució provisional desfavorable<br>sense requeriment
 	</div>
 	<div class="card-itramits-footer" aria-label="generar informe">
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button type="button" class="btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myDenegacion_8" id="myBtnResDenegacionSinReq">Motiu de la denegació</button>
-			<span id="btn_8" class="">
-				<button id="wrapper_motivoDenegacion_8" class='btn btn-primary ocultar btn-acto-admin' onclick="enviaPropuestaResDenegacionSinRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a signar</button>
-				<div id='infoMissingDataDoc8' class="alert alert-danger ocultar"></div>
+			<button type="button" class="btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target="#modalMotivoDenegacion9" id="myBtnResProvDenegacionSinReq">Motiu de la denegació</button>
+			<span id="btn_9" class="">
+				<button id="btnPropResProvDesfavSinReq" class='btn btn-primary ocultar btn-acto-admin' onclick="enviaPropuestaResProvDesfSinReq(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a signar</button>
+				<div id='infoMissingDataDoc9' class="alert alert-danger ocultar"></div>
 			</span>
-			<span id="spinner_8" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>
 
 	</div>
 	<div class="card-itramits-footer">
 
 		<?php
-		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_denegacion_sin_req.pdf');
+		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_prov_desf_sin_req.pdf');
 		if (isset($tieneDocumentosGenerados)) {
 			$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 			$requestPublicAccessId = $PublicAccessId;
@@ -48,7 +47,7 @@
 		}	?>
 
 		<!-- The Modal -->
-		<div class="modal" id="myDenegacion_8">
+		<div class="modal" id="modalMotivoDenegacion9">
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content" style="width: 80%;">
@@ -58,7 +57,7 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<textarea rows="10" cols="30" class="form-control" id="motivoDenegacion_8" placeholder="Motiu de la denegació"><?php echo $expedientes['motivoDenegacion']; ?></textarea>
+							<textarea rows="10" cols="30" class="form-control" id="motivoDenegacion_9" placeholder="Motiu de la denegació"><?php echo $expedientes['motivoDenegacion']; ?></textarea>
 						</div>
 						<div class="form-group">
 							<button type="button" onclick="javaScript: actualizaMotivoDenegacionSinReq_click();" id="guardaMotivoDenegacion" class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
@@ -71,32 +70,30 @@
 </div>
 
 <script>
-	function enviaPropuestaResDenegacionSinRequerimiento(id, convocatoria, programa, nifcif) {
+	function enviaPropuestaResProvDesfSinReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let wrapper_motivoDenegacion_8 = document.getElementById('wrapper_motivoDenegacion_8')
+		let btnPropResProvDesfavSinReq = document.getElementById('btnPropResProvDesfavSinReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_8 = document.getElementById('spinner_8')
-		let infoMissingDataDoc8 = document.getElementById('infoMissingDataDoc8')
-		infoMissingDataDoc8.innerText = ""
+		let infoMissingDataDoc9 = document.getElementById('infoMissingDataDoc9')
+		infoMissingDataDoc9.innerText = ""
 
 		if (!fecha_REC.value) {
-			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!ref_REC.value) {
-			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (todoBien) {
-			infoMissingDataDoc8.classList.add('ocultar')
-			wrapper_motivoDenegacion_8.disabled = true
-			wrapper_motivoDenegacion_8.innerHTML = "Enviant ..."
-			spinner_8.classList.remove('ocultar')
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_denegacion_sin_req'
+			infoMissingDataDoc9.classList.add('ocultar')
+			btnPropResProvDesfavSinReq.disabled = true
+			btnPropResProvDesfavSinReq.innerHTML = "Generant i enviant ..."
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_prov_desf_sin_req'
 		} else {
-			infoMissingDataDoc8.classList.remove('ocultar')
+			infoMissingDataDoc9.classList.remove('ocultar')
 		}
 	}
 </script>

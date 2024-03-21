@@ -370,9 +370,7 @@ class Expedientes extends Controller
 
 	public function do_upload($id = null, $nif = null, $tipo_tramite = null, $convocatoria = null, $tipoJustDoc = null, $faseExped = null)
 	{
-		
 		/* /public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Solicitud') */
-		
 		helper('filesystem');
 		helper(['form', 'url']);
 		$request = \Config\Services::request();
@@ -1141,7 +1139,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_provisional_favorable_con_req": // DOC 8 - CON VIAFIRMA. A GERENCIA
+			case "doc_prop_res_provisional_favorable_con_req": 	// DOC 8 - CON VIAFIRMA. A GERENCIA
 				$data_infor = [
 					'doc_prop_res_provisional_favorable_con_req' => $last_insert_id
 				];
@@ -1158,41 +1156,36 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-
-			
-				case "doc_prop_res_conces_con_req":  // DOC 9 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+			case "doc_prop_res_prov_desf_sin_req":  						// DOC 9 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
 				$data_infor = [
-					'doc_prop_res_conces_con_req' => $last_insert_id
+					'doc_prop_res_prov_desf_sin_req' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
 				$data['byCEOSigned'] = true;
 				$data_footer = [
-					'tipoDoc' => " Proposta de resolució i resolució de pagament amb requeriment",
+					'tipoDoc' => " Proposta de resolució provisional desfavorable sense requeriment",
 					'conVIAFIRMA' => true
 				];
-				echo "<h4>Proposta de resolució i resolució de pagament amb requeriment</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-concesion-con-requerimiento', $data);
+				echo "<h4>Proposta de resolució provisional desfavorable sense requeriment</h4>";
+				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-provisional-desfavorable-sin-requerimiento', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-
-			
-			
-				case "doc_prop_res_conces_sin_req": //DOC 10 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+			case "doc_prop_res_prov_desf_con_req": //DOC 10 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
 				$data_infor = [
-					'doc_prop_res_conces_sin_req' => $last_insert_id
+					'doc_prop_res_prov_desf_con_req' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
 				$data['byCEOSigned'] = true;
 				$data_footer = [
-					'tipoDoc' => " Proposta de resolució i resolució de pagament sense requeriment",
+					'tipoDoc' => " Proposta de resolució provisional desfavorable con requeriment",
 					'conVIAFIRMA' => true
 				];
-				echo "<h4>Proposta de resolució i resolució de pagament sense requeriment</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-concesion-sin-requerimiento', $data);
+				echo "<h4>Proposta de resolució provisional desfavorable con requeriment</h4>";
+				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-provisional-desfavorable-con-requerimiento', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);

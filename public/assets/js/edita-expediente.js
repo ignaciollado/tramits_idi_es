@@ -946,9 +946,9 @@ function actualizaMotivoRevocacionPorNoJustificar_click() {  //SE EMPLEA
 }
 
 function actualizaMotivoDenegacion_click() {  //SE EMPLEA
-	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_7").value;
+	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_10").value;
 	let id = document.getElementById("id").value;
-	let modal = document.getElementById("myDenegacion_7");
+	let modal = document.getElementById("modalMotivoDenegacion10");
 	if ( textoMotivoDenegacion === "") {
 		alert ("Falta indicar el motiu de la denegació")
 		return
@@ -959,20 +959,20 @@ function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {
-				document.getElementById("wrapper_motivoDenegacion_7").remove = "ocultar";
-				document.getElementById("wrapper_motivoDenegacion_7").className = "btn btn-primary";
+				document.getElementById("btnPropResProvDesfavConReq").remove = "ocultar";
+				document.getElementById("btnPropResProvDesfavConReq").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				document.getElementById("wrapper_generaDenegacion_7").style.display = "none";
+				document.getElementById("myBtnResProvDenegacionConReq").style.display = "none";
 			}
 		}
 	);
 }
 
 function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
-	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_8").value;
+	let textoMotivoDenegacion = document.getElementById("motivoDenegacion_9").value;
 	let id = document.getElementById("id").value;
-	let modal = document.getElementById("myDenegacion_8");
+	let modal = document.getElementById("modalMotivoDenegacion9");
 	if ( textoMotivoDenegacion === "") {
 		alert ("Falta indicar el motiu de la denegació")
 		return
@@ -983,11 +983,11 @@ function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {
-				document.getElementById("wrapper_motivoDenegacion_8").remove = "ocultar";
-				document.getElementById("wrapper_motivoDenegacion_8").className = "btn btn-primary";
+				document.getElementById("btnPropResProvDesfavSinReq").remove = "ocultar";
+				document.getElementById("btnPropResProvDesfavSinReq").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				document.getElementById("wrapper_generaDenegacion_8").style.display = "none";
+				document.getElementById("myBtnResProvDenegacionSinReq").style.display = "none";
 			}
 		}
 	);
