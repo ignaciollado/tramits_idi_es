@@ -102,6 +102,7 @@ $html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('helvetica', '', 9);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 $pdf->writeHTMLCell(90, '', 100, 40, $html, 0, 1, 1, true, 'J', true);
 $pdf->SetFont('helvetica', '', 11);
