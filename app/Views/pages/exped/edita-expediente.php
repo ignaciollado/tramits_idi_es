@@ -739,6 +739,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col docsExpediente">
         <div class="col">
             <h3>Documents de l'expedient:</h3>
+            <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
         	        <div>Pujat el</div>
@@ -956,6 +957,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col docsExpediente">
         <div class="col">
             <h3>Documents de l'expedient:</h3>
+            <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
     	            <div >Pujat el</div>
@@ -1106,6 +1108,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col docsExpediente">
         <div class="col">
             <h3>Documents de l'expedient:</h3>
+            <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
     	            <div>Pujat el</div>
@@ -1268,6 +1271,7 @@ if (!$expedientes['importeAyuda']) {
             <!---------------------------------------------------------------------------------------------------------------->                                      
         </ol>    
         <h3>Documents de l'expedient:</h3>
+        <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
         <div class="docsExpediente">
             <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
                 <div>Pujatel</div>
@@ -1688,6 +1692,7 @@ if (!$expedientes['importeAyuda']) {
         <div class="col docsExpediente">
         <div class="col">
             <h3>Documents de l'expedient:</h3>
+            <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
     	            <div>Pujat el</div>

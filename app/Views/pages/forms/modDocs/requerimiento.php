@@ -1,6 +1,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Requeriment sol·licitud [pre-tramits]
+    	Requeriment sol·licitud
   	</div>
 	<div class="card-itramits-footer">
 
@@ -9,10 +9,8 @@
       <?php }
     else {?>
 			<button class="btn btn-secondary btn-acto-admin" type="button" data-bs-toggle="modal" data-bs-target="#motivoRequerimiento">Motiu del requeriment</button>
-			<div id='infoMissingDataDoc1' class="alert alert-danger ocultar"></div>
 			<span id="btn_1" class="">
-    			<!-- <a id ="wrapper_motivoRequerimiento" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment');?>">Envia a signar el requeriment</a> -->
-					<button id="wrapper_motivoRequerimiento" class = "btn btn-primary btn-acto-admin" onclick="enviaRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
+					<button id="wrapper_motivoRequerimiento" class="btn btn-primary ocultar" onclick="enviaRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
 			</span>
 	<?php }?>
 	
@@ -74,37 +72,38 @@
 </div>
 
 <script>
+function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
+	let textoMotivoReq = document.getElementById("motivoRequerimientoTexto").value;
+	let id = document.getElementById("id").value;
+	let modal = document.getElementById("motivoRequerimiento");
+	if ( textoMotivoReq === "" ) {
+		alert ("Falta indicar el motiu.")
+		return;
+	}
+	$.post(
+		"/public/assets/utils/actualiza_motivo_requerimiento_en_expediente.php",
+		{ id: id, textoMotivoReq: textoMotivoReq },
+		function (data) {
+			$(".result").html(data);
+			if (data == 1) {
+				document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
+				console.log (document.getElementById("wrapper_motivoRequerimiento").innerText)
+				modal.style.display = "none";
+				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
+			}
+		}
+	);
+}
+
+
 	function enviaRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_REC = document.getElementById('fecha_REC')
-		let ref_REC = document.getElementById('ref_REC')
-		let fecha_requerimiento_notif= document.getElementById('fecha_requerimiento_notif')
-		let wrapper_desestimientoPorNoEnmendar = document.getElementById('wrapper_desestimientoPorNoEnmendar')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainforme'
-		let spinner_2 = document.getElementById('spinner_2')
-		let infoMissingDataDoc2 = document.getElementById('infoMissingDataDoc2')
-		infoMissingDataDoc2.innerText = ""
-
-		if(!fecha_REC.value) {
-			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Data SEU sol·licitud<br>"
-			todoBien = false
-		}
-		if(!ref_REC.value) {
-			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Referència SEU sol·licitud<br>"
-			todoBien = false
-		}
-		if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Data notificació requeriment<br>"
-			todoBien = false
-		}
+		let wrapper_motivoRequerimiento = document.getElementById('wrapper_motivoRequerimiento')
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainforme'
 		if (todoBien) {
-			infoMissingDataDoc2.classList.add('ocultar')
-			wrapper_desestimientoPorNoEnmendar.disabled = true
-			wrapper_desestimientoPorNoEnmendar.innerHTML = "Generant i enviant ..."
-			spinner_2.classList.remove('ocultar')
+			wrapper_motivoRequerimiento.disabled = true
+			wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment'
-		} else {
-			infoMissingDataDoc2.classList.remove('ocultar')
 		}
 	}
 </script>

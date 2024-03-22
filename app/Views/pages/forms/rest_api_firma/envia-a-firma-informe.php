@@ -95,7 +95,7 @@
 
 	function execute($apiPath, $json, $methodName) {
 		$url = REST_API_URL.$apiPath;
-		// echo "<br><br>-- "."\nMethod URL: ".$url."\n\n"."  --  ";
+		/* echo "<br><br>-- "."\nMethod URL: ".$url."\n\n"."  --  "; */
 		
 		// Initiate curl
 		$ch = curl_init();

@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva favorable amb requeriment. DOC 12. SIN VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-	Proposta de resolució definitiva favorable<br> amb requeriment
+	Proposta de resolució definitiva favorable<br> amb requeriment <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -54,7 +54,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let btnPropResDefFavConReq = document.getElementById('btnPropResDefFavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc11 = document.getElementById('infoMissingDataDoc11')
 		infoMissingDataDoc11.innerText = ""
 

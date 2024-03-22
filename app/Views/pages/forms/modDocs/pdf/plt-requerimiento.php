@@ -5,7 +5,6 @@ setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
-use App\Models\MejorasExpedienteModel;
     
 $modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();

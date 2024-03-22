@@ -5,9 +5,7 @@ $(document).ready(function () {
 
 	idExp = document.getElementById("id")
 	programa = document.getElementById("programa")
-/* 	if (programa.value === "ILS") {
-		compruebaEstadoDocumentosRequeridos(idExp.value)
-	} */
+
 	$("#exped-fase-1").submit(function () {
 		$("#send-exped-fase-1", this)
 			.html("Actualitzant, un moment per favor.")
@@ -16,19 +14,6 @@ $(document).ready(function () {
 			.css("cursor", " progress");
 	});
 
-	$("#muestraRequerimiento").click(function () {
-		$("#muestraRequerimiento").html(
-			"Creant requeriment, un moment per favor ..."
-		);
-		$("#muestraRequerimiento").attr("disabled", "disabled");
-		$("#muestraRequerimiento").css("background-color", "orange");
-		$("#muestraRequerimiento").css("cursor", " progress");
-	});
-
- 	$("#wrapper_motivoRequerimiento").click(function () {
-		$("#spinner_1").removeClass("ocultar");
-		$("#btn_1").addClass("ocultar");
-	}); 
 	$("#generaInfFavSinReq").click(function () {
 		$("#spinner_2").removeClass("ocultar");
 		$("#btn_2").addClass("ocultar");
@@ -798,29 +783,6 @@ function actualizaFechas(fechaCierre, dias) {
 
 function actualizaRequired(valor) {
 
-}
-
-function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
-	let textoMotivoReq = document.getElementById("motivoRequerimientoTexto").value;
-	let id = document.getElementById("id").value;
-	let modal = document.getElementById("motivoRequerimiento");
-	if ( textoMotivoReq === "" ) {
-		alert ("Falta indicar el motiu.")
-		return;
-	}
-	$.post(
-		"/public/assets/utils/actualiza_motivo_requerimiento_en_expediente.php",
-		{ id: id, textoMotivoReq: textoMotivoReq },
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				document.getElementById("wrapper_motivoRequerimiento").remove = "ocultar";
-				document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
-				modal.style.display = "none";
-				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-			}
-		}
-	);
 }
 
 function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA

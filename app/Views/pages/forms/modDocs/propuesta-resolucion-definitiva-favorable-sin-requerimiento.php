@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva favorable sense requeriment. DOC 11 SIN VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-	Proposta de resolució definitiva favorable<br> sense requeriment
+	Proposta de resolució definitiva favorable<br> sense requeriment <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -51,8 +51,10 @@
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
+		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
+		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnPropResDefFavSinReq = document.getElementById('btnPropResDefFavSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc11 = document.getElementById('infoMissingDataDoc11')
 		infoMissingDataDoc11.innerText = ""
 
@@ -66,6 +68,15 @@
 		}
 		if (!fecha_infor_fav_desf.value) {
 			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data firma informe favorable / desfavorable<br>"
+			todoBien = false
+		}
+
+		if (!fecha_firma_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data firma proposta resolució provisional<br>"
+			todoBien = false
+		}
+		if (!fecha_not_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data notificació proposta resolució provisional<br>"
 			todoBien = false
 		}
 

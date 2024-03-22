@@ -2,10 +2,11 @@
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució de desistiment per no esmenar [pre-tramits]
+  	Resolució de desistiment per no esmenar  <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
   </div>
 
   	<div class="card-itramits-footer">
+
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
@@ -80,7 +81,7 @@
 		if (todoBien) {
 			infoMissingDataDoc2.classList.add('ocultar')
 			wrapper_desestimientoPorNoEnmendar.disabled = true
-			wrapper_desestimientoPorNoEnmendar.innerHTML = "Enviant ..."
+			wrapper_desestimientoPorNoEnmendar.innerHTML = "Generant i enviant ..."
 			spinner_2.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar'
 		} else {

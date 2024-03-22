@@ -1,14 +1,14 @@
 <!---------------------------- Proposta resolució provisional desfavorable sin requerimiento DOC-9 ------------------------>
 <div class="card-itramits">
 	<div class="card-itramits-body">
-	Proposta resolució provisional desfavorable<br>sense requeriment
+	Proposta resolució provisional desfavorable<br>sense requeriment <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
 	</div>
 	<div class="card-itramits-footer" aria-label="generar informe">
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
 			<button type="button" class="btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target="#modalMotivoDenegacion9" id="myBtnResProvDenegacionSinReq">Motiu de la denegació</button>
-			<span id="btn_9" class="">
+			<span id="btn_8" class="">
 				<button id="btnPropResProvDesfavSinReq" class='btn btn-primary ocultar btn-acto-admin' onclick="enviaPropuestaResProvDesfSinReq(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a signar</button>
 				<div id='infoMissingDataDoc9' class="alert alert-danger ocultar"></div>
 			</span>
@@ -16,6 +16,7 @@
 
 	</div>
 	<div class="card-itramits-footer">
+
 		<?php
 		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_prov_desf_sin_req.pdf');
 		if (isset($tieneDocumentosGenerados)) {
@@ -74,7 +75,7 @@
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let btnPropResProvDesfavSinReq = document.getElementById('btnPropResProvDesfavSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc9 = document.getElementById('infoMissingDataDoc9')
 		infoMissingDataDoc9.innerText = ""
 
