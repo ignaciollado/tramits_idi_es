@@ -1,7 +1,7 @@
 <!-- -------------------------------------- abril_Informe favorable sense requeriment 2021 OK-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Informe favorable sense requeriment
+    	 Informe favorable sense requeriment  <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
   	</div>
 	<div class="card-itramits-footer">
 
@@ -64,7 +64,7 @@
 		/* let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda') */
 
 		let generaInfFavSinReq = document.getElementById('generaInfFavSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_4 = document.getElementById('spinner_4')
 		let infoMissingDataDoc4 = document.getElementById('infoMissingDataDoc4')
 		infoMissingDataDoc4.innerText = ""

@@ -26,6 +26,22 @@ if ($session->has('logged_in')) {
     $pieFirma =  $session->get('full_name');
 }
 
+if ($data['expediente']['tipo_tramite'] == "Programa I") {
+	$tipo_tramite = lang('message_lang.programaiDigital');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa II") {
+	$tipo_tramite = lang('message_lang.programaiExporta');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions corporatives") {
+	$tipo_tramite = lang('message_lang.programaiSostenibilitatCorp');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions producte") {
+	$tipo_tramite = lang('message_lang.programaiSostenibilitatProd');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa IV") {
+	$tipo_tramite = lang('message_lang.programaiGestio');
+}
+
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -85,7 +101,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: informe desfavorable<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
-$html .= "Programa: " .$data['expediente']['tipo_tramite']."<br>";
+$html .= "Programa: " .$tipo_tramite."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -127,7 +143,7 @@ $parrafo_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $par
 $parrafo_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1_2);
 $parrafo_1_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_1_2);
 $parrafo_1_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1_2);
-$parrafo_1_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_1_2);
 $html = $parrafo_1_2;
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {

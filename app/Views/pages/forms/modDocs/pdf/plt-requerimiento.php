@@ -25,6 +25,22 @@ if ($session->has('logged_in')) {
     $pieFirma =  $session->get('full_name');
 }
 
+if ($data['expediente']['tipo_tramite'] == "Programa I") {
+	$tipo_tramite = lang('message_lang.programaiDigital');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa II") {
+	$tipo_tramite = lang('message_lang.programaiExporta');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions corporatives") {
+	$tipo_tramite = lang('message_lang.programaiSostenibilitatCorp');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions producte") {
+	$tipo_tramite = lang('message_lang.programaiSostenibilitatProd');
+}
+else if ($data['expediente']['tipo_tramite'] == "Programa IV") {
+	$tipo_tramite = lang('message_lang.programaiGestio');
+}
+
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -93,7 +109,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html =  "Document: requeriment<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
-$html .= "Programa: " .$data['expediente']['tipo_tramite']."<br>";
+$html .= "Programa: " .$tipo_tramite."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";

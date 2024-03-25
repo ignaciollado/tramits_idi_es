@@ -2,7 +2,7 @@
 <!-- Campos requeridos son: fecha_REC, ref_REC, fecha_rec_mejora, ref_rec_mejora, fecha_requerimiento_notif, fecha_REC_enmienda, ref_REC_enmienda -->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Informe favorable amb requeriment
+    	 Informe favorable amb requeriment <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
   	</div>
   	<div class="card-itramits-footer">
 	<?php
@@ -65,7 +65,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_3 = document.getElementById('spinner_3')
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""
