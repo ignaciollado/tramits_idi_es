@@ -29,8 +29,7 @@ class LoginController extends Controller
 			$session->setFlashdata('msg', '<strong>iTramits</strong><br>');
 			$data['titulo'] = lang('message_lang.titulo');
 			echo view('templates/header/header-login', $data);		
-			echo view('pages/login/login-view');
-			//echo view('templates/footer/footer', $data);		
+			echo view('pages/login/login-view');		
 		}
     }      
 
@@ -40,13 +39,13 @@ class LoginController extends Controller
 		$request = \Config\Services::request();
 		$googleToken =  $request->uri->getSegment(3);
 		$avatar = "";
-		// echo "Estoy en el controlador, y tengo este token: <br><br>".$googleToken;
+		//echo "Estoy en el controlador, y tengo este token: <br><br>".$googleToken."<br><br>";
 		
 		if ($googleToken) { // El token JWT tiene tres partes: header, payload y signature)
 			list($header, $payload, $signature) = explode(".", json_encode($googleToken, true));
-			// echo "HEADER:<br>".base64_decode ($header)."<br><br>";
-			// echo "SIGNATURE:<br>".base64_decode ($signature)."<br><br>";
-			// echo "<strong>PAYLOAD:</strong><br>".base64_decode ($payload)."<br><br>";//.json_encode(base64_decode ($payload));
+			//echo "HEADER:<br>".base64_decode ($header)."<br><br>";
+			//echo "SIGNATURE:<br>".base64_decode ($signature)."<br><br>";
+			//0echo "<strong>PAYLOAD:</strong><br>".base64_decode ($payload)."<br><br>";//.json_encode(base64_decode ($payload));
 	 		$obj_php = json_decode(base64_decode ($payload)); // Es la parte payload del JWT (JSon Web Token enviado desde GSuite)
 			$hd = $obj_php->hd;
 			$aud = $obj_php->aud; // The value of the aud parameter is the integration record and the company, separated by a semicolon.
@@ -57,9 +56,11 @@ class LoginController extends Controller
 		 	$exp =  $obj_php->exp; // The value of the exp parameter represents the number of seconds since January 1, 1970, until the token’s expiration.
 			$user =  $obj_php->name;
 			$jti = $obj_php->jti; // The value of the jti parameter is the token ID, which is unique for every token.
+			$uMail = $obj_php->email;
 
-			// echo "<br><br>".$aud." - ".$iss." - ".$hd." - ".$exp." - ".$user. " - ".$iat. " - >>>". $googleSub."<<<";
-			
+			//echo "<br><br>".$uMail."<br>".$googleSub."<br>".$aud." - ".$iss." - ".$hd." - ".$exp." - ".$user. " - ".$iat. " - >>>". $googleSub."<<<";
+			/* return; */
+
 			if ( $aud != '317070054037-t1thp3bfgcsskpuok1f0e12ja6hcbus5.apps.googleusercontent.com' && $aud != '317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com' ) {
 				return;
 			}
@@ -80,14 +81,16 @@ class LoginController extends Controller
 			}			
 		}
 	
-		if ($googleSub) {
-			$query = $db->query('SELECT * FROM userTramits WHERE googleID ="'.$googleSub.'"');
-
+		/* if ($googleSub) { */
+		if ($uMail) {
+			//$query = $db->query('SELECT * FROM userTramits WHERE googleID ="'.$googleSub.'"');
+			$query = $db->query('SELECT * FROM userTramits WHERE user_name ="'.$uMail.'"');
 		} else {
 			$query = $db->query('SELECT * FROM userTramits WHERE user_name ="'.$this->request->getVar('user_id').'" AND password ="'.md5($this->request->getVar('password')).'"');
 		}
-		
+
 		$results = $query->getResult();
+		
 		foreach ($results as $row)
 			{
 			$username = $row->user_name;

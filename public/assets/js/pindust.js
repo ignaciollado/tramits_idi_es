@@ -44,11 +44,11 @@ function onLoad() {
 }
 
 function onSuccess(googleUser) {
-	var profile = googleUser.getBasicProfile();
-	console.log("Logged in as: " + profile.getName());
+	var profile = googleUser.getBasicProfile()
+	console.log("Bienvenido otra vez " + profile.getName(), profile.getEmail());
 	var id_token = JSON.stringify(gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse(true));
-	localStorage.setItem("tokenItramits", id_token);
-	let text = localStorage.getItem("tokenItramits");
+	localStorage.setItem("tokenItramits", id_token)
+	let text = localStorage.getItem("tokenItramits")
 	let obj = JSON.parse(text);
 	window.location.href = "https://tramits.idi.es/public/index.php/loginController/login/" + obj.id_token; //profile.getId() ;
 }

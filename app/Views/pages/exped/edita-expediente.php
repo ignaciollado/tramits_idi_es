@@ -857,7 +857,7 @@ if (!$expedientes['importeAyuda']) {
                 </div>
 		        <div class="form-group validacion">
                     <label for = "fecha_not_propuesta_resolucion_prov"><strong>Data notificació proposta resolució provisional:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_propuesta_resolucion_notif']), 'Y-m-d');?>">
+                    <input type = "date" name = "fecha_not_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_prov']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
                     <label for = "fecha_firma_propuesta_resolucion_def"><strong>Data firma proposta resolució definitiva:</strong></label>

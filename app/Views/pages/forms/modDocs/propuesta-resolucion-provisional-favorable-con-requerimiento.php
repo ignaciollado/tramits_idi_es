@@ -50,6 +50,8 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
+		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
+		let fecha_firma_res = document.getElementById('fecha_firma_res')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let btnPropResProvfavConReq = document.getElementById('btnPropResProvfavConReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
@@ -62,6 +64,14 @@
 		}
 		if (!ref_REC.value) {
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Referència SEU sol·licitud<br>"
+			todoBien = false
+		}
+		if (!fecha_REC_enmienda.value) {
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data SEU esmena<br>"
+			todoBien = false
+		}
+		if (!fecha_firma_res.value) {
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data firma resolució<br>"
 			todoBien = false
 		}
 		if (!fecha_infor_fav_desf.value) {

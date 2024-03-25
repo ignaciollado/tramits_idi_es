@@ -4,7 +4,7 @@
       <div class="fadeIn first">
         <i class="fa fa-sign-in" aria-hidden="true" style='font-size:50px'></i>
       </div>
-      <span class='mensaje'><?= session('msg');?></span>
+      <!-- <span class='mensaje'><?= session('msg');?></span> -->
 	
       <form method="post"  action="<?= base_url('/public/index.php/loginController/login') ?>"> 
         <input type="text" disabled id="user_id" required name="user_id" placeholder="la teva acreça de correu">
@@ -15,7 +15,7 @@
       <!-- <div class="g-signin2"></div> -->
 
     <div id="formFooter"> 
-        <div><strong>iTramits - Gestor de tràmits administratius</strong></div>
+        <div><strong>Gestor de tràmits administratius</strong></div>
         <div>&copy; <?= date('Y') ?> Institut d'Innovació Empresarial</div>
         <div>de les Illes Balears</div>
     </div>

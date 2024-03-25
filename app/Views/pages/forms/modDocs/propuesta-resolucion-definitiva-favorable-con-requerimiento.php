@@ -50,42 +50,51 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
+		let fecha_requerimiento = document.getElementById('fecha_requerimiento') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
-		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
+		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
+		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
+		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnPropResDefFavConReq = document.getElementById('btnPropResDefFavConReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let infoMissingDataDoc11 = document.getElementById('infoMissingDataDoc11')
-		infoMissingDataDoc11.innerText = ""
+		let infoMissingDataDoc12 = document.getElementById('infoMissingDataDoc12')
+		infoMissingDataDoc12.innerText = ""
 
 		if (!fecha_REC.value) {
-			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data SEU sol·licitud<br>"
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!ref_REC.value) {
-			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Referència SEU sol·licitud<br>"
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
-		if (!fecha_infor_fav_desf.value) {
-			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data firma informe favorable / desfavorable<br>"
+		if (!fecha_requerimiento.value) {
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Data firma requeriment<br>"
 			todoBien = false
 		}
 		if (!fecha_REC_enmienda.value) {
-			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data SEU esmena<br>"
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
-		if (!ref_REC_enmienda.value) {
-			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Referència SEU esmena<br>"
+		if (!fecha_infor_fav_desf.value) {
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Data firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
-
+		if (!fecha_firma_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Data firma proposta resolució provisional<br>"
+			todoBien = false
+		}
+		if (!fecha_not_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Data notificació proposta resolució provisional<br>"
+			todoBien = false
+		}
 		if (todoBien) {
-			infoMissingDataDoc11.classList.add('ocultar')
+			infoMissingDataDoc12.classList.add('ocultar')
 			btnPropResDefFavConReq.disabled = true
 			btnPropResDefFavConReq.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_def_favorable_con_req'
 		} else {
-			infoMissingDataDoc11.classList.remove('ocultar')
+			infoMissingDataDoc12.classList.remove('ocultar')
 		}
 	}
 </script>

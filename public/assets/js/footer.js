@@ -36,12 +36,30 @@ function signOut() {
 }
 
 async function getUnreadMessages(userId) {
-	console.log (`--${userId}--`)
-	var parameters = {
+	let parameters = {
         "labelIds": "INBOX",
 		"q": "is:unread"
-      };
-	await gapi.client.request({
+  };
+
+
+	gapi.client.init({
+    'apiKey': APIKEY,
+    // clientId and scope are optional if auth is not required.
+    'clientId': '317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com',
+    'scope': 'profile',
+  }).then(function() {
+    // 3. Initialize and make the API request.
+    return gapi.client.request({
+      'path': `/gmail/v1/users/${userId}/messages`,
+    })
+  }).then(function(response) {
+    console.log(response.result);
+  }, function(reason) {
+    console.log('Error: ' + reason.result.error.message);
+  });
+
+
+/* 	await gapi.client.request({
 		'path': `/gmail/v1/users/${userId}/messages`,
 		'method': 'GET',
 		apiKey: APIKEY,
@@ -49,7 +67,7 @@ async function getUnreadMessages(userId) {
 		//'body': resource
 	  }).then(function(resp) {
 		writeResponse(resp.result);
-	  });
+	  }); */
 }
 
 function writeResponse(response) {
@@ -85,3 +103,4 @@ async function obtieneDatosAbiertos (departament) {
 		});
 }
 //console.log(await obtieneDatosAbiertos ("SERVICIO DE OCUPACIÓN DE LAS ISLAS BALEARES (SOIB)"));
+

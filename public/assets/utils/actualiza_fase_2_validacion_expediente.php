@@ -22,7 +22,6 @@ $query = "UPDATE pindust_expediente
     fecha_notificacion_resolucion = '" . $fecha_notificacion_resolucion ."'
     WHERE  id = " . $id;
 
-/* echo $query; */
 $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 echo $result;
