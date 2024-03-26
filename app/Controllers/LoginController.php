@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 use App\Models\LoginModel;
 use CodeIgniter\Controller;
@@ -17,7 +16,7 @@ class LoginController extends Controller
     }
     
     // show the login form
-    public function index() { 
+  public function index() {
 		$session = \Config\Services::session();
 		if($session->get('logged_in')) {
 			$data['titulo'] = lang('message_lang.titulo');
@@ -93,38 +92,42 @@ class LoginController extends Controller
 		
 		foreach ($results as $row)
 			{
+			$id = $row->id;
 			$username = $row->user_name;
 			$email = $username;
 			$full_name = $row->full_name;
 			$rol = $row->rol;
 			$servicio = $row->servicio;
 			$telefono = $row->telefono;
+			$lastLogin = $row->lastLogin;
 			}
 		$rows = count($results);
 
 		$session = session();
-        if($rows == 1){
+    if($rows == 1){
 			$data = [
+			'id'				=> $id,
 			'username'  => 	$username,
 			'email'     => 	$email,
 			'full_name' => 	$full_name,
 			'servicio'	=>	$servicio,
-			'rol'		=>	$rol,
+			'rol'				=>	$rol,
 			'telefono'  =>  $telefono,
 			'logged_in' => TRUE,
-			'avatar' => $avatar,
-			'googleSub'  => $googleSub
+			'avatar' 		=> $avatar,
+			'googleSub'  => $googleSub,
+			'lastLogin'  => $lastLogin,
 			];
 			$session->set($data);
 			$data['titulo'] = lang('message_lang.titulo');
 			return redirect()->to('/public/index.php/home/ca');
-        }else{
+    }else{
 			$session = session();
-            $session->setFlashdata('msg', 'Disculpi, usuari i/o clau incorrecte/s<br>');
+      $session->setFlashdata('msg', 'Disculpi, usuari i/o clau incorrecte/s<br>');
 			echo view('templates/header/header-login');
 			echo view('pages/login/login-view');
 			echo view('templates/footer/footer');	
-        } 
+    } 
 	 }
 	
 	public function content() {

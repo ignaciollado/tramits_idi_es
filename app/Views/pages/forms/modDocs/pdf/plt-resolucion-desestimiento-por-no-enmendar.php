@@ -9,12 +9,15 @@ setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
-use App\Models\MejorasExpedienteModel;
+/* use App\Models\MejorasExpedienteModel; */
+
+$language = \Config\Services::language();
+$language->setLocale("ca");
 
 $modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
-$mejorasSolicitud = new MejorasExpedienteModel();
+/* $mejorasSolicitud = new MejorasExpedienteModel(); */
 
 $data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
@@ -96,9 +99,6 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 10);
-$pdf->setFontSubsetting(false);
-
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -120,7 +120,7 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('helvetica', '', 9);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 $pdf->writeHTMLCell(90, '', 100, 40, $html, 0, 1, 1, true, 'J', true);
-$pdf->SetFont('helvetica', '', 11);
+$pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
@@ -141,9 +141,10 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$antecedentes_1_2 = str_replace("%RESPRESIDENTE%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_1_2'));
-$antecedentes_1_2 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $antecedentes_1_2);
-
+$antecedentes_1_2 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_1_2'));
+$antecedentes_1_2 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $antecedentes_1_2);
+$antecedentes_1_2 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $antecedentes_1_2);
+$antecedentes_1_2 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_solicitud']),"d/m/Y"), $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $antecedentes_1_2);
@@ -154,11 +155,11 @@ $html = $antecedentes_1_2;
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $antecedentes_3_m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_3_m'));
-    $antecedentes_3_m = str_replace("%REFRECM%", $ultimaMejora[3], $antecedentes_3_m);
+    $antecedentes_3_m = str_replace("%NUMRECM%", $ultimaMejora[3], $antecedentes_3_m);
     $html .= $antecedentes_3_m;
 }
 
-$antecedentes_4_5 = str_replace("%FECHADESESTIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_4_5'));
+$antecedentes_4_5 = str_replace("%DATANOTREQ%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_4_5'));
 $antecedentes_4_5 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $antecedentes_4_5);
 $antecedentes_4_5 = str_replace("%NIF%", $data['expediente']['nif'], $antecedentes_4_5);
 $antecedentes_4_5 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $antecedentes_4_5);

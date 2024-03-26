@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució provisional favorable sense requeriment DOC 7 --------------------------------->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional favorable<br>sense requeriment  <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
+		Proposta de resolució provisional favorable<br>sense requeriment
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -13,7 +13,6 @@
 
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_provisional_favorable_sin_req'] != 0) { ?>
 			<?php
 			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_prop_res_provisional_favorable_sin_req.pdf');
 			if (isset($tieneDocumentosGenerados)) {
@@ -42,8 +41,6 @@
 					}
 				echo $estado_firma;
 			}	?>
-
-		<?php } ?>
 	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
@@ -55,7 +52,7 @@
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let btnPropResProvfavSinReq = document.getElementById('btnPropResProvfavSinReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingData7 = document.getElementById('infoMissingData7')
 		infoMissingData7.innerText = ""
 

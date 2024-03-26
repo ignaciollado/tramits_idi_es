@@ -31,7 +31,7 @@ function signOut() {
 		})
 		.then(function () {
 			window.location.href =
-				"https://tramits.idi.es/public/index.php/logout";
+				"https://pre-tramits.idi.es/public/index.php/logout";
 		});
 }
 

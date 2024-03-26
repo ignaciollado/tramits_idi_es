@@ -1,12 +1,12 @@
 const APIKEY = 'AIzaSyD9mrfcTQaAlFgj4lc5I_pW1Lx8fdUwgPA'; //'WWFCKJIvtNwSOsfw-L_svxMu';
 
 // PRODUCCIÓN
-const CLIENTID = '317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com';
-const CLIENTSECRET = "fAXlpDPnOqBGkRRRcyKY4G3C";
+/* const CLIENTID = '317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com';
+const CLIENTSECRET = "fAXlpDPnOqBGkRRRcyKY4G3C"; */
 
 // DESARROLLO
-/* const CLIENTID = '317070054037-t1thp3bfgcsskpuok1f0e12ja6hcbus5.apps.googleusercontent.com';
-const CLIENTSECRET = "WWFCKJIvtNwSOsfw-L_svxMu"; */
+const CLIENTID = '317070054037-t1thp3bfgcsskpuok1f0e12ja6hcbus5.apps.googleusercontent.com';
+const CLIENTSECRET = "WWFCKJIvtNwSOsfw-L_svxMu";
 
 const SCOPES = [
 		//'https://www.googleapis.com/auth/cloud-platform',
@@ -50,7 +50,7 @@ function onSuccess(googleUser) {
 	localStorage.setItem("tokenItramits", id_token)
 	let text = localStorage.getItem("tokenItramits")
 	let obj = JSON.parse(text);
-	window.location.href = "https://tramits.idi.es/public/index.php/loginController/login/" + obj.id_token; //profile.getId() ;
+	window.location.href = "https://pre-tramits.idi.es/public/index.php/loginController/login/" + obj.id_token; //profile.getId() ;
 }
 
 function onFailure(error) {

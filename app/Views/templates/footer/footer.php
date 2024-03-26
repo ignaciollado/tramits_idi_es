@@ -19,12 +19,11 @@
 		<?php 
 		
 		if ($session->has('logged_in')) {
-		    //echo $session->get('username');
-			echo "<strong style='color:orange;'>".$session->get('full_name')."</strongg>";
+			echo "<strong style='color:orange;'>".$session->get('full_name') ."</strong>";
 		} else {
 			return redirect('login');
 		}
-		//echo "<br> ### ".base_url()." ### " ?>
+		echo "<br> ### ".base_url()." ### " ?>
 		</span> 
 		<span>
 			<span id="<?php echo $session->get('googleSub');?>" class="unreadMails">

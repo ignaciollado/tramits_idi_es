@@ -4,13 +4,16 @@ setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
-use App\Models\MejorasExpedienteModel;
+/* use App\Models\MejorasExpedienteModel; */
+
+$language = \Config\Services::language();
+$language->setLocale("ca");
 
 $modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
-$mejorasSolicitud = new MejorasExpedienteModel();
-
+/* $mejorasSolicitud = new MejorasExpedienteModel();
+ */
 $data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
@@ -90,9 +93,6 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 10);
-$pdf->setFontSubsetting(false);
-
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -111,15 +111,16 @@ $html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('helvetica', '', 9);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 $pdf->writeHTMLCell(90, '', 100, 40, $html, 0, 1, 1, true, 'J', true);
 
-$pdf->SetFont('helvetica', '', 11);
+$pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 13);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('5_informe_desfavorable_con_requerimiento.5_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('6_informe_desfavorable_con_requerimiento.6_intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -129,14 +130,13 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('5_informe_desfavorable_con_requerimiento.5_hechos_tit') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('6_informe_desfavorable_con_requerimiento.6_hechos_tit') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1_2 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('5_informe_desfavorable_con_requerimiento.5_hechos_1_2'));
-$parrafo_1_2 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('4_informe_favorable_sin_requerimiento.4_hechos_1_2'));
+$parrafo_1_2 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('6_informe_desfavorable_con_requerimiento.6_hechos_1_2'));
 $parrafo_1_2 = str_replace("%CONVO%", $convocatoria, $parrafo_1_2);
 $parrafo_1_2 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1_2);
 $parrafo_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1_2);
@@ -148,12 +148,12 @@ $parrafo_1_2 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_1_2);
 $html = $parrafo_1_2;
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('5_informe_desfavorable_con_requerimiento.5_hechos_3_m'));
-    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
+    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('6_informe_desfavorable_con_requerimiento.6_hechos_3_m'));
+    $parrafo_3m = str_replace("%NUMRECM%", $ultimaMejora[3], $parrafo_3m);
     $html .= $parrafo_3m;
 } 
 
-$parrafo_4_6 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y"), lang('5_informe_desfavorable_con_requerimiento.5_hechos_4_6'));
+$parrafo_4_6 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y"), lang('6_informe_desfavorable_con_requerimiento.6_hechos_4_6'));
 $parrafo_4_6 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y"), $parrafo_4_6);
 $parrafo_4_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4_6);
 $parrafo_4_6 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4_6);
@@ -174,15 +174,15 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 30);
-$parrafo_pre = lang('5_informe_desfavorable_con_requerimiento.5_conclusion_tit');
+$parrafo_pre = lang('6_informe_desfavorable_con_requerimiento.6_conclusion_tit');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_pre ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'><b>". $parrafo_pre ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_pre = str_replace("%SALTOLINEA%", "<br><br>", lang('5_informe_desfavorable_con_requerimiento.5_conclusionTxt'));
+$parrafo_pre = str_replace("%SALTOLINEA%", "<br><br>", lang('6_informe_desfavorable_con_requerimiento.6_conclusionTxt'));
 $parrafo_pre = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_pre);
 $parrafo_pre = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_pre);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -192,7 +192,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$firma = lang('5_informe_desfavorable_con_requerimiento.5_firma');
+$firma = lang('6_informe_desfavorable_con_requerimiento.6_firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";
