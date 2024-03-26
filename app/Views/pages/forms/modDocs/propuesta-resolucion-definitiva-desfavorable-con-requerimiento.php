@@ -1,7 +1,7 @@
 <!----------------------------------------- Resolució denegació amb requeriment SIN VIAFIRMA DOC 11-->
 <div class="card-itramits">
   <div class="card-itramits-body">
-    Resolució de denegació amb requeriment
+	Propuesta de resolución definitiva desfavorable sense requeriment
   </div>
   <div class="card-itramits-footer">
   		<?php

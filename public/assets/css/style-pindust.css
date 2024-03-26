@@ -1011,6 +1011,7 @@ code {
 }
 .solicitud-lbl {
 	background-color: #080081;
+	font-weight: 300;
 	color:#fff;
 	padding-left: .5rem;
 	padding-right: .5rem;
@@ -1020,7 +1021,7 @@ code {
 	border-radius: 0!important;
 }
 .solicitud-final {
-    background-color: #080081;
+    background-color: rgba(8, 0, 129, .5);
     color: #fff;
     padding-left: 0.5rem;
     padding-right: 0.5rem;

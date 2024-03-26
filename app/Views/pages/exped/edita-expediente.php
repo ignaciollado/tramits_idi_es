@@ -33,7 +33,7 @@
 
 /* Si no hay IMPORTE AYUDA, Calcula el importe según el programa Y el número de convocatorias a las que se ha  presentado */
 
-if (!$expedientes['importeAyuda']) {
+if ($expedientes['importeAyuda']) {
     /* $objs = json_decode( $configuracion['programa']); */
     $objs = json_decode( $configuracionLinea['programa']);
     /**
@@ -946,8 +946,8 @@ if (!$expedientes['importeAyuda']) {
             <!-----------------------------------------12. Proposta de resolució definitiva favorable amb requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-favorable-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>            
-            <!-----------------------------------------Resolució denegació amb requeriment SIN VIAFIRMA-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-con-requerimiento.php';?></li>
+            <!-----------------------------------------13. Proposta de resolució definitiva desfavorable sense requeriment-->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-desfavorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Resolució denegació_ sense requeriment SIN VIAFIRMA-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-sin-requerimiento.php';?></li>

@@ -229,7 +229,7 @@
 			
 			<?php 
 			if ($item['situacion'] == "pendiente") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent de validació"><strong>Pendent de validar</strong></span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent de validació"><strong>Pendent de validar</strong></span></div>'; 
 			}
 			else if ($item['situacion'] == "nohapasadoREC") {
 				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud No ha passat per la SEU electrònica"><strong>No ha passat<br>per la SEU electrònica</strong></span></div>'; 

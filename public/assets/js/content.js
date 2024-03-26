@@ -114,7 +114,13 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2024', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'nohapasadoREC', 'totalSolicitudesIIINoREC_org_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'nohapasadoREC', 'totalSolicitudesIIINoREC_prod_2024')
-    totalSolicitudesPorSituacion('2024', 'Programa IV', 'nohapasadoREC', 'totalSolicitudesIIINoREC_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa IV', 'nohapasadoREC', 'totalSolicitudesIVNoREC_2024')
+
+    totalSolicitudesPorSituacion('2024', 'Programa I', 'pendiente', 'totalPendienteI_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa II', 'pendiente', 'totalPendienteII_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'pendiente', 'totalPendienteIII_org_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'pendiente', 'totalPendienteIII_prod_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa IV', 'pendiente', 'totalPendienteIV_2024')
 });
 
 async function totalSolicitudesPrograma(convo, stage) {
@@ -129,7 +135,7 @@ async function totalSolicitudesPrograma(convo, stage) {
     if (stage == 'Programa III actuacions producte') {resultadoP = document.getElementById("totalSolicitudesIII_prod_"+convo)}
     if (stage == 'Programa IV') {resultadoP = document.getElementById("totalSolicitudesIV_"+convo)}
     if (stage == 'ILS')  { resultadoP = document.getElementById("totalSolicitudesILSAdheridas"); }
-    resultadoP.innerHTML = "Sol·licituds aprovades: "+ totalSolicitudes;
+    resultadoP.innerHTML = "Aprovades: "+ totalSolicitudes;
 
 }
 
@@ -167,7 +173,10 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
 	const totalSolicitudes = await fetch(recurso).then(res => res.json());
     
     if (situacion == 'nohapasadoREC') {
-        situacion = 'Sol·licituds pendents: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
+        situacion = 'No han passat SEU: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
+    }
+    if (situacion == 'pendiente') {
+        situacion = 'Pendents de validar: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
     }
     if (situacion == 'inicioConsultoria') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA';
