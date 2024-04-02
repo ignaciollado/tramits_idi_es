@@ -488,6 +488,7 @@ function actualiza_fase_2_validacion_expediente(formName) {  //SE EMPLEA
 	let fecha_not_propuesta_resolucion_def = document.getElementById("fecha_not_propuesta_resolucion_def").value; // Data notificació poposta resolució definitiva
 	let fecha_firma_res = document.getElementById("fecha_firma_res").value; // Data notificació proposta resolució
 	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // ref_REC_enmienda
+	
 
 	for (let step = 0; step < 5; step++) {
 		document.getElementsByClassName("form-group validacion")[step].style.opacity = "0.1";

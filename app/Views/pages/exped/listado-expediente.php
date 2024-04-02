@@ -262,12 +262,48 @@
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud te el requeriment signat"><strong>Requeriment signat</strong></span></div>';				
 			}
 
-			else if ($item['situacion'] == "emitirIFPRPago") {
+			else if ($item['situacion'] == "emitirIFPRProvPago") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>IF + PR pagament emetre</strong></span></div>';				
 			}
-			else if ($item['situacion'] == "emitidoIFPRPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>pagament emès</strong></span></div>';				
+			else if ($item['situacion'] == "emitidoIFPRProvPago") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>pagament emesa</strong></span></div>';				
 			}
+
+			else if ($item['situacion'] == "emitirPRDefinitiva") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>PR definitiva emetre</strong></span></div>';				
+			}
+			else if ($item['situacion'] == "emitidoPRDefinitiva") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>PR definitiva emesa</strong></span></div>';				
+			}
+
+			else if ($item['situacion'] == "emitirResConcesion") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>Resolució concessió emetre</strong></span></div>';				
+			}
+			else if ($item['situacion'] == "emitidaResConcesion") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>Resolució concessió emesa</strong></span></div>';				
+			}
+
+			else if ($item['situacion'] == "emitirIDPDenProv") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>ID + P denegació<br>provisional emetre</strong></span></div>';				
+			}
+			else if ($item['situacion'] == "emitidaIDPDenProv") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>ID + P denegació<br>provisional emesa</strong></span></div>';				
+			}
+
+			else if ($item['situacion'] == "emitirPDenDef") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>P denegació<br>definitiva emetre</strong></span></div>';				
+			}
+			else if ($item['situacion'] == "emitidaPDenDef") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>P denegació<br>definitiva emesa</strong></span></div>';				
+			}
+
+			else if ($item['situacion'] == "emitirResDen") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>Resolució de denegació<br>emetre</strong></span></div>';				
+			}
+			else if ($item['situacion'] == "emitidaResDen") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>Resolució de denegació<br>emesa</strong></span></div>';				
+			}
+
 			else if ($item['situacion'] == "enviadoPRPago") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat PR pagament"><strong>PR pagament enviat</strong></span></div>';
 			}
@@ -318,6 +354,14 @@
 			else if ($item['situacion'] == "emitidoResJustificacion") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès la resolució de justificació"><strong>Resolució de <br>justificació emesa</strong></span></div>';
 			}
+
+			else if ($item['situacion'] == "emitirResPagoyJust" ) {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-justificado" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta justificada"><strong>Resolució de pagament<br>i justificació emetre</strong></span></div>';
+			}
+			else if ($item['situacion'] == "emitidoResPagoyJust") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès la resolució de justificació"><strong>Resolució de pagament<br>i justificació emesa</strong></span></div>';
+			}
+
 			else if ($item['situacion'] == "Finalizado") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha finalitzat"><strong>Finalitzat</strong></span></div>';
 			}
