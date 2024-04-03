@@ -1019,6 +1019,7 @@ code {
 	padding-bottom: 1rem;
 	width:100%;
 	border-radius: 0!important;
+	border-color: #fff;
 }
 .solicitud-final {
     background-color: rgba(8, 0, 129, .5);
@@ -1264,8 +1265,6 @@ code {
 	border-left: #000 solid 4px;
 }
 .desestimiento {
-	/*background-color: #84c9e6;
-	color:#fff;*/
 	padding-left: .5rem;
 	padding-right: .5rem;
 	padding-top: 1rem;
@@ -1525,7 +1524,7 @@ span.export {
 .date-docs-col {
 	font-size: 1.2rem!important;
 }
-/* ----------------------------- Ventana modal ---------------------------------------------*/
+/* ----------------------------- Ventana modal ----------------------------------------*/
 .close:hover,
 .close:focus {
   color: #000;
@@ -1533,7 +1532,7 @@ span.export {
   cursor: pointer;
 }
 
-/* --------------------------- Accordion ---------------------------------------------*/
+/* --------------------------- Accordion ----------------------------------------------*/
 .accordion {
   background-color: #dcdcdc;
   color: #444;

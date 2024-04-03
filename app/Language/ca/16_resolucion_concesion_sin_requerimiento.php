@@ -43,10 +43,10 @@ return [
 
   '16_fets_1_2_3_4_5_6_7' => "<ol>
                            <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
-                           <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTE%€ , i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al %PROGRAMA%.</li><br>
+                           <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTE%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al %PROGRAMA%.</li><br>
 			   <li>En data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l'IDI va dictar la Proposta de resolució provisional sobre la concessió d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada. En aquesta Proposta es concedia un termini de deu dies perquè pogués presentar les al·legacions que considerés oportunes.</li><br>
 			   <li>Exhaurit el termini per presentar al·legacions, no consta que s'hagin presentat al·legacions per part de la persona interessada.</li><br>
-			   <li>El %FECHA_PROP_RESOL_DEF% es va emetre proposta de resolució definitiva de la directora gerent de l'IDI sobre la concessió d'una subvenció a favor de %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import de %IMPORTEAYUDA% euros.</li><br>			   
+			   <li>El %FECHA_PROP_RESOL_DEF% es va emetre proposta de resolució definitiva de la directora gerent de l'IDI sobre la concessió d'una subvenció a favor de %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import de %IMPORTE%.</li><br>			   
 			   <li>Aquest document ha estat notificat a l'interessat en data %FECHA_NOTIFICACION_PROP_RESOL_DEFINITIVA%.</li><br>
 			   <li>El beneficiari es troba al corrent en el compliment de les seves obligacions tributàries, tant estatals com autonòmiques, i amb la Seguretat Social.</li><br>",
 
@@ -67,8 +67,8 @@ return [
   '16_resolucion_tit' => "Resolució",
 
   '16_resolucion'  => "<ol>
-                      <li>Aprovar la concessió d'un ajut total per import de  %IMPORTE% euros, condicionada a la justificació de la realització de l'activitat subvencionada, d'acord amb l'apartat onzè de les bases incloses a la resolució de la convocatòria, a favor de %SOLICITANTE% amb NIF %NIF%.</li><br>
-		      <li>Autoritzar i disposar una despesa de %IMPORTE% euros a favor de %SOLICINTANTE%, amb NIF %NIF%, a càrrec als pressuposts de l'IDI per a l'exercici %CONVO%, per cobrir hores de consultoria especialitzada.</li><br>
+                      <li>Aprovar la concessió d'un ajut total per import de  %IMPORTE%, condicionada a la justificació de la realització de l'activitat subvencionada, d'acord amb l'apartat onzè de les bases incloses a la resolució de la convocatòria, a favor de %SOLICITANTE% amb NIF %NIF%.</li><br>
+		      <li>Autoritzar i disposar una despesa de %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%, a càrrec als pressuposts de l'IDI per a l'exercici %CONVO%, per cobrir hores de consultoria especialitzada.</li><br>
 		      <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt onzè de les bases incloses a la Resolució de la convocatòria.</li><br>
 		      <li>El termini per justificar la realització de l'activitat subvencionada i per sol·licitar el pagament de la subvenció serà com a màxim de 20 dies naturals des de l'endemà de la reunió de tancament segons el punt 11.3 de la convocatòria.</li><br>
 		      <li>En la reunió de tancament el tècnic de l'IDI informarà quina és la data màxima concreta per justificar la realització de les activitats subvencionades, que en tot cas i depenent de la durada màxima de cada programa o subprograma, no podrà superar els 20 dies naturals a partir del 4 d'octubre de 2024. </li><br>
