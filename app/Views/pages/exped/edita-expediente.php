@@ -48,7 +48,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
      * ["Programa_III"]=> object(stdClass)#94 (1) { ["edicion"]=> object(stdClass)#93 (2) { 
      * ["Primera"]=> array(3) { [0]=> int(1360) [1]=> int(90) [2]=> int(16) } 
      * ["Segunda"]=> array(3) { [0]=> int(1360) [1]=> int(80) [2]=> int(16) } } } } */
-  
     switch ($programa) {
         case 'Programa I':
             switch($totalConvocatorias) {
@@ -101,7 +100,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                     break;
                 default:
                     $importeAyuda = $objs->Programa_III_ac->edicion->Segunda[0]*($objs->Programa_III_ac->edicion->Segunda[1]/100);
-                    //echo "p3 ac def ".$objs->Programa_III_ac->edicion->Primera[0]." ".$objs->Programa_III_ac->edicion->Primera[1]." p3 ac def";
+                    //echo "p3 ac def ".$objs->Programa_III_ac->edicion->Segunda[0]." ".$objs->Programa_III_ac->edicion->Segunda[1]." p3 ac def";
                 }
             break;
         case 'Programa IV':

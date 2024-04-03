@@ -27,7 +27,7 @@ class ExpedientesModel extends Model
     }
 
     public function findNumberOfConvocatorias($nif, $tipoTramite, $convocatoria) {  
-        if (($tipoTramite='Programa III actuacions corporatives' || $tipoTramite='Programa III actuacions producte')  && $convocatoria = '2024' ) {
+        if ($tipoTramite == 'Programa III actuacions corporatives' && $convocatoria == '2024' ) {
             $tipoTramite = "Programa III";
         }
         $sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE 
