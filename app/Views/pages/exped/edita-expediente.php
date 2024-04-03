@@ -31,9 +31,9 @@
     ];
     $session->set($expedienteID);
 
-/* Si no hay IMPORTE AYUDA, Calcula el importe según el programa Y el número de convocatorias a las que se ha  presentado */
+/* Si no hay IMPORTE AYUDA, Calcula el importe según el programa y el número de convocatorias a las que se ha  presentado */
 
-if ($expedientes['importeAyuda']) {
+if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     /* $objs = json_decode( $configuracion['programa']); */
     $objs = json_decode( $configuracionLinea['programa']);
     /**
@@ -317,7 +317,7 @@ if ($expedientes['importeAyuda']) {
             		            <option <?php if ($expedientes['situacion'] == "emitirReqJust") { echo "selected";}?> value = "emitirReqJust" class="sitEjecucion"> Requeriment de justificació emetre</option>
         	    	            <option <?php if ($expedientes['situacion'] == "emitidoReqJust") { echo "selected";}?> value = "emitidoReqJust" class="sitEjecucion"> Requeriment de justificació emes</option>
         	    	            <option <?php if ($expedientes['situacion'] == "emitirPropRevocacion") { echo "selected";}?> value = "emitirPropRevocacion" class="sitEjecucion"> Proposta de revocació emetre</option>
-        	    	            <option <?php if ($expedientes['situacion'] == "emitidoPropRevocacion") { echo "selected";}?> value = "emitidoPropRevocacion" class="sitEjecucion"> Proposta de revocació emes</option>
+        	    	            <option <?php if ($expedientes['situacion'] == "emitidoPropRevocacion") { echo "selected";}?> value = "emitidoPropRevocacion" class="sitEjecucion"> Proposta de revocació emesa</option>
         	    	            <option <?php if ($expedientes['situacion'] == "emitirResRevocacion") { echo "selected";}?> value = "emitirResRevocacion" class="sitEjecucion"> Resolució de revocació emetre</option>
         	    	            <option <?php if ($expedientes['situacion'] == "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emesa</option>
         	    	            <option <?php if ($expedientes['situacion'] == "revocado") { echo "selected";}?> value = "revocado" class="sitEjecucion"> Revocat</option>
@@ -950,6 +950,12 @@ if ($expedientes['importeAyuda']) {
             <!-----------------------------------------14. Proposta de resolució definitiva desfavorable amb requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-desfavorable-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
+             <!-----------------------------------------15. Resolució de concessió favorable amb requeriment----------------->
+             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->
+             <!-----------------------------------------16. Resolució de concessió favorable sense requeriment----------------->
+             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-sin-requerimiento.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->            
         </ol>
         </div>
         <div class="col docsExpediente">
@@ -1252,9 +1258,6 @@ if ($expedientes['importeAyuda']) {
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="17">
-            <!----------------------------------------- Resolución de concesión DOC 17---------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Informe inicio requerimento justificación DOC 18---------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
@@ -1264,9 +1267,7 @@ if ($expedientes['importeAyuda']) {
             <!----------------------------------------- Informe post subsanación de la documentación de justificación DOC 20---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Resolució de concesió amb requeriment (20b) ---->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento-20b.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->                                      
+                               
         </ol>    
         <h3>Documents de l'expedient:</h3>
         <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>

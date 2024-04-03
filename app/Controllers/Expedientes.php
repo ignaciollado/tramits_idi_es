@@ -1260,7 +1260,40 @@ class Expedientes extends Controller
 						echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 						echo view('pages/forms/go-back-footer', $data_footer);
 						break;					
-			
+			case "doc_res_concesion_favorable_con_req": 			  // DOC 15 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+							$data_infor = [
+								'doc_res_concesion_favorable_con_req' => $last_insert_id
+							];
+							$builder->where('id', $request->uri->getSegment(3));
+							$builder->update($data_infor);
+							$data['byCEOSigned'] = true;
+							$data_footer = [
+								'tipoDoc' => " Resolució de concessió favorable amb requeriment",
+								'conVIAFIRMA' => false
+							];
+							echo "<h4>Resolució de concessió favorable amb requeriment</h4>";
+							echo view('pages/forms/modDocs/pdf/plt-resolucion-concesion-favorable-con-requerimiento', $data);
+							echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+							echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+							echo view('pages/forms/go-back-footer', $data_footer);
+							break;				
+				case "doc_res_concesion_favorable_sin_req": 			  // DOC 16 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+								$data_infor = [
+									'doc_res_concesion_favorable_sin_req' => $last_insert_id
+								];
+								$builder->where('id', $request->uri->getSegment(3));
+								$builder->update($data_infor);
+								$data['byCEOSigned'] = true;
+								$data_footer = [
+									'tipoDoc' => " Resolució de concessió favorable sense requeriment",
+									'conVIAFIRMA' => false
+								];
+								echo "<h4>Resolució de concessió favorable sense requeriment</h4>";
+								echo view('pages/forms/modDocs/pdf/plt-resolucion-concesion-favorable-sin-requerimiento', $data);
+								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+								echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+								echo view('pages/forms/go-back-footer', $data_footer);
+								break;				
 			
 			case "doc_acta_kickoff": //CON VIAFIRMA DOC xxx A TÉCNICO
 				$data_infor = [
