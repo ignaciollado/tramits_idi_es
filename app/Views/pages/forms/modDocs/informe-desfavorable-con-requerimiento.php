@@ -1,4 +1,4 @@
-<!-- -------------------------------------- Informe desfavorable amb requeriment DOC 6-->
+<!-- -------------------------------------- Informe desfavorable amb requeriment  DOC 6-------------------------------------->
 <div class="card-itramits">
   <div class="card-itramits-body">
      Informe desfavorable amb requeriment
@@ -20,7 +20,6 @@
 	</div>
 
   	<div class="card-itramits-footer">
-	<?php //if ($expedientes['doc_informe_desfavorable_con_requerimiento'] !=0) { ?>
 	<?php 
 		$db = \Config\Database::connect();
 		$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_desfavorable_con_requerimiento.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";// AND tipo_tramite='".$expedientes['tipo_tramite']."'";

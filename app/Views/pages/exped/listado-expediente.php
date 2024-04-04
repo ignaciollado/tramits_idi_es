@@ -497,9 +497,9 @@ form  {
 }
 
 .filter-area input[type="submit"] {
-  background:#FF5A5F;
-  border-top: 1px solid #FF5A5F;
-  border-bottom: 1px solid #FF5A5F;
+  background:#c30045;
+  border-top: 1px solid #c30045;
+  border-bottom: 1px solid #c30045;
   color:white;
 }
 

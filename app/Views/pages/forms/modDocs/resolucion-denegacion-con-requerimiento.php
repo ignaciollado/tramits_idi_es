@@ -1,20 +1,20 @@
-<!----------------------------------------- Proposta de resolució definitiva desfavorable sense requeriment DOC 14-->
+<!-----------------------------------------Resolució denegació favorable amb requeriment. DOC 17.-->
 <div class="card-itramits">
-  <div class="card-itramits-body">
-	Proposta de resolució definitiva desfavorable <br>amb requeriment
-  </div>
-  <div class="card-itramits-footer">
+  	<div class="card-itramits-body">
+    	Resolució denegació<br>amb requeriment <strong>pre-tramits</strong>
+  	</div>
+		<div class="card-itramits-footer">
   		<?php
       if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
       else {?>
-			<button id="btnPropResDefDesfavConReq" class='btn btn-primary btn-acto-admin' onclick="generaPropResDefDesfConReq(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera  la resolució</button>
-			<div id='infoMissingDataDoc14' class="alert alert-danger ocultar btn-acto-admin"></div>
+			<button id="btnResDenegacionConReq" class='btn btn-primary btn-acto-admin' onclick="generaResolucionDenegacionConReq(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
+			<div id='infoMissingDataDoc17' class="alert alert-danger ocultar btn-acto-admin"></div>
 		<?php }?>
 	</div>
   	<div class="card-itramits-footer">
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_prop_res_def_desfavorable_con_req.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_res_denegacion_con_req.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -46,7 +46,7 @@
 <!------------------------------------------------------------------------------------------------------>
 <script>
 
-	function generaPropResDefDesfConReq(id, convocatoria, programa, nifcif) {
+	function generaResolucionDenegacionConReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
@@ -55,47 +55,47 @@
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
-		let btnPropResDefDesfavConReq = document.getElementById('btnPropResDefDesfavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let infoMissingDataDoc14 = document.getElementById('infoMissingDataDoc14')
-		infoMissingDataDoc14.innerText = ""
+		let btnResDenegacionConReq = document.getElementById('btnResDenegacionConReq')
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let infoMissingDataDoc17 = document.getElementById('infoMissingDataDoc17')
+		infoMissingDataDoc17.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data REC sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Referència REC sol·licitud<br>"
 			todoBien = false
 		}
 	 	if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data notificació requeriment<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data notificació requeriment<br>"
 			todoBien = false
 		}
 		if(!fecha_REC_enmienda.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data SEU esmena<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
 		if(!fecha_infor_fav_desf.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data firma informe favorable / desfavorable<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
 		if(!fecha_firma_propuesta_resolucion_prov.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data firma proposta resolució provisional<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data firma proposta resolució provisional<br>"
 			todoBien = false
 		}
 		if(!fecha_not_propuesta_resolucion_prov.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data notificació proposta resolució provisional<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data notificació proposta resolució provisional<br>"
 			todoBien = false
 		}
 
 		if (todoBien) {
-			infoMissingDataDoc14.classList.add('ocultar')
-			btnPropResDefDesfavConReq.disabled = true
-			btnPropResDefDesfavConReq.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_prop_res_def_desfavorable_con_req'
+			infoMissingDataDoc17.classList.add('ocultar')
+			btnResDenegacionConReq.disabled = true
+			btnResDenegacionConReq.innerHTML = "Generant i enviant ..."
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_denegacion_con_req'
 		} else {
-			infoMissingDataDoc14.classList.remove('ocultar')
+			infoMissingDataDoc17.classList.remove('ocultar')
 		}
 	}
 

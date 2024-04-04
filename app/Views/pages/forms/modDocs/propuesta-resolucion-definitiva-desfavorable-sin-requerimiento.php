@@ -1,7 +1,7 @@
-<!----------------------------------------- Proposta de resolució definitiva desfavorable sense requeriment. DOC 13. SIN VIAFIRMA-->
+<!----------------------------------------- Proposta de resolució definitiva desfavorable sense requeriment. DOC 13.-->
 <div class="card-itramits">
   <div class="card-itramits-body">
-    Proposta de resolució definitiva desfavorable<br>sense requeriment <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
+    Proposta de resolució definitiva desfavorable<br>sense requeriment
   </div>
   <div class="card-itramits-footer">
   	<?php
@@ -53,7 +53,7 @@
 	 	let fecha_firma_propuesta_resolucion_def = document.getElementById('fecha_firma_propuesta_resolucion_def') //0000-00-00
 		let fecha_not_propuesta_resolucion_def = document.getElementById('fecha_not_propuesta_resolucion_def')
 		let btnPropResDefDesfavSinReq = document.getElementById('btnPropResDefDesfavSinReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc13 = document.getElementById('infoMissingDataDoc13')
 		infoMissingDataDoc13.innerText = ""
 

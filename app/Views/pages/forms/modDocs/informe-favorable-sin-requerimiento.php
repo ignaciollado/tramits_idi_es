@@ -1,4 +1,4 @@
-<!-- -------------------------------------- abril_Informe favorable sense requeriment 2021 OK-->
+<!-- -------------------------------------- Informe favorable sense requeriment  DOC 4-------------------------------------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	 Informe favorable sense requeriment
@@ -61,7 +61,6 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		/* let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda') */
 
 		let generaInfFavSinReq = document.getElementById('generaInfFavSinReq')
 		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
@@ -77,10 +76,6 @@
 			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
-/* 		if(!fecha_REC_enmienda.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data SEU esmena<br>"
-			todoBien = false
-		} */
 
 		if (todoBien) {
 			infoMissingDataDoc4.classList.add('ocultar')
