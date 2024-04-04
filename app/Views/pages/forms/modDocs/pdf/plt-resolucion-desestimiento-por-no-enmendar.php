@@ -144,7 +144,7 @@ $pdf->setY($currentY + 4);
 $antecedentes_1_2 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_1_2'));
 $antecedentes_1_2 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $antecedentes_1_2);
-$antecedentes_1_2 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_solicitud']),"d/m/Y"), $antecedentes_1_2);
+$antecedentes_1_2 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $antecedentes_1_2);

@@ -158,7 +158,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_solicitud']),"d/m/Y"), lang('1_requerimiento.1_p3'));
+$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('1_requerimiento.1_p3'));
 $parrafo_4 = str_replace("%EMPRESA%", $data['expediente']['empresa'], $parrafo_4);
 $parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
 $parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4);
