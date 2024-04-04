@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva desfavorable sense requeriment DOC 14-->
 <div class="card-itramits">
   <div class="card-itramits-body">
-	Proposta de resolució definitiva desfavorable <br>sense requeriment <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
+	Proposta de resolució definitiva desfavorable <br>amb requeriment <strong>¡¡¡¡¡[pre-tramits]!!!!!</strong>
   </div>
   <div class="card-itramits-footer">
   		<?php

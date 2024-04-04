@@ -307,9 +307,15 @@ header {
 }
 
 code {
-  font-size: .875em;
-  color: #a82e2e!important;
+  font-size: .9rem;
+  color: #c30045!important;
   word-wrap: break-word;
+}
+
+.seu-elect{
+	font-size: .9rem;
+  color: #c30045;
+  font-weight: bolder;
 }
 
 .ocultar {
@@ -475,13 +481,13 @@ code {
 	width: 100%!important;
   display: inline-block;
   font-weight: 400;
+	font-size: .9rem;
   text-align: center;
 	white-space: nowrap;
   vertical-align: middle;
   user-select: none;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 1rem !important;
   line-height: 1.5;
   border-radius: 0.25rem;
 	cursor: default!important;
