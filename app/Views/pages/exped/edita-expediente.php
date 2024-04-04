@@ -921,7 +921,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------6. Informe desfavorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>   
+            <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------5. Informe desfavorable amb requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-con-requerimiento.php';?></li>         
             <!------------------------------------------------------------------------------------------------------>
@@ -942,22 +942,25 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------12. Proposta de resolució definitiva favorable amb requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-favorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>            
-            <!-----------------------------------------13. Proposta de resolució definitiva desfavorable sense requeriment-->
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------13. Proposta de resolució definitiva desfavorable sense requeriment---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-desfavorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------14. Proposta de resolució definitiva desfavorable amb requeriment-->
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------14. Proposta de resolució definitiva desfavorable amb requeriment------>
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-desfavorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------15. Resolució de concessió favorable amb requeriment----------------->
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------15. Resolució de concessió favorable amb requeriment------------------->
              <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!-----------------------------------------16. Resolució de concessió favorable sense requeriment----------------->
              <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-sin-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->   
-            <!-----------------------------------------17. Resolució de denegació amb requeriment----------------->
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------17. Resolució de denegació amb requeriment----------------------------->
              <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-con-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->            
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------18. Resolució de denegació sense requeriment--------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-sin-requerimiento.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->                        
         </ol>
         </div>
         <div class="col docsExpediente">
@@ -1101,11 +1104,11 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         </div>
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
-            <ol start="14">
-            <!-----------------------------------------15.-abril_Acta Kick off ------------------------------------>
+            <ol start="19">
+            <!-----------------------------------------19.-abril_Acta Kick off ------------------------------------>
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-kickoff.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------17.-mayo_Acta de cierre ---->
+            <!-----------------------------------------20.-mayo_Acta de cierre ---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-cierre.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             </ol>
@@ -1259,7 +1262,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         </div>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
-        <ol start="17">
+        <ol start="21">
             <!----------------------------------------- Informe inicio requerimento justificación DOC 18---------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
@@ -1677,7 +1680,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
-            <ol start="22">
+            <ol start="24">
                 <!----------------------------------------- Reseolución desestimiento  DOC 22 SIN VIAFIRMA -------->
                 <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
                 <!------------------------------------------------------------------------------------------------->

@@ -1277,7 +1277,7 @@ class Expedientes extends Controller
 							echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 							echo view('pages/forms/go-back-footer', $data_footer);
 							break;				
-				case "doc_res_concesion_favorable_sin_req": 			  // DOC 16 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+			case "doc_res_concesion_favorable_sin_req": 			  // DOC 16 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
 								$data_infor = [
 									'doc_res_concesion_favorable_sin_req' => $last_insert_id
 								];
@@ -1294,7 +1294,40 @@ class Expedientes extends Controller
 								echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 								echo view('pages/forms/go-back-footer', $data_footer);
 								break;				
-			
+			case "doc_res_denegacion_con_req": 			  					// DOC 17 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+							$data_infor = [
+									'doc_res_denegacion_con_req' => $last_insert_id
+							];
+							$builder->where('id', $request->uri->getSegment(3));
+							$builder->update($data_infor);
+							$data['byCEOSigned'] = true;
+							$data_footer = [
+								'tipoDoc' => " Resolució de denegació amb requeriment",
+								'conVIAFIRMA' => false
+							];
+							echo "<h4>Resolució de denegació amb requeriment</h4>";
+							echo view('pages/forms/modDocs/pdf/plt-resolucion-denegacion-con-requerimiento', $data);
+							echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+							echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+							echo view('pages/forms/go-back-footer', $data_footer);
+							break;
+			case "doc_res_denegacion_sin_req": 			  					// DOC 18 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+								$data_infor = [
+										'doc_res_denegacion_sin_req' => $last_insert_id
+								];
+								$builder->where('id', $request->uri->getSegment(3));
+								$builder->update($data_infor);
+								$data['byCEOSigned'] = true;
+								$data_footer = [
+									'tipoDoc' => " Resolució de denegació sense requeriment",
+									'conVIAFIRMA' => false
+								];
+								echo "<h4>Resolució de denegació sense requeriment</h4>";
+								echo view('pages/forms/modDocs/pdf/plt-resolucion-denegacion-sin-requerimiento', $data);
+								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+								echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+								echo view('pages/forms/go-back-footer', $data_footer);
+								break;												
 			case "doc_acta_kickoff": //CON VIAFIRMA DOC xxx A TÉCNICO
 				$data_infor = [
 					'doc_acta_kickoff' => $last_insert_id
@@ -1313,7 +1346,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_acta_de_cierre": //CON VIAFIRMA DOC 15 A TÉCNICO
+			case "doc_acta_de_cierre": //CON VIAFIRMA DOC xxx A TÉCNICO
 				$data_infor = [
 					'doc_acta_de_cierre' => $last_insert_id
 				];

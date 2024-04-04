@@ -24,14 +24,9 @@ class Home extends BaseController
 
 	public function ca ()
 	{
-		/* $modelConfig = new ConfiguracionModel();
-		$data['configuracion'] =  $modelConfig->configuracionGeneral(); */
-		/* $data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first(); */
-
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-		/* $data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('XECS'); */
 
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
