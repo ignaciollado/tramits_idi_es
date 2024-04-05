@@ -10,26 +10,18 @@
 	<?php echo lang('message_lang.documentacion_resultante_idi_isba');?>
 </fieldset>
 
-<div class="modal" id="rgpdModal">
+<div class="modal fade" id="rgpdModal" tabindex="-1" aria-labelledby="rgpdModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">		
-      <div class="modal-header">
-	  <h4 class="modal-title">RGPD:</h4>
+			<div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Reglamento (UE) 2016/679 General de Protección de Datos (RGPD)</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-				<p>
-					<?php
-						if (get_cookie('CurrentLanguage')==="ca") {
-							include 'includes/clausulaProteccionDatos.html';
-						} else {
-							include 'includes/clausulaProteccionDatos-es.html';
-						}
-					?>
-				</p>
+				<?php echo lang('message_lang.rgpd_txt'); ?>
       </div>
       <div class="modal-footer">
-	  	<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -75,7 +67,7 @@
 			</div>	
    		</fieldset>
 	</div>
-	<!-------------------------- 2. IDENTIFICACIÓN DEL SOLICITANTE --------------------------------------------------------------------->
+	<!------------------------ 2. IDENTIFICACIÓN DEL SOLICITANTE --------------------------------------------------------------------->
 	<div id="formbox">
 		<fieldset id="interesado">
 			<h2>2. <?php echo lang('message_lang.identificacion_sol_idi_isba');?></h2>
@@ -99,9 +91,6 @@
 			<input type = "text" name = "denom_interesado" id = "denom_interesado" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" size="220" aria-required="true">
 			
 			<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-				<!-- <div class="input-group">
-					<input type = "text" name = "idExpISBA" id = "idExpISBA" aria-label="Input group idExpISBA" aria-describedby="btnGroupAddon" disabled=disabled readonly onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: consultaExpediente ( 'expediente', this.value );" title="<?php echo lang('message_lang.idExpISBA');?>" placeholder = "<?php echo lang('message_lang.idExpISBA');?>">
-  			</div> -->
 				<div class="input-group">
 					<input type = "text" name = "nif" id = "nif" aria-label="Input group nif" aria-describedby="btnGroupAddon" 
 					onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" 
@@ -298,7 +287,7 @@
 	<div id="formbox">
 		<fieldset>
 			<h2>8. <?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba');?></h2>
-			<ol style="list-style-type: lower-alpha;" start="3">
+			<ol style="list-style-type: lower-alpha;" start="1">
 			<li>
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>

@@ -85,7 +85,7 @@ return [
    https://www.caib.es/seucaib/es/201/empreses/tramites/tramite/5400391/
    SI NO PASA POR LA SEDE ELECTRÓNICA DE CAIB SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.
    Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@idi.es y/o por teléfono: 971 17 61 61 + 62891",
-   'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas de carácter industrial de las Islas Baleares para cubrir los gastos financieros de operaciones de financiación de inversiones productivas, eficiencia energética y transformación digital previstas en el Plan Estratégico Industrial 2018-2025",
+   'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a la microempresa, pequeña y mediana empresa de carácter industrial de las Illes Balears que tengan aprobadas operaciones financieras avaladas por ISBA SGR, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas, eficiencia energética y transformación digital previstas en el Plan Estratégico Industrial 2018-2025",
 
    'subtitulo_justificacion_idigital'	 => "RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",     
    'enviado_correo_electron'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
@@ -521,8 +521,8 @@ return [
 'aviso_idi_isba_solicitud'			         => "Las solicitudes se podrán presentar un vez el interesado haya  formalizado el aval con la entidad colaboradora ISBA SGR (punto 9.3 de la convocatoria).",
 'documentacion_necesaria_idi_isba'        => "Documentación necesaria a adjuntar",
 'documentacion_identificativa_idi_isba'   => "Documentos de identificación de la persona solicitante y/o la persona autorizada por la empresa.",
-'documentacion_necesaria_pymes_idi_isba'  => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació<br> (apartado Noveno: Solicitudes y forma de presentación):</h3>
-   <ol class='formbox' style='list-style-type: lower-alpha;' start='3'>
+'documentacion_necesaria_pymes_idi_isba'  => "<h3>Antes de empezar, es recomendable tener preparada la siguiente documentación<br> (apartado Noveno: Solicitudes y forma de presentación):</h3>
+   <ol class='formbox' style='list-style-type: lower-alpha;' start='1'>
       <li>Fotocopia del documento fehaciente que acredite la representación, por cualquier forma válida en derecho, de la persona que actúa en nombre de la persona o entidad solicitante.</li>
       <li>La fotocopia del DNI de la persona que firma la solicitud, en nombre propio o en representación de una persona jurídica o de una entidad sin personalidad jurídica, salvo el consentimiento expreso del interesado para que sus datos de identidad personal puedan consultarse mediante el sistema de verificación de datos de identidad establecido en la Orden PRE/3949/2006, de 26 de diciembre, por la que se establece la configuración, características, requisitos y procedimientos de acceso al Sistema de Verificación de Datos de Identidad, conforme a lo que se dispone en el Real Decreto 522/2006, de 28 de abril, por el que se suprime la aportación de fotocopias de documentos de identidad en los procedimientos administrativos de la Administración General del Estado y de sus organismos públicos vinculados o dependientes..</li>
       <li>La fotocopia del documento de identificación fiscal (NIF) de la empresa o empresas solicitantes y promotoras de la actuación.</li>

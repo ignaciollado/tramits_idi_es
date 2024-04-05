@@ -1,23 +1,16 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
 <?php
 require_once('tcpdf/tcpdf.php');
 setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
-use App\Models\MejorasExpedienteModel;
             
 $configuracion = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
-$mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->configuracionGeneral();   
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -100,46 +93,44 @@ $html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('helvetica', '', 9);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
-$pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
-$pdf->SetFont('helvetica', '', 12);
+$pdf->writeHTMLCell(90, '', 110, 40, $html, 0, 1, 1, true, 'J', true);
+$pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
-$intro = lang('message_lang.doc_acta_kickOff_identificacion')."<br>";
+$pdf->setY($currentY + 4);
+$intro = lang('19_acta_kick_off.19_identificacion')."<br>";
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$intro = "Assumpte: reunió llançament del programa<br>";
-$intro .= "Data: ".date_format(date_create($data['expediente']['fecha_kick_off']),"d/m/Y"). "<br>";
-$intro .= "Hora inici: ".$data['expediente']['horaInicioSesionKickOff']. "<br>";
-$intro .= "Hora acabament reunió: ".$data['expediente']['horaFinSesionKickOff']. "<br>";
-$intro .= "Lloc: ".$data['expediente']['lugarSesionKickOff']. "<br>";
-$intro .= "Empresa: ".$data['expediente']['empresa']. "<br>";
-
+$datosReunion = lang('19_acta_kick_off.19_datos_reunion')."<br>";
+$datosReunion = str_replace("%fecha_kick_off%", date_format(date_create($data['expediente']['fecha_kick_off']),"d/m/Y"), $datosReunion);
+$datosReunion = str_replace("%horaInicioSesionKickOff%", $data['expediente']['horaInicioSesionKickOff'], $datosReunion);
+$datosReunion = str_replace("%horaFinSesionKickOff%", $data['expediente']['horaFinSesionKickOff'], $datosReunion);
+$datosReunion = str_replace("%lugarSesionKickOff%", $data['expediente']['lugarSesionKickOff'], $datosReunion);
+$datosReunion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $datosReunion);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $intro ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$asistentes =  lang('message_lang.doc_acta_kickOff_asistentes');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $asistentes ."</b></td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$nombreAsistentes =  $data['expediente']['asistentesKickOff'];
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". nl2br($nombreAsistentes) ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $datosReunion ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$parrafo_1 = lang('message_lang.doc_acta_kickOff_desarrollo_sesion');
+$pdf->setY($currentY + 4);
+$nombreAsistentes =  $data['expediente']['asistentesKickOff'];
+$asistentes =  lang('19_acta_kick_off.19_Asistentes');
+$asistentes = str_replace("%nombreAsistentes%", nl2br($nombreAsistentes), $asistentes);
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $asistentes ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 4);
+$parrafo_1 = lang('19_acta_kick_off.19_Desarrollo');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";
@@ -147,51 +138,35 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 1);
-$parrafo_3 = lang('message_lang.doc_acta_kickOff_desarrollo_sesion_p2');
-$parrafo_3 =  str_replace("%TUTORKICKOFF%", $data['expediente']['tutorKickOff'], $parrafo_3);
+$p1 = lang('19_acta_kick_off.19_p1');
+$p1 =  str_replace("%TUTORKICKOFF%", $data['expediente']['tutorKickOff'], $p1);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_3 ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $p1 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 1);
-$parrafo_4 = lang('message_lang.doc_acta_kickOff_desarrollo_sesion_p3');
+$p2 = lang('19_acta_kick_off.19_p2');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_4 ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $p2 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-// remove default header/footer
-$pdf->setPrintHeader(false);
-$pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
-// align: T (top), M (middle), B (bottom), N (next line)
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 20);
-$parrafo_5 = lang('message_lang.doc_acta_kickOff_desarrollo_sesion_p4');
-$parrafo_5 =  str_replace("%PLAZOREALIZACIONPLAN%", $data['expediente']['plazoRealizacionPlan'], $parrafo_5);
-$parrafo_5 =  str_replace("%FECHA_HASTAREALIZACIONPLAN%", date_format(date_create($data['expediente']['fecha_HastaRealizacionPlan']),"d/m/Y"), $parrafo_5);
+$pdf->setY($currentY + 1);
+$p3 = lang('19_acta_kick_off.19_p3');
+$p3 =  str_replace("%NUMMESES%", $data['expediente']['plazoRealizacionPlan'], $p3);
+$p3 =  str_replace("%FECHACIERRE%", date_format(date_create($data['expediente']['fecha_limite_consultoria']),"d/m/Y"), $p3);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_5 ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $p3 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 2);
-$parrafo_6 = lang('message_lang.doc_acta_kickOff_desarrollo_sesion_p5');
-$parrafo_6 =  str_replace("%OBSERVACIONESKICKOFF%", $data['expediente']['observacionesKickOff'], $parrafo_6);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". nl2br($parrafo_6) ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$firma = lang('message_lang.doc_acta_kickOff_firma')."<br>".  $pieFirma;;
+$firma = lang('19_acta_kick_off.19_firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $firma ."</td></tr>";
 $html .= "</table>";
