@@ -1,8 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/public/assets/js/edita-expediente.js"></script>
 <?php
     require_once('tcpdf/tcpdf.php');
     setlocale(LC_MONETARY,"es_ES");
@@ -16,7 +11,7 @@
     $expediente = new ExpedientesModel();
 
     $data['configuracion'] = $configuracion->configuracionGeneral();   
-    $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+    $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
     $data['expediente'] = $expediente->where('id', $id)->first();
 
     $db = \Config\Database::connect();
@@ -27,9 +22,25 @@
         }
         
     $session = session();
-        if ($session->has('logged_in')) {  
-           $pieFirma =  $session->get('full_name');
-        }
+    if ($session->has('logged_in')) {  
+        $pieFirma =  $session->get('full_name');
+    }
+    if ($data['expediente']['tipo_tramite'] == "Programa I") {
+        $tipo_tramite = lang('message_lang.programaiDigital');
+    }
+    else if ($data['expediente']['tipo_tramite'] == "Programa II") {
+        $tipo_tramite = lang('message_lang.programaiExporta');
+    }
+    else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions corporatives") {
+        $tipo_tramite = lang('message_lang.programaiSostenibilitatCorp');
+    }
+    else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions producte") {
+        $tipo_tramite = lang('message_lang.programaiSostenibilitatProd');
+    }
+    else if ($data['expediente']['tipo_tramite'] == "Programa IV") {
+        $tipo_tramite = lang('message_lang.programaiGestio');
+    }
+
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -78,9 +89,6 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 10);
-$pdf->setFontSubsetting(false);
-
 // ------------------------------------------- Programa, datos solicitante, datos consultor -------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -89,7 +97,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "Document: Acta núm. ".$data['expediente']['actaNumCierre']."<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
-$html .= "Programa: " .$data['expediente']['tipo_tramite']."<br>";
+$html .= "Programa: " .$tipo_tramite."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -99,88 +107,63 @@ $html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('helvetica', '', 9);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
-$pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
-$pdf->SetFont('helvetica', '', 12);
+$pdf->writeHTMLCell(90, '', 110, 40, $html, 0, 1, 1, true, 'J', true);
+$pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
-$intro = lang('message_lang.doc_acta_kickOff_identificacion')."<br>";
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$intro = "Assumpte: Reunió tancament consultoria ".$data['expediente']['tipo_tramite']. "<br>";
-$intro .= "Data: ".date_format(date_create($data['expediente']['fecha_reunion_cierre']),"d/m/Y"). "<br>";
-$intro .= "Hora inici: ".$data['expediente']['horaInicioActaCierre']. "<br>";
-$intro .= "Hora acabament reunió: ".$data['expediente']['horaFinActaCierre']. "<br>";
-$intro .= "Lloc: ".$data['expediente']['lugarActaCierre']. "<br>";
-$intro .= "Empresa: ".$data['expediente']['empresa']. "<br>";
-
+$pdf->setY($currentY + 4);
+$intro = lang('20_acta_de_tacament.20_identificacion')."<br>";
+$intro = str_replace("%PROGRAMA%", $tipo_tramite, $intro);
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $intro);
+$intro = str_replace("%fecha_reunion_cierre%", date_format(date_create($data['expediente']['fecha_reunion_cierre']),"d/m/Y"), $intro);
+$intro = str_replace("%horaInicioActaCierre%", $data['expediente']['horaInicioActaCierre'], $intro);
+$intro = str_replace("%horaFinActaCierre%", $data['expediente']['horaFinActaCierre'], $intro);
+$intro = str_replace("%lugarActaCierre%", $data['expediente']['lugarActaCierre'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $intro ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$asistentes =  lang('message_lang.doc_acta_cierre_asistentes');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $asistentes ."</b></td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
 $nombreAsistentes =  $data['expediente']['asistentesActaCierre'];
+$asistentes =  lang('20_acta_de_tacament.20_Asistentes');
+$asistentes = str_replace("%nombreAsistentes%", nl2br($nombreAsistentes), $asistentes);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". nl2br($nombreAsistentes) ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $asistentes ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-// remove default header/footer
-$pdf->setPrintHeader(false);
-$pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
-// align: T (top), M (middle), B (bottom), N (next line)
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 20);
-$parrafo_1 = lang('message_lang.doc_acta_cierre_desarrollo_sesion');
+$parrafo_1 = lang('20_acta_de_tacament.20_Desarrollo');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 1);
-$parrafo_2 = lang('message_lang.doc_acta_cierre_desarrollo_sesion_p1');
+$parrafo_1 = lang('20_acta_de_tacament.20_p1');
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$parrafo_2 = lang('20_acta_de_tacament.20_p2');
+$parrafo_2 =  str_replace("%FECHAJUSTIFICACIONAYUDA%", date_format(date_create($data['expediente']['fecha_limite_justificacion']),"d/m/Y"), $parrafo_2);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_2 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 1);
-$parrafo_3 = lang('message_lang.doc_acta_cierre_desarrollo_sesion_p2');
-$parrafo_3 =  str_replace("%FECHAJUSTIFICACIONAYUDA%", date_format(date_create($data['expediente']['fecha_limite_justificacion']),"d/m/Y"), $parrafo_3);
+$parrafo_3 = lang('20_acta_de_tacament.20_p3');
+$parrafo_3 = str_replace("%observacionesActaCierre%", $data['expediente']['observacionesActaCierre'], $parrafo_3); ;
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_3 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 1);
-$parrafo_3 = "Observacions reunió: <br>";
-$parrafo_3 .=  $data['expediente']['observacionesActaCierre'];
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_3 ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$firma = lang('message_lang.doc_acta_cierre_firma')."<br>".  $pieFirma;
+$pdf->setY($currentY + 2);
+$firma = lang('20_acta_de_tacament.20_firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $firma ."</td></tr>";
 $html .= "</table>";

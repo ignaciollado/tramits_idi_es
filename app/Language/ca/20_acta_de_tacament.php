@@ -37,22 +37,22 @@
  * @codeCoverageIgnore
  */
 return [
-  '19_identificacion' => "Identificació de la sessió",
-	'19_datos_reunion' => "<p>Assumpte: reunió llançament del programa</p> 
-			  <p>Data: %fecha_kick_off%</p> 
-			  <p>Hora inici: %horaInicioSesionKickOff%</p> 
-			  <p>Hora acabament reunió: %horaFinSesionKickOff%</p> 
-			  <p>Lloc: %lugarSesionKickOff%</p>
-			  <p>Empresa: %SOLICITANTE%</p>",
+  '20_identificacion' => "<b>Identificació de la sessió</b>
 
-  '19_Asistentes' => "<b>Assistents</b>
-			<p>%nombreAsistentes%</p>", 
+			<p>Assumpte: reunió de tancament del programa %PROGRAMA%</p>
+			<p>Empresa: %SOLICITANTE%</p> 
+			<p>Data: %fecha_reunion_cierre%</p> 
+			<p>Hora inici: %horaInicioActaCierre%</p> 
+			<p>Hora acabament reunió: %horaFinActaCierre%</p> 
+			<p>Lloc: %lugarActaCierre%</p>",
+			 
+  '20_Asistentes' => "<b>Assistents</b>
+			<p>%nombreAsistentes%</p>",
 
-  '19_Desarrollo' => "<b>Desenvolupament de la sessió</b>",
+  '20_Desarrollo' => "<b>Desenvolupament de la sessió</b>",
 
-  '19_p1' => "Na %TUTORKICKOFF% serà la tutora d'aquest expedient i vetllarà pel compliment de la consultoria especialitzada.",     
-  '19_p2' => "S'ha explicat la metodologia del programa, així com els terminis, la periodificació i les obligacions de cada part.",
-  '19_p3' => "A partir de la sessió d'avui, tal i com diu la convocatòria, l'empresa i el consultor tenen %NUMMESES% mesos per dur a terme la consultoria amb els terminis establers en la convocatòria, i hauran de presentar a la reunió de tancament el corresponent document objecte de la convocatòria.  De l'acte es desprèn que la data màxima per dur a terme el la consultoria i per tant la reunió de tancament és dia %FECHACIERRE%.",
-
-  '19_firma' => "Signa el /la tècnic/a."
+  '20_p1' => "El/la consultor/a ha presentat el document realitzat en base a les especificacions de la convocatòria, deixant espai per resoldre dubtes o comentaris.",     
+  '20_p2' => "A partir de demà, tal i com diu la convocatòria, l'empresa té 20 dies naturals per justificar l'ajut rebut i enregistrar la sol·licitud de pagament, per tant, la data màxima és dia %FECHAJUSTIFICACIONAYUDA%.",
+  '20_p3' => "Observacions reunió: %observacionesActaCierre%",
+  '20_firma' => "Signa el /la tècnic/a."
 ];

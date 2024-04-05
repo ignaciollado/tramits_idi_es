@@ -1,7 +1,7 @@
-<!----------------------------------------- Acta de cierre DOC 15-->
+<!----------------------------------------- Acta de cierre DOC 20-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Acta de tancament
+    	Acta de tancament <strong>pre-tramits</strong>
   	</div>
   	<div class="card-itramits-footer">
 	  	<?php
@@ -15,7 +15,7 @@
     		<a id="wrapper_ActaDeCierre" class = "btn btn-primary ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" onclick="enviaActaDeCierre()">Envia a signar l'acta</a>   
 				<button type = "button" id="enviar-a-justificar" class = "btn btn-dark btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
 			</span>	
-			<div id='infoMissingDataDoc15' class = "alert alert-danger ocultar"></div>
+			<div id='infoMissingDataDoc20' class = "alert alert-danger ocultar"></div>
 		</div>
   	<div class="card-itramits-footer">
 			<?php if ($expedientes['doc_acta_de_cierre'] !=0) { ?>
@@ -149,25 +149,25 @@
 		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
 		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let infoMissingDataDoc15 = document.getElementById('infoMissingDataDoc15')
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
 		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });
 
-		infoMissingDataDoc15.innerText = ""
+		infoMissingDataDoc20.innerText = ""
 
 		if (!fecha_reunion_cierre.value) {
-			infoMissingDataDoc15.innerHTML = infoMissingDataDoc15.innerHTML + "Data reunió tancament<br>"
+			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data reunió tancament<br>"
 			todoBien = false
 		}
 		if (!fecha_limite_justificacion.value) {
-			infoMissingDataDoc15.innerHTML = infoMissingDataDoc15.innerHTML + "Data límit per justificar l'ajut rebut<br>"
+			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data límit per justificar l'ajut rebut<br>"
 			todoBien = false
 		}
 		if (todoBien) {
-			infoMissingDataDoc15.classList.add('ocultar')
+			infoMissingDataDoc20.classList.add('ocultar')
 			myActaDeCierre.show()
 		} else {
-			infoMissingDataDoc15.classList.remove('ocultar')
+			infoMissingDataDoc20.classList.remove('ocultar')
 		}
 	}
 
