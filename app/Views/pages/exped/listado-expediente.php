@@ -241,7 +241,7 @@
 				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia amb<br>requeriment<br>pendent</span></div>'; 
 			}
 			else if ($item['situacion'] == "emitirReq") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent emetre requeriment"><strong>Emetre requeriment</strong></span></div>'; 
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-emit-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent emetre requeriment">Emetre requeriment</span></div>'; 
 			}
 			else if ($item['situacion'] == "firmadoReq") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha signat el requeriment"><strong>Requeriment signat</strong></span></div>'; 				

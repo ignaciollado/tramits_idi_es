@@ -1037,6 +1037,10 @@ code {
 	color:#ff0000;
 	border: 5px solid #ff0000;
 }
+.solicitud-lbl-emit-req {
+	color:#ff04cc;
+	border: 5px solid #ff04cc;
+}
 .solicitud-final {
   background-color: #080080;
   padding-left: 0.5rem;
