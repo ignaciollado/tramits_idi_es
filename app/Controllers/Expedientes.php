@@ -21,12 +21,11 @@ class Expedientes extends Controller
 		$language = \Config\Services::language();
 		$language->setLocale('ca');
 		$session = session();
-		$modelConfig = new ConfiguracionModel();
-		$generalConfig = $modelConfig->configuracionGeneral();
-		$where = "convocatoria = ".$generalConfig['convocatoria'];
-
+		$lineaConfig = new ConfiguracionLineaModel();
+		$datoslineaConvo = $lineaConfig->configuracionGeneral('XECS');
+		$where = "convocatoria = ".$datoslineaConvo['convocatoria'];
+		$session->set('convocatoria_fltr', $datoslineaConvo['convocatoria']);
 		$rol =  $session->get('rol');
-
 		$modelExp = new ExpedientesModel();
 		if ($rol == 'admin') {
 			if ($session->get('programa_fltr')) {
@@ -53,11 +52,12 @@ class Expedientes extends Controller
 				->where($where)
 				->findAll();
 		}
-
-		$data['titulo'] = lang('message_lang.todas_las_solicitudes');
+		$data['totalExpedientes'] = count($data['expedientes']);
+		$data['titulo'] = lang('message_lang.todas_las_solicitudes')." ".$datoslineaConvo['convocatoria'];
 		echo view('templates/header/header', $data);
 		echo view('pages/exped/listado-expediente', $data);
 		echo view('templates/footer/footer');
+
 	}
 
 	public function expedientesPrograma($sort_by = 'tipo_tramite', $sort_order = 'ASC')
@@ -119,23 +119,24 @@ class Expedientes extends Controller
 			$session->set('textoLibre_fltr', '');
 		}
 
+		$currentYear = date("Y");
+
 		$rol =  $session->get('rol');
 		$where = "";
 
 		switch ($rol) {
 			case 'admin':
+				if ($this->request->getVar('convocatoria_fltr')) {
+					$where = 'convocatoria = ' . $this->request->getVar('convocatoria_fltr');
+					$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr')); 
+				} else {
+					$where = 'convocatoria = ' . $currentYear; 
+					$session->set('convocatoria_fltr',  $currentYear);
+				}
+
 				if ($this->request->getVar('programa_fltr')) {
 					$where = "tipo_tramite = '" . $this->request->getVar('programa_fltr') . "'";
 					$session->set('programa_fltr', $this->request->getVar('programa_fltr'));
-				}
-
-				if ($this->request->getVar('convocatoria_fltr')) {
-					if ($this->request->getVar('programa_fltr')) {
-						$where .= ' AND convocatoria = ' . $this->request->getVar('convocatoria_fltr');
-					} else {
-						$where = 'convocatoria = ' . $this->request->getVar('convocatoria_fltr');
-					}
-					$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr'));
 				}
 
 				if ($this->request->getVar('situacion_fltr')) {
@@ -162,24 +163,24 @@ class Expedientes extends Controller
 						$where = " tipo_tramite LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%'
 										OR fecha_completado LIKE '" . $this->request->getVar('textoLibre_fltr') . "%'
 										OR idExp LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%'
-										OR convocatoria LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%'
+										
 										OR empresa LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' 
 										OR email_rep LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' 
 										OR telefono_rep LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' 
 										OR nom_consultor LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' 
 										OR situacion  LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' ";
 					}
-
 					$session->set('textoLibre_fltr', $this->request->getVar('textoLibre_fltr'));
 				}
 
 				if ($this->request->getVar('programa_fltr') || $this->request->getVar('convocatoria_fltr') || $this->request->getVar('textoLibre_fltr')) {
 					$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
-						->where($where)
-						->findAll();
+					->where($where)
+					->findAll();
 				} else {
 					$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
-						->findAll();
+					->where($where)
+					->findAll();
 				}
 				break;
 
@@ -189,7 +190,11 @@ class Expedientes extends Controller
 				if ($this->request->getVar('convocatoria_fltr')) {
 					$where .= ' AND convocatoria = ' . $this->request->getVar('convocatoria_fltr');
 					$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr'));
+				} else {
+					$where = 'convocatoria = ' . $currentYear; //$this->request->getVar('convocatoria_fltr');
+					$session->set('convocatoria_fltr', $currentYear);
 				}
+				$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr'));
 
 				if ($this->request->getVar('situacion_fltr')) {
 					if ($this->request->getVar('convocatoria_fltr')) {
@@ -216,9 +221,8 @@ class Expedientes extends Controller
 					->findAll();
 		}
 
-		//echo $where;
 		if (!$this->request->getVar('programa_fltr') && !$this->request->getVar('convocatoria_fltr') && !$this->request->getVar('textoLibre_fltr')) {
-			$data['titulo'] = "Totes les sol·licituds";
+			$data['titulo'] = lang('message_lang.todas_las_solicitudes')." ".$this->request->getVar('convocatoria_fltr');
 		} else {
 			$data['titulo'] = "Sol·licituds filtrades ";
 		}

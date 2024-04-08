@@ -539,23 +539,32 @@ return [
 'aviso_idi_isba_solicitud'			         => "Les sol·licituds es podran presentar un vegada l'interessat hagi formalitzat l'aval amb l'entitat col·laboradora ISBA SGR (punt 9.3 de la convocatòria).",
 'documentacion_necesaria_idi_isba'        => "Documentació necessaria a adjuntar",
 'documentacion_identificativa_idi_isba'   => "Documents de identificatius de la persona sol·licitant i/o la persona autoritzada per l’empresa.",
-'documentacion_necesaria_pymes_idi_isba'  => "<h3>Abans de començar, és recomanable tenir preparada la següent documentació<br> (apartat Novè: Sol·licituds i forma de presentació):</h3>
-   <ol class='formbox' style='list-style-type: lower-alpha;' start='3'>
-      <li>Fotocòpia del document fefaent que acrediti la representació, per qualsevol forma vàlida en dret, de la persona que actua en nom de la persona o entitat sol·licitant.</li>
-      <li>La fotocòpia del DNI de la persona que signa la sol·licitud, en nom propi o en representació d'una persona jurídica o d'una entitat sense personalitat jurídica, excepte el consentiment exprés de l'interessat perquè les seves dades d'identitat personal puguin consultar-se mitjançant el sistema de verificació de dades d'identitat establert en l'Ordre PRE/3949/2006, de 26 de desembre, per la qual s'estableix la configuració, característiques, requisits i procediments d'accés al Sistema de Verificació de Dades d'Identitat, conforme al que es disposa en el Reial decret 522/2006, de 28 d'abril, pel qual se suprimeix l'aportació de fotocòpies de documents d'identitat en els procediments administratius de l'Administració General de l'Estat i dels seus organismes públics vinculats o dependents.</li>
-      <li>La fotocòpia del document d'identificació fiscal (NIF) de l'empresa o empreses sol·licitants i promotores de l'actuació.</li>
-      <li>La còpia de les escriptures de constitució de l'empresa sol·licitant, així com dels vigents estatuts o document fundacional corresponent, en els quals constin les normes per les quals es regulen les seves activitats, degudament registrades, si escau, en els registres públics competents.</li>
-      <li>La documentació acreditativa d'estar donat d'alta en el Cens d'Empresaris Professionals i Retenidors i en l'Impost sobre Activitats Econòmiques (IAE). El sol·licitant ha de presentar almenys uns d'aquests dos certificats de situació censal de l'Agència Estatal d'Administració Tributària:
+'documentacion_necesaria_pymes_idi_isba'  => "<div class='alert alert-info' role='alert'>
+Abans de començar, és recomanable tenir preparada la següent documentació (punt Novè de la convocatòria):</div>
+   <ol class='formbox' style='list-style-type: lower-alpha;' start='1'>
+      <li><i>El documento normalizado de solicitud de subvención de esta convocatoria, el cual se genera al final de este asistente al pulsar sobre el botón 'Enviar' y que recibirá por correo electrónico</i>.</li>
+      <li>Descripción de la empresa y su actividad, modelo de negocio y detalle de la inversión/Inversiones previstas.</li>
+      <li>Declaración responsable de la veracidad de los datos bancarios aportados que se encuentra incluido en la solicitud de la ayuda.</li>
+      <li>Certificado del IAE actualizado en el momento de la sol·licitud.</li>
+      <li>En caso de que el solicitante sea una persona física, se requerirá:
+      <ol>
+      <li>El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.</li>
+      </ol>
+      </li>
+      <li>En caso de que el solicitante sea una persona jurídica, se requerirá:
          <ol>
-         <li>Certificat d'alta en el Cens d'empresaris, professionals i retenidors.</li>
-         <li>Certificat d'alta en el Cens d'activitats econòmiques.</li>
+         <li>Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.</li>
+         <li>Documento fehaciente que acredite la representación de la persona que actúa en nombre de la entidad solicitante. La representación podrá acreditarse por cualquier forma válida en derecho.</li>
          </ol>
       </li>
-      <li>El certificat d'estar al corrent de pagament amb l'Agència Tributària (AEAT)</li>
-      <li>El certificat de la societat de garantia recíproca que avali l'operació financera que acrediti la data d'entrada de la sol·licitud del beneficiari de petició de l'aval sobre l'operació financera a subvencionar</li>
-      <li>El contracte de l'operació financera</li>
-      <li>El contracte o document d'aval de l'operació financera</li>
-      <li>En el cas d'inversions certificades com a verds segons la taxonomia europea, s'haurà d'aportar certificat</li>
+      <li>Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.</li>
+      <li>Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.</li>
+      <li>En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.</li>
+      <li>Para ayudas de importe superior a 30.00 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.</li>
+      <li>El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.</li>
+      <li>El contrato de la operación financiera.</li>
+      <li>El contrato o documento de aval de la operación financiera.</li>
+      <li>Una Declaración responsable, incluida en el modelo normalizado de sol·licitud, de la persona titular de la empresa o de quien la representa legalmente.</li>
    </ol>",
 'documentacion_resultante_cabecera_idi_isba' => "<strong>En finalitzar aquest tràmit, rebrà per correu electrònic un document pdf que contindrà:</strong>",
 'documentacion_resultante_idi_isba' => "<ol class='formbox'>
@@ -593,20 +602,21 @@ return [
 'direccion_general_politica_industrial_idi_isba'   => "De la Direcció General de Politica Indústrial",
 'otros_declaro_idi_isba'   => "Altres",
 'documentacion_adjunta_requerida_idi_isba' => "Documentació",
-'documentacion_adjunta_requerida_idi_isba_c' => "Fotocòpia del document fefaent que acrediti la representació, per qualsevol forma vàlida en dret, de la persona que actua en nom de la persona o entitat sol·licitant.",
-'documentacion_adjunta_requerida_idi_isba_d' => "La fotocòpia del DNI de la persona que signa la sol·licitud, en nom propi o en representació d'una persona jurídica o d'una entitat sense personalitat jurídica.",
-'documentacion_adjunta_requerida_idi_isba_e' => "La fotocòpia del document d'identificació fiscal (NIF) de l'empresa o empreses sol·licitants i promotores de l'actuació.",
-'documentacion_adjunta_requerida_idi_isba_f' => "La còpia de les escriptures de constitució de l'empresa sol·licitant, així́ com dels estatuts vigents o document fundacional corresponent, en els quals constin les normes per les quals es regulen les seves activitats, degudament registrades, si escau, en els registres públics competents.",
-'documentacion_adjunta_requerida_idi_isba_g' => "La documentació acreditativa d'estar donat d'alta en el Cens d'empresaris professionals i retenidors i en l'Impost sobre Activitats Econòmiques (IAE). El sol·licitant ha de presentar almenys uns d'aquests dos certificats de situació censal de l'Agència Estatal d'Administració Tributària:
-<ol>
-   <li>Certificat d'alta en el Cens d'empresaris, professionals i retenidors.</li>
-   <li>Certificat d'alta en el Cens d'activitats econòmiques.</li>
-</ol>",
-'documentacion_adjunta_requerida_idi_isba_h' => "El certificat d'estar al corrent de pagament amb l'Agència Tributària (AEAT).",
-'documentacion_adjunta_requerida_idi_isba_i' => "El certificat de la societat de garantia recíproca que avali l'operació financera que acrediti la data d'entrada de la sol·licitud del beneficiari de petició de l'aval sobre l'operació financera a subvencionar.",
-'documentacion_adjunta_requerida_idi_isba_j' => "El contracte de l'operació financera.",
-'documentacion_adjunta_requerida_idi_isba_k' => "El contracte o document d'aval de l'operació financera.",
-'documentacion_adjunta_requerida_idi_isba_l' => "En el cas d'inversions certificades com a verdes segons la taxonomia europea, se n’haurà d'aportar certificat",
+'documentacion_adjunta_requerida_idi_isba_b' => "Descripción de la empresa y su actividad, modelo de negocio y detalle de la inversión/Inversiones previstas",
+'documentacion_adjunta_requerida_idi_isba_c' => "Declaración responsable de la veracidad de los datos bancarios aportados que se encuentra incluido en la solicitud de la ayuda.",
+'documentacion_adjunta_requerida_idi_isba_d' => "Certificado del IAE actualizado en el momento de la sol·licitud.",
+'documentacion_adjunta_requerida_idi_isba_e' => "En caso de que el solicitante sea una persona física, se requerirá: El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.",
+'documentacion_adjunta_requerida_idi_isba_f' => "En caso de que el solicitante sea una persona jurídica, se requerirá: ◦ Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.
+• Documento fehaciente que acredite la representación de la persona que actúa en nombre de la entidad solicitante. La representación podrá acreditarse por cualquier forma válida en derecho.",
+'documentacion_adjunta_requerida_idi_isba_g' => "Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.",
+'documentacion_adjunta_requerida_idi_isba_h' => "Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.",
+'documentacion_adjunta_requerida_idi_isba_i' => "En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.",
+'documentacion_adjunta_requerida_idi_isba_j' => "Para ayudas de importe superior a 30.00€, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.",
+'documentacion_adjunta_requerida_idi_isba_k' => "El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.",
+'documentacion_adjunta_requerida_idi_isba_l' => "El contrato de la operación financiera.",
+'documentacion_adjunta_requerida_idi_isba_m' => "El contrato o documento de aval de la operación financiera.",
+'documentacion_adjunta_requerida_idi_isba_n' => "Una Declaración responsable, incluida en el modelo normalizado de sol·licitud, de la persona titular de la empresa o de quien la representa legalmente.",
+
 'ayuda_superior_3000' => "En el cas d'ajudes superiors als 3000 €:",
 
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓ ADJUNTA",

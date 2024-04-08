@@ -17,6 +17,10 @@ class ConfiguracionLineaModel extends Model
     'updateInterval', 'convocatoria_aviso_ca', 'convocatoria_aviso_es',
     'activeLineData' ];
 
+    public function configuracionGeneral($lineaAyuda) {
+        return $this->asArray()->where(['activeLineData'=> 'SI', 'lineaAyuda'=> $lineaAyuda])->first();
+    }
+
     public function activeConfigurationLineData($line, $convocatoria) {
         if ($line != 'ILS') {
             $convoData = $this->asArray()->where(['convocatoria'=> $convocatoria, 'lineaAyuda' => $line])->first();

@@ -21,7 +21,6 @@ article {
 section {
     margin: 0 auto;
     max-width: 1100px;
-   /*  padding: .5rem .75rem .5rem .75rem; */
 }
 
 dialog {
@@ -220,15 +219,6 @@ select, input, textarea {
   border-radius: .5rem;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
-/* .aviso-lbl {
-  background-color: rgba(0, 0, 0, 1) !important;
-  color: rgba(255, 255, 255, 1);
-  padding: .5rem;
-  text-align: left;
-  font-size: 1.4rem;
-  font-weight: 900;
-} */
-
 .aviso-lbl {
   background-color: rgba(255, 255, 255, 0.4);
   -webkit-backdrop-filter: blur(5px);
@@ -237,37 +227,29 @@ select, input, textarea {
   margin: 30px;
   font-weight: bold;
 }
-
 #formbox {
-   /*  width: calc(100%); */
-    border: 1px solid rgba(0, 20, 92, 1);
-    background-color: rgba(249, 250, 251, 1);
-    padding: 1em 1.8em 1em 1em;
-    margin-bottom: 2em;
-    border-radius: 10px;
-   /*  font-size: 2rem; */
-    }    
+  border: 1px solid rgba(0, 20, 92, 1);
+  background-color: rgba(249, 250, 251, 1);
+  padding: 1em 1.8em 1em 1em;
+  margin-bottom: 2em;
+  border-radius: 10px;
+}    
 .formbox {
-    /* width: calc(100%); */
-    border: 1px solid rgba(0, 20, 92, 1);
-    background-color: rgba(248, 249, 250, 1);
-    padding: 1rem 1.8rem 1rem 5rem;
-   /*  margin-left: -0.5rem!important; */
-    border-radius: 1rem;
-   /*  font-size: 1.5rem; */
-    }
+  border: 1px solid rgba(0, 20, 92, 1);
+  background-color: rgba(248, 249, 250, 1);
+  padding: 1rem 1.8rem 1rem 5rem;
+  border-radius: 1rem;
+}
 .formbox:last-child{
     margin-bottom: 2em!important;
-    }
+}
 .container-radio {
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    }
-
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .caja-grupo {
   background-color: aliceblue;
   padding: 1rem;
@@ -276,7 +258,6 @@ select, input, textarea {
   margin-bottom: 2rem;
   margin-right: -1rem;
 }
-
 .checkmark-caja-grupo{
   margin-left: -4rem;
 }
@@ -289,25 +270,25 @@ select, input, textarea {
   margin-bottom: 2rem;
 }
 .container-radio h6 {
-    font-size: 2rem;   
-    }
+  font-size: 2rem;   
+}
 .container-radio .checkmark::after {
-    top: 7px;
-    left: 7px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgb(0, 0, 0, 1);
-    background-color: rgba(0, 0, 0, 1);
-    background-position-x: 0%;
-    background-position-y: 0%;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-image: none;
-    background-size: auto;
-    background-origin: padding-box;
-    background-clip: border-box;
-    } 
+  top: 7px;
+  left: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 1);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: none;
+  background-size: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+} 
 .buttonAsistente {
     background-color: rgba(203, 235, 233, 1);
     color: rgba(0, 0, 0, 1);
@@ -339,7 +320,7 @@ select, input, textarea {
 }
 
   /* Make circles that indicate the steps of the form: */
-  .step {
+.step {
     height: 3rem;
     width: 3rem;
     margin: 0 1rem;
@@ -350,7 +331,7 @@ select, input, textarea {
     text-align: center;
     display: inline-block;
     opacity: 0.9;
-  }
+}
 
 .container-radio-invalid {
     background-color: rgba(190, 0, 44, 1);
@@ -384,47 +365,9 @@ footer {
     text-align: center;
 }
 
-.alert-info, .btn-success {
-  background-color: #365446;
-  border: none;
-  border-radius: 0;
-}
-
 .panel-justificacion {
   border: 1px solid #365446!important;
   border-radius: 0;
-}
-
-/* The Modal (styling) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 5rem;
-  right: 8rem;
-  top: 64px;
-  width: 92%;
-  height: 64%;
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  border: 2px solid #000;
-}
-
-/* Modal Content */
-.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
 }
 
 .ocultar {
@@ -530,6 +473,7 @@ button {
   padding-top: .5rem;
   padding-bottom: .5rem;
   padding-right: .5rem;
+  margin-bottom: 1rem;
 }
 
 .formspecifications_row {

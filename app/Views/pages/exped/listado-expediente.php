@@ -20,11 +20,11 @@
 		<div class="form-group">
     		<input class="form-control-itramits" required placeholder="Convocatòria ..." type="text" list="convocatoria" name="convocatoria_fltr" id="convocatoria_fltr" minlength="4" maxlength="4" value = "<?php echo $session->get('convocatoria_fltr');?>">
   			<datalist id="convocatoria">
-				<option value="2024">	
-				<option value="2023">
-    		<option value="2022">
-				<option value="2021">
-				<option value="2020">
+					<option value="2024">	
+					<option value="2023">
+    			<option value="2022">
+					<option value="2021">
+					<option value="2020">
   			</datalist>
 		</div>
 	</div>
@@ -134,8 +134,8 @@
 
 	<div class="filter-area-col">
  		<div class="form-group">
-  			<input class="form-control-itramits" onfocus="this.value=''" name="textoLibre_fltr" id="textoLibre_fltr" type="text" placeholder = "Text lliure..." value = "<?php echo $session->get('textoLibre_fltr');?>">
-  		</div>
+  		<input class="form-control-itramits" onfocus="this.value=''" name="textoLibre_fltr" id="textoLibre_fltr" type="text" placeholder = "Text lliure..." value = "<?php echo $session->get('textoLibre_fltr');?>">
+  	</div>
 	</div>
 
 	<div class = "filter-area-col">
@@ -229,16 +229,16 @@
 			
 			<?php 
 			if ($item['situacion'] == "pendiente") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent de validació"><strong>Pendent de validar</strong></span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent de validació">Pendent <br>de validar</span></div>'; 
 			}
 			else if ($item['situacion'] == "nohapasadoREC") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud No ha passat per la SEU electrònica"><strong>No ha passat per la<br><span class="seu-elect">SEU</span><br>electrònica</strong></span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud No ha passat per la SEU electrònica">No ha passat <br>per la <span class="seu-elect">SEU</span><br>electrònica</span></div>'; 
 			}
 			else if ($item['situacion'] == "comprobarAnt") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic"><strong>Comprovar Antonia</strong></span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia</span></div>'; 
 			}
 			else if ($item['situacion'] == "comprobarAntReg") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic"><strong>Comprovar Antonia <br>amb<br> requeriment pendent</strong></span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia amb<br>requeriment<br>pendent</span></div>'; 
 			}
 			else if ($item['situacion'] == "emitirReq") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent emetre requeriment"><strong>Emetre requeriment</strong></span></div>'; 
