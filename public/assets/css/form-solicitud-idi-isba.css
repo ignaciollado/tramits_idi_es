@@ -58,6 +58,10 @@ header .logo {
 	background-color: #000;
 }
 
+input[type="file"]:hover {
+  cursor: pointer;
+}
+
 .w3docs {
   position: absolute;
   top: 0;

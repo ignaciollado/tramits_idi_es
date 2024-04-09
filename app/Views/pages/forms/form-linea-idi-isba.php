@@ -68,7 +68,7 @@
 		</div>	
   </fieldset>
 </div>
-<!------------------------ 2. IDENTIFICACIÓN DEL SOLICITANTE ------------------------------------------------------------>
+<!-------------------------- 2. IDENTIFICACIÓN DEL SOLICITANTE ------------------------------------------------------------>
 	<div id="formbox">
 		<fieldset id="interesado">
 			<h2>2. <?php echo lang('message_lang.identificacion_sol_idi_isba');?></h2>
@@ -271,7 +271,7 @@
 		</ol>
 		</fieldset>
 	</div>
-	<!----------------------------------------------------- 8. DOCUMENTACIÓN --------------------------------------------------------------------->
+	<!------------------------ 8. DOCUMENTACIÓN --------------------------------------------------------------------->
 	<div id="formbox">
 		<fieldset>
 			<h2>8. <?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba');?></h2>
@@ -296,14 +296,14 @@
 				</div>	
 			</li>
 
-			<li class="es-fisica">
+			<li class="es-fisica ocultar">
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
 				</div>	
 			</li>	
 
-			<li class="es-juridica">
+			<li class="es-juridica ocultar">
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
@@ -360,7 +360,7 @@
 			</li>
 			
 			<li>
- 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+ 				<h3><strong>****<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_n" name="documentacion_adjunta_requerida_idi_isba_n[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
 				</div>	

@@ -1258,28 +1258,35 @@ class SubirArchivo extends BaseController
 		$declaro_idi_isba_que_cumple_8 = "SI";
 		
 		/* -------------------------------DOCUMENTACIÓN DE IDI-ISBA------------------------------------ */
- 		/* -------------------------------7. DOCUMENTACIÓN--------------------------------------------- */
+ 		/* -------------------------------8. DOCUMENTACIÓN--------------------------------------------- */
  		$documentosfile = $this->request->getFiles(); 
 
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_b'])) {
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
+				$file_memoriaTecnica = "NO";
+			} else {
+				$file_memoriaTecnica = "SI";
+			}
+		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
-			$file_document_acred_como_repres = "NO";
+			$file_document_veracidad_datos_bancarios = "NO";
 		} else {
-			$file_document_acred_como_repres = "SI";
+			$file_document_veracidad_datos_bancarios = "SI";
 		}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_d'][0]->getName() ){
-			$file_copiaNIF = "NO";
+			$file_certificadoIAE = "NO";
 		} else {
-			$file_copiaNIF = "SI";
+			$file_certificadoIAE = "SI";
 		}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_e'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_e'][0]->getName() ){
-			$file_nifEmpresa = "NO";
+			$$file_altaAutonomos = "NO";
 		} else {
-			$file_nifEmpresa = "SI";
+			$$file_altaAutonomos = "SI";
 		}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
@@ -1291,44 +1298,58 @@ class SubirArchivo extends BaseController
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_g'][0]->getName() ){
-			$file_certificadoIAE = "NO";
+			$file_copiaNIF = "NO";
 		} else {
-			$file_certificadoIAE = "SI";
+			$file_copiaNIF = "SI";
 		}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_h'][0]->getName() ){
+			$file_certificadoATIB = "NO";
+		} else {
+			$file_certificadoATIB = "SI";
+		}
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_i'][0]->getName() ){
 			$file_certificadoAEAT = "NO";
 		} else {
 			$file_certificadoAEAT = "SI";
 		}
 		}
-		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_i'][0]->getName() ){
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_j'][0]->getName() ){
+			$file_certificadoLey382003 = "NO";
+		} else {
+			$file_certificadoLey382003 = "SI";
+		}
+		}
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_k'][0]->getName() ){
 			$file_certificadoSGR = "NO";
 		} else {
 			$file_certificadoSGR = "SI";
 		}
 		}
-		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_j'][0]->getName() ){
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_l'][0]->getName() ){
 			$file_contratoOperFinanc = "NO";
 		} else {
 			$file_contratoOperFinanc = "SI";
 		}
 		}
-		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_k'][0]->getName() ){
-			$file_avalOperFinanc = "NO";
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_m'])) {
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_m'][0]->getName() ){
+			$file_contratoOperFinanc = "NO";
 		} else {
-			$file_avalOperFinanc = "SI";
+			$file_contratoOperFinanc = "SI";
 		}
 		}
-		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_l'][0]->getName() ){
-			$file_certificadoInverECO = "NO";
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_n'])) {
+		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_n'][0]->getName() ){
+			$file_declaracionResponsable = "NO";
 		} else {
-			$file_certificadoInverECO = "SI";
+			$file_declaracionResponsable = "SI";
 		}
 		}
 
@@ -1397,8 +1418,12 @@ class SubirArchivo extends BaseController
 			'declaro_idi_isba_que_cumple_7' 	=> $declaro_idi_isba_que_cumple_7,
 			'declaro_idi_isba_que_cumple_8' 	=> $declaro_idi_isba_que_cumple_8,
 
+			'file_memoriaTecnica' => $file_memoriaTecnica,
+			'file_document_veracidad_datos_bancarios' => $file_document_veracidad_datos_bancarios,
 			'file_document_acred_como_repres' => $file_document_acred_como_repres,
 			'file_copiaNIF' => $file_copiaNIF,
+			'file_certificadoATIB' => $file_certificadoATIB,
+			'file_certificadoLey382003' => $file_certificadoLey382003,
 			'file_nifEmpresa' => $file_nifEmpresa,
 			'file_escrituraConstitucion' => $file_escrituraConstitucion,
 			'file_certificadoIAE' => $file_certificadoIAE,
