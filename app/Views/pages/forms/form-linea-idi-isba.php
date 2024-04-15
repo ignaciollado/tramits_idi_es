@@ -277,18 +277,30 @@
 	<div id="formbox">
 		<fieldset>
 			<h2>8. <?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba');?></h2>
-			<ol style="list-style-type: lower-alpha;" start="2">
+			<ol style="list-style-type: lower-alpha;">
+			<li>
+				<div class="form-check">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_a[]" id="documentacion_adjunta_requerida_idi_isba_a" value="SI">
+  					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_a">
+							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>
+  					</label>
+				</div>
+			</li>
+
 			<li>
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_b" name="documentacion_adjunta_requerida_idi_isba_b[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
 				</div> 
 			</li>
+
 			<li>
-				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_c" name="documentacion_adjunta_requerida_idi_isba_c[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div> 
+				<div class="form-check">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_c[]" id="documentacion_adjunta_requerida_idi_isba_c" value="SI">
+  					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_c">
+							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>
+  					</label>
+				</div>
 			</li>
 		
 			<li>
@@ -298,14 +310,14 @@
 				</div>	
 			</li>
 
-			<li class="es-fisica ocultar">
+			<li class="ocultar" id="es-p-fisica">
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
 				</div>	
 			</li>	
 
-			<li class="es-juridica ocultar">
+			<li class="ocultar" id="es-p-juridica">
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
@@ -313,17 +325,27 @@
 			</li>	
 			
 			<li>
- 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-				<div>
+				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?></strong></h3>
+				<div id = "enviaridi_isba_g" class = "">
+					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>	
+				</div>
+				<div class="form-check">
+					<input type="checkbox" id="idi_isba_g_EnIDI" name="idi_isba_g_EnIDI" class="form-check-input" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<label class="form-check-label alert alert-warning" role="alert" for="idi_isba_g_EnIDI"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+				</div>
 			</li>
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?></strong></h3>
-				 <div>
+				<div id = "enviaridi_isba_h" class = "">
+					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_h" name="documentacion_adjunta_requerida_idi_isba_h[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>	
+				</div>
+				<div class="form-check">
+					<input type="checkbox" id="idi_isba_h_EnIDI" name="idi_isba_h_EnIDI" class="form-check-input" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<label class="form-check-label alert alert-warning" role="alert" for="idi_isba_h_EnIDI"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+				</div>				
 			</li>
 
 			<li>
@@ -362,10 +384,16 @@
 			</li>
 			
 			<li>
- 				<h3><strong>****<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+			<div class="form-check">
+  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_n[]" id="documentacion_adjunta_requerida_idi_isba_n" value="SI">
+  					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_n">
+							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>
+  					</label>
+				</div>
+ 			<!-- 	<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_n" name="documentacion_adjunta_requerida_idi_isba_n[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>	
+					<input readonly disabled type = "file" id="documentacion_adjunta_requerida_idi_isba_n" name="documentacion_adjunta_requerida_idi_isba_n[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+				</div>	 -->
 			</li>			
 			</ol>
 		</fieldset>

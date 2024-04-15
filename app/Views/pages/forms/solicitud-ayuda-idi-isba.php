@@ -1,21 +1,20 @@
 <?php
 helper('cookie');
 $language = \Config\Services::language();
-$locale = $language->getLocale();
+$language->setLocale($idioma);
 
 require_once('tcpdf/tcpdf.php');
 
 use App\Models\ConfiguracionModel;
-	$modelConfig = new ConfiguracionModel();
-	/* $data['configuracion'] = $modelConfig->where('convocatoria_activa', true)->first();	 */
+$modelConfig = new ConfiguracionModel();
 
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
-        // Logo
-        $image_file = K_PATH_IMAGES.'logo_idi_conselleria.png';
-        $this->Image($image_file, 20, 10, 25, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-	}
+      // Logo
+      $image_file = K_PATH_IMAGES.'logo_idi_conselleria.png';
+			$this->Image($image_file, 10, 10, 90, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+		}
     // Page footer
     public function Footer() {
         // Logo
@@ -135,7 +134,7 @@ $pdf->setX($currentX);
 
 $pdf->writeHTML($html10, true, false, true, false, '');
 
-// ------------------------------------------------------------------3. OPERACIÓN FINANCIERA--------------------------------------------------------- //
+// ------------------------------------------------------------------3. INVERSIÓN DESTINADA A-------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
@@ -170,11 +169,15 @@ $pdf->writeHTML($html11, true, false, true, false, '');
 
 // ------------------------------------------------------------------4. PROYECTO DE INVERSIÓN-------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
+// remove default header/footer
+$pdf->setPrintHeader(false);
 $pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '25', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 20);
+$pdf->setY($currentY + 25);
 $pdf->setX($currentX);
 $html12 = "4. ". lang('message_lang.proyecto_de_inversion_idi_isba');
 $pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
@@ -226,13 +229,14 @@ $pdf->writeHTMLCell('', '', '', '', $html13, 1, 1, 0, true, 'C', true);
 
 $html13 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html13 .= "<tr><td><ol>".$declaro_idi_isba_que_cumple_4;
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_0')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_1')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_2')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_3')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_4');
 
 if ($declaro_idi_isba_que_cumple_4 != "SI") {
-		$html13 .= "<br><ul><li><b>". $ayudasSubvenSICuales_dec_resp ."</b></li></ul><br>";
+		$html13 .= "<br><ul><li><b>". $ayudasSubvenSICuales_dec_resp ." €</b></li></ul><br>";
 }
 
 $html13 .= "</li>";
@@ -241,7 +245,13 @@ $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_5')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
-
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_10')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_11')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_12')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_13')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_14')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_15')."</li>";
 $html13 .= "</ol></td></tr>";
 $html13 .= "</table>";
 
@@ -251,13 +261,18 @@ $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
 $pdf->writeHTML($html13, true, false, true, false, '');
 
+// remove default header/footer
+$pdf->setPrintHeader(false);
 $pdf->AddPage();
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 20);
-$pdf->setX($currentX);
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '25', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 // ----------------------------------------------7. DOCUMENTACIÓN ADJUNTADA---------------------------------------------------------------- //
 // ---------------------------------------------------------------------------------------------------------------------------------------- //
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 25);
+$pdf->setX($currentX);
 $html15 = "7. ".lang('message_lang.documentacion_adjuntada_idi_isba');
 
 $pdf->writeHTMLCell('', '', '', '', $html15, 1, 1, 0, true, 'C', true);
@@ -265,37 +280,40 @@ $pdf->writeHTMLCell('', '', '', '', $html15, 1, 1, 0, true, 'C', true);
 $html15 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html15 .= "<tr><td></td></tr>";
 $html15 .= "<tr><td><ol>";
-if ( $file_document_acred_como_repres == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_c')."</li>";		
+
+if ($file_memoriaTecnica == "SI") {
+	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_b')."</li>";		
 }
-if ( $file_copiaNIF  == "NO") {
+if ( $file_certificadoIAE == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_d')."</li>";		
 }
-if ( $file_nifEmpresa == "NO") {
+if ( $file_altaAutonomos == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_e')."</li>";		
 }
 if ( $file_escrituraConstitucion == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_f')."</li>";		
 }
-if ( $file_certificadoIAE == "SI") {
+if ( $file_copiaNIF  == "NO") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_g')."</li>";		
 }
-if ( $file_certificadoAEAT == "SI") {
+if ( $file_certificadoATIB == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_h')."</li>";		
 }
-if ( $file_certificadoSGR == "SI") {
+if ( $file_certificadoAEAT == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_i')."</li>";		
 }
-if ( $file_contratoOperFinanc == "SI") {
+if ( $file_certificadoLey382003 == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_j')."</li>";		
 }
-if ( $file_avalOperFinanc == "SI") {
+if ( $file_certificadoSGR == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_k')."</li>";		
 }
-if ( $file_certificadoInverECO == "SI") {
+if ( $file_contratoOperFinanc == "SI") {
 	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_l')."</li>";		
 }
-
+if ( $file_avalOperFinanc == "SI") {
+	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_m')."</li>";		
+}
 $html15 .= "</ol></td></tr>";
 $html15 .= "<tr><td></td></tr>";
 $html15 .= "</table>";
@@ -307,7 +325,7 @@ $pdf->setX($currentX);
 
 $pdf->writeHTML($html15, true, false, true, false, '');
 
-// ---------------------------------------------------------FECHA y FIRMA----------------------------------------------------- //
+// ---------------------------------------------------------FECHA y FIRMA----------------------------------------- //
 $pdf->SetFont('helvetica', '', 12);
 
 $html29 = "<br>";
@@ -334,7 +352,6 @@ $pdf->setX($currentX - 40);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_idi_isba.pdf', 'F');
-//$pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/_dec_res_solicitud_idi_isba.pdf', 'F');
 ?>
 
 <div class="container">

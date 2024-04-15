@@ -590,24 +590,36 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
 'presupuesto_proyecto_de_inversion_idi_isba' => "PRESSUPOST DEL PROJECTE D'INVERSIÓ",
 'importe_del_presupuesto_idi_isba'  => "Import del pressupost (IVA inclós)",
 'detalle_importe_ayuda_solicitado_idi_isba' => "Amb el següent detall:",
+'declaro_idi_isba_que_cumple_0'  => "La veracitat de les dades aportades a aquesta sol3licitud.",
 'declaro_idi_isba_que_cumple_1'  => "Que la persona o entitat sol·licitant compleix els requisits de petita o mitjana empresa, d'acord amb l'annex 1 del Reglament (UE) núm. 651/2014 de la Comissió, de 17 de juny de 2014 pel qual es declaren determinades categories d'ajuda compatibles amb el mercat interior en aplicació dels articles 107 i 108 del Tractat, compleix amb els requisits per ser considerat una pime.",
 'declaro_idi_isba_que_cumple_2'  => "Que la persona o entitat beneficiària no està sotmesa a cap causa de prohibició o d'incompatibilitat per rebre l'ajuda segons la legislació vigent i que el sol·licitant no ha estat sancionat o condemnat per resolució administrativa o sentència judicial ferma per discriminació salarial, assetjament moral o qualsevol tipus de tracte desigual, per raó de sexe, en l'àmbit de les relacions laborals.",
 'declaro_idi_isba_que_cumple_3'  => "Que la persona o entitat sol·licitant durà a terme l'activitat d'inversió, així com la justificació de la realització de l'activitat i el compliment dels requisits i condicions que determinen la concessió de la subvenció.",
 'declaro_idi_isba_que_cumple_4'  => "Que no ha sol·licitat o rebut cap altra ajuda de qualsevol entitat, pública o privada, nacional o estrangera, relacionada amb l'operació financera o amb el projecte d'inversió; o, en cas contrari, relació de totes les ajudes i les subvencions sol·licitades o rebudes.",
-'declaro_idi_isba_que_cumple_5'  => "Compliment del reglament (UE) núm. 1407/2013 de la Comissió de 18 de desembre de 2013, relatiu a l'aplicació dels articles 107 i 108 del Tractat de funcionament de la Unió Europea de les ajudes de minimis. Declaració de les ajudes rebudes durant l'exercici fiscal en curs i els dos exercicis fiscals anteriors.",
-'declaro_idi_isba_que_cumple_6'  => "Que, en la data de la sol·licitud, està al corrent dels pagaments de les seves obligacions tributàries amb l'Administració de la Comunitat Autònoma de les Illes Balears, així com al corrent dels pagaments de les seves obligacions tributàries amb la Seguretat Social.",
-'declaro_idi_isba_que_cumple_7'  => "Una declaració responsable de la veracitat de dades bancàries.",
-'declaro_idi_isba_que_cumple_8'  => "Que, en la data de la sol·licitud, està adherida al programa Indústria Local Sostenible (en cas de tenir Resolució d'adhesió al programa ILS).", 
+'declaro_idi_isba_que_cumple_5'  => "Complesc amb el reglament (UE) núm. 1407/2013 de la Comissió de 18 de desembre de 2013, relatiu a l'aplicació dels articles 107 i 108 del Tractat de funcionament de la Unió Europea de les ajudes de minimis. Declaració de les ajudes rebudes durant l'exercici fiscal en curs i els dos exercicis fiscals anteriors.",
+'declaro_idi_isba_que_cumple_6'  => "Que no ha solicitado o recibido ninguna otra ayuda de cualquier entidad, pública o privada, nacional o extranjera, relacionada con la operación financiera o con el proyecto de inversión; o, en caso contrario, relación de todas las ayudas y las subvenciones solicitadas o recibidas.",
+'declaro_idi_isba_que_cumple_7'  => "He declarado las ayudas recibidas durante el ejercicio fiscal en curso y los dos ejercicios fiscales anteriores.",
+'declaro_idi_isba_que_cumple_8'  => "El cumplimiento de la capacidad de representación suficiente, debidamente acreditada, para realizar la tramitación indicada.",
+'declaro_idi_isba_que_cumple_9'  => "La veracidad de datos aportados y la titularidad de la cuenta bancaria indicada en la solicitud.",
+'declaro_idi_isba_que_cumple_10' => "Que en el caso de ser una persona autónoma, cumple el requisito relativo a la no participación superior al 25% por una o varias empresas, o de lo contrario señalar que es una empresa “asociada” o una empresa “vinculada” y que informa de las participaciones del 25% o más del capital social o de los derechos de voto en otras empresas en los términos establecidos en el artículo 3 del anexo1 del reglamento (UE) núm. 651/2014 de la Comisión, de 17 de junio de 2014.
+En caso de ser empresa una empresa “asociada” o una empresa “vinculada”, declara que el grupo de empresas resultante considerado “única empresa” sigue cumpliendo con los requisitos para ser una pyme, tal como se indica en la definición del apartado 2.3 de esta convocatòria.", 
+'declaro_idi_isba_que_cumple_11' => "Que la persona o entidad beneficiaria no está sometida a ninguna causa de prohibición o de incompatibilidad para recibir la ayuda según la legislación vigente y que el solicitante no ha sido sancionado o condenado por resolución administrativa o sentencia judicial firme por discriminación salarial, acoso moral o cualquier tipo de trato desigual, por razón de sexo, en el ámbito de las relaciones laborales.",
+'declaro_idi_isba_que_cumple_12' => "Que, en la fecha de la solicitud, está al corriente de los pagos de sus obligaciones tributarias con la Administración del Estado, la  administración de la Comunidad Autónoma de las Illes Balears, así como al corriente de los pagos de sus obligaciones tributarias con la Seguridad Social.",
+'declaro_idi_isba_que_cumple_13' => "Que el solicitante va a llevar a cabo la actividad de inversión en un centro de Trabajo de la Comunidad autònoma de las Illes Balears, así como la justificación de la realización de la actividad y el cumplimiento de los requisitos y condiciones que determinan la concesión de la subvención.",
+'declaro_idi_isba_que_cumple_14' => "Que para ayudas de importe superior a 30.000 euros de acuerdo con la Ley 38/2003, de 17 de novembre, General de Subvencines, cumple con los plazos previstos en la Ley 3/2004 de 29 de diciembre, por la que se establecen medidas de lucha contra la morosidad en las operaciones Comerciales.
+Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la notificación de la propuesta de la resolución de concesión con el certificado que establece el articulo 13.3 bis de la Ley 38/2003, de 17 de novembre.",
+'declaro_idi_isba_que_cumple_15' => "Cumplo con las condiciones de la convocatoria.",
+
 'declaro_idi_isba_ayudas_recibidas' => "Relación de todas las ayudas y las subvenciones solicitadas o recibidas:",
 'direccion_general_politica_industrial_idi_isba'   => "De la Direcció General de Politica Indústrial",
 'otros_declaro_idi_isba'   => "Altres",
 'documentacion_adjunta_requerida_idi_isba' => "Documentació",
-'documentacion_adjunta_requerida_idi_isba_b' => "Descripción de la empresa y su actividad, modelo de negocio y detalle de la inversión/Inversiones previstas",
-'documentacion_adjunta_requerida_idi_isba_c' => "Declaración responsable de la veracidad de los datos bancarios aportados que se encuentra incluido en la solicitud de la ayuda.",
+'documentacion_adjunta_requerida_idi_isba_a' => "El documento normalizado de solicitud de subvención de esta convocatoria, el cual se genera al enviar esta solicitud.",
+'documentacion_adjunta_requerida_idi_isba_b' => "Descripción de la empresa y su actividad, modelo de negocio y detalle de la inversión/inversiones previstas.",
+'documentacion_adjunta_requerida_idi_isba_c' => "Declaración responsable de la veracidad de los datos bancarios aportados que se genera al enviar esta solicitud.",
 'documentacion_adjunta_requerida_idi_isba_d' => "Certificado del IAE actualizado en el momento de la sol·licitud.",
-'documentacion_adjunta_requerida_idi_isba_e' => "En caso de que el solicitante sea una persona física, se requerirá: El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.",
-'documentacion_adjunta_requerida_idi_isba_f' => "En caso de que el solicitante sea una persona jurídica, se requerirá: ◦ Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.
-• Documento fehaciente que acredite la representación de la persona que actúa en nombre de la entidad solicitante. La representación podrá acreditarse por cualquier forma válida en derecho.",
+'documentacion_adjunta_requerida_idi_isba_e' => "Persona física, se requerirá: el certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.",
+'documentacion_adjunta_requerida_idi_isba_f' => "Persona jurídica, se requerirá: - Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.<br>
+- Documento fehaciente que acredite la representación de la persona que actúa en nombre de la entidad solicitante. La representación podrá acreditarse por cualquier forma válida en derecho.",
 'documentacion_adjunta_requerida_idi_isba_g' => "Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.",
 'documentacion_adjunta_requerida_idi_isba_h' => "Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.",
 'documentacion_adjunta_requerida_idi_isba_i' => "En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.",
@@ -615,7 +627,7 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
 'documentacion_adjunta_requerida_idi_isba_k' => "El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.",
 'documentacion_adjunta_requerida_idi_isba_l' => "El contrato de la operación financiera.",
 'documentacion_adjunta_requerida_idi_isba_m' => "El contrato o documento de aval de la operación financiera.",
-'documentacion_adjunta_requerida_idi_isba_n' => "Una Declaración responsable, incluida en el modelo normalizado de sol·licitud, de la persona titular de la empresa o de quien la representa legalmente.",
+'documentacion_adjunta_requerida_idi_isba_n' => "Una Declaración responsable, incluida en el modelo normalizado de solicitud, de la persona titular de la empresa o de quien la representa legalmente, la cual se genera al enviar esta solicitud.",
 
 'ayuda_superior_3000' => "En el cas d'ajudes superiors als 3000 €:",
 
@@ -625,7 +637,6 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
 'adherido_a_ils_si_no'  => "CATEGORIA",
 'no_adherido_a_ils'     => "Inversió",
 'adherido_a_ils'        => "Inversió ILS",
-'documentacion_adjuntada_idi_isba' => "Documentació adjuntada",
 'solicita_ayuda_idi_isba'  => "SOL·LICITO<br><small>D'acord amb la convocatòria per a l'any 2023 d'ajuts a les empreses imdustrials amb activitat a les Illes Balears per cobrir
 les comissions d'obertura i d'estudi, els interessos i el cost de l'aval de societats de garantia recíproca per operaciones de finançament d'inversions productives i de liquiditat, aprovada per
 Resolució del conseller d'Empresa, Ocupació i Energia, els imports corresponnents per l'operació, avalada per societat de garantia recíproca, següent:</small>",
