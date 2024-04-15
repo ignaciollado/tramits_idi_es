@@ -1231,6 +1231,12 @@ class SubirArchivo extends BaseController
 			}
 
 	 	$tipoSolicitante = $this->request->getVar('tipo_solicitante');
+
+		/* Existen tres formas de acred la representación y son excluyentes. Por eso voy sobreescribiendo en la variable */
+		$forma_acred_represent1 = $this->request->getVar('forma_acred_represent1');
+		$forma_acred_represent2 = $this->request->getVar('forma_acred_represent2');
+		$forma_acred_represent3 = $this->request->getVar('forma_acred_represent3');
+
  
 	 	date_default_timezone_set("Europe/Madrid");
 	 	$selloTiempo = date("d_m_Y_h_i_sa");
@@ -1402,6 +1408,9 @@ class SubirArchivo extends BaseController
 			'email_rep' => $mail_notificacion,	// se usa para notificar
 			'tipo_tramite' => $tipo_tramite,
 			'iae' => $codigoIAE,
+			'forma_acred_represent_idi_isba1' => $forma_acred_represent1,
+			'forma_acred_represent_idi_isba2' => $forma_acred_represent2,
+			'forma_acred_represent_idi_isba3' => $forma_acred_represent3,
 
 			'nombre_rep' 		=> $nom_representante,
 			'nif_rep' 				=> $nif_representante,
@@ -1437,11 +1446,11 @@ class SubirArchivo extends BaseController
 			'importe_prestamo' => $importe_prestamo,
 			'plazo_prestamo' => $plazo_prestamo,
 			'carencia_prestamo' => $carencia_prestamo,
-			'cuantia_aval_isba' => $cuantia_aval_isba,
-			'plazo_aval_isba' => $plazo_aval_isba,
+			'cuantia_aval_idi_isba' => $cuantia_aval_isba,
+			'plazo_aval_idi_isba' => $plazo_aval_isba,
 			'carencia_idi_isba' => $carencia_idi_isba,
+			'fecha_aval_idi_isba' => $fecha_aval_isba,
 
-			'fecha_aval_isba' => $fecha_aval_isba,
 			'finalidad_inversion_idi_isba' => $finalidad_inversion_idi_isba,
 			'empresa_eco_idi_isba'  => $empresa_eco_idi_isba,//radio button
 			'importe_presupuesto_idi_isba' => $importe_presupuesto_idi_isba,
@@ -1457,6 +1466,9 @@ class SubirArchivo extends BaseController
 		];
 	
 	 	$save_exp = $expediente->insert($data_exp);
+		var_dump($$data_exp);
+		var_dump($save_exp);
+		echo "***".$last_insert_id."****";
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;

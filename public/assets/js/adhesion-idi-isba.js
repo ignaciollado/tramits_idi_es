@@ -42,19 +42,21 @@ function activaDesactivaFormulario (valor) {
 }
 
 function onFormSubmit(e) {
- 	let x = document.forms[theForm]["fname"].value;
-  if (x == "") {
-    alert("Sorry, all fields must be valid [with a green field border]");
-    return false;
-  } 
-	btnSendFormIDIISBA.innerHTML ="Un moment, enviant ..."
+	let theForm = document.getElementById("adhesion_idi_isba")
+	let theElement = document.getElementById("sendFormIDIISBA")
+	btnSendFormIDIISBA.innerHTML ="Un moment, enviant a IDI ..."
 	btnSendFormIDIISBA.disabled = true
 	spinnerSendRequestIDIISBA.classList.remove("ocultar")
 
-	theForm.style.cursor="progress";
-	theForm.disabled = true;
-	theForm.style.opacity =".2";
-	theForm.submit();
+	let theSpinnger = document.getElementById("spinnerSendRequestIDIISBA")
+	/* theSpinnger.classList.remove("ocultar") */
+  theElement.value = "Enviant, un moment per favor... "
+  theElement.disabled = true;
+  theElement.style.backgroundColor= "orange";
+  theElement.style.cursor="progress";
+  theForm.style.opacity =".2";
+	
+  theForm.submit();
 }
 
  function limpiaInfo_lbl (valor) {
@@ -78,6 +80,8 @@ function tipoSolicitante (valor) {
 				document.getElementById("domicilio_rep").disabled = true
 				document.getElementById("telefono_contacto_rep").readOnly = true
 				document.getElementById("telefono_contacto_rep").disabled = true
+				document.getElementById("cp_rep").readOnly = true
+				document.getElementById("cp_rep").disabled = true
 				break;
 			case 'pequenya':
 			case 'mediana':
@@ -99,6 +103,8 @@ function tipoSolicitante (valor) {
 				document.getElementById("domicilio_rep").disabled = false
 				document.getElementById("telefono_contacto_rep").readOnly = false
 				document.getElementById("telefono_contacto_rep").disabled = false
+				document.getElementById("cp_rep").readOnly = false
+				document.getElementById("cp_rep").disabled = false
 				break;
 		}
 }

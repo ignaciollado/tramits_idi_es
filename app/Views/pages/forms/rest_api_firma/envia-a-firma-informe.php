@@ -1,13 +1,14 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <?php	
     use App\Models\ConfiguracionModel;
 
     $session = session();
     $empresa = $session->get('full_name');
     $nif = $nifcif;
-		$adreca_mail = $session->get('username');
-		$telefono_cont = $session->get('telefono');
-
+	$adreca_mail = $session->get('username');
+	$telefono_cont = $session->get('telefono');
+		
 		if ( $byCEOSigned ) {
     	$configuracion = new ConfiguracionModel();
     	$data['ceoData'] = $configuracion->where('activeGeneralData', 'SI')->first();
@@ -15,8 +16,9 @@
 			$telefono_cont = $data['ceoData']['telDGerente'];
  		/* 	$adreca_mail = "illado@idi.caib.es";
 			$telefono_cont = "677234076"; */
+			
 		}
-
+	echo "<br><br><div class='alert alert-dark' role='alert'><strong>se envía a:</strong> ".$adreca_mail."<br>";
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 		require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
 		require_once dirname(__FILE__) . '/model/AddresseeLine.php';
@@ -35,8 +37,6 @@
 	 
 		// Usuario remitente del formulario, a partir del $nif firma el/los documentos (FIRMA)
 		// Línea 2: Grupo ZFLVHE6AAJ (FIRMA)
-
-		/* echo "--".$adreca_mail."--".$telefono_cont."--"; */
 
 		// Construct Request object
 		$request = new Request;
@@ -69,26 +69,32 @@
 		$request->addresseeLines = $lines;
 		
 		// Subject, message and sender notification level
-		$request->subject = "iTramits."; //lang('message_lang.titulo_sol_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
+		$request->subject = "Gestor de tràmits administratius"; //lang('message_lang.titulo_sol_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
 		$request->message = "Document per signar"; //lang('message_lang.subtitulo_sol_idigital'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 		$request->senderNotificationLevel = "ALL";
 		$request->signatureLevel = "ALL";
 		$request->useDefaultStamp = true;
 		// URL para los callbacks tras realizar una acción con la petición. Será un GET con los parámetros:
 		// action (String con el tipo de acción), label (String con la public access id de la petición) y finished=ok (si está finalizada la petición. En caso contrario, no se incluirá).
-		//$request->notificationUrl = "https://tramits.idi.es/public";
+		$request->notificationUrl = "https://tramits.idi.es/public";
 		
 		// Adding a document to sign
 		$doc = new Document;
-		$doc->filename = $nombreDocumento;
-		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento)));	
-		//$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/informes/fichero_a_firmar.pdf')));
-		
+ 		$doc->filename = $nombreDocumento;
+		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento)));
+		echo "<strong>el archivo enviado es:</strong> ".WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento."<br>";
+
+		/* $doc->filename = "fichero_a_firmar.pdf";
+		$doc->base64 = chunk_split(base64_encode(file_get_contents('fichero_a_firmar.pdf')));
+		echo $doc->filename."-"; */
+
 		$documentsToSign = array ($doc);
 		$request->documentsToSign = $documentsToSign;
 		
 		// Set json
 		$json = json_encode($request);
+		/* echo $json; */
+
 		$json = str_replace(array('\r','\n'),'',$json)."<br>";
 		$resultRequest = execute("requests", $json, __FUNCTION__);
 		printResult($resultRequest, $last_insert_id, $nombreDocumento);
@@ -127,6 +133,9 @@
 		
 		// Execute
 		$result = curl_exec($ch);
+		echo "<strong>La respuesta ha sido:</strong><br>";
+		var_dump($result);
+		echo "</div>";
 		// Closing
 		curl_close($ch);
 		return $result;		
@@ -134,6 +143,7 @@
 		
 	function printResult($result, $last_insert_id, $tipo_Doc) {
 		$respuesta = json_decode ($result, true);
+	
 		$db      = \Config\Database::connect();
 		$builder = $db->table('pindust_documentos_generados');
 		$data = [

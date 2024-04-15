@@ -1,7 +1,7 @@
 <!-- -------------------------------------- Informe favorable sense requeriment  DOC 4-------------------------------------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Informe favorable sense requeriment
+    	Informe favorable sense requeriment
   	</div>
 	<div class="card-itramits-footer">
 
@@ -27,6 +27,7 @@
 		{
 		$PublicAccessId = $row->publicAccessId;
 	    $requestPublicAccessId = $PublicAccessId;
+		$selloDeTiempo = $row->selloDeTiempo;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
 		$estado_firma = $respuesta['status'];
@@ -47,6 +48,8 @@
 			$estado_firma .= "</a>";						
 			default:
 			$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
+/* 			$estado_firma .= "<a href=".base_url('/public/index.php/expedientes/muestrainforme/'.$expedientes['id'].'/2024/'.$expedientes['tipo_tramite'].'/'.$expedientes['nif'].'/doc_informe_favorable_sin_requerimiento'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME).">PDF</a>";
+			$estado_firma .= "</a>"; */
 			}
 			echo $estado_firma;
 		}

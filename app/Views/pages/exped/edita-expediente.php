@@ -356,12 +356,12 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <div class="form-group general">
                     <label for="porcentajeConcedido">Percentatje de l'ajuda:</label>
                     <select class="form-control send_fase_0" readonly disabled id = "porcentajeConcedido" name = "porcentajeConcedido" required>
-    		    		    <option disabled <?php if ($expedientes['porcentajeConcedido'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
-                            <option <?php if ($expedientes['porcentajeConcedido'] == "0") { echo "selected"; }?> value = "0" class="solicitud"></option>
-                            <option <?php if ($expedientes['porcentajeConcedido'] == "60") { echo "selected"; }?> value = "60" class="solicitud">60 %</option>
-    				        <option <?php if ($expedientes['porcentajeConcedido'] == "70") { echo "selected"; }?> value = "70" class="solicitud">70 %</option>
-        		            <option <?php if ($expedientes['porcentajeConcedido'] == "80") { echo "selected"; }?> value = "80" class="Ejecucion">80 %</option>
-    				        <option <?php if ($expedientes['porcentajeConcedido'] == "90") { echo "selected"; }?> value = "90" class="validacion">90 %</option>
+    		    		<option disabled <?php if ($expedientes['porcentajeConcedido'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
+                        <option <?php if ($expedientes['porcentajeConcedido'] == "0") { echo "selected"; }?> value = "0" class="solicitud"></option>
+                        <option <?php if ($expedientes['porcentajeConcedido'] == "60") { echo "selected"; }?> value = "60" class="solicitud">60 %</option>
+    				    <option <?php if ($expedientes['porcentajeConcedido'] == "70") { echo "selected"; }?> value = "70" class="solicitud">70 %</option>
+        		        <option <?php if ($expedientes['porcentajeConcedido'] == "80") { echo "selected"; }?> value = "80" class="Ejecucion">80 %</option>
+    				    <option <?php if ($expedientes['porcentajeConcedido'] == "90") { echo "selected"; }?> value = "90" class="validacion">90 %</option>
 			        </select>
                     <!--<input type="number" name="porcentajeConcedido" onChange="avisarCambiosEnFormulario('send_fase_0')" class="form-control" id = "porcentajeConcedido" min="0" placeholder="Percentatje de l'ajuda" value="<?php echo $expedientes['porcentajeConcedido']; ?>">-->
                 </div>

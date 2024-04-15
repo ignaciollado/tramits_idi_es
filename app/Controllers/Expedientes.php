@@ -222,7 +222,7 @@ class Expedientes extends Controller
 		}
 
 		if (!$this->request->getVar('programa_fltr') && !$this->request->getVar('convocatoria_fltr') && !$this->request->getVar('textoLibre_fltr')) {
-			$data['titulo'] = lang('message_lang.todas_las_solicitudes')." ".$this->request->getVar('convocatoria_fltr');
+			$data['titulo'] = "Totes les sol·licituds";
 		} else {
 			$data['titulo'] = "Sol·licituds filtrades ";
 		}
@@ -947,7 +947,8 @@ class Expedientes extends Controller
 		if ($convocatoria >= 2022) {	// a partir del 2022 hemos cambiado el nombre de los modelos de documento a IDEXP_CONVO_NOMMODELO.pdf
 			$file = str_replace("doc_", $idExp . "_" . $convocatoria . "_", $file);
 		}
-
+/* 		echo WRITEPATH . 'documentos/' . $nifcif . '/informes/' . $file;
+		return; */
 		$this->response->setHeader('Content-type', 'application/pdf');
 		echo file_get_contents(WRITEPATH . 'documentos/' . $nifcif . '/informes/' . $file);
 	}

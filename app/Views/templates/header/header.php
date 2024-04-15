@@ -7,9 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- <meta name="google-signin-scope" content="profile email"> -->
 	<!--- PRODUCCIÓN -->
-    <!-- <meta name="google-signin-client_id" content="317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com"> -->
+    <meta name="google-signin-client_id" content="317070054037-71vr46416dlhb63auo5tv0vg16557cin.apps.googleusercontent.com">
 	<!--- DESARROLLO -->
-	<meta name="google-signin-client_id" content="317070054037-t1thp3bfgcsskpuok1f0e12ja6hcbus5.apps.googleusercontent.com">
+	<!-- <meta name="google-signin-client_id" content="317070054037-t1thp3bfgcsskpuok1f0e12ja6hcbus5.apps.googleusercontent.com"> -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -84,10 +84,10 @@ ul { list-style-type: none; }
 			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_ils/'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_ils_menu');?></a></li>
 			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/'); ?>" target = "_blank"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></a></li>		
 
-			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/expedientes/filtrarexpedientes');?>" target="_self"><?php echo lang('message_lang.expediente_menu');?></a></li>
-<!-- 			<?php if ($session->get('rol')=='admin') {?>
+			<!-- <li class="menu-item"><a href="<?php echo base_url('/public/index.php/expedientes/');?>" target="_self"><?php echo lang('message_lang.expediente_menu');?></a></li> -->
+			<?php if ($session->get('rol')=='admin') {?>
 			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/custodia/');?>" target="_self">CUSTODIA</a></li>
-			<?php }?>	 -->		
+			<?php }?>			
 			<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/dec_resp_consul/'); ?>" target = "_blank"><?php echo lang('message_lang.dec_resp_con_menu');?></a></li>				
 			<li class="menu-item"><a href="https://inbox.viafirma.com/inbox/app/idi/" target="_blank"><?php echo lang('message_lang.portafirmas_menu');?></a></li>	
 			<li class="menu-item"><a href="https://rec.redsara.es/registro/action/are/acceso.do" target="_blank">Registro Electrónico Común (REC)</a></li>
@@ -147,5 +147,4 @@ function closeNav() {
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="https://apis.google.com/js/api.js"></script>
 <!--<div id="container">-->
