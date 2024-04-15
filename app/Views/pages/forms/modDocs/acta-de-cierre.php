@@ -1,7 +1,7 @@
 <!----------------------------------------- Acta de cierre DOC 20-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Acta de tancament <strong>pre-tramits</strong>
+    	Acta de tancament <strong>--probar--</strong>
   	</div>
   	<div class="card-itramits-footer">
 	  	<?php
@@ -149,7 +149,7 @@
 		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
 		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
 		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });
 

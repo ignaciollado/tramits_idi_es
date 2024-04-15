@@ -2,7 +2,7 @@
 <div class="card-itramits">
 
   	<div class="card-itramits-body">
-    	 Acta de Kick off <strong>pre-tramits</strong>
+    	 Acta de Kick off <strong>--probar--</strong>
   	</div>
   	<div class="card-itramits-footer">
 	  	<?php

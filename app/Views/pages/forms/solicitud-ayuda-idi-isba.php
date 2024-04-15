@@ -240,18 +240,14 @@ if ($declaro_idi_isba_que_cumple_4 != "SI") {
 }
 
 $html13 .= "</li>";
-
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_5')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li></ol>";
+
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
 $pdf->writeHTML($html13, true, false, true, false, '');
-
 
 // remove default header/footer
 $pdf->setPrintHeader(false);
@@ -263,6 +259,9 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 25);
 $pdf->setX($currentX);
+$html13 = "<ol><li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_10')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_11')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_12')."</li>";
