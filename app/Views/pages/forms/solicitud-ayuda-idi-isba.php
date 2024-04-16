@@ -86,9 +86,9 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$html8 ="1. ". lang('message_lang.identificacion_sol_idi_isba');
+$html2 ="1. ". lang('message_lang.identificacion_sol_idi_isba');
 
-$pdf->writeHTMLCell('', '', '', '', $html8, 1, 1, 0, true, 'C', true);
+$pdf->writeHTMLCell('', '', '', '', $html2, 1, 1, 0, true, 'C', true);
 
 // ------------------------------------------------------------------1. DATOS EMPRESA---------------------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -235,19 +235,19 @@ $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_3')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_4');
 
 if ($declaro_idi_isba_que_cumple_4 != "SI") {
-		$html13 .= "<br><ul><li><b>". $ayudasSubvenSICuales_dec_resp ." €</b></li></ul><br>";
+		$html13 .= "<br><ul><li><b>". money_format("%i ", $ayudasSubvenSICuales_dec_resp) ." €</b></li></ul><br>";
 }
 
 $html13 .= "</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_5')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li></ol>";
+$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li>";
 $html13 .= "</ol></td></tr>";
 $html13 .= "</table>";
 
-/* $currentY = $pdf->getY();
+$currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
-$pdf->setX($currentX); */
+$pdf->setX($currentX);
 $pdf->writeHTML($html13, true, false, true, false, '');
 
 // remove default header/footer
@@ -261,7 +261,7 @@ $currentX = $pdf->getX();
 $pdf->setY($currentY + 25);
 $pdf->setX($currentX);
 $html13 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html13 .= "<tr><td><ol>".$declaro_idi_isba_que_cumple_4;
+$html13 .= '<tr><td><ol start="8">';
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>";
@@ -339,36 +339,30 @@ $html15 .= "</table>";
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 8);
+$pdf->setY($currentY + 7);
 $pdf->setX($currentX);
 
 $pdf->writeHTML($html15, true, false, true, false, '');
 
 // ---------------------------------------------------------FECHA y FIRMA----------------------------------------- //
-$pdf->SetFont('helvetica', '', 12);
-
 $html29 = "<br>";
 $html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
-$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.fecha_ils')."</td></tr>";
-$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.firma_ils')."</td></tr>";
+$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.firma_idi_isba')."</td></tr>";
 $html29 .= "</table>";
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+$pdf->setY($currentY + 1);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 
 // ---------------------------------------------------------RGDP------------------------------------------------ //
 
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
-$html29 = "<br>";
-$html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
-$html29 .= "<tr><td style='text-align:center;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
-$html29 .= "</table>";
+$html30 = $rgpd;
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 4);
+$pdf->setY($currentY + 1);
 $pdf->setX($currentX - 40);
-$pdf->WriteHTML($html29, true, false, true, false, '');
+$pdf->WriteHTML($html30, true, false, true, false, '');
 
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_idi_isba.pdf', 'F');
 ?>

@@ -469,9 +469,7 @@ return [
 'rgpd'  => "Reglamento de protección de datos personales",
 'rgpd_leido' => "He leído y acepto las condiciones del ",
 'cierra' => "Cierra",
-'rgpd_txt' => "<label class='c1_ctl'>
-<br>
-<strong>PROTECCIÓN DE DATOS PERSONALES:</strong><br/><br/>
+'rgpd_txt' => "<strong>PROTECCIÓN DE DATOS PERSONALES:</strong><br/><br/>
 <ul>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tratamiento</strong>: INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacto delegado de protección de datos</strong>: dpd@idi.es</span></li>
@@ -492,7 +490,6 @@ return [
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES informa a los usuarios que pueden ejercer los derechos de acceso, rectificación, limitación, supresión, portabilidad y oposición al tratamiento de sus datos de carácter personal ante el Responsable del tratamiento, así como la retirada del consentimiento prestado. El Responsable le facilitará un formulario adecuado, a presentar en la dirección arriba indicada o mediante la dirección de correo electrónico dpd@idi.es.</span></li>
   <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES le informa que tiene derecho a presentar una reclamación ante la AEPD si considera que no se ha atendido convenientemente el ejercicio de sus derechos (www.aepd.es).</span></li>
 </ul>
-</label>
 <br/>",
 
 'documentoEnIDI' => "Este documento ya se encuentra en el IDI y no ha sufrido modificacioness <strong>(en este caso no hace falta aportarlo)</strong>.",
@@ -626,6 +623,7 @@ y de liquidez, aprobada por Resolución del consejero de Empresa, Ocupación y E
 'solicita_ayuda_coste_aval_isba_idi_isba' => "Una subvención al coste del aval de ISBA, consistente en la cuantía de",
 'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvención a los gastos de apertura y de estudio, consistente en la cuantía de",
 'ayuda_superior_3000' => "En el caso de ayudas superiores a los 3000 €:",
+'firma_idi_isba' => "Palma, en fecha de la firma electrónica",
 
 'doc_requerimiento_asunto' => "Asunto: requerimiento de documentación relativa al expediente de subvención",
 'doc_requerimiento_p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la resolució del President de l’IDI per la qual s'aprova la convocatòria per a la concessió d’ajuts de xecs de consultoria  per  a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat (BOIB núm. %BOIBNUM%), us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",

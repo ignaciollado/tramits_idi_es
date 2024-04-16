@@ -1274,13 +1274,9 @@ class SubirArchivo extends BaseController
 				$file_memoriaTecnica = "SI";
 			}
 		}
-		/* if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
-			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
-				$file_document_veracidad_datos_bancarios = "NO";
-			} else { */
-				$file_document_veracidad_datos_bancarios = "SI";
-/* 			}
-		} */
+
+		$file_document_veracidad_datos_bancarios = "SI";
+
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
 		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_d'][0]->getName() ){
 			$file_certificadoIAE = "NO";
@@ -1455,11 +1451,8 @@ class SubirArchivo extends BaseController
 			'importeAyuda'	=> 0,
 			'convocatoria' => $convocatoria
 		];
-	
+	var_dump($data_exp);
 	 	$save_exp = $expediente->insert($data_exp);
-		var_dump($$data_exp);
-		var_dump($save_exp);
-		echo "***".$last_insert_id."****";
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;

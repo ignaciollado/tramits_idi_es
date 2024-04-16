@@ -488,7 +488,7 @@ return [
 'rgpd'  => "Reglament de protecció de dades personals",
 'rgpd_leido' => "He llegit i accept les condicions del ",
 'cierra' => "Tanca",
-'rgpd_txt' => "<label class='c1_ctl'><br><strong>PROTECCIÓ DE DADES PERSONALS:</strong><br/><br/>
+'rgpd_txt' => "<strong>PROTECCIÓ DE DADES PERSONALS:</strong>
 <ul>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tractament</strong>: INSTITUT D´INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacte Delegat Protecció de Dades</strong>: dpd@idi.es</span></li>
@@ -502,15 +502,14 @@ return [
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORIES DELS DESTINATARIS</strong>: Agència Tributària, Bancs, Caixes i Organismes i/o administració pública amb competència en la matèria</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TRANSFERÈNCIES INTERNACIONALS</strong>: No es realitzen transferències internacionals de dades.</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>MESURES TÈCNIQUES I ORGANITZATIVES</strong>: previstes en els documents de Mesures per a compliment normatiu i Polítiques per a compliment normativa de seguretat.</span></li>
-<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TERMINIS DE SUPRESSIÓ</strong>: durant el termini estrictament necessari per a complir amb els preceptes esmentats amb anterioritat, excepte obligació legal de conservació.</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TERMINIS DE SUPRESSIÓ</strong>: durant el termini estrictament necessari per a complir amb els preceptes esmentats amb anterioritat, excepte obligació legal de conservació.</span><br>
 <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>Al seu torn, li informem que pot contactar amb el Delegat de Protecció de Dades, dirigint-se per escrit a l'adreça de correu dpd@idi.es o al telèfon +34 971176161.</span>
 </ul>
-<strong>EXERCICI DE DRETS</strong>:<br><br>
+<strong>EXERCICI DE DRETS:</strong>
 <ul>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'INSTITUT D’INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS informa als usuaris que poden exercir els drets d’accés, rectificació, limitació, supressió, portabilitat i oposició al tractament de les seves dades de caràcter personal davant el Responsable del tractament, així com la retirada del consentiment prestat. El Responsable li facilitarà un formulari adequat, a presentar en l'adreça a dalt indicada o bé mitjançant l’adreça de correu electrònic dpd@idi.es.</span></li>
   <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'INSTITUT D’INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS l’informa que té dret a presentar una reclamació davant l'AEPD si considera que no s'ha atès convenientment l'exercici dels seus drets (www.aepd.es).</span></li>
 </ul>
-</label>
 <br/>",
 
 'documentoEnIDI' => "Aquest document ja es troba en poder de l'IDI i no ha sofert modificacions <strong>(en aquest cas no cal aportar-lo)</strong>.",
@@ -645,7 +644,7 @@ Resolució del conseller d'Empresa, Ocupació i Energia, els imports corresponne
 'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvenció d'interessos, consistent en la quantia de",
 'solicita_ayuda_coste_aval_isba_idi_isba' => "Una subvenció al cost de l'aval de ISBA, consistent en la quantia de",
 'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvenció a les despeses d'obertura i d'estudi, consistent en la quantia de",
-
+'firma_idi_isba' => "Palma, en data de la signatura electrònica",
 'doc_requerimiento_asunto'         => "Assumpte: requeriment de documentació relativa a l’expedient de subvenció",
 'doc_requerimiento_p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la resolució del President de l’IDI per la qual s'aprova la convocatòria per a la concessió d’ajuts de xecs de consultoria  per  a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat (BOIB núm. %BOIBNUM%), us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",
 'doc_requerimiento_p2' => "Tal i com estableix la convocatòria a l’article 5.9, l’esmena de les deficiències s’ha de fer a través del tràmit específic que hi ha al procediment de la Seu electrònica de la CAIB. Si no es compleix aquest punt, s’entendrà que la sol·licitud d’esmena no està presentada.",

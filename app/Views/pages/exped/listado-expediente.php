@@ -241,7 +241,7 @@
 				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia amb<br>requeriment<br>pendent</span></div>'; 
 			}
 			else if ($item['situacion'] == "emitirReq") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-emit-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent emetre requeriment">Emetre requeriment</span></div>'; 
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-emit-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent emetre requeriment">Emetre<br>requeriment</span></div>'; 
 			}
 			else if ($item['situacion'] == "firmadoReq") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha signat el requeriment"><strong>Requeriment signat</strong></span></div>'; 				
@@ -263,7 +263,7 @@
 			}
 
 			else if ($item['situacion'] == "emitirIFPRProvPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR provisional"><strong>IF + PR Provisional emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR provisional"><strong>IF + PR<br>Provisional<br>emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidoIFPRProvPago") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>pagament emesa</strong></span></div>';				
