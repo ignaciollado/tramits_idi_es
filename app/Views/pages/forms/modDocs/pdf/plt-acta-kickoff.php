@@ -111,7 +111,7 @@ $datosReunion = lang('19_acta_kick_off.19_datos_reunion')."<br>";
 $datosReunion = str_replace("%fecha_kick_off%", date_format(date_create($data['expediente']['fecha_kick_off']),"d/m/Y"), $datosReunion);
 $datosReunion = str_replace("%horaInicioSesionKickOff%", $data['expediente']['horaInicioSesionKickOff'], $datosReunion);
 $datosReunion = str_replace("%horaFinSesionKickOff%", $data['expediente']['horaFinSesionKickOff'], $datosReunion);
-$datosReunion = str_replace("%lugarSesionKickOff%", $data['expediente']['lugarSesionKickOff'], $datosReunion);
+$datosReunion = str_replace("%lugarSesionKickOff%", $data['expediente']['lugarActaCierre'], $datosReunion);
 $datosReunion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $datosReunion);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $datosReunion ."</td></tr>";

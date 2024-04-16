@@ -52,7 +52,9 @@ return [
 
   '19_p1' => "Na %TUTORKICKOFF% serà la tutora d'aquest expedient i vetllarà pel compliment de la consultoria especialitzada.",     
   '19_p2' => "S'ha explicat la metodologia del programa, així com els terminis, la periodificació i les obligacions de cada part.",
-  '19_p3' => "A partir de la sessió d'avui, tal i com diu la convocatòria, l'empresa i el consultor tenen %NUMMESES% mesos per dur a terme la consultoria amb els terminis establers en la convocatòria, i hauran de presentar a la reunió de tancament el corresponent document objecte de la convocatòria.  De l'acte es desprèn que la data màxima per dur a terme el la consultoria i per tant la reunió de tancament és dia %FECHACIERRE%.",
+  '19_p3' => "A partir de la sessió d'avui, tal i com diu la convocatòria, l'empresa i el consultor tenen %NUMMESES% mesos per dur a terme 
+  la consultoria amb els terminis establers en la convocatòria, i hauran de presentar a la reunió de tancament el corresponent document objecte de la convocatòria.  
+  De l'acte es desprèn que la data màxima per dur a terme el la consultoria i per tant la reunió de tancament és dia %FECHACIERRE%.",
 
   '19_firma' => "Signa el /la tècnic/a."
 ];
