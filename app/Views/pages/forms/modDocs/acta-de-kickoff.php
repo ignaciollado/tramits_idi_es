@@ -60,7 +60,6 @@
 						<h4 class="modal-title">Dades per generar l'acta de kick off</h4>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
   				</div>
-
     				<div class="modal-body">
 
                 <div class="form-group">

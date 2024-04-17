@@ -1,6 +1,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Requeriment sol·licitud
+    	Requeriment sol·licitud  ****PRE****
   	</div>
 	<div class="card-itramits-footer">
 
@@ -101,7 +101,7 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 	function enviaRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let wrapper_motivoRequerimiento = document.getElementById('wrapper_motivoRequerimiento')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainforme'
 		if (todoBien) {
 			wrapper_motivoRequerimiento.disabled = true
 			wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."

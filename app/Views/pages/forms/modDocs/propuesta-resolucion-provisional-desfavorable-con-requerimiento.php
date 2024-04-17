@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta resolució provisional desfavorable amb requeriment. DOC 10 -->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional desfavorable<br> amb requeriment
+		Proposta de resolució provisional desfavorable<br> amb requeriment  ****PRE****
 	</div>
 	<div class="card-itramits-footer" aria-label="generar informe">
 		<?php
@@ -81,7 +81,7 @@
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 
 		let btnPropResProvDesfavConReq = document.getElementById('btnPropResProvDesfavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc10 = document.getElementById('infoMissingDataDoc10')
 		infoMissingDataDoc10.innerText = ""
 

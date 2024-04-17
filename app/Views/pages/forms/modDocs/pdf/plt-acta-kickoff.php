@@ -164,6 +164,15 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
+$pdf->setY($currentY + 1);
+$p4 = lang('19_acta_kick_off.19_p4');
+$p4 =  str_replace("%TEXTOLIBRE%", $data['expediente']['observacionesKickOff'], $p4);
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $p4 ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
 $pdf->setY($currentY + 2);
 
 $firma = lang('19_acta_kick_off.19_firma');

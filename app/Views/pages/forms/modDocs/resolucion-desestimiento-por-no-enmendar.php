@@ -2,7 +2,7 @@
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució de desistiment per no esmenar
+  	Resolució de desistiment per no esmenar ****PRE****
   </div>
 
   	<div class="card-itramits-footer">
@@ -63,7 +63,7 @@
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_requerimiento_notif= document.getElementById('fecha_requerimiento_notif')
 		let wrapper_desestimientoPorNoEnmendar = document.getElementById('wrapper_desestimientoPorNoEnmendar')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainforme'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainforme'
 		let spinner_2 = document.getElementById('spinner_2')
 		let infoMissingDataDoc2 = document.getElementById('infoMissingDataDoc2')
 		infoMissingDataDoc2.innerText = ""
