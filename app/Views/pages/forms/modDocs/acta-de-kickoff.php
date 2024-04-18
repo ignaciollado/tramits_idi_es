@@ -2,8 +2,7 @@
 <div class="card-itramits">
 
   	<div class="card-itramits-body">
-    	 Acta de Kick off <strong>--probar--</strong>
-  	</div>
+    	 Acta de Kick off
   	<div class="card-itramits-footer">
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
