@@ -263,56 +263,59 @@
 			}
 
 			else if ($item['situacion'] == "emitirIFPRProvPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR provisional"><strong>IF + PR<br>Provisional<br>emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR provisional"><strong>IF + PR<br>Provisional emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidoIFPRProvPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>pagament emesa</strong></span></div>';				
+				/* echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>pagament emesa</strong></span></div>'; */		
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>Provisional emesa</strong></span></div>';		
 			}
-
 			else if ($item['situacion'] == "emitirPRDefinitiva") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>PR definitiva emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre PR pagament definitiva"><strong>PR definitiva<br>emetre</strong></span></div>';				
 			}
+			else if ($item['situacion'] == "emitidaPRDefinitiva") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emesa PR pagament definitiva"><strong>PR definitiva<br>emesa</strong></span></div>';				
+			}			
 			else if ($item['situacion'] == "emitidoPRDefinitiva") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>PR definitiva emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès PR pagament definitiva"><strong>PR definitiva emesa</strong></span></div>';				
 			}
 
 			else if ($item['situacion'] == "emitirResConcesion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>Resolució concessió emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre la Resolució concessió"><strong>Resolució<br>concessió emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidaResConcesion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>Resolució concessió emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès la Resolució de concessió"><strong>Resolució<br>concessió emesa</strong></span></div>';				
 			}
 
 			else if ($item['situacion'] == "emitirIDPDenProv") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>ID + P denegació<br>provisional emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre ID + P denegació provisional"><strong>ID + P denegació<br>provisional emetre</strong></span></div>';				
 			}
-			else if ($item['situacion'] == "emitidaIDPDenProv") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>ID + P denegació<br>provisional emesa</strong></span></div>';				
+			else if ($item['situacion'] == "emitidoIDPDenProv") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès ID + P denegació provisional"><strong>ID + P denegació<br>provisional emesa</strong></span></div>';				
 			}
 
 			else if ($item['situacion'] == "emitirPDenDef") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>P denegació<br>definitiva emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre P denegació definitiva"><strong>P denegació<br>definitiva emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidaPDenDef") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>P denegació<br>definitiva emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès P denegació definitiva"><strong>P denegació<br>definitiva emesa</strong></span></div>';				
 			}
 
 			else if ($item['situacion'] == "emitirResDen") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR pagament"><strong>Resolució de denegació<br>emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre Resolució de denegació"><strong>Resolució de denegació<br>emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidaResDen") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>Resolució de denegació<br>emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emesa Resolució de denegació"><strong>Resolució de denegació<br>emesa</strong></span></div>';				
 			}
 
-			else if ($item['situacion'] == "enviadoPRPago") {
+/* 			else if ($item['situacion'] == "enviadoPRPago") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat PR pagament"><strong>PR pagament enviat</strong></span></div>';
-			}
-			else if ($item['situacion'] == "emitirPagoReqIFPR") {
+			} */
+/* 			else if ($item['situacion'] == "emitirPagoReqIFPR") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat IF+PR pagament amb requeriment emetre"><strong>IF+PR Pagament amb <br>requeriment emetre</strong></span></div>';
-			}
-			else if ($item['situacion'] == "emitirPagoReqIDPD") {
+			} */
+/* 			else if ($item['situacion'] == "emitirPagoReqIDPD") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat ID+PD pagament amb requeriment emetre"><strong>ID+PD pagament amb <br>requeriment emetre</strong></span></div>';
-			}
+			} */
 			else if ($item['situacion'] == "inicioConsultoria") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha iniciat la consultoria"><strong>Inici de consultoria</strong></span></div>';				
 			}			

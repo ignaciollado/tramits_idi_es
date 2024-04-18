@@ -1098,6 +1098,9 @@ code {
 	width:100%;
 	border-radius: 0!important;
 }
+.validacion-lbl-emesa {
+	border: 4px solid #fff;
+}
 .validacion-final {
 	background-color: #1ecbe1;
     color: #fff;
