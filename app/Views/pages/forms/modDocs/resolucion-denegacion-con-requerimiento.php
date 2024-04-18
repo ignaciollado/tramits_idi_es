@@ -1,7 +1,7 @@
 <!-----------------------------------------Resolució denegació favorable amb requeriment. DOC 17.-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Resolució denegació<br>amb requeriment  <strong>--probar--</strong>
+    	Resolució denegació<br>amb requeriment
   	</div>
 		<div class="card-itramits-footer">
   		<?php
@@ -46,7 +46,7 @@
 <!------------------------------------------------------------------------------------------------------>
 <script>
 
-	function generaResolucionDenegacionConReq(id, convocatoria, programa, nifcif) {
+function generaResolucionDenegacionConReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
@@ -56,7 +56,7 @@
 		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnResDenegacionConReq = document.getElementById('btnResDenegacionConReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc17 = document.getElementById('infoMissingDataDoc17')
 		infoMissingDataDoc17.innerText = ""
 
