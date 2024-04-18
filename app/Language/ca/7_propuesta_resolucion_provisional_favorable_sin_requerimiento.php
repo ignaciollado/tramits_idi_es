@@ -69,7 +69,7 @@ return [
     <li>L'Ordre de la consellera de Comerç, Indústria i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d'abril de 2008).</li></ol><br>",
   '7_propuesta_tit' => "Proposta de resolució provisional",
   '7_propuesta_txt' => "<p>Propòs al president de l'IDI que dicti una resolució en els termes següents:</p>
-      <ol><li>Aprovar la concessió d'una subvenció per un import de %IMPORTE%, a favor de <nom o raó social>, amb NIF %NIF%, per cobrir hores de consultoria especialitzada.</li><br>
+      <ol><li>Aprovar la concessió d'una subvenció per un import de %IMPORTE%, a favor de %SOLICITANTE%, amb NIF %NIF%, per cobrir hores de consultoria especialitzada.</li><br>
       <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt onzè de les bases incloses a la Resolució de la convocatòria.</li><br>
       <li>El termini per justificar la realització de l'activitat subvencionada i per sol·licitar el pagament de la subvenció serà com a màxim de 20 dies naturals des de l'endemà de la reunió de tancament segons el punt 11.3 de la convocatòria.</li><br>
       <li>En la reunió de tancament el tècnic de l'IDI informarà quina és la data màxima concreta per justificar la realització de les activitats subvencionades, que en tot cas i depenent de la durada màxima de cada programa o subprograma, no podrà superar els 20 dies naturals a partir del 4 d'octubre de 2024.</li><br>

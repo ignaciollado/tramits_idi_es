@@ -66,12 +66,10 @@ return [
         <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
         <li>L'Ordre de la consellera de Comerç, Indústria i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d'abril de 2008).</li></ol>",
   '15_dicto' => "Per tot això, dict la següent",
-
   '15_resolucion_tit' => "Resolució",
-
   '15_resolucion'  => "<ol>
           <li>Aprovar la concessió d'un ajut total per import de  %IMPORTE%, condicionada a la justificació de la realització de l'activitat subvencionada, d'acord amb l'apartat onzè de les bases incloses a la resolució de la convocatòria, a favor de %SOLICITANTE% amb NIF %NIF%.</li><br>
-		      <li>Autoritzar i disposar una despesa de %IMPORTE% a favor de %SOLICINTANTE%, amb NIF %NIF%, a càrrec als pressuposts de l'IDI per a l'exercici %CONVO%, per cobrir hores de consultoria especialitzada.</li><br>
+		      <li>Autoritzar i disposar una despesa de %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%, a càrrec als pressuposts de l'IDI per a l'exercici %CONVO%, per cobrir hores de consultoria especialitzada.</li><br>
 		      <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt onzè de les bases incloses a la Resolució de la convocatòria.</li><br>
 		      <li>El termini per justificar la realització de l'activitat subvencionada i per sol·licitar el pagament de la subvenció serà com a <b>màxim de 20 dies naturals</b> des de l'endemà de la reunió de tancament segons el punt 11.3 de la convocatòria.</li><br>
 		      <li>En la reunió de tancament el tècnic de l'IDI informarà quina és la data màxima concreta per justificar la realització de les activitats subvencionades, que en tot cas i depenent de la durada màxima de cada programa o subprograma, no podrà superar els 20 dies naturals a partir del 4 d'octubre de 2024. </li><br>
@@ -79,9 +77,7 @@ return [
           <li>Notificar aquesta Resolució a l'interessat.</li></ol>",
 
   '15_recursos_tit'   => "Interposició de recursos",
-
   '15_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
                     <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
-
   '15_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'IDI<br>%DGERENTE%<br>Per delegació del president de l'IDI<br>(BOIB núm %BOIBNUM%)"
 ];
