@@ -90,7 +90,7 @@
 		
 	// Set json
 	$json = json_encode($request);
-	echo $json;
+	/* echo $json; */
 
 	$json = str_replace(array('\r','\n'),'',$json)."<br>";
 	$resultRequest = execute("requests", $json, __FUNCTION__);
