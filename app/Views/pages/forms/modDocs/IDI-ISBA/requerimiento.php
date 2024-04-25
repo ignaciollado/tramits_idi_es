@@ -4,18 +4,15 @@
     	Requeriment [Tendrá un término máximo de 10 días]
   	</div>
 	<div class="card-itramits-footer">
-
-	<?php
-        if ( !$esAdmin && !$esConvoActual ) {?>
+		<?php
+      if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
-        else {?>
-			<button type = "button" data-bs-toggle="modal" data-bs-target="#myRequerimientoIdiIsba" id="myBtnRequerimientoIdiIsba"><i title="Motiu del requeriment" class="fa-solid fa-pen fa-2xl" style="color: #00145c;"></i></button>
-			<span id="btn_3">
-    			<a id ="wrapper_motivoRequerimientoIdiIsba" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generainformeIDI_ISBA/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment_idi_isba');?>"><i title="Enviar a signar el document" class="fa-solid fa-signature fa-2xl" style="color: #00145c;"></i></a>
-			</span>
-			<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
-	<?php }?>
-	
+      else {?>
+				<button type="button" class="btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myRequerimientoIdiIsba" id="myBtnRequerimientoIdiIsba">Motiu del requeriment</button>
+				<span id="btn_3">
+    			<a id ="wrapper_motivoRequerimientoIdiIsba" class="btn btn-primary ocultar" href="<?php echo base_url('public/index.php/expedientes/generainformeIDI_ISBA/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment_idi_isba');?>">Envia a signar</a>
+				</span>
+		<?php }?>
 	</div>
   <div class ="card-itramits-footer">
 	<?php

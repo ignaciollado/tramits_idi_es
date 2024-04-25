@@ -59,8 +59,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
-// --------------------------------------------------------------CABECERA Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------------------------CABECERA Programa, datos solicitante, datos consultor ------------------------------------ //
+// -------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
 $currentY = $pdf->getY();
@@ -227,7 +227,7 @@ $html13 = "6. ".lang('message_lang.declaro');
 $pdf->writeHTMLCell('', '', '', '', $html13, 1, 1, 0, true, 'C', true);
 
 $html13 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html13 .= "<tr><td><ol>".$declaro_idi_isba_que_cumple_4;
+$html13 .= "<tr><td><ol>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_0')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_1')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_2')."</li>";

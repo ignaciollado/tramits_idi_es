@@ -131,9 +131,13 @@
 		        </fieldset>
                 <div style="margin-top:1.5rem;"></div> 
                     <div class="form-group general">
-                        <label class="alert alert-success" role="alert" for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?>:<br><strong><?php echo $expedientes['finalidad_inversion_idi_isba']; ?></strong></label><br>
+                        <label style="width: 100%;" class="alert alert-success" role="alert" for=''><?php echo lang('message_lang.operacion_financiera_idi_isba') ?>:<br><strong><?php echo $expedientes['finalidad_inversion_idi_isba']; ?></strong></label>
+                    </div>
+
+                    <div class="form-group general">
                         <label for=''><u><?php echo lang('message_lang.operacion_financiera_prestamo_idi_isba') ?></u></label>
                     </div>
+
                     <div class="form-group general">
                         <label for="nom_entidad"><?php echo lang('message_lang.entidad_financiera_idi_isba') ?>:</label>
                         <input type="text" name="nom_entidad" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "nom_entidad" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba') ?>" value = "<?php echo $expedientes['nom_entidad']; ?>">
@@ -165,18 +169,20 @@
                         <br><h4>Amb el següent detall:</h4>
                     </div>
                     <div class="form-group general">
-                        <ol><li>
+                        <ol class="inv-detalle">
+                            <li>
                             <label for="intereses_ayuda_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>:</label>
                             <input type="text" name="intereses_ayuda_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "intereses_ayuda_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba') ?>" value = "<?php echo $expedientes['intereses_ayuda_solicita_idi_isba']; ?>">
-                        </li>
-                        <li>
+                            </li>
+                            <li>
                             <label for="coste_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>:</label>
                             <input type="text" name="coste_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "coste_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba') ?>" value = "<?php echo $expedientes['coste_aval_solicita_idi_isba']; ?>">
-                        </li>
-                        <li>
+                            </li>
+                            <li>
                             <label for="gastos_aval_solicita_idi_isba"><?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>:</label>
                             <input type="text" name="gastos_aval_solicita_idi_isba" class="form-control" readonly disabled oninput = "javaScript: actualizaRequired(this.value);" readonly id = "gastos_aval_solicita_idi_isba" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba') ?>" value = "<?php echo $expedientes['gastos_aval_solicita_idi_isba']; ?>">
-                        </li></ol>
+                            </li>
+                        </ol>
                     </div>
         
                     <div class="form-group general">
@@ -253,14 +259,14 @@
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
 			            switch ($docs_item->corresponde_documento) {
-	    			        case 'file_declaracionResponsable':
-					            $nom_doc = "Declaració responsable de l'empresa";
+	    			        case 'file_DescEmprsaActividadModNegocio':
+					            $nom_doc = "Descripció de l'empresa i la seva activitat, model de negoci i detall de la inversió/Inversions previstes";
 					            break;
                             case 'file_document_acred_como_repres':
                                 $nom_doc = "Documentació acreditativa de les facultats de representació de la persona que firma la sol·licitud d'ajut";
                                 break;
-				            case 'file_certificadoATIB':
-					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
+				            case 'file_CertificadoATIBTGSS':
+					            $nom_doc = "Certificat estar al corrent de les obligacions amb la ATIB i la TGSS";
 					            break;
 				            case 'file_escrituraConstitucion':	
 					            $nom_doc = "Còpia escriptures de constitució de l'entitat sol·licitant";
@@ -268,31 +274,34 @@
 				            case 'file_nifEmpresa':	
 					            $nom_doc = "Còpia del NIF de l'empresa";
 					            break;
-                            case 'file_certificadoAEAT':	
+                            case 'file_CertificadoAEAT':	
                                 $nom_doc = "Certificat d'estar al corrent de pagament amb la AEAT";
                                 break;
-                            case 'file_certificadoIAE':	
+                            case 'file_CertificadoIAE':	
                                 $nom_doc = "Documentació acreditativa alta cens IAE";
                                 break;
-                            case 'file_certificadoSGR':
+                            case 'file_CertificadoSGR':
                                 $nom_doc = "Certificat de la societat de garantia recíproca";
                                 break;
-                            case 'file_contratoOperFinanc':
+                            case 'file_ContratoOperFinanc':
                                 $nom_doc = "El contracte de l'operació financera";
                                 break;
-                            case 'file_avalOperFinanc':
+                            case 'file_ContratoAvalOperFinanc':
                                 $nom_doc = "El contracte o document d'aval de l'operació financera";
                                 break;
                             case 'file_copiaNIF':
                                 $nom_doc = "La fotocòpia del DNI de la persona que signa la sol.licitud";
-                                break;                                
+                                break;
+                            case 'file_Ley382003':
+                                $nom_doc = "Certificat  que estableix l'article 13.3 bis de la Llei 38/2003";
+                                break;
 			                default:
 					            $nom_doc = "¿ ".$docs_item->corresponde_documento." ?"; 
 			            } 
                     ?>
                     <?php if ($docs_item->docRequerido == 'SI') {?>
   			            <div id ="fila" class = "detail-wrapper-docs general">
-    				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_item->selloDeTiempo); ?></span>
+    				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", "-", $docs_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
       			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite;?></span>
                             <?php
@@ -358,7 +367,6 @@
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_document_acred_como_repres">
                                     <label class="form-check-label" for="file_document_acred_como_repres">Documentació acreditativa de les facultats de representació de la persona que firma la sol·licitud d'ajut</label>
                                 </div>
-
                                 <div class="form-check">
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoATIB">
                                     <label class="form-check-label" for="file_certificadoATIB">Certificat estar al corrent obligacions amb AEAT i ATIB</label>
@@ -367,7 +375,6 @@
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_escrituraConstitucion">
                                     <label class="form-check-label" for="file_escrituraConstitucion">Còpia escriptures de constitució de l'entitat sol·licitant</label>
                                 </div>
-
                                 <div class="form-check">
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_nifEmpresa">
                                     <label class="form-check-label" for="file_nifEmpresa">Còpia del NIF de l'empresa</label>
@@ -376,7 +383,6 @@
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoAEAT">
                                     <label class="form-check-label" for="file_certificadoAEAT">Certificat d'estar al corrent de pagament amb la AEAT</label>
                                 </div>
-
                                 <div class="form-check">
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoIAE">
                                     <label class="form-check-label" for="file_certificadoIAE">Documentació acreditativa alta cens IAE</label>
@@ -385,7 +391,6 @@
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoSGR">
                                     <label class="form-check-label" for="file_certificadoSGR">Certificat de la societat de garantia recíproca</label>
                                 </div>
-
                                 <div class="form-check">
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_contratoOperFinanc">
                                     <label class="form-check-label" for="file_contratoOperFinanc">El contracte de l'operació financera</label>
@@ -588,7 +593,7 @@
 				                    default:
 				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
 				                }
-			                echo $estado_firma;
+			                echo "<br>".$estado_firma;
 		                }?>
                         <br>
                         <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud_idi_isba.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>

@@ -1,16 +1,14 @@
 <!----------------------------------------- Proposta resolució denegació amb requeriment. DOC 5. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Resolució de denegació
+		Resolució de denegació ***PRE***
 	</div>
 	<div class="card-itramits-footer" aria-label="generar informe">
-	pre-tramits
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="wrapper_motivoDenegacion_5" onclick="enviaResDenegacionConRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')"><i title="Generar la proposta" class="fa-solid fa-file-pdf fa-2xl" style="color: #00145c;"></i></button>
+			<button id="wrapper_motivoDenegacion_5" class="btn btn-primary btn-acto-admin" onclick="enviaResDenegacionConRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la proposta</button>
 			<div id='infoMissingDataDoc5' class="alert alert-danger ocultar"></div>
-			<span id="spinner_5" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>
 
 	</div>
@@ -64,7 +62,6 @@
 
 		let wrapper_motivoDenegacion_5 = document.getElementById('wrapper_motivoDenegacion_5')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
-		let spinner_5 = document.getElementById('spinner_5')
 		let infoMissingDataDoc5 = document.getElementById('infoMissingDataDoc5')
 		infoMissingDataDoc5.innerText = ""
 
@@ -88,8 +85,7 @@
 		if (todoBien) {
 			infoMissingDataDoc5.classList.add('ocultar')
 			wrapper_motivoDenegacion_5.disabled = true
-			wrapper_motivoDenegacion_5.innerHTML = "Generant la resolució..."
-			spinner_5.classList.remove('ocultar')
+			wrapper_motivoDenegacion_5.innerHTML = "Generant i enviant..."
 			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_denegacion_con_req_idi_isba'
 		} else {
 			infoMissingDataDoc5.classList.remove('ocultar')

@@ -1451,7 +1451,7 @@ class SubirArchivo extends BaseController
 			'importeAyuda'	=> 0,
 			'convocatoria' => $convocatoria
 		];
-	var_dump($data_exp);
+
 	 	$save_exp = $expediente->insert($data_exp);
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
@@ -1487,7 +1487,7 @@ class SubirArchivo extends BaseController
 				}
 			} 
 		/* -----------------DOC d certificado IAE, múltiples documentos------------------------------ */
-			if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
+		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
 				foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_d'] as $documento_d)
 					{
 							if (strlen(trim($documento_d->getName()))!=0)
@@ -1514,7 +1514,7 @@ class SubirArchivo extends BaseController
 		/* ----------------------------------------------------------------------------------------------------- */
 		/* ----------DOC d dni/nie solicitante o del representante, múltiples documentos------ */
  		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
-		foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_d'] as $documento_d)
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_d'] as $documento_d)
 			{
 				if ($documento_d->isValid() && ! $documento_d->hasMoved())
 					{
@@ -1539,7 +1539,7 @@ class SubirArchivo extends BaseController
  		/* --------------------------------------------------------------------------------------------------------- */
  		/* ----------------DOC e certificado de estar al corriente obligaciones ATIB y TGSS, múltiples documentos--- */
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_e' ])) {
-		foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_e' ] as $documento_e)
+			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_e' ] as $documento_e)
 			{
 				if ($documento_e->isValid() && ! $documento_e->hasMoved())
 				{
@@ -1564,7 +1564,7 @@ class SubirArchivo extends BaseController
  		/* --------------------------------------------------------------------------------------------------------- */
 		/* ----------------DOC f certificado de estar al corriente obligaciones AEAT, múltiples documentos---------- */		
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
-	 	foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_f'] as $documento_f)
+	 		foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_f'] as $documento_f)
 		 	{
 		 		if (strlen(trim($documento_f->getName()))!=0)
 			 	{

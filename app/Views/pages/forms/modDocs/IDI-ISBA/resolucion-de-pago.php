@@ -1,16 +1,14 @@
 <!----------------------------------------- Resolución de pago amb requeriment. DOC 6. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Resolució de pagament
+		Resolució de pagament ***PRE***
 	</div>
 	<div class="card-itramits-footer">
-	pre-tramits
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="wrapper_ResPagoConReg" onclick="enviaResolucionPagoConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')"><i title="Generar la resolució" class="fa-solid fa-file-pdf fa-2xl" style="color: #00145c;"></i></button>
+			<button id="wrapper_ResPagoConReg" class="btn btn-primary btn-acto-admin" onclick="enviaResolucionPagoConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
 			<div id='infoMissingDataDoc6' class="alert alert-danger ocultar"></div>
-			<span id="spinner_6" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>
 
 	</div>
@@ -60,7 +58,6 @@
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_ResPagoConReg = document.getElementById('wrapper_ResPagoConReg')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
-		let spinner_6 = document.getElementById('spinner_6')
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
 		infoMissingDataDoc6.innerText = ""
 
@@ -84,8 +81,7 @@
 		if (todoBien) {
 			infoMissingDataDoc6.classList.add('ocultar')
 			wrapper_ResPagoConReg.disabled = true
-			wrapper_ResPagoConReg.innerHTML = "Generant la resolució ..."
-			spinner_6.classList.remove('ocultar')
+			wrapper_ResPagoConReg.innerHTML = "Generant i enviant..."
 			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_pago_con_req_idi_isba'
 		} else {
 			infoMissingDataDoc6.classList.remove('ocultar')

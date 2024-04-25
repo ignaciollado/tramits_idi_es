@@ -1431,8 +1431,7 @@ function activarUploadBtn(element, btnToActivate) {
 function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimientoIdiIsba").value;
 	let id = document.getElementById("id").value;
-	/* let modal = document.getElementById("myRequerimientoIdiIsba"); */
-	if ( textoMotivoReq === "" ) {
+	if ( textoMotivoReq.trim() === "" ) {
 		alert ("Falta indicar el motiu.")
 		return;
 	}

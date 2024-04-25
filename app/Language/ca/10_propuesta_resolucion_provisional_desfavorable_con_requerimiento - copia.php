@@ -37,7 +37,7 @@
  * @codeCoverageIgnore
  */
 return [
-  '10_intro' => "Proposta de resolució provisional de la directora gerent de l'Institut d'Innovació Empresarial de les Illes Balears sobre la denegació d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
+  '10_intro' => "Proposta de resolució provisional de la directora gerent de l'Institut d'Innovació Empresarial de les Illes Balears sobre la concessió d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
   '10_antecedentes_tit'   => "Fets",
   '10_antecedentes_1_2_3' => "<ol>
                            <li>El dia %BOIBFECHA% es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>

@@ -9,8 +9,11 @@ $configuracion = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
 
+$language = \Config\Services::language();
+$language->setLocale("ca");
+
 $data['configuracion'] = $configuracion->configuracionGeneral();   
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('IDI-ISBA');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('IDI-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
@@ -54,9 +57,9 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetCreator(PDF_CREATOR);
 	
 $pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
-$pdf->SetTitle("DOCUMENT DE REQUERIMENT - ILS");
-$pdf->SetSubject("DOCUMENT DE REQUERIMENT - ILS");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, CAIB");	
+$pdf->SetTitle("DOCUMENT DE REQUERIMENT - IDI-ISBA");
+$pdf->SetSubject("DOCUMENT DE REQUERIMENT - IDI-ISBA");
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ISBA, PIMES, IDI, CAIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -118,7 +121,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'><ul><li>". $data['expediente']['motivoRequerimientoIls'] ."</li></ul></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'><ul><li>". $data['expediente']['motivoRequerimiento'] ."</li></ul></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
