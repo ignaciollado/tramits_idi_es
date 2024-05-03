@@ -182,7 +182,7 @@ return [
    <li><code>Pequeña empresa:</code> Se considera pequeña empresa la que tiene menos de 50 trabajadores y/o trabajadoras, un volumen de negocio anual o un balance general anual que no supere los 10 millones de euros, y no participa en un 25% o más de su capital o de sus derechos de voto en otras empresa que no cumplen con los requisitos para ser considerada PYME de acuerdo con el anexo I del Reglamento (CE) número 651/2014 de la Comisión Europea.</li>
    <li><code>Mediana empresa:</code> Se considera mediana empresa la que tiene entre 50 y 250 trabajadores y/o trabajadoras, un volumen de negocio entre 10 y 50 millones de euros o un balance general anual entre 10 y 43 millones de euros, y no participa en un 25% o más de su capital o de sus derechos de voto en otras empresa que no cumplen con los requisitos anteriores.</li></ol>",
    'nom_rep_legal_sol_idigital'       => "Nombre del representante legal",
-   'nif_rep_legal_sol_idigital'       => "NIF del representante legal",
+   'nif_rep_legal_sol_idigital'       => "DNI del representante legal",
    'direccion_rep_legal_sol_idigital' => "Dirección del representante legal",
    'cp_sol_rep_legal_idigital'         => "Código postal del representante legal",
    'movil_rep_legal_sol_idigital'      => "Teléfono de contacto del representante legal",
@@ -527,7 +527,7 @@ Antes de empezar, es recomendable tener preparada la siguiente documentación (p
       <li>Certificado del IAE actualizado en el momento de la sol·licitud.</li>
       <li>En caso de que el solicitante sea una persona física, se requerirá:
       <ol>
-      <li>El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.</li>
+         <li>El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.</li>
       </ol>
       </li>
       <li>En caso de que el solicitante sea una persona jurídica, se requerirá:
@@ -539,7 +539,7 @@ Antes de empezar, es recomendable tener preparada la siguiente documentación (p
       <li>Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.</li>
       <li>Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.</li>
       <li>En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.</li>
-      <li>Para ayudas de importe superior a 30.00 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.</li>
+      <li>Para ayudas de importe superior a 30.000 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.</li>
       <li>El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.</li>
       <li>El contrato de la operación financiera.</li>
       <li>El contrato o documento de aval de la operación financiera.</li>
@@ -550,24 +550,24 @@ Antes de empezar, es recomendable tener preparada la siguiente documentación (p
                                              <li>El documento normalizado de solicitud de subvención de esta convocatoria.</li>
                                              <li>Una Declaración responsable de la persona titular de la empresa o de quien la representa legalmente.</li>
                                        </ol>',
-'identificacion_sol_idi_isba' => "Identificación del SOLICITANTE",
-'operacion_financiera_idi_isba'  => "INVERSIÓN DESTINADA A",
+'identificacion_sol_idi_isba'    => "Identificación del SOLICITANTE",
+'operacion_financiera_idi_isba'  => "DATOS OPERACIÓN FINANCIERA",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTAMO",
-'entidad_financiera_idi_isba'    => "Entidad financiera",
+'entidad_financiera_idi_isba'       => "Entidad financiera",
 'importe_prestamo_entidad_idi_isba' => "Importe de la operación",
-'plazo_prestamo_entidad_idi_isba' => "Plazo préstamo entidad financiera",
+'plazo_prestamo_entidad_idi_isba'   => "Plazo préstamo entidad financiera",
 'carencia_prestamo_entidad_idi_isba'     => "Carencia préstamo entidad financiera (si procedeix) en anys",
 
-'operacion_financiera_aval_idi_isba'  => "AVAL DE ISBA, SGR",
-'cuantia_prestamo_idi_isba'      => "Cuantía aval de ISBA, SGR (€)",
-'plazo_prestamo_idi_isba'        => "Plazo aval de ISBA, SGR (en años)",
-'carencia_idi_isba'              => "Carencia aval de ISBA, SGR (en años)",
-'fecha_del_aval_idi_isba'        => "Fecha formalización aval",
-'proyecto_de_inversion_idi_isba' => "PROYECTO DE INVERSIÓN",
-'proyecto_de_inversion_idi_isba_finalidad' => "Finalidad de la inversión",
+'operacion_financiera_aval_idi_isba'   => "AVAL DE ISBA, SGR",
+'cuantia_prestamo_idi_isba'            => "Cuantía aval de ISBA, SGR (€)",
+'plazo_prestamo_idi_isba'              => "Plazo aval de ISBA, SGR (en años)",
+'carencia_idi_isba'                    => "Carencia aval de ISBA, SGR (en años)",
+'fecha_del_aval_idi_isba'              => "Fecha formalización aval",
+'proyecto_de_inversion_idi_isba'       => "PROYECTO DE INVERSIÓN",
+'proyecto_de_inversion_idi_isba_finalidad'   => "Finalidad de la inversión",
 'presupuesto_proyecto_de_inversion_idi_isba' => "PRESUPUESTO DEL PROYECTO DE INVERSIÓN",
-'importe_del_presupuesto_idi_isba'  => "Importe del presupuesto (IVA incluído)",
-'detalle_importe_ayuda_solicitado_idi_isba' => "Con el siguiente detalle:",
+'importe_del_presupuesto_idi_isba'           => "Importe del presupuesto (IVA incluído)",
+'detalle_importe_ayuda_solicitado_idi_isba'  => "Con el siguiente detalle:",
 'declaro_idi_isba_que_cumple_0'  => "La veracidad de los datos aportados en esta solicitud.",
 'declaro_idi_isba_que_cumple_1'  => "Que el solicitante cumple los requisitos de pequeña o mediana empresa, de acuerdo con el anexo 1 del Reglamento (UE) núm. 651/2014 de la Comisión, de 17 de junio de 2014 por el que se declaran determinadas categorías de ayuda compatibles con el mercado interior en aplicación de los artículos 107 y 108 del Tratado, cumple con los requisitos para ser considerado una pyme.",
 'declaro_idi_isba_que_cumple_2'  => "Que la persona o entidad beneficiaria no está sometida a ninguna causa de prohibición o de incompatibilidad para recibir la ayuda según la legislación vigente y que el solicitante no ha sido sancionado o condenado por resolución administrativa o sentencia judicial firme por discriminación salarial, acoso moral o cualquier tipo de trato desigual, por razón de sexo, en el ámbito de las relaciones laborales.",
@@ -583,7 +583,7 @@ En caso de ser empresa una empresa “asociada” o una empresa “vinculada”,
 'declaro_idi_isba_que_cumple_11' => "Que la persona o entidad beneficiaria no está sometida a ninguna causa de prohibición o de incompatibilidad para recibir la ayuda según la legislación vigente y que el solicitante no ha sido sancionado o condenado por resolución administrativa o sentencia judicial firme por discriminación salarial, acoso moral o cualquier tipo de trato desigual, por razón de sexo, en el ámbito de las relaciones laborales.",
 'declaro_idi_isba_que_cumple_12' => "Que, en la fecha de la solicitud, está al corriente de los pagos de sus obligaciones tributarias con la Administración del Estado, la  administración de la Comunidad Autónoma de las Illes Balears, así como al corriente de los pagos de sus obligaciones tributarias con la Seguridad Social.",
 'declaro_idi_isba_que_cumple_13' => "Que el solicitante va a llevar a cabo la actividad de inversión en un centro de Trabajo de la Comunidad autònoma de las Illes Balears, así como la justificación de la realización de la actividad y el cumplimiento de los requisitos y condiciones que determinan la concesión de la subvención.",
-'declaro_idi_isba_que_cumple_14' => "Que para ayudas de importe superior a 30.000 euros de acuerdo con la Ley 38/2003, de 17 de novembre, General de Subvencines, cumple con los plazos previstos en la Ley 3/2004 de 29 de diciembre, por la que se establecen medidas de lucha contra la morosidad en las operaciones Comerciales.
+'declaro_idi_isba_que_cumple_14' => "Que para ayudas de importe superior a 30.000 € de acuerdo con la Ley 38/2003, de 17 de novembre, General de Subvencines, cumple con los plazos previstos en la Ley 3/2004 de 29 de diciembre, por la que se establecen medidas de lucha contra la morosidad en las operaciones Comerciales.
 Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la notificación de la propuesta de la resolución de concesión con el certificado que establece el articulo 13.3 bis de la Ley 38/2003, de 17 de novembre.",
 'declaro_idi_isba_que_cumple_15' => "Cumplo con las condiciones de la convocatoria.",
 
@@ -601,7 +601,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'documentacion_adjunta_requerida_idi_isba_g' => "Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.",
 'documentacion_adjunta_requerida_idi_isba_h' => "Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.",
 'documentacion_adjunta_requerida_idi_isba_i' => "En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.",
-'documentacion_adjunta_requerida_idi_isba_j' => "Para ayudas de importe superior a 30.00€, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.",
+'documentacion_adjunta_requerida_idi_isba_j' => "Para ayudas de importe superior a 30.000 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.",
 'documentacion_adjunta_requerida_idi_isba_k' => "El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.",
 'documentacion_adjunta_requerida_idi_isba_l' => "El contrato de la operación financiera.",
 'documentacion_adjunta_requerida_idi_isba_m' => "El contrato o documento de aval de la operación financiera.",

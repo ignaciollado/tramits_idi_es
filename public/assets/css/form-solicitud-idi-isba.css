@@ -62,6 +62,11 @@ input[type="file"]:hover {
   cursor: pointer;
 }
 
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
 .w3docs {
   position: absolute;
   top: 0;
@@ -134,10 +139,6 @@ select:valid {
   border-radius: 50%;
 }
 
-.container-radio:hover input ~ .checkmark {
-  background-color: rgba(247, 248, 234, 1);
-}
-
 fieldset {
   min-width: 0;
   padding: 0;
@@ -186,13 +187,13 @@ input {
     border: 1px solid rgba(170, 170, 170, 1);
 } 
 
-label {
+/* label {
     display: block;
     padding-left: 1rem;
     padding-top: 0.25rem
-}
+} */
 
-input[type="checkbox"] {
+.checkbox-visible{
     visibility: visible!important;
   }
 
@@ -258,11 +259,14 @@ select, input, textarea {
   border-radius: 10px;
 }    
 .formbox {
-  border: 1px solid rgba(0, 20, 92, 1);
+  width: calc(100%);
+  border: 1px solid rgba(55, 154, 151, 1);
   background-color: rgba(248, 249, 250, 1);
   padding: 1rem 1.8rem 1rem 5rem;
+  margin-left: -0.5rem!important;
   border-radius: 1rem;
-}
+  font-size: 2rem;
+  }
 .formbox:last-child{
     margin-bottom: 2em!important;
 }

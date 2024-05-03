@@ -9,7 +9,7 @@ let restResult = document.querySelector('#resultContainer')
 let end_point = ""
 let baseUrl = window.location
 
-let theForm=document.getElementById("adhesion_idi_isba");
+const theForm = document.getElementById("adhesion_idi_isba");
 let btnSendFormIDIISBA = document.getElementById("sendFormIDIISBA")
 let spinnerSendRequestIDIISBA = document.getElementById("spinnerSendRequestIDIISBA")
 
@@ -17,7 +17,11 @@ let spinnerSendRequestIDIISBA = document.getElementById("spinnerSendRequestIDIIS
 let toastMessage = document.getElementById('toastMessage')
 let toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast) */
 
-activaDesactivaFormulario (false)
+//activaDesactivaFormulario (false)
+
+theForm.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+})
 
 function activaDesactivaFormulario (valor) {
   var form  = document.getElementById("adhesion_idi_isba")
@@ -45,14 +49,12 @@ function activaDesactivaFormulario (valor) {
 }
 
 function onFormSubmit(e) {
+	
 	let theForm = document.getElementById("adhesion_idi_isba")
-	let theElement = document.getElementById("sendFormIDIISBA")
-	btnSendFormIDIISBA.innerHTML ="Un moment, enviant a IDI ..."
-	btnSendFormIDIISBA.disabled = true
-	spinnerSendRequestIDIISBA.classList.remove("ocultar")
+	let theElement = document.getElementById("nextBtn")
 
-	/* let theSpinnger = document.getElementById("spinnerSendRequestIDIISBA") */
-	/* theSpinnger.classList.remove("ocultar") */
+	console.log ("Se ha pulsado submit ISBA... desde: " + e, localStorage.getItem('documentacion_adjunta_requerida_idi_isba_n'))
+
   theElement.value = "Enviant, un moment per favor... "
   theElement.disabled = true;
   theElement.style.backgroundColor= "orange";
@@ -62,12 +64,9 @@ function onFormSubmit(e) {
   theForm.submit();
 }
 
- function limpiaInfo_lbl (valor) {
-	//document.getElementById("info_lbl").innerHTML = ""
-} 
-
 function tipoSolicitante (valor) {
 		document.getElementById("nif").value=""
+		console.log (valor);
 		switch (valor) {
 			case 'autonomo':
 				document.getElementById("nif").placeholder = 'DNI / NIE';
@@ -79,12 +78,8 @@ function tipoSolicitante (valor) {
 				document.getElementById("nom_representante").disabled = true
 				document.getElementById("nif_representante").readOnly = true
 				document.getElementById("nif_representante").disabled = true
-				document.getElementById("domicilio_rep").readOnly = true
-				document.getElementById("domicilio_rep").disabled = true
 				document.getElementById("telefono_contacto_rep").readOnly = true
 				document.getElementById("telefono_contacto_rep").disabled = true
-				document.getElementById("cp_rep").readOnly = true
-				document.getElementById("cp_rep").disabled = true
 				document.getElementById("es-p-fisica").classList.remove("ocultar")
 				document.getElementById("es-p-juridica").classList.add("ocultar")
 				break;
@@ -96,7 +91,7 @@ function tipoSolicitante (valor) {
 				if (document.contains(document.getElementById("docConstitutivoCluster"))) {
 					document.getElementById("docConstitutivoCluster").remove();
 				}
-        		document.getElementById("nif").placeholder = 'NIF empresa';
+        document.getElementById("nif").placeholder = 'NIF empresa';
 				document.getElementById("nif").title = 'NIF empresa';
 				document.getElementById("denom_interesado").placeholder = 'Raó social';
 				document.getElementById("denom_interesado").title = 'Raó social';
@@ -104,17 +99,17 @@ function tipoSolicitante (valor) {
 				document.getElementById("nom_representante").disabled = false
 				document.getElementById("nif_representante").readOnly = false
 				document.getElementById("nif_representante").disabled = false
-				document.getElementById("domicilio_rep").readOnly = false
-				document.getElementById("domicilio_rep").disabled = false
 				document.getElementById("telefono_contacto_rep").readOnly = false
 				document.getElementById("telefono_contacto_rep").disabled = false
-				document.getElementById("cp_rep").readOnly = false
-				document.getElementById("cp_rep").disabled = false
 				document.getElementById("es-p-fisica").classList.add("ocultar")
 				document.getElementById("es-p-juridica").classList.remove("ocultar")
 				break;
 		}
 }
+
+function limpiaInfo_lbl (valor) {
+	document.getElementById("info_lbl").innerHTML = ""
+	}
 
 function deshabilitarSubidaDocumento (checkObj) {
 	console.log (checkObj.name, checkObj.checked)
@@ -638,7 +633,6 @@ function rellenaElFormulario(id) {
 			document.getElementById("cpostal").value = beneficiario[0].cpostal
 
 			document.getElementById("nif_representante").value = beneficiario[0]. nif_rep
-			document.getElementById("domicilio_rep").value = beneficiario[0]. domicilio_rep
 			document.getElementById("telefono_contacto_rep").value = beneficiario[0].telefono_contacto_rep
 			document.getElementById("nom_representante").value = beneficiario[0].nombre_rep 
 
@@ -678,24 +672,6 @@ function rellenaElFormulario(id) {
 				document.getElementById("intereses_ayuda_solicita_idi_isba").value = beneficiario[0].intereses_ayuda_solicita_idi_isba
 				document.getElementById("coste_aval_solicita_idi_isba").value = beneficiario[0].coste_aval_solicita_idi_isba
 				document.getElementById("gastos_aval_solicita_idi_isba").value = beneficiario[0].gastos_aval_solicita_idi_isba
-/* 				if ( beneficiario[0].tiene_ayudas_subv === 'NO' ) {
-					document.getElementById("tiene_ayudas_subv_no").checked =true
-				} else {
-					document.getElementById("tiene_ayudas_subv_si").checked =true
-					document.getElementById("tiene_ayudas_subv_si_no").classList.remove("ocultar")
-					if ( beneficiario[0].ayuda_subv_de === 'dg') {
-						console.log ( `es dir general : ${beneficiario[0].tiene_ayudas_subv} --` )
-						document.getElementById("ayuda_subv_dg_pol_ind").checked =true
-						document.getElementById("ayuda_subv_otros_detalle").value = ""
-						document.getElementById("ayuda_subv_otros_detalle").classList.add("ocultar")
-					} else  {
-						document.getElementById("ayuda_subv_otros").checked =true
-						document.getElementById("ayuda_subv_otros_detalle").classList.remove("ocultar")
-						document.getElementById("ayuda_subv_otros_detalle").value = beneficiario[0].ayuda_subv_otros_detalle
-					}
-
-				} */
-
 			} 
 
 		}).catch(function(error) {
@@ -720,5 +696,16 @@ function getReaNum( reaVal ) {
 	} else {
 		document.getElementById("expedISBA").value = ""
 		document.getElementById("expedISBA").type = "hidden"
+	}
+}
+
+function habilitarNextButton (valor) {
+	if (!valor) {
+		document.getElementById("nextBtn").className = 'ocultar';
+		document.getElementById("nextBtn").disabled = true;
+	} else {
+		document.getElementById("nextBtn").remove = 'ocultar';
+		document.getElementById("nextBtn").className = 'buttonAsistente';
+		document.getElementById("nextBtn").disabled = false;
 	}
 }

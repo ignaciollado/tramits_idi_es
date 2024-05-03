@@ -1,14 +1,11 @@
+<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-idi-isba.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <section id="formulario_solicitud">
   <?php
   	helper('cookie');
   	$language = \Config\Services::language();
   	$locale = $language->getLocale();
   ?>
-<fieldset>
-	<?php echo lang('message_lang.documentacion_necesaria_pymes_idi_isba');?>
-	<h3><?php echo lang('message_lang.documentacion_resultante_cabecera_idi_isba');?></h3>
-	<?php echo lang('message_lang.documentacion_resultante_idi_isba');?>
-</fieldset>
 
 <div class="modal fade" id="rgpdModal" tabindex="-1" aria-labelledby="rgpdModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -36,41 +33,66 @@
 	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javaScript: document.querySelector('#theDialog').open = false">Close</button>
 </dialog>
 
-<div id="formbox">
+<form name="adhesion_idi_isba" id="adhesion_idi_isba" class="needs-validation" action="<?php echo base_url('/public/index.php/subirarchivo/store_idi_isba/'.$viaSolicitud.'/'.$locale);?>" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+
+<div class="stepContainer">
+	<span class="step">1</span>
+	<span class="step">2</span>
+  <span class="step">3</span>
+  <span class="step">4</span>
+  <span class="step">5</span>
+	<span class="step">6</span>
+	<span class="step">7</span>
+
+	<div class="buttonContainer">
+    <button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
+    <button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
+	</div>
+</div>
+<!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD --------------------------------------------->
+<div class="tab">
+	<div>
+		<fieldset>
+  			<label for = "rgpd" class="main">
+					<span><?php echo lang('message_lang.rgpd_leido');?><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#rgpdModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button></span>
+					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
+					<span class="w3docs"></span>
+				</label>
+			<span id='aviso'></span>
+		</fieldset>
+	</div>
 	<fieldset>
-		<div class="form-check"> 
-  			<input class="form-check-input" type="checkbox"  onChange="javaScript: activaDesactivaFormulario (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
-  			<label class="form-check-label" for="flexCheckDefault">
-				<?php echo lang('message_lang.rgpd_leido');?><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#rgpdModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
-  			</label>
-		</div>
-		<span id='aviso'></span>
-	</fieldset>
-</div>	
+	<?php echo lang('message_lang.documentacion_necesaria_pymes_idi_isba');?>
+	<h3><?php echo lang('message_lang.documentacion_resultante_cabecera_idi_isba');?></h3>
+	<?php echo lang('message_lang.documentacion_resultante_idi_isba');?>
+</fieldset>
+</div>
+<!-------------------------- 1. TIPO DE SOLICITANTE ----------------------------------------------------------------------->
+<div class="tab" id="empresa">
+	<div id="formbox2" class="formbox">
+  	<fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
+			<h2>1. <?php echo lang('message_lang.solicitante_tipo');?></h2>
+			<label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_autonomo');?></h6>
+			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_autonomo');?>" id="autonomo" onchange = "javaScript: tipoSolicitante (this.id);" value="autonomo">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_pequenya');?></h6>
+			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_pequenya');?>" id="pequenya" onchange = "javaScript: tipoSolicitante (this.id);" value="pequenya">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_mediana');?></h6>
+			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_mediana');?>" id="mediana" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
+			<span class="checkmark"></span>
+		</label>
 
-<form name="adhesion_idi_isba" id="adhesion_idi_isba" class="needs-validation" action="<?php echo base_url('/public/index.php/subirarchivo/store_idi_isba/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<!-------------------------- 1. TIPO DE SOLICITANTE --------------------------------------------------------------------->
-
-
-<div id="formbox">
-  <fieldset>
-		<span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
-		<h2>1. <?php echo lang('message_lang.solicitante_tipo');?></h2>
-		<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="tipo_solicitante" id="autonomo" value="autonomo" onchange = "javaScript: tipoSolicitante (this.id);" required>
-  		<label class="form-check-label" for="autonomo"><?php echo lang('message_lang.solicitante_tipo_autonomo');?></label>
-		</div>
-		<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="tipo_solicitante" id="pequenya" value="pequenya" onchange = "javaScript: tipoSolicitante (this.id);">
-  		<label class="form-check-label" for="pequenya"><?php echo lang('message_lang.solicitante_tipo_pequenya');?></label>
-		</div>
-		<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="tipo_solicitante" id="mediana" value="mediana" onchange = "javaScript: tipoSolicitante (this.id);">
-  		<label class="form-check-label" for="mediana"><?php echo lang('message_lang.solicitante_tipo_mediana');?></label>
-		</div>	
-  </fieldset>
+		<label class="container-radio">	
+			<span class="tooltiptext_idi"> <?php echo lang('message_lang.info_tipo_empresa');?> </span>
+		</label>
+  	</fieldset>
+	</div>
 </div>
 <!-------------------------- 2. IDENTIFICACIÓN DEL SOLICITANTE ------------------------------------------------------------>
+<div class="tab">
 	<div id="formbox">
 		<fieldset id="interesado">
 			<h2>2. <?php echo lang('message_lang.identificacion_sol_idi_isba');?></h2>
@@ -98,11 +120,11 @@
 					<input type = "text" name = "nif" id = "nif" aria-label="Input group nif" aria-describedby="btnGroupAddon" 
 					onfocus="javaScript: limpiaInfo_lbl (this.value);" required onBlur = "javaScript: averiguaTipoDocumento (this.value);" 
 					title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" minlength = "9" maxlength = "9" 
-					aria-required="true">
+					aria-required="true"><span id = "info_lbl"></span>
 				</div>
 				<span id='rest-result'></span>
 				<div id ="spinner-idi-isba" class="spinner-border text-warning ocultar" role="status">
- 						<span id ="text-isba" class="visually-hidden">Getting data from ISBA...</span>
+ 					<span id ="text-isba" class="visually-hidden">Getting data from ISBA...</span>
 				</div>
 			</div>	
 			
@@ -113,36 +135,14 @@
 			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/epigrafeIAE_idi_isba.php';?>
 			<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 			<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
-			<input type="text" aria-required="true" name = "domicilio_rep" id = "domicilio_rep" title="<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
+			<!-- <input type="text" aria-required="true" name = "domicilio_rep" id = "domicilio_rep" title="<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);"> -->
 			<input type="text" aria-required="true" name = "telefono_contacto_rep" id = "telefono_contacto_rep" title="<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
-			<input type="text" aria-required="true" name = "cp_rep" id = "cp_rep" title="<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" minlength = "5" maxlength = "5" onblur="javaScript: validateFormField(this);">
+			<!-- <input type="text" aria-required="true" name = "cp_rep" id = "cp_rep" title="<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" minlength = "5" maxlength = "5" onblur="javaScript: validateFormField(this);"> -->
 		</fieldset> 
 	</div>
-<!-------------------------- xx. FORMA DE ACREDITACIÓN DE LA REPRESENTACIÓN--------------------------------------------------------->
-<div id="formbox">
-    	<fieldset>
-			<h2>xx. <?php echo lang('message_lang.acreditacion_de_la_representacion');?></h2>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" name="forma_acred_represent" id="forma_acred_represent1" value="reaNum" onchange="javaScript: getReaNum(this);">
-  				<label class="form-check-label" for="forma_acred_represent1">REA núm.</label>
-			</div>
-			<div class="form_check">
-				<input type="hidden" placeholder="REA num" id="reaNum">
-			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" name="forma_acred_represent" id="forma_acred_represent2" value="Otros" onchange="javaScript: getReaNum(this);">
-  				<label class="form-check-label" for="forma_acred_represent2">Otros</label>
-			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" name="forma_acred_represent" id="forma_acred_represent3" value="expedISBA" onchange="javaScript: getReaNum(this);">
-  				<label class="form-check-label" for="forma_acred_represent3">Ya consta en el expediente de ISBA-SGR</label>
-			</div>
-			<div class="form_check">
-				<input type="hidden" placeholder="Num. exped ISBA-SGR" id="expedISBA">
-			</div>
-		</fieldset>
-	</div>
-<!-------------------------- 3. NOTIFICACIÓN y AUTORIZACIONES --------------------------------------------------------------------->
+</div>	
+<!-------------------------- 3. CANAL NOTIFICACIÓN y AUTORIZACIONES ------------------------------------------------------->
+<div class="tab">	
 	<div id="formbox">
     	<fieldset>
 			<h2>3. <?php echo lang('message_lang.titulo_notificiaciones');?></h2>
@@ -150,7 +150,9 @@
 			<input type = "tel" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" ><p id="mensaje_tel"></p>
 		</fieldset>
 	</div>
-<!-------------------------- 4. OPERACIÓN FINANCIERA --------------------------------------------------------------------->
+</div>
+<!-------------------------- 4. OPERACIÓN FINANCIERA ---------------------------------------------------------------------->
+<div class="tab">	
 	<div id="formbox">
     <fieldset>
 			<h2>4. <?php echo lang('message_lang.operacion_financiera_idi_isba');?></h2>
@@ -165,7 +167,9 @@
 			<!-- <input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_idi_isba');?>" name = "carencia_idi_isba" id="carencia_idi_isba" required> -->
 		</fieldset>
 	</div>
-<!-------------------------- 5. PROYECTO DE INVERSIÓN ---------------------------------------------------------------------------------->
+</div>
+<!-------------------------- 5. PROYECTO DE INVERSIÓN --------------------------------------------------------------------->
+<div class="tab">
 	<div id="formbox">
     <fieldset>
 			<h2>5. <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
@@ -175,12 +179,16 @@
 		<fieldset>
 			<h2>6. <?php echo lang('message_lang.adherido_a_ils_si_no');?></h2>
 			<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_no" onchange="javaScript: selectorNoSi(this);" value="NO" required>
-  			<label class="form-check-label" for="empresa_eco_idi_isba_no"><?php echo lang('message_lang.no_adherido_a_ils');?></label>
+				<label class="container-radio" for="empresa_eco_idi_isba_no"><?php echo lang('message_lang.no_adherido_a_ils');?>
+					<input type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_no" onchange="javaScript: selectorNoSi(this);" value="NO" required>
+  				<span class="checkmark"></span>
+				</label>
 			</div>
 			<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_si" onchange="javaScript: selectorNoSi(this);" value="SI">
-  			<label class="form-check-label" for="empresa_eco_idi_isba_si"><?php echo lang('message_lang.adherido_a_ils');?></label>
+				<label class="container-radio" for="empresa_eco_idi_isba_si"><?php echo lang('message_lang.adherido_a_ils');?>
+  				<input type="radio" name="empresa_eco_idi_isba" id="empresa_eco_idi_isba_si" onchange="javaScript: selectorNoSi(this);" value="SI">
+  				<span class="checkmark"></span>
+				</label>
 			</div>
 			<div class="alert alert-primary ocultar" role="alert" id="empresa_eco"></div>
 		</fieldset>
@@ -197,41 +205,47 @@
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" aria-required="true" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9" required>
 		</fieldset>
 	</div>
-	<!------------------------ 7. DECLARO ----------------------------------------------------------------------------------------------------->
+</div>
+<!-------------------------- 7. DECLARO ----------------------------------------------------------------------------------->
+<div class="tab">	
 	<div id="formbox">
 		<fieldset>
 		<h2>7. <?php echo lang('message_lang.declaro');?></h2>
 		<ol>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_1');?>" checked="checked" name="declaro_idi_isba_que_cumple_1[]" id="declaro_idi_isba_que_cumple_1" value="SI">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_1">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_1');?>
-  					</label>
+					<label class="container-radio" for="declaro_idi_isba_que_cumple_1">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_1');?>
+  					<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_1');?>" checked="checked" name="declaro_idi_isba_que_cumple_1[]" id="declaro_idi_isba_que_cumple_1" value="SI">
+						<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+					</label>
 				</div>
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_2');?>" checked="checked" name="declaro_idi_isba_que_cumple_2[]" id="declaro_idi_isba_que_cumple_2">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_2">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_2');?>
-  					</label>
+					<label class="container-radio" for="declaro_idi_isba_que_cumple_2">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_2');?>
+  					<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_2');?>" checked="checked" name="declaro_idi_isba_que_cumple_2[]" id="declaro_idi_isba_que_cumple_2">
+						<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+					</label>
 					</div>
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_3');?>" checked="checked" name="declaro_idi_isba_que_cumple_3[]" id="declaro_idi_isba_que_cumple_3"  onchange = "javaScript: muestraSubeArchivo(this.id);">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_3">
+  					<label class="container-radio" for="declaro_idi_isba_que_cumple_3">
 							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_3');?>
-  					</label>
+							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_3');?>" checked="checked" name="declaro_idi_isba_que_cumple_3[]" id="declaro_idi_isba_que_cumple_3"  onchange = "javaScript: muestraSubeArchivo(this.id);">							
+							<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+						</label>
 				</div>					
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_4');?>" checked="checked" name="declaro_idi_isba_que_cumple_4" id="declaro_idi_isba_que_cumple_4" onchange = "javaScript: muestraSubeArchivo(this.id);">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_4">
+  					<label class="container-radio" for="declaro_idi_isba_que_cumple_4">
 							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_4');?>
-  					</label>
+							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_4');?>" checked="checked" name="declaro_idi_isba_que_cumple_4" id="declaro_idi_isba_que_cumple_4" onchange = "javaScript: muestraSubeArchivo(this.id);">							
+							<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+						</label>
 				</div>
 				<div id = "contenedorAyudasRecibidas" class="">
 						<label for = "ayudasSubvenSICuales_dec_resp"><h5><?php echo lang('message_lang.declaro_idi_isba_ayudas_recibidas');?></h5></label>
@@ -240,50 +254,57 @@
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_5');?>" checked="checked" name="declaro_idi_isba_que_cumple_5" id="declaro_idi_isba_que_cumple_5">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_5">
+  					<label class="container-radio" for="declaro_idi_isba_que_cumple_5">
 							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_5');?>
-  					</label>
+							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_5');?>" checked="checked" name="declaro_idi_isba_que_cumple_5" id="declaro_idi_isba_que_cumple_5">							
+							<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+						</label>
 				</div>		
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>" checked="checked" name="declaro_idi_isba_que_cumple_6[]" id="declaro_idi_isba_que_cumple_6">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_6">
+  					<label class="container-radio" for="declaro_idi_isba_que_cumple_6">
 							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>
-  					</label>
+							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>" checked="checked" name="declaro_idi_isba_que_cumple_6[]" id="declaro_idi_isba_que_cumple_6">							
+							<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+						</label>
 				</div>		
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_7');?>" checked="checked" name="declaro_idi_isba_que_cumple_7[]" id="declaro_idi_isba_que_cumple_7">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_7">
+  					<label class="container-radio" for="declaro_idi_isba_que_cumple_7">
 							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_7');?>
-  					</label>
+							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_7');?>" checked="checked" name="declaro_idi_isba_que_cumple_7[]" id="declaro_idi_isba_que_cumple_7">							
+							<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+						</label>
 				</div>		
 			</li>
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_8');?>" checked="checked" name="declaro_idi_isba_que_cumple_8[]" id="declaro_idi_isba_que_cumple_8">
-  					<label class="form-check-label" for="declaro_idi_isba_que_cumple_8">
+  					<label class="container-radio" for="declaro_idi_isba_que_cumple_8">
 							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_8');?>
-  					</label>
+							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_8');?>" checked="checked" name="declaro_idi_isba_que_cumple_8[]" id="declaro_idi_isba_que_cumple_8">							
+							<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+						</label>
 				</div>		
 			</li>
 		</ol>
 		</fieldset>
 	</div>
-	<!------------------------ 8. DOCUMENTACIÓN --------------------------------------------------------------------->
+</div>
+<!------------------------ 7. DOCUMENTACIÓN ------------------------------------------------------------------------------->
+<div class="tab">
 	<div id="formbox">
 		<fieldset>
 			<h2>8. <?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba');?></h2>
 			<ol style="list-style-type: lower-alpha;">
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_a[]" id="documentacion_adjunta_requerida_idi_isba_a" value="SI">
-  					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_a">
-							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>
-  					</label>
+					<label class="container-radio" for="documentacion_adjunta_requerida_idi_isba_a">
+						<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>						
+  					<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_a[]" id="documentacion_adjunta_requerida_idi_isba_a" value="SI">
+  					<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+  				</label>
 				</div>
 			</li>
 
@@ -296,10 +317,11 @@
 
 			<li>
 				<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_c[]" id="documentacion_adjunta_requerida_idi_isba_c" value="SI">
-  					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_c">
-							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>
-  					</label>
+					<label class="container-radio" for="documentacion_adjunta_requerida_idi_isba_c">
+						<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>
+  					<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_c[]" id="documentacion_adjunta_requerida_idi_isba_c" value="SI">
+  					<span class="w3docs"><i class="bi bi-check-lg"></i></span>
+  				</label>
 				</div>
 			</li>
 		
@@ -331,7 +353,7 @@
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
 				</div>
 				<div class="form-check">
-					<input type="checkbox" id="idi_isba_g_EnIDI" name="idi_isba_g_EnIDI" class="form-check-input" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<input class="requerido" type="checkbox" id="idi_isba_g_EnIDI" name="idi_isba_g_EnIDI" class="container-radio" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
 					<label class="form-check-label alert alert-warning" role="alert" for="idi_isba_g_EnIDI"><?php echo lang('message_lang.documentoEnIDI');?> </label>
 				</div>
 			</li>
@@ -343,7 +365,7 @@
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_h" name="documentacion_adjunta_requerida_idi_isba_h[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
 				</div>
 				<div class="form-check">
-					<input type="checkbox" id="idi_isba_h_EnIDI" name="idi_isba_h_EnIDI" class="form-check-input" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<input class="requerido" type="checkbox" id="idi_isba_h_EnIDI" name="idi_isba_h_EnIDI" class="form-check-input" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
 					<label class="form-check-label alert alert-warning" role="alert" for="idi_isba_h_EnIDI"><?php echo lang('message_lang.documentoEnIDI');?> </label>
 				</div>				
 			</li>
@@ -385,35 +407,20 @@
 			
 			<li>
 			<div class="form-check">
-  				<input class="form-check-input" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_n[]" id="documentacion_adjunta_requerida_idi_isba_n" value="SI">
+  				<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_n[]" id="documentacion_adjunta_requerida_idi_isba_n" value="SI">
   					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_n">
 							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>
   					</label>
 				</div>
- 			<!-- 	<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-				<div>
-					<input readonly disabled type = "file" id="documentacion_adjunta_requerida_idi_isba_n" name="documentacion_adjunta_requerida_idi_isba_n[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>	 -->
 			</li>			
 			</ol>
 		</fieldset>
-		<!-- <span><?php //echo lang('message_lang.documentos_opcionales_si_ya_los_tiene_admin');?></span> -->
+	
 	</div>	
 	<div id="formbox">	
 		<span class="tooltiptext_idi"><h3><?php echo lang('message_lang.upload_multiple');?></h3></span>	
 	</div>
-	<button type="submit" name="sendFormIDIISBA" id="sendFormIDIISBA" 
-				class="btn btn-primary" 
-				data-bs-toggle="tooltip" 
-				data-bs-placement="top"
-        data-bs-title="Premi per enviar la sol·licitud del beneficiari a l'IDI."
-				onClick="onFormSubmit(event)"
-				>Enviar
-
-				<div class="spinner-border text-primary ocultar" role="status" id="spinnerSendRequestIDIISBA">
-  				<span class="visually-hidden">Sending request, please wait...</span>
-				</div>
-	</button>
+</div>
 </form>
 </section>
 
@@ -433,3 +440,209 @@
   		<button onclick="javaScript: cierraModal()" class="btn btn-secondary btn-lg btn-block">No</button><button onclick="javaScript: actualizoFormConDatosSolicitante()" class="btn btn-success btn-lg btn-block">Si</button>
   	</div>
 </div>
+
+
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  let itramitsCookies = document.cookie.split(";");
+    console.log ("current tab", n)
+    // Loop through the array elements
+    for(var i = 0; i < itramitsCookies.length; i++) {
+        var cookiePair = itramitsCookies[i].split("=");
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
+        }
+    }
+
+  x[n].style.display = "block";
+
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  
+  let submitBTN = document.getElementById("nextBtn")
+  // if (n == (x.length - 1)) {
+	if (n === 7) {
+		console.log ("pestaña final IDI-ISBA: "+ n)
+	  submitBTN.innerHTML = "Enviar"
+	  submitBTN.setAttribute("title", "Enviar")
+	  submitBTN.setAttribute("value", "Submit")
+	  submitBTN.setAttribute("form", "adhesion_ils")
+	  submitBTN.setAttribute("onclick", "onFormSubmit(this)")
+		submitBTN.setAttribute("class", "buttonAsistente buttonEnviar");  
+  } else {
+		submitBTN.innerHTML = "Següent"
+		submitBTN.setAttribute("onclick", "nextPrev(1)")
+  }
+  //... and run the function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateFormField(field, step=0) {
+	var valid = true;
+	let inputElement = document.getElementById(field.id)
+	let aviso = document.getElementById('aviso')
+
+	const regexMail = new RegExp(/^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)
+	const regexHTTP = new RegExp(/https?:\/\/?[-a-zA-Z0-9]{1,256}\.[a-zA-Z]{2,3}/)
+	const regexTel  = new RegExp(/[0-9]{3}[0-9]{3}[0-9]{3}/)
+	
+	console.log (`Campo actual: ${inputElement.name}`)
+	switch (inputElement.name) {
+  		case 'nif':
+			  if (inputElement.value === '') {
+    			aviso.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
+					inputElement.classList.remove("valid");
+					inputElement.classList.add("invalid");
+			  } else {
+					aviso.innerHTML = ` "${ inputElement.name }" OK `;
+					inputElement.classList.remove("invalid");
+					inputElement.classList.add("valid");
+				}
+    		break;
+  		case 'fecha_creacion_empresa':
+			aviso.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
+    		break;
+  		case 'sitio_web_empresa':
+			if (!regexHTTP.test(document.getElementById(field.id).value)) {
+				aviso.innerHTML = `falta indicar el "${ inputElement.name }" no es correcto: ${ inputElement.value }.`;
+				document.getElementById(field.id).value = ''
+				document.getElementById(field.id).focus 
+			} else  {
+				aviso.innerHTML = `"${ inputElement.value }" es correcto.`;
+			}
+    		break;
+  		case 'nom_representante':
+			aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
+    		break;
+  		case 'nif_representante':
+			aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
+    		break;
+		case 'tel_representante':
+			if (!regexTel.test(document.getElementById(field.id).value)) {
+				aviso.innerHTML = `El teléfono de notificación no es correcto: "${ inputElement.value }".`;
+				document.getElementById(field.id).value = ''
+				document.getElementById(field.id).focus 
+			} else  {
+				aviso.innerHTML += `${ inputElement.value } está OK.`;
+			}
+    		break;	
+  		case 'mail_representante':
+			if (!regexMail.test(document.getElementById(field.id).value)) {
+				aviso.innerHTML = `El correo electrónico de notificación no es correcto: "${ inputElement.value }"`;
+				document.getElementById(field.id).value = ''
+				document.getElementById(field.id).focus 
+			} else  {
+				aviso.innerHTML += `${ inputElement.value } está OK.`;
+			}
+    		break;
+  		default:
+  			aviso.innerHTML = `Lo lamentamos, este valor no es correcto: "${ inputElement.value }" `;
+		}
+
+	let btnSend = document.querySelector(field.id);
+
+	if (Boolean(field.getAttribute('aria-required') == (!field.value))) {
+		field.setAttribute('class', 'invalid')
+		valid = false;
+	} else {
+		field.setAttribute('class', 'valid')
+		valid = true;
+	}
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  	var tabs, inputs, selects, i, valid = true;
+  	tabs = document.getElementsByClassName("tab");
+  	inputs = tabs[currentTab].getElementsByTagName("input");
+  	// inputs = tabs[currentTab].querySelector("requerido");
+  	// A loop that checks every INPUT field in the current tab:
+  	for (let cell of inputs) {
+	    // If a field is empty and has required attribute ...
+		/* if (cell.id != "empresa_consultor") { */
+
+			if ( (!cell.value ) && ( cell.getAttribute('aria-required')) && !document.getElementById("autonomo").checked) {
+	   			cell.setAttribute ('class','aviso');
+      			valid = false;
+    		}
+
+		/* } */
+  	}
+ 
+  	selects = tabs[currentTab].getElementsByTagName("select");
+  	// Same with every SELECT field in the current tab:
+  	for (let cell of selects) {
+	    // If a field is empty and has required attribute ...
+    	if (cell.value === '') {
+	      	// add an "invalid" class to the field:
+	  		cell.setAttribute ('class','aviso');
+      		// and set the current valid status to false
+      		valid = false;
+    	} 
+  	}
+
+  if (currentTab===1) {
+	// Validar que un checkbox de '2. TIPO DE EMPRESA' esté activado
+  	if ( !document.getElementById("pequenya").checked && !document.getElementById("mediana").checked && !document.getElementById("autonomo").checked) {
+		document.getElementById("aviso2").className = 'aviso-lbl';
+		document.getElementById("formbox2").classList.add("aviso");
+		valid = false;
+  	}
+  }
+
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    	document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+
+}
+
+function fixStepIndicator(n) {
+  	// This function removes the "active" class of all steps...
+  	var i, x = document.getElementsByClassName("step");
+  	for (i = 6; i >= n; i--) {
+    	x[i].className = x[i].className.replace(" finish", "");
+ 	 }	  
+  	for (i = 0; i < x.length; i++) {
+    	x[i].className = x[i].className.replace(" active", "");
+ 	 }
+  	//... and adds the "active" class on the current step:
+	// Para evitar el error Uncaught TypeError: x[n] is undefined que me aparece cuando n==8
+	if (n < 7) {
+  		x[n].className += " active";
+	}
+	document.getElementById('aviso').innerHTML = ''
+}
+</script>

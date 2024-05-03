@@ -8,11 +8,11 @@
 	<div id="aviso" class="alert">
 		<?php echo lang('message_lang.intro_ils');?>
 	</div>
-<?php
-	helper('cookie');
-	$language = \Config\Services::language();
-	$locale = $language->getLocale();
-?>
+	<?php
+		helper('cookie');
+		$language = \Config\Services::language();
+		$locale = $language->getLocale();
+	?>
 <form name="adhesion_ils" id="adhesion_ils" action="<?php echo base_url('/public/index.php/subirarchivo/store_ils/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
 <div class="stepContainer">
@@ -34,7 +34,7 @@
 		<div>
 		<fieldset>
 			<label for = "rgpd" class="main" >
-				<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#" data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
+				<span><?php echo lang('message_lang.rgpd_leido');?> <a href="#" data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 				<span class="w3docs"></span>
 			</label>
@@ -77,12 +77,8 @@
 
 <!--</div>-->
 
-<!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------------------->
-
-
-<!-------------------------- 2. TIPO DE EMPRESA ---------------------------------------------------------------------------->
+<!-------------------------- 1. TIPO DE EMPRESA ---------------------------------------------------------------------------->
 <div class="tab" id="empresa">
-	
   	<div id="formbox2" class="formbox">
 
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
@@ -95,7 +91,6 @@
 			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_pequenya');?>" id="pequenya" onchange = "javaScript: tipoSolicitante (this.id);" value="pequenya">
 			<span class="checkmark"></span>
 		</label>
-
 		<label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_mediana');?></h6>
 			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_mediana');?>" id="mediana" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
 			<span class="checkmark"></span>
@@ -114,7 +109,6 @@
 	<div id="formbox">
 	<fieldset id="interesado">
 		<h2><?php echo lang('message_lang.identificacion_sol_ils');?></h2>
-		<!-- <input class="" type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value); tenemosDatosSolicitante (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" aria-required="true" name = "nif" id = "nif" minlength = "9" maxlength = "9"><span id = "info_lbl"></span> -->
 		<input class="" type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" aria-required="true" name = "nif" id = "nif" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
 		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" aria-required="true" name = "denom_interesado" id = "denom_interesado" size="220">
 		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.direccion_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_sol_idigital');?>" aria-required="true" name="domicilio" id="domicilio">
@@ -130,9 +124,9 @@
 		
 		<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 		<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
-<!-- 		<input type="tel" name = "tel_representante" id = "tel_representante" title="<?php echo lang('message_lang.telefono_representante');?>" placeholder = "<?php echo lang('message_lang.telefono_representante');?>" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" onblur="javaScript: validateFormField(this);">
+		<!-- 		<input type="tel" name = "tel_representante" id = "tel_representante" title="<?php echo lang('message_lang.telefono_representante');?>" placeholder = "<?php echo lang('message_lang.telefono_representante');?>" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" onblur="javaScript: validateFormField(this);">
 		<input type="email" aria-required="true" name = "mail_representante" id = "mail_representante" title="<?php echo lang('message_lang.mail_representante');?>" placeholder = "<?php echo lang('message_lang.mail_representante');?>" onblur="javaScript: validateFormField(this);">
- -->
+ 		-->
 
 	</fieldset> 
 	</div>

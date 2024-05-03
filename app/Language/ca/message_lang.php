@@ -186,7 +186,7 @@ return [
    <li><code>Petita empresa:</code> Es considera petita empresa la que té menys de 50 treballadors i/o treballadores, un volum de negoci anual o un balanç general anual que no superi els 10 milions d’euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits per ser considerada PIME d’acord amb l’annex I del Reglament (CE) núm. 651/2014 de la Comissió Europea.</li>
    <li><code>Mitjana empresa:</code> Es considera mitjana empresa la que té entre 50 i 250 treballadors i/o treballadores, un volum de negoci anual entre 10 i 50 milions d'euros o un balanç general anual entre 10 i 43 milions d'euros, i no participa en un 25% o més del seu capital o dels seus drets de vot altres empreses que no compleixen els requisits anteriors.</li></ol>",
    'nom_rep_legal_sol_idigital'       => "Nom del representant legal", 
-   'nif_rep_legal_sol_idigital'       => "NIF del representant legal",
+   'nif_rep_legal_sol_idigital'       => "DNI del representant legal",
    'condicion_rep'                    => "Condició que al·lega",
    'condicion_rep_admin'              => "Administrador",
    'condicion_rep_apoderado'          => "Apoderat",
@@ -196,7 +196,7 @@ return [
    'tel_rep_legal_sol_idigital' 	     => "Telèfon mòbil del sol·licitant o del representant",
    
    'nom_rep_legal_sol_idigital'       => "Nombre del representant legal",
-   'nif_rep_legal_sol_idigital'       => "NIF del representant legal",
+   'nif_rep_legal_sol_idigital'       => "DNI del representant legal",
    'direccion_rep_legal_sol_idigital' => "Adreça del representant legal",
    'cp_sol_rep_legal_idigital'         => "Còdi postal del representant legal",
    'movil_rep_legal_sol_idigital'      => "Telèfon de contacte del representant legal",
@@ -559,7 +559,7 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
       <li>Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.</li>
       <li>Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.</li>
       <li>En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.</li>
-      <li>Para ayudas de importe superior a 30.00 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.</li>
+      <li>Para ayudas de importe superior a 30.000 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.</li>
       <li>El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.</li>
       <li>El contrato de la operación financiera.</li>
       <li>El contrato o documento de aval de la operación financiera.</li>
@@ -571,7 +571,7 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
                                              <li>Una Declaració responsable de la persona titular de l'empresa o de qui la representa legalment.</li>
                                        </ol>",
 'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
-'operacion_financiera_idi_isba'  => "INVERSIÓ DESTINADA A",
+'operacion_financiera_idi_isba'  => "DADES OPERACIÓ FINANÇERA",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTEC",
 
 'entidad_financiera_idi_isba'    => "Nom entitat finançera",
@@ -604,7 +604,7 @@ En caso de ser empresa una empresa “asociada” o una empresa “vinculada”,
 'declaro_idi_isba_que_cumple_11' => "Que la persona o entidad beneficiaria no está sometida a ninguna causa de prohibición o de incompatibilidad para recibir la ayuda según la legislación vigente y que el solicitante no ha sido sancionado o condenado por resolución administrativa o sentencia judicial firme por discriminación salarial, acoso moral o cualquier tipo de trato desigual, por razón de sexo, en el ámbito de las relaciones laborales.",
 'declaro_idi_isba_que_cumple_12' => "Que, en la fecha de la solicitud, está al corriente de los pagos de sus obligaciones tributarias con la Administración del Estado, la  administración de la Comunidad Autónoma de las Illes Balears, así como al corriente de los pagos de sus obligaciones tributarias con la Seguridad Social.",
 'declaro_idi_isba_que_cumple_13' => "Que el solicitante va a llevar a cabo la actividad de inversión en un centro de Trabajo de la Comunidad autònoma de las Illes Balears, así como la justificación de la realización de la actividad y el cumplimiento de los requisitos y condiciones que determinan la concesión de la subvención.",
-'declaro_idi_isba_que_cumple_14' => "Que para ayudas de importe superior a 30.000 euros de acuerdo con la Ley 38/2003, de 17 de novembre, General de Subvencines, cumple con los plazos previstos en la Ley 3/2004 de 29 de diciembre, por la que se establecen medidas de lucha contra la morosidad en las operaciones Comerciales.
+'declaro_idi_isba_que_cumple_14' => "Que para ayudas de importe superior a 30.000 € de acuerdo con la Ley 38/2003, de 17 de novembre, General de Subvencines, cumple con los plazos previstos en la Ley 3/2004 de 29 de diciembre, por la que se establecen medidas de lucha contra la morosidad en las operaciones Comerciales.
 Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la notificación de la propuesta de la resolución de concesión con el certificado que establece el articulo 13.3 bis de la Ley 38/2003, de 17 de novembre.",
 'declaro_idi_isba_que_cumple_15' => "Cumplo con las condiciones de la convocatoria.",
 
@@ -622,7 +622,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'documentacion_adjunta_requerida_idi_isba_g' => "Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.",
 'documentacion_adjunta_requerida_idi_isba_h' => "Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.",
 'documentacion_adjunta_requerida_idi_isba_i' => "En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.",
-'documentacion_adjunta_requerida_idi_isba_j' => "Para ayudas de importe superior a 30.00€, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.",
+'documentacion_adjunta_requerida_idi_isba_j' => "Para ayudas de importe superior a 30.000 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.",
 'documentacion_adjunta_requerida_idi_isba_k' => "El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.",
 'documentacion_adjunta_requerida_idi_isba_l' => "El contrato de la operación financiera.",
 'documentacion_adjunta_requerida_idi_isba_m' => "El contrato o documento de aval de la operación financiera.",

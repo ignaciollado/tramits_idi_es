@@ -220,7 +220,8 @@ select, input, textarea {
 }
 .container-radio h6 {
     font-size: 2rem;   
-    }
+}
+
 .container-radio .checkmark::after {
     top: 7px;
     left: 7px;

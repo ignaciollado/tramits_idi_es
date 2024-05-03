@@ -211,7 +211,7 @@ function presentarInformeOCertificado (valor) {
 
 function limpiaInfo_lbl (valor) {
 	document.getElementById("info_lbl").innerHTML = ""
-	}
+}
 
 function tieneRepresentanteLegal (valor)
 	{
