@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva desfavorable sense requeriment DOC 14-->
 <div class="card-itramits">
   <div class="card-itramits-body">
-	Proposta de resolució definitiva desfavorable <br>amb requeriment  ****PRE****
+	Proposta de resolució definitiva desfavorable <br>amb requeriment
   </div>
   <div class="card-itramits-footer">
   		<?php
@@ -50,13 +50,13 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-	 	let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif') //0000-00-00
+	 	let fecha_requerimiento = document.getElementById('fecha_requerimiento') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnPropResDefDesfavConReq = document.getElementById('btnPropResDefDesfavConReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc14 = document.getElementById('infoMissingDataDoc14')
 		infoMissingDataDoc14.innerText = ""
 
@@ -68,11 +68,11 @@
 			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Referència REC sol·licitud<br>"
 			todoBien = false
 		}
-	 	if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data notificació requeriment<br>"
+ 	 	if(!fecha_requerimiento.value) {
+			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data firma requeriment<br>"
 			todoBien = false
 		}
-		if(!fecha_REC_enmienda.value) {
+ 		if(!fecha_REC_enmienda.value) {
 			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}

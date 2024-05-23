@@ -887,13 +887,16 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         <?php 
 	    $dias_fecha_lim_justificar	= $configuracionLinea['dias_fecha_lim_justificar'];
         $meses_fecha_lim_consultoria = $configuracionLinea['meses_fecha_lim_consultoria'];
-
         $mesesPrograma = explode("#",$meses_fecha_lim_consultoria);
         $mesesPrograma = str_replace("{","",$mesesPrograma);
         $mesesPrograma = str_replace("}","",$mesesPrograma);
         $programaI = explode(",",$mesesPrograma[0]);
         $programaII = explode(",",$mesesPrograma[1]);
         $programaIII = explode(",",$mesesPrograma[2]);
+        $programaIII_ac = explode(",",$mesesPrograma[3]);
+        $programaIII_ap = explode(",",$mesesPrograma[4]);
+        $programaIV = explode(",",$mesesPrograma[5]);
+
 
         switch ($expedientes['tipo_tramite']) {
 	        case 'Programa I':
@@ -908,7 +911,20 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     		    $add_meses = str_replace("'intervalo':'", "", $programaIII[1]);
 		        $add_meses = str_replace("'", "", $add_meses);
 		        break;
+            case 'Programa III actuacions corporatives':
+                $add_meses = str_replace("'intervalo':'", "", $programaIII_ac[1]);
+		        $add_meses = str_replace("'", "", $add_meses);
+		        break;                
+            case 'Programa III actuacions producte':
+                $add_meses = str_replace("'intervalo':'", "", $programaIII_ap[1]);
+		        $add_meses = str_replace("'", "", $add_meses);
+		        break;
+            case 'Programa IV':
+                $add_meses = str_replace("'intervalo':'", "", $programaIV[1]);
+		        $add_meses = str_replace("'", "", $add_meses);                
+		        break;
 	    }
+        echo "----".$add_meses."----";
         ?>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>

@@ -24,13 +24,14 @@ class ConfigGestorAyudas extends BaseController
                         ->displayAs('fechaResPresidIDI', 'Data resolució president IDI')
                         ->displayAs('codigoSIA', 'Codi SIA')
                         ->displayAs('dias_fecha_lim_justificar', "Màxim dies per justificar l'ajut rebut")
+                        ->displayAs('meses_fecha_lim_consultoria', "Màxim mesos per justificar l'ajut rebut")
                         ->displayAs('convocatoria_aviso_ca', "Nota convocatòria pendent de publicació")
                         ->displayAs('convocatoria_aviso_es', "Nota convocatoria pendiente de publicación")
                         ->displayAs('totalAmount', "Import econòmic màxim")
 
-            ->fields(['convocatoria', 'lineaAyuda', 'activeLineData', 'codigoSIA', 'num_BOIB', 'fecha_BOIB', 'num_BOIB_modific', 'fechaResPresidIDI', 'programa', 'convocatoria_desde', 'convocatoria_hasta', 'totalAmount', 'dias_fecha_lim_justificar', 'convocatoria_aviso_ca', 'convocatoria_aviso_es'])
+            ->fields(['convocatoria', 'lineaAyuda', 'activeLineData', 'codigoSIA', 'num_BOIB', 'fecha_BOIB', 'num_BOIB_modific', 'fechaResPresidIDI', 'programa', 'meses_fecha_lim_consultoria', 'convocatoria_desde', 'convocatoria_hasta', 'totalAmount', 'dias_fecha_lim_justificar', 'convocatoria_aviso_ca', 'convocatoria_aviso_es'])
 
-            ->requiredFields(['convocatoria', 'activeLineData', 'lineaAyuda', 'codigoSIA', 'num_BOIB', 'fecha_BOIB', 'convocatoria_desde', 'convocatoria_hasta', 'convocatoria_aviso_ca', 'convocatoria_aviso_es']);
+            ->requiredFields(['convocatoria', 'activeLineData', 'lineaAyuda', 'codigoSIA', 'num_BOIB', 'fecha_BOIB', 'meses_fecha_lim_consultoria', 'convocatoria_desde', 'convocatoria_hasta', 'convocatoria_aviso_ca', 'convocatoria_aviso_es']);
 
         $crud->fieldType('convocatoria', 'dropdown', ['2020' => '2020',
         '2021' => '2021',
@@ -51,11 +52,11 @@ class ConfigGestorAyudas extends BaseController
 
         $crud->fieldType('codigoSIA', 'number');
         $crud->fieldType('dias_fecha_lim_justificar', 'number');
+        $crud->fieldType('meses_fecha_lim_consultoria', 'string');
 
-
-        $crud->fieldType('empresa', 'string');
+       /*  $crud->fieldType('empresa', 'string');
         $crud->fieldType('nif', 'string');
-        $crud->fieldType('domicilio', 'string');
+        $crud->fieldType('domicilio', 'string'); */
 
         //->setRule('buyPrice', 'numeric')
         //->setRule('quantityInStock', 'integer');

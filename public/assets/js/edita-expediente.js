@@ -714,14 +714,9 @@ function actualizaFechaConsultoria(fechaAct, addMeses) {
 	document.getElementById("fecha_kick_off_modal").value = fechaAct;
 	let programa = document.getElementById("programa").value;
 	let d = new Date(fechaAct);
-    // A partir del día siguiente de la fecha
-    d.setDate(d.getDate()+1);
-	if (programa == "Programa I" || programa == "Programa II") {
-		meses = 6;
-	} else {
-		meses = 2;
-	}
-	
+  // A partir del día siguiente de la fecha
+  d.setDate(d.getDate()+1);
+	meses = addMeses
 	d.setMonth(d.getMonth() + meses);
 	if (d.getDay() == 6) {  //La fecha cae en Sábado hay que pasarla al primer lunes (+2 días)
 		d.setDate(d.getDate()+2);
@@ -730,12 +725,7 @@ function actualizaFechaConsultoria(fechaAct, addMeses) {
 	if (d.getDay() == 0) {  //La fecha cae en Domingo hay que pasarla al primer lunes (+1 días)
 		d.setDate(d.getDate()+1);
 	}
-	
-	if (d.toISOString().substr(0, 10) > '2022-10-07') {
-		document.getElementById("fecha_limite_consultoria").value = '2022-10-07';
-	} else {
-		document.getElementById("fecha_limite_consultoria").value = d.toISOString().substr(0, 10);
-	}
+	document.getElementById("fecha_limite_consultoria").value = d.toISOString().substr(0, 10);
 	document.getElementById("fecha_HastaRealizacionPlan").value = d.toISOString().substr(0, 10);
 	let valorFechaFechaKickOff = fechaAct;
 	let valorFechaLimite = d.toISOString().substr(0, 10);
