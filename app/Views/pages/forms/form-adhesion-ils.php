@@ -214,12 +214,12 @@
 			</div>
 						<!-- </div> -->
 
-		<div class="caja-grupo">
-			<label class="container-radio"><h6><?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?></h6>
-				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
-				<span id="informeCheck" class="checkmark checkmark-caja-grupo"></span>
-			</label>		
-		</div>
+			<div class="caja-grupo">
+				<label class="container-radio"><h6><?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?></h6>
+					<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
+					<span id="informeCheck" class="checkmark checkmark-caja-grupo"></span>
+				</label>		
+			</div>
 						<div id="mostrarInformes" class="ocultar">			
 			<h3><strong><?php echo lang('message_lang.informe_resumen_ils');?></strong></h3> <code>[.pdf] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
 			<div>
@@ -297,8 +297,7 @@ function showTab(n) {
     // Loop through the array elements
     for(var i = 0; i < itramitsCookies.length; i++) {
         var cookiePair = itramitsCookies[i].split("=");
-        /* Removing whitespace at the beginning of the cookie name
-        and compare it with the given string */
+        /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
         if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
             // Decode the cookie value and return
             let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
@@ -320,23 +319,16 @@ function showTab(n) {
 		console.log ("dddd")
 		document.getElementById("file_escritura_empresa").style.display = "block";
 		document.getElementById("file_certificadoIAE").style.display = "block";
-
-	  	submitBTN.innerHTML = "Enviar"
-	  	submitBTN.setAttribute("title", "Enviar")
-	  	submitBTN.setAttribute("value", "Submit")
-	  	submitBTN.setAttribute("form", "adhesion_ils")
-	  	submitBTN.setAttribute("onclick", "onFormSubmit(this)")
-			submitBTN.setAttribute("class", "buttonAsistente buttonEnviar");  
-  	} else {
-			submitBTN.innerHTML = "Següent"
-		/* alert (getCookie('itramitsCurrentLanguage'))
-		if (getCookie("itramitsCurrentLanguage")==='ca') {
-			submitBTN.innerHTML = "Següent"
-		} else {
-		  	submitBTN.innerHTML = "Siguiente"
-		} */
+	  submitBTN.innerHTML = "Enviar"
+	  submitBTN.setAttribute("title", "Enviar")
+	  submitBTN.setAttribute("value", "Submit")
+	  submitBTN.setAttribute("form", "adhesion_ils")
+	  submitBTN.setAttribute("onclick", "onFormSubmit(this)")
+		submitBTN.setAttribute("class", "buttonAsistente buttonEnviar");  
+  } else {
+		submitBTN.innerHTML = "Següent"
 		submitBTN.setAttribute("onclick", "nextPrev(1)")
-  				}
+  }
   //... and run the function that will display the correct step indicator:
   fixStepIndicator(n)
 }

@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-idi-isba.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <section id="formulario_solicitud">
   <?php
   	helper('cookie');
@@ -49,6 +47,7 @@
     <button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
 	</div>
 </div>
+
 <!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD --------------------------------------------->
 <div class="tab">
 	<div>
@@ -58,7 +57,6 @@
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 					<span class="w3docs"></span>
 				</label>
-			<span id='aviso'></span>
 		</fieldset>
 	</div>
 	<fieldset>
@@ -113,7 +111,7 @@
 				</div>
 			</div>
 
-			<input type = "text" name = "denom_interesado" id = "denom_interesado" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" size="220" aria-required="true">
+			<input type="text" onblur="javaScript: validateFormField(this);" required aria-required="true" name = "denom_interesado" id = "denom_interesado" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" size="220">
 			
 			<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 				<div class="input-group">
@@ -128,16 +126,14 @@
 				</div>
 			</div>	
 			
-			<input type = "text" required title = "<?php echo lang('message_lang.direccion_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_sol_idigital');?>" name="domicilio" id="domicilio" aria-required="true">
+			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" name="domicilio" id="domicilio" title = "<?php echo lang('message_lang.direccion_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_sol_idigital');?>">
 			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/municipios.php';?>
-			<input type = "text" onblur="javaScript: validateFormField(this);" required title="<?php echo lang('message_lang.cp_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_idigital');?>" name="cpostal" id="cpostal" pattern="[0-9]{5}" minlength = "5" maxlength = "5" size="9" aria-required="true">  
+			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" title="<?php echo lang('message_lang.cp_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_idigital');?>" name="cpostal" id="cpostal" pattern="[0-9]{5}" minlength = "5" maxlength = "5" size="9">  
     	<input type = "tel"  onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.movil_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_sol_idigital');?>" name = "telefono_cont" id="telefono_cont" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" aria-required="true"><p id="mensaje_tel"></p>
 			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/epigrafeIAE_idi_isba.php';?>
-			<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
-			<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
-			<!-- <input type="text" aria-required="true" name = "domicilio_rep" id = "domicilio_rep" title="<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);"> -->
-			<input type="text" aria-required="true" name = "telefono_contacto_rep" id = "telefono_contacto_rep" title="<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
-			<!-- <input type="text" aria-required="true" name = "cp_rep" id = "cp_rep" title="<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_rep_legal_idigital');?>" minlength = "5" maxlength = "5" onblur="javaScript: validateFormField(this);"> -->
+			<input type="text" required aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
+			<input type="text" required aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
+			<input type="text" required aria-required="true" name = "telefono_contacto_rep" id = "telefono_contacto_rep" title="<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
 		</fieldset> 
 	</div>
 </div>	
@@ -206,7 +202,7 @@
 		</fieldset>
 	</div>
 </div>
-<!-------------------------- 7. DECLARO ----------------------------------------------------------------------------------->
+<!-------------------------- 6. DECLARO ----------------------------------------------------------------------------------->
 <div class="tab">	
 	<div id="formbox">
 		<fieldset>
@@ -292,7 +288,7 @@
 		</fieldset>
 	</div>
 </div>
-<!------------------------ 7. DOCUMENTACIÓN ------------------------------------------------------------------------------->
+<!-------------------------- 7. DOCUMENTACIÓN ----------------------------------------------------------------------------->
 <div class="tab">
 	<div id="formbox">
 		<fieldset>
@@ -300,61 +296,59 @@
 			<ol style="list-style-type: lower-alpha;">
 			<li>
 				<div class="form-check">
-					<label class="container-radio" for="documentacion_adjunta_requerida_idi_isba_a">
-						<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>						
+					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?></strong>						
   					<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_a[]" id="documentacion_adjunta_requerida_idi_isba_a" value="SI">
   					<span class="w3docs"><i class="bi bi-check-lg"></i></span>
-  				</label>
+  				</h3>
 				</div>
 			</li>
 
 			<li>
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_b" name="documentacion_adjunta_requerida_idi_isba_b[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_b" name="documentacion_adjunta_requerida_idi_isba_b[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div> 
 			</li>
 
 			<li>
 				<div class="form-check">
-					<label class="container-radio" for="documentacion_adjunta_requerida_idi_isba_c">
-						<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>
+					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?></strong>
   					<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_c[]" id="documentacion_adjunta_requerida_idi_isba_c" value="SI">
   					<span class="w3docs"><i class="bi bi-check-lg"></i></span>
-  				</label>
+  				</h3>
 				</div>
 			</li>
 		
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_d');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				 <div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_d" name="documentacion_adjunta_requerida_idi_isba_d[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_d');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_d" name="documentacion_adjunta_requerida_idi_isba_d[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_d');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
 			</li>
 
-			<li class="ocultar" id="es-p-fisica">
- 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>	
-			</li>	
+			<div id="es-p-fisica">
+				<li>
+	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+					<div>
+						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+					</div>	
+				</li>	
+			</div>
 
-			<li class="ocultar" id="es-p-juridica">
- 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>	
-			</li>	
+			<div id="es-p-juridica">
+				<li >
+	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+					<div>
+						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+					</div>	
+				</li>	
+			</div>
 			
 			<li>
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?></strong></h3>
 				<div id = "enviaridi_isba_g" class = "">
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>
-				<div class="form-check">
-					<input class="requerido" type="checkbox" id="idi_isba_g_EnIDI" name="idi_isba_g_EnIDI" class="container-radio" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
-					<label class="form-check-label alert alert-warning" role="alert" for="idi_isba_g_EnIDI"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
 			</li>
 
@@ -362,46 +356,42 @@
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?></strong></h3>
 				<div id = "enviaridi_isba_h" class = "">
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_h" name="documentacion_adjunta_requerida_idi_isba_h[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
-				</div>
-				<div class="form-check">
-					<input class="requerido" type="checkbox" id="idi_isba_h_EnIDI" name="idi_isba_h_EnIDI" class="form-check-input" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
-					<label class="form-check-label alert alert-warning" role="alert" for="idi_isba_h_EnIDI"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-				</div>				
+					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_h" name="documentacion_adjunta_requerida_idi_isba_h[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+				</div>	
 			</li>
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_i');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_i" name="documentacion_adjunta_requerida_idi_isba_i[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_i');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_i" name="documentacion_adjunta_requerida_idi_isba_i[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_i');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
 			</li>
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_j');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_j" name="documentacion_adjunta_requerida_idi_isba_j[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_j');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_j" name="documentacion_adjunta_requerida_idi_isba_j[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_j');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
 			</li>
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_k');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_k" name="documentacion_adjunta_requerida_idi_isba_k[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_k');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_k" name="documentacion_adjunta_requerida_idi_isba_k[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_k');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
 			</li>	
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_l');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_l" name="documentacion_adjunta_requerida_idi_isba_l[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_l');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_l" name="documentacion_adjunta_requerida_idi_isba_l[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_l');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
 			</li>	
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_m');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_m" name="documentacion_adjunta_requerida_idi_isba_m[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_m');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" required multiple/>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_m" name="documentacion_adjunta_requerida_idi_isba_m[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_m');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
 			</li>
 			
@@ -454,8 +444,7 @@ function showTab(n) {
     // Loop through the array elements
     for(var i = 0; i < itramitsCookies.length; i++) {
         var cookiePair = itramitsCookies[i].split("=");
-        /* Removing whitespace at the beginning of the cookie name
-        and compare it with the given string */
+        /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
         if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
             // Decode the cookie value and return
             let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
@@ -501,7 +490,7 @@ function nextPrev(n) {
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
-    document.getElementById("regForm").submit();
+    //document.getElementById("regForm").submit();
     return false;
   }
   // Otherwise, display the correct tab:
@@ -511,68 +500,22 @@ function nextPrev(n) {
 function validateFormField(field, step=0) {
 	var valid = true;
 	let inputElement = document.getElementById(field.id)
-	let aviso = document.getElementById('aviso')
 
 	const regexMail = new RegExp(/^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)
 	const regexHTTP = new RegExp(/https?:\/\/?[-a-zA-Z0-9]{1,256}\.[a-zA-Z]{2,3}/)
 	const regexTel  = new RegExp(/[0-9]{3}[0-9]{3}[0-9]{3}/)
 	
-	console.log (`Campo actual: ${inputElement.name}`)
-	switch (inputElement.name) {
-  		case 'nif':
-			  if (inputElement.value === '') {
-    			aviso.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
-					inputElement.classList.remove("valid");
-					inputElement.classList.add("invalid");
-			  } else {
-					aviso.innerHTML = ` "${ inputElement.name }" OK `;
-					inputElement.classList.remove("invalid");
-					inputElement.classList.add("valid");
-				}
-    		break;
-  		case 'fecha_creacion_empresa':
-			aviso.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
-    		break;
-  		case 'sitio_web_empresa':
-			if (!regexHTTP.test(document.getElementById(field.id).value)) {
-				aviso.innerHTML = `falta indicar el "${ inputElement.name }" no es correcto: ${ inputElement.value }.`;
-				document.getElementById(field.id).value = ''
-				document.getElementById(field.id).focus 
-			} else  {
-				aviso.innerHTML = `"${ inputElement.value }" es correcto.`;
-			}
-    		break;
-  		case 'nom_representante':
-			aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-    		break;
-  		case 'nif_representante':
-			aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-    		break;
-		case 'tel_representante':
-			if (!regexTel.test(document.getElementById(field.id).value)) {
-				aviso.innerHTML = `El teléfono de notificación no es correcto: "${ inputElement.value }".`;
-				document.getElementById(field.id).value = ''
-				document.getElementById(field.id).focus 
-			} else  {
-				aviso.innerHTML += `${ inputElement.value } está OK.`;
-			}
-    		break;	
-  		case 'mail_representante':
-			if (!regexMail.test(document.getElementById(field.id).value)) {
-				aviso.innerHTML = `El correo electrónico de notificación no es correcto: "${ inputElement.value }"`;
-				document.getElementById(field.id).value = ''
-				document.getElementById(field.id).focus 
-			} else  {
-				aviso.innerHTML += `${ inputElement.value } está OK.`;
-			}
-    		break;
-  		default:
-  			aviso.innerHTML = `Lo lamentamos, este valor no es correcto: "${ inputElement.value }" `;
-		}
+	console.log (`Campo actual es : ${inputElement.name} y su valor: ${inputElement.value}`)
+	if (!inputElement.value) {
+		inputElement.classList.remove("valid");
+		inputElement.classList.add("invalid");
+	} else {
+		inputElement.classList.remove("invalid");
+		inputElement.classList.add("valid");
+	}
 
 	let btnSend = document.querySelector(field.id);
-
-	if (Boolean(field.getAttribute('aria-required') == (!field.value))) {
+	if (Boolean(field.getAttribute('aria-required') === (!field.value))) {
 		field.setAttribute('class', 'invalid')
 		valid = false;
 	} else {
@@ -585,30 +528,25 @@ function validateForm() {
   // This function deals with validation of the form fields
   	var tabs, inputs, selects, i, valid = true;
   	tabs = document.getElementsByClassName("tab");
+
   	inputs = tabs[currentTab].getElementsByTagName("input");
-  	// inputs = tabs[currentTab].querySelector("requerido");
-  	// A loop that checks every INPUT field in the current tab:
   	for (let cell of inputs) {
-	    // If a field is empty and has required attribute ...
-		/* if (cell.id != "empresa_consultor") { */
-
-			if ( (!cell.value ) && ( cell.getAttribute('aria-required')) && !document.getElementById("autonomo").checked) {
-	   			cell.setAttribute ('class','aviso');
-      			valid = false;
-    		}
-
-		/* } */
+			if ( (cell.value === '') && (cell.getAttribute('aria-required')) ) {
+	   		cell.setAttribute ('class','aviso');
+      	valid = false;
+				console.log (cell.name)
+				if (document.getElementById("autonomo").checked && ((cell.name === "nom_representante") || cell.name === "nif_representante" || cell.name === "telefono_contacto_rep")) {
+					cell.removeAttribute ('class','aviso');
+					valid = true
+				}
+    	}
   	}
  
   	selects = tabs[currentTab].getElementsByTagName("select");
-  	// Same with every SELECT field in the current tab:
   	for (let cell of selects) {
-	    // If a field is empty and has required attribute ...
     	if (cell.value === '') {
-	      	// add an "invalid" class to the field:
 	  		cell.setAttribute ('class','aviso');
-      		// and set the current valid status to false
-      		valid = false;
+      	valid = false;
     	} 
   	}
 
@@ -625,6 +563,8 @@ function validateForm() {
   if (valid) {
     	document.getElementsByClassName("step")[currentTab].className += " finish";
   }
+
+	console.log ("**"+valid+"**")
   return valid; // return the valid status
 
 }
@@ -643,6 +583,6 @@ function fixStepIndicator(n) {
 	if (n < 7) {
   		x[n].className += " active";
 	}
-	document.getElementById('aviso').innerHTML = ''
+	/* document.getElementById('aviso').innerHTML = '' */
 }
 </script>

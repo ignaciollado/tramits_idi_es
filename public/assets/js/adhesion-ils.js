@@ -88,14 +88,14 @@ function onFormSubmit(param){
 	if ( document.getElementById("file_informeResumenIls").value === '' ) {
 		document.getElementById("file_informeResumenIls").setAttribute ('class','aviso');
 		return
-  	} else {
+  } else {
 		document.getElementById("file_informeResumenIls").style.backgroundColor = "#04aa6d";
 		document.getElementById("file_informeResumenIls").classList.remove('aviso');
 	}
-  	if ( document.getElementById("file_informeInventarioIls").value === '' ) {
+  if ( document.getElementById("file_informeInventarioIls").value === '' ) {
 		document.getElementById("file_informeInventarioIls").setAttribute ('class','aviso');
 		return
-  	} else {
+  } else {
 		document.getElementById("file_informeInventarioIls").style.backgroundColor = "#04aa6d";
 		document.getElementById("file_informeInventarioIls").classList.remove('aviso');
 	}

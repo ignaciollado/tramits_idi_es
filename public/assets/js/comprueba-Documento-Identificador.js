@@ -17,6 +17,7 @@ function averiguaTipoDocumento (valor) {
 	} else {
 		toastMessage.innerText = ""
 		toastMessage.classList.remove("invalid")
+		document.getElementById("nif").setAttribute('class', 'valid')
 	}
 
 	if (formaJuridaSelected === "autonomo") {

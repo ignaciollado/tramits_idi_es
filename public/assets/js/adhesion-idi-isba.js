@@ -9,19 +9,13 @@ let restResult = document.querySelector('#resultContainer')
 let end_point = ""
 let baseUrl = window.location
 
-const theForm = document.getElementById("adhesion_idi_isba");
+/* const theForm = document.getElementById("adhesion_idi_isba"); */
 let btnSendFormIDIISBA = document.getElementById("sendFormIDIISBA")
 let spinnerSendRequestIDIISBA = document.getElementById("spinnerSendRequestIDIISBA")
 
-/* let liveToast = document.getElementById('liveToast')
-let toastMessage = document.getElementById('toastMessage')
-let toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast) */
-
-//activaDesactivaFormulario (false)
-
-theForm.addEventListener('submit', (event) => {
+/* theForm.addEventListener('submit', (event) => {
     event.preventDefault(); 
-})
+}) */
 
 function activaDesactivaFormulario (valor) {
   var form  = document.getElementById("adhesion_idi_isba")
@@ -49,18 +43,88 @@ function activaDesactivaFormulario (valor) {
 }
 
 function onFormSubmit(e) {
-	
+
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_b").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").classList.remove('aviso');
+	}
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_d").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").classList.remove('aviso');
+	}
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_e").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_e").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_e").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_e").classList.remove('aviso');
+	}
+
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_f").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_f").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_f").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_f").classList.remove('aviso');
+	}
+
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_h").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").classList.remove('aviso');
+	}
+
+
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_i").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").classList.remove('aviso');
+	}
+
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").classList.remove('aviso');
+	}
+
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_k").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").classList.remove('aviso');
+	}
+
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_l").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").classList.remove('aviso');
+	}
+
+
 	let theForm = document.getElementById("adhesion_idi_isba")
 	let theElement = document.getElementById("nextBtn")
 
-	console.log ("Se ha pulsado submit ISBA... desde: " + e, localStorage.getItem('documentacion_adjunta_requerida_idi_isba_n'))
-
+	console.log ("Se ha pulsado submit ISBA... desde: " + e.innerHTML)
   theElement.value = "Enviant, un moment per favor... "
   theElement.disabled = true;
   theElement.style.backgroundColor= "orange";
   theElement.style.cursor="progress";
   theForm.style.opacity =".2";
-	
   theForm.submit();
 }
 
@@ -74,14 +138,16 @@ function tipoSolicitante (valor) {
 				document.getElementById("denom_interesado").setAttribute("placeholder", "Nom");
 				document.getElementById("denom_interesado").setAttribute("title", "Nom");
 				document.getElementById("nom_representante").value = ""
+				document.getElementById("nif_representante").value = ""
+				document.getElementById("telefono_contacto_rep").value = ""
 				document.getElementById("nom_representante").readOnly = true
 				document.getElementById("nom_representante").disabled = true
 				document.getElementById("nif_representante").readOnly = true
 				document.getElementById("nif_representante").disabled = true
 				document.getElementById("telefono_contacto_rep").readOnly = true
 				document.getElementById("telefono_contacto_rep").disabled = true
-				document.getElementById("es-p-fisica").classList.remove("ocultar")
-				document.getElementById("es-p-juridica").classList.add("ocultar")
+ 				document.getElementById("es-p-fisica").removeAttribute("disabled")
+				document.getElementById("es-p-juridica").setAttribute("disabled", "true")
 				break;
 			case 'pequenya':
 			case 'mediana':
@@ -101,10 +167,12 @@ function tipoSolicitante (valor) {
 				document.getElementById("nif_representante").disabled = false
 				document.getElementById("telefono_contacto_rep").readOnly = false
 				document.getElementById("telefono_contacto_rep").disabled = false
-				document.getElementById("es-p-fisica").classList.add("ocultar")
-				document.getElementById("es-p-juridica").classList.remove("ocultar")
+ 				document.getElementById("es-p-fisica").setAttribute("disabled", "true")
+				document.getElementById("es-p-juridica").removeAttribute("disabled") 
 				break;
 		}
+		//document.getElementById("aviso2").remove('aviso')
+		document.getElementById("formbox2").className = 'formbox'
 }
 
 function limpiaInfo_lbl (valor) {
@@ -137,82 +205,6 @@ function deshabilitarSubidaDocumento (checkObj) {
 				 }
 			break			
 	}
-}
-
-function validateFormField(field, step=0) {
-	var valid = true
-	let inputElement = document.getElementById(field.id)
-  console.log ( `-${inputElement.value}-` )
-
-	const regexMail = new RegExp(/^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)
-	const regexHTTP = new RegExp(/https?:\/\/?[-a-zA-Z0-9]{1,256}\.[a-zA-Z]{2,3}/)
-	const regexTel  = new RegExp(/[0-9]{3}[0-9]{3}[0-9]{3}/)
-	
-	console.log (`Campo actual: ${inputElement.name}`)
-
-	switch (inputElement.name) {
-  		case 'nif':
-			  if (inputElement.value === '') {
-    			// aviso.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
-/* 					toastMessage.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
-					toastBootstrap.show() */
-					/* 					inputElement.classList.remove("valid");
-					inputElement.classList.add("invalid"); */
-			  } else {
-					// aviso.innerHTML = ` "${ inputElement.name }" OK `;
-/* 					toastMessage.innerHTML = ` "${ inputElement.name }" OK `;
-					toastBootstrap.show()			 */		
-					/* 					inputElement.classList.remove("invalid");
-					inputElement.classList.add("valid"); */
-				}
-    		break;
-
-  		case 'nom_representante':
-				//aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-/* 				toastMessage.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-				toastBootstrap.show()		 */	
-    		break;
-  		case 'nif_representante':
-				//aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-/* 				toastMessage.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-				toastBootstrap.show()	 */
-    		break;
-		case 'tel_representante':
-			if (!regexTel.test(document.getElementById(field.id).value)) {
-				//aviso.innerHTML = `El teléfono de notificación no es correcto: "${ inputElement.value }".`;
-/* 				toastMessage.innerHTML = `El teléfono de notificación no es correcto: "${ inputElement.value }".`;
-				toastBootstrap.show() */
-				document.getElementById(field.id).value = ''
-				document.getElementById(field.id).focus 
-			} else  {
-				//aviso.innerHTML += `${ inputElement.value } está OK.`;
-			}
-    		break;	
-  		case 'mail_representante':
-			if (!regexMail.test(document.getElementById(field.id).value)) {
-				// aviso.innerHTML = `El correo electrónico de notificación no es correcto: "${ inputElement.value }"`;
-/* 				toastMessage.innerHTML = `El correo electrónico de notificación no es correcto: "${ inputElement.value }"`;
-				toastBootstrap.show()			 */	
-				document.getElementById(field.id).value = ''
-				document.getElementById(field.id).focus 
-			} else  {
-				//aviso.innerHTML += `${ inputElement.value } está OK.`;
-			}
-    		break;
-  		default:
-  			//aviso.innerHTML = `Lo lamentamos, este valor no es correcto: "${ inputElement.value }" `;
-/* 				toastMessage.innerHTML =  `Lo lamentamos, este valor no es correcto: "${ inputElement.value }" `;
-				toastBootstrap.show()		 */
-		}
-	let btnSend = document.querySelector(field.id);
-
-	/* if (Boolean(field.getAttribute('aria-required') == (!field.value))) {
-		field.setAttribute('class', 'invalid')
-		valid = false;
-	} else {
-		field.setAttribute('class', 'valid')
-		valid = true;
-	} */
 }
 
 function selectorNoSi(field) {
