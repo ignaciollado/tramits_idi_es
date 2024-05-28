@@ -9,13 +9,8 @@ let restResult = document.querySelector('#resultContainer')
 let end_point = ""
 let baseUrl = window.location
 
-/* const theForm = document.getElementById("adhesion_idi_isba"); */
 let btnSendFormIDIISBA = document.getElementById("sendFormIDIISBA")
 let spinnerSendRequestIDIISBA = document.getElementById("spinnerSendRequestIDIISBA")
-
-/* theForm.addEventListener('submit', (event) => {
-    event.preventDefault(); 
-}) */
 
 function activaDesactivaFormulario (valor) {
   var form  = document.getElementById("adhesion_idi_isba")
@@ -171,7 +166,6 @@ function tipoSolicitante (valor) {
 				document.getElementById("es-p-juridica").removeAttribute("disabled") 
 				break;
 		}
-		//document.getElementById("aviso2").remove('aviso')
 		document.getElementById("formbox2").className = 'formbox'
 }
 
@@ -213,7 +207,6 @@ function selectorNoSi(field) {
 
   if (inputElement.name === 'tiene_ayudas_subv') {
     if (inputElement.value === 'SI') {
-			console.log ("SI")
       document.getElementById("tiene_ayudas_subv_si_no").classList.remove("ocultar")
 			if ( inputElement.name === 'ayuda_subv_de' ) {
 				if (inputElement.value === 'otros') {
@@ -223,7 +216,6 @@ function selectorNoSi(field) {
 				}
 			}
     } else {
-			console.log ("NO")
       document.getElementById("tiene_ayudas_subv_si_no").classList.add("ocultar")
       document.getElementById("ayuda_subv_dg_pol_ind").checked = false
       document.getElementById("ayuda_subv_otros").checked = false
@@ -241,7 +233,6 @@ function selectorNoSi(field) {
 			empresa_eco_lbl.classList.add("ocultar")
 		}
   }
-
 }
 
 function formatNumber(field) {
@@ -257,7 +248,6 @@ function formatNumber(field) {
 }
 
 function muestraSubeArchivo (id) {
-		// enviar_iDigital.disabled = true
 		console.log ("-"+id+"-")
 		let elementA = document.getElementById("enviarnifEmpresa")
 		let aChild = document.createElement('input')
