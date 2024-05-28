@@ -182,6 +182,17 @@ function limpiaInfo_lbl (valor) {
 function deshabilitarSubidaDocumento (checkObj) {
 	console.log (checkObj.name, checkObj.checked)
 	switch (checkObj.name) {
+		case 'idi_isba_b_EnIDI':
+			if (checkObj.checked) {
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').removeAttribute("required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').removeAttribute("aria-required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').disabled = true
+			 } else {
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').setAttribute('required', '')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').setAttribute('aria-required', 'true')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').disabled = false
+			 }
+			break		
 		case 'idi_isba_g_EnIDI':
 			if (checkObj.checked) {
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').removeAttribute("required")
@@ -193,7 +204,7 @@ function deshabilitarSubidaDocumento (checkObj) {
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').disabled = false
 			 }
 			break
-			case 'idi_isba_h_EnIDI':
+		case 'idi_isba_h_EnIDI':
 				if (checkObj.checked) {
 					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("required")
 					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("aria-required")

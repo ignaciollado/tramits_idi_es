@@ -308,6 +308,12 @@
 				<div>
 					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_b" name="documentacion_adjunta_requerida_idi_isba_b[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div> 
+
+				<label for="idi_isba_b_EnIDI" class="main" >
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+					<input type="checkbox" id="idi_isba_b_EnIDI" name="idi_isba_b_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<span class="w3docs"></span>
+				</label>
 			</li>
 
 			<li>
@@ -348,6 +354,11 @@
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
+				<label for="idi_isba_g_EnIDI" class="main" >
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+					<input type="checkbox" id="idi_isba_g_EnIDI" name="idi_isba_g_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<span class="w3docs"></span>
+				</label>
 			</li>
 
 			<li>
@@ -355,7 +366,12 @@
 				<div id = "enviaridi_isba_h" class = "">
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_h" name="documentacion_adjunta_requerida_idi_isba_h[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
-				</div>	
+				</div>
+				<label for="idi_isba_h_EnIDI" class="main" >
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+					<input type="checkbox" id="idi_isba_h_EnIDI" name="idi_isba_h_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<span class="w3docs"></span>
+				</label>
 			</li>
 
 			<li>
