@@ -612,9 +612,9 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'adherido_a_ils_si_no' => "CATEGORÍA",
 'no_adherido_a_ils'     => "Inversión",
 'adherido_a_ils'        => "Inversión ILS",
-'solicita_ayuda_idi_isba'  => "SOLICITO<br><small>De acuerdo con la convocatoria para el año 2023 de ayudas a las empresas industriales con actividad en las Islas Baleares
-para cubrir las comisiones de apertura y de estudio, los intereses y el coste del aval de sociedades de garantía recíproca para operaciones de financiación de inversiones productivas
-y de liquidez, aprobada por Resolución del consejero de Empresa, Ocupación y Energía, los importes correspondientes para la operación, avalada por sociedad de garantía recíproca
+'solicita_ayuda_idi_isba'  => "SOLICITO<br><small>De acuerdo con la convocatoria para el año 2024 de ayudas a las empresas industriales con actividad en las Islas Baleares
+para cubrir las comisiones de apertura y de estudio, los intereses y el coste del aval para operaciones de financiación de inversiones productivas,
+ aprobada por Resolución del consejero de Empresa, Ocupación y Energía, los importes correspondientes para la operación, avalada por sociedad de garantía recíproca ISBA
 , siguiente:</small>",
 'solicita_ayuda_importe_idi_isba' => "SOLICITO una AYUDA por importe de ",
 'solicita_ayuda_importe_idi_isba_detall' => " con el siguiente detalle: ",

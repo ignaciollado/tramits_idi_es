@@ -636,9 +636,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'adherido_a_ils_si_no'  => "CATEGORIA",
 'no_adherido_a_ils'     => "Inversió",
 'adherido_a_ils'        => "Inversió ILS",
-'solicita_ayuda_idi_isba'  => "SOL·LICITO<br><small>D'acord amb la convocatòria per a l'any 2023 d'ajuts a les empreses imdustrials amb activitat a les Illes Balears per cobrir
-les comissions d'obertura i d'estudi, els interessos i el cost de l'aval de societats de garantia recíproca per operaciones de finançament d'inversions productives i de liquiditat, aprovada per
-Resolució del conseller d'Empresa, Ocupació i Energia, els imports corresponnents per l'operació, avalada per societat de garantia recíproca, següent:</small>",
+'solicita_ayuda_idi_isba'  => "SOL·LICITO<br><small>D'acord amb la convocatòria per a l'any 2024 d'ajuts a les empreses industrials amb activitat a les Illes Balears per cobrir les comissions d'obertura i d'estudi, els interessos i el cost de l'aval per operaciones de finançament d'inversions productives, aprovada per Resolució del conseller d'Empresa, Ocupació i Energia, els imports corresponents per l'operació, avalada per societat de garantia recíproca ISBA, següent:</small>",
 'solicita_ayuda_importe_idi_isba' => "SOL·LICIT un AJUT per import de ",
 'solicita_ayuda_importe_idi_isba_detall' => " amb el següent detall: ",
 'solicita_ayuda_subvencion_intereses_idi_isba' => "Una subvenció d'interessos, consistent en la quantia de",
@@ -1133,6 +1131,13 @@ Tal com estableix l’article 11 del Reglament de la marca, la renovació de la 
 'doc_ils_resolucion_concesion_con_req_inter_recursos_texto' => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) en el termini d’un mes comptador des de l’endemà de la notificació, d’acord amb l’article 124 de la Llei 39/2015, d’1 d’octubre, del procediment administratiu comú de les administracions públiques, i l’article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l’Administració de la Comunitat Autònoma de les Illes Balears.</p>
 <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l’endemà de la notificació, d’acord amb l’article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
 'doc_ils_resolucion_concesion_con_req_firma' => "El President de l’IDI<br>Alejandro Sáenz de San Pedro García<br>",
+
+/* ------------------ ISBA ---------------------- */
+'doc_isba_requerimiento_asunto' => "Assumpte: equeriment de documentació relativa al procediment de concessió de la linia IDI-ISBA.",
+'doc_isba_requerimiento_p1' => "En relació amb la vostra sol·licitud d’adhesió a la marca Indústria Local Sostenible, us informam que, en el termini de trenta dies, heu d'aportar la documentació següent per poder completar  la vostra sol·licitud:",
+'doc_isba_requerimiento_p2' => "Així, us requerim perquè, en un termini no superior a trenta dies naturals des de la recepció d’aquest escrit, esmeneu les deficiències indicades anteriorment o aporteu la documentació que s’indica, a través del Registre electrònic comú (REC) de l’Administració General de l’Estat (https://rec.redsara.es). Per poder dur a terme un registre mitjançant el REC cal disposar d’un certificat electrònic o DNI electrònic.",
+'doc_isba_requerimiento_p3' => "En cas que no presenteu la documentació esmentada en el termini de trenta dies, se us tindrà per desistit/a de la vostra petició i es procedirà a notificar una resolució de denegació d’adhesió a la marca Indústria Local Sostenible.",
+
 
     'invalidEvent'                     => '{0} no es una llamada válida a un Evento de Modelo.', // '{0} is not a valid Model Event callback.',
    'invalidArgument'                  => 'Debes proporcionar un {0} valido.', // 'You must provide a valid {0}.',
