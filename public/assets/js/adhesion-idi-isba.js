@@ -8,7 +8,6 @@ let restResultDialog = document.querySelector('#theDialog')
 let restResult = document.querySelector('#resultContainer')
 let end_point = ""
 let baseUrl = window.location
-
 let btnSendFormIDIISBA = document.getElementById("sendFormIDIISBA")
 let spinnerSendRequestIDIISBA = document.getElementById("spinnerSendRequestIDIISBA")
 
@@ -45,6 +44,13 @@ function onFormSubmit(e) {
   } else {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").style.backgroundColor = "#04aa6d";
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").classList.remove('aviso');
+	}
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_c").value === '' ) {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").setAttribute ('class','aviso');
+		return
+  } else {
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").style.backgroundColor = "#04aa6d";
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").classList.remove('aviso');
 	}
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_d").value === '' ) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").setAttribute ('class','aviso');
@@ -141,8 +147,8 @@ function tipoSolicitante (valor) {
 				document.getElementById("nif_representante").disabled = true
 				document.getElementById("telefono_contacto_rep").readOnly = true
 				document.getElementById("telefono_contacto_rep").disabled = true
- 				document.getElementById("es-p-fisica").removeAttribute("disabled")
-				document.getElementById("es-p-juridica").setAttribute("disabled", "true")
+ 				document.getElementById("es-p-fisica").classList.remove("ocultar");
+				document.getElementById("es-p-juridica").classList.add("ocultar")
 				break;
 			case 'pequenya':
 			case 'mediana':
@@ -162,8 +168,8 @@ function tipoSolicitante (valor) {
 				document.getElementById("nif_representante").disabled = false
 				document.getElementById("telefono_contacto_rep").readOnly = false
 				document.getElementById("telefono_contacto_rep").disabled = false
- 				document.getElementById("es-p-fisica").setAttribute("disabled", "true")
-				document.getElementById("es-p-juridica").removeAttribute("disabled") 
+ 				document.getElementById("es-p-fisica").classList.add("ocultar")
+				document.getElementById("es-p-juridica").classList.remove("ocultar");
 				break;
 		}
 		document.getElementById("formbox2").className = 'formbox'
@@ -243,8 +249,11 @@ function formatNumber(field) {
 
   newFormatNumber = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(actualFormatNumber.value)
 
-  actualFormatNumber.value = newFormatNumber
-
+	if ( newFormatNumber === "0,00 €") {
+		actualFormatNumber.value = ""
+	} else {
+		actualFormatNumber.value = newFormatNumber
+	}
 }
 
 function muestraSubeArchivo (id) {

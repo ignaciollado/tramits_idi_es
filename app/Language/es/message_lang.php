@@ -593,7 +593,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'documentacion_adjunta_requerida_idi_isba' => "Documentación",
 'documentacion_adjunta_requerida_idi_isba_a' => "El documento normalizado de solicitud de subvención de esta convocatoria, el cual se genera al enviar esta solicitud.",
 'documentacion_adjunta_requerida_idi_isba_b' => "Descripción de la empresa y su actividad, modelo de negocio y detalle de la inversión/inversiones previstas.",
-'documentacion_adjunta_requerida_idi_isba_c' => "Declaración responsable de la veracidad de los datos bancarios aportados que se genera al enviar esta solicitud.",
+'documentacion_adjunta_requerida_idi_isba_c' => "Declaración responsable de la veracidad de los datos bancarios según modelo CAIB.",
 'documentacion_adjunta_requerida_idi_isba_d' => "Certificado del IAE actualizado en el momento de la sol·licitud.",
 'documentacion_adjunta_requerida_idi_isba_e' => "Persona física, se requerirá: el certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.",
 'documentacion_adjunta_requerida_idi_isba_f' => "Persona jurídica, se requerirá: - Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.<br>
@@ -609,9 +609,9 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'documentacion_adjuntada_idi_isba'       => "DOCUMENTACIÓN ADJUNTA",
 'certificado_alta_censo_AEAT'            => "Certificado de estar de alta en el censo de la AEAT",
 
-'adherido_a_ils_si_no' => "CATEGORÍA",
-'no_adherido_a_ils'     => "Inversión",
-'adherido_a_ils'        => "Inversión ILS",
+'adherido_a_ils_si_no' => "En el momento de la solicitud, su empresa ¿está adherida al programa ILS?",
+'no_adherido_a_ils'     => "NO",
+'adherido_a_ils'        => "SÍ",
 'solicita_ayuda_idi_isba'  => "SOLICITO<br><small>De acuerdo con la convocatoria para el año 2024 de ayudas a las empresas industriales con actividad en las Islas Baleares
 para cubrir las comisiones de apertura y de estudio, los intereses y el coste del aval para operaciones de financiación de inversiones productivas,
  aprobada por Resolución del consejero de Empresa, Ocupación y Energía, los importes correspondientes para la operación, avalada por sociedad de garantía recíproca ISBA

@@ -169,7 +169,7 @@
 	<div id="formbox">
     <fieldset>
 			<h2>5. <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
-			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" required aria-required="true" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220" required>
+			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220">
 		</fieldset>
 		<!-------------------------- 6. SOLICITA AYUDA ------------------------------------------------------------------------>
 		<fieldset>
@@ -190,15 +190,15 @@
 		</fieldset>
 		<fieldset>
 			<h2><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');?></h2>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" required aria-required="true" name = "importe_presupuesto_idi_isba" id="importe_presupuesto_idi_isba" maxlength = "9" size="9" required>
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" name = "importe_presupuesto_idi_isba" id="importe_presupuesto_idi_isba" maxlength = "9" size="9">
 		</fieldset>
     <fieldset>
 			<h2><?php echo lang('message_lang.solicita_ayuda_idi_isba');?></h2>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" required aria-required="true" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9" required>
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9">
 			<h3 for=''><?php echo lang('message_lang.detalle_importe_ayuda_solicitado_idi_isba');?></h3>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" aria-required="true" name = "intereses_ayuda_solicita_idi_isba" id="intereses_ayuda_solicita_idi_isba" maxlength = "9" size="9" required>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" aria-required="true" name = "coste_aval_solicita_idi_isba" id="coste_aval_solicita_idi_isba" maxlength = "9" size="9" required>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" aria-required="true" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9" required>
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" name = "intereses_ayuda_solicita_idi_isba" id="intereses_ayuda_solicita_idi_isba" maxlength = "9" size="9">
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" name = "coste_aval_solicita_idi_isba" id="coste_aval_solicita_idi_isba" maxlength = "9" size="9">
+			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9">
 		</fieldset>
 	</div>
 </div>
@@ -311,12 +311,10 @@
 			</li>
 
 			<li>
-				<div class="form-check">
-					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?></strong>
-  					<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_c[]" id="documentacion_adjunta_requerida_idi_isba_c" value="SI">
-  					<span class="w3docs"></span>
-  				</h3>
-				</div>
+					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+					<div>
+						<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_c" name="documentacion_adjunta_requerida_idi_isba_c[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+					</div>
 			</li>
 		
 			<li>
