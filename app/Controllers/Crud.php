@@ -3,6 +3,7 @@
 // Add those two lines at the beginning of your controller
 use App\Libraries\GroceryCrud;
 use App\Models\ConfiguracionModel;
+use App\Models\ConfiguracionLineaModel;
 
 class Crud extends BaseController
 {
@@ -77,9 +78,10 @@ class Crud extends BaseController
     public function payment_orders() 
     {
         $modelConfig = new ConfiguracionModel();
-	    $data['configuracion'] = $modelConfig->where('convocatoria_activa', 1)->first();
-	    $convocatoria =  $data['configuracion']['convocatoria'];
-        
+        $modelConfigLinea = new ConfiguracionLineaModel();
+	    $convocatoria =  '2024';
+        echo "convocatòria actual: ".$convocatoria;
+
         $crud = new GroceryCrud();
 
         $crud->setTable('pindust_expediente')

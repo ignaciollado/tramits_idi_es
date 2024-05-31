@@ -684,7 +684,7 @@ class Expedientes extends Controller
 		}
 
 		// Sube las facturas
-		$documentosfile = $this->request->getFiles();
+		$documentosfile = $this->request->getFiles(); 
 		foreach ($documentosfile['file_FactTransformacionDigital'] as $factura) {
 			if ($factura->isValid() && !$factura->hasMoved()) {
 				$newName = $factura->getRandomName();
@@ -707,7 +707,6 @@ class Expedientes extends Controller
 				$last_insert_id = $save->connID->insert_id;
 			}
 		}
-
 		// Sube los pagos
 		$documentosfile = $this->request->getFiles();
 		foreach ($documentosfile['file_PagosTransformacionDigital'] as $pagos) {

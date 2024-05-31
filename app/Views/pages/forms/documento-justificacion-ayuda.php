@@ -160,8 +160,8 @@ $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
 

@@ -55,11 +55,10 @@ $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
 $mail->Subject = "Justificar xecs de consultoria Illes Balears - IDI";
 $mensajeLayout = file_get_contents('contents-justificacion.html');
-$mensajeLayout = str_replace("%USUARIOIDI%", $solicitante, $mensajeLayout);
-$mensajeLayout = str_replace("%USUARIOMAIL%", $correoDestino, $mensajeLayout);
-$mensajeLayout = str_replace("%USUARIOPHONE%", $contactPhone, $mensajeLayout);
-$mensajeLayout = str_replace("%USUARIOASUNTO%", $asunto, $mensajeLayout);
-$mensajeLayout = str_replace("%USUARIOMENSAJE%", $mensaje, $mensajeLayout);
+$mensajeLayout = str_replace("%ID%", $_POST["id"], $mensajeLayout);
+$mensajeLayout = str_replace("%NIF%", $nif, $mensajeLayout);
+$mensajeLayout = str_replace("%TIPOTRAMITE%", $tipoTramite, $mensajeLayout);
+$mensajeLayout = str_replace("%CONVOCATORIA%", $convocatoria, $mensajeLayout);
 
 $mail->msgHTML( $mensajeLayout , __DIR__);
 

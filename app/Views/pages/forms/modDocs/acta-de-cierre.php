@@ -131,7 +131,7 @@
 							<span>Vols enviar un correu electrònic al sol·licitant de l'ajuda perquè pugui realitzar la justificació?</span>
 						</div>	
 						<div class="form-group">
-           				    <button type="button" onclick = "javaScript: enviaMailJustificacion_click();" id="enviaMailJustificacion" class="btn-itramits btn-success-itramits">Enviar
+           		<button type="button" onclick = "javaScript: enviaMailJustificacion_click();" id="enviaMailJustificacion" class="btn-itramits btn-success-itramits">Enviar
 							   <span id="spinner_151" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
 							</button>
 							<span id="mensaje" class ="ocultar info-msg"></span>
