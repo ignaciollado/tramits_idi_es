@@ -1332,7 +1332,7 @@ class Expedientes extends Controller
 								echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 								echo view('pages/forms/go-back-footer', $data_footer);
 								break;												
-			case "doc_acta_kickoff": //CON VIAFIRMA DOC xxx A TÉCNICO
+			case "doc_acta_kickoff": 														// DOC 19 - CON VIAFIRMA DOC xxx A TÉCNICO
 				$data_infor = [
 					'doc_acta_kickoff' => $last_insert_id
 				];
@@ -1350,7 +1350,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_acta_de_cierre": //CON VIAFIRMA DOC xxx A TÉCNICO
+			case "doc_acta_de_cierre": 													// DOC 20 - CON VIAFIRMA DOC xxx A TÉCNICO
 				$data_infor = [
 					'doc_acta_de_cierre' => $last_insert_id
 				];
@@ -1367,8 +1367,25 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-	
-			case "doc_res_conces_sin_req": //SIN VIAFIRMA DOC 17 A DIRECTOR GENERAL
+			case "doc_res_pago_sin_req": 			  					// DOC 27 - CON VIAFIRMA. A GERENCIA o DIRECCIÓN GENERAL
+					$data_infor = [
+							'doc_res_pago_sin_req' => $last_insert_id
+					];
+					$builder->where('id', $request->uri->getSegment(3));
+					$builder->update($data_infor);
+					$data['byCEOSigned'] = true;
+					$data_footer = [
+						'tipoDoc' => " Resolució de pagament sense requeriment",
+						'conVIAFIRMA' => false
+					];
+					echo "<h4>Resolució de pagament sense requeriment</h4>";
+					echo view('pages/forms/modDocs/pdf/plt-resolucion-pago-sin-requerimiento', $data);
+					echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+					echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+					echo view('pages/forms/go-back-footer', $data_footer);
+					break;													
+			
+				case "doc_res_conces_sin_req": //SIN VIAFIRMA DOC 17 A DIRECTOR GENERAL
 				$data_infor = [
 					'doc_res_conces_sin_req' => $last_insert_id
 				];

@@ -1703,8 +1703,11 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <!----------------- Propuesta resolución revocación por no justificar  DOC 23 SIN VIAFIRMA -------->
                 <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-revocacion-por-no-justificar.php';?></li>
                 <!------------------------------------------------------------------------------------------------->
-                <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA -------->
+                <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA ------------------>
                 <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-revocacion-por-no-justificar.php';?></li>
+                <!------------------------------------------------------------------------------------------------->
+                <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA ------------------>
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-de-pago-sin-requerimiento.php';?></li>
                 <!------------------------------------------------------------------------------------------------->    
             </ol>
         </div>

@@ -6,7 +6,7 @@
 <footer class="copyrights">
 	<?php $session = session();?>
 	<div class="footer-item1">
-	<span>&copy; <?= date('Y') ?> Institut d'Innovació Empresarial de les Illes Balears</span> | 
+	<span>&copy; <?= date('Y') ?> Agència de desenvolupament regional de les Illes Balears</span> | 
 		 
 		 <!--<p>Pàgina carregada en {elapsed_time} segons</p>-->
  
