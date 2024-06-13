@@ -52,7 +52,7 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 		let fecha_firma_propuesta_resolucion_def = document.getElementById('fecha_firma_propuesta_resolucion_def')
     let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 	 	let fecha_not_propuesta_resolucion_def = document.getElementById('fecha_not_propuesta_resolucion_def') //0000-00-00
-		let fecha_firma_res_pago_just = document.getElementById('fecha_firma_res_pago_just')
+		let fecha_firma_res = document.getElementById('fecha_firma_res')
 		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
 		
 		let btnResPagoSinReq = document.getElementById('btnResPagoSinReq')
@@ -77,8 +77,8 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data notificació proposta resolució definitiva<br>"
 			todoBien = false
 		}
-		if(!fecha_firma_res_pago_just.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma resolució de pagament / justificació<br>"
+		if(!fecha_firma_res.value) {
+			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma resolució<br>"
 			todoBien = false
 		}
 		if(!fecha_REC_justificacion.value) {
