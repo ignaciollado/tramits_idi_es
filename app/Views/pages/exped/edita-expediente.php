@@ -924,7 +924,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 		        $add_meses = str_replace("'", "", $add_meses);                
 		        break;
 	    }
-        echo "----".$add_meses."----";
+       
         ?>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
@@ -1288,6 +1288,9 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <!----------------------------------------- Informe post subsanación de la documentación de justificación DOC 20---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
+            <!----------------- Resolución de pago sin requerimiento  DOC 27 FIRMA D GERENTE ------------------>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-de-pago-sin-requerimiento.php';?></li>
+            <!------------------------------------------------------------------------------------------------->    
                                
         </ol>    
         <h3>Documents de l'expedient:</h3>
@@ -1696,7 +1699,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
-            <ol start="24">
+            <ol start="25">
                 <!----------------------------------------- Reseolución desestimiento  DOC 22 SIN VIAFIRMA -------->
                 <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
                 <!------------------------------------------------------------------------------------------------->
@@ -1706,9 +1709,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA ------------------>
                 <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-revocacion-por-no-justificar.php';?></li>
                 <!------------------------------------------------------------------------------------------------->
-                <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA ------------------>
-                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-de-pago-sin-requerimiento.php';?></li>
-                <!------------------------------------------------------------------------------------------------->    
             </ol>
         </div>
 
