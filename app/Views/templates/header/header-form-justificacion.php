@@ -11,7 +11,7 @@
 	</title>
 	<meta name="description" content="Requeriment informació adicional">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
+	<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,9 +39,9 @@ $data['expedientes'] = $modelExp->where('id', $id)->first();
 <header>
 	<div class="menu">
 		<ul>
-			<li class="logo"><a href="http://www.idi.es" target="_self"><img height = "54" title="IDI Logo"
+			<li class="logo"><a href="http://www.adrbalears.es" target="_self"><img height = "64" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)"
 						alt = "<?php echo lang('message_lang.titulo_justificacion_idigital');?>"
-						src = "<?php echo base_url()."/public/assets/images/logo_idi_conselleria.jpg";?>" >
+						src = "<?php echo base_url()."/public/assets/images/adr-balears.png";?>" >
 			</li>
 			<li>
 			<?php if ($tipoTramite == "IDI-ISBA") {?>
