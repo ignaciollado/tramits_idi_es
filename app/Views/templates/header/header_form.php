@@ -14,7 +14,7 @@
 <script src="https://use.fontawesome.com/5db4446d08.js"></script>
 
 <!-- Latest compiled JavaScript -->
-	<link rel="icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
+<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/estilos.css"/>	
 </head>

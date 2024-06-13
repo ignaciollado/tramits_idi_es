@@ -12,7 +12,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script> 	
-	<link rel="icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
+<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/estilos.css"/>
 	<script type="text/javascript" src="/public/assets/js/pindust.js"></script>	

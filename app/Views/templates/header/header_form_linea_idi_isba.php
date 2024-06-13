@@ -7,7 +7,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<meta name="description" content="Assistent per sol·licitar la linia de ajuts idi-isba" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
+	<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/estilos.css"/>
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-idi-isba.css"/>

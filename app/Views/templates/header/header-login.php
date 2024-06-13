@@ -20,7 +20,7 @@
 <script src="https://use.fontawesome.com/5db4446d08.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script> 	
-<link rel="icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
+<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 <link rel="stylesheet" type="text/css" href="/public/assets/css/login.css"/>
 <script src="https://apis.google.com/js/api:client.js"></script>
 
