@@ -28,7 +28,7 @@ $mail->IsSMTP();
 //$mail->SMTPSecure = 'tls';
 $mail->Host = "localhost";  // specify main and backup server
 $mail->CharSet = 'UTF-8';
-$mail->XMailer = 'IDI';
+$mail->XMailer = 'ADR Balears';
 $mail->SMTPAuth = true;     // turn on SMTP authentication
 // When sending email using PHPMailer, you need to send from a valid email address
 // In this case, we setup a test email account with the following credentials:
@@ -39,13 +39,13 @@ $mail->Password = "Lvsy2r7[4,4}"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
-$mail->FromName = "IDI";
+$mail->FromName = "ADR Balears";
 // Lo que verá del remitente el destinatario
-$mail->SetFrom("noreply@tramits.idi.es","IDI");
+$mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("response@tramits.idi.es","IDI"); 
+$mail->AddReplyTo("response@tramits.idi.es","ADR Balears"); 
 // Con copia oculta
-$mail->AddBCC("ignacio.llado@idi.es", "Servei de Política Industrial");
+$mail->AddBCC("illado@idi.caib.es", "Servei de Política Industrial");
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
 $mail->WordWrap = 50;
@@ -59,7 +59,7 @@ $email_message .= "<html>";
 $email_message .= "<head>";
 $email_message .= "<meta charset = 'utf-8'>";
 $email_message .= "<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>";
-$email_message .= "<title>Adhesió al programa Industria Local Sostenible Illes Balears - IDI</title>";
+$email_message .= "<title>Adhesió al programa Industria Local Sostenible Illes Balears - ADR Balears</title>";
 $email_message .= "</head>";
 $email_message .= "<body>";
 $email_message .= "<div class='container'>";
@@ -73,12 +73,12 @@ $email_message .= "<div><a title='Obrir el formulari per fer-nos arribar l´info
 
 $email_message .= "<br><div>Pilar Jordi Amorós</div>";
 $email_message .= "<br><div>Cap de Servei de Política Industrial</div>";
-$email_message .= "<div><strong>Institut d'Innovació Empresarial de les Illes Balears</strong></div>";
+$email_message .= "<div><strong>Agència de desenvolupament regional de les Illes Balears</strong></div>";
 $email_message .= "<div><strong>Conselleria Empresa, Ocupació i Energia</strong></div>";
 $email_message .= "<div>Telèfon 971 176161 + 62891</div>";
 $email_message .= "<div>Plaça de Son Castelló, 1</div>";
 $email_message .= "<div>07009 Palma</div></td></tr>";
-$email_message .= "<tr style='width:100%;text-align:left;'><td>www.idi.es</td></tr>";
+$email_message .= "<tr style='width:100%;text-align:left;'><td>www.adrbalears.es</td></tr>";
 
 $email_message .= "</tbody>";
 $email_message .= "</table>";

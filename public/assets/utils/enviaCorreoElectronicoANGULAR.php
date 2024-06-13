@@ -32,11 +32,11 @@ $mail->Password = "Lvsy2r7[4,4}"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
-$mail->FromName = "IDI";
+$mail->FromName = "ADR Balears";
 // Lo que verá del remitente el destinatario
-$mail->SetFrom("noreply@tramits.idi.es","IDI");
+$mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("response@tramits.idi.es","IDI"); 
+$mail->AddReplyTo("response@tramits.idi.es","ADR Balears"); 
 
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
@@ -50,10 +50,10 @@ if ($asunto == 'appILS') {
 	$mensajeLayout = file_get_contents('contents-ils.html');	
 	$mail->Subject = "Nuevo mensaje desde APP Sostenibilitat";
 	// Con copia oculta
-	$mail->AddBCC("ignacio.llado@idi.es", "Sistemes d'Informació");
+	$mail->AddBCC("illado@idi.caib.es", "Sistemes d'Informació");
 } else {
 	$mensajeLayout = file_get_contents('contents.html');
-	$mail->Subject = "Nuevo mensaje desde IDI";
+	$mail->Subject = "Nuevo mensaje desde ADR Balears";
 	// Con copia oculta
 	$mail->AddBCC("info@idi.es", "Servei de comunicació");
 }

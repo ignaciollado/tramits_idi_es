@@ -39,13 +39,13 @@ $mail->Password = "Lvsy2r7[4,4}"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
-$mail->FromName = "IDI";
+$mail->FromName = "ADR Balears";
 // Lo que verá del remitente el destinatario
-$mail->SetFrom("noreply@tramits.idi.es","IDI");
+$mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("response@tramits.idi.es","IDI"); 
+$mail->AddReplyTo("response@tramits.idi.es","ADR Balears"); 
 // Con copia oculta
-$mail->AddBCC("ignacio.llado@idi.es", "Servei de Politica Indústrial");
+$mail->AddBCC("illado@idi.caib.es", "Servei de Politica Indústrial");
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
 $mail->WordWrap = 50;
@@ -53,7 +53,7 @@ $mail->WordWrap = 50;
 $mail->IsHTML(true);
 
 $mail->CharSet = 'UTF-8'; 
-$mail->Subject = "Justificar xecs de consultoria Illes Balears - IDI";
+$mail->Subject = "Justificar xecs de consultoria Illes Balears - ADR Balears";
 $mensajeLayout = file_get_contents('contents-justificacion.html');
 $mensajeLayout = str_replace("%ID%", $_POST["id"], $mensajeLayout);
 $mensajeLayout = str_replace("%NIF%", $nif, $mensajeLayout);
