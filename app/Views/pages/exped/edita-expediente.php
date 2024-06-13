@@ -1297,15 +1297,15 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
         <div class="docsExpediente">
             <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-                <div>Pujatel</div>
-                <div>Docuent</div>
-                <div>Estt</div>               
-                <div>Ació</div>
+                <div>Pujat el</div>
+                <div>Document</div>
+                <div>Estat</div>               
+                <div>Acció</div>
             </div>
 
             <?php if($documentos): ?>
             <?php foreach($documentos as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Justificac') {
+                if($docSolicitud_item->fase_exped == 'Justificacion') {
                     $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
                     $parametro = explode ("/",$path);
                     $tipoMIME = $docSolicitud_item->type;
