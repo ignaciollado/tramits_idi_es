@@ -1,8 +1,8 @@
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
-      <div class="fadeIn first">
-        <i class="fa fa-sign-in" aria-hidden="true" style='font-size:50px'></i>
+      <div class="fadeIn first logo-area">
+        <img width="95" src='../../../../public/assets/images/adr-balears.png' alt="Agència de desenvolupament regional de les Illes Balears" title="Gestor de tràmits de l'Agència de desenvolupament regional de les Illes Balears">
       </div>
       <!-- <span class='mensaje'><?= session('msg');?></span> -->
 	
@@ -16,7 +16,8 @@
 
     <div id="formFooter"> 
         <div><strong>Gestor de tràmits administratius</strong></div>
-        <div>&copy; <?= date('Y') ?> Institut d'Innovació Empresarial</div>
+        <div>&copy; <?= date('Y') ?></div>
+        <div>Agència de desenvolupament regional</div>
         <div>de les Illes Balears</div>
     </div>
   </div>

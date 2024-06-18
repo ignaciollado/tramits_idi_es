@@ -6,7 +6,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2023 CodeIgniter Foundation & IDI
+ * Copyright (c) 2019-2023 CodeIgniter Foundation &  ADR Balears
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,8 @@
  * THE SOFTWARE.
  *
  * @package    CodeIgniter
- * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2023 CodeIgniter Foundation & IDI
+ * @author     CodeIgniter Dev Team &  ADR Balears
+ * @copyright  2019-2023 CodeIgniter Foundation &  ADR Balears
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -41,9 +41,10 @@ return [
 
   '27_fets_tit' => "Fets",
 
-  '27_fets_1_2_3_4_5_6' => "<ol>
-                           <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s’aprova la convocatòria per a l’any %CONVO% d’ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
-                           <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l’esmentada resolució de convocatòria, per al programa o subprograma %PROGRAMA%.</li><br>
+  '27_fets_1_2_3_4_5_6' => "<ol>’
+                          <li>En data 1/06/2024 es va publicar al BOIB núm. 74 el canvi de denominació de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) que passa a ser Agència de Desenvolupament Regional de les Illes Balears (ADR Balears).</li><br>
+                          <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s’aprova la convocatòria per a l’any %CONVO% d’ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
+                          <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l’esmentada resolució de convocatòria, per al programa o subprograma %PROGRAMA%.</li><br>
 			   <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l’activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt onzè de la resolució de convocatòria.</li><br>
 			   <li>D’acord amb l’apartat 9.1 de les bases incloses a l’esmentada Resolució de convocatòria, en data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l’IDI va dictar proposta de resolució sobre la concessió d’un ajut a %SOLICITANTE% en el marc de l’esmentada convocatòria per un import de %IMPORTEAYUDA%, d’acord amb les quanties que apareixen a l’apartat tercer de la convocatòria.
 			   L’esmentada proposta de resolució ha estat notificada a l’entitat el %FECHA_NOTIF_PRPROV%.
@@ -67,16 +68,16 @@ return [
                           <li>L'Ordre de la consellera de Comerç, Indústria i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d'abril de 2008).</li></ol>",
   '27_dicto' => "Per tot això,",
 
-  '27_propuesta_tit' => "Propòs al president de l’IDI que dicti una resolució en els termes següents:",
+  '27_propuesta_tit' => "Propòs al president de  l'ADR Balears que dicti una resolució en els termes següents:",
 
   '27_resolucion'  => "<ol>
-                      <li>Reconèixer l'obligació i proposar el pagament a %SOLICITANTE%, amb NIF %NIF%, de l'ajuda justificada per un import de %IMPORTEAYUDA% euros amb càrrec als pressuposts de l’IDI.</li><br>
+                      <li>Reconèixer l'obligació i proposar el pagament a %SOLICITANTE%, amb NIF %NIF%, de l'ajuda justificada per un import de %IMPORTEAYUDA% euros amb càrrec als pressuposts de ADR Balears.</li><br>
                       <li>Notificar aquesta Resolució a l'interessat.</li></ol>",
 
   '27_recursos_tit'   => "Interposició de recursos",
 
-  '27_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
+  '27_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
                     <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
 
-  '27_firma' => "La directora gerent de l'IDI<br>%DGERENTE%<br><br>Palma, en data de la signatura electrònica<br>Conforme a la proposta, en dict Resolució<br>Palma, en data de la signatura electrònica<br><br>Per delegació del president de l'IDI<br>(BOIB núm %BOIBNUM%<br>La directora gerent de l'IDI<br>%DGERENTE%<br>Palma, en data de la signatura electrònica"
+  '27_firma' => "La directora gerent de l'ADR Balears<br>%DGERENTE%<br><br>Palma, en data de la signatura electrònica               Conforme a la proposta, en dict Resolució<br><br>Per delegació del president de l'ADR Balears<br>(BOIB núm %BOIBNUM%<br>La directora gerent de l'ADR Balears"
 ];

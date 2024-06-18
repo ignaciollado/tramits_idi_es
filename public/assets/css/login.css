@@ -5,6 +5,10 @@ body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
 }
+
+.logo-area {
+  margin: .5rem;
+}
 .wrapper {
   display: flex;
   align-items: center;
@@ -37,6 +41,7 @@ body {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
   padding: 25px;
+  color: #0192c4;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
