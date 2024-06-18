@@ -57,7 +57,7 @@ return [
 
   '27_fundamentosDeDerecho_tit' => "Fonaments de dret",
 
-  '27_fundamentosDeDerechoTxt' => "<ol> <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
+  '27_fundamentosDeDerechoTxt' => "<ol><li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
                           <li>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</li><br>
                           <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><br>
                           <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
@@ -68,10 +68,10 @@ return [
                           <li>L'Ordre de la consellera de Comerç, Indústria i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d'abril de 2008).</li></ol>",
   '27_dicto' => "Per tot això,",
 
-  '27_propuesta_tit' => "Propòs al president de  l'ADR Balears que dicti una resolució en els termes següents:",
+  '27_propuesta_tit' => "Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:",
 
   '27_resolucion'  => "<ol>
-                      <li>Reconèixer l'obligació i proposar el pagament a %SOLICITANTE%, amb NIF %NIF%, de l'ajuda justificada per un import de %IMPORTEAYUDA% euros amb càrrec als pressuposts de ADR Balears.</li><br>
+                      <li>Reconèixer l'obligació i proposar el pagament a %SOLICITANTE%, amb NIF %NIF%, de l'ajuda justificada per un import de %IMPORTEAYUDA% euros amb càrrec als pressuposts de l'ADR Balears.</li><br>
                       <li>Notificar aquesta Resolució a l'interessat.</li></ol>",
 
   '27_recursos_tit'   => "Interposició de recursos",
@@ -79,5 +79,5 @@ return [
   '27_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
                     <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
 
-  '27_firma' => "La directora gerent de l'ADR Balears<br>%DGERENTE%<br>Palma, en data de la signatura electrònica<br><br>Conforme a la proposta, en dict Resolució<br>Per delegació del president de l'ADR Balears<br>(BOIB 39 de 21/03/2024)<br>La directora gerent de l'ADR Balears<br>Silvia Delgado Carballar<br>Palma, en data de la signatura electrònica"
+  '27_firma' => "La directora gerent de l'ADR Balears<br><br>Silvia Delgado Carballar<br>Palma, en data de la signatura electrònica<br><br>Conforme a la proposta, en dict Resolució<br>Per delegació del president de l'ADR Balears<br>(BOIB 39 de 21/03/2024)<br><br>La directora gerent de l'ADR Balears<br><br>Silvia Delgado Carballar<br>Palma, en data de la signatura electrònica"
 ];
