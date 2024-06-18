@@ -37,23 +37,23 @@
  * @codeCoverageIgnore
  */
 return [
-  '27_intro' => "Resolució de pagament dels ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
+  '27_intro' => "Resolució de pagament dels ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
 
   '27_fets_tit' => "Fets",
 
-  '27_fets_1_2_3_4_5_6' => "<ol>’
-                          <li>En data 1/06/2024 es va publicar al BOIB núm. 74 el canvi de denominació de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) que passa a ser Agència de Desenvolupament Regional de les Illes Balears (ADR Balears).</li><br>
+  '27_fets_1_2_3_4_5_6' => "<ol>
+                          <li>En data 1/06/2024 es va publicar al BOIB núm. 74 el canvi de denominació de l’Agència de desenvolupament regional de les Illes Balears (ADR Balears) que passa a ser Agència de Desenvolupament Regional de les Illes Balears (ADR Balears).</li><br>
                           <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s’aprova la convocatòria per a l’any %CONVO% d’ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
                           <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l’esmentada resolució de convocatòria, per al programa o subprograma %PROGRAMA%.</li><br>
 			   <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l’activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt onzè de la resolució de convocatòria.</li><br>
-			   <li>D’acord amb l’apartat 9.1 de les bases incloses a l’esmentada Resolució de convocatòria, en data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l’IDI va dictar proposta de resolució sobre la concessió d’un ajut a %SOLICITANTE% en el marc de l’esmentada convocatòria per un import de %IMPORTEAYUDA%, d’acord amb les quanties que apareixen a l’apartat tercer de la convocatòria.
+			   <li>D’acord amb l’apartat 9.1 de les bases incloses a l’esmentada Resolució de convocatòria, en data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l’ADR Balears va dictar proposta de resolució sobre la concessió d’un ajut a %SOLICITANTE% en el marc de l’esmentada convocatòria per un import de %IMPORTEAYUDA%, d’acord amb les quanties que apareixen a l’apartat tercer de la convocatòria.
 			   L’esmentada proposta de resolució ha estat notificada a l’entitat el %FECHA_NOTIF_PRPROV%.
 			   A la proposta de resolució, se li concedeix a l’entitat sol·licitant un termini de 10 dies per presentar les al·legacions que considerés oportunes, si n’és el cas.
 			   Dins l’esmentat termini de 10 dies, l’entitat no ha presentat al·legacions.
-			   Atès l’anterior, en data %FECHA_PR_DEFINITIVA% la directora gerent de l’IDI va dictar proposta de resolució definitiva sobre la concessió d’una subvenció a %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import %IMPORTEAYUDA%.
+			   Atès l’anterior, en data %FECHA_PR_DEFINITIVA% la directora gerent de l’ADR Balears va dictar proposta de resolució definitiva sobre la concessió d’una subvenció a %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import %IMPORTEAYUDA%.
 			   Aquest document ha estat notificat a l’interessat en data %FECHA_NOTIF_PRPDEF%.</li><br>
-			   <li>Per Resolució del president de l’IDI de %FECHA_RESOL_CONCE% es va concedir una subvenció a %SOLICITANTE% amb NIF %NIF%, destinada a fomentar la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada a través de xecs de consultoria, per un import de %IMPORTEAYUDA%.</li><br>			   
-			   <li>En data %FECHA_SEDE_JUSTIFICACION%, %SOLICITANTE% ha presentat la documentació preceptiva per a la justificació, prevista a l'apartat onzè punt 6, de la Resolució de convocatòria. Revisada l’esmentada documentació pel personal tècnic de l’IDI, resulta que és correcta.</li><br>",
+			   <li>Per Resolució del president de l’ADR Balears de %FECHA_RESOL_CONCE% es va concedir una subvenció a %SOLICITANTE% amb NIF %NIF%, destinada a fomentar la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada a través de xecs de consultoria, per un import de %IMPORTEAYUDA%.</li><br>			   
+			   <li>En data %FECHA_SEDE_JUSTIFICACION%, %SOLICITANTE% ha presentat la documentació preceptiva per a la justificació, prevista a l'apartat onzè punt 6, de la Resolució de convocatòria. Revisada l’esmentada documentació pel personal tècnic de l’ADR Balears, resulta que és correcta.</li><br>",
 
   '27_fundamentosDeDerecho_tit' => "Fonaments de dret",
 
@@ -79,5 +79,5 @@ return [
   '27_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
                     <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
 
-  '27_firma' => "La directora gerent de l'ADR Balears<br>%DGERENTE%<br><br>Palma, en data de la signatura electrònica               Conforme a la proposta, en dict Resolució<br><br>Per delegació del president de l'ADR Balears<br>(BOIB núm %BOIBNUM%<br>La directora gerent de l'ADR Balears"
+  '27_firma' => "La directora gerent de l'ADR Balears<br>%DGERENTE%<br>Palma, en data de la signatura electrònica<br><br>Conforme a la proposta, en dict Resolució<br>Per delegació del president de l'ADR Balears<br>(BOIB 39 de 21/03/2024)<br>La directora gerent de l'ADR Balears<br>Silvia Delgado Carballar<br>Palma, en data de la signatura electrònica"
 ];
