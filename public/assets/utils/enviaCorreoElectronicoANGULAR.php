@@ -5,7 +5,6 @@ $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
 $nuevosParametros = explode  ("/", $items['query']);
 
-
 $correoDestino = urldecode($nuevosParametros[0]);
 $solicitante = urldecode($nuevosParametros[1]);
 $contactPhone = urldecode($nuevosParametros[2]);
@@ -50,10 +49,10 @@ if ($asunto == 'appILS') {
 	$mensajeLayout = file_get_contents('contents-ils.html');	
 	$mail->Subject = "Nuevo mensaje desde APP Sostenibilitat";
 	// Con copia oculta
-	$mail->AddBCC("illado@idi.caib.es", "Sistemes d'Informació");
+	$mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
 } else {
 	$mensajeLayout = file_get_contents('contents.html');
-	$mail->Subject = "Nuevo mensaje desde ADR Balears";
+	$mail->Subject = $asunto; /* "Nuevo mensaje desde ADR Balears"; */
 	// Con copia oculta
 	$mail->AddBCC("info@idi.es", "Servei de comunicació");
 }
@@ -70,17 +69,16 @@ $mail->msgHTML( $mensajeLayout , __DIR__);
 $mail->AltBody = $mensajeLayout;
 
 if(!$mail->Send())
-{
-	$result = "Message could not be sent.";
-	$result .= "Mailer Error: " . $mail->ErrorInfo;
-	$mail->ClearAddresses();
-	$mail->ClearAttachments();
-
-}
+	{
+		$result = "Message could not be sent.";
+		$result .= "Mailer Error: " . $mail->ErrorInfo;
+		$mail->ClearAddresses();
+		$mail->ClearAttachments();
+	}
 else 
-{
-	$result = "Missatge enviat correctament a la adreça " .$correoDestino;
-}
+	{
+		$result = "Missatge enviat correctament a la adreça " .$correoDestino;
+	}
 
 echo $result;
 ?>
