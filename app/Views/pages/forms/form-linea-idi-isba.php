@@ -297,8 +297,8 @@
 			<li>
 				<div class="form-check">
 					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?></strong>						
-  					<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>" checked name="documentacion_adjunta_requerida_idi_isba_a[]" id="documentacion_adjunta_requerida_idi_isba_a" value="SI">
-  					<span class="w3docs"></span>
+  					<input class="" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>" checked name="documentacion_adjunta_requerida_idi_isba_a[]" id="documentacion_adjunta_requerida_idi_isba_a" value="SI">
+  					<!-- <span class="w3docs"></span> -->
   				</h3>
 				</div>
 			</li>
@@ -307,8 +307,7 @@
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_b" name="documentacion_adjunta_requerida_idi_isba_b[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
-				</div> 
-
+				</div>
 				<label for="idi_isba_b_EnIDI" class="main" >
 					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
 					<input type="checkbox" id="idi_isba_b_EnIDI" name="idi_isba_b_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
@@ -411,7 +410,7 @@
 			
 			<li>
 			<div class="form-check">
-  				<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_n[]" id="documentacion_adjunta_requerida_idi_isba_n" value="SI">
+  				<input class="" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_n[]" id="documentacion_adjunta_requerida_idi_isba_n" value="SI">
   					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_n">
 							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>
   					</label>
@@ -445,7 +444,6 @@
   	</div>
 </div>
 
-
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
@@ -454,7 +452,7 @@ function showTab(n) {
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
   let itramitsCookies = document.cookie.split(";");
-    console.log ("current tab", n)
+    /* console.log ("current tab", n) */
     // Loop through the array elements
     for(var i = 0; i < itramitsCookies.length; i++) {
         var cookiePair = itramitsCookies[i].split("=");
@@ -481,7 +479,7 @@ function showTab(n) {
 	  submitBTN.innerHTML = "Enviar"
 	  submitBTN.setAttribute("title", "Enviar")
 	  submitBTN.setAttribute("value", "Submit")
-	  submitBTN.setAttribute("form", "adhesion_ils")
+	  submitBTN.setAttribute("form", "adhesion_idi_isba")
 	  submitBTN.setAttribute("onclick", "onFormSubmit(this)")
 		submitBTN.setAttribute("class", "buttonAsistente buttonEnviar");  
   } else {
@@ -525,7 +523,7 @@ function validateFormField(field, step=0) {
 	const regexHTTP = new RegExp(/https?:\/\/?[-a-zA-Z0-9]{1,256}\.[a-zA-Z]{2,3}/)
 	const regexTel  = new RegExp(/[0-9]{3}[0-9]{3}[0-9]{3}/)
 	
-	console.log (`Campo actual es : ${inputElement.name} y su valor: ${inputElement.value} ${intereses_ayuda_solicita_idi_isba.value} ${coste_aval_solicita_idi_isba.value} ${gastos_aval_solicita_idi_isba.value} ${totalImporteAyuda}`)
+	//console.log (`Campo actual es : ${inputElement.name} y su valor: ${inputElement.value} ${intereses_ayuda_solicita_idi_isba.value} ${coste_aval_solicita_idi_isba.value} ${gastos_aval_solicita_idi_isba.value} ${totalImporteAyuda}`)
 
 	if (!inputElement.value) {
 		inputElement.classList.remove("valid");
@@ -555,7 +553,7 @@ function validateForm() {
 			if ( (cell.value === '') && (cell.getAttribute('aria-required')) ) {
 	   		cell.setAttribute ('class','aviso');
       	valid = false;
-				console.log (cell.name)
+				//console.log (cell.name)
 				if (document.getElementById("autonomo").checked && ((cell.name === "nom_representante") || cell.name === "nif_representante" || cell.name === "telefono_contacto_rep")) {
 					cell.removeAttribute ('class','aviso');
 					valid = true
@@ -585,9 +583,8 @@ function validateForm() {
     	document.getElementsByClassName("step")[currentTab].className += " finish";
   }
 
-	console.log ("**"+valid+"**")
+	console.log ("Is valid: **"+valid+"**")
   return valid; // return the valid status
-
 }
 
 function fixStepIndicator(n) {

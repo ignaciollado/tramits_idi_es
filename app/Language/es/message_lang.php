@@ -41,7 +41,7 @@ return [
    'destino_solicitud'				=> 'Destino',
    'codigo_dir3'				      => 'Emisor (DIR3): ',
    'codigo_sia'                  => 'Código SIA',
-   'idi'                              => "INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES.",
+   'idi'                              => "AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES.",
    'titulo'							   => 'iTramits - Gestor de trámites administrativos.',
    'solicitante'					   => 'El solicitante ',
    'nombre_solicitante'          => 'Nombre del solicitante',
@@ -471,7 +471,7 @@ return [
 'cierra' => "Cierra",
 'rgpd_txt' => "<strong>PROTECCIÓN DE DATOS PERSONALES:</strong><br/><br/>
 <ul>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tratamiento</strong>: INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tratamiento</strong>: AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacto delegado de protección de datos</strong>: dpd@idi.es</span></li>
   <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span><br>
   <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓN DE AYUDAS DE CONSULTORÍA</u></span></li>
@@ -487,8 +487,8 @@ return [
 </ul>
 <strong>EJERCICIO DE DERECHOS</strong>:<br><br>
 <ul>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES informa a los usuarios que pueden ejercer los derechos de acceso, rectificación, limitación, supresión, portabilidad y oposición al tratamiento de sus datos de carácter personal ante el Responsable del tratamiento, así como la retirada del consentimiento prestado. El Responsable le facilitará un formulario adecuado, a presentar en la dirección arriba indicada o mediante la dirección de correo electrónico dpd@idi.es.</span></li>
-  <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El INSTITUTO DE INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES le informa que tiene derecho a presentar una reclamación ante la AEPD si considera que no se ha atendido convenientemente el ejercicio de sus derechos (www.aepd.es).</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES informa a los usuarios que pueden ejercer los derechos de acceso, rectificación, limitación, supresión, portabilidad y oposición al tratamiento de sus datos de carácter personal ante el Responsable del tratamiento, así como la retirada del consentimiento prestado. El Responsable le facilitará un formulario adecuado, a presentar en la dirección arriba indicada o mediante la dirección de correo electrónico dpd@idi.es.</span></li>
+  <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES le informa que tiene derecho a presentar una reclamación ante la AEPD si considera que no se ha atendido convenientemente el ejercicio de sus derechos (www.aepd.es).</span></li>
 </ul>
 <br/>",
 

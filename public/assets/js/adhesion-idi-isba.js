@@ -37,96 +37,95 @@ function activaDesactivaFormulario (valor) {
 }
 
 function onFormSubmit(e) {
-
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_b").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_b").classList.remove('aviso')
 	}
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_c").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").classList.remove('aviso')
 	}
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_d").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").classList.remove('aviso');
-	}
-	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_e").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_e").setAttribute ('class','aviso');
-		return
-  } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_e").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_e").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_d").classList.remove('aviso')
 	}
 
-	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_f").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_f").setAttribute ('class','aviso');
-		return
-  } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_f").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_f").classList.remove('aviso');
+	if (document.getElementById("autonomo").checked) { /* Si es persona física */
+		if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_e").value === '' ) {
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_e").setAttribute ('class','aviso')
+			return
+		} else {
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_e").style.backgroundColor = "#04aa6d"
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_e").classList.remove('aviso')
+		}
+	}
+	if (document.getElementById("pequenya").checked || document.getElementById("mediana").checked) { /* Si es persona jurídica */
+		if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_f").value === '' ) {
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_f").setAttribute ('class','aviso')
+			return
+		} else {
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_f").style.backgroundColor = "#04aa6d"
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_f").classList.remove('aviso')
+		}
 	}
 
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_h").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").classList.remove('aviso')
 	}
-
-
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_i").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").classList.remove('aviso')
 	}
-
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").classList.remove('aviso')
 	}
-
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_k").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_k").classList.remove('aviso')
 	}
-
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_l").value === '' ) {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").setAttribute ('class','aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").setAttribute ('class','aviso')
 		return
   } else {
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").style.backgroundColor = "#04aa6d";
-		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").classList.remove('aviso');
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").style.backgroundColor = "#04aa6d"
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_l").classList.remove('aviso')
 	}
 
 
 	let theForm = document.getElementById("adhesion_idi_isba")
 	let theElement = document.getElementById("nextBtn")
 
-	console.log ("Se ha pulsado submit ISBA... desde: " + e.innerHTML)
-  theElement.value = "Enviant, un moment per favor... "
-  theElement.disabled = true;
-  theElement.style.backgroundColor= "orange";
-  theElement.style.cursor="progress";
-  theForm.style.opacity =".2";
-  theForm.submit();
+	console.log ("Se ha pulsado submit ISBA... desde: " + e.innerHTML, theElement)
+  theElement.innerHTML = "Enviant, un moment per favor... "
+  theElement.disabled = true
+  theElement.style.backgroundColor= "orange"
+  theElement.style.cursor="progress"
+
+  theForm.style.opacity =".2"
+  theForm.submit()
 }
 
 function tipoSolicitante (valor) {

@@ -41,7 +41,7 @@ return [
    'destino_solicitud'				  => 'Destinació',
    'codigo_dir3'				        => 'Emissor (DIR3): ',
    'codigo_sia'                    => 'Codi SIA',
-   'idi'                           => "INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS.",
+   'idi'                           => "AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS.",
    'titulo'							     => "iTramits - Gestor de tràmits administratius.",
    'solicitante'					     => 'El sol·licitant ',
    'nombre_solicitante'            => 'Nom del sol·licitant',
@@ -490,7 +490,7 @@ return [
 'cierra' => "Tanca",
 'rgpd_txt' => "<strong>PROTECCIÓ DE DADES PERSONALS:</strong>
 <ul>
-<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tractament</strong>: INSTITUT D´INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
+<li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tractament</strong>: AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacte Delegat Protecció de Dades</strong>: dpd@idi.es</span></li>
 <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span><br>
 
@@ -507,8 +507,8 @@ return [
 </ul>
 <strong>EXERCICI DE DRETS:</strong>
 <ul>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'INSTITUT D’INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS informa als usuaris que poden exercir els drets d’accés, rectificació, limitació, supressió, portabilitat i oposició al tractament de les seves dades de caràcter personal davant el Responsable del tractament, així com la retirada del consentiment prestat. El Responsable li facilitarà un formulari adequat, a presentar en l'adreça a dalt indicada o bé mitjançant l’adreça de correu electrònic dpd@idi.es.</span></li>
-  <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'INSTITUT D’INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS l’informa que té dret a presentar una reclamació davant l'AEPD si considera que no s'ha atès convenientment l'exercici dels seus drets (www.aepd.es).</span></li>
+  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS informa als usuaris que poden exercir els drets d’accés, rectificació, limitació, supressió, portabilitat i oposició al tractament de les seves dades de caràcter personal davant el Responsable del tractament, així com la retirada del consentiment prestat. El Responsable li facilitarà un formulari adequat, a presentar en l'adreça a dalt indicada o bé mitjançant l’adreça de correu electrònic dpd@idi.es.</span></li>
+  <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>L'AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS l’informa que té dret a presentar una reclamació davant l'AEPD si considera que no s'ha atès convenientment l'exercici dels seus drets (www.aepd.es).</span></li>
 </ul>
 <br/>",
 
@@ -523,7 +523,7 @@ return [
 'texto_mail_intro_1' => "Hem rebut una sol·licitud d'ajudes per al disseny de plans de transformació digital de",
 'texto_mail_intro_2' => "en la qual ens indiquen que ha estat designat com el seu consultor/facilitador digital.<br>Per això, perquè puguem tramitar la sol·licitud d'ajuda, li demanem que verifiqui i ferm, electrònicament, la següent declaració responsable:<br><br>",
 'atentamente'        => "Atentament,",
-'notalegal' 	=> "<p><u>AVÍS LEGAL</u>: aquest missatge i els seus arxius adjunts van adreçats exclusivament al seu destinatari i poden contenir informació confidencial sotmesa a secret professional. No és permesa la seva comunicació, reproducció o distribució sense l’autorització expressa de l’INSTITUT D’INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS Si no en sou el destinatari final, per favor eliminau-lo i informau-nos-en per aquesta via.</p>",
+'notalegal' 	=> "<p><u>AVÍS LEGAL</u>: aquest missatge i els seus arxius adjunts van adreçats exclusivament al seu destinatari i poden contenir informació confidencial sotmesa a secret professional. No és permesa la seva comunicació, reproducció o distribució sense l’autorització expressa de l’AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS Si no en sou el destinatari final, per favor eliminau-lo i informau-nos-en per aquesta via.</p>",
 'no_imprimir' 	=> "<p><span style='color: green;'>Abans d'imprimir aquest missatge, assegurau-vos que és necessari. El medi ambient és en les nostres mans.</span></p>",
 'texto_enlace'  => "Declaració responsable del consultor/facilitador",
 'firma'         => "<p><a href='http://www.idi.es' title='IDI'>Institut d'Innovació Empresarial de les Illes Balears (IDI)</a></p><p><a href='http://www.caib.es' title='CAIB'>Conselleria Empresa, Ocupació i Energia</a></p><p>Govern de les Illes Balears</p><p></p><p>Plaça de Son Castelló, 1 - 07009, Palma. Illes Balears</p><p></p>",
