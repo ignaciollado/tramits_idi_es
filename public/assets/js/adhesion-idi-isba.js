@@ -241,8 +241,7 @@ function selectorNoSi(field) {
 
   if (inputElement.name === 'empresa_eco_idi_isba') {
     if (inputElement.value === 'SI') {
-      empresa_eco_lbl.innerHTML = "7.2. En el caso que la empresa solicitante esté adherida al programa ILS – Industria Local Sostenible o que acredite que la inversión que financia es un proyecto certificado como verde según la Taxonomía de la UE. El importe de la ayuda para cubrir el coste del aval de las operaciones financieras de inversiones productivas cubrirá los siete años de la operación original, y son: el 100% del coste del aval los siete años de la operación, con la limitación del 1,25% sobre el importe del aval."
-      empresa_eco_lbl.classList.add("valid")
+			empresa_eco_lbl.classList.add("valid")
       empresa_eco_lbl.classList.remove("invalid")
 			empresa_eco_lbl.classList.remove("ocultar")
     } else {

@@ -96,8 +96,8 @@ return [
    'enviado_correo_electron_justif'   => "Us hem enviat un correu electrònic a l'adreça que ens va facilitar amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_con_dec_res' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la declaració responsable perquè la signeu electrònicament.",
    'enviado_correo_electron_con'      => "Si en la sol·licitud va marcar l'opció <strong>'Ja tinc CONSULTOR digital homologat, no necessito que el IDI m'assigni un'</strong>, hem enviat un correu electrònic al facilitador digital que ens heu indicat perquè empleni i ferm la seva declaració responsable.",
-   'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no la podrem processar.",
-   'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'IDI per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no el podrem processar.",
+   'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'ADR Balears per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no la podrem processar.",
+   'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'ADR Balears per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no el podrem processar.",
    
    'contacto_idi_pindust'          => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@idi.es i per telèfon: 971 17 61 61 + 62894 ",   
    'contacto_idi_ils'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pjordi@idi.es i per telèfon: 971 17 61 61 + 62891 ",   
@@ -206,8 +206,8 @@ return [
    'tit_mail_rep_legal_sol_idigital'  => "Adreça electrònica a l'efecte de notificacions (serà l'adreça de correu que usarem per a enviar-li informació i notificacions.",
    'err_mail_rep_legal_sol_idigital'  => "Adreça de correu invàlida!",
    'datos_cons_sol_idigital'          => "5. DADES DEL CONSULTOR",
-   'no_cons_sol_idigital'             => "No tenc CONSULTOR digital homologat, l'IDI m'assignarà un.",
-   'si_cons_sol_idigital'             => "Ja tenc CONSULTOR digital homologat, no necessit que l'IDI m'assigni un:",
+   'no_cons_sol_idigital'             => "No tenc CONSULTOR digital homologat, l'ADR Balears m'assignarà un.",
+   'si_cons_sol_idigital'             => "Ja tenc CONSULTOR digital homologat, no necessit que l'ADR Balears m'assigni un:",
    'cuantia_ayuda'                    => "QUANTIA DE LA AJUDA (nombre d’hores de consultoria especialitzada subvencionades)",
    '40horas'                          => "Consultoria de 40 hores",
    '60horas'                          => "Consultoria de 60 hores",   
@@ -346,7 +346,7 @@ return [
    'declaracion_datos_bancarios_2'      => "Opció 1 - IBAN del compte per a Espanya (ES9999999999999999999999)",
    'declaracion_datos_bancarios_3'      => "Opció 2 - Número del compte d'altres països (9999999999999999999999)",
    'declaracion_datos_bancarios_4'      => "b) La possibilitat d'acreditar documentalment les dades que s'esmenten en el punt (a) d'aquesta declaració queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
-   'declaracion_datos_bancarios_5'      => "c) Que l'IDI, una vegada fets els ingressos en el compte indicat en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
+   'declaracion_datos_bancarios_5'      => "c) Que l'ADR Balears, una vegada fets els ingressos en el compte indicat en el punt (a) d'aquesta declaració, queda eximida de responsabilitat per les actuacions que es derivin d'errades en les dades indicades pel declarant.",
    'descripcion_empresa_ils'            => "Descripció de l'empresa",
    'fecha_creacion_empresa_ils'         => "Data creació empresa",
    'comercializacion_empresa_ils'       => "Canals de comercialització",
@@ -512,12 +512,12 @@ return [
 </ul>
 <br/>",
 
-'documentoEnIDI' => "Aquest document ja es troba en poder de l'IDI i no ha sofert modificacions <strong>(en aquest cas no cal aportar-lo)</strong>.",
-'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, aquest document ja es troba en poder de l'IDI",
-'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, aquest document ja es troba en poder de l'IDI",
-'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, aquest document ja es troba en poder de l'IDI.",
-'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, aquest document ja es troba en poder de l'IDI.",
-'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació ja es troba en poder de l'IDI.",
+'documentoEnIDI' => "Aquest document ja es troba en poder de l'ADR Balears i no ha sofert modificacions <strong>(en aquest cas no cal aportar-lo)</strong>.",
+'memoriaTecnicaEnIDI_sinCambios' => "Memòria tècnica, aquest document ja es troba en poder de l'ADR Balears",
+'altaRetaDocAcredEnIDI_sinCambios' => "Document acreditatiu Alta RETA, aquest document ja es troba en poder de l'ADR Balears",
+'certificadoIAEEnIDI_sinCambios' => "Certificat IAE, aquest document ja es troba en poder de l'ADR Balears.",
+'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, aquest document ja es troba en poder de l'ADR Balears.",
+'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Document acreditatiu de representació ja es troba en poder de l'ADR Balears.",
 
 'clausula_idi'  => "CLÀUSULA USUARI IDI",
 'texto_mail_intro_1' => "Hem rebut una sol·licitud d'ajudes per al disseny de plans de transformació digital de",
@@ -550,29 +550,29 @@ return [
 'documentacion_necesaria_pymes_idi_isba'  => "<div class='alert alert-info' role='alert'>
 Abans de començar, és recomanable tenir preparada la següent documentació (punt Novè de la convocatòria):</div>
    <ol class='formbox' style='list-style-type: lower-alpha;' start='1'>
-      <li><i>El documento normalizado de solicitud de subvención de esta convocatoria, el cual se genera al final de este asistente al pulsar sobre el botón 'Enviar' y que recibirá por correo electrónico</i>.</li>
-      <li>Descripción de la empresa y su actividad, modelo de negocio y detalle de la inversión/Inversiones previstas.</li>
-      <li>Declaración responsable de la veracidad de los datos bancarios aportados que se encuentra incluido en la solicitud de la ayuda.</li>
-      <li>Certificado del IAE actualizado en el momento de la sol·licitud.</li>
-      <li>En caso de que el solicitante sea una persona física, se requerirá:
+      <li><i>El document normalitzat de sol·licitud de subvenció d'aquesta convocatòria, el qual es genera al final d'aquest assistent en prémer sobre el botó 'Enviar' i que rebrà per correu electrònic</i>.</li>
+      <li>Descripció de l'empresa i la seva activitat, model de negoci i detall de la inversió/Inversions previstes.</li>
+      <li>Declaració responsable de la veracitat de les dades bancàries aportades que es troba inclòs en la sol·licitud de l'ajuda.</li>
+      <li>Certificat de l'IAE actualitzat en el moment de la sol·licitud.</li>
+      <li>En cas que el sol·licitant sigui una persona física, es requerirà:
       <ol>
-      <li>El certificado de estar en el régimen especial de trabajadores autónomos o en un régimen alternativo equivalente.</li>
+      <li>El certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.</li>
       </ol>
       </li>
-      <li>En caso de que el solicitante sea una persona jurídica, se requerirá:
+      <li>En cas que el sol·licitant sigui una persona jurídica, es requerirà:
          <ol>
-         <li>Escritura pública y estatutos, debidamente inscritos en el registro correspondiente.</li>
-         <li>Documento fehaciente que acredite la representación de la persona que actúa en nombre de la entidad solicitante. La representación podrá acreditarse por cualquier forma válida en derecho.</li>
+         <li>Escriptura pública i estatuts, degudament inscrits en el registre corresponent.</li>
+         <li>Document fefaent que acrediti la representació de la persona que actua en nom de l'entitat sol·licitant. La representació podrà acreditar-se per qualsevol forma vàlida en dret.</li>
          </ol>
       </li>
-      <li>Respecto al DNI/NIE de la persona solicitante y/o de la persona que le represente, la solicitud de ayudas implicará la autorización para que el IDI pueda comprobar de oficio sus datos de identidad personal. En caso de denegación expresa del consentimiento, será necesario aportar esta documentación.</li>
-      <li>Respecto a la acreditación de las obligaciones tributarias autonómicas con la Agencia Tributaria de las Illes Balears y de las obligaciones con la Seguridad Social, la solicitud de ayudas implicará la autorización para que el IDI pueda obtener de la Agencia Tributaria de las Illes Balears y de la Tesorería General de la Seguridad Social la información relativa al cumplimiento de estas obligaciones, excepto en caso de denegación expresa del consentimiento, supuesto en el que la persona o la entidad solicitante debe aportar el certificado correspondiente, junto con la solicitud de las ayudas.</li>
-      <li>En cuanto a la acreditación del requisito de estar al corriente de las obligaciones tributarias con la Agencia Estatal de la Administración Tributaria, deberá aportarse el certificado acreditativo del cumplimiento de esta obligación.</li>
-      <li>Para ayudas de importe superior a 30.000 €, deberá aportarse el certificado  que establece el artículo 13.3 bis de la Ley 38/2003 de 17 de noviembre.</li>
-      <li>El certificado de la sociedad de garantía recíproca que avale la operación financiera que acredite la fecha de entrada de la solicitud del beneficiario de petición del aval sobre la operación financiera a subvencionar.</li>
-      <li>El contrato de la operación financiera.</li>
-      <li>El contrato o documento de aval de la operación financiera.</li>
-      <li>Una Declaración responsable, incluida en el modelo normalizado de sol·licitud, de la persona titular de la empresa o de quien la representa legalmente.</li>
+      <li>Respecte al DNI/NIE de la persona sol·licitant i/o de la persona que li representi, la sol·licitud d'ajudes implicarà l'autorització perquè l'ADR Balears pugui comprovar d'ofici les seves dades d'identitat personal. En cas de denegació expressa del consentiment, serà necessari aportar aquesta documentació.</li>
+      <li>especte a l'acreditació de les obligacions tributàries autonòmiques amb l'Agència Tributària de les Illes Balears i de les obligacions amb la Seguretat Social, la sol·licitud d'ajudes implicarà l'autorització perquè l'ADR Balears pugui obtenir de l'Agència Tributària de les Illes Balears i de la Tresoreria General de la Seguretat Social la informació relativa al compliment d'aquestes obligacions, excepte en cas de denegació expressa del consentiment, suposat en el qual la persona o l'entitat sol·licitant ha d'aportar el certificat corresponent, juntament amb la sol·licitud de les ajudes.</li>
+      <li>Quant a l'acreditació del requisit d'estar al corrent de les obligacions tributàries amb l'Agència Estatal de l'Administració Tributària, haurà d'aportar-se el certificat acreditatiu del compliment d'aquesta obligació.</li>
+      <li>Per a ajudes d'import superior a 30.000 €, haurà d'aportar-se el certificat que estableix l'article 13.3 bis de la Llei 38/2003 de 17 de novembre.</li>
+      <li>El certificat de la societat de garantia recíproca que avali l'operació financera que acrediti la data d'entrada de la sol·licitud del beneficiari de petició de l'aval sobre l'operació financera a subvencionar.</li>
+      <li>El contracte de l'operació financera.</li>
+      <li>El contracte o document d'aval de l'operació financera.</li>
+      <li>Una Declaració responsable, inclosa en el model normalitzat de sol·licitud, de la persona titular de l'empresa o de qui la representa legalment.</li>
    </ol>",
 'documentacion_resultante_cabecera_idi_isba' => "<strong>En finalitzar aquest tràmit, rebrà per correu electrònic un document pdf que contindrà:</strong>",
 'documentacion_resultante_idi_isba' => "<ol class='formbox'>
@@ -604,11 +604,10 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
 'declaro_idi_isba_que_cumple_3'  => "Que la persona o entitat sol·licitant durà a terme l'activitat d'inversió, així com la justificació de la realització de l'activitat i el compliment dels requisits i condicions que determinen la concessió de la subvenció.",
 'declaro_idi_isba_que_cumple_4'  => "Que no ha sol·licitat o rebut cap altra ajuda de qualsevol entitat, pública o privada, nacional o estrangera, relacionada amb l'operació financera o amb el projecte d'inversió; o, en cas contrari, relació de totes les ajudes i les subvencions sol·licitades o rebudes.",
 'declaro_idi_isba_que_cumple_5'  => "Complesc amb el reglament (UE) núm. 1407/2013 de la Comissió de 18 de desembre de 2013, relatiu a l'aplicació dels articles 107 i 108 del Tractat de funcionament de la Unió Europea de les ajudes de minimis. Declaració de les ajudes rebudes durant l'exercici fiscal en curs i els dos exercicis fiscals anteriors.",
-'declaro_idi_isba_que_cumple_6'  => "Que no ha solicitado o recibido ninguna otra ayuda de cualquier entidad, pública o privada, nacional o extranjera, relacionada con la operación financiera o con el proyecto de inversión; o, en caso contrario, relación de todas las ayudas y las subvenciones solicitadas o recibidas.",
-'declaro_idi_isba_que_cumple_7'  => "He declarado las ayudas recibidas durante el ejercicio fiscal en curso y los dos ejercicios fiscales anteriores.",
-'declaro_idi_isba_que_cumple_8'  => "El cumplimiento de la capacidad de representación suficiente, debidamente acreditada, para realizar la tramitación indicada.",
-'declaro_idi_isba_que_cumple_9'  => "La veracidad de datos aportados y la titularidad de la cuenta bancaria indicada en la solicitud.",
-'declaro_idi_isba_que_cumple_10' => "Que en el caso de ser una persona autónoma, cumple el requisito relativo a la no participación superior al 25% por una o varias empresas, o de lo contrario señalar que es una empresa “asociada” o una empresa “vinculada” y que informa de las participaciones del 25% o más del capital social o de los derechos de voto en otras empresas en los términos establecidos en el artículo 3 del anexo1 del reglamento (UE) núm. 651/2014 de la Comisión, de 17 de junio de 2014.
+'declaro_idi_isba_que_cumple_7'  => "He declarat les ajudes rebudes durant l'exercici fiscal en curs i els dos exercicis fiscals anteriors.",
+'declaro_idi_isba_que_cumple_8'  => "El compliment de la capacitat de representació suficient, degudament acreditada, per a realitzar la tramitació indicada.",
+'declaro_idi_isba_que_cumple_9'  => "La veracitat de dades aportades i la titularitat del compte bancari indicat en la sol·licitud.",
+'declaro_idi_isba_que_cumple_10' => "Que en el cas de ser una persona autònoma, compleix el requisit relatiu a la no participació superior al 25% per una o diverses empreses, o en cas contrari assenyalar que és una empresa “associada” o una empresa “vinculada” i que informa de les participacions del 25% o més del capital social o dels drets de vot en altres empreses en els termes establerts en l'article 3 de l'anexe 1 del reglament (UE) núm. 651/2014 de la Comissió, de 17 de juny de 2014.
 En caso de ser empresa una empresa “asociada” o una empresa “vinculada”, declara que el grupo de empresas resultante considerado “única empresa” sigue cumpliendo con los requisitos para ser una pyme, tal como se indica en la definición del apartado 2.3 de esta convocatòria.", 
 'declaro_idi_isba_que_cumple_11' => "Que la persona o entidad beneficiaria no está sometida a ninguna causa de prohibición o de incompatibilidad para recibir la ayuda según la legislación vigente y que el solicitante no ha sido sancionado o condenado por resolución administrativa o sentencia judicial firme por discriminación salarial, acoso moral o cualquier tipo de trato desigual, por razón de sexo, en el ámbito de las relaciones laborales.",
 'declaro_idi_isba_que_cumple_12' => "Que, en la fecha de la solicitud, está al corriente de los pagos de sus obligaciones tributarias con la Administración del Estado, la  administración de la Comunidad Autónoma de las Illes Balears, así como al corriente de los pagos de sus obligaciones tributarias con la Seguridad Social.",
@@ -617,9 +616,9 @@ En caso de ser empresa una empresa “asociada” o una empresa “vinculada”,
 Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la notificación de la propuesta de la resolución de concesión con el certificado que establece el articulo 13.3 bis de la Ley 38/2003, de 17 de novembre.",
 'declaro_idi_isba_que_cumple_15' => "Cumplo con las condiciones de la convocatoria.",
 
-'declaro_idi_isba_ayudas_recibidas' => "Relación de todas las ayudas y las subvenciones solicitadas o recibidas:",
-'direccion_general_politica_industrial_idi_isba'   => "De la Direcció General de Politica Indústrial",
-'otros_declaro_idi_isba'   => "Altres",
+'declaro_idi_isba_ayudas_recibidas' => "Relació de totes les ajudes i les subvencions sol·licitades o rebudes:",
+'direccion_general_politica_industrial_idi_isba' => "De la Direcció General de Politica Indústrial",
+'otros_declaro_idi_isba' => "Altres",
 'documentacion_adjunta_requerida_idi_isba' => "Documentació",
 'documentacion_adjunta_requerida_idi_isba_a' => "El document normalitzat de sol·licitud de subvenció d'aquesta convocatòria, el qual es genera en enviar aquesta sol·licitud.",
 'documentacion_adjunta_requerida_idi_isba_b' => "Descripció de l'empresa i la seva activitat, model de negoci i detall de la inversió/inversions previstes.",
@@ -628,8 +627,8 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'documentacion_adjunta_requerida_idi_isba_e' => "Persona física, es requerirà: el certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent.",
 'documentacion_adjunta_requerida_idi_isba_f' => "Persona jurídica, es requerirà: - Escriptura pública i estatuts, degudament inscrits en el registre corresponent.<br>
 - Document fefaent que acrediti la representació de la persona que actua en nom de l'entitat sol·licitant. La representació podrà acreditar-se per qualsevol forma vàlida en dret.",
-'documentacion_adjunta_requerida_idi_isba_g' => "Respecte al DNI/NIE de la persona sol·licitant i/o de la persona que li representi, la sol·licitud d'ajudes implicarà l'autorització perquè el IDI pugui comprovar d'ofici les seves dades d'identitat personal. En cas de denegació expressa del consentiment, serà necessari aportar aquesta documentació.",
-'documentacion_adjunta_requerida_idi_isba_h' => "Respecte a l'acreditació de les obligacions tributàries autonòmiques amb l'Agència Tributària de les Illes Balears i de les obligacions amb la Seguretat Social, la sol·licitud d'ajudes implicarà l'autorització perquè el IDI pugui obtenir de l'Agència Tributària de les Illes Balears i de la Tresoreria General de la Seguretat Social la informació relativa al compliment d'aquestes obligacions, excepte en cas de denegació expressa del consentiment, suposat en el qual la persona o l'entitat sol·licitant ha d'aportar el certificat corresponent, juntament amb la sol·licitud de les ajudes.",
+'documentacion_adjunta_requerida_idi_isba_g' => "Respecte al DNI/NIE de la persona sol·licitant i/o de la persona que li representi, la sol·licitud d'ajudes implicarà l'autorització perquè l'ADR Balears pugui comprovar d'ofici les seves dades d'identitat personal. En cas de denegació expressa del consentiment, serà necessari aportar aquesta documentació.",
+'documentacion_adjunta_requerida_idi_isba_h' => "Respecte a l'acreditació de les obligacions tributàries autonòmiques amb l'Agència Tributària de les Illes Balears i de les obligacions amb la Seguretat Social, la sol·licitud d'ajudes implicarà l'autorització perquè l'ADR Balears pugui obtenir de l'Agència Tributària de les Illes Balears i de la Tresoreria General de la Seguretat Social la informació relativa al compliment d'aquestes obligacions, excepte en cas de denegació expressa del consentiment, suposat en el qual la persona o l'entitat sol·licitant ha d'aportar el certificat corresponent, juntament amb la sol·licitud de les ajudes.",
 'documentacion_adjunta_requerida_idi_isba_i' => "Quant a l'acreditació del requisit d'estar al corrent de les obligacions tributàries amb l'Agència Estatal de l'Administració Tributària, haurà d'aportar-se el certificat acreditatiu del compliment d'aquesta obligació.",
 'documentacion_adjunta_requerida_idi_isba_j' => "Per a ajudes d'import superior a 30.000 €, haurà d'aportar-se el certificat que estableix l'article 13.3 bis de la Llei 38/2003 de 17 de novembre.",
 'documentacion_adjunta_requerida_idi_isba_k' => "El certificat de la societat de garantia recíproca que avali l'operació financera que acrediti la data d'entrada de la sol·licitud del beneficiari de petició de l'aval sobre l'operació financera a subvencionar.",
@@ -645,6 +644,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'adherido_a_ils_si_no'  => "En el moment de la sol·licitud, la seva empresa, està adherida al programa ILS?",
 'no_adherido_a_ils'     => "NO",
 'adherido_a_ils'        => "SI",
+'empresa_eco_7_2'       => "7.2. En el cas que l'empresa sol·licitant estigui adherida al programa ILS – Indústria Local Sostenible o que acrediti que la inversió que finança és un projecte certificat com a verd segons la Taxonomia de la UE. L'import de l'ajuda per a cobrir el cost de l'aval de les operacions financeres d'inversions productives cobrirà els set anys de l'operació original, i són: el 100% del cost de l'aval els set anys de l'operació, amb la limitació del 1,25% sobre l'import de l'aval.",
 'solicita_ayuda_idi_isba'  => "SOL·LICITO<br><small>D'acord amb la convocatòria per a l'any 2024 d'ajuts a les empreses industrials amb activitat a les Illes Balears per cobrir les comissions d'obertura i d'estudi, els interessos i el cost de l'aval per operaciones de finançament d'inversions productives, aprovada per Resolució del conseller d'Empresa, Ocupació i Energia, els imports corresponents per l'operació, avalada per societat de garantia recíproca ISBA, següent:</small>",
 'solicita_ayuda_importe_idi_isba' => "SOL·LICIT un AJUT per import de ",
 'solicita_ayuda_importe_idi_isba_detall' => " amb el següent detall: ",
@@ -714,7 +714,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'doc_prop_resolucion_concesion_con_req_fundamentos' => "<b>Fonaments de dret</b>",
 'doc_prop_resolucion_concesion_con_req_fundamentos_1' => "El Text refós de la Llei de subvencions, aprovat pel Decret legislatiu 2/2005, de 28 de desembre (BOIB núm. 196, de 31 de desembre de 2005).",  
 'doc_prop_resolucion_concesion_con_req_fundamentos_2' => "L’Ordre de la Conselleria de Comerç, Indústria i Energia per la qual s’estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d’abril de 2008).",  
-'doc_prop_resolucion_concesion_con_req_prop_resolucion' => "<b>Proposta de resolució</b>%NUEVALINEA%Propòs al president de l'IDI que dicti una resolució en els termes següents:",
+'doc_prop_resolucion_concesion_con_req_prop_resolucion' => "<b>Proposta de resolució</b>%NUEVALINEA%Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:",
 'doc_prop_resolucion_concesion_con_req_resolucion_1' => "Atorgar un ajut total de %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%, a càrrec dels pressuposts de l’IDI per al 2023, per cobrir hores de consultoria especialitzada en concepte de bestreta, d’acord amb els punts 3 i 10 de la convocatòria.",
 'doc_prop_resolucion_concesion_con_req_resolucion_2' => "Autoritzar l’abonament de %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%, en concepte de bestreta, segons els punts 3 i 10 de la convocatòria.",
 'doc_prop_resolucion_concesion_con_req_resolucion_3' => "Informar l’entitat beneficiària que ha de comunicar l’obtenció de subvencions o ajuts per a la mateixa finalitat, procedents de qualsevol administració o ens públic nacional o internacional, la qual cosa pot donar lloc a la modificació de la Resolució de concessió, segons l’article 37 del Decret 75/2004 i el que disposa el text refós de la Llei de subvencions.",
@@ -740,7 +740,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'doc_prop_resolucion_concesion_sin_req_fundamentos' => "<b>Fonaments de dret</b>",
 'doc_prop_resolucion_concesion_sin_req_fundamentos_1' => "El Text refós de la Llei de subvencions, aprovat pel Decret legislatiu 2/2005, de 28 de desembre (BOIB núm. 196, de 31 de desembre de 2005).",  
 'doc_prop_resolucion_concesion_sin_req_fundamentos_2' => "L’Ordre de la consellera de Comerç, Indústria i Energia per la qual s’estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d’abril de 2008).",  
-'doc_prop_resolucion_concesion_sin_req_prop_resolucion' => "<b>Proposta de resolució</b>%NUEVALINEA%Propòs al president de l'IDI que dicti una resolució en els termes següents:",
+'doc_prop_resolucion_concesion_sin_req_prop_resolucion' => "<b>Proposta de resolució</b>%NUEVALINEA%Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:",
 'doc_prop_resolucion_concesion_sin_req_resolucion_1' => "Atorgar un ajut total de %IMPORTE%, favor de %SOLICITANTE%, amb NIF %NIF%, a càrrec dels pressuposts de l’IDI per al 2023, per cobrir hores de consultoria especialitzada en concepte de bestreta, d’acord amb els punts 3 i 10 de la convocatòria.",
 'doc_prop_resolucion_concesion_sin_req_resolucion_2' => "Autoritzar l’abonament de %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%, en concepte de bestreta, segons els punts 3 i 10 de la convocatòria.",
 'doc_prop_resolucion_concesion_sin_req_resolucion_3' => "Informar l’entitat beneficiària que és procedent el reintegrament a l’IDI de les quanties percebudes i l’exigència de l’interès de demora des del moment del pagament de l’ajut en els casos que preveuen l’article 40 del Decret 75/2004 i l’article 44 del Text refós de la Llei de subvencions.",
@@ -1010,7 +1010,7 @@ estratègic d’internacionalització o un informe de la petjada de carboni a l�
 'doc_acuerdo_de_confidencialidad_firma_2'   => "Tècnica de l’IDI",
 
 'doc_informe_de_liquidacion_asunto'   => "Informe de liquidació de la subvenció concedida a favor de %SOLICITANTE% (núm. exp. %EXPED%)",
-'doc_informe_de_liquidacion_p1'   => "El %FECHAFIRMARESCONCESION% es va concedir l’ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTE%, en el marc de la convocatòria per a la concessió d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat, aprovada per Resolució del conseller d'Empresa, Ocupació i Energia i president de l'IDI (BOIB Núm. %BOIBNUM%), ",
+'doc_informe_de_liquidacion_p1'   => "El %FECHAFIRMARESCONCESION% es va concedir l’ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTE%, en el marc de la convocatòria per a la concessió d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat, aprovada per Resolució del conseller d'Empresa, Ocupació i Energia i president de l'ADR Balears (BOIB Núm. %BOIBNUM%), ",
 //'doc_informe_de_liquidacion_p1_1'   => "i la resolució del president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) per la qual s’acorda traspassar crèdit, ampliar crèdit i modificar la convocatòria per a la concessió d’ajuts de xecs de consultoria per impulsar la indústria de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat ( BOIB Núm. %BOIBNUM%)",
 'doc_informe_de_liquidacion_p2'   => "El %FECHAPAGO%, l’IDI va pagar l’ajut de %IMPORTE% en concepte de bestreta.",
 'doc_informe_de_liquidacion_p2_2' => "El %FECHARECJUSTIFICACION% i amb núm. de registre %REFRECJUSTIFICACION% va presentar la documentació justificativa de la subvenció. L’import justificat és de %IMPORTE%.",
@@ -1031,7 +1031,7 @@ estratègic d’internacionalització o un informe de la petjada de carboni a l�
 'doc_requerimiento_subsanacion_p2' => "El %FECHAPAGOAYUDA%, l’IDI va pagar l’ajut de %IMPORTEAYUDA% € en concepte de bestreta.",
 'doc_requerimiento_subsanacion_p3' => "El %FECHAREUNIONCIERRE%, l’IDI, el consultor i el beneficiari varen realitzar la reunió de tancament. Per això, el %FECHAMAXJUSTIFICACION%, era la data màxima per justificar la subvenció, en els terminis establers en la convocatòria.",
 'doc_requerimiento_subsanacion_p4' => "L’informe tècnic de %FECHAINICIOREQJUSTIFICACION% indica que el beneficiari no compleix amb els requisits indicats en el punt 12 de la convocatòria per a la justificació correcta de l’ajut, per això es requereix al beneficiari la següent documentació:  %TEXTOLIBREREQ%.",
-'doc_requerimiento_subsanacion_p5' => "Tal com especifica l’article 12.4 de la convocatòria, en el cas que l'expedient de justificació no tingui tota la documentació necessària, l'IDI sol·licitarà al beneficiari que esmeni els defectes de la justificació dintre dels <strong>15 dies hàbils comptadors a partir del dia següent d'haver rebut (notificat) el requeriment d'esmena.</strong><br>
+'doc_requerimiento_subsanacion_p5' => "Tal com especifica l’article 12.4 de la convocatòria, en el cas que l'expedient de justificació no tingui tota la documentació necessària, l'ADR Balears sol·licitarà al beneficiari que esmeni els defectes de la justificació dintre dels <strong>15 dies hàbils comptadors a partir del dia següent d'haver rebut (notificat) el requeriment d'esmena.</strong><br>
 <br>En cas de no complir amb aquest requeriment  en el termini establert en el punt 12.4 de la convocatòria haurem d’iniciar el procediment de revocació de la subvenció.<br><br>
 Es recorda al beneficiari, que haurà d’adjuntar la documentació requerida a través del tràmit específic que trobarà a la seu electrònica de la CAIB.",
 'doc_requerimiento_subsanacion_firma' => "%DIRECTORAGERENTEIDI%<br>Per delegació del DG Política Industrial<br>(BOIB núm. %BOIBNUM%)",
@@ -1106,7 +1106,7 @@ Es recorda al beneficiari, que haurà d’adjuntar la documentació requerida a 
 'doc_ils_resolucion_denegacion_con_req_recursos_intro' => '<b>Interposició de recursos:</b>',
 'doc_ils_resolucion_denegacion_con_req_recursos_p1' => 'Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l’Institut d’Innovació Empresarial de les Illes Balears (IDI) en el termini d’un mes comptador des de l’endemà de la notificació, d’acord amb l’article 124 de la Llei 39/2015, d’1 d’octubre, del procediment administratiu comú de les administracions públiques, i l’article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l’Administració de la Comunitat Autònoma de les Illes Balears.',
 'doc_ils_resolucion_denegacion_con_req_recursos_p2' => 'També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l’endemà de la notificació, d’acord amb l’article 46 de la Llei 29/199, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.',
-'doc_ils_resolucion_denegacion_con_req_recursos_firma' => "El president de l'IDI<br>Alejandro Sáenz de San Pedro García",
+'doc_ils_resolucion_denegacion_con_req_recursos_firma' => "El president de l'ADR Balears<br>Alejandro Sáenz de San Pedro García",
 
 'doc_ils_resolucion_concesion_sin_req_intro'         => "<b>Resolució del President de l’Institut d’Innovació Empresarial de les Illes Balears per la qual es concedeix la marca Indústria Local Sostenible</b>",
 'doc_ils_resolucion_concesion_sin_req_antecedentes'  => "<b>Antecedents</b>",
@@ -1127,7 +1127,7 @@ Tal com estableix l’article 11 del Reglament de la marca, la renovació de la 
 'doc_ils_resolucion_concesion_con_req_intro'         => "<b>Resolució del President de l’Institut d’Innovació Empresarial de les Illes Balears per la qual es concedeix  la marca Indústria Local Sostenible a favor de %SOLICITANTE%, amb NIF %NIF%</b>",
 'doc_ils_resolucion_concesion_con_req_antecedentes'  => "<b>Antecedents</b>",
 'doc_ils_resolucion_concesion_con_req_p1' => "La  Marca de Garantia núm. 4113843 ILS INDÚSTRIA LOCAL SOSTENIBLE (figurativa), en classes 35 i 42, va ser aprovada per l’Oficina Espanyola de Patents i Marques el 20 de desembre de 2021 i publicada la F. de concessió el 28 de desembre de 2021.",
-'doc_ils_resolucion_concesion_con_req_p2' => "En data %FECHAREC%, l'IDI va rebre la sol·licitud d'adhesió al programa ILS de l'empresa %SOLICITANTE%, amb NIF %NIF% i amb registre d’entrada núm. %NUMREC%.",
+'doc_ils_resolucion_concesion_con_req_p2' => "En data %FECHAREC%, l'ADR Balears va rebre la sol·licitud d'adhesió al programa ILS de l'empresa %SOLICITANTE%, amb NIF %NIF% i amb registre d’entrada núm. %NUMREC%.",
 'doc_ils_resolucion_concesion_con_req_p3' => "En data %FECHANOTIFIC% es va notificar al beneficiari un requeriment d’esmena de la documentació justificativa per a l’adjudicació de la marca.",
 'doc_ils_resolucion_concesion_con_req_p4' => "En data %FECHAENMIENDA%, l’IDI va rebre l’esmena de la documentació requerida.",
 'doc_ils_resolucion_concesion_con_req_p5' => "Una vegada revisada la documentació aportada, el personal tècnic va emetre un informe favorable en data %FECHAINFORMEFAV% per a l’adhesió a la marca.",

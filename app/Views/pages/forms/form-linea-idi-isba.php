@@ -186,7 +186,7 @@
   				<span class="checkmark"></span>
 				</label>
 			</div>
-			<div class="alert alert-primary ocultar" role="alert" id="empresa_eco"></div>
+			<div class="alert alert-primary ocultar" role="alert" id="empresa_eco"><?php echo lang('message_lang.empresa_eco_7_2');?></div>
 		</fieldset>
 		<fieldset>
 			<h2><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');?></h2>
@@ -257,15 +257,15 @@
 						</label>
 				</div>		
 			</li>
-			<li>
+			<!-- 			<li>
 				<div class="form-check">
   					<label class="main container-radio" for="declaro_idi_isba_que_cumple_6">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>
-							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>" checked name="declaro_idi_isba_que_cumple_6[]" id="declaro_idi_isba_que_cumple_6">							
+							<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>
+							<input class="requerido" type="checkbox" title = "<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>" checked name="declaro_idi_isba_que_cumple_6[]" id="declaro_idi_isba_que_cumple_6">							
 							<span class="w3docs"></span>
 						</label>
 				</div>		
-			</li>
+			</li> -->
 			<li>
 				<div class="form-check">
   					<label class="main container-radio" for="declaro_idi_isba_que_cumple_7">

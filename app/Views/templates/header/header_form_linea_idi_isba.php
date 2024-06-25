@@ -49,8 +49,8 @@
 			<a href='https://www.isbasgr.es/es/' target="_blank">
 				<img src='/public/assets/images/logo-isba-sgr-317.png' alt=' logo isba sgr'>
 			</a>
-			<a href='https://www.idi.es' target="_blank">
-				<img width="70%" src='/public/assets/images/logo_idi_conselleria.jpg' alt='logo idi-conselleria'>
+			<a href='https://www.adrbalears.es' target="_blank">
+				<img width="70%" src='/public/assets/images/ADRBalears-conselleria.jpg' alt='logo adr-balears-conselleria' title="Agència de desenvolupament regional de les Illes Balears">
 			</a>
 		</div>
 
