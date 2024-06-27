@@ -211,9 +211,7 @@ function tipoSolicitante (valor) {
 			document.getElementById("pJuridicaDocAcreditativa").classList.remove('ocultar')
 			document.getElementById("pJuridicaDocAcreditativaFieldSet").classList.remove('ocultar')
 			document.getElementById("enviarmemoriaTecnica").classList.remove('ocultar')
-/* 			if (document.contains(document.getElementById("file_escritura_empresa"))) {
-				document.getElementById("file_escritura_empresa").classList.remove('ocultar')
-			} */
+
 			dChild.setAttribute("id", "file_escritura_empresa")
 			dChild.setAttribute("name", "file_escritura_empresa[]")
 			dChild.setAttribute("placeholder", "Selecciona las escrituras de la empresa")
@@ -279,7 +277,8 @@ function opcionBanco (valor) {
 
 	cChild.setAttribute("aria-required", true)
 	cChild.setAttribute("type", "text")
-	cChild.setAttribute("onblur", "validateFormField(this);")    
+	cChild.setAttribute("onblur", "validateFormField(this);")
+	cChild.setAttribute("onkeypress", "checkBlankSpace(this.id)")
 
 	cChildCountry.setAttribute("aria-required", true)
 	cChildCountry.setAttribute("type", "text")
@@ -296,7 +295,7 @@ function opcionBanco (valor) {
 		cChild.setAttribute("size" ,"24")
 		cChild.setAttribute("maxlength" ,"24")
 		cChild.setAttribute("data-mask", "ES 99 9999 9999 99 9999999999")
-		cChild.setAttribute("placeholder", "ES9999999999999999999999")	
+		cChild.setAttribute("placeholder", "ES9999999999999999999999")
 		cChild.setAttribute("pattern", "[A-Z]{2}[0-9]{24}")
 		cChild.setAttribute("invalid", function(evt) {
 			var elem = evt.srcElement;
@@ -313,18 +312,23 @@ function opcionBanco (valor) {
 		cChild.setAttribute("name", "cc2")
 		cChild.setAttribute("size" ,"24")
 		cChild.setAttribute("maxlength" ,"24")
-		cChild.setAttribute("placeholder", "999999999999999999999999")	
+		cChild.setAttribute("placeholder", "999999999999999999999999")
 		cChild.setAttribute("pattern", "[0-9]{24}")
 		eelement.appendChild(cChild)
 		cChildCountry.setAttribute("id", "cc2Country")
 		cChildCountry.setAttribute("name", "cc2Country")
 		cChildCountry.setAttribute("size" ,"100")
 		cChildCountry.setAttribute("maxlength" ,"100")
-		cChildCountry.setAttribute("placeholder", "País")	
+		cChildCountry.setAttribute("placeholder", "País")
 		cChildCountry.setAttribute("pattern", "[a-z]{100}")
 		eelement.appendChild(cChildCountry)
 	}
 }	
+
+function checkBlankSpace(valor) {
+	document.getElementById(valor).value = document.getElementById(valor).value.replace(" ","")
+	console.log(valor)
+}
 	
 function activaayudasSubvenSICuales_dec_resp (valor) {
 		console.log (valor);
@@ -568,7 +572,7 @@ function muestraSubeArchivo (id) {
 				}
 }
 			
-	$("#telefono_cont").focusout(function() {
+$("#telefono_cont").focusout(function() {
 		var inputValue = $(this).val();
 		var txt = "";
 		if (inputValue == "" || document.getElementById("telefono_cont").validity.patternMismatch)
@@ -585,7 +589,7 @@ function muestraSubeArchivo (id) {
 			}
 	})
 			
-	$("#telefono_cont").keyup(function() {
+$("#telefono_cont").keyup(function() {
 			if( jQuery(this).val() == "" || document.getElementById("telefono_cont").validity.patternMismatch)
 				{
 				txt = "Hauria de ser un telèfon vàlid !!!";

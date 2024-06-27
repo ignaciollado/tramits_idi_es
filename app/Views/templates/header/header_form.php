@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo lang('message_lang.titulo_sol_form');?></title>
-	<meta name="description" content="Sol·licitud d'ajuts i de subvencions">
+	<meta name="description" content="Sol·licitud d'ajuts Xecs consultoria">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -24,8 +24,8 @@
 <header>
 	<div class="menu">
 		<div>
-			<a href="http://www.idi.es" target="_blank">
-				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_idi_conselleria.png";?>" />
+			<a href="http://www.adrbalears.es" target="_blank" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)">
+				<img class="logo" alt="logo ADR Balears" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)" src="<?php echo base_url() ."/public/assets/images/ADRBalears-conselleria.jpg";?>" />
 			</a>
 		</div>
 		<div>

@@ -141,13 +141,6 @@
 	<div class = "filter-area-col">
 		<input type="submit" class="btn btn-itramits-aceptar" value="Filtra">
 	</div>
-
-	<!-- <?php if ($session->get('rol') == 'admin') {?>
-		<div class="filter-area-col">
-			<a title="Afegir una sol·licitud manualment" target="_blank" href="<?php echo base_url("/public/index.php/home/solicitud_ayuda/manual")?>">Afegir sol·licitud</a>
-		</div>
-	<?php }?> -->
-
 </div>
 </form>
 		<?php
@@ -178,9 +171,9 @@
 				Import de l'ajuda (€)
 		<?php }?>
   </div>
-	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+<!-- 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Representant legal</a>
-	</div>
+	</div> -->
 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Ordre pagament</a>
 	</div>
@@ -223,7 +216,7 @@
 				</span>
 		<?php }?>
 
-			<span id = "nombre_rep" class = "detail-wrapper-col"><?php echo $item['nombre_rep']; ?></span>
+		<!-- 	<span id = "nombre_rep" class = "detail-wrapper-col"><?php echo $item['nombre_rep']; ?></span> -->
 			<span id = "ordenDePago" class = "detail-wrapper-col"><?php echo $item['ordenDePago']; ?></span>
 			<span id = "situacion" class = "detail-wrapper-col">			
 			
@@ -266,7 +259,6 @@
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR provisional"><strong>IF + PR<br>Provisional emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidoIFPRProvPago") {
-				/* echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>pagament emesa</strong></span></div>'; */		
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>Provisional emesa</strong></span></div>';		
 			}
 			else if ($item['situacion'] == "emitirPRDefinitiva") {
@@ -307,15 +299,6 @@
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emesa Resolució de denegació"><strong>Resolució de denegació<br>emesa</strong></span></div>';				
 			}
 
-/* 			else if ($item['situacion'] == "enviadoPRPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat PR pagament"><strong>PR pagament enviat</strong></span></div>';
-			} */
-/* 			else if ($item['situacion'] == "emitirPagoReqIFPR") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat IF+PR pagament amb requeriment emetre"><strong>IF+PR Pagament amb <br>requeriment emetre</strong></span></div>';
-			} */
-/* 			else if ($item['situacion'] == "emitirPagoReqIDPD") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat ID+PD pagament amb requeriment emetre"><strong>ID+PD pagament amb <br>requeriment emetre</strong></span></div>';
-			} */
 			else if ($item['situacion'] == "inicioConsultoria") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha iniciat la consultoria"><strong>Inici de consultoria</strong></span></div>';				
 			}			

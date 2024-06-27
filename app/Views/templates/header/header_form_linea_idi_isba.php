@@ -5,7 +5,7 @@
 	<title><?php echo lang('message_lang.titulo_solicitud_idi_isba');?></title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-	<meta name="description" content="Assistent per sol·licitar la linia de ajuts idi-isba" />
+	<meta name="description" content="Assistent per sol·licitar la linia de ajuts ADR Balears-ISBA" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
@@ -49,8 +49,8 @@
 			<a href='https://www.isbasgr.es/es/' target="_blank">
 				<img src='/public/assets/images/logo-isba-sgr-317.png' alt=' logo isba sgr'>
 			</a>
-			<a href='https://www.adrbalears.es' target="_blank">
-				<img width="70%" src='/public/assets/images/ADRBalears-conselleria.jpg' alt='logo adr-balears-conselleria' title="Agència de desenvolupament regional de les Illes Balears">
+			<a href='https://www.adrbalears.es' target="_blank" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)">
+				<img width="70%" src='/public/assets/images/ADRBalears-conselleria.jpg' alt='logo adr-balears-conselleria' title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)">
 			</a>
 		</div>
 

@@ -31,13 +31,7 @@
 		<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
   </fieldset> 
 
-	<!-- <div class="alert alert-info">
-		<?php echo lang('message_lang.intro_sol_idigital');?>
-	</div> -->
-
-	<?php 
-	//$attributes = ['id' => 'form_justificacion'];
-	//echo form_open_multipart('public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$nif.'/'.$tipoTramite, $attributes);?>
+	<?php echo lang('message_lang.intro_sol_idigital');?>
 
 <form action="<?php echo base_url('/public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	<input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
