@@ -862,7 +862,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 </div>
 		        <div class="form-group validacion">
                     <label for = "fecha_not_propuesta_resolucion_def"><strong>Data notificació proposta resolució definitiva:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
+                    <input type = "date" name = "fecha_not_propuesta_resolucion_def" oninput = "javaScript: reneraActoAdministrativo(this.value,'');" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
                 </div>                
 		        <div class="form-group validacion">
                     <label for = "fecha_firma_res"><strong>Data firma resolució:</strong></label>

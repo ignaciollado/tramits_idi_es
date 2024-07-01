@@ -168,12 +168,15 @@
 			?>
 			Import ajut sol·licitat
 			<?php } else {?>
-				Import de l'ajuda (€)
+				Import (€)
 		<?php }?>
   </div>
-<!-- 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Representant legal</a>
-	</div> -->
+ 	<div <?php echo($sort_by == 'fecha_not_propuesta_resolucion_def' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_not_propuesta_resolucion_def/" . (($sort_order == 'ASC' && $sort_by == 'fecha_not_propuesta_resolucion_def') ? 'DESC' : 'ASC'), 'https');?>">RP definitiva</a>
+	</div>
+	<div <?php echo($sort_by == 'fecha_firma_res' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_firma_res/" . (($sort_order == 'ASC' && $sort_by == 'fecha_firma_res') ? 'DESC' : 'ASC'), 'https');?>">R de concessió</a>
+	</div>
 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Ordre pagament</a>
 	</div>
@@ -217,6 +220,30 @@
 		<?php }?>
 
 		<!-- 	<span id = "nombre_rep" class = "detail-wrapper-col"><?php echo $item['nombre_rep']; ?></span> -->
+			<span id = "fecha_not_propuesta_resolucion_prov" class = "detail-wrapper-col">
+							<?php echo "Notif. PR provisional: ".$item['fecha_not_propuesta_resolucion_prov'];?>
+							<br>
+							<?php	$date1=date_create($item['fecha_not_propuesta_resolucion_prov']);
+									$date2=date_create(date("Y-m-d"));
+									$diff=date_diff($date1,$date2);
+									$faltan = 10 - $diff->format("%a");
+									// %a outputs the total number of days
+									echo $diff->format("Días transcurridos: %a");
+									if ($item['situacion'] === 'emitirResConcesion') {
+										echo "<br>Días que faltan: ".$faltan;
+									}
+									if ($item['situacion'] === 'emitidoResDen') {
+										echo "<br>NO SE TIENE QUE EMITIR";
+									}
+									?>
+							<br>
+							<?php 
+								$date1=date_create($item['fecha_not_propuesta_resolucion_prov']); 
+								$date=date_create(date($item['fecha_not_propuesta_resolucion_prov']));
+								date_add($date,date_interval_create_from_date_string("10 days"));
+								echo "Emitir RP definitiva: ".date_format($date,"Y-m-d");?>
+			</span>
+			<span id = "resol_concesion" class = "detail-wrapper-col"><?php echo $item['fecha_firma_res']; ?></span>
 			<span id = "ordenDePago" class = "detail-wrapper-col"><?php echo $item['ordenDePago']; ?></span>
 			<span id = "situacion" class = "detail-wrapper-col">			
 			
