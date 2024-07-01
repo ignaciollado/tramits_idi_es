@@ -14,7 +14,7 @@
 
 <!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script> 	
-	<link rel="icon" type="image/jpg" href="/public/assets/images/headeridi.jpg" />
+	<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/estilos.css"/>
 	<script type="text/javascript" src="/public/assets/js/pindust.js"></script>		
@@ -26,9 +26,9 @@
 
 	<div class="menu">
 		<ul>
-			<li class="logo"><a href="http://www.idi.es" target="_self"><img height = "54" title="IDI Logo"
-																					alt = "IDI logo."
-																					src = "../../../../public/assets/images/logo_idi_conselleria.jpg"></a>
+			<li class="logo"><a href="http://www.adrbalears.es" target="_self"><img height = "54" title="ADR Balears"
+																					alt = "logo ADR Balears"
+																					src = "../../../../public/assets/images/ADRBalears-conselleria.jpg"></a>
 			</li>
 			<li>
 			<h2><?php echo lang('message_lang.titulo_sol_form');?></h2>

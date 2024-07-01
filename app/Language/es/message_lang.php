@@ -41,8 +41,8 @@ return [
    'destino_solicitud'				=> 'Destino',
    'codigo_dir3'				      => 'Emisor (DIR3): ',
    'codigo_sia'                  => 'Código SIA',
-   'idi'                              => "AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES.",
-   'titulo'							   => 'iTramits - Gestor de trámites administrativos.',
+   'idi'                              => "AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS",
+   'titulo'							   => 'iTramits - Gestor de trámites administrativos',
    'solicitante'					   => 'El solicitante ',
    'nombre_solicitante'          => 'Nombre del solicitante',
    'expediente_menu'			      => 'Expedientes',
@@ -162,7 +162,7 @@ return [
    'opc_iLs'                          => "<li><code>Programa III, «Isostenibilitat»</code> ayudas para la contratación de servicios de asesoramiento externos para realizar los informes de la huella de carbono <u><strong>corporativa</strong></u> o informes de la huella de carbono de <u><strong>producto</strong></u> en el marco del programa «iSostenibilitat estratègia de millora de la sostenibilitat»</li>",
    'opc_iLs_organizacion'             => "<li>Identificación y cálculo de las emisiones de gases con efecto invernadero <u><strong>corporativa</strong></u> (emisiones directas y emisiones indirectas por electricidad y energía consumida, alcance 1 y 2). Propuesta de un plan de reducción de las emisiones.</li>",
    'opc_iLs_producto'                 => "<li>Identificación y cálculo de las emisiones de gases con efecto invernadero del <u><strong>producto</strong></u>. Cálculo de la huella de carbono de un producto HCP parcial siguiendo la norma ISO 14067:2018</li>",
-   'opc_iGestion'                     => "<li><code>Programa IV, «IGestió»</code> <br> <b><span class='alert alert-warning'>¡¡¡¡Línea cerrada por agotamiento de crédito disponible!!!!</span></b><br> ayudas para la contratación de servicios de asesoramiento externos para la elaboración de un análisis de avaluación del estado de los procesos y propuesta  de un plan de mejora y su ejecución, en el marco del programa «IGestió, estratègia de millora de la gestió i optimització dels processos productius».</li>",
+   'opc_iGestion'                     => "<li><code>Programa IV, «IGestió»</code>ayudas para la contratación de servicios de asesoramiento externos para la elaboración de un análisis de avaluación del estado de los procesos y propuesta  de un plan de mejora y su ejecución, en el marco del programa «IGestió, estratègia de millora de la gestió i optimització dels processos productius».</li>",
    'info_programa'              => "El objeto de la convocatoria de ayudas de cheques de consultoría para la elaboración y diseño de:<ol>
                      <li><code>Programa I, «IDigital»</code> plan de transformación digital en el marco del programa «Idigital».</li>
                      <li><code>Programa II, «IExporta»</code> plan de internacionalitzación en el marco del programa «Iexporta».</li>
@@ -471,24 +471,24 @@ return [
 'cierra' => "Cierra",
 'rgpd_txt' => "<strong>PROTECCIÓN DE DATOS PERSONALES:</strong><br/><br/>
 <ul>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Responsable del tratamiento</strong>: AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES (IDI). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Contacto delegado de protección de datos</strong>: dpd@idi.es</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>Web</strong>: www.idi.es</span><br>
-  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><u>GESTIÓN DE AYUDAS DE CONSULTORÍA</u></span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>BASE LEGÍTIMA</strong>: obligación legal (art. 6.1. c) del RGPD</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORIA DE INTERESADOS</strong>: solicitantes.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TIPOLOGIA DE DATOS</strong>: datos básicos: nombre y apellidos, teléfono, NIF, dirección postal, dirección electrónica, firma.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>FINALIDAD</strong>: tramitación de expedientes derivados de la concesión de ayudas de consultoría para la competitividad industrial, en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada de las empresas industriales de las Islas Baleares.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>CATEGORÍAS DE LOS DESTINATARIOS</strong>: Agencia Tributaria, Bancos, Cajas y Organismos y/o administración pública con competencia en la materia.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>TRANSFERENCIAS INTERNACIONALES</strong>: No se realizan transferencias internacionales de datos.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>MEDIDAS TÉCNICAS Y ORGANIZATIVAS</strong>: revistas en los documentos de Medidas para cumplimiento normativo y Políticas para cumplimiento normativa de seguridad.</span></li>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'><strong>PLAZOS DE SUPRESIÓN</strong>: durante el plazo estrictamente necesario para cumplir con los preceptos citados con anterioridad, salvo obligación legal de conservación.</span><br>
-  <span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>A su vez, le informamos que puede contactar con el Delegado de Protección de Datos, dirigiéndose por escrito a la dirección de correo dpd@idi.es o al teléfono +34 971176161.</span></li>
+  <li><strong>Responsable del tratamiento</strong>: AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES (ADR Balears). Adreça: Plaça Són Castelló, 1, 07009, Palma de Mallorca.</li>
+  <li><strong>Contacto delegado de protección de datos</strong>: dpd@adrbalears.es</li>
+  <li><strong>Web</strong>: www.adrbalears.es<br>
+  <u>GESTIÓN DE AYUDAS DE CONSULTORÍA</u></li>
+  <li><strong>BASE LEGÍTIMA</strong>: obligación legal (art. 6.1. c) del RGPD</li>
+  <li><strong>CATEGORIA DE INTERESADOS</strong>: solicitantes.</li>
+  <li><strong>TIPOLOGIA DE DATOS</strong>: datos básicos: nombre y apellidos, teléfono, NIF, dirección postal, dirección electrónica, firma.</li>
+  <li><strong>FINALIDAD</strong>: tramitación de expedientes derivados de la concesión de ayudas de consultoría para la competitividad industrial, en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada de las empresas industriales de las Islas Baleares.</li>
+  <li><strong>CATEGORÍAS DE LOS DESTINATARIOS</strong>: Agencia Tributaria, Bancos, Cajas y Organismos y/o administración pública con competencia en la materia.</li>
+  <li><strong>TRANSFERENCIAS INTERNACIONALES</strong>: No se realizan transferencias internacionales de datos.</li>
+  <li><strong>MEDIDAS TÉCNICAS Y ORGANIZATIVAS</strong>: revistas en los documentos de Medidas para cumplimiento normativo y Políticas para cumplimiento normativa de seguridad.</li>
+  <li><strong>PLAZOS DE SUPRESIÓN</strong>: durante el plazo estrictamente necesario para cumplir con los preceptos citados con anterioridad, salvo obligación legal de conservación.<br>
+  A su vez, le informamos que puede contactar con el Delegado de Protección de Datos, dirigiéndose por escrito a la dirección de correo dpd@adrbalears.es o al teléfono +34 971176161.</li>
 </ul>
 <strong>EJERCICIO DE DERECHOS</strong>:<br><br>
 <ul>
-  <li><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES informa a los usuarios que pueden ejercer los derechos de acceso, rectificación, limitación, supresión, portabilidad y oposición al tratamiento de sus datos de carácter personal ante el Responsable del tratamiento, así como la retirada del consentimiento prestado. El Responsable le facilitará un formulario adecuado, a presentar en la dirección arriba indicada o mediante la dirección de correo electrónico dpd@idi.es.</span></li>
-  <li class='alert alert-info'><span style='font-size:8pt;font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>El AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES le informa que tiene derecho a presentar una reclamación ante la AEPD si considera que no se ha atendido convenientemente el ejercicio de sus derechos (www.aepd.es).</span></li>
+  <li>El AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES informa a los usuarios que pueden ejercer los derechos de acceso, rectificación, limitación, supresión, portabilidad y oposición al tratamiento de sus datos de carácter personal ante el Responsable del tratamiento, así como la retirada del consentimiento prestado. El Responsable le facilitará un formulario adecuado, a presentar en la dirección arriba indicada o mediante la dirección de correo electrónico dpd@adrbalears.es.</li>
+  <li class='alert alert-info'>El AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LAS ISLAS BALEARES le informa que tiene derecho a presentar una reclamación ante la AEPD si considera que no se ha atendido convenientemente el ejercicio de sus derechos (www.aepd.es).</li>
 </ul>
 <br/>",
 
@@ -506,7 +506,7 @@ return [
 'notalegal' 	=> "<p><u>AVISO LEGAL</u>: este mensaje y sus archivos adjuntos van dirigidos exclusivamente a su destinatario y pueden contener información confidencial sometida a secreto profesional. No es permitida su comunicación, reproducción o distribución sin la autorización exprés del INSTITUTO De INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES Si no sois el destinatario final, por favor eliminadlo e informadnos por esta vía.</p>",
 'no_imprimir' 	=> "<p><span style='color: green;'>Antes de imprimir este mensaje, por favor, asegúrese de que realmente es necesario. El medio ambiente es en nuestras manos.</span></p>",
 'texto_enlace'  => "Declaración responsable del consultor/habilitador",
-'firma'         => "<p><a href='http://www.idi.es' title='IDI'>Instituto de Innovación Empresarial de las Islas Baleares (IDI)</a></p><p><a href='http://www.caib.es' title='CAIB'>Consejería de Empresa, Ocupación y Energía</a></p><p>Gobierno de las Islas Baleares</p><p></p><p>Plaza de Son Castelló, 1 - 07009, Palma. Islas Baleares</p><p></p>",
+'firma'         => "<p><a href='http://www.adrbalears.es' title='ADR Balears'>Instituto de Innovación Empresarial de las Islas Baleares (IDI)</a></p><p><a href='http://www.caib.es' title='CAIB'>Consejería de Empresa, Ocupación y Energía</a></p><p>Gobierno de las Islas Baleares</p><p></p><p>Plaza de Son Castelló, 1 - 07009, Palma. Islas Baleares</p><p></p>",
 'firma_ils'     => "Firma",
 'fecha_ils'     => "Fecha",
 'doc_info_favorable_cabecera' => "Informe favorable sobre la solicitud de ayuda para el diseño de un plan de transformación digital para %SOLICITANTE%, con NIF %NIF%",
