@@ -45,6 +45,21 @@ legend {
 	border-image: initial;
 	padding-top: 3rem!important;
 }	
+.badge {
+	font-size: 1rem;
+	padding: 5px;
+}
+.blink {
+	animation: blinker 1.5s ease-in-out infinite;
+	color: #fff;
+	border: 1px dotted #000;
+	font-family: sans-serif;
+}
+@keyframes blinker {
+	50% {
+			opacity: 0;
+	}
+}
 a {
   color: #000000 !Important;
   font-weight: 600 !Important;
@@ -263,7 +278,7 @@ header {
 		.copyrights {
 			background-color: rgba(62, 62, 62, 1);
 			color: rgba(200, 200, 200, 1);
-			padding: 1rem 1.75rem;
+			padding: 1rem 1rem;
 		}
 		@media (max-width: 559px) {
 			header ul {
@@ -803,7 +818,7 @@ code {
 
 .header-wrapper {
 	display: inline-grid;
-  grid-template-columns: 7% 7% 7% 17% 7% 15% 10% 10% 10% 10%;
+  grid-template-columns: 7% 7% 7% 14% 7% 7% 10% 11% 10% 10% 10%;
   padding-bottom: 4px;
 	width: 100%;
 }
@@ -833,9 +848,9 @@ code {
 
 .detail-wrapper {
 	display: inline-grid;
-  grid-template-columns: 7% 7% 7% 17% 7% 15% 10% 10% 10% 10%;
+  grid-template-columns: 7% 7% 7% 14% 7% 7% 10% 11% 10% 10% 10%;
   background-color: #f1efef;
-  padding: 2px 0 2px 0;
+  padding: 1px 0 1px 0;
 	width: 100%;
 }
 
@@ -879,7 +894,7 @@ code {
 .detail-wrapper-col {
   background-color: #0098cb;
   color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 1px solid #003747;
   padding: 4px;
   font-size: 1em;
   text-align: left;
@@ -947,11 +962,11 @@ code {
 
 .wrapper-modelos-doc {
 	display: grid;
-  	grid-template-columns: auto auto;
-  	background-color: #ffffff;
+  grid-template-columns: auto auto;
+  background-color: #ffffff;
 	grid-column-gap: 10px;
-    grid-row-gap: 1em;
-  	padding: 2px;
+  grid-row-gap: 1em;
+  padding: 2px;
 	width: 100%;
 }
 @media screen and (max-width: 625px) {
@@ -972,14 +987,13 @@ code {
 }
 .btn-itramits-info {
 	color: rgba(255, 255, 255, 1.0)!important;
-	width: 95%;
+	width: 100%;
 	font-size: 1.2em !Important;
 }
 .btn-itramits-info:hover {
-	border: 1px solid rgba(0, 0, 0, 1);
+	border: 1px solid rgba(255, 255, 255, 1);
 	opacity: .5;
 	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	
 }
 /* ----------------------------- detalle expediente -----------------------------------------------*/
 .general {
@@ -1067,16 +1081,16 @@ code {
 .validacion_cab {
 	background-color: #64bb64;
 	color:#000;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: .2rem;
 	padding-bottom: 1rem;
 	width:100%;
 	border-left: #000 solid 4px;
 }
 .validacion {
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1085,8 +1099,8 @@ code {
 .sitValidacion {
 	background-color: #1ecbe1;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1095,21 +1109,18 @@ code {
 .validacion-lbl {
 	background-color: #1ecbe1;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
 	width:100%;
 	border-radius: 0!important;
+	letter-spacing: .18rem;s
 }
 .validacion-lbl-emesa {
-	border: 4px solid #fff;
+	border: 4px solid #000;
 }
 .validacion-final {
 	background-color: #1ecbe1;
     color: #fff;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .4rem;
+    padding-right: .4rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     width: 100%;
@@ -1126,8 +1137,8 @@ code {
 .adhesion-lbl{
 	background-color: #1ecbe1;
     color: #fff;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .4rem;
+    padding-right: .4rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     width: 100%;
@@ -1136,8 +1147,8 @@ code {
 .adhesion-lbl-final{
 	background-color: #365446;
     color: #fff;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .4rem;
+    padding-right: .4rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     width: 100%;
@@ -1147,8 +1158,8 @@ code {
 .seguimiento-lbl{
 	background-color: #d9e90d;
     color: #000;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .4rem;
+    padding-right: .4rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     width: 100%;
@@ -1157,8 +1168,8 @@ code {
 .seguimiento-lbl-final{
 	background-color: #d9e90d;
     color: #000;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .4rem;
+    padding-right: .4rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     width: 100%;
@@ -1168,16 +1179,16 @@ code {
 .ejecucion_cab {
 	background-color: #d9e90d;
 	color:#000;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: .2rem;
 	padding-bottom: 1rem;
 	width:100%;
 	border-left: #000 solid 4px;
 }
 .ejecucion {
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1186,8 +1197,8 @@ code {
 .ejecucion-justificado {
 	background-color: #d9e90d;
 	color:#000;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1197,8 +1208,8 @@ code {
 .ejecucion-final {
 	background-color: #04c935;
 	color:#000;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1208,8 +1219,8 @@ code {
 .ejecucion-revocado {
 	background-color: #7b7c7c;
 	color: #fff;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width: 100%;
@@ -1219,8 +1230,8 @@ code {
 .sitEjecucion {
 	background-color: #d9e90d;
 	color:#000;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1229,8 +1240,8 @@ code {
 .ejecucion-lbl {
 	background-color: #d9e90d;
 	color:#000;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1246,16 +1257,16 @@ code {
 .justificacion_cab {
 	background-color: #f37020;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: .2rem;
 	padding-bottom: 1rem;
 	width:100%;
 	border-left: #000 solid 4px;
 }
 .justificacion {
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1264,8 +1275,8 @@ code {
 .justificacion-lbl {
 	background-color: #f37020;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1274,8 +1285,8 @@ code {
 .justificacion-final {
 	background-color: #f37020;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1285,16 +1296,16 @@ code {
 .desestimiento_cab {
 	background-color: #84c9e6;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: .2rem;
 	padding-bottom: 1rem;
 	width:100%;
 	border-left: #000 solid 4px;
 }
 .desestimiento {
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1303,8 +1314,8 @@ code {
 .desestimiento-lbl {
 	background-color: #84c9e6;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1313,8 +1324,8 @@ code {
 .desestimiento-final {
 	background-color: #84c9e6;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1324,8 +1335,8 @@ code {
 .indeterminado {
 	background-color: #000000;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;
@@ -1335,8 +1346,8 @@ code {
 .indeterminado_ils {
 	background-color: #43584a;
 	color:#fff;
-	padding-left: .5rem;
-	padding-right: .5rem;
+	padding-left: .4rem;
+	padding-right: .4rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	width:100%;

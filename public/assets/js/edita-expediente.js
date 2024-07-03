@@ -312,17 +312,6 @@ function generaRequerimiento(idExp) {
 
 }
 
-/* function generaResolucionAdhesion(idExp) {
-	respuesta = confirm("¿Generar resolución concesión ¿con/sin requerimiento?, antes comprobar campo 'doc_requeriment_ils'")
-	if ( respuesta ) {
-		alert (`Generar 'IF+Resolució emesa': ${respuesta}`)
-		window.open(`https://tramits.idi.es/public/index.php/expedientes/generainformeILS/${idExp}/${convocatoria.value}/ILS/${nif.value}/doc_resolucion_concesion_adhesion_ils`, "_self", "width=300, height=300");
-	} else {
-		alert (`Generar 'IF+Resolució emesa': ${respuesta}`)
-	}
-
-} */
-
 function cambiaEstadoDocJustificacion(id) {
 	
 	let element = document.getElementById(id);
@@ -675,6 +664,25 @@ function validateForm(formName) {
 		}
 	}
 	return true
+}
+
+function cambiarSituacionExpediente (fase, elemento) {
+	let theElement = document.getElementById(elemento)
+	let idExp = document.getElementById("id")
+
+	if (elemento === "fecha_limite_justificacion") {
+		console.log (theElement.value, theElement.value.length)
+	}
+
+	if (theElement.value.length > 0) {
+		console.log ("cambiar el estado")
+		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_del_expediente.php?pendienteJustificar/${idExp.value}`;
+			fetch(nuevaSituacion)
+				.then((response) => response.text())
+				.then((data) => {
+					document.getElementById("situacion_exped").value = 'pendienteJustificar';
+				});
+	}
 }
 
 function avisarCambiosEnFormulario(fase, elemento) {
