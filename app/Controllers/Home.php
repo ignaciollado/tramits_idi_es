@@ -282,6 +282,31 @@ class Home extends BaseController
 		echo view('pages/forms/form-adhesion-ils');
 	}
 
+	public function solicitud_adhesion_felib($page = 'forms/form-adhesion-felib')
+	{
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		$request = \Config\Services::request();
+		$idioma =  $request->uri->getSegment(3);
+		if (!$idioma) {
+			$idioma = 'ca';
+		}
+		$language = \Config\Services::language();
+		$language->setLocale($idioma); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => $idioma,                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   		set_cookie($cookie);
+
+		
+		echo view('templates/header/header_form_felib');
+		echo view('pages/forms/form-adhesion-felib');
+	}
+
 	public function solicitud_adhesion_ils_es($page = 'forms/form-adhesion-ils')
 	{
 		helper('form');

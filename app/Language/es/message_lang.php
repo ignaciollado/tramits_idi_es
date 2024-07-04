@@ -51,6 +51,8 @@ return [
    'sol_idigital_menu'                => 'Solicitud Cheques consultoría',
    'sol_adhesion_ils_menu'             => 'Solicitud adhesión a ILS',
    'sol_linea_idi_isba_menu'             => 'Solicitud línea IDI-ISBA',
+   'sol_adhesion_felib_menu'       => 'Solicitud FELIB',
+
    'asistente_de_tramitacion'         => 'Asistente de tramitación', 
    'btn_next'                      => 'Siguiente',
    'btn_previous'                  => 'Anterior',    
@@ -70,6 +72,8 @@ return [
    'titulo_sol_idigital'			  => "Solicitud de ayuda y/o subvención",
    'titulo_adhesion_ils'			  => "Solicitud de adhesión a ILS",
    'titulo_solicitud_idi_isba'     => "Ayudas a los gastos financieros a través del aval de ISBA",
+   'titulo_solicitud_felib'        => "SOLICITUD DE ADHESIÓN A LOS PROGRAMAS QUE OFRECE A LOS MUNICIPIOS L’AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears)",
+
    'Codi_SIA'                      => "Código SIA",
    'tramite_procedimiento'         => "Trámite o procedimiento",
    'tramite_procedimiento_texto'   => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratégico Industrial 2018-2025",
@@ -86,8 +90,8 @@ return [
    SI NO PASA POR LA SEDE ELECTRÓNICA DE CAIB SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.
    Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@idi.es y/o por teléfono: 971 17 61 61 + 62891",
    'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a la microempresa, pequeña y mediana empresa de carácter industrial de las Illes Balears que tengan aprobadas operaciones financieras avaladas por ISBA SGR, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas, eficiencia energética y transformación digital previstas en el Plan Estratégico Industrial 2018-2025",
-
    'subtitulo_justificacion_idigital'	 => "RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",     
+   'subtitulo_solicitud_felib' => "",
    'enviado_correo_electron'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_ils'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de adhesión a ILS</strong> para que la firme electrónicamente.",
    'enviado_correo_electron_idi_isba' => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda IDI-ISBA</strong> para que la firme electrónicamente.",
@@ -218,13 +222,28 @@ return [
 
    'solicitante_tipo'                  => "TIPO DE SOLICITANTE",
    'solicitante_tipo_ils'              => "1. TIPO DE EMPRESA",
+   'programa_tipo'                     => "Por todo ello, <strong>pido a la directora gerente</strong> que mi municipio ofrezca los programas siguientes:",
 
    'solicitante_tipo_autonomo'         => "Autónomo",
    'solicitante_tipo_pequenya'         => "Pequeña empresa",
    'solicitante_tipo_mediana'          => "Mediana empresa",   
    'solicitante_tipo_grande'           => "Grande",
    'convocatoria_activa'               => "Convocatoria en curso.",
-   'solicitante_tipo_cluster_ct'       => "Clúster / Centro Tecnológico",
+
+   'felib_p1' => "Programa <a href='https://www.adrbalears.es/ibempren/es/iempren-recursos-para-emprender' target='_ablank'><span class='emprendre'>ibemprėn</span></a>, que aporta recursos per al foment i el suport a l’autoocupació.",
+   'felib_p2' => "Programa <a href='https://www.adrbalears.es/ibemprenjove/es/bienvenidos-a-iemprenjove' target='_ablank'><span class='emprendre'>ibemprėnjove</span></a>, per potenciar les capacitats emprenedores de la comunitat educativa.",
+   'felib_p3' => "Programa <a href='https://www.adrbalears.es/ibtalent/es/bienvenidos-a-ibtalent' target='_ablank'><span class='emprendre'>Ibtalent</span></a>, per impulsar la competitivitat de les empreses a través de la gestió i millora del talent del seu personal.",
+   'felib_p4' => "Programa <a href='https://www.adrbalears.es/ibdigitalitzacio-xecs/es/bienvenidos-a-ibdigitalitzacio-xecs' target='_ablank'><span class='emprendre'>Ibdigitalització xecs</span></a>, per donar suport a les empreses en el seu procés de transformació digital.",
+   'felib_p5' => "Programa <a href='https://www.adrbalears.es/ibgestio-xecs/es/bienvenidos-a-ibgestio-xecs' target='_ablank'><span class='emprendre'>Ibgestió xecs</span></a>, per ajudar les empreses en l’adquisició d’eines de millora de la gestió.",
+   'felib_p6' => "Programa <a href='https://www.adrbalears.es/ibrelleu/es/bienvenidos-a-ibrelleu' target='_ablank'><span class='conncectar'><span class='connectar'>Ibrelleu</span></a>, per facilitar a les persones emprenedores l’accés al mercat de compravenda de petites i mitjanes empreses (relleu empresarial).",
+   'felib_p7' => "Programa <a href='https://www.adrbalears.es/ibcomerc-a-escola/es/bienvenidos-a-ibcomerc-a-escola' target='_ablank'><span class='connectar'>Ibcomerç a l'escola</span></a>, per donar a conèixer els comerç local als alumnes de primària.",
+   'felib_p8' => "Programa <a href='https://www.adrbalears.es/emblematicsbalears/es/bienvenidos-a-emblematicsbalears' target='_ablank'><span class='connectar'>Emblemàtics</span></a> Illes Balears, per donar visibilitat i promocionar el comerç tradicional.",
+   'felib_p9' => "Programa <a href='https://www.adrbalears.es/exposabyidi/es/bienvenidos-a-exposabyidi' target='_ablank'><span class='connectar'>Ibexposa producte local</span></a>, per millorar l’espai expositiu de venda pel comerç i la indústria dels municipis.",
+   'felib_p10' => "Gestió i promoció de la marca <a href='https://www.adrbalears.es/pa-daqui-forn-i-pastisseria/es/bienvenidos-a-pa-daqui-forn-i-pastisseria' target='_ablank'><span class='connectar'>«Pa d’aquí, forn i tradició»</span></a>, marca col·lectiva que distingeix els forns artesanals dels municipis.",
+   'felib_p11' => "Programa <a href='https://www.adrbalears.es/ibsostenibilitat-xecs/es/bienvenidos-a-ibsostenibilitat-xecs' target='_ablank'><span class='connectar'>Ibsostenibilitat xecs</span></a>, per ajudar les empreses en la transformació cap a un model de producció més sostenible.",
+   'felib_p12' => "Programa i marca de garantia <a href='https://www.adrbalears.es/industria-local-sostenible/es/bienvenidos-a-industria-local-sostenible' target='_ablank'><span class='connectar'>ILS marca garantia</span></a> (ILS), per acompanyar les indústries en el procés cap a la sostenibilitat, mitjançant la reducció d’emissions de gasos amb efecte d’hivernacle (càlcul de la petjada de carboni).",
+   'felib_p13' => "Programa <a href='https://www.adrbalears.es/ibexporta-xecs/es/bienvenidos-a-ibexporta-xecs' target='_ablank'><span class='projectar'>Ibexporta xecs</span></a>, per facilitar l’accés als mercats exteriors a les empreses.",
+   'felib_p14' => "",
    
    'cuantia_ayuda_info'                => "  <div>4.2. El número de horas subvencionadas oscilará entre un mínimo de 40 horas, 60 horas y un máximo de 80 horas. La empresa podrá decidir el número de horas que necesita, en función del tamaño y de la complejidad de sus procesos productivos. Para cada 10 horas de consultoría, 2 tendrán que ser horas de consultoría presenciales. Así:</div>
 	<ul>
@@ -492,12 +511,12 @@ return [
 </ul>
 <br/>",
 
-'documentoEnIDI' => "Este documento ya se encuentra en el IDI y no ha sufrido modificacioness <strong>(en este caso no hace falta aportarlo)</strong>.",
-'memoriaTecnicaEnIDI_sinCambios' => "Memoria técnica, este documento ya se encuentra en el IDI",
-'altaRetaDocAcredEnIDI_sinCambios' => "Documento acreditativo alta en RETA, este documento ya se encuentra en el IDI",
-'certificadoIAEEnIDI_sinCambios' => "Certificado IAE, este documento ya se encuentra en el IDI.",
-'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, este documento ya se encuentra en el IDI.",
-'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Documento acreditativo de representación, este documento ya se encuentra en el IDI.",
+'documentoEnIDI' => "Este documento ya se encuentra en el ADR Balears y no ha sufrido modificacioness <strong>(en este caso no hace falta aportarlo)</strong>.",
+'memoriaTecnicaEnIDI_sinCambios' => "Memoria técnica, este documento ya se encuentra en el ADR Balears",
+'altaRetaDocAcredEnIDI_sinCambios' => "Documento acreditativo alta en RETA, este documento ya se encuentra en el ADR Balears",
+'certificadoIAEEnIDI_sinCambios' => "Certificado IAE, este documento ya se encuentra en el ADR Balears.",
+'copiaNIFSociedadEnIDI_sinCambios' => "NIF empresa, este documento ya se encuentra en el ADR Balears.",
+'pJuridicaDocAcreditativaEnIDI_sinCambios' => "Documento acreditativo de representación, este documento ya se encuentra en el ADR Balears.",
 
 'clausula_idi'   => "CLÁUSULA USUARIO IDI",
 'texto_mail_intro_1' => "Hemos recibido una solicitud de ayudas para el diseño de planes de transformación digital de",
@@ -506,7 +525,7 @@ return [
 'notalegal' 	=> "<p><u>AVISO LEGAL</u>: este mensaje y sus archivos adjuntos van dirigidos exclusivamente a su destinatario y pueden contener información confidencial sometida a secreto profesional. No es permitida su comunicación, reproducción o distribución sin la autorización exprés del INSTITUTO De INNOVACIÓN EMPRESARIAL DE LAS ISLAS BALEARES Si no sois el destinatario final, por favor eliminadlo e informadnos por esta vía.</p>",
 'no_imprimir' 	=> "<p><span style='color: green;'>Antes de imprimir este mensaje, por favor, asegúrese de que realmente es necesario. El medio ambiente es en nuestras manos.</span></p>",
 'texto_enlace'  => "Declaración responsable del consultor/habilitador",
-'firma'         => "<p><a href='http://www.adrbalears.es' title='ADR Balears'>Instituto de Innovación Empresarial de las Islas Baleares (IDI)</a></p><p><a href='http://www.caib.es' title='CAIB'>Consejería de Empresa, Ocupación y Energía</a></p><p>Gobierno de las Islas Baleares</p><p></p><p>Plaza de Son Castelló, 1 - 07009, Palma. Islas Baleares</p><p></p>",
+'firma'         => "<p><a href='http://www.adrbalears.es' title='ADR Balears'>Agència de desenvolupament regional de las Islas Baleares (ADR Balears)</a></p><p><a href='http://www.caib.es' title='CAIB'>Consejería de Empresa, Ocupación y Energía</a></p><p>Gobierno de las Islas Baleares</p><p></p><p>Plaza de Son Castelló, 1 - 07009, Palma. Islas Baleares</p><p></p>",
 'firma_ils'     => "Firma",
 'fecha_ils'     => "Fecha",
 'doc_info_favorable_cabecera' => "Informe favorable sobre la solicitud de ayuda para el diseño de un plan de transformación digital para %SOLICITANTE%, con NIF %NIF%",

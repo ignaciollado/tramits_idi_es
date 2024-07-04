@@ -51,6 +51,8 @@ return [
    'sol_idigital_menu'             => 'Sol·licitud xecs consultoria',
    'sol_adhesion_ils_menu'         => 'Sol·licitud adhesió a ILS',
    'sol_linea_idi_isba_menu'       => 'Sol·licitud linia IDI-ISBA',
+   'sol_adhesion_felib_menu'       => 'Sol·licitud FELIB',
+
 
    'asistente_de_tramitacion'      => 'Assistent de tramitació',
    'btn_next'                      => 'Següent',
@@ -72,6 +74,8 @@ return [
    'titulo_sol_idigital'			  => "Sol·licitud ajut i/o subvenció",
    'titulo_adhesion_ils'			  => "Sol·licitud d'adhesió a ILS",
    'titulo_solicitud_idi_isba'     => "Ajuts a les despeses financeres a través de l'aval d'ISBA",
+   'titulo_solicitud_felib'        => "SOL·LICITUD D’ADHESIÓ ALS PROGRAMES QUE OFEREIX ALS MUNICIPIS L’AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears)",
+
    'Codi_SIA'                      => "Codi SIA",
    'tramite_procedimiento'         => "Tràmit o procediment",
    'tramite_procedimiento_texto'   => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
@@ -90,6 +94,7 @@ return [
 
    'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses de caràcter industrial de les Illes Balears per cobrir despeses financeres d'operacions de finançament d'inversions productives, eficiència energètica i transformació digital previstes en el Pla Estratègic Industrial 2018-2023",
    'subtitulo_justificacion_idigital'	 => "RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",     
+   'subtitulo_solicitud_felib' => "",
    'enviado_correo_electron'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_ils'      => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'adhesió a ILS</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_idi_isba' => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut IDI-ISBA</strong> perquè la signeu electrònicament.",
@@ -121,6 +126,11 @@ return [
    'select_cuantia_ayuda'          => "Seleccionau la quantia de la ajuda",
    'select_generico'               => "Seleccionau una opció",
    'identificacion_sol_ils'        => "3. DADES GENERALS",
+   'identificacion_felib'          => "(nom i llinatges) , batle/batlessa de l’Ajuntament d ......, estic informat dels
+programes que ofereix l’ADR Balears per donar suport en el procés de creació i la
+millora competitiva de les empreses de les Illes Balears. Una vegada analitzats els
+seus objectius i recursos oferts, vull comptar amb la seva col·laboració al nostre
+municipi.",
    'identificacion_sol_idigital'   => "INTERESSAT",
    'identificacion_empresa_ils'    => "2. DADES DE L'EMPRESA",
 
@@ -219,12 +229,13 @@ return [
    'solicitante_adhesion_ils'          => "Benvolgut senyor / Benvolguda senyora,<br><br>",
    'datos_empresa_ils_recibidos'       => "Benvolgut senyor/senyora,<br><br>hem rebut correctament les dades sol·licitades.<br>Li quedem molt agraïts.<br><br>Rebi una salutació cordial.",
    'datos_empresa_ils_adicionales'     => "Ara que s'ha adherit al nostre programa ILS (Indústria Local Sostenible) ens agradaria publicar una fitxa de la seva empresa en la nostra web 
-   <a href='https://>www.industrialocalsostenible.es'>www.industrialocalsostenible.es</a>. <br><br>Per a això necessitem que ens faci arribar aquestes dades addicionals:",
+   <a href='https://>www.industrialocalsostenible.es' target='_ablank'>www.industrialocalsostenible.es</a>. <br><br>Per a això necessitem que ens faci arribar aquestes dades addicionals:",
    'canales_comercializacion_empresa'  => "Breu explicació dels canals de comercialització de la seva empresa",
    'enviar_los_datos'                  => "Enviar les dades",
 
    'solicitante_tipo'                 => "TIPUS DE SOL·LICITANT",
    'solicitante_tipo_ils'             => "1. TIPUS D'EMPRESA",
+   'programa_tipo'                    => "Per tot això, <strong>deman a la directora gerent</strong> que el meu municipi ofereixi els programes següents:",
 
    'solicitante_tipo_autonomo'        => "Autònom",
    'solicitante_tipo_pequenya'        => "Petita empresa",
@@ -232,6 +243,23 @@ return [
    'solicitante_tipo_grande'          => "Gran",
    'solicitante_tipo_cluster_ct'      => "Clúster / Centre Tecnològic",
    'convocatoria_activa'              => "Convocatòria en curs.",
+
+   'felib_p1' => "Programa <a href='https://www.adrbalears.es/ibempren' target='_ablank'><span class='emprendre'>ibemprėn</span></a>, que aporta recursos per al foment i el suport a l’autoocupació.",
+   'felib_p2' => "Programa <a href='https://www.adrbalears.es/ibemprenjove' target='_ablank'><span class='emprendre'>ibemprėnjove</span></a>, per potenciar les capacitats emprenedores de la comunitat educativa.",
+   'felib_p3' => "Programa <a href='https://www.adrbalears.es/ibtalent' target='_ablank'><span class='emprendre'>Ibtalent</span></a>, per impulsar la competitivitat de les empreses a través de la gestió i millora del talent del seu personal.",
+   'felib_p4' => "Programa <a href='https://www.adrbalears.es/ibdigitalitzacio-xecs' target='_ablank'><span class='emprendre'>Ibdigitalització xecs</span></a>, per donar suport a les empreses en el seu procés de transformació digital.",
+   'felib_p5' => "Programa <a href='https://www.adrbalears.es/ibgestio-xecs' target='_ablank'><span class='emprendre'>Ibgestió xecs</span></a>, per ajudar les empreses en l’adquisició d’eines de millora de la gestió.",
+   'felib_p6' => "Programa <a href='https://www.adrbalears.es/ibrelleu' target='_ablank'><span class='connectar'>Ibrelleu</span></a>, per facilitar a les persones emprenedores l’accés al mercat de compravenda de petites i mitjanes empreses (relleu empresarial).",
+   'felib_p7' => "Programa <a href='https://www.adrbalears.es/ibcomerc-a-escola' target='_ablank'><span class='connectar'>Ibcomerç a l'escola</span></a>, per donar a conèixer els comerç local als alumnes de primària.",
+   'felib_p8' => "Programa <a href='https://www.adrbalears.es/emblematicsbalears' target='_ablank'><span class='connectar'>Emblemàtics</span></a> Illes Balears, per donar visibilitat i promocionar el comerç tradicional.",
+   'felib_p9' => "Programa <a href='https://www.adrbalears.es/exposabyidi' target='_ablank'><span class='connectar'>Ibexposa producte local</span></a>, per millorar l’espai expositiu de venda pel comerç i la indústria dels municipis.",
+   'felib_p10' => "Gestió i promoció de la marca <a href='https://www.adrbalears.es/pa-daqui-forn-i-pastisseria' target='_ablank'><span class='connectar'>«Pa d’aquí, forn i tradició»</span></a>, marca col·lectiva que distingeix els forns artesanals dels municipis.",
+   'felib_p11' => "Programa <a href='https://www.adrbalears.es/ibsostenibilitat-xecs' target='_ablank'><span class='connectar'>Ibsostenibilitat xecs</span></a>, per ajudar les empreses en la transformació cap a un model de producció més sostenible.",
+   'felib_p12' => "Programa i marca de garantia <a href='https://www.adrbalears.es/industria-local-sostenible' target='_ablank'><span class='connectar'>ILS marca garantia</span></a> (ILS), per acompanyar les indústries en el procés cap a la sostenibilitat, mitjançant la reducció d’emissions de gasos amb efecte d’hivernacle (càlcul de la petjada de carboni).",
+   'felib_p13' => "Programa <a href='https://www.adrbalears.es/ibexporta-xecs' target='_ablank'><span class='projectar'>Ibexporta xecs</span></a>, per facilitar l’accés als mercats exteriors a les empreses.",
+   'felib_p14' => "",
+
+
    'cuantia_ayuda_info'               => " <div>4.2. El nombre d’hores subvencionades oscil·larà entre un mínim de 40 hores, 60 hores i un màxim de 80 hores. L’empresa podrà decidir el nombre d’hores que necessita, en funció de la grandària i de la complexitat dels seus processos productius. Per a cada 10 hores de consultoria, 2 hauran de ser hores de consultoria presencials. Així:</div>
 	<ul>
     <li> Si l’empresa defineix una consultoria necessària de 40 hores, 8 hores serien presencials i 32 hores serien de consultoria en línia per a l’elaboració del pla de transformació digital, amb un cost de 3.000 €. L’IDI lliurarà un 80 % del cost (2.400 €) i l’empresa el 20 % restant (600 €).</li>
@@ -293,7 +321,7 @@ return [
                                                          <dd>El certificat d´estar al corriente de pago con la <abbr title='Agència tributaria de les Illes Balears'>BLA BLA BLA</abbr>.</dd>
                                                          <dd>El certificat d´estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>BLA BLA BLA</abbr>.</dd>
                                                       </dl>",
-   "documentacion_resultante_cabecera"          => "En finalitzar aquest tràmit, rebreu:",
+   "documentacion_resultante_cabecera"          => "En finalitzar d'aquest assistent rebrà, per correu electrònic, un document en format PDF que contindrà:",
    "documentacion_resultante_ils"               => "<ol class='formbox'> 
                                                       <li>Una declaració responsable.</li>
                                                       <li>Una sol·licitud d'adhesió al programa ILS.</li></ol>",                                                   
