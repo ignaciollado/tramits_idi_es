@@ -51,7 +51,7 @@
 <!-- 			<?php echo lang('message_lang.documentacion_necesaria_pymes_ils');?>
 			<?php echo lang('message_lang.documentacion_necesaria_si_no_autoriza');?> -->
 			<h3><?php echo lang('message_lang.documentacion_resultante_cabecera');?></h3>
-			<?php echo lang('message_lang.documentacion_resultante_ils');?>
+			<?php echo lang('message_lang.documentacion_resultante_felib');?>
 		</fieldset>
 	</div>
 

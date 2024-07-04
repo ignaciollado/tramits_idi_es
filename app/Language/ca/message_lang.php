@@ -322,6 +322,9 @@ municipi.",
                                                          <dd>El certificat d´estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>BLA BLA BLA</abbr>.</dd>
                                                       </dl>",
    "documentacion_resultante_cabecera"          => "En finalitzar d'aquest assistent rebrà, per correu electrònic, un document en format PDF que contindrà:",
+   "documentacion_resultante_felib"               => "<ol class='formbox'> 
+                                                            <li>Una declaració responsable.</li>
+                                                            <li>Una sol·licitud d'adhesió als programes de l'ADR Balears.</li></ol>",    
    "documentacion_resultante_ils"               => "<ol class='formbox'> 
                                                       <li>Una declaració responsable.</li>
                                                       <li>Una sol·licitud d'adhesió al programa ILS.</li></ol>",                                                   
