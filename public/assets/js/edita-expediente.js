@@ -1,4 +1,5 @@
 const mainNode = document.querySelector('body');
+let currentExpSituation = document.getElementById("situacion_exped").selectedIndex
 mainNode.onload = configuraDetalle_OnLoad;
 
 $(document).ready(function () {
@@ -669,11 +670,11 @@ function validateForm(formName) {
 function compruebaExistenciaFecha(fase, elemento) {
 	let theElement = document.getElementById(elemento)
 	let selectedIndexElement = theElement.selectedIndex
-	console.log (fase, theElement.value, selectedIndexElement)
+	console.log (fase, theElement.value, selectedIndexElement, currentExpSituation, document.getElementById("fecha_not_propuesta_resolucion_prov").value, document.getElementById("fecha_not_propuesta_resolucion_prov").value.length)
 	if (theElement.value === "emitirIFPRProvPago") {
 		if (document.getElementById("fecha_not_propuesta_resolucion_prov").value.length === 0) {
-			theElement.selectedIndex = selectedIndexElement
-			alert (`Notificació proposta resolució provisional?`)
+			theElement.selectedIndex = currentExpSituation
+			alert (`Falta la data: 'Notificació proposta resolució provisional' de la fase de VALIDACIÓ`)
 		}
 	}
 }
@@ -681,19 +682,27 @@ function compruebaExistenciaFecha(fase, elemento) {
 function cambiarSituacionExpediente (fase, elemento) {
 	let theElement = document.getElementById(elemento)
 	let idExp = document.getElementById("id")
-
+	let nuevoEstado = ""
+	let itemID = 0
 	if (elemento === "fecha_limite_justificacion") {
-		console.log (theElement.value, theElement.value.length)
+		nuevoEstado = "pendienteJustificar"
+		itemID = 25
+	}
+	if (elemento === "fecha_not_propuesta_resolucion_prov") {
+		nuevoEstado = "emitirIFPRProvPago"
+		itemID = 11
+	}
+	if (elemento === "fecha_limite_consultoria") {
+		nuevoEstado = "inicioConsultoria"
+		itemID = 17
 	}
 
 	if (theElement.value.length > 0) {
-		console.log ("cambiar el estado")
-		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_del_expediente.php?pendienteJustificar/${idExp.value}`;
+		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_del_expediente.php?${nuevoEstado}/${idExp.value}`;
 			fetch(nuevaSituacion)
 				.then((response) => response.text())
 				.then((data) => {
-					/* document.getElementById("situacion_exped").value = 'pendienteJustificar'; */
-					document.getElementById("situacion_exped").options.item(25).selected = 'selected';
+					document.getElementById("situacion_exped").options.item(itemID).selected = 'selected';
 				});
 	}
 }

@@ -174,11 +174,11 @@
 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Ordre pagament</a>
 	</div>
-	<div <?php echo($sort_by == 'fecha_limite_justificacion' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_limite_justificacion/" . (($sort_order == 'ASC' && $sort_by == 'fecha_limite_justificacion') ? 'DESC' : 'ASC'), 'https');?>">Data màxima de justificació</a>
+	<div <?php echo($sort_by == 'empresa_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa_consultor/" . (($sort_order == 'ASC' && $sort_by == 'empresa_consultor') ? 'DESC' : 'ASC'), 'https');?>">Empresa consultor</a>
 	</div>
- 	<div <?php echo($sort_by == 'fecha_not_propuesta_resolucion_def' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_not_propuesta_resolucion_def/" . (($sort_order == 'ASC' && $sort_by == 'fecha_not_propuesta_resolucion_def') ? 'DESC' : 'ASC'), 'https');?>">PR prov. definitiva</a>
+ 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Nom del consultor</a>
 	</div>
 	<div <?php echo($sort_by == 'fecha_firma_res' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_firma_res/" . (($sort_order == 'ASC' && $sort_by == 'fecha_firma_res') ? 'DESC' : 'ASC'), 'https');?>">Res. de concessió</a>
@@ -222,207 +222,228 @@
 				</span>
 		<?php }?>
 		<span id = "ordenDePago" class = "detail-wrapper-col"><?php echo $item['ordenDePago']; ?></span>
-		<span id = "fecha_limite_justificacion" class = "detail-wrapper-col">
-			<?php 
-			if ($item['situacion'] === 'pendienteJustificar') {
-				echo date_format(date_create($item['fecha_limite_justificacion']),"Y-m-d")." ";
-				$date1 = date_create($item['fecha_limite_justificacion']);
-				$date2 = date_create(date("Y-m-d"));
-				$diffjust = date_diff($date2, $date1);
-				?>
-				<?php if ($diffjust->format("%R%a") > 5) {?>
-					<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-dark"><?php echo $diffjust->format("%a dies");?></span>
-				<?php } elseif (($diffjust->format("%R%a") < 0) ) { ?>
-						<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-danger blink"><?php echo $diffjust->format("%R%a dies");?></span>
-				<?php } elseif (($diffjust->format("%R%a") <= 5) ) { ?>
-					<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-warning blink"><?php echo $diffjust->format("%a dies");?></span>					
-				
-				<?php } ?>
-					<!-- <?php echo $diffjust->format("%R%a dies");?> -->
-				<!-- </span> -->
-			<?php }
-			 ?>
-				</span>
-			<span id = "fecha_not_propuesta_resolucion_prov" class = "detail-wrapper-col">
-				<?php 
-					$date1 = date_create($item['fecha_not_propuesta_resolucion_prov']);
-					$date2 = date_create(date("Y-m-d"));
-					$diff  = date_diff($date1,$date2);
-					$faltan = 10 - $diff->format("%a dies");
-					$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
-					$date   = date_create(date($item['fecha_not_propuesta_resolucion_prov']));
-					date_add($date,date_interval_create_from_date_string("10 days"));
-						if ($item['situacion'] === 'emitirIFPRProvPago') {
-							echo "Notif. PR prov.: ".$item['fecha_not_propuesta_resolucion_prov']."<br>";
-							echo "Emetre PR prov. def: ".date_format($date,"Y-m-d")."<br>";
-							if ($faltan >= 5) {?>
-								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-dark">
-							<?php } elseif ( $faltan > 0) { ?>
-								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-warning">									
-							<?php } else { ?>
-								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-danger blink">
-							<?php } 
-							echo $faltan." dies";
-							echo "</span>";
-							}
-						if ($item['situacion'] === 'emitidoResDen') {
-							echo "<br>NO SE TIENE QUE EMITIR";
-						}?>
-		</span>
-			<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['fecha_not_propuesta_resolucion_def']; ?></span>
-			<span id = "situacion" class = "detail-wrapper-col">			
+		<span id = "empresa_consultor" class = "detail-wrapper-col"><?php echo $item['empresa_consultor']; ?></span>
+		<span id = "nom_consultor" class = "detail-wrapper-col"><?php echo $item['nom_consultor']; ?></span>
+		<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['fecha_not_propuesta_resolucion_def']; ?></span>
+		<span id = "situacion" class = "detail-wrapper-col">			
 			
 			<?php 
 			if ($item['situacion'] == "pendiente") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent de validació">Pendent <br>de validar</span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-final"><span title="Aquesta sol·licitud está pendent de validació">Pendent <br>de validar</span></div>'; 
 			}
 			else if ($item['situacion'] == "nohapasadoREC") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud No ha passat per la SEU electrònica">No ha passat <br>per la <span class="seu-elect">SEU</span><br>electrònica</span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud No ha passat per la SEU electrònica">No ha passat <br>per la <span class="seu-elect">SEU</span><br>electrònica</span></div>'; 
 			}
 			else if ($item['situacion'] == "comprobarAnt") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia</span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia</span></div>'; 
 			}
 			else if ($item['situacion'] == "comprobarAntReg") {
-				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia amb<br>requeriment<br>pendent</span></div>'; 
+				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-jurid-req"><span title="Aquesta sol·licitud la de comprobar el S.Juridic">Comprovar<br>Antonia amb<br>requeriment<br>pendent</span></div>'; 
 			}
 			else if ($item['situacion'] == "emitirReq") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-emit-req" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud está pendent emetre requeriment">Emetre<br>requeriment</span></div>'; 
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-emit-req"><span title="Aquesta sol·licitud está pendent emetre requeriment">Emetre<br>requeriment</span></div>'; 
 			}
 			else if ($item['situacion'] == "firmadoReq") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha signat el requeriment"><strong>Requeriment signat</strong></span></div>'; 				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud s´ha signat el requeriment"><strong>Requeriment signat</strong></span></div>'; 				
 			}
 			else if ($item['situacion'] == "notificadoReq") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha notificat el requeriment"><strong>Requeriment notificat</strong></span></div>'; 				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud s´ha notificat el requeriment"><strong>Requeriment notificat</strong></span></div>'; 				
 			}
 			else if ($item['situacion'] == "emitirDesEnmienda") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre desistiment per esmena"><strong>Emetre desistiment <br>per esmena</strong></span></div>'; 				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud s´ha d´emetre desistiment per esmena"><strong>Emetre desistiment <br>per esmena</strong></span></div>'; 				
 			}
 			else if ($item['situacion'] == "emitidoDesEnmienda") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès desistiment per esmena"><strong>Desistiment per <br>esmena emès</strong></span></div>'; 				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud s´ha emès desistiment per esmena"><strong>Desistiment per <br>esmena emès</strong></span></div>'; 				
 			}
 			else if ($item['situacion'] == "Desestimiento") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-final" data-toggle = "modal" data-target = "#myModal"><span title="El sol·licitant a desistit en demanar l´ajut/subvenció"><strong>Desistiment</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-final"><span title="El sol·licitant a desistit en demanar l´ajut/subvenció"><strong>Desistiment</strong></span></div>';				
 			}
 			/*  */
-			else if ($item['situacion'] == "emitirIFPRProvPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre IF+PR provisional"><strong>IF + PR<br>Provisional emetre</strong></span></div>';				
-			}
+			else if ($item['situacion'] == "emitirIFPRProvPago") {?>
+				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl">
+					<span title="Aquesta sol·licitud s'ha d'emetre IF+PR provisional">
+						<strong>IF + PR<br>Provisional emetre</strong><br>
+						<?php 
+							$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']);
+							$date2  = date_create(date($item['fecha_not_propuesta_resolucion_prov']));
+							date_add($date2,date_interval_create_from_date_string("10 days"));
+							$actualDate = date_create(date("Y-m-d"));
+							$diff  = date_diff($actualDate, $date2);
+							$faltan = $diff->format("%a dies");
+					
+							if ($item['situacion'] === 'emitirIFPRProvPago') {
+								if ($faltan >= 5) {?>
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-dark">
+								<?php } elseif ( $faltan > 0) { ?>
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-warning">									
+								<?php } else { ?>
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-danger blink">
+								<?php } 
+								echo $faltan;
+								echo "</span>";
+								echo "<br><small>[s'emetrà el: ".date_format($date2,"Y-m-d")."]</small> ";
+								}
+							if ($item['situacion'] === 'emitidoResDen') {
+								echo "<br>NO SE TIENE QUE EMITIR";
+							}?>
+					</span>
+				</div>
+			<?php }
 			else if ($item['situacion'] == "emitidoIFPRProvPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>Provisional emesa</strong></span></div>';		
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>Provisional emesa</strong></span></div>';		
 			}
 			else if ($item['situacion'] == "emitirPRDefinitiva") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre PR pagament definitiva"><strong>PR definitiva<br>emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre PR pagament definitiva"><strong>PR definitiva<br>emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidaPRDefinitiva") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emesa PR pagament definitiva"><strong>PR definitiva<br>emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha d´emesa PR pagament definitiva"><strong>PR definitiva<br>emesa</strong></span></div>';				
 			}			
 			else if ($item['situacion'] == "emitirResConcesion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre la Resolució concessió"><strong>Resolució<br>concessió emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre la Resolució concessió"><strong>Resolució<br>concessió emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidaResConcesion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès la Resolució de concessió"><strong>Resolució<br>concessió emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emès la Resolució de concessió"><strong>Resolució<br>concessió emesa</strong></span></div>';				
 			}
-			else if ($item['situacion'] == "inicioConsultoria") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha iniciat sa consultoria"><strong>Inici <br>de consultoria</strong></span></div>';				
-			}
+			else if ($item['situacion'] == "inicioConsultoria") {?>
+				<div id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
+					<span title="Aquesta sol·licitud s´ha iniciat sa consultoria">
+						<strong>Inici de consultoria</strong><br>
+							<?php 
+							$date1 = date_create($item['fecha_limite_consultoria']);
+							$date2 = date_create(date($item['fecha_limite_consultoria']));
+							$actualDate = date_create(date("Y-m-d"));
+							$diff  = date_diff($actualDate, $date2);
+							$faltan = $diff->format("%a dies");
+							if ($faltan >= 5) {?>
+								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-dark">
+								<?php } elseif ( $faltan > 0) { ?>
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-warning">									
+								<?php } else { ?>
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-danger  error-msg">
+								<?php } 
+							echo "<small>".$faltan."</small>";
+							echo "</span>";
+							echo "<br><small>[data límit: ".date_format(date_create($item['fecha_limite_consultoria']),"Y-m-d")."]</small> ";	?>	
+					</span>
+				</div>				
+			<?php }
 			/*  */
 			else if ($item['situacion'] == "emitirIDPDenProv") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre ID + P denegació provisional"><strong>ID + P denegació<br>provisional emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre ID + P denegació provisional"><strong>ID + P denegació<br>provisional emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidoIDPDenProv") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès ID + P denegació provisional"><strong>ID + P denegació<br>provisional emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emès ID + P denegació provisional"><strong>ID + P denegació<br>provisional emesa</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitirPDenDef") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre P denegació definitiva"><strong>P denegació<br>definitiva emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre P denegació definitiva"><strong>P denegació<br>definitiva emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidaPDenDef") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès P denegació definitiva"><strong>P denegació<br>definitiva emesa</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emès P denegació definitiva"><strong>P denegació<br>definitiva emesa</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitirResDen") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre Resolució de denegació"><strong>Resolució <br>de denegació<br>emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre Resolució de denegació"><strong>Resolució <br>de denegació<br>emetre</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidoResDen") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emesa Resolució de denegació">Resolució <br>de denegació<br>emesa</span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emesa Resolució de denegació">Resolució <br>de denegació<br>emesa</span></div>';				
 			}
 			else if ($item['situacion'] == "Denegado") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha Denegat">Denegat</span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-final"><span title="Aquesta sol·licitud s´ha Denegat">Denegat</span></div>';				
 			}
 			/*  */
-			else if ($item['situacion'] == "pendienteJustificar") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta pendent de justificar"><strong>Pendent de justificar</strong></span></div>';
-			}
+			else if ($item['situacion'] == "pendienteJustificar") {?>
+				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl">
+					<span title="Aquesta sol·licitud esta pendent de justificar">
+						<strong>Pendent de justificar</strong><br>
+						<?php	
+							$date1 = date_create($item['fecha_limite_justificacion']);
+							$actualDate = date_create(date("Y-m-d"));
+							$diffjust = date_diff($actualDate, $date1);
+							?>
+						<?php if ($diffjust->format("%R%a") > 5) {?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-dark"><?php echo $diffjust->format("%a dies");?></span>
+						<?php } elseif (($diffjust->format("%R%a") < 0) ) { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-danger error-msg"><?php echo $diffjust->format("%R%a dies");?></span>
+						<?php } elseif (($diffjust->format("%R%a") <= 5) ) { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-warning error-msg"><?php echo $diffjust->format("%a dies");?></span>					
+						<?php } ?>
+
+				<?php 
+				echo "<br><small>[data límit: ".date_format(date_create($item['fecha_limite_justificacion']),"Y-m-d")."]</small> ";	?>			
+					</span>
+				</div>
+			<?php }
 			else if ($item['situacion'] == "pendienteRECJustificar") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta pendent de que, el sol·licitant, la passi per la SEU">Pendent<br><span class="seu-elect">SEU</span><br>justificant</span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud esta pendent de que, el sol·licitant, la passi per la SEU">Pendent<br><span class="seu-elect">SEU</span><br>justificant</span></div>';
 			}
 			else if ($item['situacion'] == "Justificado" ) {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-justificado" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta justificada"><strong>Justificat</strong></span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-justificado"><span title="Aquesta sol·licitud esta justificada"><strong>Justificat</strong></span></div>';
 			}
 			else if ($item['situacion'] == "emitirResPagoyJust" ) {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-justificado" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud esta justificada"><strong>Resolució de pagament<br>i justificació emetre</strong></span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-justificado"><span title="Aquesta sol·licitud esta justificada"><strong>Resolució de pagament<br>i justificació emetre</strong></span></div>';
 			}
 			else if ($item['situacion'] == "emitidoResPagoyJust") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès la resolució de justificació"><strong>Resolució de pagament<br>i justificació emesa</strong></span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud s´ha emès la resolució de justificació"><strong>Resolució de pagament<br>i justificació emesa</strong></span></div>';
 			}
 			else if ($item['situacion'] == "Finalizado") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha finalitzat"><strong>Finalitzat</strong></span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-final"><span title="Aquesta sol·licitud s´ha finalitzat"><strong>Finalitzat</strong></span></div>';
 			}
 			/*  */
 			else if ($item['situacion'] == "emitirReqJust") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre requeriment de justificació">Requeriment de <br>justificació emetre</span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre requeriment de justificació">Requeriment de <br>justificació emetre</span></div>';
 			}
 			else if ($item['situacion'] == "emitidoReqJust") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès requeriment de justificació">Requeriment de <br>justificació emès</span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud s´ha emès requeriment de justificació">Requeriment de <br>justificació emès</span></div>';
 			}
 			else if ($item['situacion'] == "emitirPropRevocacion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emetre proposta de revocació">Proposta de<br>revocació emetre</span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud s´ha emetre proposta de revocació">Proposta de<br>revocació emetre</span></div>';
 			}
 			else if ($item['situacion'] == "emitidoPropRevocacion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emesa proposta de revocació">Proposta de<br>revocació emesa</span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud s´ha emesa proposta de revocació">Proposta de<br>revocació emesa</span></div>';
 			}
 			else if ($item['situacion'] == "emitirResRevocacion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha d´emetre la resolució de revocació">Resolució de<br>revocació emetre</strong></span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre la resolució de revocació">Resolució de<br>revocació emetre</strong></span></div>';
 			}
 			else if ($item['situacion'] == "emitidoResRevocacion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès la resolució de revocació">Resolució de<br>revocació emesa</span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl"><span title="Aquesta sol·licitud s´ha emès la resolució de revocació">Resolució de<br>revocació emesa</span></div>';
 			}
 			else if ($item['situacion'] == "revocado") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-revocado" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha revocat"><strong>Revocat</strong></span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-revocado"><span title="Aquesta sol·licitud s´ha revocat"><strong>Revocat</strong></span></div>';
 			}
 
 			/* ------------------------- inicio estados propios de ILS ----------------------------------  */
 		else if ($item['situacion'] == "reqNotificado") {
-			echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits ejecucion-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha notificat el requeriment"><strong>Requeriment notificat <br>+ 30 dies <br>per subsanar </strong></span></div>';
+			echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits ejecucion-final"><span title="Aquesta sol·licitud s´ha notificat el requeriment"><strong>Requeriment notificat <br>+ 30 dies <br>per subsanar </strong></span></div>';
 		}
 
 else if ($item['situacion'] == "ifResolucionEmitida") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès resolució"><strong>IF + Resolució <br>Emesa</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl"><span title="Aquesta sol·licitud s´ha emès resolució"><strong>IF + Resolució <br>Emesa</strong></span></div>';
 }
 else if ($item['situacion'] == "ifResolucionEnviada") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat la resolució"><strong>IF + Resolució <br>Enviada</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl"><span title="Aquesta sol·licitud s´ha enviat la resolució"><strong>IF + Resolució <br>Enviada</strong></span></div>';
 }
 else if ($item['situacion'] == "ifResolucionNotificada") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha notificat la resolució"><strong>IF + Resolució <br>Notificada</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl"><span title="Aquesta sol·licitud s´ha notificat la resolució"><strong>IF + Resolució <br>Notificada</strong></span></div>';
 }
 else if ($item['situacion'] == "empresaAdherida") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud acaba en adhesió al programa ILS"><strong>Adherida a ILS</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits adhesion-lbl-final"><span title="Aquesta sol·licitud acaba en adhesió al programa ILS"><strong>Adherida a ILS</strong></span></div>';
 }
 
 else if ($item['situacion'] == "idResolucionDenegacionEmitida") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha emès la resolució de Denegació"><strong>ID + Resolució <br>denegació emesa</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl"><span title="Aquesta sol·licitud s´ha emès la resolució de Denegació"><strong>ID + Resolució <br>denegació emesa</strong></span></div>';
 }
 else if ($item['situacion'] == "idResolucionDenegacionEnviada") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha enviat la resolució de Denegació"><strong>ID + Resolució <br>denegació enviada</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl"><span title="Aquesta sol·licitud s´ha enviat la resolució de Denegació"><strong>ID + Resolució <br>denegació enviada</strong></span></div>';
 }
 else if ($item['situacion'] == "idResolucionDenegacionNotificada") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha notificat la resolució de Denegació"><strong>ID + Resolució <br>denegació notificada</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl"><span title="Aquesta sol·licitud s´ha notificat la resolució de Denegació"><strong>ID + Resolució <br>denegació notificada</strong></span></div>';
 }
 else if ($item['situacion'] == "empresaDenegada") {
-	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl-final" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha denegat l´adhesió"><strong>Adhesió Denegada</strong></span></div>';
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl-final"><span title="Aquesta sol·licitud s´ha denegat l´adhesió"><strong>Adhesió Denegada</strong></span></div>';
 }
 /* ------------------------- fin estados propios de ILS -------------------------------------- */
 
 			else {
-				echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits indeterminado" data-toggle = "modal" data-target = "#myModal"><span title="Aquesta sol·licitud s´ha ?????"><strong>'.$item['situacion'].'</strong></span></div>';
+				echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits indeterminado"><span title="Aquesta sol·licitud s´ha ?????"><strong>'.$item['situacion'].'</strong></span></div>';
 			}									
 			?>
 			</span>
