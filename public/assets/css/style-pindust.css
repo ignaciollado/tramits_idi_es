@@ -50,18 +50,18 @@ legend {
 	padding: 5px;
 }
 .blink {
-	animation: blinker 1.5s ease-in-out infinite;
+	animation: blinker 2.5s infinite cubic-bezier(0.17, 0.67, 0.8, 0.36);
 	color: #fff;
-	border: 1px dotted #000;
+	border: 2px solid red;
 	font-family: sans-serif;
 }
 @keyframes blinker {
 	50% {
-			opacity: 0;
+			opacity: 0.15;
 	}
 }
 a {
-  color: #000000 !Important;
+  color: #000 !Important;
   font-weight: 600 !Important;
   text-decoration: none !Important;
 }

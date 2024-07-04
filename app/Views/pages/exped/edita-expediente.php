@@ -259,8 +259,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 				        <option value="Antonia Medina">
 				        <option value="Beatriz Pino Roca">
 				        <option value="Caterina Mas">
-				        <option value="Francisca Ferragut">
-				        <option value="Joana María Miquel">
 				        <option value="María del Carmen Muñoz Adrover">
 				        <option value="Marta Riutord">
 				        <option value="Pilar Jordi Amorós">
@@ -269,7 +267,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 
 		        <div class="form-group general">
                     <label for = "situacion_exped"><strong>Situació:</strong></label>
-	    		    <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onchange="avisarCambiosEnFormulario('send_fase_0', this.id)">
+	    		    <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onchange="compruebaExistenciaFecha('send_fase_0', this.id)">
     		    		<option disabled <?php if ($expedientes['situacion'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
                         <optgroup style="background-color:#F51720;color:#000;" label="Fase sol·licitud:">
                             <option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la SEU electrònica</option>
@@ -672,11 +670,11 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                     <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_enmienda" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
                 </div>
 		        <div class="form-group solicitud">
-                    <label for = "fecha_requerimiento"><strong>Data firma requeriment:</strong></label>
+                    <label for = "fecha_requerimiento"><strong>Firma requeriment:</strong></label>
                     <input type = "date" name = "fecha_requerimiento" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_requerimiento" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento']), 'Y-m-d');?>"/>
                 </div>
 		        <div class="form-group solicitud">
-                    <label for = "fecha_requerimiento_notif"><strong>Data notificació requeriment:</strong></label>
+                    <label for = "fecha_requerimiento_notif"><strong>Notificació requeriment:</strong></label>
                     <input type = "date" name = "fecha_requerimiento_notif" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_requerimiento_notif" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento_notif']), 'Y-m-d');?>"/>
                 </div>
 
@@ -844,31 +842,31 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         <h3>Detall:</h3>   
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>"  name="exped-fase-2" id="exped-fase-2" method="post" accept-charset="utf-8">
                 <div class="form-group validacion">
-                    <label for = "fecha_infor_fav_desf"><strong>Data firma informe favorable / desfavorable:</strong></label>
+                    <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable / desfavorable:</strong></label>
 		            <input type = "date" name = "fecha_infor_fav_desf" class = "form-control send_fase_2" id = "fecha_infor_fav_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_desf']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Data firma proposta resolució provisional:</strong></label>
+                    <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Firma proposta resolució provisional:</strong></label>
                     <input type = "date" name = "fecha_firma_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_prov']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_prov"><strong>Data notificació proposta resolució provisional:</strong></label>
+                    <label for = "fecha_not_propuesta_resolucion_prov"><strong>Notificació proposta resolució provisional:</strong></label>
                     <input type = "date" name = "fecha_not_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_prov']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_def"><strong>Data firma proposta resolució definitiva:</strong></label>
+                    <label for = "fecha_firma_propuesta_resolucion_def"><strong>Firma proposta resolució definitiva:</strong></label>
                     <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
                 </div>
 		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_def"><strong>Data notificació proposta resolució definitiva:</strong></label>
+                    <label for = "fecha_not_propuesta_resolucion_def"><strong>Notificació proposta resolució definitiva:</strong></label>
                     <input type = "date" name = "fecha_not_propuesta_resolucion_def" oninput = "javaScript: reneraActoAdministrativo(this.value,'');" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
                 </div>                
 		        <div class="form-group validacion">
-                    <label for = "fecha_firma_res"><strong>Data firma resolució:</strong></label>
+                    <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
                     <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
                 </div>
     		    <div class="form-group validacion">
-                    <label for = "fecha_notificacion_resolucion"><strong>Data notificació resolució:</strong></label>
+                    <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
                     <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
                 </div>
 
@@ -1073,7 +1071,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <div class="row">
                 <div class="col">
                     <div class="form-group ejecucion">
-                        <label for = "fecha_kick_off"><strong>Data de kick-off:</strong></label>
+                        <label for = "fecha_kick_off"><strong>Kick-off:</strong></label>
                         <input type = "date" name = "fecha_kick_off" class = "form-control send_fase_3" id = "fecha_kick_off" onchange = "javaScript: actualizaFechaConsultoria(this.value, <?php echo $add_meses;?>);" value = "<?php if ($expedientes['fecha_kick_off'] != null) {echo date_format(date_create($expedientes['fecha_kick_off']), 'Y-m-d');}?>">
                     </div>
 		            <div class="form-group ejecucion">
@@ -1081,7 +1079,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                         <input type = "date" name = "fecha_limite_consultoria" class = "form-control send_fase_3" id = "fecha_limite_consultoria" value = "<?php echo date_format(date_create($expedientes['fecha_limite_consultoria']), 'Y-m-d');?>">
                     </div>
     		        <div class="form-group ejecucion">
-                        <label for = "fecha_reunion_cierre"><strong>Data reunió tancament:</strong></label>
+                        <label for = "fecha_reunion_cierre"><strong>Reunió tancament:</strong></label>
                         <input type = "date" name = "fecha_reunion_cierre" class = "form-control send_fase_3" id = "fecha_reunion_cierre" onchange = "javaScript: actualizaFechas(this.value, <?php echo $dias_fecha_lim_justificar;?>);" value = "<?php echo date_format(date_create($expedientes['fecha_reunion_cierre']), 'Y-m-d');?>">
                     </div>
     		        <div class="form-group ejecucion">
@@ -1101,7 +1099,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                         <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_amp_termino" class = "form-control send_fase_3" id = "ref_REC_amp_termino"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_amp_termino'];?>">
         	        </div>
     		        <div class="form-group ejecucion">
-                        <label for = "fecha_amp_termino"><strong>Data notificació ampliació termini:</strong></label>
+                        <label for = "fecha_amp_termino"><strong>Notificació ampliació termini:</strong></label>
                         <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_amp_termino" class = "form-control send_fase_3" id = "fecha_amp_termino" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_amp_termino']), 'Y-m-d');?>">
                     </div>
 
@@ -1231,19 +1229,19 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
         	</div>
     		<div class="form-group justificacion">
-            <label for = "fecha_firma_res_pago_just"><strong>Data firma resolució de pagament / justificació:</strong></label>
+            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament / justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
-            <label for = "fecha_not_res_pago"><strong>Data notificació resolució de pagament:</strong></label>
+            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
             </div>			
 		    <div class="form-group justificacion">
-            <label for = "fecha_firma_requerimiento_justificacion"><strong>Data firma requeriment justificació:</strong></label>
+            <label for = "fecha_firma_requerimiento_justificacion"><strong>Firma requeriment justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
-            <label for = "fecha_not_req_just"><strong>Data notificació requeriment de justificació:</strong></label>
+            <label for = "fecha_not_req_just"><strong>Notificació requeriment de justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_req_just" class = "form-control send_fase_4" id = "fecha_not_req_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_req_just']), 'Y-m-d');?>">
             </div>            
             <div class="form-group justificacion">

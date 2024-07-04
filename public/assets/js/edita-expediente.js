@@ -666,6 +666,18 @@ function validateForm(formName) {
 	return true
 }
 
+function compruebaExistenciaFecha(fase, elemento) {
+	let theElement = document.getElementById(elemento)
+	let selectedIndexElement = theElement.selectedIndex
+	console.log (fase, theElement.value, selectedIndexElement)
+	if (theElement.value === "emitirIFPRProvPago") {
+		if (document.getElementById("fecha_not_propuesta_resolucion_prov").value.length === 0) {
+			theElement.selectedIndex = selectedIndexElement
+			alert (`Notificació proposta resolució provisional?`)
+		}
+	}
+}
+
 function cambiarSituacionExpediente (fase, elemento) {
 	let theElement = document.getElementById(elemento)
 	let idExp = document.getElementById("id")
@@ -680,7 +692,8 @@ function cambiarSituacionExpediente (fase, elemento) {
 			fetch(nuevaSituacion)
 				.then((response) => response.text())
 				.then((data) => {
-					document.getElementById("situacion_exped").value = 'pendienteJustificar';
+					/* document.getElementById("situacion_exped").value = 'pendienteJustificar'; */
+					document.getElementById("situacion_exped").options.item(25).selected = 'selected';
 				});
 	}
 }
@@ -1540,7 +1553,6 @@ async function obtieneEstadoDelaFirma (publicId) {
 		document.getElementById ("estat_signatura").innerHTML = estadoFirma;
 		});
 }
-
 
 function docNoRequerido_click (id, nombre) {
 	localStorage.setItem("documento_actual", id)

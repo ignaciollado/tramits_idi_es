@@ -231,14 +231,15 @@
 				$diffjust = date_diff($date2, $date1);
 				?>
 				<?php if ($diffjust->format("%R%a") > 5) {?>
-					<span title="Dies que resten per justificar" class="badge bg-dark">
-				<?php } elseif ( $diffjust->format("%R%a") > 0) { ?>
-					<span title="Dies que resten per emetre" class="badge bg-warning">							
-				<?php } else { ?>
-					<span title="Dies que resten per justificar" class="badge bg-danger blink">
+					<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-dark"><?php echo $diffjust->format("%a dies");?></span>
+				<?php } elseif (($diffjust->format("%R%a") < 0) ) { ?>
+						<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-danger blink"><?php echo $diffjust->format("%R%a dies");?></span>
+				<?php } elseif (($diffjust->format("%R%a") <= 5) ) { ?>
+					<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-warning blink"><?php echo $diffjust->format("%a dies");?></span>					
+				
 				<?php } ?>
-					<?php echo $diffjust->format("%R%a dies");?>
-				</span>
+					<!-- <?php echo $diffjust->format("%R%a dies");?> -->
+				<!-- </span> -->
 			<?php }
 			 ?>
 				</span>
@@ -251,15 +252,15 @@
 					$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
 					$date   = date_create(date($item['fecha_not_propuesta_resolucion_prov']));
 					date_add($date,date_interval_create_from_date_string("10 days"));
-						if ($item['situacion'] === 'emitidoIFPRProvPago') {
+						if ($item['situacion'] === 'emitirIFPRProvPago') {
 							echo "Notif. PR prov.: ".$item['fecha_not_propuesta_resolucion_prov']."<br>";
 							echo "Emetre PR prov. def: ".date_format($date,"Y-m-d")."<br>";
-							if ($faltan > 5) {?>
-								<span title="Dies que resten per emetre" class="badge bg-dark">
+							if ($faltan >= 5) {?>
+								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-dark">
 							<?php } elseif ( $faltan > 0) { ?>
-								<span title="Dies que resten per emetre" class="badge bg-warning">									
+								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-warning">									
 							<?php } else { ?>
-								<span title="Dies que resten per emetre" class="badge bg-danger blink">
+								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-danger blink">
 							<?php } 
 							echo $faltan." dies";
 							echo "</span>";
