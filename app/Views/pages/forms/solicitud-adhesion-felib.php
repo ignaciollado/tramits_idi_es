@@ -145,21 +145,9 @@ if ($felib_p[8]) {
 if ($felib_p[9]) {
   $html11 .= "<li>".lang('message_lang.felib_p10')."</li>";
 }
-/* if ($felib_p[10]) {
-  $html11 .= "<li>".lang('message_lang.felib_p11')."</li>";
-}
-if ($felib_p[11]) {
-  $html11 .= "<li>".lang('message_lang.felib_p12')."</li>";
-}
-if ($felib_p[12]) {
-  $html11 .= "<li>".lang('message_lang.felib_p13')."</li>";
-}
- */
+
 $html11 .="</ul></td></tr>";
 $html11 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-
 
 $pdf->writeHTML($html11, true, false, true, false, '');
 
@@ -168,6 +156,7 @@ $pdf->writeHTML($html11, true, false, true, false, '');
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '30', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html12 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br><ul>";
@@ -183,45 +172,48 @@ if ($felib_p[12]) {
 }
 $html12 .="</ul></td></tr>";
 $html12 .= "</table>";
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
+
 $pdf->writeHTML($html12, true, false, true, false, '');
 
-/*$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-
-$html15 = "Per dur a terme aquesta col·laboració, l'Ajuntament es compromet a:";
-$pdf->Cell(0, 10, $html15, 1, 1, 'C');
-
-$html16 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html16 .= "<tr><td></td></tr>";
-$html16 .= "<tr><td></td></tr>";
-$html16 .= "<tr><td><ol>";
-$html16 .= "<li>Assignar un tècnic/a al programa perquè s'encarregui de desenvolupar-lo i executar-lo, sota la coordinació del regidor/a competent en matèria d'emprenedoria i empresa.</li>";
-$html16 .= "<li>Ser el canal de comunicació amb el sector empresarial i d'emprenedoria implicats, per això, a l'inici del programa, l'Ajuntament ha d'organitzar:<ul>
+$html15 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html15 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Per dur a terme aquesta col·laboració, l'Ajuntament es compromet a:</td></tr><br>";
+$html15 .= "<tr><td><ol>";
+$html15 .= "<li>Assignar un tècnic/a al programa perquè s'encarregui de desenvolupar-lo i executar-lo, sota la coordinació del regidor/a competent en matèria d'emprenedoria i empresa.</li>";
+$html15 .= "<li>Ser el canal de comunicació amb el sector empresarial i d'emprenedoria implicats, per això, a l'inici del programa, l'Ajuntament ha d'organitzar:<ul>
 <li>Una roda de premsa/presentació pública del programa.</li>
-<li>Una sessió informativa adreçada a titulars d'empresa i les persones emprenedores objectiu del programa.</li></ul>
+<li>Una sessió informativa adreçada a titulars d'empresa i les persones emprenedores objectiu del programa.</li></ul></li>
 <li>Posar a disposició del projecte les instal·lacions i els mitjans audiovisuals necessaris per fer les sessions informatives i un espai per atendre consultes específiques del programa per part del personal tècnic assignat.</li>
 <li>Mantenir reunions periòdiques de seguiment dels programes amb l'equip de l'ADR Balears.</li>
 <li>Informar l'ADR Balears abans de la realització de qualsevol actuació relacionada amb els programes per tal de coordinar-la, sigui quin sigui el moment de la seva execució.</li>
 <li>Informar periòdicament l'ADR Balears del desenvolupament dels treballs executats relacionats amb el programa, com ara atencions realitzades, captació d'empreses i persones emprenedores interessades.</li>
-<li>Utilitzar la marca i la imatge gràfica dels programes per a totes les accions dutes a terme per l'Ajuntament dins el marc d'aquests.</li>";
+<li>Utilitzar la marca i la imatge gràfica dels programes per a totes les accions dutes a terme per l'Ajuntament dins el marc d'aquests.</li>
+<li>Comunicar periòdicament i sempre que ho sol·liciti l'ADR Balears, mitjançant una roda de premsa/presentació pública i difusió a les xarxes socials els resultats dels programes, a més d'incloure-hi una taula d'indicadors de seguiment.</li>";
+$html15 .= "</ol></td></tr>";
+$html15 .= "<tr><td></td></tr>";
+$html15 .= "</table>";
 
-$html16 .= "</ol></td></tr>";
+$pdf->writeHTML($html15, true, false, true, false, '');  
+
+// ------------------DATOS AYUNTAMIENTO, FIRMA------------------------------------------ //
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '30', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$html16 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>xxxxxxxxxxxDades de l'ajuntament:</b></td></tr>";
+$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Adreça: ".$domicilio." CP: ".$cpostal."</td></tr>";
+$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Responsable: ".$responsable_felib." Càrrec: ".$cargo_felib."</td></tr>";
+$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Adreça electrònica: ".$email_rep." Telèfon: ".$telefono_rep."</td></tr>";
+$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Adreça electrònica: ".$email_rep." Telèfon: ".$telefono_rep."</td></tr><br>";
+$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Les administracions implicades poden donar publicitat a les accions desenvolupades en els programes a la seva web o en altres formats (fullets, xarxes socials, vídeos, jornades...). Les dades personals facilitades a l’ADR Balears seran tractades d’acord amb la Llei de protecció de dades de caràcter personal i es garantiran els drets d’oposició, accés, modificació, i cancel·lació dels seus titulars.</td></tr>";
 $html16 .= "<tr><td></td></tr>";
 $html16 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$pdf->writeHTML($html16, true, false, true, false, ''); */
+$pdf->writeHTML($html16, true, false, true, false, ''); 
 
-// ---------------------------------------------------------FECHA y FIRMA----------------------------------------------------- //
-
-$pdf->SetFont('helvetica', '', 12);
-
-$html29 = "<br>";
 $html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
 $html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.fecha_ils')."</td></tr>";
 $html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.firma_ils')."</td></tr>";
@@ -238,14 +230,15 @@ $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
 $html29 = "<br>";
 $html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
-$html29 .= "<tr><td style='text-align:center;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
+$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
 $html29 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 10);
 $pdf->setX($currentX - 10);
 $pdf->WriteHTML($html29, true, false, true, false, '');
-$pdf->Output(WRITEPATH.'documentos/PxxxxxxxZ/08_07_2024_09_02_00am/'.$nif.'_dec_res_solicitud_felib.pdf', 'F');
+
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_felib.pdf', 'F');
 ?>
 
 

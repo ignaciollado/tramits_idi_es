@@ -239,7 +239,7 @@ class SubirArchivo extends BaseController
 				'iae' => $this->request->getVar('codigoIAE'),
 				'nombre_rep' => $this->request->getVar('nom_representante'),
 				'nif_rep' => $this->request->getVar('nif_representante'),
-				'telefono_rep' => $tel_representante,
+				'mail_tecnico_felib' => $tel_representante,
 				'email_rep' => $mail_representante,
 
 				'hay_rep' => $hay_rep,
@@ -1696,10 +1696,10 @@ class SubirArchivo extends BaseController
 	 	echo view('pages/forms/solicitud-ayuda-idi-isba', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-ayuda-idi-isba', $data_exp);
-   }	
+  }	
 
-	 public function store_felib()
-	 {
+	public function store_felib()
+	{
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -1712,7 +1712,7 @@ class SubirArchivo extends BaseController
 		$convocatoria = $currentYear;
 		$tipo_tramite = 'FELIB';
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
-		
+		/* var_dump($_POST); */
 		$db = \Config\Database::connect();
 		$expediente = $db->table('pindust_expediente');
 		$sql= "SELECT idExp FROM pindust_expediente WHERE tipo_tramite = '".$tipo_tramite."' ORDER BY idExp DESC Limit 1";
@@ -1722,7 +1722,7 @@ class SubirArchivo extends BaseController
 				$idExp = $row->idExp;
 				$idExp++;
 			}
-		$tipoSolicitante = 'Ajuntament';
+		$tipoSolicitante = 'AJUNTAMENT';
 	
 		date_default_timezone_set("Europe/Madrid");
 		$selloTiempo = date("d_m_Y_h_i_sa");
@@ -1743,7 +1743,13 @@ class SubirArchivo extends BaseController
 		 $tel_representante = $this->request->getVar('tel_representante');
 		 $mail_representante = $this->request->getVar('mail_representante');
 		 /*****************************************************************/
- 
+		 $tel_cargo_felib = $this->request->getVar('tel_cargo_felib');
+		 $tecnico_felib = $this->request->getVar('tecnico_felib');
+		 $cargo_tecnico_felib = $this->request->getVar('cargo_tecnico_felib');
+		 $mail_tecnico_felib = $this->request->getVar('mail_tecnico_felib');
+		 $tel_tecnico_felib = $this->request->getVar('tel_tecnico_felib');
+		 $movil_tecnico_felib = $this->request->getVar('movil_tecnico_felib');
+
 		$hay_rep = "NO";
 		$hay_consultor = "NO";
 
@@ -1756,17 +1762,26 @@ class SubirArchivo extends BaseController
 			'domicilio' => $domicilio,
 			'localidad' => $localidad,
 			'cpostal' => $cpostal,
+			'telefono' => $this->request->getVar('telefono_cont'),
+			'felib_p' => $felib_p,
+
 			'alcalde_felib' => $alcalde_felib,
+
 		 	'responsable_felib' => $responsable_felib,
 		 	'cargo_felib' => $cargo_felib,
-		 	'felib_p' => $felib_p,
-			'telefono' => $this->request->getVar('telefono_cont'),
-			'telefono_rep' => $tel_representante,  // se usa para notificar
 			'email_rep' => $mail_representante,	// se usa para notificar
+			'telefono_rep' => $tel_representante,  // es el movil del cargo
+			'tel_cargo_felib' => $tel_cargo_felib,
+
+			'tecnico_felib' => $tecnico_felib,
+			'cargo_tecnico_felib' => $cargo_tecnico_felib,
+		  'mail_tecnico_felib' => $mail_tecnico_felib,
+		  'tel_tecnico_felib' => $tel_tecnico_felib,
+		  'movil_tecnico_felib' => $movil_tecnico_felib,
+
 			'tipo_tramite' => $tipo_tramite,
 			'iae' => '',
 			'hay_consultor' => $hay_consultor,
-			 
 			'nombre_rep' 	=> $this->request->getVar('nom_representante'),
 			'nif_rep' 		=> $this->request->getVar('nif_representante'),
  			'hay_rep' 		=> $hay_rep,
@@ -1782,7 +1797,7 @@ class SubirArchivo extends BaseController
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
 		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
-			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0775, true);
+			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0777, true);
 		}
 	
 		$data_file['titulo'] = "Resumen de la solicitud de adhsión FELIB";
@@ -1790,6 +1805,6 @@ class SubirArchivo extends BaseController
 		echo view('pages/forms/solicitud-adhesion-felib', $data_exp);
 		//echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
 		//echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-felib', $data_exp);
-	 }
+	}
 
 }
