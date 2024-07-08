@@ -102,7 +102,8 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_total_justificacion').": ".money_format("%i ", $importeTotalJustificado)." €<br>";
+/* $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_total_justificacion').": ".money_format("%i ", $importeTotalJustificado)." €<br>"; */
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_total_justificacion').": ".$importeTotalJustificado." €<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;

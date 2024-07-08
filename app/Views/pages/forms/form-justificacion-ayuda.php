@@ -105,7 +105,9 @@
   			<input type="date" class="form-control" id="fecha-pago" placeholder="Data pago">
   			<label for="fecha-pago"><?php echo lang('message_lang.fechaPago');?></label>
 			</div>
-			<button type="button" class="btn btn-secondary" onclick="addInvoiceLine()"><?php echo lang('message_lang.addLine');?></button>
+			<div class="submit-button">
+			<button type="button" class="btn btn-primary" onclick="addInvoiceLine()"><?php echo lang('message_lang.addLine');?></button>
+			</div>
 		</fieldset>
 
 		<fieldset>
@@ -125,7 +127,10 @@
 				</div>		
 			</div>
 		</fieldset>
-		<button type="submit" class = "btn btn-secondary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+		<fieldset class="submit-button">
+			<button type="submit" class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+		</fieldset>
+		
 
 	</div>
 </form>

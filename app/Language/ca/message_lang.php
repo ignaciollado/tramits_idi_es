@@ -133,7 +133,18 @@ seus objectius i recursos oferts, vull comptar amb la seva col·laboració al no
 municipi.",
    'identificacion_sol_idigital'   => "INTERESSAT",
    'identificacion_empresa_ils'    => "2. DADES DE L'EMPRESA",
-
+   'alcalde_felib'                 => "Nom i llinatges del batle/batlessa",
+   'identificacion_felib'          => "DADES DE L'AJUNTAMENT",
+   'direccion_felib'               => "Adreça de l'Ajuntament",
+   'cp_felib'                      => "CP",
+   'responsable_felib'             => "Responsable",
+   'cargo_felib'                   => "Càrrec",
+   'mail_felib'                    => "Adreça electrònica de l'Ajuntament",
+   'tel_felib'                     => "Telèfon de l'Ajuntament",
+   'movil_felib'                   => "Mòbil",
+   'tel_rep_legal_felib'           => "Telèfon mòbil del sol·licitant",
+   'mail_rep_legal_felib'          => "Adreça electrònica del sol·licitant",
+   
    'nif_solicitante'               => "NIF del sol·licitant",
    'idExpISBA'                     => "Expedient ISBA",
 
@@ -322,9 +333,9 @@ municipi.",
                                                          <dd>El certificat d´estar al corriente de pago con la <abbr title='Tesorería general de la seguridad social'>BLA BLA BLA</abbr>.</dd>
                                                       </dl>",
    "documentacion_resultante_cabecera"          => "En finalitzar d'aquest assistent rebrà, per correu electrònic, un document en format PDF que contindrà:",
-   "documentacion_resultante_felib"               => "<ol class='formbox'> 
-                                                            <li>Una declaració responsable.</li>
-                                                            <li>Una sol·licitud d'adhesió als programes de l'ADR Balears.</li></ol>",    
+   "documentacion_resultante_felib"               => "<dl class='formbox'> 
+                                                            <dd>Una declaració responsable.</dd>
+                                                            <dd>Una sol·licitud d'adhesió als programes de l'ADR Balears.</dd></dl>",    
    "documentacion_resultante_ils"               => "<ol class='formbox'> 
                                                       <li>Una declaració responsable.</li>
                                                       <li>Una sol·licitud d'adhesió al programa ILS.</li></ol>",                                                   
@@ -570,7 +581,7 @@ Al seu torn, li informem que pot contactar amb el Delegat de Protecció de Dades
 'importeIVA' => "Import IVA",
 'importeFactura' => "Import Factura",
 'fechaPago' => "Data de pagament",
-'addLine'      => "Afegir línia",
+'addLine'      => "Afegir a la llista",
 
 'avisos_idi_isba'                      => "ok",
 'notificacion_idi_isba'		            => "En aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment",

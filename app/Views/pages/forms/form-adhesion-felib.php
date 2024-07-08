@@ -3,59 +3,51 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/>
-<script type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
-<script type="text/javascript" src="/public/assets/js/solicitud-ayuda.js"></script>	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 <section id="formulario_solicitud">
 
-<!-- 	<div id="aviso" class="alert">
-		<?php echo lang('message_lang.intro_ils');?>
-	</div> -->
 	<?php
 		helper('cookie');
 		$language = \Config\Services::language();
+		$viaSolicitud = "*";
 		$locale = $language->getLocale();
 	?>
-<form name="adhesion_ils" id="adhesion_ils" action="<?php echo base_url('/public/index.php/subirarchivo/store_ils/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form name="adhesion_felib" id="adhesion_felib" action="<?php echo base_url('/public/index.php/subirarchivo/store_felib/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
 <div class="stepContainer">
 	<span class="step">1</span>
 	<span class="step">2</span>
   <span class="step">3</span>
-  <span class="step">4</span>
-  <span class="step">5</span>
 	
 	<div class="buttonContainer">
     	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
     	<button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
 	</div>
 </div>
-
+<span id='aviso'>*</span>
 <!-- One "tab" for each step in the form: -->
 <!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD --------------------------------------------------------------------->
 	<div class="tab">
-	<div>
-		<fieldset>
-			<label for = "rgpd" class="main" >
-				<span ><?php echo lang('message_lang.rgpd_leido');?> 
+		<div>
+			<fieldset>
+				<label for = "rgpd" class="main">
+					<span><?php echo lang('message_lang.rgpd_leido');?></span>
 					<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
-				<span class="w3docs"></span>
-			</label>
-		</fieldset>
-	</div>
+					<span class="w3docs"></span>
+				</label>
+			</fieldset>
+		</div>
 
  		<fieldset>
-<!-- 			<?php echo lang('message_lang.documentacion_necesaria_pymes_ils');?>
+			<!-- <?php echo lang('message_lang.documentacion_necesaria_pymes_ils');?>
 			<?php echo lang('message_lang.documentacion_necesaria_si_no_autoriza');?> -->
 			<h3><?php echo lang('message_lang.documentacion_resultante_cabecera');?></h3>
 			<?php echo lang('message_lang.documentacion_resultante_felib');?>
 		</fieldset>
 	</div>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -72,94 +64,99 @@
   </div>
 </div>
 
-<!-------------------------- 1. TIPO DE PROGRAMAS SELECCIONADOS ---------------------------------------------------------------------------->
+<!-------------------------- 1. DATOS DEL AYUNTAMIENTO ---------------------------------------------------------------------------->
 <div class="tab">
 	<div id="formbox">
 		<fieldset id="interesado">
 			<h2><?php echo lang('message_lang.identificacion_felib');?></h2>
-			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" aria-required="true" name = "denom_interesado" id = "denom_interesado" size="220">
+			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.alcalde_felib');?>" placeholder = "<?php echo lang('message_lang.alcalde_felib');?>" aria-required="true" name="alcalde_felib" id="alcalde_felib">	
 			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/municipios.php';?>
+			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.direccion_felib');?>" placeholder = "<?php echo lang('message_lang.direccion_felib');?>" name="domicilio" id="domicilio">
+			<input type = "text" onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.cp_felib');?>" placeholder = "<?php echo lang('message_lang.cp_felib');?>" name="cpostal" id="cpostal" pattern="[0-9]{5}" minlength = "5" maxlength = "5" size="9"> 
+			<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_felib');?>" placeholder = "<?php echo lang('message_lang.mail_felib');?>" data-error = "<?php echo lang('message_lang.mail_felib');?>" name = "mail_felib" id="mail_felib" size="220">		 
+			<input type = "tel"  onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.tel_felib');?>" placeholder = "<?php echo lang('message_lang.tel_felib');?>" name = "telefono_cont" id="telefono_cont" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" ><p id="mensaje_tel"></p> 
+  		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.responsable_felib');?>" placeholder = "<?php echo lang('message_lang.responsable_felib');?>" aria-required="true" name = "responsable_felib" id = "responsable_felib" size="220">
+  		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.cargo_felib');?>" placeholder = "<?php echo lang('message_lang.cargo_felib');?>" name = "cargo_felib" id = "cargo_felib" size="220">
+			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_rep_legal_felib');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_felib');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength="9" size="9" ><p id="mensaje_tel"></p>
+			<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_rep_legal_felib');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_felib');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220">
 		</fieldset> 
 	</div>
 
 </div>
-<!-------------------------- 3. DATOS GENERALES --------------------------------------------------------------------->
-<div class="tab" id="empresa">
+<!-------------------------- 3. PROGRAMAS --------------------------------------------------------------------->
+<div class="tab" id="programas">
   	<div id="formbox2" class="formbox">
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
 		<h2><?php echo lang('message_lang.programa_tipo');?></h2>
  		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p1');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p1');?>" id="felib_p1" onchange = "javaScript: tipoSolicitante (this.id);" value="autonomo">
+			<input type="checkbox" name="felib_p1" title="<?php echo lang('message_lang.felib_p1');?>" id="felib_p1" value="felib_p1">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p2');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p2');?>" id="felib_p1" onchange = "javaScript: tipoSolicitante (this.id);" value="pequenya">
+			<input type="checkbox" name="felib_p2" title="<?php echo lang('message_lang.felib_p2');?>" id="felib_p2" value="felib_p2">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p3');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p3');?>" id="felib_p3" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
+			<input type="checkbox" name="felib_p3" title="<?php echo lang('message_lang.felib_p3');?>" id="felib_p3" value="felib_p3">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p4');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p4');?>" id="felib_p4" onchange = "javaScript: tipoSolicitante (this.id);" value="autonomo">
+			<input type="checkbox" name="felib_p4" title="<?php echo lang('message_lang.felib_p4');?>" id="felib_p4" value="felib_p4">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p5');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p5');?>" id="felib_p5" onchange = "javaScript: tipoSolicitante (this.id);" value="pequenya">
+			<input type="checkbox" name="felib_p5" title="<?php echo lang('message_lang.felib_p5');?>" id="felib_p5" value="felib_p5">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p6');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p6');?>" id="felib_p6" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
+			<input type="checkbox" name="felib_p6" title="<?php echo lang('message_lang.felib_p6');?>" id="felib_p6" value="felib_p6">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p7');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p7');?>" id="felib_p7" onchange = "javaScript: tipoSolicitante (this.id);" value="autonomo">
+			<input type="checkbox" name="felib_p7" title="<?php echo lang('message_lang.felib_p7');?>" id="felib_p7" value="felib_p7">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p8');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p8');?>" id="felib_p8" onchange = "javaScript: tipoSolicitante (this.id);" value="pequenya">
+			<input type="checkbox" name="felib_p8" title="<?php echo lang('message_lang.felib_p8');?>" id="felib_p8" value="felib_p8">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p9');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p9');?>" id="felib_p9" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
+			<input type="checkbox" name="felib_p9" title="<?php echo lang('message_lang.felib_p9');?>" id="felib_p9" value="felib_p9">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p10');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p10');?>" id="felib_p10" onchange = "javaScript: tipoSolicitante (this.id);" value="autonomo">
+			<input type="checkbox" name="felib_p10" title="<?php echo lang('message_lang.felib_p10');?>" id="felib_p10" value="felib_p10">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p11');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p11');?>" id="felib_p11" onchange = "javaScript: tipoSolicitante (this.id);" value="pequenya">
+			<input type="checkbox" name="felib_p11" title="<?php echo lang('message_lang.felib_p11');?>" id="felib_p11" value="felib_p11">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p12');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p12');?>" id="felib_p12" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
+			<input type="checkbox" name="felib_p12" title="<?php echo lang('message_lang.felib_p12');?>" id="felib_p12" value="felib_p12">
 			<span class="checkmark"></span>
 		</label>
 		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p13');?></h6>
-			<input type="checkbox" name="tipo_solicitante" title="<?php echo lang('message_lang.felib_p13');?>" id="felib_p13" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
+			<input type="checkbox" name="felib_p13" title="<?php echo lang('message_lang.felib_p13');?>" id="felib_p13" value="felib_p13">
 			<span class="checkmark"></span>
 		</label>
-		
    	</fieldset>
-   	
 	</div>
-
 </div>
 
 <!-------------------------- 4. NOTIFICACIÓN y AUTORIZACIONES --------------------------------------------------------------------->
-<div class="tab">
+<!-- <div class="tab">
 	<div id="formbox">
-    <fieldset>
-		<h2><?php echo lang('message_lang.titulo_notificiaciones');?></h2>
-		<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" ><p id="mensaje_tel"></p>
-		<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220">		 
-	</fieldset>
+  	<fieldset>
+			<h2><?php echo lang('message_lang.titulo_notificiaciones');?></h2>
+			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength="9" size="9" ><p id="mensaje_tel"></p>
+			<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220">		 
+		</fieldset>
 	</div>
 
 	<div id="formbox">
     <fieldset>
-		<h2><?php echo lang('message_lang.autorizaciones_solicitud_ils');?></h2>
+			<h2><?php echo lang('message_lang.autorizaciones_solicitud_ils');?></h2>
 			<label for = "consentimiento_identificacion" class="main"><?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>
 				<input title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked type="checkbox" name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
 				<span class = "w3docs"></span>
@@ -209,25 +206,23 @@
     	<button title="Anterior" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
     	<button title="Següent"  onClick="nextPrev(1)"  type="button" class="buttonAsistente" id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
 	</div>
-</div>
+</div> -->
 
 <!-------------------------- 7. DOCUMENTACIÓN --------------------------------------------------------------------->
-<div class="tab">
+<!-- <div class="tab">
 	<div id="formbox">
 		<fieldset>
 			<h2>7. <?php echo lang('message_lang.documentacion_adjunta_requerida_ils');?></h2>
-						<!-- <div id="mostrarEscritura"> -->
 			<h3><strong><?php echo lang('message_lang.escritura_empresa_ils');?></strong></h3> <code>[.pdf] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
 			<div>
 				<input type = "file" id="file_escritura_empresa" name="file_escritura_empresa[]" title="<?php echo lang('message_lang.escritura_empresa_ils');?>" class="mostrar-siempre" size="50" accept=".pdf" multiple aria-required="true" onblur = "javaScript: validateFormField(this);"/>
 			</div>
-						<!-- </div> -->
-					<!-- 	<div id="mostrarIAE"> -->
+
 			<h3><strong><?php echo lang('message_lang.certificado_IAE');?></strong></h3> <code>[.pdf] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
 			<div>
 				<input type = "file" id="file_certificadoIAE" name="file_certificadoIAE[]" title="<?php echo lang('message_lang.certificado_IAE');?>" class="mostrar-siempre" size="50" accept=".pdf" multiple aria-required="true" onblur = "javaScript: validateFormField(this);"/>
 			</div>
-						<!-- </div> -->
+
 
 			<div class="caja-grupo">
 				<label class="container-radio"><h6><?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?></h6>
@@ -295,7 +290,7 @@
 	<div id="formbox">	
 		<span class="tooltiptext_idi"><h3><?php echo lang('message_lang.upload_multiple');?></h3></span>	
 	</div>
-</div>
+</div> -->
 </div>
 
 </form>
@@ -330,10 +325,7 @@ function showTab(n) {
   
   let submitBTN = document.getElementById("nextBtn")
   // if (n == (x.length - 1)) {
-	if (n === 4) {
-		console.log ("dddd")
-		document.getElementById("file_escritura_empresa").style.display = "block";
-		document.getElementById("file_certificadoIAE").style.display = "block";
+	if (n === 2) {
 	  submitBTN.innerHTML = "Enviar"
 	  submitBTN.setAttribute("title", "Enviar")
 	  submitBTN.setAttribute("value", "Submit")
@@ -378,38 +370,9 @@ function validateFormField(field, step=0) {
 	
 	console.log (`Campo actual: ${inputElement.name}`)
 	switch (inputElement.name) {
-  		case 'nif':
-			  if (inputElement.value === '') {
-    			aviso.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
-					inputElement.classList.remove("valid");
-					inputElement.classList.add("invalid");
-			  } else {
-					aviso.innerHTML = ` "${ inputElement.name }" OK `;
-					inputElement.classList.remove("invalid");
-					inputElement.classList.add("valid");
-				}
-    		break;
-  		case 'fecha_creacion_empresa':
-			aviso.innerHTML = ` "${ inputElement.name }" es "${ inputElement.value }".`;
-    		break;
-  		case 'sitio_web_empresa':
-			if (!regexHTTP.test(document.getElementById(field.id).value)) {
-				aviso.innerHTML = `falta indicar el "${ inputElement.name }" no es correcto: ${ inputElement.value }.`;
-				document.getElementById(field.id).value = ''
-				document.getElementById(field.id).focus 
-			} else  {
-				aviso.innerHTML = `"${ inputElement.value }" es correcto.`;
-			}
-    		break;
-  		case 'nom_representante':
-			aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-    		break;
-  		case 'nif_representante':
-			aviso.innerHTML = `Falta indicar el ${ inputElement.name }, no es correcto: "${ inputElement.value }".`;
-    		break;
 		case 'tel_representante':
 			if (!regexTel.test(document.getElementById(field.id).value)) {
-				aviso.innerHTML = `El teléfono de notificación no es correcto: "${ inputElement.value }".`;
+				aviso.innerHTML = `El telèfon de notificació no es correcte: "${ inputElement.value }".`;
 				document.getElementById(field.id).value = ''
 				document.getElementById(field.id).focus 
 			} else  {
@@ -418,7 +381,7 @@ function validateFormField(field, step=0) {
     		break;	
   		case 'mail_representante':
 			if (!regexMail.test(document.getElementById(field.id).value)) {
-				aviso.innerHTML = `El correo electrónico de notificación no es correcto: "${ inputElement.value }"`;
+				aviso.innerHTML = `La adreça electrònica de notificació no es correcte: "${ inputElement.value }"`;
 				document.getElementById(field.id).value = ''
 				document.getElementById(field.id).focus 
 			} else  {
@@ -426,7 +389,7 @@ function validateFormField(field, step=0) {
 			}
     		break;
   		default:
-  			aviso.innerHTML = `Lo lamentamos, este valor no es correcto: "${ inputElement.value }" `;
+  			aviso.innerHTML = `Aquest valor no es correcte: "${ inputElement.value }" `;
 		}
 
 	let btnSend = document.querySelector(field.id);
@@ -469,9 +432,13 @@ function validateForm() {
     	} 
   	}
 
-  if (currentTab===1) {
-	// Validar que un checkbox de '2. TIPO DE EMPRESA' esté activado
-  	if ( !document.getElementById("pequenya").checked && !document.getElementById("mediana").checked && !document.getElementById("autonomo").checked) {
+  if (currentTab === 2) {
+	// Validar que un checkbox de '3. PROGRAMAS' esté activado
+  	if ( !document.getElementById("felib_p1").checked && !document.getElementById("felib_p2").checked && !document.getElementById("felib_p3").checked &&
+		!document.getElementById("felib_p4").checked && !document.getElementById("felib_p5").checked && !document.getElementById("felib_p6").checked &&
+		!document.getElementById("felib_p7").checked && !document.getElementById("felib_p8").checked && !document.getElementById("felib_p9").checked &&
+		!document.getElementById("felib_p10").checked && !document.getElementById("felib_p11").checked && !document.getElementById("felib_p12").checked &&
+		!document.getElementById("felib_p13").checked ) {
 		document.getElementById("aviso2").className = 'aviso-lbl';
 		document.getElementById("formbox2").classList.add("aviso");
 		valid = false;
@@ -489,7 +456,7 @@ function validateForm() {
 function fixStepIndicator(n) {
   	// This function removes the "active" class of all steps...
   	var i, x = document.getElementsByClassName("step");
-  	for (i = 4; i >= n; i--) {
+  	for (i = 2; i >= n; i--) {
     	x[i].className = x[i].className.replace(" finish", "");
  	 }	  
   	for (i = 0; i < x.length; i++) {
@@ -497,7 +464,7 @@ function fixStepIndicator(n) {
  	 }
   	//... and adds the "active" class on the current step:
 	// Para evitar el error Uncaught TypeError: x[n] is undefined que me aparece cuando n==8
-	if (n < 7) {
+	if (n < 2) {
   		x[n].className += " active";
 	}
 	document.getElementById('aviso').innerHTML = ''

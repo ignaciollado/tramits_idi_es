@@ -116,11 +116,11 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'nohapasadoREC', 'totalSolicitudesIIINoREC_prod_2024')
     totalSolicitudesPorSituacion('2024', 'Programa IV', 'nohapasadoREC', 'totalSolicitudesIVNoREC_2024')
 
-    totalSolicitudesPorSituacion('2024', 'Programa I', 'pendiente', 'totalPendienteI_2024')
-    totalSolicitudesPorSituacion('2024', 'Programa II', 'pendiente', 'totalPendienteII_2024')
-    totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'pendiente', 'totalPendienteIII_org_2024')
-    totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'pendiente', 'totalPendienteIII_prod_2024')
-    totalSolicitudesPorSituacion('2024', 'Programa IV', 'pendiente', 'totalPendienteIV_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa I', 'pendienteJustificar', 'totalPendienteI_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa II', 'pendienteJustificar', 'totalPendienteII_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'pendienteJustificar', 'totalPendienteIII_org_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'pendienteJustificar', 'totalPendienteIII_prod_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa IV', 'pendienteJustificar', 'totalPendienteIV_2024')
 });
 
 async function totalSolicitudesPrograma(convo, stage) {
@@ -175,8 +175,8 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
     if (situacion == 'nohapasadoREC') {
         situacion = 'No han passat SEU: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
     }
-    if (situacion == 'pendiente') {
-        situacion = 'Pendents de validar: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
+    if (situacion == 'pendienteJustificar') {
+        situacion = 'Pendents de justificar: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
     }
     if (situacion == 'inicioConsultoria') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA';

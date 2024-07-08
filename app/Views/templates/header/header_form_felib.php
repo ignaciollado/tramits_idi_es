@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo lang('message_lang.titulo_solicitud_felib');?></title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src ="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<meta name="description" content="Assistent per a sol·licitar l'adhesió als programes que ofereix l'ADR Balears als municipis" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
@@ -18,6 +18,7 @@
 		use App\Models\ConfiguracionModel;
 		use App\Models\ConfiguracionLineaModel;
 		use App\Models\ExpedientesModel;
+		
 		$generalConfig = new ConfiguracionModel;
 		$lineaConfig = new ConfiguracionLineaModel();
 
@@ -68,4 +69,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script defer type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
-<script defer type="text/javascript" src="/public/assets/js/adhesion-idi-isba.js"></script>	
+<script defer type="text/javascript" src="/public/assets/js/adhesion-felib.js"></script>	

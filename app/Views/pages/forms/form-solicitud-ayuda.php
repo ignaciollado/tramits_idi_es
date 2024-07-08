@@ -110,8 +110,8 @@
 		</label>
 		
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iGestion');?></h6>
-			<input title="<?php echo lang('message_lang.opc_iGestion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_IV" value="Programa IV">
-			<span class="checkmark"></span>
+			<input disabled readonly title="<?php echo lang('message_lang.opc_iGestion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_IV" value="Programa IV">
+			<span class="checkmark checkmark-disabled"></span>
 		</label>
 		</ul>
    </fieldset>  		

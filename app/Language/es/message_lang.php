@@ -120,11 +120,22 @@ return [
    'titulo_dec_resp_consul'           => "DECLARACIÓN RESPONSABLE DEL CONSULTOR",
    'select_poblacion'                 => "Seleccione una población",
    'select_iae'                       => "Epígrafe IAE",
-   'select_cuantia_ayuda'             => "Seleccione la cuantía de la ayuda",   
+   'select_cuantia_ayuda'             => "Seleccione la cuantía de la ayuda",
    'select_generico'                  => "Seleccione una opción",
-   'identificacion_sol_ils'           => "3. DATOS GENERALES", 
+   'identificacion_sol_ils'           => "3. DATOS GENERALES",
    'identificacion_sol_idigital'      => "INTERESADO",
-   'identificacion_empresa_ils'           => "2. DATOS DE LA EMPRESA",   
+   'identificacion_empresa_ils'       => "2. DATOS DE LA EMPRESA",
+   'identificacion_felib'             => "DATOS DEL AYUNTAMIENTO",
+   'alcalde_felib'                    => "Nombre y apellidos del alcalde/alcaldesa",
+   'direccion_felib'                  => "Dirección del Ayuntamiento",
+   'cp_felib'                         => "CP",
+   'responsable_felib'                => "Responsable",
+   'cargo_felib'                      => "Cargo",
+   'mail_felib'                    => "Dirección electrónica del Ayuntamiento",
+   'tel_felib'                     => "Teléfono del Ayuntamiento",
+   'movil_felib'                   => "Movil",
+   'tel_rep_legal_felib'           => "Teléfono movil del solicitante",
+   'mail_rep_legal_felib'          => "Dirección electrónica del solicitante",
 
    'solicitante_sol_idigital'         => "Nombre ó razón social",
    'nif_solicitante'                  => "NIF del solicitante",
@@ -346,7 +357,7 @@ return [
    'declaracion_responsable_xv'  => "XIV) En el caso de centros tecnológicos y clusters de carácter industrial, declaro que sus mis representantes/asociados tienen como mínimo un 40% de empresas con IAE comprendido entre los epígrafes punto 3.1 y 3.2 de esta convocatoria.",
    'declaracion_responsable_xvi'  => "XV) En el supuesto de que se haya presentado una solicitud en el programa III, Industria Local y Sostenible, declaro que he presentado la solicitud de adhesión en el programa ILS antes de la solicitud de esta convocatoria y que cumplo con los requisitos del programa ILS.",
    
-   'declaracion_datos_bancarios_cabecera'          => "DECLARACIÓN RESPONSABLE DE VERACIDAD DE DATOS BANCARIOS APORTADOS",
+   'declaracion_datos_bancarios_cabecera' => "DECLARACIÓN RESPONSABLE DE VERACIDAD DE DATOS BANCARIOS APORTADOS",
    'nom_entidad'						         => "Nombre de la entidad bancaria",
    'domicilio_sucursal'				         => "Domicilio de la sucursal / oficina",
    'codigo_BIC_SWIFT'					      => "Código BIC / SWIFT ej. AAAA-BB-CC-123",   
@@ -362,6 +373,9 @@ return [
    'documentacion_adjunta_requerida_ils'   => "DOCUMENTACIÓN RELACIONADA CON EL CUMPLIMIENTO DE REQUISITOS",
    'documentacion_adjunta_opcional_ils'    => "OTRA DOCUMENTACIÓN OPCIONAL",
    'declaracion_responsable_cabecera_ils'  => "DECLARACIÓN RESPONSABLE",
+   "documentacion_resultante_felib"               => "<dl class='formbox'> 
+   <dd>Una declaración responsable.</dd>
+   <dd>Una solicitud de adhesión a los programas de la ADR Balears.</dd></dl>",    
 
    'escritura_empresa_ils'                    => "Escritura de constitución de la empresa",
    'memoria_tecnica_ils'               => "Documento descriptivo de la empresa y de su actividad: <ul>
@@ -538,7 +552,7 @@ return [
 'importeIVA' => "Importe IVA",
 'importeFactura' => "Importe Factura",
 'fechaPago' => "Fecha de pago",
-'addLine'      => "Añadir línea",
+'addLine'      => "Añadir a la lista",
 
 'avisos_idi_isba'                         => "ok",
 'notificacion_idi_isba'		            => "En este correo y movil recibirá los avisos de las notificaciones corresponentes al procedimiento",

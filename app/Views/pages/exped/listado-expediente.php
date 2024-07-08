@@ -275,9 +275,9 @@
 								if ($faltan >= 5) {?>
 									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-dark">
 								<?php } elseif ( $faltan > 0) { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-warning">									
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge blink">									
 								<?php } else { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-danger blink">
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-danger">
 								<?php } 
 								echo $faltan;
 								echo "</span>";
@@ -317,9 +317,9 @@
 							if ($faltan >= 5) {?>
 								<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-dark">
 								<?php } elseif ( $faltan > 0) { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-warning">									
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge blink">									
 								<?php } else { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-danger  error-msg">
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-danger">
 								<?php } 
 							echo "<small>".$faltan."</small>";
 							echo "</span>";
@@ -362,13 +362,13 @@
 						<?php if ($diffjust->format("%R%a") > 5) {?>
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-dark"><?php echo $diffjust->format("%a dies");?></span>
 						<?php } elseif (($diffjust->format("%R%a") < 0) ) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-danger error-msg"><?php echo $diffjust->format("%R%a dies");?></span>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-danger"><?php echo $diffjust->format("%R%a dies");?></span>
 						<?php } elseif (($diffjust->format("%R%a") <= 5) ) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-warning error-msg"><?php echo $diffjust->format("%a dies");?></span>					
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge blink"><?php echo $diffjust->format("%a dies");?></span>					
 						<?php } ?>
 
 				<?php 
-				echo "<br><small>[data límit: ".date_format(date_create($item['fecha_limite_justificacion']),"Y-m-d")."]</small> ";	?>			
+				echo "<br><small>[data max. just.: ".date_format(date_create($item['fecha_limite_justificacion']),"Y-m-d")."]</small> ";	?>			
 					</span>
 				</div>
 			<?php }

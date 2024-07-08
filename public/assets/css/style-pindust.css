@@ -50,15 +50,18 @@ legend {
 	padding: 5px;
 }
 .blink {
-	animation: blinker 2.5s infinite cubic-bezier(0.17, 0.67, 0.8, 0.36);
-	color: #000;
-	border: 2px solid red;
 	font-family: sans-serif;
+	background-color: #0098cb;
+	animation: blinker 4s infinite;
 }
 @keyframes blinker {
-	50% {
-			opacity: 0.15;
-	}
+	from {background-color: #0098cb;}
+  to {background-color: red;}
+}
+.submit-button{
+	width: 100%;
+	text-align: right;
+	margin-top: .5rem;
 }
 a {
   color: #000 !Important;
@@ -679,9 +682,8 @@ code {
 	margin-bottom: .2rem;
   }
 .error-msg {
-  color: #ff0000;
-  background-color: #fff;
-  animation: blinker 1s steps(5, start) infinite;
+  color: #fff;
+  animation: squareToCircle 2s 1s infinite alternate;
 }
 @keyframes blinker {
 	50% {
