@@ -39,8 +39,7 @@
 	<fieldset>
 		<h4><?php echo lang('message_lang.solicitante');?>
 			<span><strong><?php echo $data['expedientes']['empresa'];?></strong></span> <?php echo lang('message_lang.conCIF');?><span><?php echo $data['expedientes']['nif'];?></span>
-			<input type = "hidden" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" readonly 
-			placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" class="grid-item-profesor" required minlength = "4" name="empresa" id="empresa" value = "<?php echo $data['expedientes']['empresa'];?>" >
+			<input type = "hidden" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" readonly placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" class="grid-item-profesor" required minlength = "4" name="empresa" id="empresa" value = "<?php echo $data['expedientes']['empresa'];?>" >
 			<input type = "hidden" title="NIF del consultor digital" readonly  placeholder = "NIF" class="grid-item-profesor" required name="nif" id="nif" maxlength = "9" value = "<?php echo $data['expedientes']['nif'];?>">
 			<?php echo lang('message_lang.justificacion_declaracion').": ";?>
 		</h4>
@@ -72,7 +71,7 @@
 		</fieldset>
 		
 		<fieldset class="container-add-line">
-			<h4>Llista enumerativa de despeses:</h4>
+			<h4><?php echo lang('message_lang.listaEnumerativaDeGastos');?>:</h4>
 			<div class="form-floating">
   			<input type="text" class="form-control" id="num-factura" placeholder="Num. factura">
   			<label for="num-factura"><?php echo lang('message_lang.numFactura');?></label>
@@ -102,11 +101,11 @@
   			<label for="importe-factura"><?php echo lang('message_lang.importeFactura');?></label>
 			</div>
 			<div class="form-floating">
-  			<input type="date" class="form-control" id="fecha-pago" placeholder="Data pago">
+  			<input type="date" class="form-control" id="fecha-pago" placeholder="Data pago" oninput="enableSubmitButtons()">
   			<label for="fecha-pago"><?php echo lang('message_lang.fechaPago');?></label>
 			</div>
 			<div class="submit-button">
-			<button type="button" class="btn btn-primary" onclick="addInvoiceLine()"><?php echo lang('message_lang.addLine');?></button>
+			<button type="button" disabled class="btn btn-primary" id="addInvoiceLineBtn" onclick="addInvoiceLine()"><?php echo lang('message_lang.addLine');?></button>
 			</div>
 		</fieldset>
 
@@ -128,7 +127,7 @@
 			</div>
 		</fieldset>
 		<fieldset class="submit-button">
-			<button type="submit" class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+			<button type="submit" disabled class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
 		</fieldset>
 		
 
@@ -179,7 +178,7 @@
 </div>
 </section>
 
-<script>
+<!-- <script>
 	$(document).ready(function(){
 		$("#file_PlanTransformacionDigital").focusout(function() {
 		var inputValue = $(this).val();
@@ -213,4 +212,4 @@
 		}
 		});
 	});	
-</script>
+</script> -->

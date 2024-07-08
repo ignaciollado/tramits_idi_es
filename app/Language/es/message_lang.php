@@ -544,6 +544,7 @@ return [
 'fecha_ils'     => "Fecha",
 'doc_info_favorable_cabecera' => "Informe favorable sobre la solicitud de ayuda para el diseño de un plan de transformación digital para %SOLICITANTE%, con NIF %NIF%",
 'doc_expediente'     => "Expediente",
+'listaEnumerativaDeGastos' => "Lista enumerativa de gastos",
 'numFactura' => "Nº. factura",
 'fechaFactura' => "Fecha factura",
 'proveedor' => "Proveedor",

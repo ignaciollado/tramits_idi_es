@@ -791,9 +791,23 @@ function setTotalInvoice() {
 	let baseImponible = document.getElementById("base-imponible")
 	let importeIVA = document.getElementById("importe-iva")
 	let importeFactura = document.getElementById("importe-factura")
-	
 	importeFactura.value = parseFloat(baseImponible.value) + parseFloat(importeIVA.value)
 	importeFacturaTotal += parseFloat(baseImponible.value)
+}
+
+function enableSubmitButtons() {
+	document.getElementById("addInvoiceLineBtn").removeAttribute("disabled")
+	document.getElementById("enviar_docs").removeAttribute("disabled")
+}
+
+function detectExtendedASCII(tipoDoc, files) {
+	for (var i = 0; i < files.length; i++) { 
+		console.log(tipoDoc+" "+files[i].name +" "+ files[i].lastModified)+" "+files[i].size+" "+files[i].type; 
+		if(! /^[\x00-\x7F]*$/.test(files[i].name)) {
+			alert ("Per favor, normalitzi el nom de l'arxiu: \n\n"+files[i].name);
+			document.getElementById(tipoDoc).value="";
+		}
+	}
 }
 
 function formatDate(date) {

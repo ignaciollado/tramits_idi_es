@@ -573,6 +573,7 @@ Al seu torn, li informem que pot contactar amb el Delegat de Protecció de Dades
 'fecha_ils'     => "Data",
 'doc_info_favorable_cabecera' => "Informe favorable sobre la sol·licitud de l’ajut per al disseny d’un pla de transformació digital per a %SOLICITANTE%, amb NIF %NIF%",
 'doc_expediente'     => "Expedient",
+'listaEnumerativaDeGastos' => "Llista enumerativa de despeses",
 'numFactura' => "Nº. factura",
 'fechaFactura' => "Data factura",
 'proveedor' => "Proveïdor",
