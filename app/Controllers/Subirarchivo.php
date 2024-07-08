@@ -1767,13 +1767,13 @@ class SubirArchivo extends BaseController
 			'iae' => '',
 			'hay_consultor' => $hay_consultor,
 			 
-			'nombre_rep' => $this->request->getVar('nom_representante'),
-			'nif_rep' => $this->request->getVar('nif_representante'),
- 			'hay_rep' => $hay_rep,
+			'nombre_rep' 	=> $this->request->getVar('nom_representante'),
+			'nif_rep' 		=> $this->request->getVar('nif_representante'),
+ 			'hay_rep' 		=> $hay_rep,
  
 			'selloDeTiempo' => $selloTiempo,
 			'importeAyuda'	=> 0,
-			'convocatoria' => $convocatoria
+			'convocatoria' 	=> $convocatoria
 			];
 		$save_exp = $expediente->insert($data_exp);
 		$last_insert_id = $save_exp->connID->insert_id;
@@ -1782,14 +1782,14 @@ class SubirArchivo extends BaseController
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
 		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
-			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0755, true);
+			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0775, true);
 		}
 	
 		$data_file['titulo'] = "Resumen de la solicitud de adhsión FELIB";
- 
+
 		echo view('pages/forms/solicitud-adhesion-felib', $data_exp);
-		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
-		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-felib', $data_exp);
+		//echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
+		//echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-felib', $data_exp);
 	 }
 
 }

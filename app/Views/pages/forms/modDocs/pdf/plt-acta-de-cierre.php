@@ -155,7 +155,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $parrafo_3 = lang('20_acta_de_tacament.20_p3');
-$parrafo_3 = str_replace("%observacionesActaCierre%", $data['expediente']['observacionesActaCierre'], $parrafo_3); ;
+$parrafo_3 = str_replace("%observacionesActaCierre%", $data['expediente']['observacionesActaCierre'], $parrafo_3);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_3 ."</td></tr>";
 $html .= "</table>";
