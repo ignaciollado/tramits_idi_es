@@ -170,8 +170,8 @@ $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 
 $html12 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Per tot això, <b>deman a la directora gerent</b> que el meu municipi ofereixi els programes següents:</td></tr>";
 $html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br><ul>";
+
 if ($felib_p[10]) {
   $html12 .= "<li>".lang('message_lang.felib_p11')."</li>";
 }
