@@ -30,97 +30,6 @@
         'programa' => $programa
     ];
     $session->set($expedienteID);
-
-/* Si no hay IMPORTE AYUDA, Calcula el importe según el programa y el número de convocatorias a las que se ha  presentado */
-
-if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
-    /* $objs = json_decode( $configuracion['programa']); */
-    $objs = json_decode( $configuracionLinea['programa']);
-    /**
-     * object(stdClass)#88 (3) { 
-     * ["Programa_I"]=> object(stdClass)#90 (1) { ["edicion"]=> object(stdClass)#89 (3) 
-     * { ["Primera"]=> array(3) { [0]=> int(5100) [1]=> int(90) [2]=> int(60) } 
-     * ["Segunda"]=> array(3) { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } 
-     * ["Tercera"]=> array(3) { [0]=> int(3400) [1]=> int(80) [2]=> int(40) } } } 
-     * ["Programa_II"]=> object(stdClass)#92 (1) { ["edicion"]=> object(stdClass)#91 (2) { 
-     * ["Primera"]=> array(3) { [0]=> int(4080) [1]=> int(90) [2]=> int(48) } 
-     * ["Segunda"]=> array(3) { [0]=> int(4080) [1]=> int(80) [2]=> int(48) } } } 
-     * ["Programa_III"]=> object(stdClass)#94 (1) { ["edicion"]=> object(stdClass)#93 (2) { 
-     * ["Primera"]=> array(3) { [0]=> int(1360) [1]=> int(90) [2]=> int(16) } 
-     * ["Segunda"]=> array(3) { [0]=> int(1360) [1]=> int(80) [2]=> int(16) } } } } */
-    switch ($programa) {
-        case 'Programa I':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_I->edicion->Primera[0]*($objs->Programa_I->edicion->Primera[1]/100);
-                    break;
-                case 2:
-                    $importeAyuda = $objs->Programa_I->edicion->Segunda[0]*($objs->Programa_I->edicion->Segunda[1]/100);                
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_I->edicion->Tercera[0]*($objs->Programa_I->edicion->Tercera[1]/100);
-            }
-            break;
-        case 'Programa II':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_II->edicion->Primera[0]*($objs->Programa_II->edicion->Primera[1]/100);
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_II->edicion->Segunda[0]*($objs->Programa_II->edicion->Segunda[1]/100);
-            }
-            break;
-        case 'Programa III': /* Mantengo esta opción por compatibilidad con las CONVOS anteriores a 2024 */
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_III->edicion->Primera[0]*($objs->Programa_III->edicion->Primera[1]/100);
-                    //echo "p3 ".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]." p3";
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_III->edicion->Segunda[0]*($objs->Programa_III->edicion->Segunda[1]/100);
-                    //echo "p3 def ".$objs->Programa_III->edicion->Primera[0]." ".$objs->Programa_III->edicion->Primera[1]." p3 def";
-            }
-            break;
-        case 'Programa III actuacions producte':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_III_ap->edicion->Primera[0]*($objs->Programa_III_ap->edicion->Primera[1]/100);
-                    //echo "p3 ap ".$objs->Programa_III_ap->edicion->Primera[0]." ".$objs->Programa_III_ap->edicion->Primera[1]." p3 ap";
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_III_ap->edicion->Segunda[0]*($objs->Programa_III_ap->edicion->Segunda[1]/100);
-                    //echo "p3 ap def ".$objs->Programa_III_ap->edicion->Primera[0]." ".$objs->Programa_III_ap->edicion->Primera[1]." p3 ap def";
-                }
-            break;
-        case 'Programa III actuacions corporatives':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_III_ac->edicion->Primera[0]*($objs->Programa_III_ac->edicion->Primera[1]/100);
-                    //echo "p3 ac ".$objs->Programa_III_ac->edicion->Primera[0]." ".$objs->Programa_III_ac->edicion->Primera[1]." p3 ac";
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_III_ac->edicion->Segunda[0]*($objs->Programa_III_ac->edicion->Segunda[1]/100);
-                    //echo "p3 ac def ".$objs->Programa_III_ac->edicion->Segunda[0]." ".$objs->Programa_III_ac->edicion->Segunda[1]." p3 ac def";
-                }
-            break;
-        case 'Programa IV':
-            switch($totalConvocatorias) {
-                case 1:
-                    $importeAyuda = $objs->Programa_IV->edicion->Primera[0]*($objs->Programa_IV->edicion->Primera[1]/100);
-                    //echo "p4 ".$objs->Programa_IV->edicion->Primera[0]." ".$objs->Programa_IV->edicion->Primera[1]." p4";
-                    break;
-                default:
-                    $importeAyuda = $objs->Programa_IV->edicion->Segunda[0]*($objs->Programa_IV->edicion->Segunda[1]/100);
-                    //echo "p4 def ".$objs->Programa_IV->edicion->Primera[0]." ".$objs->Programa_IV->edicion->Primera[1]." p4 def";
-                }
-            break;
-    }
-        $resultadoActualizar = $modelExp->updateImporteAyuda ($id, $importeAyuda);
-    } else {
-        $importeAyuda = $expedientes['importeAyuda'];
-    }
-   /*  $importeAyuda = number_format($importeAyuda, 2, ',', '.');
-    $importe_minimis = number_format($expedientes['importe_minimis'], 2, ',', '.'); */
 	?>
 
     <!----------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --------------------------->
@@ -130,10 +39,10 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 <div class="tab_fase_exp">
     <button id="detall_tab_selector" class="tablinks" onclick="openFaseExped(event, 'detall_tab', ' #ccc')">Detall</button>  
     <button id="solicitud_tab_selector" class="tablinks" onclick="openFaseExped(event, 'solicitud_tab', '#f6b26b')">Sol·licitud</button>
-    <button id="validacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'validacion_tab', '#92cd92')">Validació</button>
+ <!--    <button id="validacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'validacion_tab', '#92cd92')">Validació</button>
     <button id="ejecucion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'ejecucion_tab', '#6d9eeb')">Execució</button>
     <button id="justifiacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'justificacion_tab', '#a64d79')">Justificació</button>
-    <button id="deses_ren_tab_selector" class="tablinks" onclick="openFaseExped(event, 'deses_ren_tab', '#8e7cc3')">Desistiment o renúncia</button>
+    <button id="deses_ren_tab_selector" class="tablinks" onclick="openFaseExped(event, 'deses_ren_tab', '#8e7cc3')">Desistiment o renúncia</button> -->
 </div>
 <?php echo "Data sol·licitud: ". $expedientes['fecha_solicitud'];?> <?php echo "Data complert: ". $expedientes['fecha_completado'];?>
 <div id="detall_tab" class="tab_fase_exp_content" style="display:block;">
@@ -146,13 +55,18 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
      			    <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $expedientes['id']; ?>"> 
 
                     <div class="form-group general">
-                        <label for="empresa">Nom o raó social:</label>
+                        <label for="empresa">Ajuntament de:</label>
                         <input type="text" name="empresa" class="form-control send_fase_0" id = "empresa" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> placeholder="Nom del sol·licitant" value="<?php echo $expedientes['empresa']; ?>">
                     </div>
                     <div class="form-group general">
                         <label for="nif">NIF:</label>
                         <input type="text" name="nif" class="form-control" id = "nif" disabled readonly placeholder="NIF del sol·licitant" value="<?php echo $expedientes['nif']; ?>">
-                    </div>     
+                    </div>
+
+                    <div class="form-group general">
+                        <label for="alcalde_felib">Batle/Batlessa:</label>
+                        <input type="text" name="alcalde_felib" class="form-control send_fase_0" id = "alcalde_felib" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> placeholder="Nom del sol·licitant" value="<?php echo $expedientes['alcalde_felib']; ?>">
+                    </div>
     		        <div class="form-group general">
                         <label for="fecha_completado">Data de la sol·licitud:</label>
                         <strong><?php echo date_format(date_create($expedientes['fecha_solicitud']), 'd/m/Y H:i:s'); ?></strong>
@@ -182,45 +96,14 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 				            ?>
 			            <input type="text" name="Poblacio" class="form-control" readonly disabled id = "Poblacio" placeholder="Població" value="<?php echo $localidad[1].' ('.$localidad[0].')';?>">
                     </div> 
-                <div class="form-group general">
-                    <label for="cpostal">Codi postal:</label>
-                    <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal'];?>">
-                </div>      	  		            	  
-                <div class="form-group general">
-                    <label for="telefono">Telèfon mòbil de contacte:</label>
-                    <input type="tel" name="telefono" class="form-control" readonly id = "telefono" required disabled placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono'];?>">
-                </div>
-                <div class="form-group general">
-                    <label for="iae">Activitat econòmica (IAE):</label>
-                    <input type="text" name="iae" class="form-control" readonly disabled id = "iae" maxlength = "4" size="4" placeholder="IAE" value="<?php echo $expedientes['iae'];?>">
-                </div>
-                
-                <div class="form-group general">
-                    <label for="importe_minimis">Importe minimis (€):</label>
-                    <input type="text" name="importe_minimis" class="form-control" readonly disabled id = "importe_minimis" maxlength = "4" size="4" placeholder="Import minimis" value="<?php echo $importe_minimis;?>">
-                </div>                
-		        <div class="form-group general">
-                    <label for="nombre_rep">Representant legal:</label>
-                    <input type="text" name="nombre_rep" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nombre_rep" placeholder = "Nom del representant" value = "<?php echo $expedientes['nombre_rep']; ?>">
-                </div>
-                <h3>Autoritza a consultar:</h3>
-                <label for = "file_copiaNIF" class="main" >
-					<span >Document identificatiu de la persona sol·licitant o persona autoritzada:</span>
-						<input type="checkbox" <?php if ($expedientes['file_copiaNIF'] === "SI") { echo "checked";}?> disabled readonly name = "file_copiaNIF" id = "file_copiaNIF">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "file_certificadoATIB" class="main" >
-					<span >Certificat de l'Agència Tributària de les Illes Balears:</span>
-						<input type="checkbox" <?php if ($expedientes['file_certificadoATIB'] === "SI") { echo "checked";}?> disabled readonly name = "file_certificadoATIB" id = "file_certificadoATIB">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "file_certificadoSegSoc" class="main" >
-					<span >Certificat de la Tresoreria General de la Seguretat Social:</span>
-						<input type="checkbox" <?php if ($expedientes['file_certificadoSegSoc'] === "SI") { echo "checked";}?> disabled readonly name = "file_certificadoSegSoc" id = "file_certificadoSegSoc">
-					<span class="w3docs"></span>
-				</label>
+                    <div class="form-group general">
+                        <label for="cpostal">Codi postal:</label>
+                        <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal'];?>">
+                    </div>      	  		            	  
+                    <div class="form-group general">
+                        <label for="telefono">Telèfon mòbil de contacte:</label>
+                        <input type="tel" name="telefono" class="form-control" readonly id = "telefono" required disabled placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono'];?>">
+                    </div>
                 </div>
                 <div class="col">
                 <div class="form-group general">
@@ -316,66 +199,84 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                         </optgroup>
 			        </select>
 		        </div>
-                <h3>L'administració ja desposa de:</h3>
-                <label for = "memoriaTecnicaEnIDI" class="main" >
-					<span ><?php echo lang('message_lang.memoriaTecnicaEnIDI_sinCambios');?> </span>
-						<input type="checkbox" <?php if ($expedientes['memoriaTecnicaEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "memoriaTecnicaEnIDI" id = "memoriaTecnicaEnIDI">
+                <h3>Programes sol·licitats:</h3>
+                <label for = "felib_p1" class="main" >
+					<span ><?php echo lang('message_lang.felib_p1');?> </span>
+						<input type="checkbox" <?php if ($felib_p1) { echo "checked";}?> disabled readonly name = "felib_p1" id = "felib_p1">
 					<span class="w3docs"></span>
 				</label>
 
-                <label for = "certificadoIAEEnIDI" class="main" >
-					<span ><?php echo lang('message_lang.certificadoIAEEnIDI_sinCambios');?> </span>
-						<input type="checkbox" <?php if ($expedientes['certificadoIAEEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "certificadoIAEEnIDI" id = "certificadoIAEEnIDI">
+                <label for = "felib_p2" class="main" >
+					<span ><?php echo lang('message_lang.felib_p2');?> </span>
+						<input type="checkbox" <?php if ($felib_p2) { echo "checked";}?> disabled readonly name = "felib_p2" id = "felib_p2">
 					<span class="w3docs"></span>
 				</label>
 
-                <label for = "copiaNIFSociedadEnIDI" class="main" >
-					<span ><?php echo lang('message_lang.copiaNIFSociedadEnIDI_sinCambios');?> </span>
-						<input type="checkbox" <?php if ($expedientes['copiaNIFSociedadEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "copiaNIFSociedadEnIDI" id = "copiaNIFSociedadEnIDI">
+                <label for = "felib_p3" class="main" >
+					<span ><?php echo lang('message_lang.felib_p3');?> </span>
+						<input type="checkbox" <?php if ($felib_p3) { echo "checked";}?> disabled readonly name = "felib_p3" id = "felib_p3">
 					<span class="w3docs"></span>
 				</label>
 
-                <label for = "pJuridicaDocAcreditativaEnIDI" class="main" >
-					<span ><?php echo lang('message_lang.pJuridicaDocAcreditativaEnIDI_sinCambios');?> </span>
-						<input type="checkbox" <?php if ($expedientes['pJuridicaDocAcreditativaEnIDI'] === "SI") { echo "checked";}?> disabled readonly name = "pJuridicaDocAcreditativaEnIDI" id = "pJuridicaDocAcreditativaEnIDI">
+                <label for = "felib_p4" class="main" >
+					<span ><?php echo lang('message_lang.felib_p4');?> </span>
+						<input type="checkbox" <?php if ($felib_p4) { echo "checked";}?> disabled readonly name = "felib_p4" id = "felib_p4">
 					<span class="w3docs"></span>
 				</label>
 
-                <div class="form-group general">
-                    <label for="importeAyuda">Import de l'ajuda (€):</label>
-                    <input type="text" name="importeAyuda" readonly disabled class="form-control" id = "importeAyuda" min="0" placeholder="Import de l'ajuda" value="<?php echo $importeAyuda;?>">
-                </div>
-                <div class="form-group general">
-                    <label for="porcentajeConcedido">Percentatje de l'ajuda:</label>
-                    <select class="form-control send_fase_0" readonly disabled id = "porcentajeConcedido" name = "porcentajeConcedido" required>
-    		    		<option disabled <?php if ($expedientes['porcentajeConcedido'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
-                        <option <?php if ($expedientes['porcentajeConcedido'] == "0") { echo "selected"; }?> value = "0" class="solicitud"></option>
-                        <option <?php if ($expedientes['porcentajeConcedido'] == "60") { echo "selected"; }?> value = "60" class="solicitud">60 %</option>
-    				    <option <?php if ($expedientes['porcentajeConcedido'] == "70") { echo "selected"; }?> value = "70" class="solicitud">70 %</option>
-        		        <option <?php if ($expedientes['porcentajeConcedido'] == "80") { echo "selected"; }?> value = "80" class="Ejecucion">80 %</option>
-    				    <option <?php if ($expedientes['porcentajeConcedido'] == "90") { echo "selected"; }?> value = "90" class="validacion">90 %</option>
-			        </select>
-                </div>
-                <div class="form-group general">
-                    <label for="cc_datos_bancarios">CC:</label>
-                    <input type="text" name="cc_datos_bancarios" readonly disabled class="form-control" id = "cc_datos_bancarios"  placeholder="Compte corrent" value="<?php echo strtoupper($expedientes['cc_datos_bancarios']); ?>">
-                </div>
-	    	    <div class="form-group general">
-                    <label for = "ordenDePago"><strong>Enviar a pagament:</strong></label>
-                    <select class="form-control send_fase_0" id = "ordenDePago" name = "ordenDePago" required>
-    		    		<option <?php if ($expedientes['ordenDePago'] == "NO") { echo "selected";}?> value = "NO"><span>NO</span></option>
-                        <option <?php if ($expedientes['ordenDePago'] == "SI") { echo "selected";}?> value = "SI" class="solicitud">SI</option>
-			        </select>
-                </div>
-	    	    <div class="form-group general">
-                    <label for = "fechaEnvioAdministracion"><strong>Data enviament a administració:</strong></label>
-                    <input type = "date" name = "fechaEnvioAdministracion" class = "form-control send_fase_0" id = "fechaEnvioAdministracion" value = "<?php echo date_format(date_create($expedientes['fechaEnvioAdministracion']), 'Y-m-d');?>">
-                </div>
-	    	    <div class="form-group general">
-                    <label for = "fecha_de_pago"><strong>Data pagament:</strong></label>
-                    <input type = "date" name = "fecha_de_pago" class = "form-control send_fase_0" id = "fecha_de_pago" value = "<?php echo date_format(date_create($expedientes['fecha_de_pago']), 'Y-m-d');?>">
-                </div>
-   
+                <label for = "felib_p5" class="main" >
+					<span ><?php echo lang('message_lang.felib_p5');?></span>
+						<input type="checkbox" <?php if ($felib_p5) { echo "checked";}?> disabled readonly name = "felib_p5" id = "felib_p5">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p6" class="main" >
+					<span ><?php echo lang('message_lang.felib_p6');?></span>
+						<input type="checkbox" <?php if ($felib_p6) { echo "checked";}?> disabled readonly name = "felib_p6" id = "felib_p6">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p7" class="main" >
+					<span ><?php echo lang('message_lang.felib_p7');?></span>
+						<input type="checkbox" <?php if ($felib_p7) { echo "checked";}?> disabled readonly name = "felib_p7" id = "felib_p7">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p8" class="main" >
+					<span ><?php echo lang('message_lang.felib_p8');?></span>
+						<input type="checkbox" <?php if ($felib_p8) { echo "checked";}?> disabled readonly name = "felib_p8" id = "felib_p8">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p9" class="main" >
+					<span ><?php echo lang('message_lang.felib_p9');?></span>
+						<input type="checkbox" <?php if ($felib_p9) { echo "checked";}?> disabled readonly name = "felib_p9" id = "felib_p9">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p10" class="main" >
+					<span ><?php echo lang('message_lang.felib_p10');?></span>
+						<input type="checkbox" <?php if ($felib_p10) { echo "checked";}?> disabled readonly name = "felib_p10" id = "felib_p10">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p11" class="main" >
+					<span ><?php echo lang('message_lang.felib_p11');?></span>
+						<input type="checkbox" <?php if ($felib_p11) { echo "checked";}?> disabled readonly name = "felib_p11" id = "felib_p11">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p12" class="main" >
+					<span ><?php echo lang('message_lang.felib_p12');?></span>
+						<input type="checkbox" <?php if ($felib_p12) { echo "checked";}?> disabled readonly name = "felib_p12" id = "felib_p12">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p13" class="main" >
+					<span ><?php echo lang('message_lang.felib_p13');?></span>
+						<input type="checkbox" <?php if ($felib_p13) { echo "checked";}?> disabled readonly name = "felib_p13" id = "felib_p13">
+					<span class="w3docs"></span>
+				</label>
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -632,7 +533,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 			                echo $estado_firma;
 		                }?>
                         <br>
-                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
+                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud_felib.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
             </div>
             
         </div>

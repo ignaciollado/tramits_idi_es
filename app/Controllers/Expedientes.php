@@ -366,6 +366,8 @@ class Expedientes extends Controller
 			echo view('pages/exped/edita-expediente-ils', $data);
 		} else if ($tipo_tramite === 'IDI-ISBA') {
 			echo view('pages/exped/edita-expediente-idi-isba', $data);
+		} else if ($tipo_tramite === 'FELIB') {
+			echo view('pages/exped/edita-expediente-felib', $data);		
 		} else {
 			echo view('pages/exped/edita-expediente', $data);
 		}

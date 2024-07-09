@@ -310,8 +310,8 @@ class SubirArchivo extends BaseController
 		$data_exp ['idioma'] = $idioma;
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
-		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
-			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0755, true);
+		if (!file_exists( WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo."/") ) {
+			mkdir(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo, 0755, true);
 		}
 
 		/* ------------------------------------------------------------------------------------------------------------ */	
@@ -1438,8 +1438,8 @@ class SubirArchivo extends BaseController
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
 
-		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
-			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0755, true);
+		if (!file_exists( WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo."/") ) {
+			mkdir(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo, 0755, true);
 		}
 
 		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos------------ */
@@ -1540,7 +1540,7 @@ class SubirArchivo extends BaseController
 			 	}
 		 	}
 	 	} 
-  	/* ----------------------------------------------------------------------------------------------------------------- */
+  		/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado g.----------------------------------------------------------- */
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_g'] as $documento_g)
@@ -1565,7 +1565,7 @@ class SubirArchivo extends BaseController
 						}
 				}
 			}
-  	/* ----------------------------------------------------------------------------------------------------------------- */
+  		/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado h.----------------------------------------------------------- */
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_h'] as $documento_h)
@@ -1590,7 +1590,7 @@ class SubirArchivo extends BaseController
 					}
 				}
 		}
-  	/* ----------------------------------------------------------------------------------------------------------------- */
+  		/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado i.----------------------------------------------------------- */
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_i'] as $documento_i)
@@ -1640,7 +1640,7 @@ class SubirArchivo extends BaseController
 					}
 				}
 		} 
-  	/* ----------------------------------------------------------------------------------------------------------------- */
+  		/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado k.----------------------------------------------------------- */
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_k'] as $documento_k)
@@ -1665,7 +1665,7 @@ class SubirArchivo extends BaseController
 					}
 				}
 		} 
-  	/* ----------------------------------------------------------------------------------------------------------------- */
+  		/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado l.----------------------------------------------------------- */
 		 if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
 			foreach($documentosfile['documentacion_adjunta_requerida_idi_isba_l'] as $documento_l)
@@ -1696,10 +1696,10 @@ class SubirArchivo extends BaseController
 	 	echo view('pages/forms/solicitud-ayuda-idi-isba', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-ayuda-idi-isba', $data_exp);
-  }	
+   }	
 
 	public function store_felib()
-	{
+	 {
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -1796,15 +1796,15 @@ class SubirArchivo extends BaseController
 		$data_exp ['last_insert_id'] = $last_insert_id;
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
-		if (!file_exists( WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
-			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0777, true);
+		if (!file_exists( WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo."/") ) {
+			mkdir(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo, 0775, true);
 		}
 	
 		$data_file['titulo'] = "Resumen de la solicitud de adhsión FELIB";
 
 		echo view('pages/forms/solicitud-adhesion-felib', $data_exp);
-		//echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
-		//echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-felib', $data_exp);
-	}
+		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
+		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-felib', $data_exp);
+	 }
 
 }

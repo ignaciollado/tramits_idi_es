@@ -17,7 +17,7 @@ class ConfigGestorAyudas extends BaseController
                         'num_BOIB', 'fecha_BOIB', 'convocatoria_desde', 'convocatoria_hasta', 'totalAmount'])
             
                         ->displayAs('activeLineData', "Convocatòria activa?")
-                        ->displayAs('lineaAyuda', "Linia d'ajuda")
+                        ->displayAs('lineaAyuda', "Linia tràmit")
                         ->displayAs('convocatoria', 'Convocatòria')
                         ->displayAs('num_BOIB', 'Num BOIB')
                         ->displayAs('fecha_BOIB', 'Data BOIB')
@@ -45,7 +45,7 @@ class ConfigGestorAyudas extends BaseController
 
         $crud->fieldType('lineaAyuda', 'dropdown', ['XECS' => 'XECS',
         'ILS' => 'ILS',
-        'IDI-ISBA' => 'IDI-ISBA']);
+        'IDI-ISBA' => 'IDI-ISBA', 'FELIB' => 'FELIB']);
 
         $crud->fieldType('activeLineData', 'dropdown', ['SI' => 'SI',
         'NO' => 'NO']);

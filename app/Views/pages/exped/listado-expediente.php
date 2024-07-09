@@ -31,7 +31,7 @@
 
 	<div class="filter-area-col">
 		<div class="form-group">
-			<input class="<?php if ($session->get('rol') == 'admin') { echo 'form-control-itramits';} else {echo 'form-control-itramits-disabled';} ?> " onfocus="this.value=''" list="programa" name="programa_fltr" id="programa_fltr" <?php if ($session->get('rol')!='admin') { echo 'disabled';} ?> placeholder = "Programa ..." value = "<?php 
+			<input class="<?php if ($session->get('rol') == 'admin') { echo 'form-control-itramits';} else {echo 'form-control-itramits-disabled';} ?> " onfocus="this.value=''" list="programa" name="programa_fltr" id="programa_fltr" <?php if ($session->get('rol')!='admin') { echo 'disabled';} ?> placeholder = "Linia de tràmit ..." value = "<?php 
 																																																				if ($session->get('rol') != 'admin') {
 																																																					echo $session->get('rol');
 																																																				} else {
@@ -48,6 +48,7 @@
 					<option value="Programa IV">
 					<option value="ILS">
 					<option value="IDI-ISBA">
+					<option value="FELIB">
   			</datalist>
   		</div>
 	</div>
@@ -153,7 +154,7 @@
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_completado/" . (($sort_order == 'ASC' && $sort_by == 'fecha_completado') ? 'DESC' : 'ASC'), 'https');?>">Data complet</a>
 		</div>
 		<div <?php echo($sort_by == 'tipo_tramite' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/tipo_tramite/" . (($sort_order == 'ASC' && $sort_by == 'tipo_tramite') ? 'DESC' : 'ASC'), 'https');?>">Programa</a>					
+			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/tipo_tramite/" . (($sort_order == 'ASC' && $sort_by == 'tipo_tramite') ? 'DESC' : 'ASC'), 'https');?>">Linia de tràmit</a>					
     </div>
 		<div <?php echo($sort_by == 'idExp' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/idExp/" . (($sort_order == 'ASC' && $sort_by == 'idExp') ? 'DESC' : 'ASC'), 'https');?>">N. exped.</a>
@@ -208,7 +209,7 @@
 		<?php if ( strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
 				<span id = "semaforo" class = "detail-wrapper-col">
 					<?php 
-					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' ) {
+					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {
 						$importeAyuda = number_format($item['importeAyuda'], 2, ',', '.');
 						echo $importeAyuda;
 					} else {
@@ -221,7 +222,13 @@
 					<?php  If ( $item['publicar_en_web'] == 1 )  { echo 'SI'; } else {  echo 'NO'; };?>
 				</span>
 		<?php }?>
-		<span id = "ordenDePago" class = "detail-wrapper-col"><?php echo $item['ordenDePago']; ?></span>
+		
+		<span id = "ordenDePago" class = "detail-wrapper-col">
+			<?php if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {?>
+				<?php echo $item['ordenDePago'];?>
+			<?php }?>
+		</span>
+		
 		<span id = "empresa_consultor" class = "detail-wrapper-col"><?php echo $item['empresa_consultor']; ?></span>
 		<span id = "nom_consultor" class = "detail-wrapper-col"><?php echo $item['nom_consultor']; ?></span>
 		<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['fecha_not_propuesta_resolucion_def']; ?></span>
