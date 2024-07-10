@@ -43,7 +43,7 @@ class ConfigGestorAyudas extends BaseController
         '2027' => '2027',   
         ]);
 
-        $crud->fieldType('lineaAyuda', 'dropdown', ['XECS' => 'XECS',
+        $crud->fieldType('lineaAyuda', 'dropdown', ['Programa iDigital 20' => 'Programa iDigital 20', 'XECS' => 'XECS',
         'ILS' => 'ILS',
         'IDI-ISBA' => 'IDI-ISBA', 'FELIB' => 'FELIB']);
 

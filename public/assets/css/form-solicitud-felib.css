@@ -260,7 +260,7 @@ select, input, textarea {
 }    
 .formbox {
   width: calc(100%);
-  border: 1px solid rgba(55, 154, 151, 1);
+  border: 1px solid #18a2d0;
   background-color: rgba(248, 249, 250, 1);
   padding: 1rem 1.8rem 1rem 5rem;
   margin-left: -0.5rem!important;

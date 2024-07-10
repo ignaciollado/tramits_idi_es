@@ -1,0 +1,7 @@
+CRITICAL - 2024-07-10 02:58:04 --> E000
+#0 /home/tramitsidi/www/app/Controllers/Expedientes.php(314): App\Models\ConfiguracionLineaModel->activeConfigurationLineData('Programa iDigit...', '2020')
+#1 /home/tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Expedientes->edit('2')
+#2 /home/tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expedientes))
+#3 /home/tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
