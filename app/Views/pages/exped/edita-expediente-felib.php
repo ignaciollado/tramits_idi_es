@@ -39,10 +39,6 @@
 <div class="tab_fase_exp">
     <button id="detall_tab_selector" class="tablinks" onclick="openFaseExped(event, 'detall_tab', ' #ccc')">Detall</button>  
     <button id="solicitud_tab_selector" class="tablinks" onclick="openFaseExped(event, 'solicitud_tab', '#f6b26b')">Sol·licitud</button>
- <!--    <button id="validacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'validacion_tab', '#92cd92')">Validació</button>
-    <button id="ejecucion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'ejecucion_tab', '#6d9eeb')">Execució</button>
-    <button id="justifiacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'justificacion_tab', '#a64d79')">Justificació</button>
-    <button id="deses_ren_tab_selector" class="tablinks" onclick="openFaseExped(event, 'deses_ren_tab', '#8e7cc3')">Desistiment o renúncia</button> -->
 </div>
 <?php echo "Data sol·licitud: ". $expedientes['fecha_solicitud'];?> <?php echo "Data complert: ". $expedientes['fecha_completado'];?>
 <div id="detall_tab" class="tab_fase_exp_content" style="display:block;">
@@ -100,34 +96,50 @@
                         <label for="cpostal">Codi postal:</label>
                         <input type="text" name="cpostal" class="form-control" readonly disabled id = "cpostal" maxlength = "5" size="5" required placeholder="Codi postal del sol·licitant" value="<?php echo $expedientes['cpostal'];?>">
                     </div>      	  		            	  
-                    <div class="form-group general">
-                        <label for="telefono">Telèfon mòbil de contacte:</label>
-                        <input type="tel" name="telefono" class="form-control" readonly id = "telefono" required disabled placeholder="Telèfon del sol·licitant" value="<?php echo $expedientes['telefono'];?>">
-                    </div>
+                   
                 </div>
                 <div class="col">
-                <div class="form-group general">
-                    <label for="nif_rep">NIF representant legal:</label>
-                    <input type="text" name="nif_rep" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
-                </div>
-                <?php if ( $expedientes['tipo_tramite'] != 'ILS') {?>    
-                <div class="form-group general">
-                    <label for="empresa_consultor">Empresa del consultor:</label>
-                    <input type="text" name="empresa_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "empresa_consultor" placeholder = "Empresa del consultor" value = "<?php echo $expedientes['empresa_consultor']; ?>">
-                </div>
-	            <div class="form-group general">
-                    <label for="nom_consultor">Nom del consultor:</label>
-                    <input type="text" name="nom_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nom_consultor" placeholder="Nom del consultor" value="<?php echo $expedientes['nom_consultor']; ?>">
-                </div> 
-                <div class="form-group general">
-                    <label for="tel_consultor"><strong>Telèfon mòbil consultor:</strong></label>
-                    <input type="tel" name="tel_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "tel_consultor" minlength = "9" maxlength = "9" placeholder="Telèfon del consultor" value="<?php echo $expedientes['tel_consultor']; ?>">
-                </div> 
-    		    <div class="form-group general">
-                    <label for="mail_rep"><strong>Adreça electrònica consultor:</strong></label>
-                    <input type="email" name="mail_consultor" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "mail_consultor" placeholder="Adreça electrònica del consultor" value="<?php echo $expedientes['mail_consultor']; ?>">
-                </div>
-                <?php }?>
+                    <div class="form-group general">
+                        <label for="responsable_felib">Responsable:</label>
+                        <input type="text" name="responsable_felib" class="form-control" readonly id = "responsable_felib" disabled value="<?php echo $expedientes['responsable_felib'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="cargo_felib">Càrrec:</label>
+                        <input type="text" name="cargo_felib" class="form-control" readonly id = "cargo_felib" disabled value="<?php echo $expedientes['cargo_felib'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="email_rep">Adreça electrònica:</label>
+                        <input type="text" name="email_rep" class="form-control" readonly id = "email_rep" disabled value="<?php echo $expedientes['email_rep'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="telefono">Telèfon:</label>
+                        <input type="tel" name="telefono" class="form-control" readonly id = "telefono" disabled value="<?php echo $expedientes['telefono'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="telefono_rep">Mòbil:</label>
+                        <input type="tel" name="telefono_rep" class="form-control" readonly id = "telefono_rep" disabled value="<?php echo $expedientes['telefono_rep'];?>">
+                    </div>
+                    <hr>
+                    <div class="form-group general">
+                        <label for="tecnico_felib">Tècnic/a de contacte:</label>
+                        <input type="text" name="tecnico_felib" class="form-control" readonly id = "tecnico_felib" disabled value="<?php echo $expedientes['tecnico_felib'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="cargo_tecnico_felib">Càrrec:</label>
+                        <input type="text" name="cargo_tecnico_felib" class="form-control" readonly id = "cargo_tecnico_felib" disabled value="<?php echo $expedientes['cargo_tecnico_felib'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="mail_tecnico_felib">Adreça electrònica:</label>
+                        <input type="text" name="mail_tecnico_felib" class="form-control" readonly id = "mail_tecnico_felib" disabled value="<?php echo $expedientes['mail_tecnico_felib'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="tel_tecnico_felib">Telèfon:</label>
+                        <input type="tel" name="tel_tecnico_felib" class="form-control" readonly id = "tel_tecnico_felib" disabled value="<?php echo $expedientes['tel_tecnico_felib'];?>">
+                    </div>
+                    <div class="form-group general">
+                        <label for="movil_tecnico_felib">Mòbil:</label>
+                        <input type="tel" name="movil_tecnico_felib" class="form-control" readonly id = "movil_tecnico_felib" disabled value="<?php echo $expedientes['movil_tecnico_felib'];?>">
+                    </div>                    
     		    <div class="form-group general">
                     <label for="tecnicoAsignado">Tècnica asignada:</label>
                     <input type="text" name="tecnicoAsignado" onchange="avisarCambiosEnFormulario('send_fase_0', this.id)" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
@@ -199,84 +211,6 @@
                         </optgroup>
 			        </select>
 		        </div>
-                <h3>Programes sol·licitats:</h3>
-                <label for = "felib_p1" class="main" >
-					<span ><?php echo lang('message_lang.felib_p1');?> </span>
-						<input type="checkbox" <?php if ($felib_p1) { echo "checked";}?> disabled readonly name = "felib_p1" id = "felib_p1">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p2" class="main" >
-					<span ><?php echo lang('message_lang.felib_p2');?> </span>
-						<input type="checkbox" <?php if ($felib_p2) { echo "checked";}?> disabled readonly name = "felib_p2" id = "felib_p2">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p3" class="main" >
-					<span ><?php echo lang('message_lang.felib_p3');?> </span>
-						<input type="checkbox" <?php if ($felib_p3) { echo "checked";}?> disabled readonly name = "felib_p3" id = "felib_p3">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p4" class="main" >
-					<span ><?php echo lang('message_lang.felib_p4');?> </span>
-						<input type="checkbox" <?php if ($felib_p4) { echo "checked";}?> disabled readonly name = "felib_p4" id = "felib_p4">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p5" class="main" >
-					<span ><?php echo lang('message_lang.felib_p5');?></span>
-						<input type="checkbox" <?php if ($felib_p5) { echo "checked";}?> disabled readonly name = "felib_p5" id = "felib_p5">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p6" class="main" >
-					<span ><?php echo lang('message_lang.felib_p6');?></span>
-						<input type="checkbox" <?php if ($felib_p6) { echo "checked";}?> disabled readonly name = "felib_p6" id = "felib_p6">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p7" class="main" >
-					<span ><?php echo lang('message_lang.felib_p7');?></span>
-						<input type="checkbox" <?php if ($felib_p7) { echo "checked";}?> disabled readonly name = "felib_p7" id = "felib_p7">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p8" class="main" >
-					<span ><?php echo lang('message_lang.felib_p8');?></span>
-						<input type="checkbox" <?php if ($felib_p8) { echo "checked";}?> disabled readonly name = "felib_p8" id = "felib_p8">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p9" class="main" >
-					<span ><?php echo lang('message_lang.felib_p9');?></span>
-						<input type="checkbox" <?php if ($felib_p9) { echo "checked";}?> disabled readonly name = "felib_p9" id = "felib_p9">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p10" class="main" >
-					<span ><?php echo lang('message_lang.felib_p10');?></span>
-						<input type="checkbox" <?php if ($felib_p10) { echo "checked";}?> disabled readonly name = "felib_p10" id = "felib_p10">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p11" class="main" >
-					<span ><?php echo lang('message_lang.felib_p11');?></span>
-						<input type="checkbox" <?php if ($felib_p11) { echo "checked";}?> disabled readonly name = "felib_p11" id = "felib_p11">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p12" class="main" >
-					<span ><?php echo lang('message_lang.felib_p12');?></span>
-						<input type="checkbox" <?php if ($felib_p12) { echo "checked";}?> disabled readonly name = "felib_p12" id = "felib_p12">
-					<span class="w3docs"></span>
-				</label>
-
-                <label for = "felib_p13" class="main" >
-					<span ><?php echo lang('message_lang.felib_p13');?></span>
-						<input type="checkbox" <?php if ($felib_p13) { echo "checked";}?> disabled readonly name = "felib_p13" id = "felib_p13">
-					<span class="w3docs"></span>
-				</label>
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -292,212 +226,88 @@
     </div>    
     <div class="col docsExpediente">
         <div class="col">
-            <h3>Documentació <strong>requerida</strong> de l'expedient:</h3>
-            <div class="docsExpediente">
-  	            <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
-        	        <div>Rebut el</div>
-			        <div>Document</div>
-    		        <!-- <div>Tràmit</div> -->
-			        <div>Estat</div>
-  		        </div>
-                <?php if($documentosDetalle){ ?>
-                <?php foreach($documentosDetalle as $docs_item): 
-			            $path = $docs_item->created_at;
-			            $parametro = explode ("/",$path);
-			            $tipoMIME = $docs_item->type;
+            <?php
+            $felib_p = explode('#', $expedientes['felib_p']);
+            ?>
+            <h3>Programes sol·licitats:</h3>
+                <label for = "felib_p1" class="main" >
+					<span ><?php echo lang('message_lang.felib_p1');?> </span>
+						<input type="checkbox" <?php if ($felib_p[0]) { echo "checked";}?> disabled readonly name = "felib_p1" id = "felib_p1">
+					<span class="w3docs"></span>
+				</label>
 
-                    if ($convocatoria >= '2022') {
-			            switch ($docs_item->corresponde_documento) {
-				            case 'file_infoautodiagnostico':
-					            $nom_doc = "Informe autodiagnosi digital";
-					            break;
-    				        case 'file_certificadoIAE':
-					            $nom_doc = lang('message_lang.doc_certificado_IAE');
-					            break;
-	    			        case 'file_declaracionResponsable':
-					            $nom_doc = "Declaració responsable de l'empresa";
-					            break;
-		    		        case 'file_declaracionResponsableConsultor':
-					            $nom_doc = "Declaració responsable del consultor";
-					            break;
-			    	        case 'file_memoriaTecnica':
-					            $nom_doc = lang('message_lang.doc_Memoria_Tecnica');
-					            break;
-                            case 'file_document_acred_como_repres':
-                                $nom_doc = lang('message_lang.doc_Acreditativa_Repres');
-                                break; 
-				            case 'file_certigicadoSegSoc':
-					            $nom_doc = "Certificat de la Seguretat Social";
-					            break;
-				            case 'file_certificadoATIB':
-					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
-					            break;
-				            case 'file_altaAutonomos':	
-					            $nom_doc = lang('message_lang.doc_alta_RETA');
-					            break;
-				            case 'file_nifEmpresa':	
-					            $nom_doc = lang('message_lang.eres_persona_juridica');
-					            break;
-				            case 'file_nifRepresentante':	
-					            $nom_doc = "Còpia del NIF del representant de la societat";
-					            break;
-				            case 'file_certificadoDocumentacion':	
-					            $nom_doc = "Certificats i documentació corresponent (al no donar consentiment a l'IDI)";
-					            break;
-				            case 'file_declNoConsentimiento':	
-					            $nom_doc = "Declaració de no consentiment";
-          			            break;
-				            case 'file_enviardocumentoIdentificacion':	
-					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l'empresa";
-					            break;
-                            case 'file_resguardoREC':	
-                                $nom_doc = "Justificant de presentació pel SEU";
-                                break;
-                            case 'file_DocumentoIDI':	
-                                $nom_doc = "Document pujat des-de l'IDI";
-                                break;
-                            case 'file_escritura_empresa':	
-                                $nom_doc = lang('message_lang.eres_persona_juridica_doc_acreditativa');
-                                break;
-                            case 'file_certificadoAEAT':	
-                                $nom_doc = lang('message_lang.certificado_corriente_pago_aeat');
-                                break;
-                            case 'file_altaCensoAEAT':	
-                                $nom_doc = "Documentació acreditativa alta cens AEAT";
-                                break;                                  
-			                default:
-					        $nom_doc = $docs_item->corresponde_documento; 
-			            } 
-                        } else {
-                            $nom_doc = $docs_item->name;
-                        }?>
-                    <?php if ($docs_item->docRequerido !== 'NO') {?>
-  			            <div id ="fila" class = "detail-wrapper-docs-4 general">
-    				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_item->selloDeTiempo); ?></span>
-				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-      			            <!-- <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite; ?></span> -->
-                            <?php
-                            switch ($docs_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class="detail-wrapper-docs-col">
-                            <?php 
-                            switch ($docs_item->corresponde_documento) {
-                                case 'file_escritura_empresa':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-escritura-empresa.php'; 
-                                    break;
-    				            case 'file_certificadoIAE':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-iae.php'; 
-                                    break;
-                                case 'file_document_acred_como_repres':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-documentacion-acred-represent.php'; 
-                                    break;
-                                case 'file_certificadoAEAT':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-certificado-aeat.php'; 
-                                    break;
-                                case 'file_memoriaTecnica':
-                                    include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/envia-form-solicitud-memoria-tecnica.php'; 
-                                    break;                                 
-                            } 
-                            ?>
-                            </span>                            
-  			            </div>
-                          <?php }?>
-                <?php endforeach; ?>
-                <?php } else { 
-                    echo "<div class='alert alert-warning'>Cap documentació.</div>";
-                    }   
-                ?>
-            </div>
+                <label for = "felib_p2" class="main" >
+					<span ><?php echo lang('message_lang.felib_p2');?> </span>
+						<input type="checkbox" <?php if ($felib_p[1]) { echo "checked";}?> disabled readonly name = "felib_p2" id = "felib_p2">
+					<span class="w3docs"></span>
+				</label>
 
-            <!-- Documentación opcional-->
-            <h3>Documentació <strong>opcional</strong> de l'expedient:</h3>
-              <div class="docsExpediente">
-  	                <div class = "header-wrapper-docs-3 header-wrapper-docs-solicitud">
-        	            <div >Rebut el</div>
-			            <div >Document</div>
-    		            <!-- <div >Tràmit</div> -->
-			            <div >Estat</div>
-  		            </div>
-                    <?php if($documentosDetalle){ ?>
-                    <?php foreach($documentosDetalle as $docs_opc_item): 
-			            $path = $docs_opc_item->created_at;
-			            $parametro = explode ("/",$path);
-			            $tipoMIME = $docs_opc_item->type;
-                        
-                    if ($convocatoria >= '2022') {
-			            switch ($docs_opc_item->corresponde_documento) {
-			    	        case 'file_memoriaTecnica':
-					            $nom_doc = lang('message_lang.doc_Memoria_Tecnica');
-					            break;
-                            case 'file_copiaNIF':
-                                $nom_doc = lang('message_lang.eres_persona_juridica');
-                                break;	                                
-				            case 'file_certificadoATIB':
-					            $nom_doc = "Certificat estar al corrent obligacions amb Agència Estatal de l'Administració Tributària i Agència Tributària IB";
-					            break;
-				            case 'file_nifEmpresa':	
-					            $nom_doc = lang('message_lang.eres_persona_juridica');
-					            break;
-				            case 'file_enviardocumentoIdentificacion':	
-					            $nom_doc = "Identificació de la persona sol·licitant i/o la persona autoritzada per l’empresa";
-					            break;
-                            case 'file_logotipoEmpresaIls':	
-                                $nom_doc = "Logotip de l'empresa";
-                                break;
-                            case 'file_certificadoSegSoc':
-                                $nom_doc = "Certificat estar al corrent obligacions amb la TGSS";
-                                break;                                    
-			                default:
-					        $nom_doc = $docs_opc_item->corresponde_documento; 
-			            } 
-                    } else {
-                        $nom_doc = $docs_opc_item->name;
-                    }?>
+                <label for = "felib_p3" class="main" >
+					<span ><?php echo lang('message_lang.felib_p3');?> </span>
+						<input type="checkbox" <?php if ($felib_p[2]) { echo "checked";}?> disabled readonly name = "felib_p3" id = "felib_p3">
+					<span class="w3docs"></span>
+				</label>
 
-                    <?php if ($docs_opc_item->docRequerido === 'NO') {?>
-  			            <div id ="fila" class = "detail-wrapper-docs-3 general">
-    				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_opc_item->selloDeTiempo); ?></span>
-				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_opc_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-      			            <!-- <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_opc_item->tipo_tramite; ?></span> -->
-                            <?php
-                            switch ($docs_opc_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                                }
-                            ?>
-                            <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-  			            </div>
-                    <?php }?>
-                    <?php endforeach; ?>
-                </div>
-                
-                <?php } else { 
-                    echo "<div class='alert alert-warning'>Cap documentació.</div>";
-                    }   
-                ?>
-            <br>
+                <label for = "felib_p4" class="main" >
+					<span ><?php echo lang('message_lang.felib_p4');?> </span>
+						<input type="checkbox" <?php if ($felib_p[3]) { echo "checked";}?> disabled readonly name = "felib_p4" id = "felib_p4">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p5" class="main" >
+					<span ><?php echo lang('message_lang.felib_p5');?></span>
+						<input type="checkbox" <?php if ($felib_p[4]) { echo "checked";}?> disabled readonly name = "felib_p5" id = "felib_p5">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p6" class="main" >
+					<span ><?php echo lang('message_lang.felib_p6');?></span>
+						<input type="checkbox" <?php if ($felib_p[5]) { echo "checked";}?> disabled readonly name = "felib_p6" id = "felib_p6">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p7" class="main" >
+					<span ><?php echo lang('message_lang.felib_p7');?></span>
+						<input type="checkbox" <?php if ($felib_p[6]) { echo "checked";}?> disabled readonly name = "felib_p7" id = "felib_p7">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p8" class="main" >
+					<span ><?php echo lang('message_lang.felib_p8');?></span>
+						<input type="checkbox" <?php if ($felib_p[7]) { echo "checked";}?> disabled readonly name = "felib_p8" id = "felib_p8">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p9" class="main" >
+					<span ><?php echo lang('message_lang.felib_p9');?></span>
+						<input type="checkbox" <?php if ($felib_p[8]) { echo "checked";}?> disabled readonly name = "felib_p9" id = "felib_p9">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p10" class="main" >
+					<span ><?php echo lang('message_lang.felib_p10');?></span>
+						<input type="checkbox" <?php if ($felib_p[9]) { echo "checked";}?> disabled readonly name = "felib_p10" id = "felib_p10">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p11" class="main" >
+					<span ><?php echo lang('message_lang.felib_p11');?></span>
+						<input type="checkbox" <?php if ($felib_p[10]) { echo "checked";}?> disabled readonly name = "felib_p11" id = "felib_p11">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p12" class="main" >
+					<span ><?php echo lang('message_lang.felib_p12');?></span>
+						<input type="checkbox" <?php if ($felib_p[11]) { echo "checked";}?> disabled readonly name = "felib_p12" id = "felib_p12">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p13" class="main" >
+					<span ><?php echo lang('message_lang.felib_p13');?></span>
+						<input type="checkbox" <?php if ($felib_p[12]) { echo "checked";}?> disabled readonly name = "felib_p13" id = "felib_p13">
+					<span class="w3docs"></span>
+				</label>
+                <br>
             <div class="alert alert-info">
                 <small>Estat de la declaració responsable i de la sol·licitud</small>
                 <?php
@@ -531,11 +341,11 @@
 				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
 				                }
 			                echo $estado_firma;
+                            $tipoMIME = "application/pdf";
 		                }?>
                         <br>
-                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud_felib.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
+                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.strtoupper($expedientes['nif']).'_dec_res_solicitud_felib.pdf'.'/'.strtoupper($expedientes['nif']).'/'.$expedientes['selloDeTiempo'].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
             </div>
-            
         </div>
     </div>
     </div> <!-- Cierre fila Detalle -->
@@ -731,774 +541,6 @@
     </div><!-- Cierre de la fila -->
 </div><!-- Cierre del tab Solicitud -->
 
-<div id="validacion_tab" class="tab_fase_exp_content">
-    <div class="row">
-    <div class="col-sm-2 docsExpediente">
-        <h3>Detall:</h3>   
-        <form action="<?php echo base_url('public/index.php/expedientes/update');?>"  name="exped-fase-2" id="exped-fase-2" method="post" accept-charset="utf-8">
-                <div class="form-group validacion">
-                    <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable / desfavorable:</strong></label>
-		            <input type = "date" name = "fecha_infor_fav_desf" class = "form-control send_fase_2" id = "fecha_infor_fav_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_desf']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Firma proposta resolució provisional:</strong></label>
-                    <input type = "date" name = "fecha_firma_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_prov']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_prov"><strong>Notificació proposta resolució provisional:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_prov" onchange = "javaScript: cambiarSituacionExpediente('send_fase_2', this.id);" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_prov']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_def"><strong>Firma proposta resolució definitiva:</strong></label>
-                    <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_def"><strong>Notificació proposta resolució definitiva:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
-                </div>                
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
-                    <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
-                </div>
-    		    <div class="form-group validacion">
-                    <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
-                    <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
-                </div>
-
-                <?php
-                if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                else {?>
-                    <div class="form-group">
-                        <button type="button" onclick = "javaScript: actualiza_fase_2_validacion_expediente('exped-fase-2');" id="send_fase_2" class="btn-itramits btn-success-itramits">Actualitzar</button>
-                    </div>
-                <?php }?>                  
-        </form>
-        </div>        
-
-        <?php 
-	    $dias_fecha_lim_justificar	= $configuracionLinea['dias_fecha_lim_justificar'];
-        $meses_fecha_lim_consultoria = $configuracionLinea['meses_fecha_lim_consultoria'];
-        $mesesPrograma = explode("#",$meses_fecha_lim_consultoria);
-        $mesesPrograma = str_replace("{","",$mesesPrograma);
-        $mesesPrograma = str_replace("}","",$mesesPrograma);
-        $programaI = explode(",",$mesesPrograma[0]);
-        $programaII = explode(",",$mesesPrograma[1]);
-        $programaIII = explode(",",$mesesPrograma[2]);
-        $programaIII_ac = explode(",",$mesesPrograma[3]);
-        $programaIII_ap = explode(",",$mesesPrograma[4]);
-        $programaIV = explode(",",$mesesPrograma[5]);
-
-
-        switch ($expedientes['tipo_tramite']) {
-	        case 'Programa I':
-		        $add_meses = str_replace("'intervalo':'", "", $programaI[1]);
-		        $add_meses = str_replace("'", "", $add_meses);
-		        break;
-	        case 'Programa II':
-    		    $add_meses = str_replace("'intervalo':'", "", $programaII[1]);
-		        $add_meses = str_replace("'", "", $add_meses);
-		        break;
-	        case 'Programa III':
-    		    $add_meses = str_replace("'intervalo':'", "", $programaIII[1]);
-		        $add_meses = str_replace("'", "", $add_meses);
-		        break;
-            case 'Programa III actuacions corporatives':
-                $add_meses = str_replace("'intervalo':'", "", $programaIII_ac[1]);
-		        $add_meses = str_replace("'", "", $add_meses);
-		        break;                
-            case 'Programa III actuacions producte':
-                $add_meses = str_replace("'intervalo':'", "", $programaIII_ap[1]);
-		        $add_meses = str_replace("'", "", $add_meses);
-		        break;
-            case 'Programa IV':
-                $add_meses = str_replace("'intervalo':'", "", $programaIV[1]);
-		        $add_meses = str_replace("'", "", $add_meses);                
-		        break;
-	    }
-       
-        ?>
-        <div class="col docsExpediente">
-        <h3>Actes administratius:</h3>
-        <ol start="3">
-            <!-----------------------------------------3. Informe favorable amb requeriment------------>
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------4. Informe favorable sense requeriment--------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------6. Informe desfavorable sense requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------5. Informe desfavorable amb requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-con-requerimiento.php';?></li>         
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------7. Proposta de resolució PROVISIONAL favorable sense requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-favorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>            
-            <!-----------------------------------------8. Proposta de resolució PROVISIONAL favorable amb requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-favorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------9. Proposta de resolució PROVISIONAL desfavorable sense requerimient-->
-	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-desfavorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------10. Proposta de resolució PROVISIONAL desfavorable amb requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-provisional-desfavorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------11. Proposta de resolució definitiva favorable sense requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-favorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------12. Proposta de resolució definitiva favorable amb requeriment-->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-favorable-con-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------13. Proposta de resolució definitiva desfavorable sense requeriment---->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-desfavorable-sin-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------14. Proposta de resolució definitiva desfavorable amb requeriment------>
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-desfavorable-con-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------15. Resolució de concessió favorable amb requeriment------------------->
-             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------16. Resolució de concessió favorable sense requeriment----------------->
-             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-sin-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------17. Resolució de denegació amb requeriment----------------------------->
-             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-con-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------18. Resolució de denegació sense requeriment--------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-sin-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->                        
-        </ol>
-        </div>
-        <div class="col docsExpediente">
-        <div class="col">
-            <h3>Documents de l'expedient:</h3>
-            <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
-            <div class="docsExpediente">
-                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
-    	            <div >Pujat el</div>
-   	  	            <div >Document</div>
-		            <div >Estat</div>                     
-      	            <div >Acció</div>
-                </div>
-            <?php if($documentos): ?>
-            <?php foreach($documentos as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Validacion') {
-			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
-			        $parametro = explode ("/",$path);
-			        $tipoMIME = $docSolicitud_item->type;
-			        $nom_doc = $docSolicitud_item->name;?>
-
-                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-validacion-ils">
-      	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-   		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                           <?php
-                            switch ($docSolicitud_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class = "detail-wrapper-docs-col trash">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
-                            </span>      
-	                </div>
-                <?php }
-                endforeach; ?>
-                <?php endif; ?>
-            </div>
-            <div id="myModalDocValidacion" class="modal">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-        		            <h4>Aquesta acció no es podrá desfer.</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-    			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>  	
-
-            <h5 class ="upload-docs-type-label">[.pdf]:</h5>
-            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Validacion');?>" onsubmit="logSubmit('subeDocsValidacionBtn')" name="subir_doc_faseExpedValidacion" id="subir_doc_faseExpedValidacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
- 
-            <?php
-                if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                else {?>
-                    <div class = "content-file-upload">
-                    <div>
-                        <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedValidacion[]" id="nombrefaseExpedValidacion" size="20" accept=".pdf" multiple />
-                    </div>
-                    <div>
-                        <input id="subeDocsValidacionBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                    </div>
-                </div>
-                <?php }?>
-            </form> 
-        </div> <!--Cierre columna documentos-->
-            </div>
-    </div><!--Cierre de la fila-->
-</div><!--Cierre del tab Validación-->
-
-<div id="ejecucion_tab" class="tab_fase_exp_content">
-    <div class="row">
-        <div class="col-sm-2 docsExpediente">
-        <h3>Detall:</h3>
-        <form action="<?php echo base_url('public/index.php/expedientes/update');?>"  name="exped-fase-3" id="exped-fase-3" method="post" accept-charset="utf-8">
-            <div class="row">
-                <div class="col">
-                    <div class="form-group ejecucion">
-                        <label for = "fecha_kick_off"><strong>Kick-off:</strong></label>
-                        <input type = "date" name = "fecha_kick_off" class = "form-control send_fase_3" id = "fecha_kick_off" onchange = "javaScript: actualizaFechaConsultoria(this.value, <?php echo $add_meses;?>);" value = "<?php if ($expedientes['fecha_kick_off'] != null) {echo date_format(date_create($expedientes['fecha_kick_off']), 'Y-m-d');}?>">
-                    </div>
-		            <div class="form-group ejecucion">
-                        <label for = "fecha_limite_consultoria"><strong>Data límit per realitzar la consultoria:</strong></label>
-                        <input type = "date" name = "fecha_limite_consultoria" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id);" id = "fecha_limite_consultoria" value = "<?php echo date_format(date_create($expedientes['fecha_limite_consultoria']), 'Y-m-d');?>">
-                    </div>
-    		        <div class="form-group ejecucion">
-                        <label for = "fecha_reunion_cierre"><strong>Reunió tancament:</strong></label>
-                        <input type = "date" name = "fecha_reunion_cierre" class = "form-control send_fase_3" id = "fecha_reunion_cierre" onchange = "javaScript: actualizaFechas(this.value, <?php echo $dias_fecha_lim_justificar;?>);" value = "<?php echo date_format(date_create($expedientes['fecha_reunion_cierre']), 'Y-m-d');?>">
-                    </div>
-    		        <div class="form-group ejecucion">
-                        <label for = "fecha_limite_justificacion"><strong>Data límit per justificar l'ajut rebut:</strong></label>
-                        <input type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
-                    </div>
-                    <div class="form-group ejecucion">
-                        <label for = "fecha_max_desp_ampliacion"><strong>Data màxima després d'ampliació:</strong></label>
-                        <input type = "date" name = "fecha_max_desp_ampliacion" class = "form-control send_fase_3" id = "fecha_max_desp_ampliacion" value = "<?php echo date_format(date_create($expedientes['fecha_max_desp_ampliacion']), 'Y-m-d');?>">
-                    </div>
-                    <div class="form-group ejecucion">
-                        <label for = "fecha_REC_amp_termino"><strong>Data SEU ampliació termini:</strong></label>
-		    	        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_amp_termino" class = "form-control send_fase_3" id = "fecha_REC_amp_termino" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_amp_termino']);?>"/>
-                    </div>
-    		        <div class="form-group ejecucion">
-                        <label for = "ref_REC_amp_termino"><strong>Referència SEU ampliació termini:</strong></label>
-                        <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_amp_termino" class = "form-control send_fase_3" id = "ref_REC_amp_termino"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_amp_termino'];?>">
-        	        </div>
-    		        <div class="form-group ejecucion">
-                        <label for = "fecha_amp_termino"><strong>Notificació ampliació termini:</strong></label>
-                        <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_amp_termino" class = "form-control send_fase_3" id = "fecha_amp_termino" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_amp_termino']), 'Y-m-d');?>">
-                    </div>
-
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) { }
-                    else {?>
-                        <div class="form-group">
-                            <button type="button"  onclick = "javaScript: actualiza_fase_3_ejecucion_expediente('exped-fase-3');" id="send_fase_3" class="btn-itramits btn-success-itramits">Actualitzar</button>
-                        </div>
-                <?php }?>
-
-                </div>
-            </div>
-        </form>
-        </div>
-        <div class="col docsExpediente">
-            <h3>Actes administratius:</h3>
-            <ol start="19">
-            <!-----------------------------------------19.-abril_Acta Kick off ------------------------------------>
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-kickoff.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------20.-mayo_Acta de cierre ---->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-cierre.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            </ol>
-        </div>
-
-        <div class="col docsExpediente">
-        <div class="col">
-            <h3>Documents de l'expedient:</h3>
-            <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
-            <div class="docsExpediente">
-                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-    	            <div>Pujat el</div>
-   	  	            <div>Document</div>
-		            <div>Estat</div>                     
-      	            <div>Acció</div>
-                </div>
-            <?php if($documentos): ?>
-            <?php foreach($documentos as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Ejecucion') {
-			        $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
-			        $parametro = explode ("/",$path);
-			        $tipoMIME = $docSolicitud_item->type;
-			        $nom_doc = $docSolicitud_item->name;
-			        ?>
-                    <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-ejecucion">
-      	                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-   		                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <?php
-                            switch ($docSolicitud_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class = "detail-wrapper-docs-col trash">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocEjecucion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
-                            </span>    	
-		            </div>
-                    <?php }
-                endforeach; ?>
-            <?php endif; ?>
-            </div>
-            <div id="myModalDocEjecucion" class="modal">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-    		                <h4>Aquesta acció no es podrá desfer.</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-    	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
-                            <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocEjecucion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h5 class ="upload-docs-type-label">[.pdf]:</h5>
-            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Ejecucion');?>" onsubmit="logSubmit('subeDocsEjecucionBtn')" name="subir_doc_faseExpedEjecucion" id="subir_doc_faseExpedEjecucion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                <div class = "content-file-upload">
-                    <div>
-                        <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedEjecucion[]" id="nombrefaseExpedEjecución" size="20" accept=".pdf" multiple />
-                    </div>
-                    <div>
-                        <input id="subeDocsEjecucionBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                    </div>
-                </div>
-                <?php }?>
-            </form> 
-        </div> <!--Cierre columna documentos-->
-        </div>
-    </div><!-- cierre fila fase ejecución -->
-</div> <!-- Cierre tab fase ejecución-->
-
-<div id="justificacion_tab" class="tab_fase_exp_content">
-    <div class="row">
-        <div class="col-sm-2 docsExpediente">
-        <h3>Detall:</h3>
-        <form action="<?php echo base_url('public/index.php/expedientes/update');?>"  name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
-            <div class="row">
-            <div class="col">            
-            <div class="form-group justificacion">
-            <label for = "fecha_REC_justificacion"><strong>Data SEU justificació:</strong></label>
-			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
-            </div>	
-		    <div class="form-group justificacion">
-            <label for = "ref_REC_justificacion"><strong>Referència SEU justificació:</strong></label>
-            <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
-        	</div>
-    		<div class="form-group justificacion">
-            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament / justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
-            </div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
-            </div>			
-		    <div class="form-group justificacion">
-            <label for = "fecha_firma_requerimiento_justificacion"><strong>Firma requeriment justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
-            </div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_not_req_just"><strong>Notificació requeriment de justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_req_just" class = "form-control send_fase_4" id = "fecha_not_req_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_req_just']), 'Y-m-d');?>">
-            </div>            
-            <div class="form-group justificacion">
-            <label for = "fecha_REC_requerimiento_justificacion"><strong>Data SEU requeriment justificació:</strong></label>
-			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
-            </div>	
-		    <div class="form-group justificacion">
-            <label for = "ref_REC_requerimiento_justificacion"><strong>Referència SEU requeriment justificació:</strong></label>
-            <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
-        	</div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_propuesta_rev"><strong>Proposta de revocació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_propuesta_rev" class = "form-control send_fase_4" id = "fecha_propuesta_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_propuesta_rev'];?>">
-        	</div>
-            <div class="form-group justificacion">
-            <label for = "fecha_resolucion_rev"><strong>Resolució de revocació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_resolucion_rev" class = "form-control send_fase_4" id = "fecha_resolucion_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_resolucion_rev'];?>">
-        	</div>
-                <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                <?php }
-                    else {?>
-                    <div class="form-group">
-                        <button type="button" onclick = "javaScript: actualiza_fase_4_justificacion_expediente('exped-fase-4');" id="send_fase_4" onchange="avisarCambiosEnFormulario('send_fase_4', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
-                    </div>
-                <?php }?>
-            
-            </div>
-            </div>
-        </form>
-        </div>
-        <div class="col docsExpediente">
-        <h3>Actes administratius:</h3>
-        <ol start="21">
-            <!----------------------------------------- Informe inicio requerimento justificación DOC 18---------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Requerimiento de subsanación justificación DOC 19--------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe post subsanación de la documentación de justificación DOC 20---->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------- Resolución de pago sin requerimiento  DOC 27 FIRMA D GERENTE ------------------>
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-de-pago-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------->    
-                               
-        </ol>    
-        <h3>Documents de l'expedient:</h3>
-        <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
-        <div class="docsExpediente">
-            <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
-                <div>Pujat el</div>
-                <div>Document</div>
-                <div>Estat</div>               
-                <div>Acció</div>
-            </div>
-
-            <?php if($documentos): ?>
-            <?php foreach($documentos as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Justificacion') {
-                    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
-                    $parametro = explode ("/",$path);
-                    $tipoMIME = $docSolicitud_item->type;
-                    $nom_doc = $docSolicitud_item->name;
-            ?>
-            <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-justificacion">
-                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
-                <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                <?php
-                    switch ($docSolicitud_item->estado) {
-				        case 'Pendent':
-    			            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					        break;
-    				    case 'Aprovat':
-    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					        break;
-	    			    case 'Rebutjat':
-    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					        break;
-                        default:
-    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                    }
-                ?>
-                <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                <span class = "detail-wrapper-docs-col trash">
-                    <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
-                </span>  			
-            </div>
-            <?php } 
-                endforeach; ?>
-            <?php endif; ?>
-            <div id="myModalDocJustificacion" class="modal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content" style = "width: 60%;">
-                        <div class="modal-header">
-                            ¡Aquesta acció no es podrá desfer!
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h5 class ="upload-docs-type-label">[.zip]:</h5>
-            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Justificacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedJustificacion" id="subir_doc_faseExpedJustificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                    <?php
-                    if ( !$esAdmin && !$esConvoActual ) {?>
-                    <?php }
-                    else {?>
-                    <div class = "content-file-upload">
-                        <div>
-                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedJustificacion[]" id="file_faseExpedJustificacion" size="20" accept=".zip" multiple />
-                        </div>
-                        <div>
-                            <input id="subeDocsJustificacionBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
-                        </div>
-                    </div>
-                    <?php }?>
-            </form>             
-        </div>
-
-        </div>
-        <div class="col docsExpediente">
-            <h3><?php echo lang('message_lang.justificacion_titulo');?>:</h3>
-            <div id = "tab_plan">
-                <button class="accordion-exped">
-                <?php
-                    if ($expedientes['tipo_tramite'] =='Programa I') {
-	                    echo lang('message_lang.justificacion_plan_p1');
-                    }
-                    else {
-	                    echo lang('message_lang.justificacion_plan_p2_p3');
-                    }
-                ?>
-                </button>
-                <div class="panel-exped">
-                    <div class = "header-wrapper-docs-justificacion">
-  	                    <div>Rebut el</div>
-   	                    <div>Document</div>
-	                    <div>Estat</div>
-                    </div>
-
-	                <?php if($documentosJustifPlan): ?>
-                    <?php foreach($documentosJustifPlan as $docsJustif_item): 
-			            $path =  $docsJustif_item->created_at;
-			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
-			            $parametro = explode ("/",$path);
-			            $tipoMIME = $docsJustif_item->type;
-			            $nom_doc = $docsJustif_item->name;
-			        ?>
-  	                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
-      	                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
-   		                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                           <?php
-                            switch ($docsJustif_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        </div>
-                        <?php endforeach; ?>
-                        <?php endif; ?> 
-                </div>
-            </div>
-
-            <div id = "tab_facturas">
-                <button class="accordion-exped"><?php echo lang('message_lang.justificacion_facturas_doc');?></button>
-                <div class="panel-exped">
-                    <div class = "header-wrapper-docs-justificacion">
-  	                    <div>Rebut el</div>
-   	                    <div>Arxiu</div>
-	                    <div>Estat</div>
-                    </div>
-                <?php if($documentosJustifFact): ?>
-                <?php foreach($documentosJustifFact as $docsJustif_item):
-			        $path =  $docsJustif_item->created_at;
-			        $selloDeTiempo = $docsJustif_item->selloDeTiempo;
-			        $tipoMIME = $docsJustif_item->type;
-			        $nom_doc = $docsJustif_item->name;
-                    $listaEnumerativaDeGastos = $docsJustif_item->listaEnumerativaDeGastos;
-			    ?>
-  	                <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
-      	                <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
-   		                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
-
-                           <?php
-                            switch ($docsJustif_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                    
-                    
-                    <!-- <?php //if (!$documentosJustifPlan->publicAccessIdCustodiado) {?>
-			            <span id="custodia" class = "detail-wrapper-docs-col"> 
-				            <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$documentosJustifPlan->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $documentosJustifPlan->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
-			            </span>
-		            <?php //} else {?>
-			            <span id = "accion" class = "detail-wrapper-docs-col">Pendent de custodiar</span>			
-		            <?php //} ?> -->
-
-	                </div>
-                <?php endforeach; ?>
-                <?php echo $listaEnumerativaDeGastos;?>
-                <?php endif; ?>
-                </div>
-            </div>
-
-            <div id = "tab_pagos" class="active">
-                <button class="accordion-exped"><?php echo lang('message_lang.justificacion_justificantes_doc');?></button>
-                <div class="panel-exped">
-                    <div class = "header-wrapper-docs-justificacion">
-		                <div >Rebut el</div>
-   		                <div >Arxiu</div>
-		                <div >Estat</div>   
-                    </div>
-                    <?php if($documentosJustifPagos): ?>
-                    <?php foreach($documentosJustifPagos as $docsJustif_item): ?>
-			        <?php 
-    			        // $path = str_replace ("D:\wampp\apache2\htdocs\pindust\writable\documentos/","", $docsJustif_item->created_at);
-			            // $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docsJustif_item->created_at);
-			            $path =  $docsJustif_item->created_at;
-			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
-			            $tipoMIME = $docsJustif_item->type;
-			            $nom_doc = $docsJustif_item->name;
-                        //echo "#### ". $selloDeTiempo . " ####";
-			        ?>
-
-                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
-                        <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	     
-   		                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
-
-                           <?php
-                            switch ($docsJustif_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>                        
-                        
-                        <!-- <?php //if (!$documentosJustifPlan->publicAccessIdCustodiado) {?>
-			                <span id="custodia" class = "detail-wrapper-docs-col"> 
-    				            <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$documentosJustifPlan->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $documentosJustifPlan->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
-	    		            </span>
-		                <?php //} else {?>
-			                <span id = "accion" class = "detail-wrapper-docs-col">Pendent de custodiar</span>			
-		                <?php //} ?> -->
-
-		            </div>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-            </div>
-
-            <div><a href="<?php echo base_url('public/index.php/home/justificacion_cheques/').'/'.$expedientes['id'].'/'.$expedientes['nif'].'/'.$expedientes['tipo_tramite'].'/'.$expedientes['convocatoria'].'/ca';?>" target = "_blank">Formulari de requeriment de justificació</a></div>
-            <div><a href="<?php 
-                if (isset($selloDeTiempo)) {
-                    echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_justificacion_solicitud_ayuda.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');
-                }
-                ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a>
-            </div>
-            <div class="alert alert-info">
-                <small>Estat de la declaració responsable de la justificació</small>
-                <?php
-                	//Compruebo el estado de la firma de la declaración responsable.
-                    $thePublicAccessId = $modelJustificacion->getPublicAccessId ($expedientes['id']);
-	                if (isset($thePublicAccessId))
-		                {
-		                    $PublicAccessId = $thePublicAccessId;
-	                        $requestPublicAccessId = $PublicAccessId;
-                            $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
-		                    $respuesta = json_decode ($request, true);
-		                    $estado_firma = $respuesta['status'];
-
-			                switch ($estado_firma)
-				                {
-				                    case 'NOT_STARTED':
-				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
-				                        break;
-				                    case 'REJECTED':
-				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
-				                        $estado_firma .= "</a>";				
-				                        break;
-				                    case 'COMPLETED':
-				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signada</div>";		
-				                        $estado_firma .= "</a>";					
-				                        break;
-				                    case 'IN_PROCESS':
-                                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
-				                        $estado_firma .= "</a>";						
-				                    default:
-				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
-				                }
-			                echo $estado_firma;
-		                }?>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    if (<?php echo $totalDocsJustifPlan;?> === 0) {
-    	document.getElementById("tab_plan").classList.add ("warning-msg-justific");
-    }
-    else
-    {
-    	document.getElementById("tab_plan").classList.add ("success-msg-justific");
-    }
-
-    if (<?php echo $totalDocsJustifFact;?> === 0) {
-    	document.getElementById("tab_facturas").classList.add ("warning-msg-justific");
-    }
-    else
-    {
-    	document.getElementById("tab_facturas").classList.add ("success-msg-justific");
-    }
-
-    if (<?php echo $totalDocsJustifPagos;?> === 0) {
-    	document.getElementById("tab_pagos").classList.add ("warning-msg-justific");
-    }
-    else
-    {
-	    document.getElementById("tab_pagos").classList.add ("success-msg-justific");
-    }
-</script>
-
 <script>
     var acc = document.getElementsByClassName("accordion-exped ");
     var i;
@@ -1618,7 +660,6 @@
 
             <?php if($documentos): ?>
             <?php foreach($documentos as $docSolicitud_item): 			            
-                if($docSolicitud_item->fase_exped == 'Desestimiento') {
 			    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
 			    $parametro = explode ("/",$path);
 			    $tipoMIME = $docSolicitud_item->type;
@@ -1647,7 +688,7 @@
                         <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocDesestimiento"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                     </span> 
                 </div>
-            <?php }
+            <?php 
             endforeach; ?>
             <?php endif; ?>
             </div>

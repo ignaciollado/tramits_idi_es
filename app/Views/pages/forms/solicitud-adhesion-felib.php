@@ -57,7 +57,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 12);
+$pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 // --------------------------------------------------------------CABECERA Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
@@ -68,19 +68,19 @@ $html1 = lang('message_lang.destino_solicitud').": <b>". lang('message_lang.idi'
 $html1 .= "<br>";
 $html1 .= lang('message_lang.codigo_dir3')." <b>".$data['configuracion']['emisorDIR3']."</b>";
 // set color for background
-$pdf->SetFillColor(54, 84, 70);
+$pdf->SetFillColor(0, 55, 72);
 // set color for text
 $pdf->SetTextColor(255, 255, 255);
-$pdf->writeHTMLCell(90, '', 105, 40, $html1, 1, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(89, '', 106, 40, $html1, 1, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 15);
+$pdf->setY($currentY + 45);
 $pdf->setX($currentX - 10);
 $pdf->SetTextColor(0, 0, 0);
 $html2 = lang('message_lang.titulo_solicitud_felib');
 
-$textoIntro =  "%ALCALDE% , batle/batlessa de l'Ajuntament %AYUNTAMIENTO% estic informat dels
+$textoIntro =  "%ALCALDE%, batle/batlessa de l'Ajuntament %AYUNTAMIENTO% estic informat dels
 programes que ofereix l'ADR Balears per donar suport en el procés de creació i la
 millora competitiva de les empreses de les Illes Balears. Una vegada analitzats els
 seus objectius i recursos oferts, vull comptar amb la seva col·laboració al nostre
@@ -113,42 +113,53 @@ $html11 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Per tot això, <b>deman a la directora gerent</b> que el meu municipi ofereixi els programes següents:</td></tr>";
 $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br><ul>";
 
-$felib_P = explode($felib_p,"#");
+$felib_p = explode('#', $felib_p);
 
-if ($felib_p[0]) {
+
+if (strlen($felib_p[0])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p1')."</li>";
 }
-if ($felib_p[1]) {
+if (strlen($felib_p[1])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p2')."</li>";
 }
-if ($felib_p[2]) {
+if (strlen($felib_p[2])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p3')."</li>";
 }
-if ($felib_p[3]) {
+if (strlen($felib_p[3])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p4')."</li>";
 }
-if ($felib_p[4]) {
+if (strlen($felib_p[4])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p5')."</li>";
 }
-if ($felib_p[5]) {
+if (strlen($felib_p[5])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p6')."</li>";
 }
-if ($felib_p[6]) {
+if (strlen($felib_p[6])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p7')."</li>";
 }
-if ($felib_p[7]) {
+if (strlen($felib_p[7])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p8')."</li>";
 }
-if ($felib_p[8]) {
+if (strlen($felib_p[8])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p9')."</li>";
 }
-if ($felib_p[9]) {
+if (strlen($felib_p[9])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p10')."</li>";
 }
-
+if (strlen($felib_p[10])> 0) {
+  $html11 .= "<li>".lang('message_lang.felib_p11')."</li>";
+}
+if (strlen($felib_p[11])> 0) {
+  $html11 .= "<li>".lang('message_lang.felib_p12')."</li>";
+}
+if (strlen($felib_p[12])> 0) {
+  $html11 .= "<li>".lang('message_lang.felib_p13')."</li>";
+}
 $html11 .="</ul></td></tr>";
 $html11 .= "</table>";
-
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 15);
 $pdf->writeHTML($html11, true, false, true, false, '');
 
 // ----------------------------------------------4. DOCUMENTACIÓN ADJUNTADA requerida y opcional-------------------------------------------------- //
@@ -156,24 +167,7 @@ $pdf->writeHTML($html11, true, false, true, false, '');
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '30', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-
-$html12 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br><ul>";
-
-if ($felib_p[10]) {
-  $html12 .= "<li>".lang('message_lang.felib_p11')."</li>";
-}
-if ($felib_p[11]) {
-  $html12 .= "<li>".lang('message_lang.felib_p12')."</li>";
-}
-if ($felib_p[12]) {
-  $html12 .= "<li>".lang('message_lang.felib_p13')."</li>";
-}
-$html12 .="</ul></td></tr>";
-$html12 .= "</table>";
-
-$pdf->writeHTML($html12, true, false, true, false, '');
+$pdf->Image($image_file, 15, 15, '', '25', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html15 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html15 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Per dur a terme aquesta col·laboració, l'Ajuntament es compromet a:</td></tr><br>";
@@ -189,37 +183,39 @@ $html15 .= "<li>Ser el canal de comunicació amb el sector empresarial i d'empre
 <li>Utilitzar la marca i la imatge gràfica dels programes per a totes les accions dutes a terme per l'Ajuntament dins el marc d'aquests.</li>
 <li>Comunicar periòdicament i sempre que ho sol·liciti l'ADR Balears, mitjançant una roda de premsa/presentació pública i difusió a les xarxes socials els resultats dels programes, a més d'incloure-hi una taula d'indicadors de seguiment.</li>";
 $html15 .= "</ol></td></tr>";
-$html15 .= "<tr><td></td></tr>";
 $html15 .= "</table>";
-
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 45);
+$pdf->setX($currentX - 10);
 $pdf->writeHTML($html15, true, false, true, false, '');  
 
 // ------------------DATOS AYUNTAMIENTO, FIRMA------------------------------------------ //
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '30', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '25', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html16 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>xxxxxxxxxxxDades de l'ajuntament:</b></td></tr>";
-$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Adreça: ".$domicilio." CP: ".$cpostal."</td></tr>";
-$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Responsable: ".$responsable_felib." Càrrec: ".$cargo_felib."</td></tr>";
-$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Adreça electrònica: ".$email_rep." Telèfon: ".$telefono_rep."</td></tr>";
-$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Adreça electrònica: ".$email_rep." Telèfon: ".$telefono_rep."</td></tr><br>";
-$html16 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Les administracions implicades poden donar publicitat a les accions desenvolupades en els programes a la seva web o en altres formats (fullets, xarxes socials, vídeos, jornades...). Les dades personals facilitades a l’ADR Balears seran tractades d’acord amb la Llei de protecció de dades de caràcter personal i es garantiran els drets d’oposició, accés, modificació, i cancel·lació dels seus titulars.</td></tr>";
-$html16 .= "<tr><td></td></tr>";
+$html16 .= "<tr><td><b>Dades de l'ajuntament:</b></td></tr><br><br>";
+$html16 .= "<tr><td>Adreça: ".$domicilio." CP: ".$cpostal."</td></tr>";
+$html16 .= "<tr><td>Responsable: ".$responsable_felib." Càrrec: ".$cargo_felib."</td></tr>";
+$html16 .= "<tr><td>Adreça electrònica: ".$email_rep." Telèfon: ".$telefono_rep."</td></tr>";
+$html16 .= "<tr><td>Adreça electrònica: ".$email_rep." Telèfon: ".$telefono_rep."</td></tr><br><br>";
+$html16 .= "<tr><td>Les administracions implicades poden donar publicitat a les accions desenvolupades en els programes a la seva web o en altres formats (fullets, xarxes socials, vídeos, jornades...). Les dades personals facilitades a l’ADR Balears seran tractades d’acord amb la Llei de protecció de dades de caràcter personal i es garantiran els drets d’oposició, accés, modificació, i cancel·lació dels seus titulars.</td></tr>";
 $html16 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
+$pdf->setY($currentY + 45);
+$pdf->setX($currentX - 10);
 $pdf->writeHTML($html16, true, false, true, false, ''); 
 
 $html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
-$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.fecha_ils')."</td></tr>";
-$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.firma_ils')."</td></tr>";
+$html29 .= "<tr><td>".lang('message_lang.fecha_ils')."</td></tr>";
+$html29 .= "<tr><td>".lang('message_lang.firma_ils')."</td></tr>";
 $html29 .= "</table>";
 $currentY = $pdf->getY();
-$pdf->setY($currentY+35);
+$pdf->setY($currentY+30);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 
 // ------------------------------------------------------------------------------------ //
@@ -228,17 +224,16 @@ $pdf->WriteHTML($html29, true, false, true, false, '');
 // ---------------------------------------------------------RGDP----------------------- //
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
-$html29 = "<br>";
-$html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
+$html29 = "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
 $html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
 $html29 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
+$pdf->setY($currentY + 9);
 $pdf->setX($currentX - 10);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_felib.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloDeTiempo.'/'.strtoupper($nif).'_dec_res_solicitud_felib.pdf', 'F');
 ?>
 
 

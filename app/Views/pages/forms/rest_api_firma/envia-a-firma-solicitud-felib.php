@@ -1,7 +1,7 @@
 <?php
 		helper('cookie');
 		$empresa = $_POST["empresa"];
-		$nif = $_POST["nif"];
+		$nif = strtoupper($_POST["nif"]);
 		$domicilio = $_POST["domicilio"];
 		$adreca_mail = $_POST["mail_representante"];
 		$telefono_cont = $_POST["tel_representante"];
@@ -56,8 +56,8 @@
 		$request->addresseeLines = $lines;
 		
 		// Subject, message and sender notification level
-		$request->subject = lang('message_lang.titulo_adhesion_ils'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
-		$request->message = lang('message_lang.subtitulo_adhesion_ils'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
+		$request->subject = lang('message_lang.titulo_adhesion_felib'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
+		$request->message = lang('message_lang.subtitulo_adhesion_felib'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 		$request->senderNotificationLevel = "ALL";
 		$request->signatureLevel = "ALL";
 		// $request->stampName = "qr_code";
@@ -68,8 +68,8 @@
 		// Adding a document to sign
 		$doc = new Document;
 
-		$doc->filename = $nif.'_dec_res_solicitud_felib.pdf';
-		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_felib.pdf')));	
+		$doc->filename = strtoupper($nif).'_dec_res_solicitud_felib.pdf';
+		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloDeTiempo.'/'.strtoupper($nif).'_dec_res_solicitud_felib.pdf')));	
 
 		$documentsToSign = array ($doc);
 		$request->documentsToSign = $documentsToSign;

@@ -1728,14 +1728,15 @@ class SubirArchivo extends BaseController
 		$selloTiempo = date("d_m_Y_h_i_sa");
 	 
 		 $empresa = "AJUNTAMENT de ".$this->request->getVar('localidad');
-		 $nif = 'PxxxxxxxZ';
+		 $nif = $this->request->getVar('nif');
 
 		 $domicilio = $this->request->getVar('domicilio');
 		 $localidad = $this->request->getVar('localidad');
 		 $cpostal = $this->request->getVar('cpostal');
 		 $alcalde_felib = $this->request->getVar('alcalde_felib');
 		 $responsable_felib = $this->request->getVar('responsable_felib');
-		 $cargo_felib = $this->request->getVar('cargo_felib');
+		 $tel_responsable_felib = $this->request->getVar('telefono');
+		 $cargo_responsable_felib = $this->request->getVar('cargo_felib');
 
 		 $felib_p = $this->request->getVar('felib_p1')."#".$this->request->getVar('felib_p2')."#".$this->request->getVar('felib_p3')."#".$this->request->getVar('felib_p4')."#".$this->request->getVar('felib_p5')."#".$this->request->getVar('felib_p6')."#".$this->request->getVar('felib_p7')."#".$this->request->getVar('felib_p8')."#".$this->request->getVar('felib_p9')."#".$this->request->getVar('felib_p10')."#".$this->request->getVar('felib_p11')."#".$this->request->getVar('felib_p12')."#".$this->request->getVar('felib_p13');
 
@@ -1743,7 +1744,7 @@ class SubirArchivo extends BaseController
 		 $tel_representante = $this->request->getVar('tel_representante');
 		 $mail_representante = $this->request->getVar('mail_representante');
 		 /*****************************************************************/
-		 $tel_cargo_felib = $this->request->getVar('tel_cargo_felib');
+
 		 $tecnico_felib = $this->request->getVar('tecnico_felib');
 		 $cargo_tecnico_felib = $this->request->getVar('cargo_tecnico_felib');
 		 $mail_tecnico_felib = $this->request->getVar('mail_tecnico_felib');
@@ -1762,17 +1763,16 @@ class SubirArchivo extends BaseController
 			'domicilio' => $domicilio,
 			'localidad' => $localidad,
 			'cpostal' => $cpostal,
-			'telefono' => $this->request->getVar('telefono_cont'),
+			'telefono' => $tel_responsable_felib,
 			'felib_p' => $felib_p,
 
 			'alcalde_felib' => $alcalde_felib,
 
 		 	'responsable_felib' => $responsable_felib,
-		 	'cargo_felib' => $cargo_felib,
+		 	'cargo_felib' => $cargo_responsable_felib,
 			'email_rep' => $mail_representante,	// se usa para notificar
 			'telefono_rep' => $tel_representante,  // es el movil del cargo
-			'tel_cargo_felib' => $tel_cargo_felib,
-
+			
 			'tecnico_felib' => $tecnico_felib,
 			'cargo_tecnico_felib' => $cargo_tecnico_felib,
 		  'mail_tecnico_felib' => $mail_tecnico_felib,
@@ -1782,9 +1782,6 @@ class SubirArchivo extends BaseController
 			'tipo_tramite' => $tipo_tramite,
 			'iae' => '',
 			'hay_consultor' => $hay_consultor,
-			'nombre_rep' 	=> $this->request->getVar('nom_representante'),
-			'nif_rep' 		=> $this->request->getVar('nif_representante'),
- 			'hay_rep' 		=> $hay_rep,
  
 			'selloDeTiempo' => $selloTiempo,
 			'importeAyuda'	=> 0,
