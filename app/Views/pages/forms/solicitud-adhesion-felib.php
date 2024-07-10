@@ -250,7 +250,9 @@ $pdf->Output(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloDeTiempo.'/'.str
 	<div class="cabecera-apartado"><?php echo $html15;?></div>
 	<div ><?php echo $html16;?></div>
 	<div class="cabecera-apartado"><?php echo $html155;?></div>
-
+  <div class='alert alert-info'><?php echo lang('message_lang.enviado_correo_electron_felib');?></div>
+	<div class='alert alert-warning'><?php echo lang('message_lang.nota_info_felib');?></div>
+  <div class='alert alert-info'><?php echo lang('message_lang.contacto_idi_felib');?></div>
 	<div ><?php echo $html29;?></div>
 </div>
 <style>
@@ -268,11 +270,14 @@ $pdf->Output(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloDeTiempo.'/'.str
 		margin-top:1rem;
 	}
 	.container {
-    max-width: 1140px;
-    border: 1px solid black;
-    background-color: #cdebe8;
-    color: #000;
-    border-radius: .5rem;
+
+  margin: auto!important;
+  width: 100%!important;
+  max-width: 1140px;
+  border: 1px solid black;
+  background-color: #cdebe8;
+  color: #000;
+  border-radius: .5rem;
 	padding: 1rem;
 	margin-bottom: 1rem;
 	}

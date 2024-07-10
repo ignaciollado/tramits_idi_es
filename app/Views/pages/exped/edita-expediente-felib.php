@@ -49,10 +49,10 @@
 	            <div class="col">
                     <h3>Detall:</h3>
      			    <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $expedientes['id']; ?>"> 
-
+                    <?php $ayuntamiento = explode("#", $expedientes['empresa']);?>
                     <div class="form-group general">
                         <label for="empresa">Ajuntament de:</label>
-                        <input type="text" name="empresa" class="form-control send_fase_0" id = "empresa" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> placeholder="Nom del sol·licitant" value="<?php echo $expedientes['empresa']; ?>">
+                        <input type="text" name="empresa" class="form-control send_fase_0" id = "empresa" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> placeholder="Nom del sol·licitant" value="<?php echo strtoupper($ayuntamiento[1]); ?>">
                     </div>
                     <div class="form-group general">
                         <label for="nif">NIF:</label>
@@ -72,14 +72,6 @@
     		        <div class="form-group general">
                         <label for="programa">Linia de tràmit:</label>
 		    	        <input type="text" name="programa" class="form-control" id = "programa" list="listaProgramas" readonly disabled value="<?php echo $expedientes['tipo_tramite'];?>">
-                    </div>
-                    <div class="form-group general">
-                        <label for="telefono_rep"><strong>Mòbil a efectes de notificacions:</strong></label>
-                        <input type="tel" name="telefono_rep" class="form-control send_fase_0" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_rep" placeholder = "Mòbil a efectes de notificacions" minlength = "9" maxlength = "9" value = "<?php echo $expedientes['telefono_rep']; ?>">
-                    </div>
-              	    <div class="form-group general">
-                        <label for="email_rep"><strong>Adreça electrònica a efectes de notificacions:</strong></label>
-                        <input type="email" name="email_rep" class="form-control send_fase_0" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "email_rep" placeholder="Adreça electrònica a efectes de notificacions" value="<?php echo $expedientes['email_rep']; ?>">
                     </div>
                     <div class="form-group general">
                         <label for="domicilio">Adreça:</label>
@@ -107,17 +99,17 @@
                         <label for="cargo_felib">Càrrec:</label>
                         <input type="text" name="cargo_felib" class="form-control" readonly id = "cargo_felib" disabled value="<?php echo $expedientes['cargo_felib'];?>">
                     </div>
-                    <div class="form-group general">
-                        <label for="email_rep">Adreça electrònica:</label>
-                        <input type="text" name="email_rep" class="form-control" readonly id = "email_rep" disabled value="<?php echo $expedientes['email_rep'];?>">
+              	    <div class="form-group general">
+                        <label for="email_rep"><strong>Adreça electrònica a efectes de notificacions:</strong></label>
+                        <input type="email" name="email_rep" class="form-control send_fase_0" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "email_rep" placeholder="Adreça electrònica a efectes de notificacions" value="<?php echo $expedientes['email_rep']; ?>">
                     </div>
                     <div class="form-group general">
                         <label for="telefono">Telèfon:</label>
                         <input type="tel" name="telefono" class="form-control" readonly id = "telefono" disabled value="<?php echo $expedientes['telefono'];?>">
                     </div>
                     <div class="form-group general">
-                        <label for="telefono_rep">Mòbil:</label>
-                        <input type="tel" name="telefono_rep" class="form-control" readonly id = "telefono_rep" disabled value="<?php echo $expedientes['telefono_rep'];?>">
+                        <label for="telefono_rep"><strong>Mòbil a efectes de notificacions:</strong></label>
+                        <input type="tel" name="telefono_rep" class="form-control send_fase_0" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_rep" placeholder = "Mòbil a efectes de notificacions" minlength = "9" maxlength = "9" value = "<?php echo $expedientes['telefono_rep']; ?>">
                     </div>
                     <hr>
                     <div class="form-group general">

@@ -58,12 +58,7 @@
 			<h1><?php echo lang('message_lang.titulo_solicitud_felib');?></h1>
 		</div>
 
-		<div class="formspecifications">
-	   	<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.destino_solicitud');?>:</span><span class='formspecifications_col'><?php echo lang('message_lang.idi');?></span></div>
-			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.codigo_dir3');?></span><span class='formspecifications_col'><?php echo $data['configuracion']['emisorDIR3'];?></span></div>
-<!-- 			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.Codi_SIA');?></span><span class='formspecifications_col'><?php echo $data['configuracionLinea']['codigoSIA'];?></span></div> -->
-		<!-- 	<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.tramite_procedimiento');?>:</span class='formspecifications_col'><span><?php echo lang('message_lang.subtitulo_solicitud_felib');?></span></div> -->
-		</div>
+
 	</header>
 </section>
 

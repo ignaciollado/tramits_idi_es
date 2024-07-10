@@ -2,10 +2,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="/public/assets/css/form-solicitud-ayuda.css"/> -->
 
 <section id="formulario_solicitud">
-
+<div class="formspecifications">
+	   	<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.destino_solicitud');?>:</span><span class='formspecifications_col'><?php echo lang('message_lang.idi');?></span></div>
+			<div class='formspecifications_row'><span class='formspecifications_col'><?php echo lang('message_lang.codigo_dir3');?></span><span class='formspecifications_col'><?php echo $data['configuracion']['emisorDIR3'];?></span></div>
+		</div>
 	<?php
 		helper('cookie');
 		$language = \Config\Services::language();
@@ -76,14 +79,14 @@
 			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.responsable_felib');?>" placeholder = "<?php echo lang('message_lang.responsable_felib');?>" aria-required="true" name = "responsable_felib" id = "responsable_felib" size="220">
   		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.cargo_felib');?>" placeholder = "<?php echo lang('message_lang.cargo_felib');?>" name = "cargo_felib" id = "cargo_felib" size="220">
 			<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_cargo_felib');?>" placeholder = "<?php echo lang('message_lang.mail_cargo_felib');?>" data-error = "<?php echo lang('message_lang.mail_cargo_felib');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220">
-			<input type = "tel"  onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.tel_felib');?>" placeholder = "<?php echo lang('message_lang.tel_felib');?>" name = "telefono" id="telefono" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" ><p id="mensaje_tel"></p>
-			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.movil_cargo_felib');?>" placeholder = "<?php echo lang('message_lang.movil_cargo_felib');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength="9" size="9"><p id="mensaje_tel"></p>
+			<input type = "tel"  onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.tel_felib');?>" placeholder = "<?php echo lang('message_lang.tel_felib');?>" name = "telefono" id="telefono" maxlength = "16" size="16" ><p id="mensaje_tel"></p>
+			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.movil_cargo_felib');?>" placeholder = "<?php echo lang('message_lang.movil_cargo_felib');?>" name = "tel_representante" id="tel_representante" maxlength="16" size="16"><p id="mensaje_tel"></p>
 			<hr>
 			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.tecnico_felib');?>" aria-required="true" name = "tecnico_felib" id = "tecnico_felib" size="220">
   		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.cargo_tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.cargo_tecnico_felib');?>" name = "cargo_tecnico_felib" id = "cargo_tecnico_felib" size="220">
-			<input type = "mail" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.mail_tecnico_felib');?>" aria-required="true" name = "mail_tecnico_felib" id="mail_tecnico_felib"size="220"><p id="mensaje_tel"></p>
-			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.tel_tecnico_felib');?>" data-error = "<?php echo lang('message_lang.tel_tecnico_felib');?>" aria-required="true" name = "tel_tecnico_felib" id="tel_tecnico_felib" maxlength="9" size="9">
-			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.movil_tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.movil_tecnico_felib');?>" data-error = "<?php echo lang('message_lang.movil_tecnico_felib');?>" aria-required="true" name = "movil_tecnico_felib" id="movil_tecnico_felib" maxlength="9" size="9">
+			<input type = "mail" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.mail_tecnico_felib');?>" aria-required="true" name = "mail_tecnico_felib" id="mail_tecnico_felib"size="220">
+			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.tel_tecnico_felib');?>" data-error = "<?php echo lang('message_lang.tel_tecnico_felib');?>" aria-required="true" name = "tel_tecnico_felib" id="tel_tecnico_felib" maxlength="16" size="16">
+			<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.movil_tecnico_felib');?>" placeholder = "<?php echo lang('message_lang.movil_tecnico_felib');?>" data-error = "<?php echo lang('message_lang.movil_tecnico_felib');?>" aria-required="true" name = "movil_tecnico_felib" id="movil_tecnico_felib" maxlength="16" size="16">
 
 		</fieldset> 
 	</div>

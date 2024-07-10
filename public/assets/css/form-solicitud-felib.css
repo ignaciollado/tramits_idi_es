@@ -3,13 +3,13 @@
     box-sizing: border-box;
   }
 body {
-    background-color: rgba(241, 241, 241, 0);
-    font-family: "Montserrat";
-    font-size: 18px;
-    max-width: 100%;
-    margin: auto!important;
-    display: flex;
-    flex-direction: column;
+  background-color: rgba(241, 241, 241, 0);
+  font-family: "Montserrat";
+  font-size: 18px;
+  max-width: 100%;
+  margin: auto!important;
+  display: flex;
+  flex-direction: column;
 }
 
 article {
@@ -252,7 +252,7 @@ select, input, textarea {
   font-weight: bold;
 }
 #formbox {
-  border: 1px solid rgba(0, 20, 92, 1);
+  border: 1px solid #18a2d0;
   background-color: rgba(249, 250, 251, 1);
   padding: 1em 1.8em 1em 1em;
   margin-bottom: 2em;
@@ -317,8 +317,8 @@ select, input, textarea {
   background-clip: border-box;
 } 
 .buttonAsistente {
-    background-color: rgba(203, 235, 233, 1);
-    color: rgba(0, 0, 0, 1);
+    background-color: #003747;
+    color: #fff;
     border: solid 1px #000;
     padding: 1rem 2rem;
     font-size: 1.7rem;
@@ -351,7 +351,7 @@ select, input, textarea {
     height: 3rem;
     width: 3rem;
     margin: 0 1rem;
-    background-color: rgba(190, 0, 44, 1);
+    background-color: #0098cb;
     color: rgba(255, 255, 255, 1);
     border-radius: 50%;
     padding: 6px 3px 0 3px;
@@ -508,7 +508,6 @@ button {
   grid-area: solicitud;
   border: 1px solid #000000;
   display: grid;
-  row-gap: 15px;
   padding-top: .5rem;
   padding-bottom: .5rem;
   padding-right: .5rem;

@@ -134,10 +134,7 @@
 		$builder->where('id', $last_insert_id);
 		$builder->update($data);	
 
-		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_ils')."</div>";
-		echo "<div class='alert alert-warning'>".lang('message_lang.nota_info_rec')."</div>";
-		echo "<div class='alert alert-info'>".lang('message_lang.una_vez_firmado')."</div>";
-    echo "<div class='alert alert-info'>".lang('message_lang.contacto_idi_ils')."</div>";		
+
 
 	}
 ?>
