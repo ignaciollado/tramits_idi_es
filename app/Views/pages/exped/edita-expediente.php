@@ -121,6 +121,9 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     }
    /*  $importeAyuda = number_format($importeAyuda, 2, ',', '.');
     $importe_minimis = number_format($expedientes['importe_minimis'], 2, ',', '.'); */
+    if ($expedientes["convocatoria"] == date("Y")) { 
+        $isDisabled = "disabled";
+    }
 	?>
 
     <!----------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --------------------------->
@@ -143,8 +146,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 	        <div class = "row">	
 	            <div class="col">
                     <h3>Detall:</h3>
-     			    <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $expedientes['id']; ?>"> 
-
+     			    <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $expedientes['id']; ?>">
                     <div class="form-group general">
                         <label for="empresa">Nom o raó social:</label>
                         <input type="text" name="empresa" class="form-control send_fase_0" id = "empresa" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> placeholder="Nom del sol·licitant" value="<?php echo $expedientes['empresa']; ?>">
@@ -381,7 +383,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <?php }
                 else {?>
                     <div class="form-group">
-                        <button type="button" onclick = "javaScript: actualiza_fase_0_expediente('exped-fase-0');" id="send_fase_0" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button type="button" <?php if ($expedientes['convocatoria'] != date("Y")) { echo 'disabled';}?> onclick = "javaScript: actualiza_fase_0_expediente('exped-fase-0');" id="send_fase_0" <?php if ($expedientes['convocatoria'] == date("Y")) { echo 'class="btn-itramits btn-success-itramits"';}?>  >Actualitzar</button>
                     </div>
                 <?php }?>
 
@@ -396,7 +398,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
   	            <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
         	        <div>Rebut el</div>
 			        <div>Document</div>
-    		        <!-- <div>Tràmit</div> -->
 			        <div>Estat</div>
   		        </div>
                 <?php if($documentosDetalle){ ?>
@@ -474,20 +475,19 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
   			            <div id ="fila" class = "detail-wrapper-docs-4 general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", " / ", $docs_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-      			            <!-- <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite; ?></span> -->
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_error"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_caducado"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en quin estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
                             <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
@@ -574,16 +574,16 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                             <?php
                             switch ($docs_opc_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_info"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'" class = "btn btn-itramits isa_success"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_error"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
-    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+    					            $estado_doc = '<button  id="'.$docs_opc_item->id.'"  class = "btn btn-itramits isa_caducado"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                                 }
                             ?>
                             <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
@@ -677,7 +677,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <?php }
                 else {?>
                     <div class="form-group">
-                        <button type="button" onclick = "javaScript: actualiza_fase_1_solicitud_expediente('exped-fase-1');" id="send_fase_1" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button type="button" <?php echo $isDisabled;?> onclick = "javaScript: actualiza_fase_1_solicitud_expediente('exped-fase-1');" id="send_fase_1" class="btn-itramits btn-success-itramits">Actualitzar</button>
                     </div>
                 <?php }?>    
             </form>
@@ -720,7 +720,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <div class="mb-3">
                     <input type='text' placeholder = "El número del SEU [GOIBE539761_2021]" name = "refRecMejora" class='form-control form-control-sm' id="refRecMejora" maxlength = "16"/>
                 </div>
-                    <button class="btn-itramits btn-success-itramits btn-lg btn-block btn-docs" onclick="insertaMejoraEnSolicitud()" id="addMejora">Afegir</button>
+                    <button class="btn-itramits btn-success-itramits btn-lg btn-block btn-docs" <?php echo $isDisabled;?> onclick="insertaMejoraEnSolicitud()" id="addMejora">Afegir</button>
             </div>          
         </div>
         
@@ -749,21 +749,21 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                                    <?php
                             switch ($docSolicitud_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_info"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_success"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_error"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
-    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+    					            $estado_doc = '<button  id="'.$docSolicitud_item->id."#".$docSolicitud_item->tipo_tramite.'" class = "btn btn-itramits isa_caducado"'.$isDisabled.'onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class = "detail-wrapper-docs-col trash">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocsExpedienteJustificacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?> <?php echo $isDisabled;?> onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocsExpedienteJustificacion"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                             </span>                            
 	                        </div>
                         <?php 
