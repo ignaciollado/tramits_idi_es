@@ -69,6 +69,9 @@ class Request {
 	
 	//Array of Document
 	//public $documentsAnnexes;
+
+		//Boolean
+		public $disableInboxEmailNotifications;
 }
 
 ?>

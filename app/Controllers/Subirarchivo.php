@@ -593,7 +593,8 @@ class SubirArchivo extends BaseController
 		$lineaConfig = new ConfiguracionLineaModel();
 		$currentYear = date("Y");
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ILS', $currentYear);
-		$convocatoria =   $data['configuracion']['convocatoria'];
+		//$convocatoria =   $data['configuracion']['convocatoria'];
+		$convocatoria = $currentYear;
 		$tipo_tramite = 'ILS';
 		$idExp = 1; // El contador de expedientes es por convocatoria. Lo inicio a 1 por si, en esta convocatoria, no hay ningún expediente
 	 
@@ -778,6 +779,7 @@ class SubirArchivo extends BaseController
 			 
 
 	 	$save_exp = $expediente->insert($data_exp);
+		//var_dump(($save_exp));
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;

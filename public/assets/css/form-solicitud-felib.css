@@ -187,12 +187,6 @@ input {
     border: 1px solid rgba(170, 170, 170, 1);
 } 
 
-/* label {
-    display: block;
-    padding-left: 1rem;
-    padding-top: 0.25rem
-} */
-
 .checkbox-visible{
     visibility: visible!important;
   }
@@ -201,7 +195,6 @@ select, input, textarea {
     padding: .7rem;
     margin: 1rem;
     width: 100%;
-    /* font-size: 1em!important; */
     font-family: Raleway;
     border: 2px solid rgba(248, 222, 0, 1);
     background-color: rgba(255, 255, 255, 1);

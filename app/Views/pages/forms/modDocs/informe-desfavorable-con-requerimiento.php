@@ -1,7 +1,7 @@
 <!-- -------------------------------------- Informe desfavorable amb requeriment  DOC 6-------------------------------------->
 <div class="card-itramits">
   <div class="card-itramits-body">
-     Informe desfavorable amb requeriment ****PRE****
+     Informe desfavorable amb requeriment
   </div>
   <div class="card-itramits-footer" aria-label="generar informe">
 
@@ -94,7 +94,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let generaInfFavConReq = document.getElementById('wrapper_generaInformeDesfConReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_4 = document.getElementById('spinner_4')
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
 		infoMissingDataDoc6.innerText = ""

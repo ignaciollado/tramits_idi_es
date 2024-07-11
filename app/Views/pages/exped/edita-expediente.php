@@ -648,7 +648,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <div class="form-group solicitud">
                     <label for = "fecha_REC"><strong>Data SEU sol·licitud:</strong></label>
 			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
-			        <!-- <input type = "text" placeholder = "aaaa-mm-dd hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php //echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/> -->
                 </div>
                 <div class="form-group solicitud">
                     <label for = "ref_REC"><strong>Referència SEU sol·licitud:</strong></label>
@@ -656,7 +655,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 </div>
                 <div class="form-group solicitud">
                     <label for = "fecha_REC_enmienda"><strong>Data SEU esmena:</strong></label>
-		    	    <!-- <input type = "datetime-local" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_enmienda']),"Y-m-d\Th:m");?>"/> -->
 		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
                 </div>		
                 <div class="form-group solicitud">
@@ -1078,7 +1076,8 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                     </div>
     		        <div class="form-group ejecucion">
                         <label for = "fecha_limite_justificacion"><strong>Data límit per justificar l'ajut rebut:</strong></label>
-                        <input type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
+                        <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
+                        <input type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" disabled readonly onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
                     </div>
                     <div class="form-group ejecucion">
                         <label for = "fecha_max_desp_ampliacion"><strong>Data màxima després d'ampliació:</strong></label>
@@ -1126,7 +1125,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <h3>Documents de l'expedient:</h3>
             <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
     	            <div>Pujat el</div>
    	  	            <div>Document</div>
 		            <div>Estat</div>                     

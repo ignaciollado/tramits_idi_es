@@ -58,7 +58,8 @@
 		// Subject, message and sender notification level
 		$request->subject = lang('message_lang.titulo_sol_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
 		$request->message = lang('message_lang.subtitulo_sol_idigital'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
-		$request->senderNotificationLevel = "ALL";
+		$request->senderNotificationLevel = "MEDIUM";
+		$request->disableInboxEmailNotifications = false;
 		$request->signatureLevel = "ALL";
 		// $request->stampName = "qr_code";
 		// URL para los callbacks tras realizar una acción con la petición. Será un GET con los parámetros:

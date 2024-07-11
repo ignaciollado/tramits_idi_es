@@ -58,11 +58,11 @@
 		infoMissingDataDoc13.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 	 	if(!fecha_firma_propuesta_resolucion_prov.value) {

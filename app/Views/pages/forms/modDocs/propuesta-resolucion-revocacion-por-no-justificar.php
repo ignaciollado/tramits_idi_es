@@ -61,11 +61,11 @@
 			let infoMissingDataDoc23 = document.getElementById('infoMissingDataDoc23')
 			infoMissingDataDoc23.innerText = ""
 			if(!fecha_REC.value) {
-				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Data REC sol·licitud<br>"
+				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Data SEU sol·licitud<br>"
 				todoBien = false
 			}
 			if(!ref_REC.value) {
-				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Referència REC sol·licitud<br>"
+				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Referència SEU sol·licitud<br>"
 				todoBien = false
 			}
 			if(!fecha_firma_resolucion_desestimiento.value) {
@@ -85,11 +85,11 @@
 				todoBien = false
 			}
 			if(!fecha_REC_justificacion.value) {
-				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Data REC justificació<br>"
+				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Data SEU justificació<br>"
 				todoBien = false
 			}
 			if(!ref_REC_justificacion.value) {
-				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Referència REC justificació<br>"
+				infoMissingDataDoc23.innerHTML = infoMissingDataDoc23.innerHTML + "Referència SEU justificació<br>"
 				todoBien = false
 			}
 			if(!fecha_requerimiento_notif.value) {

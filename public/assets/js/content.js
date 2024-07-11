@@ -8,48 +8,9 @@ window.addEventListener('load', (event) => {
 
     getUnreadMessages(googleId)
 
+    totalSolicitudesConvocatoria(2024)
+
     // Harcodeo todo lo que sigue por falta de tiempo. Cuando pueda, tengo que refactorizar.  (02/12/2021)
-
-    /* totalSolicitudesPrograma('2020', 'Programa iDigital 20');
-
-    totalSolicitudesPrograma('2021', 'Programa I');
-    totalSolicitudesPrograma('2021', 'Programa II');
-    totalSolicitudesPrograma('2021', 'Programa III');
-
-    totalSolicitudesPrograma('2022', 'Programa I');
-    totalSolicitudesPrograma('2022', 'Programa II');
-    totalSolicitudesPrograma('2022', 'Programa III');
-
-    totalSolicitudesPrograma('2022', 'ILS'); */
-
-    /* importeTotalSolicitadoPrograma('2022', 'Programa I');
-    importeTotalSolicitadoPrograma('2022', 'Programa II');
-    importeTotalSolicitadoPrograma('2022', 'Programa III');
-
-    
-    importeTotalConcedidoPrograma('2022', 'Programa I');
-    importeTotalConcedidoPrograma('2022', 'Programa II');
-    importeTotalConcedidoPrograma('2022', 'Programa III');
-
-    totalSolicitudesPorSituacion('2022', 'Programa I', 'Finalizado', 'totalSolicitudesIFinalizadas_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa II', 'Finalizado', 'totalSolicitudesIIFinalizadas_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa III', 'Finalizado', 'totalSolicitudesIIIFinalizadas_2021');
-
-    totalSolicitudesPorSituacion('2022', 'Programa I', 'Denegado', 'totalSolicitudesIDenegadas_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa II', 'Denegado', 'totalSolicitudesIIDenegadas_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa III', 'Denegado', 'totalSolicitudesIIIDenegadas_2021');
-
-    totalSolicitudesPorSituacion('2022', 'Programa I', 'pendiente', 'totalSolicitudesIPendientes_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa II', 'pendiente', 'totalSolicitudesIIPendientes_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa III', 'pendiente', 'totalSolicitudesIIIPendientes_2021');
-
-    totalSolicitudesPorSituacion('2022', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa III', 'nohapasadoREC', 'totalSolicitudesIIINoREC_2021');
-
-    totalSolicitudesPorSituacion('2022', 'Programa I', 'Justificado', 'totalSolicitudesIJustificado_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa II', 'Justificado', 'totalSolicitudesIIJustificado_2021');
-    totalSolicitudesPorSituacion('2022', 'Programa III', 'Justificado', 'totalSolicitudesIIIJustificado_2021'); */
 
     //convo 2020
     totalSolicitudesPrograma('2020', 'Programa iDigital 20');
@@ -121,7 +82,21 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'pendienteJustificar', 'totalPendienteIII_org_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'pendienteJustificar', 'totalPendienteIII_prod_2024')
     totalSolicitudesPorSituacion('2024', 'Programa IV', 'pendienteJustificar', 'totalPendienteIV_2024')
+
+    totalSolicitudesPorSituacion('2024', 'Programa I', 'inicioConsultoria', 'totalInicioConsultoriaI_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa II', 'inicioConsultoria', 'totalInicioConsultoriaII_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'inicioConsultoria', 'totalInicioConsultoriaIII_org_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'inicioConsultoria', 'totalInicioConsultoriaIII_prod_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa IV', 'inicioConsultoria', 'totalInicioConsultoriaIV_2024')
 });
+
+async function totalSolicitudesConvocatoria(convo) {
+    let totalHTMLElement = document.getElementById("totalSolicitudes"+convo)
+    let recurso = `/public/assets/utils/totalSolicitudesPorConvocatoria.php?convocatoria=${convo}`
+    const totalSolicitudesConvo = await fetch(recurso).json(res => res.json())
+    console.log ("total solicitudes:",totalSolicitudesConvo)
+    totalHTMLElement.innerHTML = "Total sol·licituds: " + totalSolicitudesConvo
+}
 
 async function totalSolicitudesPrograma(convo, stage) {
     let resultadoP;
@@ -179,7 +154,7 @@ async function totalSolicitudesPorSituacion(convo, stage, situacion, elementID) 
         situacion = 'Pendents de justificar: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>'
     }
     if (situacion == 'inicioConsultoria') {
-        situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds en INICI CONSULTORIA';
+        situacion = ' Inici consultoria: <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong>';
     }
     if (situacion == 'Denegado') {
         situacion = ' <strong>' + new Intl.NumberFormat().format(totalSolicitudes) + '</strong> sol·licituds DENEGADES'

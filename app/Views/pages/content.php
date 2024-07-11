@@ -27,7 +27,7 @@
 <div class="row">
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2024">
-      <h5 class="card-title">Convocatòria 2024</h5>
+      <h5 class="card-title">Convocatòria 2024 <span id="totalSolicitudes2024">0</span></h5>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Programa I (iDigital)</button>
@@ -38,7 +38,8 @@
             <strong>«IDigital»</strong>, estratègia per impulsar la digitalització en la indústria de les Illes Balears.</a><br>
             <ul><li>
               <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2024">0</span>              
-              <span class="badge bg-dark" id="totalPendienteI_2024">0</span>
+              <span class="badge bg-primary" id="totalPendienteI_2024">0</span>
+              <span class="badge bg-secondary" id="totalInicioConsultoriaI_2024">0</span>
               <span class="badge text-bg-success" id="totalSolicitudesI_2024">0</span>
               <span class="badge text-bg-success" id="importeConcedidoI_2024">0.00</span>
             </li></ul>
@@ -56,7 +57,8 @@
             <strong>«IExporta»</strong>, estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.</a><br>
             <ul><li>
               <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2024">0</span>
-              <span class="badge bg-dark" id="totalPendienteII_2024">0</span>
+              <span class="badge bg-primary" id="totalPendienteII_2024">0</span>
+              <span class="badge bg-secondary" id="totalInicioConsultoriaII_2024">0</span>
               <span class="badge text-bg-success" id="totalSolicitudesII_2024">0</span>
               <span class="badge text-bg-success" id="importeConcedidoII_2024">0.00</span>
             </li></ul>
@@ -75,8 +77,9 @@
             <ul>
             <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions corporatives/2024');?>">               
               <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.</a><br>
-                  <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_org_2024">0</span>              
-                  <span class="badge bg-dark" id="totalPendienteIII_org_2024">0</span>                  
+                  <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_org_2024">0</span>
+                  <span class="badge bg-primary" id="totalPendienteIII_org_2024">0</span>
+                  <span class="badge bg-secondary" id="totalInicioConsultoriaIII_org_2024">0</span>
                   <span class="badge text-bg-success" id="totalSolicitudesIII_org_2024">0</span>
                   <span class="badge text-bg-success" id="importeConcedidoIII_org_2024">0.00</span>
               </li>
@@ -84,11 +87,11 @@
             <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions producte/2024');?>">               
               <li>Identificació i càlcul de les emissions de gasos d'efecte d'hivernacle de producte. </a><br>
                   <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_prod_2024">0</span>
-                  <span class="badge bg-dark" id="totalPendienteIII_prod_2024">0</span>
+                  <span class="badge bg-primary" id="totalPendienteIII_prod_2024">0</span>
+                  <span class="badge bg-secondary" id="totalInicioConsultoriaIII_prod_2024">0</span>
                   <span class="badge text-bg-success" id="totalSolicitudesIII_prod_2024">0</span>
                   <span class="badge text-bg-success" id="importeConcedidoIII_prod_2024">0.00</span>
               </li>
-           
             </ul>
           </div>
         </div>
@@ -104,7 +107,8 @@
             <strong>«IGestió»</strong>, estratègia per impulsar la implantació d'eines de gestió avançada i optimització de processos de la indústria de les Illes Balears.</a><br>
             <ul><li>
               <span class="badge text-bg-warning" id="totalSolicitudesIVNoREC_2024">0</span>
-              <span class="badge bg-dark" id="totalPendienteIV_2024">0</span>
+              <span class="badge bg-primary" id="totalPendienteIV_2024">0</span>
+              <span class="badge bg-secondary" id="totalInicioConsultoriaIV_2024">0</span>
               <span class="badge text-bg-success" id="totalSolicitudesIV_2024">0</span>
               <span class="badge text-bg-success" id="importeConcedidoIV_2024">0.00</span>
             </li></ul>

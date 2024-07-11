@@ -40,11 +40,11 @@
 		infoMissingDataDoc17.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 	 	if(!fecha_propuesta_resolucion_notif.value) {
@@ -60,11 +60,11 @@
 			todoBien = false
 		}
 		if(!fecha_REC_justificacion.value) {
-			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data REC justificació<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Data SEU justificació<br>"
 			todoBien = false
 		}
 		if(!ref_REC_justificacion.value) {
-			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Referència REC justificació<br>"
+			infoMissingDataDoc17.innerHTML = infoMissingDataDoc17.innerHTML + "Referència SEU justificació<br>"
 			todoBien = false
 		}				
 	

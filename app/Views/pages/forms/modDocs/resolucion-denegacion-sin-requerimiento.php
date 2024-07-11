@@ -61,11 +61,11 @@ function generaResolucionDenegacionSinReq(id, convocatoria, programa, nifcif) {
 		infoMissingDataDoc18.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 	 	if(!fecha_requerimiento_notif.value) {

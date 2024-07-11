@@ -61,11 +61,11 @@
 		infoMissingDataDoc14.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
  	 	if(!fecha_requerimiento.value) {

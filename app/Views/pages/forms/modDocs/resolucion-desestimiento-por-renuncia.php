@@ -59,19 +59,19 @@
 		infoMissingDataDoc22.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 	 	if(!fecha_REC_desestimiento.value) {
-			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Data REC desistiment<br>"
+			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Data SEU desistiment<br>"
 			todoBien = false
 		}
 		if(!ref_REC_desestimiento.value) {
-			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Referència REC desistiment<br>"
+			infoMissingDataDoc22.innerHTML = infoMissingDataDoc22.innerHTML + "Referència SEU desistiment<br>"
 			todoBien = false
 		}
 	

@@ -1,7 +1,7 @@
 <!----------------------------------------- Informe favorable amb requeriment DOC 3-------------------------------------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Informe favorable amb requeriment  ****PRE****
+    	Informe favorable amb requeriment
   	</div>
   	<div class="card-itramits-footer">
 	<?php
@@ -47,8 +47,6 @@
 			$estado_firma .= "</a>";						
 			default:
 			$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
-/* 			$estado_firma .= "<a href=".base_url('/public/index.php/expedientes/muestrainforme/'.$expedientes['id'].'/2024/'.$expedientes['tipo_tramite'].'/'.$expedientes['nif'].'/doc_informe_favorable_con_requerimiento'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME).">PDF</a>";
-			$estado_firma .= "</a>"; */
 			}
 			echo $estado_firma;
 	}		
@@ -66,7 +64,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_3 = document.getElementById('spinner_3')
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""

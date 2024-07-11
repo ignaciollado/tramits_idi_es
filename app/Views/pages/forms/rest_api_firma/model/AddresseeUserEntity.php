@@ -9,6 +9,15 @@ class AddresseeUserEntity {
 	
 	//Enum (String) = [SIGN, APPROVAL]
 	public $action;
+
+	//String
+	public $userCode;
+	
+	//String
+	public $entityCode;
+
+		//String
+		public $userPhone;
 	
 	//Enum (String) = [NEW, READ, SIGNED, APPROVAL, REJECT, NO_ACTION]
 	public $status;

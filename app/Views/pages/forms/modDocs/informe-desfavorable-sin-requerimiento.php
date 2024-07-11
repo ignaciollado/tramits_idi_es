@@ -1,7 +1,7 @@
 <!-- -------------------------------------- Informe desfavorable sense requeriment  DOC 5-------------------------------------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Informe desfavorable sense requeriment ****PRE****
+    	Informe desfavorable sense requeriment
   	</div>
   	<div class="card-itramits-footer" aria-label="generar informe">
 		
@@ -48,8 +48,6 @@
 			$estado_firma .= "</a>";						
 			default:
 			$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
-/* 			$estado_firma .= "<a href=".base_url('/public/index.php/expedientes/muestrainforme/'.$expedientes['id'].'/2024/'.$expedientes['tipo_tramite'].'/'.$expedientes['nif'].'/doc_informe_desfavorable_sin_requerimiento'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME).">PDF</a>";
-			$estado_firma .= "</a>"; */
 			}
 			echo $estado_firma;
 		}
@@ -88,17 +86,17 @@
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let generaInfFavSinReq = document.getElementById('wrapper_generaInformeDesfSinReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_5 = document.getElementById('spinner_5')
 		let infoMissingDataDoc5 = document.getElementById('infoMissingDataDoc5')
 		infoMissingDataDoc5.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 

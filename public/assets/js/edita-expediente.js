@@ -1115,20 +1115,37 @@ function actualizaActaCierre_click() {
 
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarJustificador");
+	const now = new Date();
+	const newState = "pendienteJustificar"
+	now.setDate(now.getDate() + 20);
+	console.log("nueva fecha ", `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`)
 	document.getElementById("spinner_151").classList.remove("ocultar");
 	document.getElementById("enviaMailJustificacion").disabled.true;
-	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoJustificacion.php",
+	$.post( "/public/assets/utils/enviaCorreoElectronicoJustificacion.php",
 		{ id: id },
 		function (data) {
-			console.log(data);
 			if (data) {
-				document.getElementById("spinner_151").classList.add("ocultar");
+				document.getElementById("spinner_151").classList.remove("ocultar");
 				document.getElementById("enviaMailJustificacion").style.display = "none";
 				document.getElementById("mensaje").classList.remove("ocultar");
 				document.getElementById("mensaje").innerHTML = data;
-				//$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
+
+				const newState = "pendienteJustificar"
+				const itemID = 25
+				let newSituation = `/public/assets/utils/actualiza_situacion_del_expediente.php?${newState}/${idExp.value}`;
+				fetch(newSituation)
+					.then((response) => console.log(response.text()))
+					.then((data) => {
+						let newJustificationDate = `/public/assets/utils/actualiza_fecha_justificacion.php?${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}/${idExp.value}`;
+						fetch(newJustificationDate)
+							.then((response) => response.text())
+							.then((data) => {
+							document.getElementById("nueva_fecha_limite_justificacion").innerHTML = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`
+							document.getElementById('nueva_fecha_limite_justificacion').classList.remove("ocultar")
+							document.getElementById("fecha_limite_justificacion").setAttribute("hidden", true) 
+							document.getElementById("situacion_exped").options.item(itemID).selected = 'selected';
+						});
+					});
 			}
 		}
 	);
@@ -1630,6 +1647,7 @@ function eliminaDocEjecucion_click() {
 	document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>"
 	let corresponde_documento = 'file_resguardoREC'
 	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		unlink('prueba.html');
 		location.reload()
 	});	
 }

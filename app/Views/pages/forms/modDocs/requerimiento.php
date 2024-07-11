@@ -1,6 +1,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Requeriment sol·licitud  ****PRE****
+    	Requeriment sol·licitud
   	</div>
 	<div class="card-itramits-footer">
 
@@ -42,8 +42,6 @@
 					$estado_firma .= "</a>";						
 					default:
 					$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
-/* 					$estado_firma .= "<a href=".base_url('/public/index.php/expedientes/muestrainforme/'.$expedientes['id'].'/2024/'.$expedientes['tipo_tramite'].'/'.$expedientes['nif'].'/doc_requeriment'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME).">PDF</a>";
-					$estado_firma .= "</a>"; */
 				}
 				echo $estado_firma;
 				}
@@ -101,7 +99,7 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 	function enviaRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let wrapper_motivoRequerimiento = document.getElementById('wrapper_motivoRequerimiento')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainforme'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainforme'
 		if (todoBien) {
 			wrapper_motivoRequerimiento.disabled = true
 			wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."

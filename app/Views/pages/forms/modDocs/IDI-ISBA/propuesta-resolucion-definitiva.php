@@ -64,11 +64,11 @@
 		infoMissingDataDoc4.innerText = ""
 
 		if (!fecha_REC.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!ref_REC.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!fecha_infor_fav.value) {
@@ -80,11 +80,11 @@
 			todoBien = false
 		}
 		if (!fecha_REC_enmienda.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data REC esmena<br>"
+			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
 		if (!ref_REC_enmienda.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència REC esmena<br>"
+			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència SEU esmena<br>"
 			todoBien = false
 		}
 

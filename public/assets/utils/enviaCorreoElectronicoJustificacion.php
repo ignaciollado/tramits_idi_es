@@ -3,9 +3,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/rest_api_firma/PHPMailer_5.2.0/class.phpmailer.php';
 require_once 'conectar_a_bbdd.php';
 $query = "SELECT email_rep, empresa, nif, tipo_tramite, convocatoria FROM pindust_expediente WHERE  id = " . $_POST["id"];
-
-//echo "#".$query."#";
-
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
@@ -74,7 +71,13 @@ if(!$mail->Send())
 }
 else 
 {
-	$result = "<strong>S'ha enviat el formulari de justificació a la adreça de notificació: " .$correoDestino."</strong>";
+/* 	$fechaLimJustificar = date_create(date("Y-m-d"));
+    date_add($fechaLimJustificar,date_interval_create_from_date_string("20 days"));
+    $result = "<strong>S'ha enviat el formulari de justificació a la adreça de notificació: " .$correoDestino."</strong>";
+    $query = "UPDATE pindust_expediente SET situacion = 'pendienteJustificar', fecha_limite_justificacion =".$fechaLimJustificar."  WHERE  id = " . $_POST["id"];
+    echo $query;
+    $result = mysqli_query($conn, $query); */
+    $result = "<strong>S'ha enviat el formulari de justificació a la adreça de notificació: " .$correoDestino."</strong>";
 }
 
 echo $result;

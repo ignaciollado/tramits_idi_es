@@ -61,21 +61,13 @@
 		infoMissingDataDoc16.innerText = ""
 
 		if(!fecha_REC.value) {
-			infoMissingDataDoc16.innerHTML = infoMissingDataDoc16.innerHTML + "Data REC sol·licitud<br>"
+			infoMissingDataDoc16.innerHTML = infoMissingDataDoc16.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if(!ref_REC.value) {
-			infoMissingDataDoc16.innerHTML = infoMissingDataDoc16.innerHTML + "Referència REC sol·licitud<br>"
+			infoMissingDataDoc16.innerHTML = infoMissingDataDoc16.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
-/* 	 	if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc16.innerHTML = infoMissingDataDoc16.innerHTML + "Data notificació requeriment<br>"
-			todoBien = false
-		} */
-/* 		if(!fecha_REC_enmienda.value) {
-			infoMissingDataDoc16.innerHTML = infoMissingDataDoc16.innerHTML + "Data SEU esmena<br>"
-			todoBien = false
-		} */
 		if(!fecha_infor_fav_desf.value) {
 			infoMissingDataDoc16.innerHTML = infoMissingDataDoc16.innerHTML + "Data firma informe favorable / desfavorable<br>"
 			todoBien = false
