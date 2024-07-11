@@ -4,7 +4,7 @@
   	</div>
 	<div class="card-itramits-footer">
 
-	<?php
+		<?php
     if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
     else {?>
@@ -12,7 +12,7 @@
 			<span id="btn_1" class="">
 					<button id="wrapper_motivoRequerimiento" class="btn btn-primary ocultar" onclick="enviaRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
 			</span>
-	<?php }?>
+		<?php }?>
 	
 	</div>
   <div class ="card-itramits-footer">

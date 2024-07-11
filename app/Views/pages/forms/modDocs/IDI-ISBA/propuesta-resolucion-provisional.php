@@ -47,7 +47,6 @@
 	</div>
 </div>
 <!-------------------------------------------------------------------------------------------------------------------->
-
 <script>
 	function enviaPropResolucionResProvisional(id, convocatoria, programa, nifcif) {
 		let todoBien = true

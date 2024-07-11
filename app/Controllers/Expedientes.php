@@ -1771,7 +1771,7 @@ class Expedientes extends Controller
 
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
-			case "doc_requeriment_idi_isba":  								//va a VIAFIRMA DOC 1 A TÉCNICO
+			case "doc_requeriment_idi_isba":  											//VIAFIRMA DOC 1 A TÉCNICO
 				$data_infor = [
 					'doc_requeriment' => $last_insert_id
 				];
@@ -1789,7 +1789,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 				
-			case "doc_res_desestimiento_por_no_enmendar_idi_isba": 			//SIN VIAFIRMA DOC 2 A DIRECTOR GENERAL
+			case "doc_res_desestimiento_por_no_enmendar_idi_isba": 	//VIAFIRMA DOC 2 
 				$data_infor = [
 					'doc_res_desestimiento_por_no_enmendar' => $last_insert_id
 				];
@@ -1802,9 +1802,11 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-desestimiento-por-no-enmendar-idi-isba', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_provisional_con_req_idi_isba": 				//SIN VIAFIRMA DOC 3 A DIRECTOR GENERAL
+			case "doc_prop_res_provisional_con_req_idi_isba": 			//VIAFIRMA DOC 3
 				$data_infor = [
 					'doc_prop_res_provisional_con_req' => $last_insert_id
 				];
@@ -1817,9 +1819,11 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-provisional-idi-isba', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_definitiva_con_req_idi_isba": 				//SIN VIAFIRMA DOC 4 A DIRECTOR GENERAL
+			case "doc_prop_res_definitiva_con_req_idi_isba": 				//VIAFIRMA DOC 4
 				$data_infor = [
 					'doc_prop_res_definitiva_con_req' => $last_insert_id
 				];
@@ -1832,9 +1836,11 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-idi-isba', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;		
-			case "doc_res_denegacion_con_req_idi_isba": 					//SIN VIAFIRMA DOC 5 A DIRECTOR GENERAL
+			case "doc_res_denegacion_con_req_idi_isba": 						//VIAFIRMA DOC 5
 				$data_infor = [
 					'doc_res_denegacion_con_req' => $last_insert_id
 				];
@@ -1847,9 +1853,11 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-denegacion-idi-isba', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;				
-			case "doc_res_pago_con_req_idi_isba": 							//SIN VIAFIRMA DOC 6 A DIRECTOR GENERAL
+			case "doc_res_pago_con_req_idi_isba": 							    //VIAFIRMA DOC 6
 				$data_infor = [
 					'doc_res_pago_con_req' => $last_insert_id
 				];
@@ -1862,9 +1870,11 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-pago-idi-isba', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_res_conces_con_req_idi_isba": 					//SIN VIAFIRMA DOC 7 A DIRECTOR GENERAL
+			case "doc_res_conces_con_req_idi_isba": 								//VIAFIRMA DOC 7
 				$data_infor = [
 					'doc_res_conces_con_req' => $last_insert_id
 				];
@@ -1877,6 +1887,8 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-concesion-idi-isba', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;					
 			}

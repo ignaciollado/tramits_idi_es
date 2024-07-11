@@ -1442,6 +1442,8 @@ function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_motivoRequerimientoIdiIsba").classList.remove("ocultar");
+/* 				document.getElementById("wrapper_motivoRequerimientoIdiIsba").disabled = true
+				document.getElementById("wrapper_motivoRequerimientoIdiIsba").innerHTML = "Generant i enviant ..." */
 			}
 		}
 	);
