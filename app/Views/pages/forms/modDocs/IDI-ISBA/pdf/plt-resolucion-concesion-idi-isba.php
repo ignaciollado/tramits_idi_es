@@ -167,9 +167,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
-// align: T (top), M (middle), B (bottom), N (next line)
-$pdf->Image($image_file, 15, 15, '', '25', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
@@ -190,14 +188,12 @@ if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $currentY = $pdf->getY();
     $pdf->setY($currentY + 4);
     $parrafo_8 = lang('message_lang.doc_resolucion_concesion_con_req_p8');
-    /* $parrafo_8 = str_replace("%FECHANOTREQ%", date_format(date_create($data['expediente']['fecha_XXXXXXXXXX']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_con_req_p8')); */
     $html .= "9. ". $parrafo_8;
     $html .= "<br><br>";
     
     $currentY = $pdf->getY();
     $pdf->setY($currentY + 4);
     $parrafo_9 = lang('message_lang.doc_resolucion_concesion_con_req_p9');
-    /* $parrafo_9 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_con_req_p9')); */
     $html .= "10. ". $parrafo_9;
     $html .= "<br><br>";
     
@@ -219,14 +215,12 @@ if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $currentY = $pdf->getY();
     $pdf->setY($currentY + 4);
     $parrafo_8 = lang('message_lang.doc_resolucion_concesion_con_req_p8');
-    /* $parrafo_8 = str_replace("%FECHANOTREQ%", date_format(date_create($data['expediente']['fecha_XXXXXXXXXX']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_con_req_p8')); */
     $html .= "8. ". $parrafo_8;
     $html .= "<br><br>";
 
     $currentY = $pdf->getY();
     $pdf->setY($currentY + 4);
     $parrafo_9 = lang('message_lang.doc_resolucion_concesion_con_req_p9');
-    /* $parrafo_9 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , lang('message_lang.doc_resolucion_concesion_con_req_p9')); */
     $html .= "9. ". $parrafo_9;
     $html .= "<br><br>";
 
@@ -305,9 +299,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
-// align: T (top), M (middle), B (bottom), N (next line)
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
@@ -327,8 +319,6 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
-//$currentX = $pdf->getX();
-//$pdf->setX($currentX + 10);
 $firma = lang('message_lang.doc_resolucion_concesion_con_req_firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
@@ -342,4 +332,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_concessio_con_req_idi_isba.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_concesion_idi_isba.pdf', 'F');

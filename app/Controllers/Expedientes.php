@@ -1806,7 +1806,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_provisional_con_req_idi_isba": 			//VIAFIRMA DOC 3
+			case "doc_prop_res_provisional_idi_isba": 							//VIAFIRMA DOC 3
 				$data_infor = [
 					'doc_prop_res_provisional_con_req' => $last_insert_id
 				];
@@ -1823,7 +1823,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_definitiva_con_req_idi_isba": 				//VIAFIRMA DOC 4
+			case "doc_prop_res_definitiva_idi_isba": 								//VIAFIRMA DOC 4
 				$data_infor = [
 					'doc_prop_res_definitiva_con_req' => $last_insert_id
 				];
@@ -1840,7 +1840,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;		
-			case "doc_res_denegacion_con_req_idi_isba": 						//VIAFIRMA DOC 5
+			case "doc_res_denegacion_idi_isba": 										//VIAFIRMA DOC 5
 				$data_infor = [
 					'doc_res_denegacion_con_req' => $last_insert_id
 				];
@@ -1857,7 +1857,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;				
-			case "doc_res_pago_con_req_idi_isba": 							    //VIAFIRMA DOC 6
+			case "doc_res_pago_idi_isba": 							    				//VIAFIRMA DOC 6
 				$data_infor = [
 					'doc_res_pago_con_req' => $last_insert_id
 				];
@@ -1874,7 +1874,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_res_conces_con_req_idi_isba": 								//VIAFIRMA DOC 7
+			case "doc_res_conces_idi_isba": 								//VIAFIRMA DOC 7
 				$data_infor = [
 					'doc_res_conces_con_req' => $last_insert_id
 				];

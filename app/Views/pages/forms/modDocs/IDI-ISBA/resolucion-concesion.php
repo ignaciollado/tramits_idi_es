@@ -82,7 +82,7 @@
 			infoMissingDataDoc6.classList.add('ocultar')
 			wrapper_ResConcesionConReg.disabled = true
 			wrapper_ResConcesionConReg.innerHTML = "Generant i enviant..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_conces_con_req_idi_isba'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_conces_idi_isba'
 		} else {
 			infoMissingDataDoc6.classList.remove('ocultar')
 		}

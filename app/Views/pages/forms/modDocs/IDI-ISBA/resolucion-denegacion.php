@@ -86,7 +86,7 @@
 			infoMissingDataDoc5.classList.add('ocultar')
 			wrapper_motivoDenegacion_5.disabled = true
 			wrapper_motivoDenegacion_5.innerHTML = "Generant i enviant..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_denegacion_con_req_idi_isba'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_denegacion_idi_isba'
 		} else {
 			infoMissingDataDoc5.classList.remove('ocultar')
 		}

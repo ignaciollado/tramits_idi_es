@@ -14,7 +14,7 @@ class MYPDF extends TCPDF {
     public function Header() {
         // Logo
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
-        $this->Image($image_file, 30, 10, 100, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
@@ -36,7 +36,7 @@ $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("Sol·licitud del Ajuntament per a la adhesió als programes de la ADR Balears");
 $pdf->SetSubject('DOCUMENT DE SOL·LICITUD');
-$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, GOIB');	
+$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, ILS, FELIB, ADR Balears, GOIB');	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -167,7 +167,7 @@ $pdf->writeHTML($html11, true, false, true, false, '');
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '25', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html15 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html15 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Per dur a terme aquesta col·laboració, l'Ajuntament es compromet a:</td></tr><br>";
@@ -194,7 +194,7 @@ $pdf->writeHTML($html15, true, false, true, false, '');
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '25', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $html16 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html16 .= "<tr><td><b>Dades de l'ajuntament:</b></td></tr><br><br>";

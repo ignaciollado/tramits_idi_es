@@ -16,7 +16,7 @@
 		<?php if ($expedientes['doc_prop_res_definitiva_con_req'] != 0) { ?>
 
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_definitiva_con_req_idi_isba.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_definitiva_idi_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -93,7 +93,7 @@
 			wrapper_propuestaResDefinitiva.disabled = true
 			wrapper_propuestaResDefinitiva.innerHTML = "Generant i enviant ..."
 
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_req_idi_isba'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_idi_isba'
 		} else {
 			infoMissingDataDoc4.classList.remove('ocultar')
 		}
