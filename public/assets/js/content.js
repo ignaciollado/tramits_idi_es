@@ -110,7 +110,7 @@ async function totalSolicitudesPrograma(convo, stage) {
     if (stage == 'Programa III actuacions producte') {resultadoP = document.getElementById("totalSolicitudesIII_prod_"+convo)}
     if (stage == 'Programa IV') {resultadoP = document.getElementById("totalSolicitudesIV_"+convo)}
     if (stage == 'ILS')  { resultadoP = document.getElementById("totalSolicitudesILSAdheridas"); }
-    resultadoP.innerHTML = "Aprovades: "+ totalSolicitudes;
+    resultadoP.innerHTML = "Finalitzades: "+ totalSolicitudes;
 
 }
 
