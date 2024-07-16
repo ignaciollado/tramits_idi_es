@@ -299,6 +299,18 @@
 						<input type="checkbox" <?php if ($felib_p[12]) { echo "checked";}?> disabled readonly name = "felib_p13" id = "felib_p13">
 					<span class="w3docs"></span>
 				</label>
+
+                <label for = "felib_p14" class="main" >
+					<span ><?php echo lang('message_lang.felib_p14');?></span>
+						<input type="checkbox" <?php if ($felib_p[13]) { echo "checked";}?> disabled readonly name = "felib_p14" id = "felib_p14">
+					<span class="w3docs"></span>
+				</label>
+
+                <label for = "felib_p15" class="main" >
+					<span ><?php echo lang('message_lang.felib_p15');?></span>
+						<input type="checkbox" <?php if ($felib_p[14]) { echo "checked";}?> disabled readonly name = "felib_p15" id = "felib_p15">
+					<span class="w3docs"></span>
+				</label>
                 <br>
             <div class="alert alert-info">
                 <small>Estat de la declaració responsable i de la sol·licitud</small>

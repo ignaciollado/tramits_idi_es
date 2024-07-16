@@ -157,24 +157,11 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
-
+/* ------------------firma el documento ------------------------------ */
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-
-$pdf->SetFont('helvetica', '', 7);
-$rgpd = lang('message_lang.rgpd_txt');
-
-$html = "<br>";
-$html .= "<table cellpadding='5' style='font-size: 7px; width: 100%; border: 1px solid #fff;'>";
-$html .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:8px;'>$rgpd</td></tr><br>";
-$html .= "</table>";
-
-echo $html;
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
 
 $html = "<table cellpadding='5' style='font-size: 7px; width: 100%; border: 1px solid #fff;'>";
 $html .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:8px;'>".lang('message_lang.firmo_documento_justificacion')."</td></tr><br>";
@@ -182,8 +169,19 @@ $html .= "</table>";
 
 echo $html;
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
+$pdf->setY($currentY + 10);
 $pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
+
+// ---------------------------------------------------------RGDP----------------------- //
+$pdf->SetFont('helvetica', '', 7);
+$rgpd = lang('message_lang.rgpd_txt');
+$html29 = "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
+$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:7px;'>$rgpd</td></tr>";
+$html29 .= "</table>";
+$currentY = $pdf->getY();
+$currentX = $pdf->getX();
+$pdf->setY($currentY + 9);
+$pdf->WriteHTML($html29, true, false, true, false, '');
 
 // --------------------------------------------------------------------------------------------------------------------------------------------- //
 // Lo guarda todo en una carpeta del servidor para, luego, enviarlo por correo electrónico.

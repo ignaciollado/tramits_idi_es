@@ -149,6 +149,14 @@
 			<input type="checkbox" name="felib_p13" title="<?php echo lang('message_lang.felib_p13');?>" id="felib_p13" value="felib_p13">
 			<span class="checkmark"></span>
 		</label>
+		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p14');?></h6>
+			<input type="checkbox" name="felib_p14" title="<?php echo lang('message_lang.felib_p14');?>" id="felib_p14" value="felib_p14">
+			<span class="checkmark"></span>
+		</label>
+		<label class="container-radio"><h6><?php echo lang('message_lang.felib_p15');?></h6>
+			<input type="checkbox" name="felib_p15" title="<?php echo lang('message_lang.felib_p15');?>" id="felib_p15" value="felib_p15">
+			<span class="checkmark"></span>
+		</label>
    	</fieldset>
 	</div>
 </div>

@@ -301,8 +301,6 @@ class Home extends BaseController
 			'secure' => true
 			);
    		set_cookie($cookie);
-
-		
 		echo view('templates/header/header_form_felib');
 		echo view('pages/forms/form-adhesion-felib');
 	}

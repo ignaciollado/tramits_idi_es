@@ -1740,7 +1740,7 @@ class SubirArchivo extends BaseController
 		 $tel_responsable_felib = $this->request->getVar('telefono');
 		 $cargo_responsable_felib = $this->request->getVar('cargo_felib');
 
-		 $felib_p = $this->request->getVar('felib_p1')."#".$this->request->getVar('felib_p2')."#".$this->request->getVar('felib_p3')."#".$this->request->getVar('felib_p4')."#".$this->request->getVar('felib_p5')."#".$this->request->getVar('felib_p6')."#".$this->request->getVar('felib_p7')."#".$this->request->getVar('felib_p8')."#".$this->request->getVar('felib_p9')."#".$this->request->getVar('felib_p10')."#".$this->request->getVar('felib_p11')."#".$this->request->getVar('felib_p12')."#".$this->request->getVar('felib_p13');
+		 $felib_p = $this->request->getVar('felib_p1')."#".$this->request->getVar('felib_p2')."#".$this->request->getVar('felib_p3')."#".$this->request->getVar('felib_p4')."#".$this->request->getVar('felib_p5')."#".$this->request->getVar('felib_p6')."#".$this->request->getVar('felib_p7')."#".$this->request->getVar('felib_p8')."#".$this->request->getVar('felib_p9')."#".$this->request->getVar('felib_p10')."#".$this->request->getVar('felib_p11')."#".$this->request->getVar('felib_p12')."#".$this->request->getVar('felib_p13')."#".$this->request->getVar('felib_p14')."#".$this->request->getVar('felib_p15');
 
 		 /**** se usarán estos dos campos para notificar al consultor *****/
 		 $tel_representante = $this->request->getVar('tel_representante');

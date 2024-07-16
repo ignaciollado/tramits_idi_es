@@ -115,7 +115,6 @@ $html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>
 
 $felib_p = explode('#', $felib_p);
 
-
 if (strlen($felib_p[0])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p1')."</li>";
 }
@@ -152,14 +151,18 @@ if (strlen($felib_p[10])> 0) {
 if (strlen($felib_p[11])> 0) {
   $html11 .= "<li>".lang('message_lang.felib_p12')."</li>";
 }
+if (strlen($felib_p[15])> 0) {
+  $html11 .= "<li>".lang('message_lang.felib_p12')."</li>";
+}
 if (strlen($felib_p[12])> 0) {
-  $html11 .= "<li>".lang('message_lang.felib_p13')."</li>";
+  $html11 .= "<li>".lang('message_lang.felib_p15')."</li>";
 }
 $html11 .="</ul></td></tr>";
 $html11 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 15);
+
 $pdf->writeHTML($html11, true, false, true, false, '');
 
 // ----------------------------------------------4. DOCUMENTACIÓN ADJUNTADA requerida y opcional-------------------------------------------------- //
@@ -250,9 +253,9 @@ $pdf->Output(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloDeTiempo.'/'.str
 	<div class="cabecera-apartado"><?php echo $html15;?></div>
 	<div ><?php echo $html16;?></div>
 	<div class="cabecera-apartado"><?php echo $html155;?></div>
-  <div class='alert alert-info'><?php echo lang('message_lang.enviado_correo_electron_felib');?></div>
-	<div class='alert alert-warning'><?php echo lang('message_lang.nota_info_felib');?></div>
-  <div class='alert alert-info'><?php echo lang('message_lang.contacto_idi_felib');?></div>
+  <div class='cabecera-apartado'><?php echo lang('message_lang.enviado_correo_electron_felib');?></div>
+	<div class='cabecera-apartado'><?php echo lang('message_lang.nota_info_felib');?></div>
+  <div class='cabecera-apartado'><?php echo lang('message_lang.contacto_idi_felib');?></div>
 	<div ><?php echo $html29;?></div>
 </div>
 <style>
@@ -268,6 +271,8 @@ $pdf->Output(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloDeTiempo.'/'.str
 	}
 	.cabecera-apartado {
 		margin-top:1rem;
+    border: 1px solid #fff;
+    padding: 5px;
 	}
 	.container {
 
