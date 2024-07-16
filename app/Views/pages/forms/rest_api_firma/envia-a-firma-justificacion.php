@@ -78,8 +78,9 @@
 		
 		// Set json
 		$json = json_encode($request);
-		// echo $json;
+		/* echo $json; */
 		$resultRequest = execute("requests", $json, __FUNCTION__);
+		/* echo "----".$resultRequest."------"; */
 		printResult($resultRequest, $id_sol, $tipo_Doc, $adreca_mail);
 
 	
@@ -127,6 +128,7 @@
 		echo "<content>";
 		echo "<section>";
 		$respuesta = json_decode ($result, true);
+		/* echo "****". $respuesta . "*****"; */
 		echo "<div class='alert alert-info'><strong>".$respuesta['subject']."</strong></div>";
 
 		$db      = \Config\Database::connect();

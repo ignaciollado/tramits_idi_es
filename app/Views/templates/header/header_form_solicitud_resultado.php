@@ -26,7 +26,7 @@
 
 	<div class="menu">
 		<ul>
-			<li class="logo"><a href="http://www.adrbalears.es" target="_self"><img height = "54" title="ADR Balears"
+			<li class="logo"><a href="http://www.adrbalears.es" target="_self"><img height = "54" alt ="ADR Balears Logo" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)"
 																					alt = "logo ADR Balears"
 																					src = "../../../../public/assets/images/ADRBalears-conselleria.jpg"></a>
 			</li>

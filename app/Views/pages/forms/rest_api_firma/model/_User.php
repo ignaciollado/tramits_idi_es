@@ -2,16 +2,16 @@
 
 class User {
 	//String
-    public $userCode;
+  public $userCode;
 	
 	//String
-    public $name;
+  public $name;
 	
 	//String
 	public $surname1;
 	
 	//String
-    public $surname2;
+  public $surname2;
 	
 	//String
 	public $phone;

@@ -948,7 +948,7 @@ class Expedientes extends Controller
 		if ($convocatoria >= 2022) {	// a partir del 2022 hemos cambiado el nombre de los modelos de documento a IDEXP_CONVO_NOMMODELO.pdf
 			$file = str_replace("doc_", $idExp . "_" . $convocatoria . "_", $file);
 		}
-/* 		echo WRITEPATH . 'documentos/' . $nifcif . '/informes/' . $file;
+		/* 		echo WRITEPATH . 'documentos/' . $nifcif . '/informes/' . $file;
 		return; */
 		$this->response->setHeader('Content-type', 'application/pdf');
 		echo file_get_contents(WRITEPATH . 'documentos/' . $nifcif . '/informes/' . $file);

@@ -40,9 +40,9 @@ use App\Models\ExpedientesModel;
 
 	<div class="menu">
 		<ul>
-		<li class="logo"><a href="http://www.idi.es" target="_self"><img height = "54" title="IDI Logo"
+		<li class="logo"><a href="http://www.adrbalears.es" target="_self"><img height = "54" alt ="ADR Balears Logo" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)"
 																					alt = "<?php echo lang('message_lang.titulo_justificacion_idigital');?>"
-																					src = "<?php echo base_url()."/public/assets/images/logo_idi_conselleria.jpg";?>" ></a>
+																					src = "<?php echo base_url()."/public/assets/images/ADRBalears-conselleria.jpg";?>" ></a>
 			</li>
 			<li>
 			<h2><?php echo lang('message_lang.titulo_justificacion_idigital');?></h2>
