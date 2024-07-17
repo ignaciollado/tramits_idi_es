@@ -218,7 +218,7 @@ $html29 .= "<tr><td>".lang('message_lang.fecha_ils')."</td></tr>";
 $html29 .= "<tr><td>".lang('message_lang.firma_ils')."</td></tr>";
 $html29 .= "</table>";
 $currentY = $pdf->getY();
-$pdf->setY($currentY+30);
+$pdf->setY($currentY+25);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 
 // ------------------------------------------------------------------------------------ //
@@ -232,7 +232,7 @@ $html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;f
 $html29 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 9);
+$pdf->setY($currentY + 5);
 $pdf->setX($currentX - 10);
 $pdf->WriteHTML($html29, true, false, true, false, '');
 

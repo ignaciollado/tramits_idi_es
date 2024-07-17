@@ -313,7 +313,7 @@
 				</label>
                 <br>
             <div class="alert alert-info">
-                <small>Estat de la declaració responsable i de la sol·licitud</small>
+                <small>Estat de la signatura electrònica de la carta d'adhesió</small>
                 <?php
                 	//Compruebo el estado de la firma de la declaración responsable.
                     $thePublicAccessId = $modelExp->getPublicAccessId ($expedientes['id']);
@@ -348,7 +348,7 @@
                             $tipoMIME = "application/pdf";
 		                }?>
                         <br>
-                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.strtoupper($expedientes['nif']).'_dec_res_solicitud_felib.pdf'.'/'.strtoupper($expedientes['nif']).'/'.$expedientes['selloDeTiempo'].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
+                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.strtoupper($expedientes['nif']).'_dec_res_solicitud_felib.pdf'.'/'.strtoupper($expedientes['nif']).'/'.$expedientes['selloDeTiempo'].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La carda d'adhesió sense signar</small></a>
             </div>
         </div>
     </div>
