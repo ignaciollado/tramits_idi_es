@@ -269,7 +269,14 @@
 			else if ($item['situacion'] == "emitirIFPRProvPago") {?>
 				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl">
 					<span title="Aquesta sol·licitud s'ha d'emetre IF+PR provisional">
-						<strong>IF + PR<br>Provisional emetre</strong><br>
+						<strong>IF + PR<br>Provisional emetre</strong>
+					</span>
+				</div>
+			<?php }
+			else if ($item['situacion'] == "emitidoIFPRProvPago") {?>
+				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
+					<span title="Aquesta sol·licitud s´ha emès IF+PR pagament">
+						<strong>IF + PR <br>Provisional emesa</strong><br>
 						<?php 
 							$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']);
 							$date2  = date_create(date($item['fecha_not_propuesta_resolucion_prov']));
@@ -278,7 +285,7 @@
 							$diff  = date_diff($actualDate, $date2);
 							$faltan = $diff->format("%a dies");
 					
-							if ($item['situacion'] === 'emitirIFPRProvPago') {
+							if ($item['situacion'] === 'emitidoIFPRProvPago') {
 								if ($faltan >= 5) {?>
 									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-dark">
 								<?php } elseif ( $faltan > 0) { ?>
@@ -296,9 +303,6 @@
 					</span>
 				</div>
 			<?php }
-			else if ($item['situacion'] == "emitidoIFPRProvPago") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emès IF+PR pagament"><strong>IF + PR <br>Provisional emesa</strong></span></div>';		
-			}
 			else if ($item['situacion'] == "emitirPRDefinitiva") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre PR pagament definitiva"><strong>PR definitiva<br>emetre</strong></span></div>';				
 			}
