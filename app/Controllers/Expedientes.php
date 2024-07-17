@@ -55,9 +55,12 @@ class Expedientes extends Controller
 		$data['totalExpedientes'] = count($data['expedientes']);
 		$data['titulo'] = lang('message_lang.todas_las_solicitudes')." ".$datoslineaConvo['convocatoria'];
 		echo view('templates/header/header', $data);
-		echo view('pages/exped/listado-expediente', $data);
+		if ($rol !== 'felib') {
+			echo view('pages/exped/listado-expediente', $data);
+		} else {
+			echo view('pages/exped/listado-expediente-felib', $data);
+		}
 		echo view('templates/footer/footer');
-
 	}
 
 	public function expedientesPrograma($sort_by = 'tipo_tramite', $sort_order = 'ASC')

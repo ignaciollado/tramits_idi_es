@@ -61,26 +61,27 @@
                         <optgroup style="background-color:#F51720;color:#000;" label="Fase sol·licitud:">
                             <option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la <span class="seu-elect">SEU</span> electrònica</option>
                             <option <?php if ($session->get('situacion_fltr') == "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
-                            <option <?php if ($session->get('situacion_fltr') == "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
+                          <!--   <option <?php if ($session->get('situacion_fltr') == "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
                             <option <?php if ($session->get('situacion_fltr') == "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb <br>requeriment pendent</option>
                             <option <?php if ($session->get('situacion_fltr') == "emitirReq") { echo "selected";}?> value = "emitirReq" class="sitSolicitud"> Emetre requeriment</option>
                             <option <?php if ($session->get('situacion_fltr') == "firmadoReq") { echo "selected";}?> value = "firmadoReq" class="sitSolicitud"> Requeriment signat</option>
                             <option <?php if ($session->get('situacion_fltr') == "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitSolicitud"> Requeriment notificat</option>
                             <option <?php if ($session->get('situacion_fltr') == "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment <br>per esmena</option>
                             <option <?php if ($session->get('situacion_fltr') == "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per <br>esmena emès</option>
-														<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
+														<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option> -->
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
-        		            		<option <?php if ($session->get('situacion_fltr') == "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
+                            <!-- <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:"> -->
+                            <option <?php if ($session->get('situacion_fltr') == "Validado") { echo "selected";}?> value = "Validado" class="sitValidacion"> Validat</option>
+        		            		<!-- <option <?php if ($session->get('situacion_fltr') == "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
     				            		<option <?php if ($session->get('situacion_fltr') == "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
 	    			            		<option <?php if ($session->get('situacion_fltr') == "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva emetre</option>
 														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva emesa</option>
                         		<option <?php if ($session->get('situacion_fltr') == "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió emetre</option>
                         		<option <?php if ($session->get('situacion_fltr') == "emitidaResConcesion") { echo "selected";}?> value = "emitidaResConcesion" class="sitValidacion"> Resolució de concessió emesa</option>
-            		        		<option <?php if ($session->get('situacion_fltr') == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
+            		        		<option <?php if ($session->get('situacion_fltr') == "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option> -->
                             </optgroup>   
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
+                           <!--  <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
                             <option <?php if ($session->get('situacion_fltr') == "emitirIDPDenProv") { echo "selected";}?> value = "emitirIDPDenProv" class="sitValidacion"> ID + P denegació provisional emetre</option>
 				                		<option <?php if ($session->get('situacion_fltr') == "emitidoIDPDenProv") { echo "selected";}?> value = "emitidoIDPDenProv" class="sitValidacion"> ID + P denegació provisional emesa</option>
     				            		<option <?php if ($session->get('situacion_fltr') == "emitirPDenDef") { echo "selected";}?> value = "emitirPDenDef" class="sitValidacion"> P denegació definitiva emetre</option>
@@ -88,9 +89,9 @@
             		            <option <?php if ($session->get('situacion_fltr') == "emitirResDen") { echo "selected";}?> value = "emitirResDen" class="sitValidacion"> Resolució de denegació emetre</option>	
                             <option <?php if ($session->get('situacion_fltr') == "emitidoResDen") { echo "selected";}?> value = "emitidoResDen" class="sitValidacion"> Resolució de denegació emesa</option>
                             <option <?php if ($session->get('situacion_fltr') == "Denegado") { echo "selected";}?> value = "Denegado" class="sitValidacion"> Denegat</option>
-                            </optgroup>
+                            </optgroup> -->
                         </optgroup>
-                        <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase justificació pagament:">
+                        <!-- <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase justificació pagament:">
                             <optgroup  style="background-color:#fff;color:#6d9eeb;" label="Justificació correcta:">
                 		        <option <?php if ($session->get('situacion_fltr') == "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion"> Pendent de justificar</option>
                 		        <option <?php if ($session->get('situacion_fltr') == "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent <span class="seu-elect">SEU</span> justificant</option>
@@ -108,7 +109,7 @@
         	    	            <option <?php if ($session->get('situacion_fltr') == "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emesa</option>
         	    	            <option <?php if ($session->get('situacion_fltr') == "revocado") { echo "selected";}?> value = "revocado" class="sitEjecucion"> Revocat</option>
                             </optgroup>                          
-                        </optgroup>
+                        </optgroup> -->
 						<?php } else {?>
 						<optgroup class="sitSolicitud_cab_ils" label="Fase sol·licitud:">
                            	<option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud_ils"> No ha passat per la <span class="seu-elect">SEU</span></option>
@@ -160,29 +161,18 @@
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/idExp/" . (($sort_order == 'ASC' && $sort_by == 'idExp') ? 'DESC' : 'ASC'), 'https');?>">N. exped.</a>
 		</div>
 		<div <?php echo($sort_by == 'empresa' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa/" . (($sort_order == 'ASC' && $sort_by == 'empresa') ? 'DESC' : 'ASC'), 'https');?>">Sol·licitant</a>					
+			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa/" . (($sort_order == 'ASC' && $sort_by == 'empresa') ? 'DESC' : 'ASC'), 'https');?>">Ajuntament</a>					
     </div>
-	<div class="header-wrapper-col">
-		<?php if (  strtoupper($session->get('programa_fltr')) === 'ILS' ) {?>
-			 Visible a la web ILS
-		<?php } elseif ( strtoupper($session->get('programa_fltr')) === 'IDI-ISBA' ) {
-			?>
-			Import ajut sol·licitat
-			<?php } else {?>
-				Import (€)
-		<?php }?>
-  </div>
-	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Ordre pagament</a>
-	</div>
+	<div class="header-wrapper-col">CIF</div>
+	<div class="header-wrapper-col">Batle/Batlesa</div>
 	<div <?php echo($sort_by == 'empresa_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa_consultor/" . (($sort_order == 'ASC' && $sort_by == 'empresa_consultor') ? 'DESC' : 'ASC'), 'https');?>">Empresa consultor</a>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa_consultor/" . (($sort_order == 'ASC' && $sort_by == 'empresa_consultor') ? 'DESC' : 'ASC'), 'https');?>"><?php echo lang('message_lang.responsable_felib');?></a>
 	</div>
  	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>">Nom del consultor</a>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>"><?php echo lang('message_lang.tecnico_felib');?></a>
 	</div>
 	<div <?php echo($sort_by == 'fecha_firma_res' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_firma_res/" . (($sort_order == 'ASC' && $sort_by == 'fecha_firma_res') ? 'DESC' : 'ASC'), 'https');?>">Res. de concessió</a>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_firma_res/" . (($sort_order == 'ASC' && $sort_by == 'fecha_firma_res') ? 'DESC' : 'ASC'), 'https');?>"><?php echo lang('message_lang.movil_tecnico_felib');?></a>
 	</div>
 	<div <?php echo($sort_by == 'situacion' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
@@ -212,33 +202,14 @@
 					echo $item['empresa'];
 				}
 			?></span>
-			
-		<?php if ( strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
-				<span id = "semaforo" class = "detail-wrapper-col">
-					<?php 
-					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {
-						$importeAyuda = number_format($item['importeAyuda'], 2, ',', '.');
-						echo $importeAyuda;
-					} else {
-						echo $item['importe_ayuda_solicita_idi_isba'];
-					} 
-					?>
-				</span>
-		<?php } else {?>
-				<span id = "publicar_en_web" class = "detail-wrapper-col">
-					<?php  If ( $item['publicar_en_web'] == 1 )  { echo 'SI'; } else {  echo 'NO'; };?>
-				</span>
-		<?php }?>
+			<span id = "semaforo" class = "detail-wrapper-col"><?php echo $item['nif'];?></span>
 		
-		<span id = "ordenDePago" class = "detail-wrapper-col">
-			<?php if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {?>
-				<?php echo $item['ordenDePago'];?>
-			<?php }?>
-		</span>
 		
-		<span id = "empresa_consultor" class = "detail-wrapper-col"><?php echo $item['empresa_consultor']; ?></span>
-		<span id = "nom_consultor" class = "detail-wrapper-col"><?php echo $item['nom_consultor']; ?></span>
-		<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['fecha_not_propuesta_resolucion_def']; ?></span>
+		<span id = "ordenDePago" class = "detail-wrapper-col"><?php echo $item['alcalde_felib'];?></span>
+		
+		<span id = "empresa_consultor" class = "detail-wrapper-col"><?php echo $item['responsable_felib']; ?></span>
+		<span id = "nom_consultor" class = "detail-wrapper-col"><?php echo $item['tecnico_felib']; ?></span>
+		<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['movil_tecnico_felib']; ?></span>
 		<span id = "situacion" class = "detail-wrapper-col">			
 			
 			<?php 

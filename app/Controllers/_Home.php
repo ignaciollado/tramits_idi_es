@@ -25,6 +25,7 @@ class Home extends BaseController
 	public function ca ()
 	{
 		$generalConfig = new ConfiguracionModel;
+		$lineaConfig = new ConfiguracionLineaModel();
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
 
 		$language = \Config\Services::language();
@@ -32,23 +33,9 @@ class Home extends BaseController
 		$idioma =  $request->uri->getSegment(2); 
 		$language->setLocale($idioma); 
 		$data['titulo'] = lang('message_lang.titulo');
-		$session = session();
-		$rol = ($session->get('rol'));
-		
-		echo view('templates/header/header', $data);
-		if ($rol === 'felib') {
-			$modelExp = new ExpedientesModel();
-			$where = "tipo_tramite = '" . $rol . "'";
-			$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
-					->where($where)
-					->findAll();
-			$data['totalExpedientes'] = count($data['expedientes']);
-			$data['titulo'] = lang('message_lang.todas_las_solicitudes')." FELIB";
-			echo view('pages/exped/listado-expediente', $data);
-		} else {
-			echo view('pages/content', $data);
-		}
 
+		echo view('templates/header/header', $data);
+		echo view('pages/content', $data);
 		echo view('templates/footer/footer');
 	}
 	

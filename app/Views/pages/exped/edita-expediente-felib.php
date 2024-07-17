@@ -153,26 +153,27 @@
                         <optgroup style="background-color:#F51720;color:#000;" label="Fase sol·licitud:">
                             <option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la SEU electrònica</option>
                             <option <?php if ($expedientes['situacion'] === "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
-                            <option <?php if ($expedientes['situacion'] === "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
+                           <!--  <option <?php if ($expedientes['situacion'] === "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
                             <option <?php if ($expedientes['situacion'] === "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb <br>requeriment pendent</option>
                             <option <?php if ($expedientes['situacion'] === "emitirReq") { echo "selected";}?> value = "emitirReq" class="sitSolicitud"> Emetre requeriment</option>
                             <option <?php if ($expedientes['situacion'] === "firmadoReq") { echo "selected";}?> value = "firmadoReq" class="sitSolicitud"> Requeriment signat</option>
                             <option <?php if ($expedientes['situacion'] === "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitSolicitud"> Requeriment notificat</option>
                             <option <?php if ($expedientes['situacion'] === "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment <br>per esmena</option>
                             <option <?php if ($expedientes['situacion'] === "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per <br>esmena emès</option>
-							<option <?php if ($expedientes['situacion'] === "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
+							<option <?php if ($expedientes['situacion'] === "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option> -->
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
-                                <option <?php if ($expedientes['situacion'] === "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
+                            <!-- <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:"> -->
+                            <option <?php if ($session->get('situacion_fltr') == "Validado") { echo "selected";}?> value = "Validado" class="sitValidacion"> Validat</option>
+                              <!--   <option <?php if ($expedientes['situacion'] === "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
     				            <option <?php if ($expedientes['situacion'] === "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
 	    			            <option <?php if ($expedientes['situacion'] === "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva emetre</option>
 							    <option <?php if ($expedientes['situacion'] === "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva emesa</option>
                         	    <option <?php if ($expedientes['situacion'] === "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió emetre</option>
                         	    <option <?php if ($expedientes['situacion'] === "emitidaResConcesion") { echo "selected";}?> value = "emitidaResConcesion" class="sitValidacion"> Resolució de concessió emesa</option>
-            		            <option <?php if ($expedientes['situacion'] === "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option>
+            		            <option <?php if ($expedientes['situacion'] === "inicioConsultoria") { echo "selected";}?> value = "inicioConsultoria" class="sitValidacion"> Inici de consultoria</option> -->
                             </optgroup>   
-                            <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
+                           <!--  <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients NO favorables:">
                                 <option <?php if ($expedientes['situacion'] === "emitirIDPDenProv") { echo "selected";}?> value = "emitirIDPDenProv" class="sitValidacion"> ID + P denegació provisional emetre</option>
 				                <option <?php if ($expedientes['situacion'] === "emitidoIDPDenProv") { echo "selected";}?> value = "emitidoIDPDenProv" class="sitValidacion"> ID + P denegació provisional emesa</option>
     				            <option <?php if ($expedientes['situacion'] === "emitirPDenDef") { echo "selected";}?> value = "emitirPDenDef" class="sitValidacion"> P denegació definitiva emetre</option>
@@ -180,9 +181,9 @@
             		            <option <?php if ($expedientes['situacion'] === "emitirResDen") { echo "selected";}?> value = "emitirResDen" class="sitValidacion"> Resolució de denegació emetre</option>	
                                 <option <?php if ($expedientes['situacion'] === "emitidoResDen") { echo "selected";}?> value = "emitidoResDen" class="sitValidacion"> Resolució de denegació emesa</option>
                                 <option <?php if ($expedientes['situacion'] === "Denegado") { echo "selected";}?> value = "Denegado" class="sitValidacion"> Denegat</option>
-                            </optgroup>
+                            </optgroup> -->
                         </optgroup>
-                        <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase justificació pagament:">
+                        <!-- <optgroup style="background-color:#6d9eeb;color:#000;" label="Fase justificació pagament:">
                             <optgroup  style="background-color:#fff;color:#6d9eeb;" label="Justificació correcta:">
                                 <option <?php if ($expedientes['situacion'] === "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion"> Pendent de justificar</option>
                 		        <option <?php if ($expedientes['situacion'] === "pendienteRECJustificar") { echo "selected";}?> value = "pendienteRECJustificar" class="sitEjecucion"> Pendent SEU justificant</option>
@@ -200,7 +201,7 @@
         	    	            <option <?php if ($expedientes['situacion'] === "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emesa</option>
         	    	            <option <?php if ($expedientes['situacion'] === "revocado") { echo "selected";}?> value = "revocado" class="sitEjecucion"> Revocat</option>
                             </optgroup>                          
-                        </optgroup>
+                        </optgroup> -->
 			        </select>
 		        </div>
                 <?php
@@ -363,15 +364,13 @@
                 <div class="form-group solicitud">
                     <label for = "fecha_REC"><strong>Data SEU sol·licitud:</strong></label>
 			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
-			        <!-- <input type = "text" placeholder = "aaaa-mm-dd hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php //echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/> -->
                 </div>
                 <div class="form-group solicitud">
                     <label for = "ref_REC"><strong>Referència SEU sol·licitud:</strong></label>
                     <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
                 </div>
-                <div class="form-group solicitud">
+               <!--  <div class="form-group solicitud">
                     <label for = "fecha_REC_enmienda"><strong>Data SEU esmena:</strong></label>
-		    	    <!-- <input type = "datetime-local" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_enmienda']),"Y-m-d\Th:m");?>"/> -->
 		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
                 </div>		
                 <div class="form-group solicitud">
@@ -385,7 +384,7 @@
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento_notif"><strong>Notificació requeriment:</strong></label>
                     <input type = "date" name = "fecha_requerimiento_notif" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_requerimiento_notif" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento_notif']), 'Y-m-d');?>"/>
-                </div>
+                </div> -->
 
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
@@ -404,10 +403,10 @@
 	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento.php';?></li>
             <!-------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Resolució desistiment per no esmenar  SIN VIAFIRMA ----------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-no-enmendar.php';?></li>
+           <!--  <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-no-enmendar.php';?></li> -->
             <!-------------------------------------------------------------------------------------------------------------->
             </ol>
-            <h3>Millores: <!-- <small class="alert alert-secondary" role="alert"><?php echo $ultimaMejoraSolicitud; ?></small> --></h3>
+           <!--  <h3>Millores: <?php echo $ultimaMejoraSolicitud; ?></small></h3>
             <?php if($mejorasSolicitud): ?>
                 <div class = "header-wrapper-docs-3 header-wrapper-docs-solicitud">
         	        <div >Data SEU</div>
@@ -436,7 +435,7 @@
                     <input type='text' placeholder = "El número del SEU [GOIBE539761_2021]" name = "refRecMejora" class='form-control form-control-sm' id="refRecMejora" maxlength = "16"/>
                 </div>
                     <button class="btn-itramits btn-success-itramits btn-lg btn-block btn-docs" onclick="insertaMejoraEnSolicitud()" id="addMejora">Afegir</button>
-            </div>          
+            </div>           -->
         </div>
         
         <div class="col docsExpediente">
