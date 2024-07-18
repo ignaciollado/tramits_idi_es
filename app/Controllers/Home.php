@@ -44,7 +44,7 @@ class Home extends BaseController
 					->findAll();
 			$data['totalExpedientes'] = count($data['expedientes']);
 			$data['titulo'] = lang('message_lang.todas_las_solicitudes')." FELIB";
-			echo view('pages/exped/listado-expediente', $data);
+			echo view('pages/exped/listado-expediente-felib', $data);
 		} else {
 			echo view('pages/content', $data);
 		}

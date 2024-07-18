@@ -886,7 +886,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         $programaIII_ap = explode(",",$mesesPrograma[4]);
         $programaIV = explode(",",$mesesPrograma[5]);
 
-
         switch ($expedientes['tipo_tramite']) {
 	        case 'Programa I':
 		        $add_meses = str_replace("'intervalo':'", "", $programaI[1]);
@@ -912,9 +911,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 $add_meses = str_replace("'intervalo':'", "", $programaIV[1]);
 		        $add_meses = str_replace("'", "", $add_meses);                
 		        break;
-	    }
-       
-        ?>
+	    }?>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="3">
@@ -1068,7 +1065,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                     </div>
 		            <div class="form-group ejecucion">
                         <label for = "fecha_limite_consultoria"><strong>Data límit per realitzar la consultoria:</strong></label>
-                        <input type = "date" name = "fecha_limite_consultoria" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id);" id = "fecha_limite_consultoria" value = "<?php echo date_format(date_create($expedientes['fecha_limite_consultoria']), 'Y-m-d');?>">
+                        <input disabled readonly type = "date" name = "fecha_limite_consultoria" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id);" id = "fecha_limite_consultoria" value = "<?php echo date_format(date_create($expedientes['fecha_limite_consultoria']), 'Y-m-d');?>">
                     </div>
     		        <div class="form-group ejecucion">
                         <label for = "fecha_reunion_cierre"><strong>Reunió tancament:</strong></label>
@@ -1077,7 +1074,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     		        <div class="form-group ejecucion">
                         <label for = "fecha_limite_justificacion"><strong>Data límit per justificar l'ajut rebut:</strong></label>
                         <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
-                        <input type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" disabled readonly onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
+                        <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
                     </div>
                     <div class="form-group ejecucion">
                         <label for = "fecha_max_desp_ampliacion"><strong>Data màxima després d'ampliació:</strong></label>

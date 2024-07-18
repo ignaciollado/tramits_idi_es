@@ -26,13 +26,17 @@ class Expedientes extends Controller
 		$where = "convocatoria = ".$datoslineaConvo['convocatoria'];
 		$session->set('convocatoria_fltr', $datoslineaConvo['convocatoria']);
 		$rol =  $session->get('rol');
+		if ($rol !== 'felib') {
+			$where .= " AND tipo_tramite <> 'FELIB'";
+		}
 		$modelExp = new ExpedientesModel();
 		if ($rol == 'admin') {
 			if ($session->get('programa_fltr')) {
 				$where = "tipo_tramite = '" . $session->get('programa_fltr') . "'";
 			}
 			if ($session->get('situacion_fltr')) {
-				$where = "tipo_tramite = '" . $session->get('situacion_fltr') . "'";
+				$where = "situacion = '" . $session->get('situacion_fltr') . "'";
+				$where .= " AND tipo_tramite <> 'FELIB'";
 			}
 			if ($session->get('textoLibre_fltr')) {
 				$where .= " AND (fecha_completado LIKE '" . $this->request->getVar('textoLibre_fltr') . "%'
@@ -42,6 +46,7 @@ class Expedientes extends Controller
 										OR telefono_rep LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' 
 										OR nom_consultor LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' 
 										OR situacion  LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' )";
+				$where .= " AND tipo_tramite <> 'FELIB'";									
 			}
 			$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
 				->where($where)
@@ -52,6 +57,7 @@ class Expedientes extends Controller
 				->where($where)
 				->findAll();
 		}
+
 		$data['totalExpedientes'] = count($data['expedientes']);
 		$data['titulo'] = lang('message_lang.todas_las_solicitudes')." ".$datoslineaConvo['convocatoria'];
 		echo view('templates/header/header', $data);
@@ -131,6 +137,7 @@ class Expedientes extends Controller
 			case 'admin':
 				if ($this->request->getVar('convocatoria_fltr')) {
 					$where = 'convocatoria = ' . $this->request->getVar('convocatoria_fltr');
+					$where .= " AND tipo_tramite <> 'FELIB'";
 					$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr')); 
 				} else {
 					$where = 'convocatoria = ' . $currentYear; 

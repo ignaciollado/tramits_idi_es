@@ -48,7 +48,6 @@
 					<option value="Programa IV">
 					<option value="ILS">
 					<option value="IDI-ISBA">
-					<option value="FELIB">
   			</datalist>
   		</div>
 	</div>
@@ -281,38 +280,41 @@
 				</div>
 			<?php }
 			else if ($item['situacion'] == "emitidoIFPRProvPago") {?>
-				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
+				<div  id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
 					<span title="Aquesta sol·licitud s´ha emès IF+PR pagament">
-						<strong>IF + PR <br>Provisional emesa</strong><br>
+						<strong>IF + PR <br>Provisional emesa</strong>
+					</span>
+				</div>
+			<?php }
+			else if ($item['situacion'] == "emitirPRDefinitiva")  {?>
+				<div  id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl">
+					<span title="Aquesta sol·licitud s'ha d'emetre PR pagament definitiva">
+						<strong>PR definitiva emetre</strong>
+						<br>
 						<?php 
-							$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']);
-							$date2  = date_create(date($item['fecha_not_propuesta_resolucion_prov']));
-							date_add($date2,date_interval_create_from_date_string("10 days"));
+							$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
+							$date2 =  date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
 							$actualDate = date_create(date("Y-m-d"));
 							$diff  = date_diff($actualDate, $date2);
 							$faltan = $diff->format("%a dies");
 					
-							if ($item['situacion'] === 'emitidoIFPRProvPago') {
+							if ($item['situacion'] === 'emitirPRDefinitiva') {
 								if ($faltan >= 5) {?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-dark">
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies hàbils que resten per emetre la Proposta de Resolució provisional definitiva" class="badge bg-dark">
 								<?php } elseif ( $faltan > 0) { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge blink">									
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies hàbils que resten per emetre la Proposta de Resolució provisional definitiva" class="badge blink">									
 								<?php } else { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per emetre la Proposta de resolució definitiva favorable" class="badge bg-danger">
+									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies hàbils que resten per emetre la Proposta de Resolució provisional definitiva" class="badge bg-danger">
 								<?php } 
-								echo $faltan;
+								echo $faltan .' hàbils';
 								echo "</span>";
-								echo "<br><small>[s'emetrà el: ".date_format($date2,"Y-m-d")."]</small> ";
+								echo "<br><small>[s'emetrà el: ".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."]</small> ";
 								}
 							if ($item['situacion'] === 'emitidoResDen') {
 								echo "<br>NO SE TIENE QUE EMITIR";
 							}?>
-					</span>
-				</div>
+						</span></div>				
 			<?php }
-			else if ($item['situacion'] == "emitirPRDefinitiva") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre PR pagament definitiva"><strong>PR definitiva<br>emetre</strong></span></div>';				
-			}
 			else if ($item['situacion'] == "emitidaPRDefinitiva") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha d´emesa PR pagament definitiva"><strong>PR definitiva<br>emesa</strong></span></div>';				
 			}			
@@ -378,11 +380,11 @@
 							$diffjust = date_diff($actualDate, $date1);
 							?>
 						<?php if ($diffjust->format("%R%a") > 5) {?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-dark"><?php echo $diffjust->format("%a dies");?></span>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per justificar" class="badge bg-dark"><?php echo $diffjust->format("%a dies naturals");?></span>
 						<?php } elseif (($diffjust->format("%R%a") < 0) ) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge bg-danger"><?php echo $diffjust->format("%R%a dies");?></span>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per justificar" class="badge bg-danger"><?php echo $diffjust->format("%R%a dies naturals");?></span>
 						<?php } elseif (($diffjust->format("%R%a") <= 5) ) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per justificar" class="badge blink"><?php echo $diffjust->format("%a dies");?></span>					
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per justificar" class="badge blink"><?php echo $diffjust->format("%a dies naturals");?></span>
 						<?php } ?>
 
 				<?php 
@@ -505,6 +507,24 @@ else if ($item['situacion'] == "empresaDenegada") {
   	return "";
 	}
 </script>
+
+<?php 
+function sumarDiasHabiles($fechaInicial, $dias) {
+	$fecha = new DateTime($fechaInicial);
+	$diasHabiles = 0;
+
+	while ($diasHabiles < $dias) {
+			$fecha->modify('+1 day');
+
+			// Excluir sábados y domingos
+			if ($fecha->format('N') < 6) {
+					$diasHabiles++;
+			}
+	}
+
+	return $fecha->format('Y-m-d');
+}
+?>
 
 <style>
 	a {

@@ -689,8 +689,8 @@ function cambiarSituacionExpediente (fase, elemento) {
 		itemID = 25
 	}
 	if (elemento === "fecha_not_propuesta_resolucion_prov") {
-		nuevoEstado = "emitirIFPRProvPago"
-		itemID = 11
+		nuevoEstado = "emitirPRDefinitiva"
+		itemID = 13
 	}
 	if (elemento === "fecha_limite_consultoria") {
 		nuevoEstado = "inicioConsultoria"
@@ -739,37 +739,48 @@ function avisarCambiosEnFormulario(fase, elemento) {
 	document.getElementById(fase).className = "error-msg";
 }
 
-function actualizaFechaConsultoria(fechaAct, addMeses) {
-	document.getElementById("fecha_kick_off").value = fechaAct;
-	document.getElementById("fecha_kick_off_modal").value = fechaAct;
-	let programa = document.getElementById("programa").value;
-	let d = new Date(fechaAct);
+function actualizaFechaConsultoria(kickOffDate, addMonths) {
+	document.getElementById("fecha_kick_off").value = kickOffDate
+	document.getElementById("fecha_kick_off_modal").value = kickOffDate
+
+	console.log (kickOffDate, addMonths)
+
+	let d = new Date(kickOffDate)
   // A partir del día siguiente de la fecha
-  d.setDate(d.getDate()+1);
-	meses = addMeses
-	d.setMonth(d.getMonth() + meses);
+  d.setDate(d.getDate()+1)
+	// añadimos meses de plazo según convo y programa
+	d.setMonth(d.getMonth() + addMonths)
 	if (d.getDay() == 6) {  //La fecha cae en Sábado hay que pasarla al primer lunes (+2 días)
-		d.setDate(d.getDate()+2);
+		d.setDate(d.getDate()+2)
+	}
+	if (d.getDay() == 0) {  //La fecha cae en Domingo hay que pasarla al primer lunes (+1 días)
+		d.setDate(d.getDate()+1)
 	}
 	
-	if (d.getDay() == 0) {  //La fecha cae en Domingo hay que pasarla al primer lunes (+1 días)
-		d.setDate(d.getDate()+1);
+	let valorFechaLimite = d
+	let fechaTopeSegunConvo = new Date("2024-10-04")
+
+	if ( valorFechaLimite > fechaTopeSegunConvo ) {
+		valorFechaLimite = fechaTopeSegunConvo
 	}
-	document.getElementById("fecha_limite_consultoria").value = d.toISOString().substr(0, 10);
-	document.getElementById("fecha_HastaRealizacionPlan").value = d.toISOString().substr(0, 10);
-	let valorFechaFechaKickOff = fechaAct;
-	let valorFechaLimite = d.toISOString().substr(0, 10);
-	console.log (valorFechaFechaKickOff+"/"+valorFechaLimite);
-	let actualizaKickOff = "/public/assets/utils/actualiza_fechas_KickOff.php?"+ valorFechaFechaKickOff+"/"+valorFechaLimite+"/"+document.getElementById("id").value;
+
+	const kickOff = new Date(kickOffDate)
+	const diaKickOff = kickOff.getDate().toString().padStart(2, '0')
+	const mesKickOff = (kickOff.getMonth() + 1).toString().padStart(2, '0')
+	const añoKickOff = kickOff.getFullYear()
+
+	const diavalorFechaLimite = valorFechaLimite.getDate().toString().padStart(2, '0')
+	const mesvalorFechaLimite = (valorFechaLimite.getMonth() + 1).toString().padStart(2, '0')
+	const añovalorFechaLimite = valorFechaLimite.getFullYear()
+	const valorFechaLimiteFormateada = `${añovalorFechaLimite}-${mesvalorFechaLimite}-${diavalorFechaLimite}`
+	const fechaKickOffFormateadaSQL = `${añoKickOff}-${mesKickOff}-${diaKickOff}`
+
+	document.getElementById("fecha_limite_consultoria").value = valorFechaLimiteFormateada
+
+	let actualizaKickOff = "/public/assets/utils/actualiza_fechas_KickOff.php?"+ fechaKickOffFormateadaSQL+"/"+valorFechaLimiteFormateada+"/"+document.getElementById("id").value;
 	fetch(actualizaKickOff)
 		.then((response) => response.text())
 		.then((data) => {
-			let resultadoP = document.getElementById("fecha_kick_off");
-			let cell = document.createElement("span");
-			let cellText = document.createTextNode(data);
-			cell.appendChild(cellText);
-			resultadoP.appendChild(cell);
-			resultadoP.setAttribute("border", "2");
 		});
 }
 

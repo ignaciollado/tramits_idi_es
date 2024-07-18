@@ -5,7 +5,7 @@ $items = parse_url( $url);
 $nuevosParametros = explode  ("/", $items['query']);
 
 $query = "UPDATE pindust_expediente SET fecha_kick_off = '" . $nuevosParametros[0] ."', fecha_limite_consultoria = '". $nuevosParametros[1] . "' WHERE  id = " . $nuevosParametros[2];
-// echo $query;
+echo $query;
 $result = mysqli_query($conn, $query);
 echo $result;
 mysqli_close($conn);
