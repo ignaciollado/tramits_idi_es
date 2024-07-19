@@ -280,40 +280,34 @@
 				</div>
 			<?php }
 			else if ($item['situacion'] == "emitidoIFPRProvPago") {?>
-				<div  id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
-					<span title="Aquesta sol·licitud s´ha emès IF+PR pagament">
-						<strong>IF + PR <br>Provisional emesa</strong>
-					</span>
+				<div  id="'.$item['id'].'" class = "btn-itramits validacion-lbl validacion-lbl-emesa">
+						<strong>IF + PR Provisional emesa</strong>
+				</div>
+				<div class="btn-itramits validacion-lbl add-margin-top">
+					<?php
+						$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
+						$actualDate = date_create(date("Y-m-d"));
+						$date2 =  date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
+						$diff  = date_diff($actualDate, $date2);
+						$faltan = $diff->format("%a dies");
+						echo "<small>Lectura notificació:<br>".$item['fecha_not_propuesta_resolucion_prov']."</small><br>";
+						echo "<small>Enviament acte administratiu nº ¿7-8?:<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
+						if ($faltan >= 5) {?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-dark">
+						<?php } elseif ( $faltan > 0) { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge blink">									
+						<?php } else { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-danger">
+						<?php } 
+						echo 'resten <strong>'.$faltan .'</strong> naturals';
+						echo "</span>";
+					?>
 				</div>
 			<?php }
 			else if ($item['situacion'] == "emitirPRDefinitiva")  {?>
 				<div  id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl">
-					<span title="Aquesta sol·licitud s'ha d'emetre PR pagament definitiva">
-						<strong>PR definitiva emetre</strong>
-						<br>
-						<?php 
-							$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
-							$date2 =  date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
-							$actualDate = date_create(date("Y-m-d"));
-							$diff  = date_diff($actualDate, $date2);
-							$faltan = $diff->format("%a dies");
-					
-							if ($item['situacion'] === 'emitirPRDefinitiva') {
-								if ($faltan >= 5) {?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies hàbils que resten per emetre la Proposta de Resolució provisional definitiva" class="badge bg-dark">
-								<?php } elseif ( $faltan > 0) { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies hàbils que resten per emetre la Proposta de Resolució provisional definitiva" class="badge blink">									
-								<?php } else { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies hàbils que resten per emetre la Proposta de Resolució provisional definitiva" class="badge bg-danger">
-								<?php } 
-								echo $faltan .' hàbils';
-								echo "</span>";
-								echo "<br><small>[s'emetrà el: ".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."]</small> ";
-								}
-							if ($item['situacion'] === 'emitidoResDen') {
-								echo "<br>NO SE TIENE QUE EMITIR";
-							}?>
-						</span></div>				
+					<span title="Aquesta sol·licitud s'ha d'emetre PR pagament definitiva"><strong>PR definitiva emetre</strong></span>
+				</div>				
 			<?php }
 			else if ($item['situacion'] == "emitidaPRDefinitiva") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha d´emesa PR pagament definitiva"><strong>PR definitiva<br>emesa</strong></span></div>';				
@@ -325,9 +319,10 @@
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emès la Resolució de concessió"><strong>Resolució<br>concessió emesa</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "inicioConsultoria") {?>
-				<div id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
-					<span title="Aquesta sol·licitud s´ha iniciat sa consultoria">
-						<strong>Inici de consultoria</strong><br>
+				<div id="'.$item['id'].'" class = "btn-itramits validacion-lbl validacion-lbl-emesa">
+						<strong>Inici de consultoria</strong>
+				</div>
+				<div class="btn-itramits validacion-lbl add-margin-top">
 							<?php 
 							$date1 = date_create($item['fecha_limite_consultoria']);
 							$date2 = date_create(date($item['fecha_limite_consultoria']));
@@ -339,12 +334,11 @@
 								<?php } elseif ( $faltan > 0) { ?>
 									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge blink">									
 								<?php } else { ?>
-									<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-danger">
+									<div data-bs-toggle="tooltip" data-bs-placement="left" title="...dies que resten per finalitzar" class="badge bg-danger">
 								<?php } 
 							echo "<small>".$faltan."</small>";
 							echo "</span>";
 							echo "<br><small>[data límit: ".date_format(date_create($item['fecha_limite_consultoria']),"Y-m-d")."]</small> ";	?>	
-					</span>
 				</div>				
 			<?php }
 			/*  */
@@ -371,9 +365,10 @@
 			}
 			/*  */
 			else if ($item['situacion'] == "pendienteJustificar") {?>
-				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits ejecucion-lbl">
-					<span title="Aquesta sol·licitud esta pendent de justificar">
-						<strong>Pendent de justificar</strong><br>
+				<div  id="'.$item['id'].'"  class = "btn-itramits ejecucion-lbl">
+					<strong>Pendent de justificar</strong>
+				</div><br>
+				<div class="btn-itramits ejecucion-lbl add-margin-top">
 						<?php	
 							$date1 = date_create($item['fecha_limite_justificacion']);
 							$actualDate = date_create(date("Y-m-d"));
@@ -385,11 +380,8 @@
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per justificar" class="badge bg-danger"><?php echo $diffjust->format("%R%a dies naturals");?></span>
 						<?php } elseif (($diffjust->format("%R%a") <= 5) ) { ?>
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per justificar" class="badge blink"><?php echo $diffjust->format("%a dies naturals");?></span>
-						<?php } ?>
-
-				<?php 
-				echo "<br><small>[data max. just.: ".date_format(date_create($item['fecha_limite_justificacion']),"Y-m-d")."]</small> ";	?>			
-					</span>
+						<?php } 
+						echo "<br><small>[data max. just.: ".date_format(date_create($item['fecha_limite_justificacion']),"Y-m-d")."]</small> ";	?>			
 				</div>
 			<?php }
 			else if ($item['situacion'] == "pendienteRECJustificar") {

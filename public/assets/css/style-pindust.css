@@ -27,6 +27,9 @@ button:hover {
 	margin-bottom: .25rem;
 	background-color: #1ab394;
 }
+.add-margin-top {
+	margin-top: .2rem;
+}
 dl {
 	margin-top: 0!important;
 	margin-bottom: 1rem!important;

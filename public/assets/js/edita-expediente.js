@@ -671,7 +671,7 @@ function compruebaExistenciaFecha(fase, elemento) {
 	let theElement = document.getElementById(elemento)
 	let selectedIndexElement = theElement.selectedIndex
 	console.log (fase, theElement.value, selectedIndexElement, currentExpSituation, document.getElementById("fecha_not_propuesta_resolucion_prov").value, document.getElementById("fecha_not_propuesta_resolucion_prov").value.length)
-	if (theElement.value === "emitirIFPRProvPago") {
+	if (theElement.value === "emitidoIFPRProvPago") {
 		if (document.getElementById("fecha_not_propuesta_resolucion_prov").value.length === 0) {
 			theElement.selectedIndex = currentExpSituation
 			alert (`Falta la data: 'Notificació proposta resolució provisional' de la fase de VALIDACIÓ`)
@@ -688,9 +688,9 @@ function cambiarSituacionExpediente (fase, elemento) {
 		nuevoEstado = "pendienteJustificar"
 		itemID = 25
 	}
-	if (elemento === "fecha_not_propuesta_resolucion_prov") {
-		nuevoEstado = "emitirPRDefinitiva"
-		itemID = 13
+	if (elemento === "fecha_not_propuesta_resolucion_prov") { /* fecha_not_propuesta_resolucion_prov */
+		nuevoEstado = "emitidoIFPRProvPago"
+		itemID = 12
 	}
 	if (elemento === "fecha_limite_consultoria") {
 		nuevoEstado = "inicioConsultoria"
