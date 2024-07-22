@@ -96,20 +96,18 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$html9 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicitante_sol_idigital').": <b>".$empresa."</b></td></tr>"; 
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF: <b>".$nif."</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Domicili: <b>".$domicilio."</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Localitat: <b>".$cpostal." ".$localidad."</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.nom_rep_legal_sol_idigital')." :  <b>". $nombre_rep ."</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF :  <b>".  $nif_rep . "</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.direccion_rep_legal_sol_idigital')." :  <b>". $domicilio_rep ."</b></td></tr>";
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.movil_sol_idigital')." :  <b>". $telefono_rep ."</b></td></tr>";
+$html3 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.solicitante_sol_idigital').": <b>".$empresa."</b></td></tr>"; 
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF: <b>".$nif."</b></td></tr>";
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Domicili: <b>".$domicilio."</b></td></tr>";
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>Localitat: <b>".$cpostal." ".$localidad."</b></td></tr>";
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.nom_rep_legal_sol_idigital')." :  <b>". $nombre_rep ."</b></td></tr>";
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>NIF :  <b>".  $nif_rep . "</b></td></tr>";
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.direccion_rep_legal_sol_idigital')." :  <b>". $domicilio_rep ."</b></td></tr>";
+$html3 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.movil_sol_idigital')." :  <b>". $telefono_rep ."</b></td></tr>";
+$html3 .= "</table>";
 
-$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.condicion_rep')." :  <b>".  $condicion_rep . "</b></td></tr>";
-$html9 .= "</table>";
-
-$pdf->writeHTML($html9, true, false, true, false, '');
+$pdf->writeHTML($html3, true, false, true, false, '');
 
 // ------------------------------------------------------------------2. NOTIFICACIÓN----------------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -117,22 +115,22 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$html10 = "2. ". lang('message_lang.notificacion_corto'); // "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)";
+$html4 = "2. ". lang('message_lang.notificacion_corto'); // "NOTIFICACIÓ (en aquest correu i mòbil rebreu els avisos de les notificacions corresponents al procediment)";
 
-$pdf->writeHTMLCell('', '', '', '', $html10, 1, 1, 0, true, 'C', true);
+$pdf->writeHTMLCell('', '', '', '', $html4, 1, 1, 0, true, 'C', true);
 
-$html10 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html10 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.notificacion_idi_isba').":</td></tr>";
-$html10 .= "<tr><td></td></tr>";
-$html10 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.mail_rep_legal_sol_idigital')." :  <b>". $email_rep . "</b></td></tr>";
-$html10 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.tel_rep_legal_sol_idigital')." :  <b>" . $telefono_rep . "</b></td></tr>";
-$html10 .= "</table>";
+$html5 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html5 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.notificacion_idi_isba').":</td></tr>";
+$html5 .= "<tr><td></td></tr>";
+$html5 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.mail_rep_legal_sol_idigital')." :  <b>". $email_rep . "</b></td></tr>";
+$html5 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.tel_rep_legal_sol_idigital')." :  <b>" . $telefono_rep . "</b></td></tr>";
+$html5 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
 
-$pdf->writeHTML($html10, true, false, true, false, '');
+$pdf->writeHTML($html5, true, false, true, false, '');
 
 // ------------------------------------------------------------------3. INVERSIÓN DESTINADA A-------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -140,32 +138,30 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$html11 = "3. ". lang('message_lang.operacion_financiera_idi_isba');
+$html6 = "3. ". lang('message_lang.operacion_financiera_idi_isba');
 
-$pdf->writeHTMLCell('', '', '', '', $html11, 1, 1, 0, true, 'C', true);
+$pdf->writeHTMLCell('', '', '', '', $html6, 1, 1, 0, true, 'C', true);
 
-$html11 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('message_lang.operacion_financiera_prestamo_idi_isba').":</b></td></tr>";
-$html11 .= "<tr><td></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.entidad_financiera_idi_isba')." :  <b>". $nom_entidad . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_prestamo_entidad_idi_isba')." :  <b>" . $importe_prestamo . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_entidad_idi_isba')." :  <b>" . $plazo_prestamo . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.carencia_prestamo_entidad_idi_isba')." :  <b>" . $carencia_prestamo . "</b></td></tr>";
-$html11 .= "<tr><td></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('message_lang.operacion_financiera_aval_idi_isba').":</b></td></tr>";
-$html11 .= "<tr><td></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.cuantia_prestamo_idi_isba')." :  <b>" . $cuantia_aval_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_idi_isba')." :  <b>" . $plazo_aval_isba . "</b></td></tr>";
-$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.fecha_del_aval_idi_isba')." :  <b>" . date_format(date_create($fecha_aval_isba),"d/m/Y") . "</b></td></tr>";
-//$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.carencia_idi_isba')." :  <b>" . $carencia_idi_isba . "</b></td></tr>";
+$html7 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('message_lang.operacion_financiera_prestamo_idi_isba').":</b></td></tr>";
+$html7 .= "<tr><td></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.entidad_financiera_idi_isba').": <b>". $nom_entidad . "</b></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_prestamo_entidad_idi_isba').": <b>" . $importe_prestamo . "</b></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_entidad_idi_isba').": <b>" . $plazo_prestamo . "</b></td></tr>";
+$html7 .= "<tr><td></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('message_lang.operacion_financiera_aval_idi_isba').":</b></td></tr>";
+$html7 .= "<tr><td></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.fecha_del_aval_idi_isba').": <b>" . date_format(date_create($fecha_aval_isba),"d/m/Y") . "</b></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_idi_isba').": <b>" . $plazo_aval_idi_isba . "</b></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.cuantia_prestamo_idi_isba').": <b>" . $cuantia_aval_idi_isba . "</b></td></tr>";
 
-$html11 .= "</table>";
+$html7 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
 
-$pdf->writeHTML($html11, true, false, true, false, '');
+$pdf->writeHTML($html7, true, false, true, false, '');
 
 // ------------------------------------------------------------------4. PROYECTO DE INVERSIÓN-------------------------------------------------------- //
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -179,18 +175,18 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 25);
 $pdf->setX($currentX);
-$html12 = "4. ". lang('message_lang.proyecto_de_inversion_idi_isba');
-$pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
+$html8 = "4. ". lang('message_lang.proyecto_de_inversion_idi_isba');
+$pdf->writeHTMLCell('', '', '', '', $html8, 1, 1, 0, true, 'C', true);
 
-$html12 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.proyecto_de_inversion_idi_isba_finalidad')." :  <b>". $finalidad_inversion_idi_isba . "</b></td></tr>";
-$html12 .= "</table>";
+$html9 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html9 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.proyecto_de_inversion_idi_isba_finalidad')." :  <b>". $finalidad_inversion_idi_isba . "</b></td></tr>";
+$html9 .= "</table>";
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$pdf->writeHTML($html12, true, false, true, false, '');
+$pdf->writeHTML($html9, true, false, true, false, '');
 
 // ------------------------------------------------------------------5. PRESUPUESTO DEL PROYECTO DE INVERSIÓN--------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -198,24 +194,24 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
 $pdf->setX($currentX);
-$html12 = "5. ". lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');
+$html10 = "5. ". lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');
 
-$pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
+$pdf->writeHTMLCell('', '', '', '', $html10, 1, 1, 0, true, 'C', true);
 
-$html12 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.adherido_a_ils_si_no')." :  <b>". $empresa_eco_idi_isba."</b></td></tr>"; /* OK */
-$html12 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_del_presupuesto_idi_isba').":  <b>".$importe_presupuesto_idi_isba."</b></td></tr>"; /* OK */
-$html12 .= lang('message_lang.solicita_ayuda_importe_idi_isba').":  <b>".$importe_ayuda_solicita_idi_isba."</b> ".lang('message_lang.solicita_ayuda_importe_idi_isba_detall')."<br>";
-$html12 .= "<ol><li>".lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba')." :  <b>".$intereses_ayuda_solicita_idi_isba."</b></li>";
-$html12 .= "<li>".lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba')." :  <b>" .$coste_aval_solicita_idi_isba."</b></li>";
-$html12 .= "<li>".lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba')." :  <b>" . $gastos_aval_solicita_idi_isba."</b></li>";
-$html12 .= "<ol></td></tr></table>";
+$html11 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.adherido_a_ils_si_no')." :  <b>". $empresa_eco_idi_isba."</b></td></tr>"; /* OK */
+$html11 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_del_presupuesto_idi_isba').":  <b>".$importe_presupuesto_idi_isba."</b></td></tr>"; /* OK */
+$html11 .= lang('message_lang.solicita_ayuda_importe_idi_isba').":  <b>".$importe_ayuda_solicita_idi_isba."</b> ".lang('message_lang.solicita_ayuda_importe_idi_isba_detall')."<br>";
+$html11 .= "<ol><li>".lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba')." :  <b>".$intereses_ayuda_solicita_idi_isba."</b></li>";
+$html11 .= "<li>".lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba')." :  <b>" .$coste_aval_solicita_idi_isba."</b></li>";
+$html11 .= "<li>".lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba')." :  <b>" . $gastos_aval_solicita_idi_isba."</b></li>";
+$html11 .= "<ol></td></tr></table>";
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$pdf->writeHTML($html12, true, false, true, false, '');
+$pdf->writeHTML($html11, true, false, true, false, '');
 
 // ----------------------------------------------6. DECLARO-------------------------------------------------------------------------------- //
 // ---------------------------------------------------------------------------------------------------------------------------------------- //
@@ -223,8 +219,8 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$html13 = "6. ".lang('message_lang.declaro');
-$pdf->writeHTMLCell('', '', '', '', $html13, 1, 1, 0, true, 'C', true);
+$html12 = "6. ".lang('message_lang.declaro');
+$pdf->writeHTMLCell('', '', '', '', $html12, 1, 1, 0, true, 'C', true);
 
 $html13 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html13 .= "<tr><td><ol>";
@@ -235,7 +231,7 @@ $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_3')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_4');
 
 if ($declaro_idi_isba_que_cumple_4 != "SI") {
-		$html13 .= "<br><ul><li><b>". money_format("%i ", $ayudasSubvenSICuales_dec_resp) ." €</b></li></ul><br>";
+	$html13 .= "<br><ul><li><b>". money_format("%i ", $ayudasSubvenSICuales_dec_resp) ." €</b></li></ul><br>";
 }
 
 $html13 .= "</li>";
@@ -260,25 +256,25 @@ $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 25);
 $pdf->setX($currentX);
-$html13 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html13 .= '<tr><td><ol start="8">';
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_10')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_11')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_12')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_13')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_14')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_15')."</li>";
-$html13 .= "</ol></td></tr>";
-$html13 .= "</table>";
+$html14 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html14 .= '<tr><td><ol start="8">';
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_10')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_11')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_12')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_13')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_14')."</li>";
+$html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_15')."</li>";
+$html14 .= "</ol></td></tr>";
+$html14 .= "</table>";
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 8);
 $pdf->setX($currentX);
-$pdf->writeHTML($html13, true, false, true, false, '');
+$pdf->writeHTML($html14, true, false, true, false, '');
 
 // remove default header/footer
 $pdf->setPrintHeader(false);
@@ -296,73 +292,76 @@ $html15 = "7. ".lang('message_lang.documentacion_adjuntada_idi_isba');
 
 $pdf->writeHTMLCell('', '', '', '', $html15, 1, 1, 0, true, 'C', true);
 
-$html15 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html15 .= "<tr><td></td></tr>";
-$html15 .= "<tr><td><ol>";
+$html16 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html16 .= "<tr><td></td></tr>";
+$html16 .= "<tr><td><ol>";
 
 if ($file_memoriaTecnica == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_b')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_b')."</li>";		
+}
+if ($file_veracidad_datos_bancarios == "SI") {
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_c')."</li>";		
 }
 if ( $file_certificadoIAE == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_d')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_d')."</li>";		
 }
 if ( $file_altaAutonomos == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_e')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_e')."</li>";		
 }
 if ( $file_escrituraConstitucion == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_f')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_f')."</li>";		
 }
-if ( $file_copiaNIF  == "NO") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_g')."</li>";		
+if ( $file_nifRepresentante  == "NO") {
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_g')."</li>";		
 }
 if ( $file_certificadoATIB == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_h')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_h')."</li>";		
 }
 if ( $file_certificadoAEAT == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_i')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_i')."</li>";		
 }
 if ( $file_certificadoLey382003 == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_j')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_j')."</li>";		
 }
 if ( $file_certificadoSGR == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_k')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_k')."</li>";		
 }
 if ( $file_contratoOperFinanc == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_l')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_l')."</li>";		
 }
 if ( $file_avalOperFinanc == "SI") {
-	$html15 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_m')."</li>";		
+	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_m')."</li>";		
 }
-$html15 .= "</ol></td></tr>";
-$html15 .= "<tr><td></td></tr>";
-$html15 .= "</table>";
+$html16 .= "</ol></td></tr>";
+$html16 .= "<tr><td></td></tr>";
+$html16 .= "</table>";
 
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 7);
 $pdf->setX($currentX);
 
-$pdf->writeHTML($html15, true, false, true, false, '');
+$pdf->writeHTML($html16, true, false, true, false, '');
 
 // ---------------------------------------------------------FECHA y FIRMA----------------------------------------- //
-$html29 = "<br>";
-$html29 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
-$html29 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.firma_idi_isba')."</td></tr>";
-$html29 .= "</table>";
+$html17 = "<br>";
+$html17 .= "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";
+$html17 .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.firma_idi_isba')."</td></tr>";
+$html17 .= "</table>";
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 1);
-$pdf->WriteHTML($html29, true, false, true, false, '');
+$pdf->WriteHTML($html17, true, false, true, false, '');
 
 // ---------------------------------------------------------RGDP------------------------------------------------ //
 
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
-$html30 = $rgpd;
+$html18 = $rgpd;
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 1);
 $pdf->setX($currentX - 40);
-$pdf->WriteHTML($html30, true, false, true, false, '');
+$pdf->WriteHTML($html18, true, false, true, false, '');
 
 $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_solicitud_idi_isba.pdf', 'F');
 ?>
@@ -373,32 +372,24 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 
 	<!-- <div class="cabecera-apartado"><?php //echo $html4;?></div> -->
 
-	<div class="cabecera-apartado"><?php echo $html6;?></div>
-	<div ><?php echo $html7;?></div>
-	<div class="cabecera-apartado"><?php echo $html8;?></div>
-	<div ><?php echo $html9;?></div>
-	<div class="cabecera-apartado"><?php echo $html10;?></div>
-	<div ><?php echo $html11;?></div>
-	<div class="cabecera-apartado"><?php echo $html12;?></div>
-	<div ><?php echo $html13;?></div>
+	<div class="cabecera-apartado"><?php echo $html3;?></div>
+	<div><?php echo $html4;?></div>
+	<div class="cabecera-apartado"><?php echo $html5;?></div>
+	<div><?php echo $html6;?></div>
+	<div class="cabecera-apartado"><?php echo $html7;?></div>
+	<div><?php echo $html8;?></div>
+	<div class="cabecera-apartado"><?php echo $html9;?></div>
+	<div><?php echo $html10;?></div>
 
-	<div class="cabecera-apartado"><?php echo $html15;?></div>
-	<div ><?php echo $html16;?></div>
-	<div class="cabecera-apartado"><?php echo $html155;?></div>
-	<div ><?php echo $html166;?></div>
-	<div ><?php echo $html17;?></div>
-	<div ><?php echo $html18;?></div>
+	<div class="cabecera-apartado"><?php echo $html11;?></div>
+	<div><?php echo $html12;?></div>
+	<div class="cabecera-apartado"><?php echo $html13;?></div>
+	<div><?php echo $html14;?></div>
+	<div><?php echo $html15;?></div>
 
-	<div ><?php echo $html20;?></div>
-	<div ><?php echo $html21;?></div>
-	<div class="cabecera-apartado"><?php echo $html22;?></div>
-	<div ><?php echo $html23;?></div>
-	<div ><?php echo $html24;?></div>
-	<div ><?php echo $html25;?></div>
-
-	<div ><?php echo $html27;?></div>
-	<div ><?php echo $html28;?></div>
-	<div ><?php echo $html29;?></div>
+	<div><?php echo $html16;?></div>
+	<div><?php echo $html17;?></div>
+	<div class="cabecera-apartado"><?php echo $html18;?></div>
 <style>
 	html, body {
 		font-size: 14px!important;

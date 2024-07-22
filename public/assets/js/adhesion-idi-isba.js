@@ -62,6 +62,10 @@ function onFormSubmit(e) {
 	if (document.getElementById("autonomo").checked) { /* Si es persona física */
 		if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_e").value === '' ) {
 			document.getElementById("documentacion_adjunta_requerida_idi_isba_e").setAttribute ('class','aviso')
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("required", '')
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("aria-required", 'true')
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute("required", '')
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute("aria-required", 'true')
 			return
 		} else {
 			document.getElementById("documentacion_adjunta_requerida_idi_isba_e").style.backgroundColor = "#04aa6d"
@@ -92,7 +96,7 @@ function onFormSubmit(e) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").style.backgroundColor = "#04aa6d"
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").classList.remove('aviso')
 	}
-	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' ) {
+	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' && document.getElementById("importe_ayuda_solicita_idi_isba").value > 30000) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute ('class','aviso')
 		return
   } else {
@@ -142,12 +146,25 @@ function tipoSolicitante (valor) {
 				document.getElementById("telefono_contacto_rep").value = ""
 				document.getElementById("nom_representante").readOnly = true
 				document.getElementById("nom_representante").disabled = true
+				document.getElementById('nom_representante').classList.add('input-disabled')
 				document.getElementById("nif_representante").readOnly = true
 				document.getElementById("nif_representante").disabled = true
+				document.getElementById('nif_representante').classList.add('input-disabled')
 				document.getElementById("telefono_contacto_rep").readOnly = true
 				document.getElementById("telefono_contacto_rep").disabled = true
- 				document.getElementById("es-p-fisica").classList.remove("ocultar");
-				document.getElementById("es-p-juridica").classList.add("ocultar")
+				document.getElementById('telefono_contacto_rep').classList.add('input-disabled')
+				/*  				document.getElementById("es-p-fisica").classList.remove("ocultar");
+				document.getElementById("es-p-juridica").classList.add("ocultar") */
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute('required', '')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("aria-required", 'true')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').disabled = false
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').classList.remove('input-disabled')
+				document.getElementById('li-doc-e').classList.remove('input-disabled')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').removeAttribute("required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').removeAttribute("aria-required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').disabled = true
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').classList.add('input-disabled')
+				document.getElementById('li-doc-f').classList.add('input-disabled')
 				break;
 			case 'pequenya':
 			case 'mediana':
@@ -163,12 +180,25 @@ function tipoSolicitante (valor) {
 				document.getElementById("denom_interesado").title = 'Raó social';
 				document.getElementById("nom_representante").readOnly = false
 				document.getElementById("nom_representante").disabled = false
+				document.getElementById('nom_representante').classList.remove('input-disabled')
 				document.getElementById("nif_representante").readOnly = false
 				document.getElementById("nif_representante").disabled = false
+				document.getElementById('nif_representante').classList.remove('input-disabled')
 				document.getElementById("telefono_contacto_rep").readOnly = false
 				document.getElementById("telefono_contacto_rep").disabled = false
- 				document.getElementById("es-p-fisica").classList.add("ocultar")
-				document.getElementById("es-p-juridica").classList.remove("ocultar");
+				document.getElementById('telefono_contacto_rep').classList.remove('input-disabled')
+				/*  				document.getElementById("es-p-fisica").classList.add("ocultar")
+				document.getElementById("es-p-juridica").classList.remove("ocultar"); */
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').removeAttribute('required', '')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').removeAttribute("aria-required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').disabled = true
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').classList.add('input-disabled')
+				document.getElementById('li-doc-e').classList.add('input-disabled')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').setAttribute('required', '')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').setAttribute("aria-required", 'true')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').disabled = false
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').classList.add('input-disabled')
+				document.getElementById('li-doc-f').classList.remove('input-disabled')
 				break;
 		}
 		document.getElementById("formbox2").className = 'formbox'
@@ -179,7 +209,6 @@ function limpiaInfo_lbl (valor) {
 	}
 
 function deshabilitarSubidaDocumento (checkObj) {
-	console.log (checkObj.name, checkObj.checked)
 	switch (checkObj.name) {
 		case 'idi_isba_b_EnIDI':
 			if (checkObj.checked) {
@@ -190,8 +219,8 @@ function deshabilitarSubidaDocumento (checkObj) {
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').setAttribute('required', '')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').setAttribute('aria-required', 'true')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_b').disabled = false
-			 }
-			break		
+			}
+			break
 		case 'idi_isba_g_EnIDI':
 			if (checkObj.checked) {
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').removeAttribute("required")
@@ -201,19 +230,33 @@ function deshabilitarSubidaDocumento (checkObj) {
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute('required', '')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute('aria-required', 'true')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').disabled = false
-			 }
+			}
 			break
 		case 'idi_isba_h_EnIDI':
+			if (checkObj.checked) {
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("aria-required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').disabled = true
+			} else {
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('required', '')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('aria-required', 'true')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').disabled = false
+			}
+			break
+		case 'denegacion_f_expresa':
+			if (checkObj.checked) {
+				document.getElementById('enviaridi_isba_f').classList.remove("ocultar")
+			} else {
+				document.getElementById('enviaridi_isba_f').classList.add("ocultar")
+			}
+			break
+			case 'denegacion_g_expresa':
 				if (checkObj.checked) {
-					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("required")
-					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("aria-required")
-					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').disabled = true
-				 } else {
-					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('required', '')
-					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('aria-required', 'true')
-					document.getElementById('documentacion_adjunta_requerida_idi_isba_h').disabled = false
-				 }
-			break			
+					document.getElementById('enviaridi_isba_g').classList.remove("ocultar")
+				} else {
+					document.getElementById('enviaridi_isba_g').classList.add("ocultar")
+				}
+				break	
 	}
 }
 

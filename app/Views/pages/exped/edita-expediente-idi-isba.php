@@ -36,6 +36,7 @@
     <button id="solicitud_tab_selector" class="tablinks" onclick="openFaseExped(event, 'solicitud_tab', '#f6b26b', <?php echo $expedientes['id'];?>)">Sol·licitud</button>
     <button id="validacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'validacion_tab', '#b23cfd', <?php echo $expedientes['id'];?>)">Validació</button>
     <button id="justifiacion_tab_selector" class="tablinks" onclick="openFaseExped(event, 'justificacion_tab', '#a64d79', <?php echo $expedientes['id'];?>)">Justificació</button>
+    <button id="deses_ren_tab_selector" class="tablinks" onclick="openFaseExped(event, 'deses_ren_tab', '#8e7cc3')">Desistiment o renúncia</button>
 </div>
 
 <?php echo "Data sol·licitud: ". $expedientes['fecha_solicitud'];?> <?php echo "Data complert: ". $expedientes['fecha_completado'];?>
@@ -259,41 +260,41 @@
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docs_item->type;
 			            switch ($docs_item->corresponde_documento) {
-	    			        case 'file_DescEmprsaActividadModNegocio':
+                            case 'file_memoriaTecnica':
 					            $nom_doc = "Descripció de l'empresa i la seva activitat, model de negoci i detall de la inversió/Inversions previstes";
 					            break;
                             case 'file_document_acred_como_repres':
                                 $nom_doc = "Documentació acreditativa de les facultats de representació de la persona que firma la sol·licitud d'ajut";
                                 break;
-				            case 'file_CertificadoATIBTGSS':
+				            case 'file_certificadoATIB':
 					            $nom_doc = "Certificat estar al corrent de les obligacions amb la ATIB i la TGSS";
 					            break;
 				            case 'file_escrituraConstitucion':	
 					            $nom_doc = "Còpia escriptures de constitució de l'entitat sol·licitant";
 					            break;
-				            case 'file_nifEmpresa':	
-					            $nom_doc = "Còpia del NIF de l'empresa";
+				            case 'file_nifRepresentante':	
+					            $nom_doc = "DNI/NIE de la persona sol·licitant i/o de la persona que li representi";
 					            break;
-                            case 'file_CertificadoAEAT':	
+                            case 'file_certificadoAEAT':	
                                 $nom_doc = "Certificat d'estar al corrent de pagament amb la AEAT";
                                 break;
-                            case 'file_CertificadoIAE':	
-                                $nom_doc = "Documentació acreditativa alta cens IAE";
+                            case 'file_certificadoIAE':	
+                                $nom_doc = "Certificat de l'IAE actualitzat en el moment de la sol·licitud";
                                 break;
-                            case 'file_CertificadoSGR':
+                            case 'file_certificadoSGR':
                                 $nom_doc = "Certificat de la societat de garantia recíproca";
-                                break;
-                            case 'file_ContratoOperFinanc':
-                                $nom_doc = "El contracte de l'operació financera";
-                                break;
-                            case 'file_ContratoAvalOperFinanc':
-                                $nom_doc = "El contracte o document d'aval de l'operació financera";
                                 break;
                             case 'file_copiaNIF':
                                 $nom_doc = "La fotocòpia del DNI de la persona que signa la sol.licitud";
                                 break;
-                            case 'file_Ley382003':
-                                $nom_doc = "Certificat  que estableix l'article 13.3 bis de la Llei 38/2003";
+                            case 'file_certificadoLey382003':
+                                $nom_doc = "Certificat que estableix l'article 13.3 bis de la Llei 38/2003";
+                                break;
+                            case 'file_document_veracidad_datos_bancarios':
+                                $nom_doc = "Declaració responsable de la veracitat de les dades bancàries segons model CAIB";
+                                break;
+                            case 'file_altaAutonomos':
+                                $nom_doc = "El certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent";
                                 break;
 			                default:
 					            $nom_doc = "¿ ".$docs_item->corresponde_documento." ?"; 
@@ -360,6 +361,10 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_memoriaTecnica">
+                                    <label class="form-check-label" for="file_memoriaTecnica">Descripció de l'empresa i la seva activitat, model de negoci i detall de la inversió/Inversions previstes</label>
+                                </div> 
+                                <div class="form-check">
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_declaracionResponsable">
                                     <label class="form-check-label" for="file_declaracionResponsable">Declaració responsable de l'empresa</label>
                                 </div>
@@ -376,8 +381,8 @@
                                     <label class="form-check-label" for="file_escrituraConstitucion">Còpia escriptures de constitució de l'entitat sol·licitant</label>
                                 </div>
                                 <div class="form-check">
-                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_nifEmpresa">
-                                    <label class="form-check-label" for="file_nifEmpresa">Còpia del NIF de l'empresa</label>
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_nifRepresentante">
+                                    <label class="form-check-label" for="file_nifRepresentante">DNI/NIE de la persona sol·licitant i/o de la persona que li representi</label>
                                 </div>
                                 <div class="form-check">
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoAEAT">
@@ -402,7 +407,19 @@
                                 <div class="form-check">
                                     <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_copiaNIF">
                                     <label class="form-check-label" for="file_copiaNIF">La fotocòpia del DNI de la persona que signa la sol.licitud</label>
-                                </div>                                  
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_certificadoLey382003">
+                                    <label class="form-check-label" for="file_certificadoLey382003">Certificat que estableix l'article 13.3 bis de la Llei 38/2003</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_document_veracidad_datos_bancarios">
+                                    <label class="form-check-label" for="file_document_veracidad_datos_bancarios">Declaració responsable de la veracitat de les dades bancàries segons model CAIB</label>
+                                </div>
+                                <div class="form-check">
+                                    <input onclick="activarUploadBtn(this, 'subeDocsDetalleRequeridoBtn')" class="form-check-input" type="radio" name="flexRadioDefault" id="file_altaAutonomos">
+                                    <label class="form-check-label" for="file_altaAutonomos">El certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent</label>
+                                </div>                      
                             </div>
                             <div class="modal-footer">
                                 <h5 class ="upload-docs-type-label">[.pdf]:</h5>
@@ -455,7 +472,13 @@
                                     break;
                                 case 'file_certificadoInverECO':
                                     $nom_doc = "Certificat inversions verdes segons taxonomia europea";
-                                    break;                                     
+                                    break;
+                                case 'file_contratoOperFinanc':
+                                    $nom_doc = "El contracte de l'operació financera";
+                                    break;
+                                case 'file_avalOperFinanc':
+                                    $nom_doc = "El contracte o document d'aval de l'operació financera";
+                                    break;
 			                    default:
 					            $nom_doc = $docs_opc_item->corresponde_documento;
 			                } 
@@ -675,12 +698,9 @@
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
             <ol start ="1">
-            <!----------------------------------------- Requeriment DOC 1 ILS ---------------------------------------------->
-	        <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/requerimiento.php';?></li>
-            <!-------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Resolució desistiment per no esmenar  SIN VIAFIRMA ----------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-desestimiento-por-no-enmendar.php';?></li>
-            <!-------------------------------------------------------------------------------------------------------------->
+                <!----------------------------------------- Informe favorable sin requerimiento DOC 1 ILS ---------------------------------------------->
+	            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-favorable-sin-requerimiento.php';?></li>
+                <!-------------------------------------------------------------------------------------------------------------------------------------->
             </ol>
         </div>
         <div class="col docsExpediente">
@@ -805,7 +825,7 @@
 
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
-        <ol start="3">
+        <ol start="2">
             <!-----------------------------------------Proposta de resolució provisional SIN VAIFIRMA---------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-provisional.php';?></li> 
             <!-----------------------------------------Proposta de resolució definitiva SIN VAIFIRMA---------->
@@ -956,7 +976,7 @@
         </div>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
-        <ol start="7">
+        <ol start="6">
             <!----------------------------------------- Resolución de concesión ---------------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-concesion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->                         
@@ -1211,6 +1231,143 @@
                     echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_justificacion_solicitud_ayuda.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');
                 }
             ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a></div>
+        </div>
+    </div>
+</div>
+
+<div id="deses_ren_tab" class="tab_fase_exp_content">
+    <div class="row">
+        <div class="col-sm-2 docsExpediente">
+        <h3>Detall:</h3>
+        <form action="<?php echo base_url('public/index.php/expedientes/update');?>"  name="exped-fase-5" id="exped-fase-5" method="post" accept-charset="utf-8">
+            <div class="form-group desistimiento">
+                <label for = "fecha_REC_desestimiento"><strong>Data SEU desistiment:</strong></label>
+	    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_desestimiento" class = "form-control send_fase_5" id = "fecha_REC_desestimiento" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_desestimiento']);?>"/>
+            </div>
+		    <div class="form-group desistimiento">
+                <label for = "ref_REC_desestimiento"><strong>Referència SEU desistiment:</strong></label>
+                <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" maxlength = "16" name = "ref_REC_desestimiento" class = "form-control send_fase_5" id = "ref_REC_desestimiento" value = "<?php echo $expedientes['ref_REC_desestimiento'];?>">
+        	</div>
+	    	<div class="form-group desistimiento">
+                <label for = "fecha_firma_resolucion_desestimiento"><strong>Data firma resolució de desistiment:</strong></label>
+                <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_resolucion_desestimiento" class = "form-control send_fase_5" id = "fecha_firma_resolucion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_resolucion_desestimiento']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group desistimiento">
+                <label for = "fecha_notificacion_desestimiento"><strong>Data notificació desistiment:</strong></label>
+                <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_notificacion_desestimiento" class = "form-control send_fase_5" id = "fecha_notificacion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_desestimiento']), 'Y-m-d');?>">
+            </div>
+
+                <?php
+                    if ( !$esAdmin && !$esConvoActual ) {?>
+                <?php }
+                    else {?>
+                <div class="form-group">
+                    <button type="button" onclick = "javaScript: actualiza_fase_5_desestimiento_expediente('exped-fase-5');" id="send_fase_5" onchange="avisarCambiosEnFormulario('send_fase_5', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                </div>
+                <?php }?>
+
+            </form>
+        </div>
+
+        <div class="col docsExpediente">
+            <h3>Actes administratius:</h3>
+            <ol start="25">
+                <!----------------------------------------- Reseolución desestimiento  DOC 22 SIN VIAFIRMA -------->
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
+                <!------------------------------------------------------------------------------------------------->
+                <!----------------- Propuesta resolución revocación por no justificar  DOC 23 SIN VIAFIRMA -------->
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-revocacion-por-no-justificar.php';?></li>
+                <!------------------------------------------------------------------------------------------------->
+                <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA ------------------>
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-revocacion-por-no-justificar.php';?></li>
+                <!------------------------------------------------------------------------------------------------->
+            </ol>
+        </div>
+
+        <div class="col docsExpediente">
+        <div class="col">
+            <h3>Documents de l'expedient:</h3>
+            <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>
+            <div class="docsExpediente">
+                <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
+    	            <div>Pujat el</div>
+   	  	            <div>Document</div>
+   	  	            <div>Estat</div>
+      	            <div>Acció</div>
+                </div>
+
+            <?php if($documentos): ?>
+            <?php foreach($documentos as $docSolicitud_item): 			            
+                if($docSolicitud_item->fase_exped == 'Desestimiento') {
+			    $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
+			    $parametro = explode ("/",$path);
+			    $tipoMIME = $docSolicitud_item->type;
+			    $nom_doc = $docSolicitud_item->name;
+			    ?>
+                <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-desestimiento">
+      	            <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
+   		            <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
+                    <?php
+                    switch ($docSolicitud_item->estado) {
+				        case 'Pendent':
+    			            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+					        break;
+    				    case 'Aprovat':
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+					        break;
+	    			    case 'Rebutjat':
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+					        break;
+                        default:
+    					    $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                    }
+                    ?>
+                    <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                    <span class = "detail-wrapper-docs-col trash">
+                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocDesestimiento"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
+                    </span> 
+                </div>
+            <?php }
+            endforeach; ?>
+            <?php endif; ?>
+            </div>
+                <div id="myModalDocDesestimiento" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content" style = "width: 60%;">
+                        <div class="modal-header">
+    		                Aquesta acció no es podrá desfer.
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+    	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
+                            <div class="modal-footer">
+    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocDesestimiento_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            <h5 class ="upload-docs-type-label">[.pdf, .zip]:</h5>
+            <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Desestimiento');?>" onsubmit="logSubmit('subeDocsDesestimientoBtn')" name="subir_doc_faseExpedDesestimiento" id="subir_doc_faseExpedDesestimiento" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                
+                <?php
+                    if ( !$esAdmin && !$esConvoActual ) {?>
+                <?php }
+                    else {?>
+                <div class = "content-file-upload">
+                    <div>
+                        <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDesestimiento[]" id="nombrefaseExpedDesestimiento" size="20" accept=".pdf, .zip" multiple />
+                    </div>
+                    <div>
+                        <input id="subeDocsDesestimientoBtn" type="submit" class = "btn-itramits btn-success-itramits btn-lg btn-block btn-docs" value="Pujar el/els document/s" />
+                    </div>
+                </div>
+                <?php }?>
+
+            </form>             
         </div>
     </div>
 </div>

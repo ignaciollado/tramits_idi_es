@@ -129,7 +129,7 @@
 			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" name="domicilio" id="domicilio" title = "<?php echo lang('message_lang.direccion_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_sol_idigital');?>">
 			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/municipios.php';?>
 			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" title="<?php echo lang('message_lang.cp_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.cp_sol_idigital');?>" name="cpostal" id="cpostal" pattern="[0-9]{5}" minlength = "5" maxlength = "5" size="9">  
-    	<input type = "tel"  onblur="javaScript: validateFormField(this);" title="<?php echo lang('message_lang.movil_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_sol_idigital');?>" name = "telefono_cont" id="telefono_cont" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" aria-required="true"><p id="mensaje_tel"></p>
+    	<input type = "tel"  onblur="javaScript: validateFormField(this);" required aria-required="true" title="<?php echo lang('message_lang.movil_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.movil_sol_idigital');?>" name = "telefono_cont" id="telefono_cont" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"><p id="mensaje_tel"></p>
 			<?php include $_SERVER['DOCUMENT_ROOT'] . '/public/assets/utils/epigrafeIAE_idi_isba.php';?>
 			<input type="text" required aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 			<input type="text" required aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
@@ -153,14 +153,14 @@
     <fieldset>
 			<h2>4. <?php echo lang('message_lang.operacion_financiera_idi_isba');?></h2>
 			<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" data-error = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" aria-required="true" name = "nom_entidad" id="nom_entidad" size="220" required>
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-type="currency" aria-required="true" name = "importe_prestamo" id="importe_prestamo" required>
 			<input type = "number" min="0" max="7" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_entidad_idi_isba');?>" aria-required="true" name = "plazo_prestamo" id="plazo_prestamo" required>
-			<!-- 			<input type = "number" min="0" max="7" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_prestamo_entidad_idi_isba');?>" name = "carencia_prestamo" id="carencia_prestamo" required> -->
 			<label class="form-label" for="fecha_aval_isba"><?php echo lang('message_lang.fecha_del_aval_idi_isba');?></label>
 			<input type = "date" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" placeholder = "<?php echo lang('message_lang.fecha_del_aval_idi_isba');?>" aria-required="true" name = "fecha_aval_isba" id="fecha_aval_isba" required>
 			<input type = "number" min="0" max="7" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.plazo_prestamo_idi_isba');?>" aria-required="true" name = "plazo_aval_isba" id="plazo_aval_isba" required>
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" max="7" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" placeholder = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-error = "<?php echo lang('message_lang.cuantia_prestamo_idi_isba');?>" data-type="currency" aria-required="true" name = "cuantia_aval_isba" id="cuantia_aval_isba" required>
-			<!-- <input type = "number" min="0" max="60" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.carencia_idi_isba');?>" placeholder = "<?php echo lang('message_lang.carencia_idi_isba');?>" data-error = "<?php echo lang('message_lang.carencia_idi_isba');?>" name = "carencia_idi_isba" id="carencia_idi_isba" required> -->
 		</fieldset>
 	</div>
 </div>
@@ -171,7 +171,7 @@
 			<h2>5. <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
 			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220">
 		</fieldset>
-		<!-------------------------- 6. SOLICITA AYUDA ------------------------------------------------------------------------>
+<!-------------------------- 6. SOLICITA AYUDA ------------------------------------------------------------------------>
 		<fieldset>
 			<h2>6. <?php echo lang('message_lang.adherido_a_ils_si_no');?></h2>
 			<div class="form-check form-check-inline">
@@ -190,14 +190,19 @@
 		</fieldset>
 		<fieldset>
 			<h2><?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');?></h2>
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" name = "importe_presupuesto_idi_isba" id="importe_presupuesto_idi_isba" maxlength = "9" size="9">
 		</fieldset>
     <fieldset>
 			<h2><?php echo lang('message_lang.solicita_ayuda_idi_isba');?></h2>
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9">
 			<h3 for=''><?php echo lang('message_lang.detalle_importe_ayuda_solicitado_idi_isba');?></h3>
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" name = "intereses_ayuda_solicita_idi_isba" id="intereses_ayuda_solicita_idi_isba" maxlength = "9" size="9">
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" name = "coste_aval_solicita_idi_isba" id="coste_aval_solicita_idi_isba" maxlength = "9" size="9">
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9">
 		</fieldset>
 	</div>
@@ -257,15 +262,6 @@
 						</label>
 				</div>		
 			</li>
-			<!-- 			<li>
-				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_6">
-							<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>
-							<input class="requerido" type="checkbox" title = "<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_6');?>" checked name="declaro_idi_isba_que_cumple_6[]" id="declaro_idi_isba_que_cumple_6">							
-							<span class="w3docs"></span>
-						</label>
-				</div>		
-			</li> -->
 			<li>
 				<div class="form-check">
   					<label class="main container-radio" for="declaro_idi_isba_que_cumple_7">
@@ -298,7 +294,6 @@
 				<div class="form-check">
 					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?></strong>						
   					<input class="" disabled type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_a');?>" checked name="documentacion_adjunta_requerida_idi_isba_a[]" id="documentacion_adjunta_requerida_idi_isba_a" value="SI">
-  					<!-- <span class="w3docs"></span> -->
   				</h3>
 				</div>
 			</li>
@@ -308,18 +303,18 @@
 				<div>
 					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_b" name="documentacion_adjunta_requerida_idi_isba_b[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
-				<label for="idi_isba_b_EnIDI" class="main" >
+			<!-- 	<label for="idi_isba_b_EnIDI" class="main">
 					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
 					<input type="checkbox" id="idi_isba_b_EnIDI" name="idi_isba_b_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
 					<span class="w3docs"></span>
-				</label>
+				</label> -->
 			</li>
 
 			<li>
-					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-					<div>
-						<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_c" name="documentacion_adjunta_requerida_idi_isba_c[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
-					</div>
+				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+				<div>
+					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_c" name="documentacion_adjunta_requerida_idi_isba_c[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_c');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+				</div>
 			</li>
 		
 			<li>
@@ -330,7 +325,7 @@
 			</li>
 
 			<div id="es-p-fisica">
-				<li>
+				<li id="li-doc-e">
 	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<div>
 						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
@@ -339,23 +334,29 @@
 			</div>
 
 			<div id="es-p-juridica">
-				<li >
-	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-					<div>
-						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
-					</div>	
+				<li id="li-doc-f">
+	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3>
+					<div id="enviaridi_isba_f" class="ocultar">
+						<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" size="50" accept=".pdf, .jpeg, .png" multiple/>
+					</div>
+					<label for="denegacion_f_expresa" class="main">
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.autorizaciones_solicitud_no_autoriza');?> </label>
+					<input type="checkbox" id="denegacion_f_expresa" name="denegacion_f_expresa" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<span class="w3docs"></span>
+				</label>
 				</li>	
 			</div>
 			
 			<li>
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?></strong></h3>
-				<div id = "enviaridi_isba_g" class = "">
+				<div id = "enviaridi_isba_g"  class="ocultar">
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
-				<label for="idi_isba_g_EnIDI" class="main" >
-					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-					<input type="checkbox" id="idi_isba_g_EnIDI" name="idi_isba_g_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+				<label for="denegacion_g_expresa" class="main" >
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.autorizaciones_solicitud_no_autoriza');?> </label>
+					<input type="checkbox" id="denegacion_g_expresa" name="denegacion_g_expresa" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
 					<span class="w3docs"></span>
 				</label>
 			</li>
@@ -380,7 +381,7 @@
 				</div>	
 			</li>
 
-			<li>
+			<li id="li-doc-j">
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_j');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
 					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_j" name="documentacion_adjunta_requerida_idi_isba_j[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_j');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
@@ -390,7 +391,7 @@
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_k');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 				<div>
-					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type = "file" id="documentacion_adjunta_requerida_idi_isba_k" name="documentacion_adjunta_requerida_idi_isba_k[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_k');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
+					<input onblur="javaScript: validateFormField(this);" type = "file" id="documentacion_adjunta_requerida_idi_isba_k" name="documentacion_adjunta_requerida_idi_isba_k[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_k');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>	
 			</li>	
 
@@ -445,23 +446,22 @@
 </div>
 
 <script>
-var currentTab = 0; // Current tab is set to be the first tab (0)
+let currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
   // This function will display the specified tab of the form...
-  var x = document.getElementsByClassName("tab");
+  let x = document.getElementsByClassName("tab");
   let itramitsCookies = document.cookie.split(";");
-    /* console.log ("current tab", n) */
-    // Loop through the array elements
-    for(var i = 0; i < itramitsCookies.length; i++) {
-        var cookiePair = itramitsCookies[i].split("=");
-        /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
-        if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
-            // Decode the cookie value and return
-            let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
-        }
+  // Loop through the array elements
+  for(let i = 0; i < itramitsCookies.length; i++) {
+    let cookiePair = itramitsCookies[i].split("=");
+    /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
+    if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
+      // Decode the cookie value and return
+      let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
     }
+  }
 
   x[n].style.display = "block";
 
@@ -492,7 +492,7 @@ function showTab(n) {
 
 function nextPrev(n) {
   // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
+  let x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) return false;
   // Hide the current tab:
@@ -510,8 +510,9 @@ function nextPrev(n) {
 }
 
 function validateFormField(field, step=0) {
-	var valid = true;
-	let inputElement = document.getElementById(field.id)
+	let valid = true;
+	let formElement = document.getElementById(field.id)
+	console.log (field.value, field.name)
 	/* Del presupuesto del proyecto de inversión calculo si la suma de los parciales coincide con el total */
 	let importe_ayuda_solicita_idi_isba = document.getElementById("importe_ayuda_solicita_idi_isba")
 	let intereses_ayuda_solicita_idi_isba = document.getElementById("intereses_ayuda_solicita_idi_isba")
@@ -523,14 +524,12 @@ function validateFormField(field, step=0) {
 	const regexHTTP = new RegExp(/https?:\/\/?[-a-zA-Z0-9]{1,256}\.[a-zA-Z]{2,3}/)
 	const regexTel  = new RegExp(/[0-9]{3}[0-9]{3}[0-9]{3}/)
 	
-	//console.log (`Campo actual es : ${inputElement.name} y su valor: ${inputElement.value} ${intereses_ayuda_solicita_idi_isba.value} ${coste_aval_solicita_idi_isba.value} ${gastos_aval_solicita_idi_isba.value} ${totalImporteAyuda}`)
-
-	if (!inputElement.value) {
-		inputElement.classList.remove("valid");
-		inputElement.classList.add("invalid");
+	if (!formElement.value) {
+		formElement.classList.remove("valid");
+		formElement.classList.add("invalid");
 	} else {
-		inputElement.classList.remove("invalid");
-		inputElement.classList.add("valid");
+		formElement.classList.remove("invalid");
+		formElement.classList.add("valid");
 	}
 
 	let btnSend = document.querySelector(field.id);
@@ -541,6 +540,25 @@ function validateFormField(field, step=0) {
 		field.setAttribute('class', 'valid')
 		valid = true;
 	}
+
+	if (field.id === "importe_ayuda_solicita_idi_isba") {
+		if (field.value <= 30000) {
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").removeAttribute("required")
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").removeAttribute("aria-required")
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").readOnly = true
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").disabled = true
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_j').classList.add('input-disabled')
+			document.getElementById('li-doc-j').classList.add('input-disabled')
+		} else {
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute("required", "required")
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute("aria-required", true)
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").readOnly = false
+			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").disabled = false
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_j').classList.remove('input-disabled')
+			document.getElementById('li-doc-j').classList.remove('input-disabled')
+
+		}
+	}
 }
 
 function validateForm() {
@@ -550,12 +568,13 @@ function validateForm() {
 
   	inputs = tabs[currentTab].getElementsByTagName("input");
   	for (let cell of inputs) {
+			console.log (cell.name, cell.value, cell.getAttribute('aria-required'))
 			if ( (cell.value === '') && (cell.getAttribute('aria-required')) ) {
-	   		cell.setAttribute ('class','aviso');
+	   		cell.setAttribute ('class','invalid');
       	valid = false;
-				//console.log (cell.name)
 				if (document.getElementById("autonomo").checked && ((cell.name === "nom_representante") || cell.name === "nif_representante" || cell.name === "telefono_contacto_rep")) {
-					cell.removeAttribute ('class','aviso');
+					cell.removeAttribute ('class','invalid');
+					cell.setAttribute ('class','valid');
 					valid = true
 				}
     	}
@@ -564,7 +583,7 @@ function validateForm() {
   	selects = tabs[currentTab].getElementsByTagName("select");
   	for (let cell of selects) {
     	if (cell.value === '') {
-	  		cell.setAttribute ('class','aviso');
+	  		cell.setAttribute ('class','invalid');
       	valid = false;
     	} 
   	}
@@ -573,7 +592,7 @@ function validateForm() {
 	// Validar que un checkbox de '2. TIPO DE EMPRESA' esté activado
   	if ( !document.getElementById("pequenya").checked && !document.getElementById("mediana").checked && !document.getElementById("autonomo").checked) {
 		document.getElementById("aviso2").className = 'aviso-lbl';
-		document.getElementById("formbox2").classList.add("aviso");
+		document.getElementById("formbox2").classList.add("invalid");
 		valid = false;
   	}
   }
@@ -601,6 +620,5 @@ function fixStepIndicator(n) {
 	if (n < 7) {
   		x[n].className += " active";
 	}
-	/* document.getElementById('aviso').innerHTML = '' */
 }
 </script>

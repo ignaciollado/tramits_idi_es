@@ -769,6 +769,12 @@ code {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.input-disabled {
+	background-color: #C3CaD1;
+	color: #000;
+	font-style: oblique;
+	padding: 4px 10px;
+}
 .form-control-itramits-disabled {
     display: block;
     width: 90%;
@@ -777,11 +783,11 @@ code {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: #000;
+    background-color: #495057;
     background-clip: padding-box;
-	border: 1px solid #cabece;
-	font-style: oblique;
+		border: 1px solid #cabece;
+		font-style: oblique;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

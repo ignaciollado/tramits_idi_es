@@ -219,15 +219,16 @@ return [
    'mail_rep_legal_sol_idigital' 	  => "Dirección electrónica a efectos de notificaciones",
    'tit_tel_rep_legal_sol_idigital'   => "Teléfono móvil a efectos de notificaciones (podrá recibir algún SMS nuestro con la finalidad de informarle).",
    'tit_mail_rep_legal_sol_idigital'  => "Dirección electrónica a efectos de notificaciones (será la dirección de correo que usaremos para enviarle información y notificaciones.",
-   'err_mail_rep_legal_sol_idigital'  => "¡Dirección electrónica no válida¡", 
-   'datos_cons_sol_idigital'          => "5. DATOS DEL CONSULTOR",   
-   'no_cons_sol_idigital'             => "No tengo CONSULTOR digital homologado, el ADR Balears me asignará uno.",    
+   'err_mail_rep_legal_sol_idigital'  => "¡Dirección electrónica no válida¡",
+   'datos_cons_sol_idigital'          => "5. DATOS DEL CONSULTOR",
+   'no_cons_sol_idigital'             => "No tengo CONSULTOR digital homologado, el ADR Balears me asignará uno.",
    'si_cons_sol_idigital'             => "Ya tengo CONSULTOR digital homologado, no necesito que el ADR Balears me asigne uno:",
    'cuantia_ayuda'                    => "CUANTÍA DE LA AYUDA (el número de horas de consultoría especializada subvencionadas)",
    '40horas'                          => "Consultoría de 40 horas",
-   '60horas'                          => "Consultoría de 60 horas",   
+   '60horas'                          => "Consultoría de 60 horas",
    '80horas'                          => "Consultoría de 80 horas",
-   'marque_una_opcion'                => "Por favor, marque una opción ->>> ", 
+   'marque_una_opcion'                => "Por favor, marque una opción ->>> ",
+   'texto_info_numeros'               => "(sin separador de miles y con '.' para separador de decimales)",
 
    'datos_empresa_ils_titulo'          => "Formulario para la recogida de datos adicionales de la empresa",
    'intro_sol_datos_empresa_ils'       => "ILS - Solicitud de datos adicionales de su empresa",
@@ -244,7 +245,7 @@ return [
 
    'solicitante_tipo_autonomo'         => "Autónomo",
    'solicitante_tipo_pequenya'         => "Pequeña empresa",
-   'solicitante_tipo_mediana'          => "Mediana empresa",   
+   'solicitante_tipo_mediana'          => "Mediana empresa",
    'solicitante_tipo_grande'           => "Grande",
    'convocatoria_activa'               => "Convocatoria en curso.",
 
@@ -266,7 +267,6 @@ return [
    'felib_p14' => "Programa <a href='' target='_ablank'><span class='projectar'>Ibexporta</span></a>, per facilitar l'accés als mercats exteriors a les empreses.",
    'felib_p15' => "Programa <a href='https://www.adrbalears.es/ibexporta-xecs' target='_ablank'><span class='projectar'>Ibexporta xecs</span></a>, finançament de plans d'internacionalització per a les empreses de les Illes Balears.",
 
-   
    'cuantia_ayuda_info'                => "  <div>4.2. El número de horas subvencionadas oscilará entre un mínimo de 40 horas, 60 horas y un máximo de 80 horas. La empresa podrá decidir el número de horas que necesita, en función del tamaño y de la complejidad de sus procesos productivos. Para cada 10 horas de consultoría, 2 tendrán que ser horas de consultoría presenciales. Así:</div>
 	<ul>
     <li> Si la empresa define una consultoría necesaria de 40 horas, 8 horas serían presenciales y 32 horas serían de consultoría en linea para la elaboración del plan de transformación digital, con un coste de 3.000 €. La ADR Balears librará un 80 % del coste (2.400 €) y la empresa el 20 % restante (600 €).</li>
@@ -396,7 +396,7 @@ return [
    'documentacion_adjunta'              => "6. DOCUMENTACIÓN ADJUNTA",      
    'autorizaciones_solicitud'           => "7. AUTORIZACIONES",
    'autorizaciones_solicitud_si_autoriza' => "De acuerdo con el artículo 28.2 de la Ley 39/2015, de 1 de octubre, del procedimiento administrativo común de las administraciones públicas, se entiende otorgado el consentimiento para obtener datos de documentos elaborados por otras administraciones que puedan consultarse mediante redes corporativas o sistemas electrónicos habilitados al efecto, y que sean necesarias para tramitar esta solicitud.",
-   'autorizaciones_solicitud_no_autoriza' => "Expresamente no doy mi consentimiento / Me opongo a / No concedo / Deniego mi autorización para que se consulten los datos y documentos necesarios para la tramitación de esta solicitud. Por eso, presento los documentos que constan a continuación:",
+   'autorizaciones_solicitud_no_autoriza' => "Expresamente no doy mi consentimiento / Me opongo a / No concedo / Deniego mi autorización para que se consulten los datos y documentos necesarios para la tramitación de esta solicitud. Por eso, presento los documentos que constan a continuación",
 
    'expongo_cabecera_ils'                 => "EXPONGO",
    'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓN REQUERIDA ADJUNTADA",
