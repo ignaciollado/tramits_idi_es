@@ -1,9 +1,6 @@
 * {
   box-sizing: border-box;
 }
-body {
-  background-color: rgba(241, 241, 241, 1);
-}
 
 dt {
   font-weight: normal;
@@ -39,6 +36,65 @@ section {
 
 .form-control {
   background-color: rgba(0, 128, 0, 1)!important;
+}
+
+article {
+  display: grid;
+  max-width: 1110px;
+  margin: auto;
+}
+
+.headerFormlineaXecs {
+  display: grid;
+  grid-template-areas:
+'idioma   ' 
+'logotipos' 
+'titulo   ' 
+'codigosia' 
+'solicitud';
+  gap: .5rem;
+}
+.langtoggle {
+  grid-area: idioma;
+  border: 1px solid green;
+}
+
+.logoarea {
+  grid-area: logotipos;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.titleform {
+  grid-area: titulo;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-weight: 800;
+}
+
+.siacode {
+  grid-area: codigosia;
+  border: 1px solid rgb(87, 107, 91);
+  text-align: right;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-right: .5rem;
+}
+
+.formspecifications {
+  grid-area: solicitud;
+  border: 1px solid #003747;
+  display: grid;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-right: .5rem;
+  margin-bottom: 1rem;
+}
+
+.formspecifications_row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding-left: .5rem;
 }
 
 #regForm {
@@ -172,13 +228,13 @@ select, input {
   font-size: 2rem;
 }    
 .formbox {
-  width: calc(100%);
+  /* width: calc(100%); */
   border: 1px solid #18a2d0;
   background-color: rgba(248, 249, 250, 1);
   padding: 1em 1.8em 1em 1em;
   margin-left: -0.5rem!important;
   border-radius: .5rem;
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 .formbox:last-child{
   margin-bottom: 2em!important;
@@ -191,10 +247,10 @@ select, input {
   user-select: none;
 }  
 .container-radio h6 {
-  font-size: 2rem;   
+  font-size: 1rem;   
 }
 .buttonAsistente {
-  background-color: #003747;
+  background-color: #0098cb;
   color: #fff;
   border: none;
   padding: 1rem 2rem;
@@ -225,7 +281,7 @@ select, input {
   height: 3rem;
   width: 3rem;
   margin: 0 1rem;
-  background-color: #0098cb;
+  background-color: #003747;
   color: rgba(255, 255, 255, 1);
   border-radius: 50%;
   padding: 3px 3px 0 3px;

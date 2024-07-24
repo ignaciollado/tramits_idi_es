@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!----------------------------------------- Informe favorable amb requeriment ILS-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
@@ -12,7 +11,7 @@
         <?php }
         else {?>
 	  		<span id="btn_6" class="">	
-	  			<a id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento_ils');?>"> <i title="Genera l'informe" class="fa-solid fa-file-pdf fa-2xl" style="color: #365446;"></i></a>
+	  			<a class="btn btn-secondary btn-acto-admin" id="generaInfFavConReq" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_favorable_con_requerimiento_ils');?>">Genera l'informe</a>
 			</span>
 			<span id="spinner_6" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#365446;"></i></span>
 		<?php }?>

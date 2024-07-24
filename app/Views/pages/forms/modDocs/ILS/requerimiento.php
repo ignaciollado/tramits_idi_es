@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Requeriment
@@ -8,9 +7,9 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" data-bs-toggle="modal" data-bs-target= "#myRequerimientoIls" id="myBtnRequerimientoIls"><i title="Motiu del requeriment" class="fa-solid fa-pen fa-2xl" style="color: #365446;"></i></button>
+			<button class="btn btn-secondary btn-acto-admin" type = "button" data-bs-toggle="modal" data-bs-target= "#myRequerimientoIls" id="myBtnRequerimientoIls">Motiu del requeriment</button>
 			<span id="btn_3" class="">
-    			<a id ="wrapper_motivoRequerimientoIls" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment_ils');?>"><i title="Enviar a signar el document" class="fa-solid fa-signature fa-2xl" style="color: #365446;"></i></a>
+    			<a id ="wrapper_motivoRequerimientoIls" class="ocultar" href="<?php echo base_url('public/index.php/expedientes/generaInformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_requeriment_ils');?>">Envia a signar el requeriment</a>
 			</span>
 			<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 	<?php }?>

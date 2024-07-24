@@ -60,10 +60,10 @@
 		</fieldset>
 	</div>
 	<fieldset>
-	<?php echo lang('message_lang.documentacion_necesaria_pymes_idi_isba');?>
-	<h3><?php echo lang('message_lang.documentacion_resultante_cabecera_idi_isba');?></h3>
-	<?php echo lang('message_lang.documentacion_resultante_idi_isba');?>
-</fieldset>
+		<?php echo lang('message_lang.documentacion_necesaria_pymes_idi_isba');?>
+		<h3><?php echo lang('message_lang.documentacion_resultante_cabecera_idi_isba');?></h3>
+		<?php echo lang('message_lang.documentacion_resultante_idi_isba');?>
+	</fieldset>
 </div>
 <!-------------------------- 1. TIPO DE SOLICITANTE ----------------------------------------------------------------------->
 <div class="tab" id="empresa">
@@ -171,7 +171,7 @@
 			<h2>5. <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
 			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220">
 		</fieldset>
-<!-------------------------- 6. SOLICITA AYUDA ------------------------------------------------------------------------>
+	<!-------------------------- 6. SOLICITA AYUDA ------------------------------------------------------------------------>
 		<fieldset>
 			<h2>6. <?php echo lang('message_lang.adherido_a_ils_si_no');?></h2>
 			<div class="form-check form-check-inline">
@@ -447,22 +447,15 @@
 
 <script>
 let currentTab = 0; // Current tab is set to be the first tab (0)
+let decodedCookie = decodeURIComponent(document.cookie)
+let cookieToArray = decodedCookie.split(';')
+let currentLanguage = cookieToArray[5].split('=')[1]
+console.log (`*******${currentLanguage}**********${cookieToArray}`)
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
   // This function will display the specified tab of the form...
-  let x = document.getElementsByClassName("tab");
-  let itramitsCookies = document.cookie.split(";");
-  // Loop through the array elements
-  for(let i = 0; i < itramitsCookies.length; i++) {
-    let cookiePair = itramitsCookies[i].split("=");
-    /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
-    if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
-      // Decode the cookie value and return
-      let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
-    }
-  }
-
+  let x = document.getElementsByClassName("tab")
   x[n].style.display = "block";
 
   //... and fix the Previous/Next buttons:
@@ -483,7 +476,11 @@ function showTab(n) {
 	  submitBTN.setAttribute("onclick", "onFormSubmit(this)")
 		submitBTN.setAttribute("class", "buttonAsistente buttonEnviar");  
   } else {
-		submitBTN.innerHTML = "Següent"
+		if (currentLanguage === "ca") {
+			submitBTN.innerHTML = "Següent"
+		} else {
+			submitBTN.innerHTML = "Siguiente"
+		}
 		submitBTN.setAttribute("onclick", "nextPrev(1)")
   }
   //... and run the function that will display the correct step indicator:

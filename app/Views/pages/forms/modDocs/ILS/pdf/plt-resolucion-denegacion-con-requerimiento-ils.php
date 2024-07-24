@@ -30,7 +30,7 @@ class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
-        $image_file = K_PATH_IMAGES.'logo_idi_conselleria_ils.jpg';
+        $image_file = K_PATH_IMAGES.'logo_adr_conselleria_ils.jpg';
         // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
         $this->Image($image_file, 38, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
@@ -154,8 +154,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.jpg';
-$pdf->Image($image_file, 15, 15, '', '40', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);

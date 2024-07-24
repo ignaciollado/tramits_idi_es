@@ -101,7 +101,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('3_isba_propuesta_resolucion_prov_favorable.intro'));
 $intro = str_replace("%FECHAFIRMARESDESESTIMIENTO%", date_format(date_create($data['expediente']['fecha_firma_resolucion_desestimiento']),"d/m/Y"), $intro);
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -112,19 +112,19 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_antecedentes') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('3_isba_propuesta_resolucion_prov_favorable.antecedentes_tit') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p1'));
+$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('3_isba_propuesta_resolucion_prov_favorable.antecedentes_1_2_3_4'));
 $parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
 
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p2'));
+$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('3_isba_propuesta_resolucion_prov_favorable.antecedentes_5'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
 $parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
@@ -134,13 +134,13 @@ $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p3m'));
+    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('3_isba_propuesta_resolucion_prov_favorable.fundamentosDeDerecho_tit'));
     $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
     $html .= "<li>". $parrafo_3m ."</li>";
     $html .= "<br>";
 }
 
-$parrafo_3 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p3'));
+$parrafo_3 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , lang('3_isba_propuesta_resolucion_prov_favorable.fundamentosDeDerechoTxt'));
 $parrafo_3 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $parrafo_3);
 $parrafo_3 = str_replace("%NIF%", $data['expediente']['nif'] , $parrafo_3);
 $parrafo_3 = str_replace("%NUMENMIENDAREC%", $data['expediente']['ref_REC_enmienda'] , $parrafo_3);
@@ -149,14 +149,14 @@ $parrafo_3 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $par
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
 
-$parrafo_4 = str_replace("%FECHAPROPDENEGACION%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p4'));
+$parrafo_4 = str_replace("%FECHAPROPDENEGACION%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion']),"d/m/Y") , lang('3_isba_propuesta_resolucion_prov_favorable.propuestaresoluciondef_tit'));
 $parrafo_4 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4);
 $parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
 $parrafo_4 = str_replace("%FECHANOTPROPRESDENEGACION%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion_notif']),"d/m/Y") , $parrafo_4);
 $html .= "<li>". $parrafo_4 ."</li>";
 $html .= "<br>";
 
-$parrafo_5 = str_replace("%FECHAINFORFAV%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p5'));
+$parrafo_5 = str_replace("%FECHAINFORFAV%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y") , lang('3_isba_propuesta_resolucion_prov_favorable.propuestaresoluciondefTxt'));
 $parrafo_5 = str_replace("%TEXTOLIBRE%", $data['expediente']['motivoDenegacion'], $parrafo_5);
 $html .= "<li>". $parrafo_5 ."</li>";
 $html .= "</ol>";
@@ -170,28 +170,12 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 35);
-$parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p6'));
+$parrafo_6 = str_replace("%FECHARECJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y") , lang('3_isba_propuesta_resolucion_prov_favorable.propuestaresoluciondef_1_2_3_4_5_6'));
 $parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $parrafo_6);
 $parrafo_6 = str_replace("%NIF%", $data['expediente']['nif'] , $parrafo_6);
 $parrafo_6 = str_replace("%REFRECJUSTIFICACION%", $data['expediente']['ref_REC_justificacion'] , $parrafo_6);
 $html = "<li>". $parrafo_6 ."</li>";
 $html .= "<br>";
-
-$parrafo_7 = str_replace("%FECHANOTIFICACIONRESOLUCION%", date_format(date_create($data['expediente']['fecha_notificacion_resolucion']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p7'));
-$parrafo_7 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_7);
-$parrafo_7 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_7);
-$html .= "<li>". $parrafo_7 ."</li>";
-$html .= "<br>";
-
-$parrafo_8 = str_replace("%TEXTOLIBRE%", $data['expediente']['motivoResolucionRevocacionPorNoJustificar'] , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p8'));
-$html .= "<li>". $parrafo_8 ."</li>";
-$html .= "<br>";
-
-$parrafo_9 = str_replace("%FECHAINFORFAV%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y") , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_p9'));
-$parrafo_9 = str_replace("%TEXTOLIBRE%", $data['expediente']['motivoDenegacion'], $parrafo_9);
-$html .= "<li>". $parrafo_9 ."</li>";
-$html .= "</ol>";
-$pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
 $pdf->setPrintHeader(false);
@@ -200,58 +184,10 @@ $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 35);
-$req_fundamentos = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_fundamentos');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $req_fundamentos ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$req_fundamentos_1 = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_fundamentos_1');
-$html = "<ol><li>". $req_fundamentos_1."</li><br>";
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$req_fundamentos_2 = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_fundamentos_2');
-$html .= "<li>". $req_fundamentos_2."</li></ol>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$dicto = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_dicto');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $dicto ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$resolucion = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_resolucion');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$resolucion_1 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_resolucion_1'));
-$resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
-$resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
-$html = "<ol><li>". $resolucion_1."</li><br>";
-$resolucion_2 = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_resolucion_2');
-$html .= "<li>". $resolucion_2."</li><br>";
-
-$resolucion_3 = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_resolucion_3');
-$html .= "<li>". $resolucion_3."</li></ol>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-$firma = lang('message_lang.doc_prop_resolucion_revocacion_por_no_justificar_firma');
+$firma = lang('3_isba_propuesta_resolucion_prov_favorable.firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
-$firma = str_replace("%DIRECTORAGERENTEIDI%", $data['configuracion']['directorGerenteIDI'], $firma);
+$firma = str_replace("%DIRECTORAGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
 
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

@@ -61,7 +61,7 @@ function onFormSubmit(e) {
 
 	if (document.getElementById("autonomo").checked) { /* Si es persona física */
 		if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_e").value === '' ) {
-			document.getElementById("documentacion_adjunta_requerida_idi_isba_e").setAttribute ('class','aviso')
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute ('class','aviso')
 			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("required", '')
 			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("aria-required", 'true')
 			document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute("required", '')
@@ -153,8 +153,8 @@ function tipoSolicitante (valor) {
 				document.getElementById("telefono_contacto_rep").readOnly = true
 				document.getElementById("telefono_contacto_rep").disabled = true
 				document.getElementById('telefono_contacto_rep').classList.add('input-disabled')
-				/*  				document.getElementById("es-p-fisica").classList.remove("ocultar");
-				document.getElementById("es-p-juridica").classList.add("ocultar") */
+				document.getElementById('denegacion_f_expresa').readOnly = true
+				document.getElementById('denegacion_f_expresa').disabled = true
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute('required', '')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("aria-required", 'true')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').disabled = false
@@ -187,6 +187,8 @@ function tipoSolicitante (valor) {
 				document.getElementById("telefono_contacto_rep").readOnly = false
 				document.getElementById("telefono_contacto_rep").disabled = false
 				document.getElementById('telefono_contacto_rep').classList.remove('input-disabled')
+				document.getElementById('denegacion_f_expresa').readOnly = false
+				document.getElementById('denegacion_f_expresa').disabled = false
 				/*  				document.getElementById("es-p-fisica").classList.add("ocultar")
 				document.getElementById("es-p-juridica").classList.remove("ocultar"); */
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').removeAttribute('required', '')

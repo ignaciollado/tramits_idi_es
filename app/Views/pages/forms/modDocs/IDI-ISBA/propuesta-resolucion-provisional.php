@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució provisional. DOC 3. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional  ***PRE***
+		Proposta de resolució provisional  ***PRE*** OK
 	</div>
 	<div class="card-itramits-footer">
 		<?php

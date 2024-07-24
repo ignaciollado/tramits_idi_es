@@ -38,11 +38,10 @@
 <!-- One "tab" for each step in the form: -->
 <!-------------------------- 0. INFO DOCUMENTACIÓN NECESARIA y ACEPTA EL RGPD ---------------------------------->
 <div class="tab">
-
 	<div>
 		<fieldset>
 			<label for = "rgpd" class="main" >
-				<span ><?php echo lang('message_lang.rgpd_leido');?> 
+				<span ><?php echo lang('message_lang.rgpd_leido');?> *************
 					<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 				<span class="w3docs"></span>

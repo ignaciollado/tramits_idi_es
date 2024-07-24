@@ -10,7 +10,7 @@
         <?php }
         else {?>
 			<span id="btn_222" class="">	
-    			<a id="generaResolucioConcesionSinReqILS" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_resolucion_concesion_adhesion_ils');?>"><i title="Generar la resolució" class="fa-solid fa-file-pdf fa-2xl" style="color: #365446;"></i></a>
+    			<a class="btn btn-secondary btn-acto-admin" id="generaResolucioConcesionSinReqILS" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_resolucion_concesion_adhesion_ils');?>">Generar la resolució</a>
 			</span>
 			<span id="spinner_222" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 		<?php }?>

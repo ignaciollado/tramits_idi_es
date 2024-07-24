@@ -152,8 +152,8 @@ $html7 .= "<tr><td></td></tr>";
 $html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('message_lang.operacion_financiera_aval_idi_isba').":</b></td></tr>";
 $html7 .= "<tr><td></td></tr>";
 $html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.fecha_del_aval_idi_isba').": <b>" . date_format(date_create($fecha_aval_isba),"d/m/Y") . "</b></td></tr>";
-$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_idi_isba').": <b>" . $plazo_aval_idi_isba . "</b></td></tr>";
 $html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.cuantia_prestamo_idi_isba').": <b>" . $cuantia_aval_idi_isba . "</b></td></tr>";
+$html7 .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.plazo_prestamo_idi_isba').": <b>" . $plazo_aval_idi_isba . "</b></td></tr>";
 
 $html7 .= "</table>";
 $currentY = $pdf->getY();

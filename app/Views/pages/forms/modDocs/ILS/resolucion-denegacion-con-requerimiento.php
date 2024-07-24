@@ -8,7 +8,7 @@
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<a id="generadoc_res_denegacion_con_req" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_res_denegacion_con_req_ils'); ?>"><i title="Generar la resolució" class="fa-solid fa-file-pdf fa-2xl" style="color: #365446;"></i></a>
+			<a class="btn btn-secondary btn-acto-admin" id="generadoc_res_denegacion_con_req" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/' . $id . '/' . $convocatoria . '/' . $programa . '/' . $nifcif . '/doc_res_denegacion_con_req_ils'); ?>">Generar la resolució</a>
 			<span id="spinner_12" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 		<?php } ?>
 

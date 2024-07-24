@@ -10,7 +10,7 @@
 		<?php }
 			else {?>
 				<span id="btn_4_ils" class="">	
-					<a id="generaInformeDesfConReq_ils" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_con_requerimiento_ils');?>"><i title="Generar l'informe" class="fa-solid fa-file-pdf fa-2xl" style="color: #365446;"></i></a>
+					<a class="btn btn-secondary btn-acto-admin" id="generaInformeDesfConReq_ils" href="<?php echo base_url('public/index.php/expedientes/generainformeILS/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_desfavorable_con_requerimiento_ils');?>">Generar l'informe</a>
 				</span>
 				<span id="spinner_4_ils" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#cbebe9;"></i></span>
 		<?php }?>

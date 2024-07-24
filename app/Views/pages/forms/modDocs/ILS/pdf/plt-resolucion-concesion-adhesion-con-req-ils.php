@@ -30,7 +30,7 @@ class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
-        $image_file = K_PATH_IMAGES.'logo_idi_conselleria_ils.jpg';
+        $image_file = K_PATH_IMAGES.'logo_adr_conselleria_ils.jpg';
         // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
         $this->Image($image_file, 38, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
@@ -119,8 +119,6 @@ $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 4); */
 $parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_ils_resolucion_concesion_con_req_p2'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
@@ -128,21 +126,15 @@ $parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2)
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 4); */
 $parrafo_3 = str_replace("%FECHANOTIFIC%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") ,lang('message_lang.doc_ils_resolucion_concesion_con_req_p3'));
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 4); */
 $parrafo_4 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") ,lang('message_lang.doc_ils_resolucion_concesion_con_req_p4'));
 $parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC_enmienda'], $parrafo_4);
 $html .= "<li>". $parrafo_4 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 4); */
 $parrafo_5 = str_replace("%FECHAINFORMEFAV%", date_format(date_create($data['expediente']['fecha_infor_fav']),"d/m/Y") ,lang('message_lang.doc_ils_resolucion_concesion_con_req_p5'));
 $html .= "<li>". $parrafo_5 ."</li>";
 $html .= "</ol>";
@@ -156,8 +148,6 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 1); */
 $resolucion_1 = lang('message_lang.doc_ils_resolucion_concesion_con_req_resolucion_1');
 $resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $resolucion_1);
 $resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'], $resolucion_1);
@@ -169,14 +159,10 @@ $html = "<ol>";
 $html .= "<li>". $resolucion_1 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $resolucion_2 = lang('message_lang.doc_ils_resolucion_concesion_con_req_resolucion_2');
 $html .= "<li>". $resolucion_2 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $resolucion_3 = lang('message_lang.doc_ils_resolucion_concesion_con_req_resolucion_3');
 $html .= "<li>". $resolucion_3 ."</li>";
 $html .= "</ol>";
@@ -185,8 +171,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.jpg';
-$pdf->Image($image_file, 15, 15, '', '40', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
