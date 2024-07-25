@@ -177,39 +177,3 @@
 	</div>
 </div>
 </section>
-
-<!-- <script>
-	$(document).ready(function(){
-		$("#file_PlanTransformacionDigital").focusout(function() {
-		var inputValue = $(this).val();
-		var txt = "";
-		
-		if (inputValue == "" || document.getElementById("file_PlanTransformacionDigital").validity.patternMismatch)
-			{
-			txt = "Hauria de ser un nom vàlid !!!";
-			document.getElementById("mensaje").innerHTML = txt;			
-			$("#file_PlanTransformacionDigital").focus();
-			$('#centre').prop('disabled', true);
-			$("#file_PlanTransformacionDigital").addClass("form-control is-not-valid");
-			$('#enviar_inscripcion').prop('disabled', true);
-			}
-		else
-			{
-			txt = "";
-			document.getElementById("mensaje").innerHTML = txt;		
-			$('#centre').prop('disabled', false);
-			}
-			})
-			
-		$( "#rgpd" ).change(function() {
-		if ($(this).is(":checked"))
-			{
-			$('#documentacion_justificacion').prop('disabled', false);
-		}
-		else
-		{
-			$('#documentacion_justificacion').prop('disabled', true);	
-		}
-		});
-	});	
-</script> -->

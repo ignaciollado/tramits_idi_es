@@ -25,21 +25,21 @@
 				$estado_firma = $respuesta['status'];
 				switch ($estado_firma) {
 					case 'NOT_STARTED':
-						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar<br>per Gerència IDI</div>";
+						$estado_firma = "<div class='info-msg'>Pendent de signar</div>";
 						break;
 					case 'REJECTED':
-						$estado_firma = "<div class = 'warning-msg'><i class='fa fa-warning'></i><a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . ">Signatura rebutjada<br>per Gerència IDI";
+						$estado_firma = "<div class = 'warning-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . ">Signatura rebutjada";
 						$estado_firma .= "</a></div>";
 						break;
 					case 'COMPLETED':
-						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " ><i class='fa fa-check'></i>Signat per Gerència IDI";
+						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " >Signat";
 						$estado_firma .= "</a>";
 						break;
 					case 'IN_PROCESS':
-						$estado_firma = "<div class='info-msg'><i class='fa fa-check'></i><a href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " >En curs";
+						$estado_firma = "<div class='info-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " >En curs";
 						$estado_firma .= "</a></div>";
 					default:
-						$estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
+						$estado_firma = "<div class='info-msg'>Desconegut</div>";
 				}
 				echo $estado_firma;
 			}	?>

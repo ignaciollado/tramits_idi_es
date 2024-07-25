@@ -360,7 +360,6 @@ class Home extends BaseController
 		$lineaConfig = new ConfiguracionLineaModel();
 		
 		$data['configuracion'] = $generalConfig->configuracionGeneral();
-
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('IDI-ISBA',	2024 );
 		  
 		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
@@ -375,15 +374,15 @@ class Home extends BaseController
 			if ($idioma === 'ca') {
 				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_ca'];
 				if($isActiveLineData === 'NO') {
-					$data['activatedLine'] = "IDI-ISBA<br><br>Linia d'ajuts NO ACTIVA";
+					$data['activatedLine'] = "ADR Balears-ISBA<br><br>Linia d'ajuts NO ACTIVA";
 				}
 			} else {
 				$data['aviso'] = $data['configuracionLinea']['convocatoria_aviso_es'];
 				if($isActiveLineData === 'NO') {
-					$data['activatedLine'] = "IDI-ISBA<br><br>Linea de ayudas NO ACTIVA";
+					$data['activatedLine'] = "ADR Balears-ISBA<br><br>Linea de ayudas NO ACTIVA";
 				}
 			}
-			$data['titulo'] = $data['configuracionLinea']['lineaAyuda'];
+			$data['titulo'] = "ADR Balears - ISBA";
 			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
 			echo view('templates/footer/footer_form');
 		}

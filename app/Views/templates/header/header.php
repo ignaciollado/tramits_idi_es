@@ -83,8 +83,8 @@ ul { list-style-type: none; }
 			<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/ca'); ?>" target="_self">Inici</a></li>
 			<?php if ($session->get('rol') !== 'felib') {?>
 				<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/set_lang/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_idigital_menu');?></a></li>
-				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_ils/'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_ils_menu');?></a></li>
-				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/'); ?>" target = "_blank"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></a></li>	
+				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_ils/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_ils_menu');?></a></li>
+				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></a></li>	
 			<?php }?>	
 			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_felib/'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_felib_menu');?></a></li>		
 

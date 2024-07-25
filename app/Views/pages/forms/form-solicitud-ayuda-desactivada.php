@@ -22,12 +22,16 @@
     </div>
     <div style="text-align:center;">
       <a href="https://www.adrbalears.es"><img width="50%" src="/public/assets/images/ADRBalears-conselleria.jpg" 
-      title="Agència de desenvolupament regional de les Illes Balears"
-      alt="Agència de desenvolupament regional de les Illes Balears"/></a>
+      title="ADR Balears - Agència de desenvolupament regional de les Illes Balears"
+      alt="ADR Balears - Agència de desenvolupament regional de les Illes Balears"/></a>
     </div>
   </div>   
 </div>
-
+<style>
+  h2 {
+    text-align: center;
+  }
+</style>
 
 <div style ="margin-top:150px;"></div>
 

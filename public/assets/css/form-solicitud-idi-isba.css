@@ -128,7 +128,7 @@ h1 {
 }
 h3 {
   text-align: left;
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
   font-size: 1.25rem;
 }
 input {

@@ -405,9 +405,7 @@
 </form>
 <script>
 let currentTab = 0; // Current tab is set to be the first tab (0)
-let decodedCookie = decodeURIComponent(document.cookie)
-let cookieToArray = decodedCookie.split(';')
-let currentLanguage = cookieToArray[(cookieToArray.length-1)].split('=')[1]
+let currentLanguage = getCookie('itramitsCurrentLanguage')
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
@@ -565,6 +563,13 @@ function fixStepIndicator(n) {
 	if (n < 8) {
   		x[n].className += " active";
 	}
+}
+
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 </script>
 </section>

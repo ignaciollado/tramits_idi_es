@@ -303,11 +303,6 @@
 				<div>
 					<input onblur="javaScript: validateFormField(this);" required aria-required="true" type="file" id="documentacion_adjunta_requerida_idi_isba_b" name="documentacion_adjunta_requerida_idi_isba_b[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_b');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
-			<!-- 	<label for="idi_isba_b_EnIDI" class="main">
-					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-					<input type="checkbox" id="idi_isba_b_EnIDI" name="idi_isba_b_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
-					<span class="w3docs"></span>
-				</label> -->
 			</li>
 
 			<li>
@@ -326,7 +321,7 @@
 
 			<div id="es-p-fisica">
 				<li id="li-doc-e">
-	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3> <code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<div>
 						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 					</div>	
@@ -335,22 +330,20 @@
 
 			<div id="es-p-juridica">
 				<li id="li-doc-f">
-	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3>
-					<div id="enviaridi_isba_f" class="ocultar">
-						<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" size="50" accept=".pdf, .jpeg, .png" multiple/>
+	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+					<div>
+						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 					</div>
-					<label for="denegacion_f_expresa" class="main">
-					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.autorizaciones_solicitud_no_autoriza');?> </label>
-					<input type="checkbox" id="denegacion_f_expresa" name="denegacion_f_expresa" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
-					<span class="w3docs"></span>
-				</label>
 				</li>	
 			</div>
-			
+							<!-- 	<label for="idi_isba_b_EnIDI" class="main">
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
+					<input type="checkbox" id="idi_isba_b_EnIDI" name="idi_isba_b_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+					<span class="w3docs"></span>
+				</label> -->
 			<li>
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?></strong></h3>
-				<div id = "enviaridi_isba_g"  class="ocultar">
+				<div id = "enviaridi_isba_g" class="ocultar">
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
@@ -363,13 +356,13 @@
 
 			<li>
  				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?></strong></h3>
-				<div id = "enviaridi_isba_h" class = "">
+				<div id = "enviaridi_isba_h" class = "ocultar">
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_h" name="documentacion_adjunta_requerida_idi_isba_h[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_h');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
-				<label for="idi_isba_h_EnIDI" class="main" >
-					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-					<input type="checkbox" id="idi_isba_h_EnIDI" name="idi_isba_h_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
+				<label for="denegacion_h_expresa" class="main" >
+					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.autorizaciones_solicitud_no_autoriza');?> </label>
+					<input type="checkbox" id="denegacion_h_expresa" name="denegacion_h_expresa" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
 					<span class="w3docs"></span>
 				</label>
 			</li>
@@ -410,14 +403,13 @@
 			</li>
 			
 			<li>
-			<div class="form-check">
-  				<input class="" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_n[]" id="documentacion_adjunta_requerida_idi_isba_n" value="SI">
-  					<label class="form-check-label" for="documentacion_adjunta_requerida_idi_isba_n">
-							<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>
-  					</label>
+				<div class="form-check">
+					<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?></strong>	
+  					<input class="" type="checkbox" title = "<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_n');?>" checked="checked" name="documentacion_adjunta_requerida_idi_isba_n[]" id="documentacion_adjunta_requerida_idi_isba_n" value="SI">
+					</h3>
 				</div>
 			</li>			
-			</ol>
+		</ol>
 		</fieldset>
 	
 	</div>	
@@ -425,6 +417,7 @@
 		<span class="tooltiptext_idi"><h3><?php echo lang('message_lang.upload_multiple');?></h3></span>	
 	</div>
 </div>
+
 </form>
 </section>
 
@@ -447,12 +440,9 @@
 
 <script>
 let currentTab = 0; // Current tab is set to be the first tab (0)
-let decodedCookie = decodeURIComponent(document.cookie)
-let cookieToArray = decodedCookie.split(';')
-let currentLanguage = cookieToArray[5].split('=')[1]
-console.log (`*******${currentLanguage}**********${cookieToArray}`)
-showTab(currentTab); // Display the current tab
+let currentLanguage = getCookie('itramitsCurrentLanguage')
 
+showTab(currentTab); // Display the current tab
 function showTab(n) {
   // This function will display the specified tab of the form...
   let x = document.getElementsByClassName("tab")
@@ -617,5 +607,12 @@ function fixStepIndicator(n) {
 	if (n < 7) {
   		x[n].className += " active";
 	}
+}
+
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 </script>

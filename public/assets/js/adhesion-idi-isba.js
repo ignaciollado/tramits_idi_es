@@ -153,8 +153,6 @@ function tipoSolicitante (valor) {
 				document.getElementById("telefono_contacto_rep").readOnly = true
 				document.getElementById("telefono_contacto_rep").disabled = true
 				document.getElementById('telefono_contacto_rep').classList.add('input-disabled')
-				document.getElementById('denegacion_f_expresa').readOnly = true
-				document.getElementById('denegacion_f_expresa').disabled = true
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute('required', '')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("aria-required", 'true')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').disabled = false
@@ -187,10 +185,6 @@ function tipoSolicitante (valor) {
 				document.getElementById("telefono_contacto_rep").readOnly = false
 				document.getElementById("telefono_contacto_rep").disabled = false
 				document.getElementById('telefono_contacto_rep').classList.remove('input-disabled')
-				document.getElementById('denegacion_f_expresa').readOnly = false
-				document.getElementById('denegacion_f_expresa').disabled = false
-				/*  				document.getElementById("es-p-fisica").classList.add("ocultar")
-				document.getElementById("es-p-juridica").classList.remove("ocultar"); */
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').removeAttribute('required', '')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').removeAttribute("aria-required")
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_e').disabled = true
@@ -199,7 +193,7 @@ function tipoSolicitante (valor) {
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').setAttribute('required', '')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').setAttribute("aria-required", 'true')
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').disabled = false
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').classList.add('input-disabled')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_f').classList.remove('input-disabled')
 				document.getElementById('li-doc-f').classList.remove('input-disabled')
 				break;
 		}
@@ -245,18 +239,18 @@ function deshabilitarSubidaDocumento (checkObj) {
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').disabled = false
 			}
 			break
-		case 'denegacion_f_expresa':
+		case 'denegacion_g_expresa':
 			if (checkObj.checked) {
-				document.getElementById('enviaridi_isba_f').classList.remove("ocultar")
+				document.getElementById('enviaridi_isba_g').classList.remove("ocultar")
 			} else {
-				document.getElementById('enviaridi_isba_f').classList.add("ocultar")
+				document.getElementById('enviaridi_isba_g').classList.add("ocultar")
 			}
 			break
-			case 'denegacion_g_expresa':
+			case 'denegacion_h_expresa':
 				if (checkObj.checked) {
-					document.getElementById('enviaridi_isba_g').classList.remove("ocultar")
+					document.getElementById('enviaridi_isba_h').classList.remove("ocultar")
 				} else {
-					document.getElementById('enviaridi_isba_g').classList.add("ocultar")
+					document.getElementById('enviaridi_isba_h').classList.add("ocultar")
 				}
 				break	
 	}
