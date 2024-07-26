@@ -279,7 +279,7 @@ function actualiza_fase_0_expediente_idi_isba(formName) {  //SE EMPLEA
 	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
 
 
-	for (let step = 0; step < 26; step++) {
+	for (let step = 0; step < 28; step++) {
 		document.getElementsByClassName("form-group general")[step].style.opacity = "0.1";
 	}
 	
@@ -302,7 +302,7 @@ function actualiza_fase_0_expediente_idi_isba(formName) {  //SE EMPLEA
 				send_fase_0.className = "btn-itramits btn-success-itramits";
 				send_fase_0.disabled = false;
 			}
-			for (let step = 0; step < 7; step++) {
+			for (let step = 0; step < 28; step++) {
 				document.getElementsByClassName("form-group general")[step].style.opacity = "1.0";
 			}
 		}
@@ -403,65 +403,23 @@ function actualiza_fase_2_validacion_expediente_idi_isba(formName) {  //SE EMPLE
 	);
 }
 
-function actualiza_fase_3_ejecucion_expediente_idi_isba(formName) {  //SE EMPLEA
-	console.log("fase_3_idi_isba")
-	if (!validateForm(formName)) {
-		return;
-	}
-	let id = document.getElementById("id").value;
-	let fecha_adhesion_ils = document.getElementById("fecha_adhesion_ils").value; // Data adhesió
-	let fecha_seguimiento_adhesion_ils = document.getElementById("fecha_seguimiento_adhesion_ils").value; // Data seguiment
-	let fecha_limite_presentacion = document.getElementById("fecha_limite_presentacion").value; // Data límit presentació
-	let fecha_rec_informe_seguimiento = document.getElementById("fecha_rec_informe_seguimiento").value; // Data REC informe seguiment
-	let ref_REC_informe_seguimiento = document.getElementById("ref_REC_informe_seguimiento").value; //Ref. REC informe seguiment 
-
-	for (let step = 0; step < 5; step++) {
-		document.getElementsByClassName("form-group ejecucion")[step].style.opacity = "0.1";
-	}
-
-	let send_fase_3 = document.getElementById("send_fase_3");
-	send_fase_3.innerHTML = "Un moment ...";
-	send_fase_3.className = "btn-itramits warning-msg";
-	send_fase_3.disabled = true;
-
-	$.post(
-		"/public/assets/utils/actualiza_fase_3_ejecucion_expediente_ils.php",
-		{ id: id, fecha_adhesion_ils: fecha_adhesion_ils, fecha_seguimiento_adhesion_ils: fecha_seguimiento_adhesion_ils,
-			fecha_limite_presentacion: fecha_limite_presentacion, fecha_rec_informe_seguimiento: fecha_rec_informe_seguimiento,
-			ref_REC_informe_seguimiento: ref_REC_informe_seguimiento
-		 },
-		
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				send_fase_3.innerHTML = "Actualitzar";
-				send_fase_3.className = "btn-itramits btn-success-itramits";
-				send_fase_3.disabled = false;
-			}
-			for (let step = 0; step < 5; step++) {
-				document.getElementsByClassName("form-group ejecucion")[step].style.opacity = "1.0";
-			}
-		}
-	);
-}
-
 function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EMPLEA
-	console.log("fase_0_idi_isba")
+	console.log("fase_4_idi_isba")
 	if (!validateForm(formName)) {
 		return;
 	}
 	let id = document.getElementById("id").value;
-	let fecha_solicitud = document.getElementById("fecha_solicitud").value; // Data REC sol·licitud
-	let fecha_completado = document.getElementById("fecha_completado").value; // Data complert
-	let fecha_REC_justificacion = document.getElementById("fecha_REC_justificacion").value; // Data REC justificació
-	let ref_REC_justificacion = document.getElementById("ref_REC_justificacion").value; // Referència REC justificació
-	let fecha_res_liquidacion = document.getElementById("fecha_res_liquidacion").value; // Data informe liquidació
-	let fecha_not_liquidacion = document.getElementById("fecha_not_liquidacion").value; // Data notificació liquidació
+	let fecha_res_liquidacion = document.getElementById("fecha_res_liquidacion").value; // Data SEU justificació
+	let fecha_limite_justificacion = document.getElementById("fecha_limite_justificacion").value; // Referència SEU justificació
+	let fecha_not_res_pago = document.getElementById("fecha_not_res_pago").value; // Data notificació resolucio de pagament
 	let fecha_firma_requerimiento_justificacion = document.getElementById("fecha_firma_requerimiento_justificacion").value; // Data firma requeriment justificació
+	let fecha_not_req_just = document.getElementById("fecha_not_req_just").value // Data notificació requeriment justificació
 	let fecha_REC_requerimiento_justificacion = document.getElementById("fecha_REC_requerimiento_justificacion").value; // Data REC requeriment justificació
 	let ref_REC_requerimiento_justificacion = document.getElementById("ref_REC_requerimiento_justificacion").value; // Referència REC requeriment justificació
-
-	for (let step = 0; step < 7; step++) {
+	let fecha_propuesta_rev = document.getElementById("fecha_propuesta_rev").value; // Data propuesta revocació
+	let fecha_resolucion_rev = document.getElementById("fecha_resolucion_rev").value; // Data resolución revocació
+	
+	for (let step = 0; step < 9; step++) {
 		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
@@ -470,13 +428,15 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	send_fase_4.className = "btn-itramits warning-msg";
 	send_fase_4.disabled = true;
 	$.post(
-		"/public/assets/utils/actualiza_fase_4_justificacion_expediente.php",
-		{ id: id, fecha_solicitud: fecha_solicitud, fecha_completado: fecha_completado, fecha_REC_justificacion: fecha_REC_justificacion, 
-			ref_REC_justificacion:ref_REC_justificacion,
-			fecha_res_liquidacion: fecha_res_liquidacion, fecha_not_liquidacion: fecha_not_liquidacion,
+		"/public/assets/utils/actualiza_fase_4_justificacion_expediente_isba.php",
+		{ id: id, fecha_res_liquidacion: fecha_res_liquidacion, fecha_limite_justificacion: fecha_limite_justificacion, 
+			fecha_not_res_pago: fecha_not_res_pago, 
 			fecha_firma_requerimiento_justificacion: fecha_firma_requerimiento_justificacion,
+			fecha_not_req_just: fecha_not_req_just,
 			fecha_REC_requerimiento_justificacion: fecha_REC_requerimiento_justificacion,
-			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion
+			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion,
+			fecha_propuesta_rev: fecha_propuesta_rev,
+			fecha_resolucion_rev: fecha_resolucion_rev
 		},
 		
 		function (data) {
@@ -486,7 +446,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 				send_fase_4.className = "btn-itramits btn-success-itramits";
 				send_fase_4.disabled = false;
 			}
-			for (let step = 0; step < 7; step++) {
+			for (let step = 0; step < 9; step++) {
 				document.getElementsByClassName("form-group justificacion")[step].style.opacity = "1.0";
 			}			
 		}

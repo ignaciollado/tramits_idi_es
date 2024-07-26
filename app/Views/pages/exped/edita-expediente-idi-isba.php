@@ -897,13 +897,13 @@
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-provisional.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta de resolució provisional amb requeriment---------------------------->
-            <li>Proposta de resolució provisional amb requeriment</li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-provisional-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta de resolució definitiva----------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-definitiva.php';?></li> 
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta de resolució definitiva amb requeriment----------------------------->
-            <li>Proposta de resolució definitiva amb requeriment</li> 
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-definitiva-con-requerimiento.php';?></li>  
             <!------------------------------------------------------------------------------------------------------>            
             <!----------------------------------------- Resolución de concesión ---------------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-concesion.php';?></li>
@@ -1064,16 +1064,16 @@
         <h3>Actes administratius:</h3>
         <ol start="11">
             <!----------------------------------------- Informe inicio requerimento justificación ---------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-justificacion.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/inicio-requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Requerimiento de subsanación justificación --------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento-justificacion.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Informe post subsanación de la documentación de justificación--------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-sobre-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------- Resolución de pago FIRMA D GERENTE ----------------------------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-de-pago-sin-requerimiento.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-sin-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->      
         </ol>    
             <h3>Documents de l'expedient:</h3>
