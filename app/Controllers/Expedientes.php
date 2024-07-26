@@ -1001,7 +1001,6 @@ class Expedientes extends Controller
 		$documentos->delete();
 
 		/* Lista de las MEJORAS de la solicitud */
-		/* $data['mejorasSolicitud'] = $modelMejorasSolicitud->selectAllMejorasExpediente($id_sol); */
 		$ultimaMejora = $modelMejorasSolicitud->selectLastMejorasExpediente($id_sol);
 		$data['ultimaMejora'] = explode("##", $ultimaMejora);
 
@@ -1781,9 +1780,9 @@ class Expedientes extends Controller
 
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
-			case "doc_requeriment_idi_isba":  											//VIAFIRMA DOC 1 A TÉCNICO
+			case "doc_requeriment_adr_isba":  																	//VIAFIRMA DOC 1 A TÉCNICO
 				$data_infor = [
-					'doc_requeriment' => $last_insert_id
+					'doc_requeriment_adr_isba' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
@@ -1793,13 +1792,13 @@ class Expedientes extends Controller
 					'tipoDoc' => " El requeriment",
 					'conVIAFIRMA' => true
 				];
-				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-requerimiento-idi-isba', $data);
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-requerimiento-adr-isba', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 				
-			case "doc_res_desestimiento_por_no_enmendar_idi_isba": 	//VIAFIRMA DOC 2 
+		
 				$data_infor = [
 					'doc_res_desestimiento_por_no_enmendar' => $last_insert_id
 				];
@@ -1811,14 +1810,14 @@ class Expedientes extends Controller
 					'tipoDoc' => " Resolució desistiment per no esmenar",
 					'conVIAFIRMA' => false
 				];
-				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-desestimiento-por-no-enmendar-idi-isba', $data);
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-desestimiento-por-no-enmendar-adr-isba', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_provisional_idi_isba": 							//VIAFIRMA DOC 3
+			case "doc_prop_res_provisional_adr_isba": 							  //VIAFIRMA DOC 3
 				$data_infor = [
-					'doc_prop_res_provisional_con_req' => $last_insert_id
+					'doc_prop_res_provisional_adr_isba' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
@@ -1828,14 +1827,14 @@ class Expedientes extends Controller
 					'tipoDoc' => " Proposta resolució provisional",
 					'conVIAFIRMA' => false
 				];
-				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-provisional-idi-isba', $data);
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-provisional-adr-isba', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_definitiva_idi_isba": 								//VIAFIRMA DOC 4
+			case "doc_prop_res_definitiva_adr_isba": 								//VIAFIRMA DOC 4
 				$data_infor = [
-					'doc_prop_res_definitiva_con_req' => $last_insert_id
+					'doc_prop_res_definitiva_adr_isba' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
@@ -1845,29 +1844,12 @@ class Expedientes extends Controller
 					'tipoDoc' => " Proposta resolució definitiva",
 					'conVIAFIRMA' => false
 				];
-				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-idi-isba', $data);
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;		
-			case "doc_res_denegacion_idi_isba": 										//VIAFIRMA DOC 5
-				$data_infor = [
-					'doc_res_denegacion_con_req' => $last_insert_id
-				];
-				$builder->where('id', $request->uri->getSegment(3));
-				$builder->update($data_infor);
-				
-				$data['byCEOSigned'] = false;
-				$data_footer = [
-					'tipoDoc' => " Resolució de denegació",
-					'conVIAFIRMA' => false
-				];
-				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-denegacion-idi-isba', $data);
-				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-				echo view('pages/forms/go-back-footer', $data_footer);
-				break;				
-			case "doc_res_pago_idi_isba": 							    				//VIAFIRMA DOC 6
+		
 				$data_infor = [
 					'doc_res_pago_con_req' => $last_insert_id
 				];
@@ -1879,14 +1861,14 @@ class Expedientes extends Controller
 					'tipoDoc' => " Resolució de pagament",
 					'conVIAFIRMA' => false
 				];
-				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-pago-idi-isba', $data);
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-pago-adr-isba', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_res_conces_idi_isba": 								//VIAFIRMA DOC 7
+			case "doc_res_conces_adr_isba": 												//VIAFIRMA DOC 7
 				$data_infor = [
-					'doc_res_conces_con_req' => $last_insert_id
+					'doc_res_conces_adr_isba' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
@@ -1896,7 +1878,7 @@ class Expedientes extends Controller
 					'tipoDoc' => " Resolució de concessió",
 					'conVIAFIRMA' => false
 				];
-				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-concesion-idi-isba', $data);
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-concesion-adr-isba', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);

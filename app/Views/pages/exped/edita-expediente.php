@@ -1277,8 +1277,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------- Resolución de pago sin requerimiento  DOC 27 FIRMA D GERENTE ------------------>
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-de-pago-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------->    
-                               
+            <!------------------------------------------------------------------------------------------------->                  
         </ol>    
         <h3>Documents de l'expedient:</h3>
         <h4 class="alert alert-danger" role="alert">No pujar actes administratius signats!!!</h4>

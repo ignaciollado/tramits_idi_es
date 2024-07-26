@@ -57,7 +57,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_ResPagoConReg = document.getElementById('wrapper_ResPagoConReg')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
 		infoMissingDataDoc6.innerText = ""
 

@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució provisional. DOC 3. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional  ***PRE*** OK
+		Proposta de resolució provisional - testear
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -12,10 +12,10 @@
 		<?php } ?>
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_provisional_con_req'] != 0) { ?>
+		<?php if ($expedientes['doc_prop_res_provisional_adr_isba'] != 0) { ?>
 
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_provisional_idi_isba.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_provisional_adr_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -57,7 +57,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResProvisional = document.getElementById('wrapper_propuestaResProvisional')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""
 
@@ -90,7 +90,7 @@
 			infoMissingDataDoc3.classList.add('ocultar')
 			wrapper_propuestaResProvisional.disabled = true
 			wrapper_propuestaResProvisional.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_idi_isba'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_adr_isba'
 		} else {
 			infoMissingDataDoc3.classList.remove('ocultar')
 		}

@@ -605,7 +605,7 @@ Antes de empezar, es recomendable tener preparada la siguiente documentación (p
                                              <li>Una Declaración responsable de la persona titular de la empresa o de quien la representa legalmente.</li>
                                        </ol>',
 'identificacion_sol_idi_isba'    => "Identificación del SOLICITANTE",
-'operacion_financiera_idi_isba'  => "DATOS OPERACIÓN FINANCIERA",
+'operacion_financiera_idi_isba'  => "DATOS OPERACIÓN FINANCIERA<br>Finalidad de la inversión",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTAMO",
 'entidad_financiera_idi_isba'       => "Entidad financiera",
 'importe_prestamo_entidad_idi_isba' => "Importe de la operación",

@@ -61,7 +61,7 @@
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 
 		let wrapper_motivoDenegacion_5 = document.getElementById('wrapper_motivoDenegacion_5')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc5 = document.getElementById('infoMissingDataDoc5')
 		infoMissingDataDoc5.innerText = ""
 

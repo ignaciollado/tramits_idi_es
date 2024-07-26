@@ -68,10 +68,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGENCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR BALEARS) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("DOCUMENT DE REQUERIMENT");
 $pdf->SetSubject("DOCUMENT DE REQUERIMENT");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, GOIB");	
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR BALEARS, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -95,15 +95,6 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
-//$cabecera = "Nom representant: ".$data['expediente']['nombre_rep']."<br>";
-//$cabecera .= "Nom empresa: ".$data['expediente']['empresa'];
-//$html .= $cabecera;
-// set color for background
-//$pdf->SetFillColor(255, 255, 255);
-// set color for text
-//$pdf->SetTextColor(0, 0, 0);
-//writeHTMLCell(w, h, x, y, html = '', border = 0, ln = 0, fill = 0, reseth = true, align = '', autopadding = true) ⇒ Object Also known as: write_html_cell
-//$pdf->writeHTMLCell(90, '', 125, 20, $html, 0, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
@@ -129,13 +120,13 @@ $pdf->setFontSubsetting(false);
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('1_requerimiento.1_asunto')."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('isba_1_requerimiento.1_asunto')."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('1_requerimiento.1_p1'));
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('isba_1_requerimiento.1_p1'));
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";
@@ -150,7 +141,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_2 = lang('1_requerimiento.1_p2');
+$parrafo_2 = lang('isba_1_requerimiento.1_p2');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_2 ."</td></tr>";
 $html .= "</table>";
@@ -158,7 +149,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('1_requerimiento.1_p3'));
+$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('isba_1_requerimiento.1_p3'));
 $parrafo_4 = str_replace("%EMPRESA%", $data['expediente']['empresa'], $parrafo_4);
 $parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
 $parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4);
@@ -171,7 +162,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 
-$firma = lang('1_requerimiento.1_firma').  $pieFirma;
+$firma = lang('isba_1_requerimiento.1_firma').  $pieFirma;
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";
@@ -183,4 +174,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_requeriment.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_requeriment_adr_isba.pdf', 'F');

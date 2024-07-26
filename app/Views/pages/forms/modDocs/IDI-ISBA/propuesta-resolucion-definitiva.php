@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva. DOC 4. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució definitiva ***PRE***
+		Proposta de resolució definitiva - testear
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -13,10 +13,10 @@
 
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_definitiva_con_req'] != 0) { ?>
+		<?php if ($expedientes['doc_prop_res_definitiva_adr_isba'] != 0) { ?>
 
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_definitiva_idi_isba.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_definitiva_adr_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -59,7 +59,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResDefinitiva = document.getElementById('wrapper_propuestaResDefinitiva')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc4 = document.getElementById('infoMissingDataDoc4')
 		infoMissingDataDoc4.innerText = ""
 
@@ -93,7 +93,7 @@
 			wrapper_propuestaResDefinitiva.disabled = true
 			wrapper_propuestaResDefinitiva.innerHTML = "Generant i enviant ..."
 
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_idi_isba'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_adr_isba'
 		} else {
 			infoMissingDataDoc4.classList.remove('ocultar')
 		}

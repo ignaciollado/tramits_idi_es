@@ -302,7 +302,7 @@ function actualiza_fase_0_expediente_idi_isba(formName) {  //SE EMPLEA
 				send_fase_0.className = "btn-itramits btn-success-itramits";
 				send_fase_0.disabled = false;
 			}
-			for (let step = 0; step < 26; step++) {
+			for (let step = 0; step < 7; step++) {
 				document.getElementsByClassName("form-group general")[step].style.opacity = "1.0";
 			}
 		}
@@ -327,7 +327,7 @@ function actualiza_fase_1_solicitud_expediente_idi_isba(formName) {  //SE EMPLEA
 	let fecha_requerimiento_notif = document.getElementById("fecha_requerimiento_notif").value; // Data notificació requeriment
 	let fecha_maxima_enmienda  = document.getElementById("fecha_maxima_enmienda").value; // Data màxima per esmenar
 
-	for (let step = 0; step < 6; step++) {
+	for (let step = 0; step < 7; step++) {
 		document.getElementsByClassName("form-group solicitud")[step].style.opacity = "0.1";
 	}
 
@@ -343,14 +343,13 @@ function actualiza_fase_1_solicitud_expediente_idi_isba(formName) {  //SE EMPLEA
 			fecha_requerimiento: fecha_requerimiento, fecha_requerimiento_notif: fecha_requerimiento_notif, fecha_maxima_enmienda: fecha_maxima_enmienda },
 		
 		function (data) {
-			console.log(`${data}`)
 			$(".result").html(data);
 			if (data == 1) {
 				send_fase_1.innerHTML = "Actualitzar";
 				send_fase_1.className = "btn-itramits btn-success-itramits";
 				send_fase_1.disabled = false;
 			}
-			for (let step = 0; step < 6; step++) {
+			for (let step = 0; step < 7; step++) {
 				document.getElementsByClassName("form-group solicitud")[step].style.opacity = "1.0";
 			}
 		}
@@ -363,12 +362,15 @@ function actualiza_fase_2_validacion_expediente_idi_isba(formName) {  //SE EMPLE
 		return;
 	}
 	let id = document.getElementById("id").value;
-	let fecha_infor_fav = document.getElementById("fecha_infor_fav").value; // Data firma informe favorable
-	let fecha_infor_desf = document.getElementById("fecha_infor_desf").value; // Data firma informe desfavorable
-	let fecha_resolucion = document.getElementById("fecha_resolucion").value; // Data firma resolución
-	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // Data notificació resolució
+	let fecha_infor_fav_desf = document.getElementById("fecha_infor_fav_desf").value; // Data firma informe favorable / desfavorable
+	let fecha_firma_propuesta_resolucion_prov = document.getElementById("fecha_firma_propuesta_resolucion_prov").value; // Data firma proposta resolució
+	let fecha_not_propuesta_resolucion_prov = document.getElementById("fecha_not_propuesta_resolucion_prov").value; // Data notificació resolució
+	let fecha_firma_propuesta_resolucion_def = document.getElementById("fecha_firma_propuesta_resolucion_def").value; // Data firma poposta resolució definitiva
+	let fecha_not_propuesta_resolucion_def = document.getElementById("fecha_not_propuesta_resolucion_def").value; // Data notificació poposta resolució definitiva
+	let fecha_firma_res = document.getElementById("fecha_firma_res").value; // Data notificació proposta resolució
+	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // ref_REC_enmienda
 
-	for (let step = 0; step < 4; step++) {
+	for (let step = 0; step < 7; step++) {
 		document.getElementsByClassName("form-group validacion")[step].style.opacity = "0.1";
 	}
 
@@ -377,9 +379,15 @@ function actualiza_fase_2_validacion_expediente_idi_isba(formName) {  //SE EMPLE
 	send_fase_2.className = "btn-itramits warning-msg";
 	send_fase_2.disabled = true;
 	$.post(
-		"/public/assets/utils/actualiza_fase_2_validacion_expediente_ils.php",
-		{ id: id, fecha_infor_fav: fecha_infor_fav, fecha_infor_desf: fecha_infor_desf, 
-			fecha_resolucion: fecha_resolucion, fecha_notificacion_resolucion: fecha_notificacion_resolucion },
+		"/public/assets/utils/actualiza_fase_2_validacion_expediente.php",
+		{ id: id, fecha_infor_fav_desf: fecha_infor_fav_desf, 
+			fecha_firma_propuesta_resolucion_prov: fecha_firma_propuesta_resolucion_prov, 
+			fecha_not_propuesta_resolucion_prov: fecha_not_propuesta_resolucion_prov,
+			fecha_firma_propuesta_resolucion_def: fecha_firma_propuesta_resolucion_def,
+			fecha_not_propuesta_resolucion_def: fecha_not_propuesta_resolucion_def,
+			fecha_firma_res: fecha_firma_res,
+			fecha_notificacion_resolucion: fecha_notificacion_resolucion
+		},
 		
 		function (data) {
 			$(".result").html(data);
@@ -388,7 +396,7 @@ function actualiza_fase_2_validacion_expediente_idi_isba(formName) {  //SE EMPLE
 				send_fase_2.className = "btn-itramits btn-success-itramits";
 				send_fase_2.disabled = false;
 			}
-			for (let step = 0; step < 4; step++) {
+			for (let step = 0; step < 7; step++) {
 				document.getElementsByClassName("form-group validacion")[step].style.opacity = "1.0";
 			}
 		}

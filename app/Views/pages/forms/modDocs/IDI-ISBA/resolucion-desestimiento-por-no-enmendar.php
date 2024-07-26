@@ -61,7 +61,7 @@
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_requerimiento_notif= document.getElementById('fecha_requerimiento_notif')
 	
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let spinner_2 = document.getElementById('spinner_2')
 		let generaElDesestimiento = document.getElementById('generaElDesestimiento')
 		let infoMissingDataDoc2 = document.getElementById('infoMissingDataDoc2')

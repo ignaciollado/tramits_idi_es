@@ -633,7 +633,7 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
                                              <li>Una Declaració responsable de la persona titular de l'empresa o de qui la representa legalment.</li>
                                        </ol>",
 'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
-'operacion_financiera_idi_isba'  => "DADES OPERACIÓ FINANÇERA",
+'operacion_financiera_idi_isba'  => "DADES OPERACIÓ FINANÇERA<br>Finalitat de la inversió",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTEC",
 
 'entidad_financiera_idi_isba'    => "Nom entitat finançera",
