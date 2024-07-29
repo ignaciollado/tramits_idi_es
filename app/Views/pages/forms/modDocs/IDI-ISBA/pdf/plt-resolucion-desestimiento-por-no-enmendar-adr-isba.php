@@ -10,7 +10,7 @@ $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
 
 $data['configuracion'] = $configuracion->configuracionGeneral();   
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('IDI-ISBA', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -100,7 +100,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_2_resolucion_desestimiento_por_no_enmendar.intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -110,19 +110,19 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_antecedentes') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('isba_2_resolucion_desestimiento_por_no_enmendar.antecedentes') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p1'));
+$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('isba_2_resolucion_desestimiento_por_no_enmendar.p1'));
 $parrafo_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
 
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p2'));
+$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('isba_2_resolucion_desestimiento_por_no_enmendar.p2'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
 $parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
@@ -130,11 +130,11 @@ $parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $par
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
 
-$parrafo_3 = str_replace("%FECHANOTIFICACION%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p3'));
+$parrafo_3 = str_replace("%FECHANOTIFICACION%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('isba_2_resolucion_desestimiento_por_no_enmendar.p3'));
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
 
-$parrafo_4 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p4');
+$parrafo_4 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.p4');
 $parrafo_4 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4);
 $parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
 $html .= "<li>". $parrafo_4 ."</li>";
@@ -143,7 +143,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$resolucion = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion');
+$resolucion = lang('isba_2_resolucion_desestimiento_por_no_enmendar.resolucion');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."</td></tr>";
 $html .= "</table>";
@@ -151,18 +151,18 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$resolucion_1 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion_1');
+$resolucion_1 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.resolucion_1');
 $resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
 $resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
 $html = "<ol>";
 $html .= "<li>". $resolucion_1 ."</li>";
 $html .= "<br>";
 
-$resolucion_2 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion_2');
+$resolucion_2 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.resolucion_2');
 $html .= "<li>". $resolucion_2 ."</li>";
 $html .= "<br>";
 
-$resolucion_3 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion_3');
+$resolucion_3 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.resolucion_3');
 $html .= "<li>". $resolucion_3 ."</li>";
 $html .= "</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
@@ -175,7 +175,7 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
-$recursos = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_recursos');
+$recursos = lang('isba_2_resolucion_desestimiento_por_no_enmendar.recursos');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos ."</td></tr>";
 $html .= "</table>";
@@ -183,7 +183,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$recursos_1 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_recursos_1');
+$recursos_1 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.recursos_1');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_1 ."</td></tr>";
 $html .= "</table>";
@@ -191,7 +191,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$recursos_2 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_recursos_2');
+$recursos_2 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.recursos_2');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_2 ."</td></tr>";
 $html .= "</table>";
@@ -199,7 +199,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$firma = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_firma');
+$firma = lang('isba_2_resolucion_desestimiento_por_no_enmendar.firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -212,4 +212,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];  
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_desestimiento_por_no_enmendar_idi_isba.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_desestimiento_por_no_enmendar_adr_isba.pdf', 'F');

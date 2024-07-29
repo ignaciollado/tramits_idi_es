@@ -6,7 +6,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2023 CodeIgniter Foundation & IDI
+ * Copyright (c) 2019-2023 CodeIgniter Foundation & ADR Balears
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,8 @@
  * THE SOFTWARE.
  *
  * @package    CodeIgniter
- * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2023 CodeIgniter Foundation & IDI
+ * @author     CodeIgniter Dev Team & ADR Balears
+ * @copyright  2019-2023 CodeIgniter Foundation & ADR Balears
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -41,11 +41,11 @@ return [
   '6_intro' => "Informe desfavorable sobre la sol·licitud de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada a favor de %SOLICITANTE%, amb NIF %NIF%",
   '6_hechos_tit' => "Fets",
   '6_hechos_1_2' => "<ol>
-                    <li>Mitjançant la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) %RESPRESIDENTE%, es va aprovar la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada (BOIB núm. %BOIBNUM%).</li><br>.
-                    <li>En data %FECHAREC%, l'IDI va rebre la sol·licitud de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %NUMREC%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%.</li><br>",
-  '6_hechos_3_m' => "<li>En data %FECHARECM%, l'IDI va rebre documentació per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMRECM%.</li><br>", 
+                    <li>Mitjançant la Resolució del president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) %RESPRESIDENTE%, es va aprovar la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada (BOIB núm. %BOIBNUM%).</li><br>.
+                    <li>En data %FECHAREC%, l'ADR Balears va rebre la sol·licitud de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %NUMREC%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%.</li><br>",
+  '6_hechos_3_m' => "<li>En data %FECHARECM%, l'ADR Balears va rebre documentació per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMRECM%.</li><br>", 
   '6_hechos_4_6' => "<li>En data %FECHAREQUERIMIENTO% es va notificar un requeriment al sol·licitant.</li><br>
-                     <li>En data %FECHAENMIENDA% l'IDI va rebre l'esmena de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %NUMREC%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%.</li><br>
+                     <li>En data %FECHAENMIENDA% l'ADR Balears va rebre l'esmena de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %NUMREC%, d'un ajut per un import de %IMPORTE% per al %PROGRAMA%.</li><br>
                      <li>Una vegada revisada la sol·licitud d'ajut s'ha comprovat que l'entitat sol·licitant no compleix amb els requisits establerts en la convocatòria, concretament perquè %TEXTOLIBRE%.</li></ol><br>",
   '6_conclusion_tit' => "Conclusió",
   '6_conclusionTxt'  => "Per tot això, propòs la denegació de l'ajut sol·licitat per %SOLICITANTE%, amb NIF %NIF%, perquè no compleix els requisits prevists en la convocatòria.",

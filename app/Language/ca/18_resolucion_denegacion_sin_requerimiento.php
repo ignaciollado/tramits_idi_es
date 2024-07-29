@@ -27,8 +27,8 @@
  * THE SOFTWARE.
  *
  * @package    CodeIgniter
- * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2023 CodeIgniter Foundation & IDI
+ * @author     CodeIgniter Dev Team & ADR Balears
+ * @copyright  2019-2023 CodeIgniter Foundation & ADR Balears
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -37,16 +37,16 @@
  * @codeCoverageIgnore
  */
 return [
-  '18_intro' => "Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears sobre la denegació d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
+  '18_intro' => "Resolució del president de l'Agència de desenvolupament regional de les Illes Balears sobre la denegació d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
 
   '18_fets_tit' => "Fets",
 
   '18_fets_1_2_3_4_5_6' => "<ol>
-                           <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
+                           <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
                            <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTE%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al %PROGRAMA%</li><br>
-			   <li>En data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l'IDI va dictar la Proposta de resolució provisional sobre la denegació d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada. En aquesta Proposta es concedia un termini de deu dies perquè pogués presentar les al·legacions que considerés oportunes.</li><br>
+			   <li>En data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l'ADR Balears va dictar la Proposta de resolució provisional sobre la denegació d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada. En aquesta Proposta es concedia un termini de deu dies perquè pogués presentar les al·legacions que considerés oportunes.</li><br>
 			   <li>Exhaurit el termini per presentar al·legacions, no consta que s'hagin presentat al·legacions per part de la persona interessada.</li><br>
-			   <li>El %FECHA_PROP_RESOL_DEF% es va emetre proposta de resolució definitiva de la directora gerent de l'IDI sobre la denegació d'una subvenció a favor de %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import de %IMPORTE%.</li><br>			   
+			   <li>El %FECHA_PROP_RESOL_DEF% es va emetre proposta de resolució definitiva de la directora gerent de l'ADR Balears sobre la denegació d'una subvenció a favor de %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import de %IMPORTE%.</li><br>			   
 			   <li>Aquest document ha estat notificat a l'interessat en data %FECHA_NOTIFICACION_PROP_RESOL_DEFINITIVA%.</li><br>",
 
   '18_fundamentosDeDerecho_tit' => "Fonaments de dret",
@@ -72,8 +72,8 @@ return [
 
   '18_recursos_tit'   => "Interposició de recursos",
 
-  '18_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
+  '18_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
                     <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
 
-  '18_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'IDI<br>%DGERENTE%<br>Per delegació del president de l'IDI<br>(BOIB núm %BOIBNUM%)"
+  '18_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>Per delegació del president de l'ADR Balears<br>(BOIB núm %BOIBNUM%)"
 ];

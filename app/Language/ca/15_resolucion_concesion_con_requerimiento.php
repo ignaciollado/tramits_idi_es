@@ -6,7 +6,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2023 CodeIgniter Foundation & IDI
+ * Copyright (c) 2019-2023 CodeIgniter Foundation & ADR Balears
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,8 @@
  * THE SOFTWARE.
  *
  * @package    CodeIgniter
- * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2023 CodeIgniter Foundation & IDI
+ * @author     CodeIgniter Dev Team & ADR Balears
+ * @copyright  2019-2023 CodeIgniter Foundation & ADR Balears
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -43,13 +43,13 @@ return [
   '15_fets_tit' => "Fets",
 
   '15_fets_1_2_3_4_5_6_7_8_9' => "<ol>
-      <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
+      <li>El dia %BOIBFECHA%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
       <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTE%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al %PROGRAMA%.</li><br>
-      <li>En data %FECHA_NOTIFICACION_REQUERIMIENTO%, l'IDI va examinar la sol·licitud i va fer el requeriment de documentació pertinent a %SOLICITANTE%.</li><br> 
+      <li>En data %FECHA_NOTIFICACION_REQUERIMIENTO%, l'ADR Balears va examinar la sol·licitud i va fer el requeriment de documentació pertinent a %SOLICITANTE%.</li><br> 
       <li>En data %FECHAESMENA%, %SOLICITANTE% va presentar documentació d'esmena.</li><br> 
-      <li>En data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l'IDI va dictar la Proposta de resolució provisional sobre la concessió d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada. En aquesta Proposta es concedia un termini de deu dies perquè pogués presentar les al·legacions que considerés oportunes.</li><br>
+      <li>En data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l'ADR Balears va dictar la Proposta de resolució provisional sobre la concessió d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada. En aquesta Proposta es concedia un termini de deu dies perquè pogués presentar les al·legacions que considerés oportunes.</li><br>
       <li>Exhaurit el termini per presentar al·legacions, no consta que s'hagin presentat al·legacions per part de la persona interessada.</li><br>
-      <li>El %FECHA_PROP_RESOL_DEF% es va emetre proposta de resolució definitiva de la directora gerent de l'IDI sobre la concessió d'una subvenció a favor de %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import de %IMPORTE%.</li><br>			   
+      <li>El %FECHA_PROP_RESOL_DEF% es va emetre proposta de resolució definitiva de la directora gerent de l'ADR Balears sobre la concessió d'una subvenció a favor de %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada, per un import de %IMPORTE%.</li><br>			   
       <li>Aquest document ha estat notificat a l'interessat en data %FECHA_NOTIFICACION_PROP_RESOL_DEFINITIVA%.</li><br>
       <li>El beneficiari es troba al corrent en el compliment de les seves obligacions tributàries, tant estatals com autonòmiques, i amb la Seguretat Social.</li><br>",
 
@@ -69,15 +69,15 @@ return [
   '15_resolucion_tit' => "Resolució",
   '15_resolucion'  => "<ol>
           <li>Aprovar la concessió d'un ajut total per import de  %IMPORTE%, condicionada a la justificació de la realització de l'activitat subvencionada, d'acord amb l'apartat onzè de les bases incloses a la resolució de la convocatòria, a favor de %SOLICITANTE% amb NIF %NIF%.</li><br>
-		      <li>Autoritzar i disposar una despesa de %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%, a càrrec als pressuposts de l'IDI per a l'exercici %CONVO%, per cobrir hores de consultoria especialitzada.</li><br>
+		      <li>Autoritzar i disposar una despesa de %IMPORTE% a favor de %SOLICITANTE%, amb NIF %NIF%, a càrrec als pressuposts de l'ADR Balears per a l'exercici %CONVO%, per cobrir hores de consultoria especialitzada.</li><br>
 		      <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt onzè de les bases incloses a la Resolució de la convocatòria.</li><br>
 		      <li>El termini per justificar la realització de l'activitat subvencionada i per sol·licitar el pagament de la subvenció serà com a <b>màxim de 20 dies naturals</b> des de l'endemà de la reunió de tancament segons el punt 11.3 de la convocatòria.</li><br>
-		      <li>En la reunió de tancament el tècnic de l'IDI informarà quina és la data màxima concreta per justificar la realització de les activitats subvencionades, que en tot cas i depenent de la durada màxima de cada programa o subprograma, no podrà superar els 20 dies naturals a partir del 4 d'octubre de 2024. </li><br>
+		      <li>En la reunió de tancament el tècnic de l'ADR Balears informarà quina és la data màxima concreta per justificar la realització de les activitats subvencionades, que en tot cas i depenent de la durada màxima de cada programa o subprograma, no podrà superar els 20 dies naturals a partir del 4 d'octubre de 2024. </li><br>
 		      <li>La falta de justificació en els termes i terminis que estableix aquesta Resolució, l'aplicació de la subvenció diferent a la que estableix la norma o l'alteració de les condicions tingudes en compte per a la concessió poden donar lloc a la modificació de la subvenció atorgada i, per tant, iniciar un procediment de revocació.</li><br>
           <li>Notificar aquesta Resolució a l'interessat.</li></ol>",
 
   '15_recursos_tit'   => "Interposició de recursos",
-  '15_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
+  '15_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Institut d'Innovació Empresarial de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
                     <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
-  '15_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'IDI<br>%DGERENTE%<br>Per delegació del president de l'IDI<br>(BOIB núm %BOIBNUM%)"
+  '15_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>Per delegació del president de l'ADR Balears<br>(BOIB núm %BOIBNUM%)"
 ];

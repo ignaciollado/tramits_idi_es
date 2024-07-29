@@ -312,7 +312,7 @@ class Expedientes extends Controller
 		//-----------------------------Obtiene el detalle del Expediente-----------------------------------------------
 
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
-		$idExp =  $data['expedientes']['idExp'];
+		$idExp = $data['expedientes']['idExp'];
 		$convocatoria = $data['expedientes']['convocatoria'];
 		$tipo_tramite = $data['expedientes']['tipo_tramite'];
 		$solicitante = mb_strtoupper($data['expedientes']['empresa']);
@@ -374,7 +374,7 @@ class Expedientes extends Controller
 
 		if ($tipo_tramite === 'ILS') {
 			echo view('pages/exped/edita-expediente-ils', $data);
-		} else if ($tipo_tramite === 'IDI-ISBA') {
+		} else if ($tipo_tramite === 'ADR-ISBA') {
 			echo view('pages/exped/edita-expediente-idi-isba', $data);
 		} else if ($tipo_tramite === 'FELIB') {
 			echo view('pages/exped/edita-expediente-felib', $data);		
@@ -1780,7 +1780,7 @@ class Expedientes extends Controller
 
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
-			case "doc_requeriment_adr_isba":  																	//VIAFIRMA DOC 1 A TÉCNICO
+			case "doc_requeriment_adr_isba":  											//VIAFIRMA DOC 1 A TÉCNICO
 				$data_infor = [
 					'doc_requeriment_adr_isba' => $last_insert_id
 				];
@@ -1798,9 +1798,9 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 				
-		
+			case "doc_res_desestimiento_por_no_enmendar_adr_isba":  //VIAFIRMA DOC 2 A TÉCNICO
 				$data_infor = [
-					'doc_res_desestimiento_por_no_enmendar' => $last_insert_id
+					'doc_res_desestimiento_por_no_enmendar_adr_isba' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
@@ -1815,7 +1815,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_provisional_adr_isba": 							  //VIAFIRMA DOC 3
+			case "doc_prop_res_provisional_adr_isba": 							//VIAFIRMA DOC 3
 				$data_infor = [
 					'doc_prop_res_provisional_adr_isba' => $last_insert_id
 				];
@@ -1883,7 +1883,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;					
-			}
+		}
 		echo view('templates/footer/footer');
 	}
 

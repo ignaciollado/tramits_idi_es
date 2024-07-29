@@ -1,7 +1,7 @@
 <!----------------------------------------- Resolución de concesión amb requeriment. DOC 7. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Resolució de concessió ***PRE***
+		Resolució de concessió - testear
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -57,7 +57,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_ResConcesionConReg = document.getElementById('wrapper_ResConcesionConReg')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
 		infoMissingDataDoc6.innerText = ""
 

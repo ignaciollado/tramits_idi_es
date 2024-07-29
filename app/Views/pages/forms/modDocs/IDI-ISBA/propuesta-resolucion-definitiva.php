@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva. DOC 4. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució definitiva - testear
+		Proposta de resolució definitiva - testear [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -59,7 +59,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResDefinitiva = document.getElementById('wrapper_propuestaResDefinitiva')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc4 = document.getElementById('infoMissingDataDoc4')
 		infoMissingDataDoc4.innerText = ""
 

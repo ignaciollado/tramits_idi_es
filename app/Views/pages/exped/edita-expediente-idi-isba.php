@@ -71,11 +71,11 @@
 
                     <div class="form-group general">
                         <label for="telefono_rep"><strong>Mòbil a efectes de notificacions:</strong></label>
-                        <input type="tel" name="telefono_rep" class="form-control send_fase_0" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_rep" placeholder = "Mòbil a efectes de notificacions" minlength = "9" maxlength = "9" value = "<?php echo $expedientes['telefono_rep']; ?>">
+                        <input type="tel"  readonly disabled name="telefono_rep" class="form-control" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_rep" placeholder = "Mòbil a efectes de notificacions" minlength = "9" maxlength = "9" value = "<?php echo $expedientes['telefono_rep']; ?>">
                     </div>
               	    <div class="form-group general">
                         <label for="email_rep"><strong>Adreça electrònica a efectes de notificacions:</strong></label>
-                        <input type="email" name="email_rep" class="form-control send_fase_0" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "email_rep" placeholder="Adreça electrònica a efectes de notificacions" value="<?php echo $expedientes['email_rep']; ?>">
+                        <input type="email"  readonly disabled name="email_rep" class="form-control" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "email_rep" placeholder="Adreça electrònica a efectes de notificacions" value="<?php echo $expedientes['email_rep']; ?>">
                     </div>
                     <div class="form-group general">
                         <label for="domicilio">Adreça:</label>
@@ -717,7 +717,7 @@
 	        <li><?php include $_SERVER['DOCUMENT_ROOT'].'/app/Views/pages/forms/modDocs/IDI-ISBA/requerimiento.php';?></li>
             <!-------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Resolució DOC 2 ---------------------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'].'/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-no-enmendar.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'].'/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-desestimiento-por-no-enmendar.php';?></li>
             <!-------------------------------------------------------------------------------------------------------------->
             </ol>
             <h3>Millores: <!-- <small class="alert alert-secondary" role="alert"><?php echo $ultimaMejoraSolicitud; ?></small> --></h3>
@@ -842,36 +842,34 @@
     <div class="col-sm-2 docsExpediente">
         <h3>Detall:</h3>   
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-2" id="exped-fase-2" method="post" accept-charset="utf-8">
-        <div class="form-group validacion">
-                    <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable / desfavorable:</strong></label>
-		            <input type = "date" name = "fecha_infor_fav_desf" class = "form-control send_fase_2" id = "fecha_infor_fav_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_desf']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Firma proposta resolució provisional:</strong></label>
-                    <input type = "date" name = "fecha_firma_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_prov']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_prov"><strong>Notificació proposta resolució provisional:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_prov" onchange = "javaScript: cambiarSituacionExpediente('send_fase_2', this.id);" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_prov']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_def"><strong>Firma proposta resolució definitiva:</strong></label>
-                    <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_def"><strong>Notificació proposta resolució definitiva:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
-                </div>                
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
-                    <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
-                </div>
-    		    <div class="form-group validacion">
-                    <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
-                    <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
-                </div>
-
-
+            <div class="form-group validacion">
+                <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable / desfavorable:</strong></label>
+		        <input type = "date" name = "fecha_infor_fav_desf" class = "form-control send_fase_2" id = "fecha_infor_fav_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_desf']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Firma proposta resolució provisional:</strong></label>
+                <input type = "date" name = "fecha_firma_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_prov']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_not_propuesta_resolucion_prov"><strong>Notificació proposta resolució provisional:</strong></label>
+                <input type = "date" name = "fecha_not_propuesta_resolucion_prov" onchange = "javaScript: cambiarSituacionExpediente('send_fase_2', this.id);" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_prov']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_firma_propuesta_resolucion_def"><strong>Firma proposta resolució definitiva:</strong></label>
+                <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_not_propuesta_resolucion_def"><strong>Notificació proposta resolució definitiva:</strong></label>
+                <input type = "date" name = "fecha_not_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
+            </div>                
+		    <div class="form-group validacion">
+                <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
+                <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
+            </div>
+    		<div class="form-group validacion">
+                <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
+                <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
+            </div>
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -883,34 +881,36 @@
         </form>
         </div>        
     	    
-
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="3">
             <!----------------------------------------Informe favorable --------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-sin-requerimiento.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-favorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Informe favorable amb requeriment------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-con-requerimiento.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-favorable-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta de resolució provisional---------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-provisional.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta de resolució provisional amb requeriment---------------------------->
+            <!-----------------------------------------Proposta de resolució provisional amb requeriment--------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-provisional-con-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------Proposta de resolució definitiva----------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-definitiva.php';?></li> 
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------Proposta de resolució definitiva amb requeriment----------------------------->
+            <!-----------------------------------------Proposta de resolució definitiva amb requeriment----------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-definitiva-con-requerimiento.php';?></li>  
             <!------------------------------------------------------------------------------------------------------>            
             <!----------------------------------------- Resolución de concesión ---------------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-concesion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Resolución de concesión amb requeriment---------------------------------------------->
+            <!----------------------------------------- Resolución de concesión amb requeriment------------------------------->
             <li>Resolución de concesión amb requeriment</li>
             <!---------------------------------------------------------------------------------------------------------------->
+            <!----------------- Resolución de pago y justificación FIRMA D GERENTE ------------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-y-justificacion.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->   
         </ol>
         </div>
         <div class="col docsExpediente">
@@ -1072,9 +1072,7 @@
             <!----------------------------------------- Informe post subsanación de la documentación de justificación--------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-sobre-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------- Resolución de pago FIRMA D GERENTE ----------------------------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-sin-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->      
+   
         </ol>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">

@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució provisional. DOC 3. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional - testear
+		Proposta de resolució provisional -- testear [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -27,7 +27,7 @@
 						$estado_firma = "<div class='info-msg'>Pendent de signar</div>";
 						break;
 					case 'REJECTED':
-						$estado_firma = "<div class = 'warning-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . ">Signatura rebutjada";
+						$estado_firma = "<div class='warning-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . ">Signatura rebutjada";
 						$estado_firma .= "</a></div>";
 						break;
 					case 'COMPLETED':
@@ -52,12 +52,11 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let fecha_infor_fav = document.getElementById('fecha_infor_fav') //0000-00-00
-		let fecha_infor_desf = document.getElementById('fecha_infor_desf') //0000-00-00
+		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResProvisional = document.getElementById('wrapper_propuestaResProvisional')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""
 
@@ -69,12 +68,8 @@
 			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
-		if (!fecha_infor_fav.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data firma informe favorable<br>"
-			todoBien = false
-		}
-		if (!fecha_infor_desf.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data firma informe desfavorable<br>"
+		if (!fecha_infor_fav_desf.value) {
+			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
 		if (!fecha_REC_enmienda.value) {

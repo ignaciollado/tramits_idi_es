@@ -120,7 +120,7 @@ $parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresident
 $parrafo_1 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
-$parrafo_1 = str_replace("%FECHASOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , $parrafo_1);
+$parrafo_1 = str_replace("%FECHASOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_1);
@@ -131,7 +131,6 @@ $parrafo_1 = str_replace("%IMPORTE_PRESTAMO%", $data['expediente']['importe_pres
 $parrafo_1 = str_replace("%FECHAFIRMARESDESESTIMIENTO%", date_format(date_create($data['expediente']['fecha_firma_resolucion_desestimiento']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-$parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
 
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');

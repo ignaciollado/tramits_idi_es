@@ -6,7 +6,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2023 CodeIgniter Foundation & IDI
+ * Copyright (c) 2019-2023 CodeIgniter Foundation & ADR Balears
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,8 @@
  * THE SOFTWARE.
  *
  * @package    CodeIgniter
- * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2023 CodeIgniter Foundation & IDI
+ * @author     CodeIgniter Dev Team & ADR Balears
+ * @copyright  2019-2023 CodeIgniter Foundation & ADR Balears
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -39,11 +39,11 @@
 return [
   '19_identificacion' => "Identificació de la sessió",
 	'19_datos_reunion' => "<p>Assumpte: reunió llançament del programa</p> 
-			  <p>Data: %fecha_kick_off%</p> 
-			  <p>Hora inici: %horaInicioSesionKickOff%</p> 
-			  <p>Hora acabament reunió: %horaFinSesionKickOff%</p> 
-			  <p>Lloc: %lugarSesionKickOff%</p>
-			  <p>Empresa: %SOLICITANTE%</p>",
+			<p>Data: %fecha_kick_off%</p> 
+			<p>Hora inici: %horaInicioSesionKickOff%</p> 
+			<p>Hora acabament reunió: %horaFinSesionKickOff%</p> 
+			<p>Lloc: %lugarSesionKickOff%</p>
+			<p>Empresa: %SOLICITANTE%</p>",
 
   '19_Asistentes' => "<b>Assistents</b>
 			<p>%nombreAsistentes%</p>", 

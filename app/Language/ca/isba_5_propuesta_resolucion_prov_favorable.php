@@ -40,7 +40,7 @@
 
 return [
   'intro' => "Proposta de resolució provisional de la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears sobre la concessió d'una subvenció a %SOLICITANTE% destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives",
-  'antecedentes_tit' => "Fets",
+  'antecedentes_tit' => "<b>Fets</b>",
   'antecedentes_1_2_3_4' => "<ol>
         <li>El dia %BOIBFECHA%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
         <li>En data %FECHASOLICITUD%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos,  %IMPORTE_AVAL% al subsidi de  l'aval i %IMPORTE_ESTUDIO% als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
@@ -57,7 +57,7 @@ return [
 			<li>Hi ha crèdit adequat i suficient amb càrrec als pressuposts de l'ADR Balears per a l'exercici de l'any 2024-2025.</li><br>
 			<li>En data %FECHAINFORME% s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li>", 			
 
-  'fundamentosDeDerecho_tit' => "<b>Fonaments de dret</b><br>",
+  'fundamentosDeDerecho_tit' => "<b>Fonaments de dret</b>",
   'fundamentosDeDerechoTxt' => "<ol>
                           <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
                           <li>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</li><br>
@@ -69,7 +69,7 @@ return [
                           <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
                           <li>L'Ordre 9/2024 del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria (BOIB núm.40 de 23 de març de 2024).</li>",
   
-  'propuestaresoluciondef_tit' => "<b>Proposta de resolució definitiva</b><br>",
+  'propuestaresoluciondef_tit' => "<b>Proposta de resolució definitiva</b>",
 
   'propuestaresoluciondefTxt' => "Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:",
 

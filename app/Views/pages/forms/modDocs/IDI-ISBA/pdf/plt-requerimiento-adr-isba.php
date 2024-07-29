@@ -14,7 +14,7 @@ $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
 
 $data['configuracion'] = $modelConfig->configuracionGeneral();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -27,23 +27,7 @@ $session = session();
 if ($session->has('logged_in')) {  
     $pieFirma =  $session->get('full_name');
 }
-
-if ($data['expediente']['tipo_tramite'] == "Programa I") {
-	$tipo_tramite = lang('message_lang.programaiDigital');
-}
-else if ($data['expediente']['tipo_tramite'] == "Programa II") {
-	$tipo_tramite = lang('message_lang.programaiExporta');
-}
-else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions corporatives") {
-	$tipo_tramite = lang('message_lang.programaiSostenibilitatCorp');
-}
-else if ($data['expediente']['tipo_tramite'] == "Programa III actuacions producte") {
-	$tipo_tramite = lang('message_lang.programaiSostenibilitatProd');
-}
-else if ($data['expediente']['tipo_tramite'] == "Programa IV") {
-	$tipo_tramite = lang('message_lang.programaiGestio');
-}
-
+$tipo_tramite = "ADR Balears - ISBA";
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -120,13 +104,13 @@ $pdf->setFontSubsetting(false);
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('isba_1_requerimiento.1_asunto')."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('isba_1_requerimiento.asunto')."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('isba_1_requerimiento.1_p1'));
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('isba_1_requerimiento.p1'));
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";
@@ -141,7 +125,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_2 = lang('isba_1_requerimiento.1_p2');
+$parrafo_2 = lang('isba_1_requerimiento.p2');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_2 ."</td></tr>";
 $html .= "</table>";
@@ -149,7 +133,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('isba_1_requerimiento.1_p3'));
+$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('isba_1_requerimiento.p3'));
 $parrafo_4 = str_replace("%EMPRESA%", $data['expediente']['empresa'], $parrafo_4);
 $parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
 $parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4);
@@ -162,7 +146,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 
-$firma = lang('isba_1_requerimiento.1_firma').  $pieFirma;
+$firma = lang('isba_1_requerimiento.firma').  $pieFirma;
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";

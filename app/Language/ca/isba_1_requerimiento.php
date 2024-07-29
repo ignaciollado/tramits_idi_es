@@ -38,9 +38,9 @@
  */
 
 return [
-  '1_asunto' => "Assumpte: requeriment de documentació relativa a l'expedient de subvenció",
-  '1_p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la Resolució del president de l'ADR Balears per la qual s'aprova la convocatòria per a la concessió d'ajuts de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització,  sostenibilitat i gestió avançada (BOIB núm. %BOIBNUM%), us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",
-  '1_p2' => "Tal i com estableix la convocatòria a l'article 6.3, l'esmena de les deficiències s'ha de fer a través del tràmit específic que hi ha al procediment de la seu electrònica de la CAIB. Si no es compleix aquest punt, s'entendrà que la sol·licitud d'esmena no està presentada.",
-  '1_p3' => "En cas que no presenteu la documentació esmentada en el termini de deu dies, se us tindrà per desistit de la vostra petició, atès l'article 68 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, amb la resolució prèvia que declararà conclòs el procediment i ordenarà l'arxivament de les actuacions realitzades fins a aquell moment, d'acord amb l'article 21 d'aquesta Llei.",
-  '1_firma' => "El /la tècnic/a.<br><br>"
+  'asunto' => "Assumpte: requeriment de documentació relativa a l'expedient de subvenció",
+  'p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la resolució del president de l'ADR Balears per la qual s'aprova la convocatòria per als anys 2024 i 2025 d'ajudes a la microempresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tinguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per a cobrir les despeses financeres d'operacions de finançament d'inversions productives, us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",
+  'p2' => "Tal i com estableix la convocatòria a l'article 6.3, l'esmena de les deficiències s'ha de fer a través del tràmit específic que hi ha al procediment de la seu electrònica de la CAIB. Si no es compleix aquest punt, s'entendrà que la sol·licitud d'esmena no està presentada.",
+  'p3' => "En cas que no presenteu la documentació esmentada en el termini de deu dies, se us tindrà per desistit de la vostra petició, atès l'article 68 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, amb la resolució prèvia que declararà conclòs el procediment i ordenarà l'arxivament de les actuacions realitzades fins a aquell moment, d'acord amb l'article 21 d'aquesta Llei.",
+  'firma' => "El /la tècnic/a.<br><br>"
 ];

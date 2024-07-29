@@ -27,8 +27,8 @@
  * THE SOFTWARE.
  *
  * @package    CodeIgniter
- * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2023 CodeIgniter Foundation & IDI
+ * @author     CodeIgniter Dev Team & ADR Balears
+ * @copyright  2019-2023 CodeIgniter Foundation & ADR Balears
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -38,13 +38,13 @@
  */
 
 return [
-  '2_intro' => "Resolució del president de l'IDI per la qual es dona per desistida una petició d'una subvenció de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada a favor de %SOLICITANTE%, amb NIF %NIF%",
+  '2_intro' => "Resolució del president de l'ADR Balears per la qual es dona per desistida una petició d'una subvenció de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada a favor de %SOLICITANTE%, amb NIF %NIF%",
   '2_antecedentes_tit' => "Antecedents",
   '2_antecedentes_1_2' => "<ol>
-                           <li>El dia %BOIBFECHA% es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
+                           <li>El dia %BOIBFECHA% es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
                            <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTE%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al %PROGRAMA%.</li><br>",
-  '2_antecedentes_3_m' => "<li>En data %FECHARECM%, l'IDI va rebre documentació  per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMRECM%</li><br>", 
-  '2_antecedentes_4_5' => "<li>En data %DATANOTREQ%, l'IDI va notificar un requeriment a %SOLICITANTE%, amb NIF %NIF% perquè esmenés deficiències o aportàs documentació imprescindible per a continuar la tramitació de l'expedient de referència.</li><br> 
+  '2_antecedentes_3_m' => "<li>En data %FECHARECM%, l'ADR Balears va rebre documentació  per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %NUMRECM%</li><br>", 
+  '2_antecedentes_4_5' => "<li>En data %DATANOTREQ%, l'ADR Balears va notificar un requeriment a %SOLICITANTE%, amb NIF %NIF% perquè esmenés deficiències o aportàs documentació imprescindible per a continuar la tramitació de l'expedient de referència.</li><br> 
                            <li>En l'expedient consta el justificant de recepció del requeriment, i ha transcorregut el termini atorgat sense que el sol·licitant hagi esmenat les deficiències o hagi aportat els documents exigits.</li></ol>",
 
   '2_fundamentosDeDerecho_tit' => "Fonaments de dret",
@@ -61,10 +61,10 @@ return [
   '2_dicto' => "Per tot això, dict la següent",
   '2_resolucion_tit' => "Resolució",
   '2_resolucion'  => "<ol>
-                      <li>Donar per desistida la sol·licitud d'ajut i declarar conclòs el procediment iniciat per %SOLICITANTE%, amb NIF %NIF%, a càrrec dels pressuposts de l'IDI per al 2024, per cobrir hores de consultoria especialitzada, d'acord  amb la convocatòria.</li><br>
+                      <li>Donar per desistida la sol·licitud d'ajut i declarar conclòs el procediment iniciat per %SOLICITANTE%, amb NIF %NIF%, a càrrec dels pressuposts de l'ADR Balears per al 2024, per cobrir hores de consultoria especialitzada, d'acord  amb la convocatòria.</li><br>
                       <li>Notificar aquesta Resolució a l'interessat.</li></ol>",
   '2_recursos_tit'   => "Interposició de recursos",
-  '2_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
+  '2_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Agència de desenvolupament regional de les Illes Balears (IDI) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
                     <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
-  '2_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'IDI<br>%DGERENTE%<br>Per delegació del president de l'IDI<br>(BOIB núm %BOIBNUM%)"
+  '2_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>Per delegació del president de l'ADR Balears<br>(BOIB núm %BOIBNUM%)"
 ];

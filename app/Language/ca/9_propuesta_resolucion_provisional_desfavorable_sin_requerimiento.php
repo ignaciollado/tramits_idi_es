@@ -6,7 +6,7 @@
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014-2019 British Columbia Institute of Technology
- * Copyright (c) 2019-2023 CodeIgniter Foundation & IDI
+ * Copyright (c) 2019-2023 CodeIgniter Foundation & ADR Balears
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,8 @@
  * THE SOFTWARE.
  *
  * @package    CodeIgniter
- * @author     CodeIgniter Dev Team & IDI
- * @copyright  2019-2023 CodeIgniter Foundation & IDI
+ * @author     CodeIgniter Dev Team & ADR Balears
+ * @copyright  2019-2023 CodeIgniter Foundation & ADR Balears
  * @license    https://opensource.org/licenses/MIT	MIT License
  * @link       https://codeigniter.com
  * @since      Version 4.0.0
@@ -38,16 +38,16 @@
  */
 
 return [
-  '9_intro' => "Proposta de resolució provisional de la directora gerent de l'Institut d'Innovació Empresarial de les Illes Balears sobre la denegació d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
+  '9_intro' => "Proposta de resolució provisional de la directora gerent de l'Agència de desenvolupament regional de les Illes Balears sobre la denegació d'una subvenció a %SOLICITANTE% destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
   
   '9_antecedentes_tit' => "Fets",
   '9_antecedentes_1_3' => "<ol>
-                          <li>El dia %BOIBFECHA% es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Institut d'Innovació Empresarial de les Illes Balears (IDI) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
+                          <li>El dia %BOIBFECHA% es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per a l'any %CONVO% d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.</li><br>
                           <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTE%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, per al %PROGRAMA%.</li><br>
   			                  <li>D'acord amb l'apartat vuitè, paràgraf primer, estableix que les sol·licituds de subvenció s'han de resoldre a mesura que entrin en el registre de l'òrgan competent (rigorós ordre d'entrada), encara que no hagi acabat el termini de presentació, fins que s'exhaureixi el crèdit destinat a la convocatòria o, si escau, fins que es resolguin tots els expedients presentats dins el termini, segons l'article 7.3 de l'Ordre de la consellera de Comerç, Indústria i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial.</li><br>",
-  '9_antecedentes_4_m' => "<li>En data %FECHARECM%, l'IDI va rebre documentació  per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %REFRECM%</li></ol><br>", 
-  '9_antecedentes_5_7' => "<li>La tècnica de l'IDI ha examinat la sol·licitud presentada per %SOLICITANTE%, i ha comprovat que el sol·licitant no compleix amb els requisits establerts a la convocatòria.</li><br>
-                           <li>En data %FECHA_FIRMA_INFORME% s'ha emès informe tècnic desfavorable des de l'IDI sobre la concessió d'ajuts en el marc d'aquesta convocatòria, atès que %TEXTOLIBRE%.</li></ol><br>",	
+  '9_antecedentes_4_m' => "<li>En data %FECHARECM%, l'ADR Balears va rebre documentació  per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %REFRECM%</li></ol><br>", 
+  '9_antecedentes_5_7' => "<li>La tècnica de l'ADR Balears ha examinat la sol·licitud presentada per %SOLICITANTE%, i ha comprovat que el sol·licitant no compleix amb els requisits establerts a la convocatòria.</li><br>
+                           <li>En data %FECHA_FIRMA_INFORME% s'ha emès informe tècnic desfavorable des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria, atès que %TEXTOLIBRE%.</li></ol><br>",	
 
   '9_fundamentosDeDerecho_tit' => "Fonaments de dret",
   '9_fundamentosDeDerechoTxt' => "<ol>
@@ -63,12 +63,12 @@ return [
   
   '9_propuestaresolucionprovisional_tit' => "Proposta de resolució provisional",
 
-  '9_propuestaresoluciondefTxt' => "<p>Propòs al president de l'IDI que dicti una resolució en els termes següents:</p><br>",
+  '9_propuestaresoluciondefTxt' => "<p>Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:</p><br>",
 
   '9_propuestaresolucionprovisional_1_3'  => "<ol>
                       <li>Denegar la concessió d'una subvenció per un import de %IMPORTE%, a favor de %SOLICITANTE%, amb NIF %NIF%, per cobrir hores de consultoria especialitzada.</li><br>
                       <li>Atorgar al sol·licitant un termini d'al·legacions de deu dies hàbils comptadors des de l'endemà de la seva notificació. En cas contrari, s'entendrà que estau conforme amb el contingut de la proposta. Un cop transcorregut aquest termini s'ha de dictar la proposta de resolució definitiva.</li><br>
 		      <li>Notificar aquesta proposta de resolució a l'interessat.</li></ol>", 
   
-  '9_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'IDI<br>%DGERENTE%<br>"
+  '9_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>"
 ];

@@ -2,7 +2,7 @@
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució desistiment per no esmenar ***PRE***
+  	Resolució desistiment per no esmenar (actualizar plantilla) [PRE]
   </div>
 
   	<div class="card-itramits-footer">
@@ -22,7 +22,7 @@
   	<div class="card-itramits-footer">
 		<?php
 	//Compruebo el estado de la firma del documento.
-	$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_requeriment_idi_isba.pdf');
+	$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_res_desestimiento_por_no_enmendar_adr_isba.pdf');
 	if ($tieneDocumentosGenerados)
 		{
 		$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
@@ -61,7 +61,7 @@
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_requerimiento_notif= document.getElementById('fecha_requerimiento_notif')
 	
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let spinner_2 = document.getElementById('spinner_2')
 		let generaElDesestimiento = document.getElementById('generaElDesestimiento')
 		let infoMissingDataDoc2 = document.getElementById('infoMissingDataDoc2')
@@ -85,7 +85,7 @@
 			generaElDesestimiento.setAttribute("disabled", true)
 			generaElDesestimiento.innerHTML = "Generant i enviant ..."
 			spinner_2.classList.remove('ocultar')
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar_idi_isba'
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar_adr_isba'
 		} else {
 			infoMissingDataDoc2.classList.remove('ocultar')
 		}

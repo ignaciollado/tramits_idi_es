@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució provisional. DOC 3. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional con requerimiento
+		Proposta de resolució provisional con requerimiento (actualizar plantilla) [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -57,7 +57,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResProvisional = document.getElementById('wrapper_propuestaResProvisional')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""
 
