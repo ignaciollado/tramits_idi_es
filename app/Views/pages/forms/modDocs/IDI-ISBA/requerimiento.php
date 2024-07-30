@@ -1,6 +1,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Requeriment - testear [PRE]
+    	Requeriment **testear** [PRE]
   	</div>
 	<div class="card-itramits-footer">
 

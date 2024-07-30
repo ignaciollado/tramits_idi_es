@@ -12,7 +12,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('IDI-ISBA', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
 $ultimaMejora = explode("##",  $data['ultimaMejora']);
 $data['expediente'] = $expediente->where('id', $id)->first();

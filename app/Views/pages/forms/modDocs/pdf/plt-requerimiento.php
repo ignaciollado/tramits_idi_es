@@ -54,7 +54,6 @@ class MYPDF extends TCPDF {
     // Page footer
     public function Footer() {
         // Logo
-
 		// Position at 15 mm from bottom
         $this->SetY(-15);
         // Set font
@@ -88,23 +87,12 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 // set auto page breaks
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
-//$cabecera = "Nom representant: ".$data['expediente']['nombre_rep']."<br>";
-//$cabecera .= "Nom empresa: ".$data['expediente']['empresa'];
-//$html .= $cabecera;
-// set color for background
-//$pdf->SetFillColor(255, 255, 255);
-// set color for text
-//$pdf->SetTextColor(0, 0, 0);
-//writeHTMLCell(w, h, x, y, html = '', border = 0, ln = 0, fill = 0, reseth = true, align = '', autopadding = true) ⇒ Object Also known as: write_html_cell
-//$pdf->writeHTMLCell(90, '', 125, 20, $html, 0, 1, 1, true, 'J', true);
-
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html =  "Document: requeriment<br>";
@@ -125,7 +113,6 @@ $pdf->writeHTMLCell(90, '', 100, 40, $html, 0, 1, 1, true, 'J', true);
 
 $pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
-
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";

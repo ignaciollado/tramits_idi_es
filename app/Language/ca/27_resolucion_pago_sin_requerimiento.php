@@ -62,7 +62,7 @@ return [
         <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><br>
         <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
         <li>La Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</li><br>
-        <li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2021-2023, aprovat per l'Acord del Consell de Govern de dia 20 de desembre de 2021 (BOIB núm. 175, de 23 de desembre) i prorrogat fins que s'aprovi i desplegui els efectes el nou Pla Estratègic de Subvencions. En concret està especificat a l'objectiu III.2.2 destinat a impulsar la indústria de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat.</li><br>
+        <li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2024-2026 aprovat per l'Acord del Consell de Govern de dia 19 d’abril de 2024. </li><br>
         <li>El Decret 6/2013, de 8 de febrer, de mesures de simplificació documental en els procediments administratius (BOIB núm. 21, de 12 de febrer).</li><br>
         <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
         <li>L'Ordre de la consellera de Comerç, Indústria i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d'abril de 2008).</li></ol>",

@@ -141,7 +141,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();

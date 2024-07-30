@@ -10,7 +10,7 @@ $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
 
 $data['configuracion'] = $configuracion->configuracionGeneral();   
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('IDI-ISBA', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();

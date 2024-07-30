@@ -17,7 +17,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);;
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -170,7 +170,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
@@ -201,7 +201,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();

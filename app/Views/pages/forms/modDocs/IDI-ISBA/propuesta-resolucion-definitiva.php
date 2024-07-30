@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva. DOC 4. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució definitiva - testear [PRE]
+		Proposta de resolució definitiva **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -54,8 +54,7 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let fecha_infor_fav = document.getElementById('fecha_infor_fav') //0000-00-00
-		let fecha_infor_desf = document.getElementById('fecha_infor_desf') //0000-00-00
+		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResDefinitiva = document.getElementById('wrapper_propuestaResDefinitiva')
@@ -71,8 +70,8 @@
 			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
-		if (!fecha_infor_fav.value) {
-			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data firma informe favorable<br>"
+		if (!fecha_infor_fav_desf.value) {
+			infoMissingDataDoc4.innerHTML = infoMissingDataDoc4.innerHTML + "Data firma informe favorable/desfavorable<br>"
 			todoBien = false
 		}
 		if (!fecha_infor_desf.value) {

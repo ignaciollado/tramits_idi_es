@@ -52,8 +52,7 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let fecha_infor_fav = document.getElementById('fecha_infor_fav') //0000-00-00
-		let fecha_infor_desf = document.getElementById('fecha_infor_desf') //0000-00-00
+		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResProvisional = document.getElementById('wrapper_propuestaResProvisional')
@@ -69,12 +68,8 @@
 			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
-		if (!fecha_infor_fav.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data firma informe favorable<br>"
-			todoBien = false
-		}
-		if (!fecha_infor_desf.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data firma informe desfavorable<br>"
+		if (!fecha_infor_fav_desf.value) {
+			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data firma informe favorable/desfavorable<br>"
 			todoBien = false
 		}
 		if (!fecha_REC_enmienda.value) {

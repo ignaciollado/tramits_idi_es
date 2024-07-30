@@ -168,7 +168,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 // $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
 // align: T (top), M (middle), B (bottom), N (next line)
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);

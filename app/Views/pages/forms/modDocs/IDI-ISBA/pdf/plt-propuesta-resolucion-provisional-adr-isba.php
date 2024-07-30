@@ -12,7 +12,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('IDI-ISBA', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -101,7 +101,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_2_propuesta_resolucion_prov_favorable.intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_5_propuesta_resolucion_prov_favorable.intro'));
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
 $html .= "</table>";
@@ -110,13 +110,13 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('isba_2_propuesta_resolucion_prov_favorable.antecedentes_tit') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('isba_5_propuesta_resolucion_prov_favorable.antecedentes_tit') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('isba_2_propuesta_resolucion_prov_favorable.antecedentes_1_2_3_4'));
+$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('isba_5_propuesta_resolucion_prov_favorable.antecedentes_1_2_3_4'));
 $parrafo_1 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
@@ -141,7 +141,7 @@ $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
-$parrafo_2 = lang('isba_2_propuesta_resolucion_prov_favorable.antecedentes_5');
+$parrafo_2 = lang('isba_5_propuesta_resolucion_prov_favorable.antecedentes_5');
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%FECHAINFORME%", $data['expediente']['empresa'], $parrafo_2);
 $html = '<ol start="5">'.$parrafo_2.'</ol>';
@@ -149,13 +149,13 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$parrafo_2 = lang('isba_2_propuesta_resolucion_prov_favorable.fundamentosDeDerecho_tit');
+$parrafo_2 = lang('isba_5_propuesta_resolucion_prov_favorable.fundamentosDeDerecho_tit');
 $html = $parrafo_2;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$parrafo_3 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , lang('isba_2_propuesta_resolucion_prov_favorable.fundamentosDeDerechoTxt'));
+$parrafo_3 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , lang('isba_5_propuesta_resolucion_prov_favorable.fundamentosDeDerechoTxt'));
 $html =$parrafo_3;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -164,25 +164,25 @@ $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-$parrafo_4 = lang('isba_2_propuesta_resolucion_prov_favorable.fundamentosDeDerechoTxt_2');
+$parrafo_4 = lang('isba_5_propuesta_resolucion_prov_favorable.fundamentosDeDerechoTxt_2');
 $html = '<ol start="7">'.$parrafo_4.'</ol>';
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$parrafo_5 = lang('isba_2_propuesta_resolucion_prov_favorable.propuestaresoluciondef_tit');
+$parrafo_5 = lang('isba_5_propuesta_resolucion_prov_favorable.propuestaresoluciondef_tit');
 $html = $parrafo_5;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$parrafo_6 = lang('isba_2_propuesta_resolucion_prov_favorable.propuestaresoluciondefTxt');
+$parrafo_6 = lang('isba_5_propuesta_resolucion_prov_favorable.propuestaresoluciondefTxt');
 $html = $parrafo_6;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$parrafo_7 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], lang('isba_2_propuesta_resolucion_prov_favorable.propuestaresoluciondef_1_2_3_4_5_6'));
+$parrafo_7 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], lang('isba_5_propuesta_resolucion_prov_favorable.propuestaresoluciondef_1_2_3_4_5_6'));
 $parrafo_7 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_7);
 $parrafo_7 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_7);
 $parrafo_7 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_7);
@@ -197,7 +197,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-$firma = lang('isba_2_propuesta_resolucion_prov_favorable.firma');
+$firma = lang('isba_5_propuesta_resolucion_prov_favorable.firma');
 $firma = str_replace("%DIRECTORAGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
 
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";

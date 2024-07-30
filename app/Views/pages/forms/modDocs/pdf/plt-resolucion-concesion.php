@@ -17,7 +17,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->configuracionGeneral();   
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
  
 $data['expediente'] = $expediente->where('id', $id)->first();
 
@@ -161,7 +161,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
@@ -189,43 +189,28 @@ $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $req_fundament
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $req_fundamentos_1 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_1');
 $html = "<ol>";
 $html .= "<li>". $req_fundamentos_1 ."</li>";
 $html .= "<br>";
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $req_fundamentos_2 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_2');
 $html .= "<li>". $req_fundamentos_2 ."</li>";
 $html .= "<br>";
-/* $pdf->writeHTML($html, true, false, true, false, ''); */
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $req_fundamentos_3 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_3');
 $html .= "<li>". $req_fundamentos_3 ."</li>";
 $html .= "<br>";
-/* $pdf->writeHTML($html, true, false, true, false, ''); */
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $req_fundamentos_4 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_4');
 $html .= "<li>". $req_fundamentos_4 ."</li>";
 $html .= "<br>";
-/* $pdf->writeHTML($html, true, false, true, false, ''); */
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $req_fundamentos_5 = lang('message_lang.doc_resolucion_concesion_sin_req_fundamentos_5');
 $html .= "<li>". $req_fundamentos_5 ."</li>";
 $html .= "</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-/* $currentY = $pdf->getY();
-$pdf->setY($currentY + 3); */
 $dicto = lang('message_lang.doc_resolucion_concesion_sin_req_dicto');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $dicto ."</td></tr>";
@@ -257,7 +242,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
