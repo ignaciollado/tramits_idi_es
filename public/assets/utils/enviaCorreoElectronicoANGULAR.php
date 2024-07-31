@@ -3,13 +3,70 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/rest_api_firma/
 
 $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
-$nuevosParametros = explode  ("/", $items['query']);
+$data = explode  ("/", $items['query']);
 
-$correoDestino = urldecode($nuevosParametros[0]);
-$solicitante = urldecode($nuevosParametros[1]);
-$contactPhone = urldecode($nuevosParametros[2]);
-$asunto = urldecode($nuevosParametros[3]);
-$mensaje = urldecode($nuevosParametros[4]);
+$correoDestino = urldecode($data[0]);
+$solicitante = urldecode($data[1]);
+$contactPhone = urldecode($data[2]);
+$asunto = urldecode($data[3]);
+$mensaje = urldecode($data[4]);
+$project = urldecode($data[5]);
+
+switch ($project) {
+	case 'Ibemprėnjove':
+		$projectMail = "agelabert@idi.es";
+		break;
+	case 'Ibemprėn':
+		$projectMail = "smartinez@idi.es";
+		break;
+	case 'Ibtalent':
+		$projectMail = "pjimenez@idi.es";
+		break;
+	case 'Ibgestió xecs':
+		$projectMail = "cmunoz@idi.es";
+		break;
+	case 'Ibdigitalització xecs':
+		$projectMail = "cmunoz@idi.es";
+		break;
+	case 'Emblemàtics Balears':
+		$projectMail = "icomerc@idi.es";
+		break;
+	case "Ibcomerç a l'escola":
+		$projectMail = "icomerc@idi.es";
+		break;
+	case "Pà d'aquí":
+		$projectMail = "icomerc@idi.es";
+		break;
+	case 'Industria Local Sostenible':
+		$projectMail = "pjordi@idi.es";
+		break;
+	case 'Ibsostenibilitat xecs':
+		$projectMail = "pjordi@idi.es";
+		break;
+	case 'Ibavals industria':
+		$projectMail = "pjordi@idi.es";
+		break;
+	case 'Ibexposa producte local':
+		$projectMail = "agenovart@idi.es";
+		break;
+	case 'Ibrelleu':
+		$projectMail = "mriutord@idi.es";
+		break;
+	case 'LOOP':
+		$projectMail = "csantandreu@idi.es";
+		break;
+	case 'Ibexporta xecs':
+		$projectMail = "bpino@idi.es";
+		break;
+	case 'Ibexporta Orientacio':
+		$projectMail = "bpino@idi.es";
+		break;
+	case 'Palma International Boatshow':
+		$projectMail = "info@pibspalma.com";
+		break;		
+	default:
+		$projectMail = "info@idi.es";
+}
 
 $mail = new PHPMailer();
 // set mailer to use SMTP
@@ -44,7 +101,6 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 
-
 if ($asunto == 'appILS') {
 	$mensajeLayout = file_get_contents('contents-ils.html');	
 	$mail->Subject = "Nuevo mensaje desde APP Sostenibilitat";
@@ -54,7 +110,9 @@ if ($asunto == 'appILS') {
 	$mensajeLayout = file_get_contents('contents.html');
 	$mail->Subject = $asunto; /* "Nuevo mensaje desde ADR Balears"; */
 	// Con copia oculta
-	$mail->AddBCC("info@idi.es", "Servei de comunicació");
+	/* $mail->AddBCC("info@adrbalears.es", "Servei de comunicació"); */
+	$mail->AddBCC($projectMail, $project);
+
 }
 
 $mensajeLayout = str_replace("%USUARIOIDI%", $solicitante, $mensajeLayout);

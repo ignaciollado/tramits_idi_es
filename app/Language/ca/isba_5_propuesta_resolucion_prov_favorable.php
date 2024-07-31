@@ -85,5 +85,5 @@ return [
 		      <li>La falta de justificació en els termes i terminis que estableix aquesta Resolució, l'aplicació de la subvenció diferent a la que estableix la norma o l'alteració de les condicions tingudes en compte per a la concessió poden donar lloc a la modificació de la subvenció atorgada i, per tant, iniciar un procediment de revocació.</li><br> 
 		      <li>Notificar aquesta proposta de resolució a l'interessat.</li></ol>", 
   
-  'firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DIRECTORAGERENTE%<br>"
+  'firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>"
 ];

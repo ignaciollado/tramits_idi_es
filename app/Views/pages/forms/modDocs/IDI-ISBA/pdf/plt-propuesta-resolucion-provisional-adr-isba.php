@@ -127,7 +127,6 @@ $parrafo_1 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solic
 $parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_1);
 $parrafo_1 = str_replace("%NOMBRE_BANCO%", $data['expediente']['nom_entidad'], $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTE_PRESTAMO%", $data['expediente']['importe_prestamo'], $parrafo_1);
-
 $parrafo_1 = str_replace("%FECHAFIRMARESDESESTIMIENTO%", date_format(date_create($data['expediente']['fecha_firma_resolucion_desestimiento']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
@@ -198,7 +197,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 $firma = lang('isba_5_propuesta_resolucion_prov_favorable.firma');
-$firma = str_replace("%DIRECTORAGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
+$firma = str_replace("%DGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
 
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

@@ -46,29 +46,28 @@ return [
 			  <li>L'entitat sol·licitant ha subscrit l'operació corresponent de finançament mitjançant l'entitat de crèdit %NOMBRE_BANCO% per import de %IMPORTE_PRESTAMO% i s'ha constituït l'aval per aquest import amb Isba SGR.</li><br>
   			<li>D'acord amb l'apartat onzè, paràgraf primer, estableix que les sol·licituds de subvenció s'han de resoldre a mesura que entrin en el registre de l'òrgan competent (rigorós ordre d'entrada), encara que no hagi acabat el termini de presentació, fins que s'exhaureixi el crèdit destinat a la convocatòria o, si escau, fins que es resolguin tots els expedients presentats dins el termini, segons l'article 10 de l'Ordre del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria.</li><br></ol>",
   'antecedentes_5' => "<li>El/la tècnic/a de l'ADR Balears ha examinat la sol·licitud presentada per %SOLICITANTE%, i ha comprovat que:<br>
-			<ul>
+		<ul>
 			<li>Pot ser beneficiari de la subvenció objecte de convocatòria per la seva naturalesa.</li><br> 
 			<li>Ha presentat correctament la seva sol·licitud i la documentació dins el termini previst a la convocatòria.</li><br> 
 			<li>Està al corrent de les obligacions amb la Seguretat Social i amb l'Administració tributària, tant l'estatal com l'autonòmica.</li><br>  
-			</ul></li>",
-  'antecedentes_6_7_8_9_10_11_12_13' => "<li>D'acord amb l'establert a la resolució de convocatòria, els ajuts concedits en el marc d'aquesta convocatòria constitueixen ajuts d'Estat regulats en els articles 107 i 108 del Tractat de Funcionament de la Unió Europea dels ajuts de minimis (reglament núm. 1407/2013), i al reglament (UE) 2023/2831 de la comissió, de 13 de desembre de 2023, relatiu a l'aplicació dels articles 107 i 108 del Tractat.</li><br>
-			<li>L'import econòmic d'aquesta convocatòria és de 500.000€.</li><br> 
-			<li>Hi ha crèdit adequat i suficient amb càrrec als pressuposts de l'ADR Balears per a l'exercici de l'any 2024-2025.</li><br>
-			<li>En data %FECHAINFORME% s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li><br>
-			<li>En data %FECHA_PROPUESTA_RESOLUCION_PROVISIONAL% la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears va dictar la proposta de resolució provisional en els següents termes:<br>  
-			<ul>
-				<li>Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:</li><br> 
-		  	<li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
-				<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys </li><br> 
-				<li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li><br>  
-			</ul></li>
-			<li>La proposta de resolució provisional es va notificar a la persona o entitat interessada el %FECHA_NOTIFICACION_PR_PROV%.</li><br>
-			<li>Exhaurit el termini per presentar al·legacions, no consta que s'hagin presentat al·legacions per part de la persona o entitat interessada.</li><br> 
-			<li>El %FECHA_PROPUESTA_RESOLUCION_DEFINITIVA% la directora gerent de l'Agència de Desenvolupament regional de les Illes Balears va dictar proposta de resolució definitiva en els mateixos termes que la proposta de resolució provisional.</li><br>
-			<li>La proposta de resolució definitiva es va notificar a l'entitat interessada el %FECHA_NOTIFICACION_P_RESOL_DEFINITIVA%</li></ol>", 
+		</ul></li>
+		<li>D'acord amb l'establert a la resolució de convocatòria, els ajuts concedits en el marc d'aquesta convocatòria constitueixen ajuts d'Estat regulats en els articles 107 i 108 del Tractat de Funcionament de la Unió Europea dels ajuts de minimis (reglament núm. 1407/2013), i al reglament (UE) 2023/2831 de la comissió, de 13 de desembre de 2023, relatiu a l'aplicació dels articles 107 i 108 del Tractat.</li><br>
+		<li>L'import econòmic d'aquesta convocatòria és de 500.000€.</li><br> 
+		<li>Hi ha crèdit adequat i suficient amb càrrec als pressuposts de l'ADR Balears per a l'exercici de l'any 2024-2025.</li><br>
+		<li>En data %FECHAINFORME% s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li><br>
+		<li>En data %FECHA_PROPUESTA_RESOLUCION_PROVISIONAL% la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears va dictar la proposta de resolució provisional en els següents termes:<br><br>
+			Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br>
+			<ul><li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br>
+			<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys </li><br>
+			<li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li></ul>
+		</li><br>
+		<li>La proposta de resolució provisional es va notificar a la persona o entitat interessada el %FECHA_NOTIFICACION_PR_PROV%.</li><br>
+		<li>Exhaurit el termini per presentar al·legacions, no consta que s'hagin presentat al·legacions per part de la persona o entitat interessada.</li></ol>",
+
+	'antecedentes_13_14' => "<li>El %FECHA_PROPUESTA_RESOLUCION_DEFINITIVA% la directora gerent de l'Agència de Desenvolupament regional de les Illes Balears va dictar proposta de resolució definitiva en els mateixos termes que la proposta de resolució provisional.</li><br>
+			<li>La proposta de resolució definitiva es va notificar a l'entitat interessada el %FECHA_NOTIFICACION_P_RESOL_DEFINITIVA%</li>", 
 
   'fundamentosDeDerecho_tit' => "<b>Fonaments de dret</b>",
-
   'fundamentosDeDerechoTxt' => "<ol>
       <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
       <li>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</li><br>

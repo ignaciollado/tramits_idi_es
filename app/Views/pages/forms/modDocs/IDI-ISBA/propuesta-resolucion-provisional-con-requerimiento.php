@@ -7,7 +7,7 @@
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="wrapper_propuestaResProvisional" class="btn btn-primary btn-acto-admin" onclick="enviaPropResolucionResProvisional(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la proposta</button>
+			<button id="wrapper_propuestaResProvisionalConReq" class="btn btn-primary btn-acto-admin" onclick="enviaPropResolucionResProvisionalConReq(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la proposta</button>
 			<div id='infoMissingDataDoc3' class="alert alert-danger ocultar"></div>
 		<?php } ?>
 	</div>
@@ -15,7 +15,7 @@
 		<?php if ($expedientes['doc_prop_res_provisional_adr_isba'] != 0) { ?>
 
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_provisional_adr_isba.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_provisional_con_req_adr_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -24,21 +24,21 @@
 				$estado_firma = $respuesta['status'];
 				switch ($estado_firma) {
 					case 'NOT_STARTED':
-						$estado_firma = "<div class='info-msg'>Pendent de signar</div>";
+						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";				
 						break;
-					case 'REJECTED':
-						$estado_firma = "<div class = 'warning-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . ">Signatura rebutjada";
-						$estado_firma .= "</a></div>";
+						case 'REJECTED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
+						$estado_firma .= "</a>";				
 						break;
-					case 'COMPLETED':
-						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " >Signat";
-						$estado_firma .= "</a>";
+						case 'COMPLETED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
+						$estado_firma .= "</a>";					
 						break;
-					case 'IN_PROCESS':
-						$estado_firma = "<div class='info-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . " >En curs";
-						$estado_firma .= "</a></div>";
-					default:
-						$estado_firma = "<div class='info-msg'>Desconegut</div>";
+						case 'IN_PROCESS':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
+						$estado_firma .= "</a>";						
+						default:
+						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 				}
 				echo $estado_firma;
 			}	?>
@@ -48,14 +48,14 @@
 </div>
 <!-------------------------------------------------------------------------------------------------------------------->
 <script>
-	function enviaPropResolucionResProvisional(id, convocatoria, programa, nifcif) {
+	function enviaPropResolucionResProvisionalConReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
-		let wrapper_propuestaResProvisional = document.getElementById('wrapper_propuestaResProvisional')
+		let wrapper_propuestaResProvisionalConReq = document.getElementById('wrapper_propuestaResProvisionalConReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""
@@ -83,9 +83,9 @@
 
 		if (todoBien) {
 			infoMissingDataDoc3.classList.add('ocultar')
-			wrapper_propuestaResProvisional.disabled = true
-			wrapper_propuestaResProvisional.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_adr_isba'
+			wrapper_propuestaResProvisionalConReq.disabled = true
+			wrapper_propuestaResProvisionalConReq.innerHTML = "Generant i enviant ..."
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_con_req_adr_isba'
 		} else {
 			infoMissingDataDoc3.classList.remove('ocultar')
 		}

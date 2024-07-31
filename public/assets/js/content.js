@@ -57,8 +57,8 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2023', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2023')
     totalSolicitudesPorSituacion('2023', 'Programa III', 'nohapasadoREC', 'totalSolicitudesIIINoREC_2023')
 
-
     //convo 2024
+
     totalSolicitudesPrograma('2024', 'Programa I')
     totalSolicitudesPrograma('2024', 'Programa II')
     totalSolicitudesPrograma('2024', 'Programa III actuacions corporatives')
@@ -88,6 +88,12 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'inicioConsultoria', 'totalInicioConsultoriaIII_org_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'inicioConsultoria', 'totalInicioConsultoriaIII_prod_2024')
     totalSolicitudesPorSituacion('2024', 'Programa IV', 'inicioConsultoria', 'totalInicioConsultoriaIV_2024')
+
+    totalSolicitudesPorSituacion('2024', 'Programa I', 'Finalizado', 'totalPendienteI_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa II', 'Finalizado', 'totalPendienteII_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'Finalizado', 'totalPendienteIII_org_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'Finalizado', 'totalPendienteIII_prod_2024')
+    totalSolicitudesPorSituacion('2024', 'Programa IV', 'Finalizado', 'totalPendienteIV_2024')
 });
 
 async function totalSolicitudesConvocatoria(convo) {
@@ -111,14 +117,12 @@ async function totalSolicitudesPrograma(convo, stage) {
     if (stage == 'Programa IV') {resultadoP = document.getElementById("totalSolicitudesIV_"+convo)}
     if (stage == 'ILS')  { resultadoP = document.getElementById("totalSolicitudesILSAdheridas"); }
     resultadoP.innerHTML = "Finalitzades: "+ totalSolicitudes;
-
 }
 
 async function importeTotalSolicitadoPrograma(convo, stage) {
     let resultadoP;
 	let recurso = '/public/assets/utils/importeTotalSolicitadoPrograma.php?convocatoria="'+ convo + '"/tipo_tramite="' + stage +'"';
 	const importeSolicitado = await fetch(recurso).then(res => res.json());
-    //if (stage == 'Programa iDigital 20')  { resultadoP = document.getElementById("importeTotaliDigital2020"); }
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeTotalI_"+convo); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeTotalII_"+convo); }
     if (stage == 'Programa III')  { resultadoP = document.getElementById("importeTotalIII_"+convo); }
@@ -132,7 +136,6 @@ async function importeTotalConcedidoPrograma(convo, stage) {
     let resultadoP;
 	let recurso = '/public/assets/utils/importeTotalConcedidoPrograma.php?convocatoria="'+ convo + '"/tipo_tramite="' + stage +'"';
 	const importeConcedido = await fetch(recurso).then(res => res.json())
-    //if (stage == 'Programa iDigital 20')  { resultadoP = document.getElementById("importeConcedidoiDigital2020"); }
     if (stage == 'Programa I')  { resultadoP = document.getElementById("importeConcedidoI_"+convo); }
     if (stage == 'Programa II')  { resultadoP = document.getElementById("importeConcedidoII_"+convo); }
     if (stage == 'Programa III')  { resultadoP = document.getElementById("importeConcedidoIII_"+convo); }

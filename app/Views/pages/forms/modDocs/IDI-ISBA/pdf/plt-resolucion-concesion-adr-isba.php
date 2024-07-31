@@ -134,11 +134,15 @@ $parrafo_1 = str_replace("%IMPORTE_PRESTAMO%", $data['expediente']['importe_pres
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+$pdf->setY($currentY + 24);
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_9_resolucion_concesion.antecedentes_5'));
-$html = $parrafo_2;
-$pdf->writeHTML($html, true, false, true, false, '');
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p3m'));
@@ -147,28 +151,38 @@ if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $html .= "<br>";
 }
 
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+$parrafo_2 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y"), $parrafo_2);
+$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
+$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_2);
+$parrafo_2 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_idi_isba']),"d/m/Y") , $parrafo_2);
+$parrafo_2 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_2);
+$parrafo_2 = str_replace("%FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_2);
+$parrafo_2 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_2);
+$html = '<ol start="5">'.$parrafo_2.'</ol>';
+$pdf->writeHTML($html, true, false, true, false, '');
 
-$parrafo_3 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_propuesta_resolucion_notif']),"d/m/Y") , lang('isba_9_resolucion_concesion.antecedentes_6_7_8_9_10_11_12_13'));
-$parrafo_3 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_3);
-$parrafo_3 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_3);
-$parrafo_3 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $parrafo_3);
-$parrafo_3 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_3);
-$parrafo_3 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_3);
-$parrafo_3 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_idi_isba']),"d/m/Y") , $parrafo_3);
-$parrafo_3 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_3);
-$parrafo_3 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_3);
-$parrafo_3 = str_replace("%FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%", $data['expediente']['fecha_firma_propuesta_resolucion_prov'], $parrafo_3);
-$parrafo_3 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", $data['expediente']['fecha_not_propuesta_resolucion_prov'], $parrafo_3);
-$parrafo_3 = str_replace("%FECHA_PROPUESTA_RESOLUCION_DEFINITIVA%", $data['expediente']['fecha_firma_propuesta_resolucion_def'], $parrafo_3);
-$parrafo_3 = str_replace("%FECHA_NOTIFICACION_P_RESOL_DEFINITIVA%", $data['expediente']['fecha_not_propuesta_resolucion_def'], $parrafo_3);
-$html = $parrafo_3;
+
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 24);
+$parrafo_4 = lang('isba_9_resolucion_concesion.antecedentes_13_14');
+$parrafo_4 = str_replace("%FECHA_PROPUESTA_RESOLUCION_DEFINITIVA%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_def']),"d/m/Y"), $parrafo_4);
+$parrafo_4 = str_replace("%FECHA_NOTIFICACION_P_RESOL_DEFINITIVA%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_def']),"d/m/Y"), $parrafo_4);
+$html = '<ol start="13">'.$parrafo_4.'</ol>';;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_4 = str_replace("%FECHAPAGO%", date_format(date_create($data['expediente']['fecha_de_pago']),"d/m/Y") ,lang('isba_9_resolucion_concesion.fundamentosDeDerecho_tit'));
+$parrafo_4 = lang('isba_9_resolucion_concesion.fundamentosDeDerecho_tit');
 $html = $parrafo_4;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -181,11 +195,11 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
+$pdf->setY($currentY + 24);
 $parrafo_6 = lang('isba_9_resolucion_concesion.dicto');
 $html = $parrafo_6;
 $pdf->writeHTML($html, true, false, true, false, '');
@@ -196,67 +210,8 @@ $parrafo_6 = lang('isba_9_resolucion_concesion.resolucion_tit');
 $html = $parrafo_6;
 $pdf->writeHTML($html, true, false, true, false, '');
 
-/* $html = "<ul style=' list-style-type: none;'>";
-if ($ultimaMejora[2] && $ultimaMejora[3]) { 
-    $html .= "7. ". $parrafo_6;
-    $html .= "<br><br>";
-    
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_7 = lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p7');
-    $html .= "8. ". $parrafo_7;
-    $html .= "<br><br>";
-    
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_8 = lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p8');
-    $html .= "9. ". $parrafo_8;
-    $html .= "<br><br>";
-    
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_9 = lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p9');
-    $html .= "10. ". $parrafo_9;
-    $html .= "<br><br>";
-    
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_10 = str_replace("%FECHAFIRMAINFPOSTENMIENDA%", date_format(date_create($data['expediente']['fecha_YYYYYYYYY']),"d/m/Y") , lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p10'));
-    $html .= "11. ". $parrafo_10;
-} else  {
-    $html .= "6. ". $parrafo_6;
-    $html .= "<br><br>";
-
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_7 = lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p7');
-
-    $html .= "7. ". $parrafo_7;
-    $html .= "<br><br>";
-
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_8 = lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p8');
-    $html .= "8. ". $parrafo_8;
-    $html .= "<br><br>";
-
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_9 = lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p9');
-    $html .= "9. ". $parrafo_9;
-    $html .= "<br><br>";
-
-    $currentY = $pdf->getY();
-    $pdf->setY($currentY + 4);
-    $parrafo_10 = str_replace("%FECHAFIRMAINFPOSTENMIENDA%", date_format(date_create($data['expediente']['fecha_YYYYYYYYY']),"d/m/Y") , lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p10'));
-    $html .= "10. ". $parrafo_10;
-}
-$html .= "</ul>";
-$pdf->writeHTML($html, true, false, true, false, ''); */
-
-
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
+$pdf->setY($currentY + 4);
 $resolucion = lang('isba_9_resolucion_concesion.resolucion');
 $resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $resolucion);
 $resolucion = str_replace("%NIF%", $data['expediente']['nif'], $resolucion);
@@ -264,15 +219,19 @@ $resolucion = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_s
 $resolucion = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $resolucion);
 $resolucion = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $resolucion);
 $resolucion = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_idi_isba']),"d/m/Y") , $resolucion);
-$parrafo_3 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_3);
-$parrafo_3 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_3);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."</td></tr>";
-$html .= "</table>";
+$resolucion = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $resolucion);
+$resolucion = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $resolucion);
+$html = $resolucion;
 $pdf->writeHTML($html, true, false, true, false, '');
 
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+$pdf->setY($currentY + 24);
 $recursos_tit = lang('isba_9_resolucion_concesion.recursos_tit');
 $html = $recursos_tit;
 $pdf->writeHTML($html, true, false, true, false, '');
@@ -282,13 +241,6 @@ $pdf->setY($currentY + 3);
 $recursos = lang('isba_9_resolucion_concesion.recursos');
 $html = $recursos;
 $pdf->writeHTML($html, true, false, true, false, '');
-
-// remove default header/footer
-/* $pdf->setPrintHeader(false);
-$pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
-$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false); */
-
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
@@ -305,4 +257,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_concesion_idi_isba.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_concesion_adr_isba.pdf', 'F');

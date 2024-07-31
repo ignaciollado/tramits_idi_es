@@ -60,6 +60,7 @@
               <span class="badge bg-primary" id="totalPendienteII_2024">0</span>
               <span class="badge bg-secondary" id="totalInicioConsultoriaII_2024">0</span>
               <span class="badge text-bg-success" id="totalSolicitudesII_2024">0</span>
+              <span class="badge text-bg-success" id="totalFinalizadoII_2024">0</span>
               <span class="badge text-bg-success" id="importeConcedidoII_2024">0.00</span>
             </li></ul>
           

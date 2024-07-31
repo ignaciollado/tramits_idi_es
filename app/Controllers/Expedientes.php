@@ -1734,7 +1734,7 @@ class Expedientes extends Controller
 		$id_sol =  $request->uri->getSegment(3);
 		$convocatoria = $request->uri->getSegment(4);
 
-		$data['id'] =  $id_sol;
+		$data['id'] = $id_sol;
 		$data['convocatoria'] = $convocatoria;
 		$data['programa'] = str_replace("%20", " ", $request->uri->getSegment(5));
 		$data['nifcif'] = mb_strtoupper($request->uri->getSegment(6));
@@ -1815,7 +1815,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_provisional_adr_isba": 							//VIAFIRMA DOC 3
+			case "doc_prop_res_provisional_adr_isba": 							//VIAFIRMA DOC 5
 				$data_infor = [
 					'doc_prop_res_provisional_adr_isba' => $last_insert_id
 				];
@@ -1832,7 +1832,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_prop_res_definitiva_adr_isba": 								//VIAFIRMA DOC 4
+			case "doc_prop_res_definitiva_adr_isba": 								//VIAFIRMA DOC 7
 				$data_infor = [
 					'doc_prop_res_definitiva_adr_isba' => $last_insert_id
 				];
@@ -1866,9 +1866,9 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_res_conces_adr_isba": 												//VIAFIRMA DOC 7
+			case "doc_res_concesion_adr_isba": 											//VIAFIRMA DOC 9
 				$data_infor = [
-					'doc_res_conces_adr_isba' => $last_insert_id
+					'doc_res_concesion_adr_isba' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);

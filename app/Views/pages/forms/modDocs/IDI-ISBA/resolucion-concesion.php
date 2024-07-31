@@ -1,7 +1,7 @@
 <!----------------------------------------- Resolución de concesión amb requeriment. DOC 7. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Resolució de concessió - testear
+		Resolució de concessió **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -13,9 +13,9 @@
 
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_res_conces_con_req'] != 0) { ?>
+		<?php if ($expedientes['doc_res_concesion_adr_isba'] != 0) { ?>
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_res_conces_con_req_idi_isba.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_res_concesion_adr_isba.pdf');
 
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
@@ -25,21 +25,21 @@
 				$estado_firma = $respuesta['status'];
 				switch ($estado_firma) {
 					case 'NOT_STARTED':
-						$estado_firma = "<div class='info-msg'>Pendent de signar</div>";
+						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";				
 						break;
-					case 'REJECTED':
-						$estado_firma = "<div class = 'warning-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudrechazada/' . $requestPublicAccessId) . ">Signatura rebutjada";
-						$estado_firma .= "</a></div>";
+						case 'REJECTED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
+						$estado_firma .= "</a>";				
 						break;
-					case 'COMPLETED':
-						$estado_firma = "<a class='btn btn-ver-itramits' href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . ">Signat";
-						$estado_firma .= "</a>";
+						case 'COMPLETED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
+						$estado_firma .= "</a>";					
 						break;
-					case 'IN_PROCESS':
-						$estado_firma = "<div class='info-msg'><a href=" . base_url('public/index.php/expedientes/muestrasolicitudfirmada/' . $requestPublicAccessId) . ">En curs";
-						$estado_firma .= "</a></div>";
-					default:
-						$estado_firma = "<div class='info-msg'>Desconegut</div>";
+						case 'IN_PROCESS':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
+						$estado_firma .= "</a>";						
+						default:
+						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 				}
 				echo $estado_firma;
 			}	?>
@@ -82,7 +82,7 @@
 			infoMissingDataDoc6.classList.add('ocultar')
 			wrapper_ResConcesionConReg.disabled = true
 			wrapper_ResConcesionConReg.innerHTML = "Generant i enviant..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_conces_idi_isba'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_concesion_adr_isba'
 		} else {
 			infoMissingDataDoc6.classList.remove('ocultar')
 		}
