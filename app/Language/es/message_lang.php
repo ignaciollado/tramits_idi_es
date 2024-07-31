@@ -72,7 +72,7 @@ return [
    'titulo_sol_idigital'			  => "Solicitud de ayuda y/o subvención",
    'titulo_adhesion_ils'			  => "Solicitud de adhesión a ILS",
    'titulo_solicitud_idi_isba'     => "Ayudas a los gastos financieros a través del aval de ISBA",
-   'titulo_solicitud_felib'        => "SOLICITUD DE ADHESIÓN A LOS PROGRAMAS QUE OFRECE A LOS MUNICIPIOS L’AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears)",
+   'titulo_solicitud_felib'        => "SOL·LICITUD D’ADHESIÓ ALS PROGRAMES QUE OFEREIX ALS MUNICIPIS L’AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears)",
 
    'Codi_SIA'                      => "Código SIA",
    'tramite_procedimiento'         => "Trámite o procedimiento",

@@ -1348,7 +1348,7 @@ class SubirArchivo extends BaseController
 			}
 		}
 
- 		$nif = $this->request->getVar('nif');
+ 		$nif = trim($this->request->getVar('nif'));
 		$empresa = $this->request->getVar('denom_interesado');
 		$domicilio = $this->request->getVar('domicilio');
 		$localidad = $this->request->getVar('localidad');
@@ -1765,7 +1765,7 @@ class SubirArchivo extends BaseController
    }	
 
 	public function store_felib()
-	 {
+	{
 		helper('filesystem');
 		helper(['form', 'url']);
 		helper('cookie');
@@ -1794,7 +1794,7 @@ class SubirArchivo extends BaseController
 		$selloTiempo = date("d_m_Y_h_i_sa");
 	 
 		 $empresa = "AJUNTAMENT de ".$this->request->getVar('localidad');
-		 $nif = $this->request->getVar('nif');
+		 $nif = trim($this->request->getVar('nif'));
 
 		 $domicilio = $this->request->getVar('domicilio');
 		 $localidad = $this->request->getVar('localidad');
@@ -1868,6 +1868,6 @@ class SubirArchivo extends BaseController
 		echo view('pages/forms/solicitud-adhesion-felib', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-solicitud-felib', $data_exp);
-	 }
+	}
 
 }
