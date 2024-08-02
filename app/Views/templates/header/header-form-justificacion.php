@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>
-			<?php if ($tipoTramite == "IDI-ISBA") {?>
+			<?php if ($tipoTramite == "ADR-ISBA") {?>
 				<?php echo lang('message_lang.titulo_solicitud_idi_isba');?>
 			<?php } else { ?>
 				<?php echo lang('message_lang.titulo_justificacion_idigital');?>
@@ -39,12 +39,20 @@ $data['expedientes'] = $modelExp->where('id', $id)->first();
 <header>
 	<div class="menu">
 		<ul>
-			<li class="logo"><a href="http://www.adrbalears.es" target="_self"><img height = "64" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)"
-						alt = "<?php echo lang('message_lang.titulo_justificacion_idigital');?>"
-						src = "<?php echo base_url()."/public/assets/images/adr-balears.png";?>" >
+			<li class="logo-justificacion">
+				<a href="http://www.adrbalears.es" target="_self">
+					<img height = "64" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)"
+							alt = "<?php echo lang('message_lang.titulo_justificacion_idigital');?>"
+							src = "<?php echo base_url()."/public/assets/images/adr-balears.png";?>">
+				</a>
+				<?php if ($tipoTramite == "ADR-ISBA") {?>
+					<a href='https://www.isbasgr.es/es/' target="_blank">
+						<img src='/public/assets/images/logo-isba-sgr-317.png' alt=' logo isba sgr' width="40%" height="AUTO">
+					</a>
+				<?php }?>
 			</li>
 			<li>
-			<?php if ($tipoTramite == "IDI-ISBA") {?>
+			<?php if ($tipoTramite == "ADR-ISBA") {?>
 				<h2><?php echo lang('message_lang.titulo_solicitud_idi_isba');?></h2>
 			<?php } else { ?>
 				<h2><?php echo lang('message_lang.titulo_justificacion_idigital');?></h2>

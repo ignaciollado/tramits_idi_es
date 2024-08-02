@@ -630,7 +630,7 @@ function consultaExpediente ( buscaPor, identificador ) {
 		identificador = identificador.split(" ").join("") /* quito posibles espacios en blanco */
 	
 		if (buscaPor === 'expediente') {
-			end_point = `https://${baseUrl.hostname}/public/index.php/expediente/${identificador}/IDI-ISBA`
+			end_point = `https://${baseUrl.hostname}/public/index.php/expediente/${identificador}/ADR-ISBA`
 		}
 		if (buscaPor === 'nif' || buscaPor === 'dni') {
 			end_point = `https://${baseUrl.hostname}/public/index.php/nifExpediente/${identificador}`

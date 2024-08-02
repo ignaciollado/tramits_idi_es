@@ -1212,7 +1212,7 @@ class SubirArchivo extends BaseController
 	
 		$language = \Config\Services::language();
 		$language->setLocale($idioma);
-		$tipo_tramite =  'IDI-ISBA';
+		$tipo_tramite =  'ADR-ISBA';
 		$currentYear = date("Y");
 		$lineaConfig = new ConfiguracionLineaModel();
 		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData($tipo_tramite, $currentYear);
@@ -1757,7 +1757,7 @@ class SubirArchivo extends BaseController
 					}
 				}
 		}
-		$data_file['titulo'] = "Resumen de la solicitud de ayuda IDI-ISBA";
+		$data_file['titulo'] = "Resumen de la solicitud de ayuda ADR-ISBA";
 
 	 	echo view('pages/forms/solicitud-ayuda-idi-isba', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);

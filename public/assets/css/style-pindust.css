@@ -176,11 +176,20 @@ header {
 			color: #000;
 			font-weight: bold!important;
 		}
+		.logo-justificacion{
+			float: left;
+			text-align: left;
+			width: 40%;
+			height: auto;
+			padding: .4rem .5rem;
+		}
+
 		header .logo {
 			float: left;
 			height: 44px;
 			padding: .4rem .5rem;
 		}
+
 		header .menu-toggle {
 			display: none;
 			float: right;

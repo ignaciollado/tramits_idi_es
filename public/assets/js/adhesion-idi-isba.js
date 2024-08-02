@@ -627,7 +627,7 @@ function consultaExpediente ( buscaPor, identificador ) {
 	identificador = identificador.split(" ").join("")
 
 	if (buscaPor === 'expediente') {
-		end_point = `https://${baseUrl.hostname}/public/index.php/expediente/${identificador}/IDI-ISBA`
+		end_point = `https://${baseUrl.hostname}/public/index.php/expediente/${identificador}/ADR-ISBA`
 	}
 	if (buscaPor === 'nif') {
 		end_point = `https://${baseUrl.hostname}/public/index.php/nifExpediente/${identificador}`
@@ -684,7 +684,7 @@ function rellenaElFormulario(id) {
  			document.getElementById("mail_representante").value = beneficiario[0].email_rep
 			document.getElementById("tel_representante").value = beneficiario[0].telefono_rep
 
- 			if ( beneficiario[0].tipo_tramite === 'IDI-ISBA' ) {
+ 			if ( beneficiario[0].tipo_tramite === 'ADR-ISBA' ) {
 				
 				document.getElementById("nom_entidad").value = beneficiario[0].nom_entidad
 				document.getElementById("importe_prestamo").value = beneficiario[0].importe_prestamo

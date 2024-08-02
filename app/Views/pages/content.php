@@ -314,10 +314,10 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 
 <!------------------------------------------------------IDI-ISBA-------------------------------------------------------------->  
-<button class="accordion"><h1>IDI-ISBA</h1></button>
+<button class="accordion"><h1>ADR-ISBA</h1></button>
 <div class="panel" style="display:block;">
   <section id="sectionILS">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/IDI-ISBA/'.date("Y"));?>" target="_self">Expedients</a></h2>
+    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ADR-ISBA/'.date("Y"));?>" target="_self">Expedients</a></h2>
 	  <fieldset>
       <div>
         <span id="totalSolicitudesILS_2022"></span>

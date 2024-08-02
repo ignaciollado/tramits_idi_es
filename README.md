@@ -1,9 +1,10 @@
 # ¿Qué hace esta aplicación?
 
 Es un gestor de trámites administrativos que se usa para gestionar:
-- Ayudas y de subvenciones para el servicio de política industrial del IDI
-- Proceso de adhesión al programa ILS (Industria Local Sostenible) del IDI 
-- Ayudas IDI-ISBA (en construcción)
+- Ayudas y de subvenciones para el servicio de política industrial del ADR
+- Proceso de adhesión al programa ILS (Industria Local Sostenible) del ADR 
+- Ayudas ADR-ISBA (en construcción)
+- Adhesión Ayuntamientos (FELIB) a programas de la ADR Balears
 
 # El entorno de producción se encuentra en 
 

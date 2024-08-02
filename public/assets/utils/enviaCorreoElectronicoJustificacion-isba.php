@@ -32,31 +32,31 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 if ($base_url === "pre-tramitsidi") {
-    $mail->Username = "pre-tramits@pre-tramits.idi.es";  // SMTP username
+  $mail->Username = "pre-tramits@pre-tramits.idi.es";  // SMTP username
 } else {
-    $mail->Username = "tramits@tramits.idi.es";  // SMTP username
+  $mail->Username = "tramits@tramits.idi.es";  // SMTP username
 }
 $mail->Password = "Lvsy2r7[4,4}"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 if ($base_url === "pre-tramitsidi") {
-    $mail->From = "pre-tramits@pre-tramits.idi.es";  // SMTP username
-    $mail->FromName = "PRE-ADR Balears";
+  $mail->From = "pre-tramits@pre-tramits.idi.es";  // SMTP username
+  $mail->FromName = "PRE-ADR Balears";
 } else {
-    $mail->From = "tramits@tramits.idi.es";  // SMTP username
-    $mail->FromName = "ADR Balears";
+  $mail->From = "tramits@tramits.idi.es";  // SMTP username
+  $mail->FromName = "ADR Balears";
 }
 // Lo que verá del remitente el destinatario
 if ($base_url === "pre-tramitsidi") {
-    $mail->SetFrom("noreply@pre-tramits.idi.es","PRE-ADR Balears");
+  $mail->SetFrom("noreply@pre-tramits.idi.es","PRE-ADR Balears");
 } else {
-    $mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
+  $mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
 }
 // La dirección a la que contestará el destinatario
 if ($base_url === "pre-tramitsidi") {
-    $mail->AddReplyTo("response@pre-tramits.idi.es","PRE-ADR Balears"); 
+  $mail->AddReplyTo("response@pre-tramits.idi.es","PRE-ADR Balears"); 
 } else {
-    $mail->AddReplyTo("response@tramits.idi.es","ADR Balears"); 
+  $mail->AddReplyTo("response@tramits.idi.es","ADR Balears"); 
 }
 // Con copia oculta
 $mail->AddBCC("illado@idi.caib.es", "Servei de Politica Indústrial");
@@ -67,8 +67,8 @@ $mail->WordWrap = 50;
 $mail->IsHTML(true);
 
 $mail->CharSet = 'UTF-8'; 
-$mail->Subject = "Justificar xecs de consultoria Illes Balears - ADR Balears";
-$mensajeLayout = file_get_contents('contents-justificacion.html');
+$mail->Subject = "Justificar ajut ADR Balears - ISBA SGR";
+$mensajeLayout = file_get_contents('contents-justificacion-ISBA.html');
 $mensajeLayout = str_replace("%ID%", $_POST["id"], $mensajeLayout);
 $mensajeLayout = str_replace("%NIF%", $nif, $mensajeLayout);
 $mensajeLayout = str_replace("%TIPOTRAMITE%", $tipoTramite, $mensajeLayout);
@@ -94,7 +94,7 @@ else
     $query = "UPDATE pindust_expediente SET situacion = 'pendienteJustificar', fecha_limite_justificacion =".$fechaLimJustificar."  WHERE  id = " . $_POST["id"];
     echo $query;
     $result = mysqli_query($conn, $query); */
-    $result = "<strong>S'ha enviat el formulari de justificació a la adreça de notificació: " .$correoDestino."</strong>";
+    $result = "S'ha enviat el formulari de justificació a la adreça de notificació: " .$correoDestino;
 }
 
 echo $result;

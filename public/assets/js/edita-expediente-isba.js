@@ -496,31 +496,24 @@ function avisarCambiosEnFormulario(fase, elemento) {
 	document.getElementById(fase).className = "error-msg";
 }
 
-function actualizaFechas(fechaCierre, dias) {
+function setFechaLimiteJustificacion(fechaCierre, meses) {
 	let d = new Date(fechaCierre);
-	d.setDate(d.getDate() + dias);
+	d.setMonth(d.getMonth() + meses);
+	console.log (d)
 	if (d.getDay() == 6) {  //La fecha cae en Sábado hay que pasar la al primer lunes (+2 días)
 		d.setDate(d.getDate()+2);
 	}
 	if (d.getDay() == 0) {  //La fecha cae en Domingo hay que pasar la al primer lunes (+1 días)
 		d.setDate(d.getDate()+1);
 	}
-
-	document.getElementById("fecha_reunion_cierre_modal").value = fechaCierre;
 	document.getElementById("fecha_limite_justificacion").value = d.toISOString().substr(0, 10);
-	document.getElementById("fecha_limite_justificacion_modal").value = d.toISOString().substr(0, 10);
-
 	let valorFechaJustificacion = document.getElementById("fecha_limite_justificacion").value;
 	let actualizaKickOff = "/public/assets/utils/actualiza_fechas_Cierre.php?"+ fechaCierre+"/"+valorFechaJustificacion+"/"+document.getElementById("id").value;
 	fetch(actualizaKickOff)
 		.then((response) => response.text())
 		.then((data) => {
-			let resultadoP = document.getElementById("fecha_kick_off");
-			let cell = document.createElement("span");
-			let cellText = document.createTextNode(data);
-			cell.appendChild(cellText);
-			resultadoP.appendChild(cell);
-			resultadoP.setAttribute("border", "2");
+			console.log (data)
+			document.getElementById("fecha_limite_justificacion").setAttribute("border", "2");
 		});
 }
 
@@ -883,22 +876,21 @@ function actualizaActaCierre_click() {
 	);
 }
 
-function enviaMailJustificacion_click() {
+function enviaMailJustificacionISBA_click() {
 	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarJustificador");
 	document.getElementById("spinner_151").classList.remove("ocultar");
 	document.getElementById("enviaMailJustificacion").disabled.true;
 	$.post(
-		"/public/assets/utils/enviaCorreoElectronicoJustificacion.php",
+		"/public/assets/utils/enviaCorreoElectronicoJustificacion-isba.php",
 		{ id: id },
 		function (data) {
-			console.log(data);
+			console.log("Resultado: ", data);
 			if (data) {
-				document.getElementById("spinner_151").classList.add("ocultar");
-				document.getElementById("enviaMailJustificacion").style.display = "none";
-				document.getElementById("mensaje").classList.remove("ocultar");
-				document.getElementById("mensaje").innerHTML = data;
-				//$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
+				document.getElementById("spinner_151").classList.add("ocultar")
+				document.getElementById("enviaMailJustificacion").style.display = "none"
+				document.getElementById("mensaje").classList.remove("ocultar")
+				document.getElementById("mensaje").innerHTML = data
+				setFechaLimiteJustificacion(Date.now(), 6)
 			}
 		}
 	);
@@ -906,7 +898,6 @@ function enviaMailJustificacion_click() {
 
 function enviaMailFormEmpresa_click() {
 	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarFormularioEmpresa");
 	document.getElementById("spinner_17ils1").classList.remove("ocultar");
 	document.getElementById("enviaMailFormEmpresa").disabled.true;
 	$.post(
@@ -927,8 +918,6 @@ function enviaMailFormEmpresa_click() {
 function enviaMailEscrituraEmpresa_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
-
-	var modal = document.getElementById("myEnviarFormularioEscrituraEmpresa");
 	document.getElementById("spinner_EscrituraEmpresa").classList.remove("ocultar");
 	document.getElementById("enviaMailEscrituraEmpresa").disabled.true;
 	$.post(
@@ -1053,10 +1042,6 @@ async function insertaMejoraEnSolicitud() {
 			location.reload();
 		})
 
-}
-
-function myFunction_docs_IDI_click (id, nombre) {
-	localStorage.setItem("documento_actual", id);
 }
 
 function opcion_seleccionada_click(respuesta) {
@@ -1409,9 +1394,7 @@ function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {
-				document.getElementById("wrapper_motivoRequerimientoIdiIsba").classList.remove("ocultar");
-/* 				document.getElementById("wrapper_motivoRequerimientoIdiIsba").disabled = true
-				document.getElementById("wrapper_motivoRequerimientoIdiIsba").innerHTML = "Generant i enviant ..." */
+				document.getElementById("wrapper_motivoRequerimientoIdiIsba").classList.remove("ocultar")
 			}
 		}
 	);

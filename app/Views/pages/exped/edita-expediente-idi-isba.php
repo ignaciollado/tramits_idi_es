@@ -739,7 +739,7 @@
                 </div>
             <?php endif; ?>
             <?php if(!$mejorasSolicitud): ?>
-              <span class="alert alert-info" role="alert">De moment, no hi ha millores!</span>
+              <div class="alert alert-info" role="alert">De moment, no hi ha millores!</div>
             <?php endif; ?>
             <div style="margin-top:1rem;color:blue;text-align:left;padding:.5rem;">
                 <div class="mb-3">
@@ -908,9 +908,6 @@
             <!----------------------------------------- Resolución de concesión amb requeriment------------------------------->
             <li>Resolución de concesión amb requeriment</li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------- Resolución de pago y justificación FIRMA D GERENTE ------------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-y-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->   
         </ol>
         </div>
         <div class="col docsExpediente">
@@ -1004,7 +1001,11 @@
         <h3>Detall:</h3>
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
-            <div class="col">                         
+            <div class="col">
+		    <div class="form-group justificacion">
+            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
+            </div>
     		<div class="form-group justificacion">
             <label for = "fecha_res_liquidacion"><strong>Data resolució de concessió:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_liquidacion" class = "form-control send_fase_4" id = "fecha_res_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_liquidacion']), 'Y-m-d');?>">
@@ -1013,15 +1014,11 @@
             <label for = "fecha_limite_justificacion"><strong>Data máxima justificació:</strong></label>
             <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
             <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
-            </div>         
+            </div>
             <div class="form-group justificacion">
             <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament / justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
             </div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
-            </div>			
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Firma requeriment justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
@@ -1063,6 +1060,9 @@
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="11">
+            <!----------------- Resolución de pago y justificación FIRMA D GERENTE ------------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-y-justificacion.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->  
             <!----------------------------------------- Informe inicio requerimento justificación ---------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/inicio-requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
@@ -1072,7 +1072,9 @@
             <!----------------------------------------- Informe post subsanación de la documentación de justificación--------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-sobre-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-   
+            <!----------------------------------------- Envía formulario de justificación------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/envia-formulario-justificacion.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->
         </ol>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">

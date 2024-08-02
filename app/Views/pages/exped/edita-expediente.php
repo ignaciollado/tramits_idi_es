@@ -644,7 +644,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     <div class="row">
         <div class="col-sm-2 docsExpediente">
             <h3>Detall:</h3>
-           <form action=""  name="exped-fase-1" id="exped-fase-1" method="post" accept-charset="utf-8">
+           <form action="" name="exped-fase-1" id="exped-fase-1" method="post" accept-charset="utf-8">
                 <div class="form-group solicitud">
                     <label for = "fecha_REC"><strong>Data SEU sol·licitud:</strong></label>
 			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" onchange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
@@ -709,7 +709,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 </div>
             <?php endif; ?>
             <?php if(!$mejorasSolicitud): ?>
-              <span class="alert alert-info" role="alert">De moment, no hi ha millores!</span>
+              <div class="alert alert-info" role="alert">De moment, no hi ha millores!</div>
             <?php endif; ?>
             <div style="margin-top:1rem;color:blue;text-align:left;padding:.5rem;">
                 <div class="mb-3">

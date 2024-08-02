@@ -162,9 +162,9 @@
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa/" . (($sort_order == 'ASC' && $sort_by == 'empresa') ? 'DESC' : 'ASC'), 'https');?>">Sol·licitant</a>					
     </div>
 	<div class="header-wrapper-col">
-		<?php if (  strtoupper($session->get('programa_fltr')) === 'ILS' ) {?>
+		<?php if ( strtoupper($session->get('programa_fltr')) === 'ILS' ) {?>
 			 Visible a la web ILS
-		<?php } elseif ( strtoupper($session->get('programa_fltr')) === 'IDI-ISBA' ) {
+		<?php } elseif ( strtoupper($session->get('programa_fltr')) === 'ADR-ISBA' ) {
 			?>
 			Import ajut sol·licitat
 			<?php } else {?>
@@ -215,7 +215,7 @@
 		<?php if ( strtoupper($session->get('programa_fltr')) != 'ILS' ) {?>
 				<span id = "semaforo" class = "detail-wrapper-col">
 					<?php 
-					if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {
+					if ( strtoupper($session->get('programa_fltr')) != 'ADR-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {
 						$importeAyuda = number_format($item['importeAyuda'], 2, ',', '.');
 						echo $importeAyuda;
 					} else {
@@ -230,7 +230,7 @@
 		<?php }?>
 		
 		<span id = "ordenDePago" class = "detail-wrapper-col">
-			<?php if ( strtoupper($session->get('programa_fltr')) != 'IDI-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {?>
+			<?php if ( strtoupper($session->get('programa_fltr')) != 'ADR-ISBA' && strtoupper($session->get('programa_fltr')) != 'FELIB') {?>
 				<?php echo $item['ordenDePago'];?>
 			<?php }?>
 		</span>

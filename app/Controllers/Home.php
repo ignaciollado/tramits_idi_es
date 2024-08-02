@@ -36,16 +36,20 @@ class Home extends BaseController
 		$rol = ($session->get('rol'));
 		
 		echo view('templates/header/header', $data);
+
+		$modelExp = new ExpedientesModel();
+		$where = "tipo_tramite = '" . $rol . "'";
+		$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
+		->where($where)
+		->findAll();
+		$data['totalExpedientes'] = count($data['expedientes']);
+		$data['titulo'] = lang('message_lang.todas_las_solicitudes')." FELIB";
 		if ($rol === 'felib') {
-			$modelExp = new ExpedientesModel();
-			$where = "tipo_tramite = '" . $rol . "'";
-			$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
-					->where($where)
-					->findAll();
-			$data['totalExpedientes'] = count($data['expedientes']);
-			$data['titulo'] = lang('message_lang.todas_las_solicitudes')." FELIB";
 			echo view('pages/exped/listado-expediente-felib', $data);
-		} else {
+		} else if ($rol === 'adr-isba') {
+			echo view('pages/exped/listado-expediente-isba', $data);
+		}
+		else {
 			echo view('pages/content', $data);
 		}
 
@@ -129,8 +133,7 @@ class Home extends BaseController
 			$idioma = $request->uri->getSegment(7);
 			$language->setLocale($idioma);
 		}
-		
-		if ($tipoTramite == 'IDI-ISBA') {
+		if ($tipoTramite == 'ADR-ISBA') {
 			$titulo  = "Ajuts a les despeses financeres a través de l'aval d'ISBA";
 		} else {
 			$titulo = "Convocatòria Xecs consultoria - Requeriment";
@@ -360,7 +363,7 @@ class Home extends BaseController
 		$lineaConfig = new ConfiguracionLineaModel();
 		
 		$data['configuracion'] = $generalConfig->configuracionGeneral();
-		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('IDI-ISBA',	2024 );
+		$data['configuracionLinea'] = $lineaConfig->activeConfigurationLineData('ADR-ISBA',	2024 );
 		  
 		$isActiveLineData = $data['configuracionLinea']['activeLineData'];
 		$desde = $data['configuracionLinea']['convocatoria_desde'];

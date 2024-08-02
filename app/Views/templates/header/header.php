@@ -81,13 +81,17 @@ ul { list-style-type: none; }
   <div class="menu">
 		<ul>
 			<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/ca'); ?>" target="_self">Inici</a></li>
-			<?php if ($session->get('rol') !== 'felib') {?>
+			<?php if ($session->get('rol') !== 'felib' && $session->get('rol') !== 'adr-isba') {?>
 				<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/set_lang/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_idigital_menu');?></a></li>
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_ils/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_ils_menu');?></a></li>
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></a></li>	
 			<?php }?>	
-			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_felib/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_felib_menu');?></a></li>		
-
+			<?php if ($session->get('rol') == 'felib') {?>
+				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_felib/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_felib_menu');?></a></li>		
+			<?php }?>
+			<?php if ($session->get('rol') == 'adr-isba') {?>
+					<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></a></li>		
+			<?php }?>
 			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/expedientes/');?>" target="_self">
 			<?php if ($session->get('rol') !== 'felib') {
 				echo lang('message_lang.expediente_menu');
@@ -100,12 +104,12 @@ ul { list-style-type: none; }
 			<?php if ($session->get('rol') == 'admin') {?>
 			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/custodia/');?>" target="_self">CUSTODIA</a></li>
 			<?php }?>	
-			<?php if ($session->get('rol') !== 'felib') {?>		
+			<?php if ($session->get('rol') !== 'felib' && $session->get('rol') !== 'adr-isba') {?>		
 				<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/dec_resp_consul/'); ?>" target = "_blank"><?php echo lang('message_lang.dec_resp_con_menu');?></a></li>				
 			<?php }?>
 
 			<li class="menu-item"><a href="https://inbox.viafirma.com/inbox/app/idi/" target="_blank"><?php echo lang('message_lang.portafirmas_menu');?></a></li>	
-			<?php if ($session->get('rol') !== 'felib') {?>
+			<?php if ($session->get('rol') !== 'felib' && $session->get('rol') !== 'adr-isba') {?>
 				<li class="menu-item"><a href="https://rec.redsara.es/registro/action/are/acceso.do" target="_blank">Registro Electrónico Común (REC)</a></li>
 				<li class="menu-item"><a href="https://notifica.redsara.es" target="_blank">Notifica</a></li>
 				<li class="menu-item"><a href="https://intranet.caib.es/notib/notificacio" target="_blank">Notificacions i comunicacions electròniques (NOTIB)</a></li>
