@@ -1016,7 +1016,7 @@
             <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
-            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament / justificació:</strong></label>
+            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament i justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
