@@ -1002,23 +1002,24 @@
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
             <div class="col">
-		    <div class="form-group justificacion">
-            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
-            </div>
-    		<div class="form-group justificacion">
+<!--     		<div class="form-group justificacion">
             <label for = "fecha_res_liquidacion"><strong>Data resolució de concessió:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_liquidacion" class = "form-control send_fase_4" id = "fecha_res_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_liquidacion']), 'Y-m-d');?>">
+            </div> -->
+            <div class="form-group justificacion">
+            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament i justificació:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group justificacion">
+            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament i justificació:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
             </div>
             <div class="form-group ejecucion">
             <label for = "fecha_limite_justificacion"><strong>Data máxima justificació:</strong></label>
             <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
             <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
             </div>
-            <div class="form-group justificacion">
-            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament i justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
-            </div>
+
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Firma requeriment justificació:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">

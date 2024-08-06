@@ -52,6 +52,11 @@ return [
    'sol_adhesion_ils_menu'             => 'Solicitud adhesión a ILS',
    'sol_linea_idi_isba_menu'             => 'Solicitud línea ADR Balears-ISBA',
    'sol_adhesion_felib_menu'       => 'Solicitud FELIB',
+   'justificacion_decl_resp_aplicado_fondo_isba' => "Declaración responsable de haber aplicado los fondos",
+   'justificacion_memoria_actividades_isba'      => "Memoria de actividades",
+   'justificacion_facturas_isba'                 => "Copia de las facturas",
+   'justificacion_justificantes_pago_isba'       => "Copia de los justificantes de pago",
+
 
    'asistente_de_tramitacion'         => 'Asistente de tramitación', 
    'btn_next'                      => 'Siguiente',

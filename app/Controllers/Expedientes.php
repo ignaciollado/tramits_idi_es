@@ -766,6 +766,143 @@ class Expedientes extends Controller
 		echo view('templates/footer/footer');
 	}
 
+	public function do_justificacion_upload_isba($id, $nif, $tipo_tramite, $convocatoria, $idioma)
+	{
+		helper('filesystem');
+		helper(['form', 'url']);
+		helper('cookie');
+		$language = \Config\Services::language();
+		$language->setLocale($idioma);
+		set_cookie('pindust_id', $id, '3600');
+		set_cookie('nif', $nif, '3600');
+		set_cookie('tipoTramite', $tipo_tramite, '3600');
+		set_cookie('convocatoria', $convocatoria, '3600');
+		set_cookie('idioma', $idioma, '3600');
+
+		$db = \Config\Database::connect();
+		$documentosJustif = $db->table('pindust_documentos_justificacion');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = str_replace("%20", " ", $tipo_tramite);
+
+		$listaEnumerativaDeGastos = $this->request->getVar('invoice-lines');
+		$totalEnvoiceLines = $this->request->getVar(('total-invoice-lines'));
+
+		// Sube el file_DeclRespAplicadoFondoIsba
+		$documentosfile = $this->request->getFiles();
+		foreach ($documentosfile['file_DeclRespAplicadoFondoIsba'] as $decRespAplicFondo) {
+			if ($decRespAplicFondo->isValid() && !$decRespAplicFondo->hasMoved()) {
+				$newName = $decRespAplicFondo->getRandomName();
+				$decRespAplicFondo->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' =>  $newName,
+					'type' => $decRespAplicFondo->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'corresponde_documento' => 'file_DeclRespAplicadoFondoIsba',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $decRespAplicFondo->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+				$data ['id_sol'] = $id;
+			}
+		}
+		// Sube las file_MemoriaActividadesIsba
+		$documentosfile = $this->request->getFiles(); 
+		foreach ($documentosfile['file_MemoriaActividadesIsba'] as $memoriaActiv) {
+			if ($memoriaActiv->isValid() && !$memoriaActiv->hasMoved()) {
+				$newName = $memoriaActiv->getRandomName();
+				$memoriaActiv->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' => $newName,
+					'type' => $memoriaActiv->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'corresponde_documento' => 'file_MemoriaActividadesIsba',
+					'listaEnumerativaDeGastos' => $listaEnumerativaDeGastos,
+					'importeTotalJustificado' => $totalEnvoiceLines,
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $memoriaActiv->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+			}
+		}
+		// Sube los file_FacturasEmitidasIsba
+		$documentosfile = $this->request->getFiles();
+		foreach ($documentosfile['file_FacturasEmitidasIsba'] as $factEmitidas) {
+			if ($factEmitidas->isValid() && !$factEmitidas->hasMoved()) {
+				$newName = $factEmitidas->getRandomName();
+				$factEmitidas->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' => $newName,
+					'type' => $factEmitidas->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'corresponde_documento' => 'file_FacturasEmitidasIsba',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $factEmitidas->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+			}
+		}
+		// Sube los file_JustificantesPagoIsba
+		$documentosfile = $this->request->getFiles();
+		foreach ($documentosfile['file_JustificantesPagoIsba'] as $justifPago) {
+			if ($justifPago->isValid() && !$justifPago->hasMoved()) {
+				$newName = $justifPago->getRandomName();
+				$justifPago->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' => $newName,
+					'type' => $justifPago->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'corresponde_documento' => 'file_JustificantesPagoIsba',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $justifPago->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+			}
+		}
+		/* ------------------ actualiza el estado del expediente a 'pendienteRECJustificar' ---------------*/
+		$sql = 'UPDATE pindust_expediente SET situacion="pendienteRECJustificar" WHERE id =' . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+
+		$data['titulo'] = "Expedient: " . $id . " / " . $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach ($expediente as $exped_item) :
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		$data['memoriaEconomicaJustificativa'] = $listaEnumerativaDeGastos;
+		$data['importeTotalJustificado'] = $totalEnvoiceLines;
+		echo view('templates/header/header_form_requerimiento_resultado', $data);
+		echo view('pages/forms/documento-justificacion-ayuda', $data);
+		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+		echo view('pages/forms/rest_api_firma/envia-a-firma-justificacion', $data);
+		echo view('templates/footer/footer');
+	}
+
 	public function update()
 	{
 		helper(['form', 'url']);
