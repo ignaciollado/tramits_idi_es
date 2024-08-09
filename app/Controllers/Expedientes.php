@@ -2019,7 +2019,24 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
-				break;					
+				break;
+			case "doc_res_pago_y_justificacion_adr_isba": 			  	//VIAFIRMA DOC 11
+					$data_infor = [
+						'doc_res_pago_y_justificacion_adr_isba' => $last_insert_id
+					];
+					$builder->where('id', $request->uri->getSegment(3));
+					$builder->update($data_infor);
+				
+					$data['byCEOSigned'] = false;
+					$data_footer = [
+						'tipoDoc' => " Resolució de pagament i justificació",
+						'conVIAFIRMA' => false
+					];
+					echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-pago-y-justificacion-adr-isba', $data);
+					echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+					echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+					echo view('pages/forms/go-back-footer', $data_footer);
+					break;				
 		}
 		echo view('templates/footer/footer');
 	}

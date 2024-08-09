@@ -1,7 +1,7 @@
 <!-----------------------------------------Resolució de pagament sense requeriment. DOC 27.-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Resolució de pagament i justificació (actualizar plantilla) [PRE]
+    	Resolució de pagament i justificació **testear** [PRE]
   	</div>
 		<div class="card-itramits-footer">
   		<?php
@@ -14,7 +14,7 @@
 	</div>
   	<div class="card-itramits-footer">
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_res_pago_sin_req.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_res_pago_y_justificacion_adr_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -53,7 +53,6 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
     let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 	 	let fecha_not_propuesta_resolucion_def = document.getElementById('fecha_not_propuesta_resolucion_def') //0000-00-00
 		let fecha_firma_res = document.getElementById('fecha_firma_res')
-		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
 		
 		let btnResPagoSinReq = document.getElementById('btnResPagoSinReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
@@ -81,16 +80,12 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma resolució<br>"
 			todoBien = false
 		}
-		if(!fecha_REC_justificacion.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data SEU justificació<br>"
-			todoBien = false
-		}
 
 		if (todoBien) {
 			infoMissingDataDoc27.classList.add('ocultar')
 			btnResPagoSinReq.disabled = true
 			btnResPagoSinReq.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_pago_sin_req'
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_pago_y_justificacion_adr_isba'
 		} else {
 			infoMissingDataDoc27.classList.remove('ocultar')
 		}

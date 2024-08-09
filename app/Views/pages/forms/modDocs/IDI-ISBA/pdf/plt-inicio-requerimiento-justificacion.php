@@ -12,7 +12,7 @@ $expediente = new ExpedientesModel();
 $mejorasSolicitud = new MejorasExpedienteModel();
 
 $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS');
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -50,10 +50,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("INFORME INICI REQUERIMIENT D'ESMENA DE JUSTIFICACIÓ");
 $pdf->SetSubject("INFORME INICI REQUERIMIENT D'ESMENA DE JUSTIFICACIÓ");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, GOIB");	
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts

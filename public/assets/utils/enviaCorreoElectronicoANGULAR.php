@@ -65,7 +65,8 @@ switch ($project) {
 		$projectMail = "info@pibspalma.com";
 		break;		
 	default:
-		$projectMail = "info@idi.es";
+		//$projectMail = "info@idi.es";
+		$projectMail = "illado@idi.caib.es";
 }
 
 $mail = new PHPMailer();

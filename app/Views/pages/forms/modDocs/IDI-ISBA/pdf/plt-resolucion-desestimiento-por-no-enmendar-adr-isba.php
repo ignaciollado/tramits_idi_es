@@ -49,7 +49,7 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("RESOLUCIÓN DE DESESTIMIENTO POR NO ENMENDAR - ADR Balears - ISBA");
 $pdf->SetSubject("RESOLUCIÓN DE DESESTIMIENTO POR NO ENMENDAR - ADR Balears - ISBA");
 $pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ADR Balears, PIMES, ADR Balears, CAIB");	
@@ -82,8 +82,8 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html = "Document: Resolució desistiment <br>per no esmenar <br>";
-$html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
+$html = "Document: resolució desistiment <br>per no esmenar <br>";
+$html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
