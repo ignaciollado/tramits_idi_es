@@ -63,7 +63,11 @@ switch ($project) {
 		break;
 	case 'Palma International Boatshow':
 		$projectMail = "info@pibspalma.com";
-		break;		
+		break;
+	case 'Invest In Balearics':
+		//$projectMail = "bpino@idi.es";
+		$projectMail = "illado@idi.caib.es";
+		break;	
 	default:
 		//$projectMail = "info@idi.es";
 		$projectMail = "illado@idi.caib.es";
@@ -102,9 +106,14 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 
-if ($asunto == 'appILS') {
+if ($project == 'Industria Local Sostenible') {
 	$mensajeLayout = file_get_contents('contents-ils.html');	
 	$mail->Subject = "Nuevo mensaje desde APP Sostenibilitat";
+	// Con copia oculta
+	$mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
+} elseif ($project == 'Invest In Balearics') {
+	$mensajeLayout = file_get_contents('contents-invest-in-balearics.html');	
+	$mail->Subject = "Nuevo mensaje desde Invest In Balearics";
 	// Con copia oculta
 	$mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
 } else {
