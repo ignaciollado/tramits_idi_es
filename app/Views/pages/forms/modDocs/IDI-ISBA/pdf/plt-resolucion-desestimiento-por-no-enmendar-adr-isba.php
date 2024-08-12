@@ -116,30 +116,53 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('isba_2_resolucion_desestimiento_por_no_enmendar.p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $parrafo_1);
+$parrafo_1 = str_replace("%FECHARESPRESI%", $data['configuracion']['respresidente'], lang('isba_2_resolucion_desestimiento_por_no_enmendar.p1'));
+$parrafo_1 = str_replace("%FECHAPUBBOIB%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%CONVO%", $convocatoria, $parrafo_1);
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
-
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('isba_2_resolucion_desestimiento_por_no_enmendar.p2'));
+$parrafo_2 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('isba_2_resolucion_desestimiento_por_no_enmendar.p2'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
-$parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
-$parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
-
-$parrafo_3 = str_replace("%FECHANOTIFICACION%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('isba_2_resolucion_desestimiento_por_no_enmendar.p3'));
+$parrafo_3 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.p3');
 $html .= "<li>". $parrafo_3 ."</li>";
 $html .= "<br>";
-
-$parrafo_4 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.p4');
-$parrafo_4 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4);
-$parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
-$html .= "<li>". $parrafo_4 ."</li>";
-$html .= "</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 4);
+$parrafo_4 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.fundamentosDeDerecho_tit');
+$html = "<b>". $parrafo_4 ."</b>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 4);
+$fundamentosDeDerechoTxt = lang('isba_2_resolucion_desestimiento_por_no_enmendar.fundamentosDeDerechoTxt');
+$html = $fundamentosDeDerechoTxt;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 25);
+$fundamentosDeDerechoTxt_5_6_7_8_9 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.fundamentosDeDerechoTxt_5_6_7_8_9');
+$html = '<ol start="5">'.$fundamentosDeDerechoTxt_5_6_7_8_9.'</ol>';
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 4);
+$parrafo_6 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.dicto');
+$html = $parrafo_6;
+$pdf->writeHTML($html, true, false, true, false, '');
+
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
@@ -162,15 +185,12 @@ $resolucion_2 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.resolucion
 $html .= "<li>". $resolucion_2 ."</li>";
 $html .= "<br>";
 
-$resolucion_3 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.resolucion_3');
-$html .= "<li>". $resolucion_3 ."</li>";
-$html .= "</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
-$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
 $currentY = $pdf->getY();
@@ -201,7 +221,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $firma = lang('isba_2_resolucion_desestimiento_por_no_enmendar.firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
-$firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
+$firma = str_replace("%DGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";

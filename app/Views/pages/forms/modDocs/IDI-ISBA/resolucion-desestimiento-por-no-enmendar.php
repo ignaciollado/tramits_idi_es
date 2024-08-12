@@ -2,7 +2,7 @@
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució desistiment per no esmenar (actualizar plantilla) [PRE]
+  	Resolució desistiment per no esmenar **testear** [PRE]
   </div>
 
   	<div class="card-itramits-footer">
