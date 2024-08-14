@@ -1,7 +1,7 @@
 <!----------------------------------------- Informe favorable amb requeriment DOC 3-------------------------------------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Informe favorable amb requeriment (actualizar plantilla) [PRE]
+    	Informe favorable amb requeriment **testear** [PRE]
   	</div>
   	<div class="card-itramits-footer">
 	<?php
@@ -15,14 +15,13 @@
 			<button id="generaInfFavConReq" class = "btn btn-primary btn-acto-admin" onclick="enviaInformeFavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
 			<div id='infoMissingDataDoc3' class="alert alert-danger ocultar btn-acto-admin"></div>
 		</span>
-		<span id="spinner_3" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:20px; color:#000000;"></i></span>
 	
 	<?php }?>
 	
 	</div>  
   	<div class="card-itramits-footer">
-	<?php if ($expedientes['doc_informe_favorable_con_requerimiento'] !=0) { 
-		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_informe_favorable_con_requerimiento.pdf');
+	<?php if ($expedientes['doc_informe_favorable_con_requerimiento_adr_isba'] !=0) { 
+		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_informe_favorable_con_requerimiento_adr_isba.pdf');
 		if (isset($tieneDocumentosGenerados))
 		{
 	  $PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
@@ -64,8 +63,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_3 = document.getElementById('spinner_3')
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""
 
@@ -93,9 +91,8 @@
 		if (todoBien) {
 			infoMissingDataDoc3.classList.add('ocultar')
 			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
-			spinner_3.classList.remove('ocultar')
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_con_requerimiento'
+			generaInfFavConReq.innerHTML = "Generant i enviant ..."
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_con_requerimiento_adr_isba'
 		} else {
 			infoMissingDataDoc3.classList.remove('ocultar')
 		}

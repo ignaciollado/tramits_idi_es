@@ -1,20 +1,21 @@
 <?php
 require_once('tcpdf/tcpdf.php');
-
 setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
+/* use App\Models\MejorasExpedienteModel; */
 
 $language = \Config\Services::language();
 $language->setLocale("ca");
-    
+        
 $modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
+/* $mejorasSolicitud = new MejorasExpedienteModel(); */
 
 $data['configuracion'] = $modelConfig->configuracionGeneral();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
 $db = \Config\Database::connect();
@@ -27,7 +28,7 @@ $session = session();
 if ($session->has('logged_in')) {  
     $pieFirma =  $session->get('full_name');
 }
-$tipo_tramite = "ADR Balears - ISBA";
+
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
@@ -52,10 +53,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("AGENCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR BALEARS) - SISTEMES D'INFORMACIÓ");
-$pdf->SetTitle("DOCUMENT DE REQUERIMENT");
-$pdf->SetSubject("DOCUMENT DE REQUERIMENT");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR BALEARS, GOIB");	
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
+$pdf->SetTitle("INFORME FAVORABLE SIN REQUERIMIENTO");
+$pdf->SetSubject("INFORME FAVORABLE SIN REQUERIMIENTO");
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -76,13 +77,13 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-// -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------ Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html =  "Document: requeriment<br>";
+$html = "Document: informe favorable<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
@@ -102,50 +103,73 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_3_informe_favorable_sin_requerimiento.intro'));
+$intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>".lang('isba_1_requerimiento.asunto')."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 6);
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('isba_3_informe_favorable_sin_requerimiento.hechos_tit') ."</b></td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 4);
+$parrafo_1_2 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('isba_3_informe_favorable_sin_requerimiento.hechos_1_2_3_4'));
+$parrafo_1_2 = str_replace("%CONVO%", $convocatoria, $parrafo_1_2);
+$parrafo_1_2 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%FECHASOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1_2);
+$parrafo_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_prestamo']), $parrafo_1_2);
+$parrafo_1_2 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_1_2);
+$parrafo_1_2 = str_replace("%IMPORTE_APERTURA%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_1_2);
+/* if ($ultimaMejora[2] && $ultimaMejora[3]) { */
+    $parrafo_1_2 = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , $parrafo_1_2);
+    $parrafo_1_2 = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_1_2);
+    $html = $parrafo_1_2;
+/* } */
+
+/* $html .= $parrafo_1_2; */
+$pdf->writeHTML($html, true, false, true, false, '');
+
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
+// align: T (top), M (middle), B (bottom), N (next line)
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 30);
+$parrafo_pre = lang('isba_3_informe_favorable_sin_requerimiento.conclusion_tit');
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_pre ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('isba_1_requerimiento.p1'));
+$parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_3_informe_favorable_sin_requerimiento.conclusionTxt'));
+$parrafo_conclusion = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_conclusion);
+$parrafo_conclusion = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_prestamo']), $parrafo_conclusion);
+$parrafo_conclusion = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_conclusion);
+$parrafo_conclusion = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_conclusion);
+$parrafo_conclusion = str_replace("%IMPORTE_APERTURA%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_conclusion);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'><ul><li>". $data['expediente']['motivoRequerimiento'] ."</li></ul></td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$parrafo_2 = lang('isba_1_requerimiento.p2');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_2 ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('isba_1_requerimiento.p3'));
-$parrafo_4 = str_replace("%EMPRESA%", $data['expediente']['empresa'], $parrafo_4);
-$parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
-$parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4);
-$parrafo_4 = str_replace("%IMPORTE%", $data['expediente']['Importe'], $parrafo_4);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_4 ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_conclusion ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-
-$firma = lang('isba_1_requerimiento.firma').  $pieFirma;
+$firma = lang('isba_3_informe_favorable_sin_requerimiento.firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";
@@ -157,4 +181,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_requeriment_adr_isba.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_informe_favorable_sin_requerimiento_adr_isba.pdf', 'F');

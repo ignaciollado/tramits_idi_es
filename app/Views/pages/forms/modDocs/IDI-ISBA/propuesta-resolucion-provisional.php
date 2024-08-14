@@ -12,9 +12,7 @@
 		<?php } ?>
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_provisional_adr_isba'] != 0) { ?>
-
-			<?php
+		<?php if ($expedientes['doc_prop_res_provisional_adr_isba'] != 0) { 
 			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_provisional_adr_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;

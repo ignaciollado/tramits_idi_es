@@ -1952,6 +1952,40 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
+			case "doc_informe_favorable_sin_requerimiento_adr_isba"://VIAFIRMA DOC 3 A TÉCNICO
+					$data_infor = [
+						'doc_informe_favorable_sin_requerimiento_adr_isba' => $last_insert_id
+					];
+					$builder->where('id', $request->uri->getSegment(3));
+					$builder->update($data_infor);
+	
+					$data['byCEOSigned'] = false;
+					$data_footer = [
+						'tipoDoc' => " Informe favorable sense requeriment",
+						'conVIAFIRMA' => false
+					];
+					echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-informe-favorable-sin-requerimiento-adr-isba', $data);
+					echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+					echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+					echo view('pages/forms/go-back-footer', $data_footer);
+					break;
+			case "doc_informe_favorable_con_requerimiento_adr_isba"://VIAFIRMA DOC 4 A TÉCNICO
+						$data_infor = [
+							'doc_informe_favorable_con_requerimiento_adr_isba' => $last_insert_id
+						];
+						$builder->where('id', $request->uri->getSegment(3));
+						$builder->update($data_infor);
+		
+						$data['byCEOSigned'] = false;
+						$data_footer = [
+							'tipoDoc' => " Informe favorable amb requeriment",
+							'conVIAFIRMA' => false
+						];
+						echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-informe-favorable-con-requerimiento-adr-isba', $data);
+						echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+						echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+						echo view('pages/forms/go-back-footer', $data_footer);
+						break;							
 			case "doc_prop_res_provisional_adr_isba": 							//VIAFIRMA DOC 5
 				$data_infor = [
 					'doc_prop_res_provisional_adr_isba' => $last_insert_id
