@@ -38,12 +38,14 @@
  */
 
 return [
-  'intro' => "Proposta de resolució definitiva de la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears sobre la concessió d'una subvenció a %SOLICITANTE%, destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives",
+  'intro' => "Proposta de resolució definitiva de la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears sobre la concessió d'una subvenció a %SOLICITANTE%, amb NIF %NIF%, destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives",
   'antecedentes_tit' => "<b>Fets</b>",
   'antecedentes_1_2_3_4' => "<ol>
-    <li>El dia %BOIBFECHA%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR Balears) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
-    <li>En data %FECHASOL%, l'entitat %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% euros corresponen al subsidi d'interessos, %IMPORTE_AVAL% euros al subsidi de l'aval i %IMPORTE_ESTUDIO% euros als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
-  	<li>L'entitat sol·licitant ha subscrit l'operació corresponent de finançament mitjançant l'entitat de crèdit %NOMBRE_BANCO% per import de %IMPORTE_PRESTAMO% i s'ha constituït l'aval per aquest import amb Isba SGR.</li><br>
+    <li>El dia %BOIBFECHA%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
+    <li>En data %FECHASOL%, l'entitat %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos, %IMPORTE_AVAL% al subsidi de l'aval i %IMPORTE_ESTUDIO% als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
+  	<li>L'entitat sol·licitant ha subscrit l'operació corresponent de finançament mitjançant l'entitat de crèdit %NOMBRE_BANCO% per import de %IMPORTE_PRESTAMO% i s'ha constituït l'aval amb Isba SGR.</li><br>
+    <li>En data %FECHAREQUERIMENT% es va notificar un requeriment al sol·licitant.</li><br>
+    <li>En data %FECHAESMENA% l'ADR Balears va rebre l'esmena de %SOLICITANTE% amb NIF %NIF%.</li><br>
    	<li>D'acord amb l'apartat onzè, paràgraf primer, estableix que les sol·licituds de subvenció s'han de resoldre a mesura que entrin en el registre de l'òrgan competent (rigorós ordre d'entrada), encara que no hagi acabat el termini de presentació, fins que s'exhaureixi el crèdit destinat a la convocatòria o, si escau, fins que es resolguin tots els expedients presentats dins el termini, segons l'article 10 de l'Ordre del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria.</li><br></ol>",
   'antecedentes_5' => "<li>El/la tècnic/a de l'ADR Balears ha examinat la sol·licitud presentada per %SOLICITANTE%, i ha comprovat que:<br>
 		<ul>
@@ -52,17 +54,17 @@ return [
 			<li>Està al corrent de les obligacions amb la Seguretat Social i amb l'Administració tributària, tant l'estatal com l'autonòmica.</li><br>  
 		</ul></li>
 		<li>D'acord amb l'establert a la resolució de convocatòria, els ajuts concedits en el marc d'aquesta convocatòria constitueixen ajuts d'Estat regulats en els articles 107 i 108 del Tractat de Funcionament de la Unió Europea dels ajuts de minimis (reglament núm. 1407/2013), i al reglament (UE) 2023/2831 de la comissió, de 13 de desembre de 2023, relatiu a l'aplicació dels articles 107 i 108 del Tractat.</li><br>
-		<li>L'import econòmic d'aquesta convocatòria és de 500.000€.</li><br> 
+		<li>L'import econòmic d'aquesta convocatòria és de 500.000,00 €.</li><br> 
 		<li>Hi ha crèdit adequat i suficient amb càrrec als pressuposts de l'ADR Balears per a l'exercici de l'any 2024-2025.</li><br>
-		<li>En data %FECHAINFORME% s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li><br>
-		<li>En data %FECHA_PROPUESTA_RESOLUCION_PROVISIONAL% la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears ha dictat la proposta de resolució provisional en els següents termes:<br><br>  
+		<li>En data %FECHAINFORME%  s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li><br>
+		<li>En data %FECHAPROPUESTARESOLUCION_PROVISIONAL%, la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears va dictar proposta de resolució provisional en els següents termes::<br><br>  
 			Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br> 
 		  <ul><li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
 			<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %AÑOS_DURACION_AVAL% anys </li><br> 
 			<li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li></ul>  
 		</li><br>
 		<li>La proposta de resolució provisional es va notificar a l'entitat interessada el %FECHA_NOTIFICACION_PR_PROV%.</li><br> 			
-		<li>Exhaurit el termini per presentar al·legacions, no consta que s'hagin presentat al·legacions per part de la persona interessada.</li>", 
+		<li>El %FECHA_LIMITE_ALEGACIONES% va finalitzar el termini de 10 dies hàbils sense que l'entitat interessada presentés al·legacions a la proposta de resolució provisional.</li>", 
   'fundamentosDeDerecho_tit' => "<b>Fonaments de dret</b>",
   'fundamentosDeDerechoTxt' => "<ol>
         <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
@@ -75,15 +77,15 @@ return [
         <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
         <li>L'Ordre 9/2024 del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria (BOIB núm.40 de 23 de març de 2024).</li></ol>",
   
-  'propuestaresoluciondef_tit' => "<b>Proposta de resolució definitiva</b>",
+  'propuestaresoluciondef_tit' => "<b>Proposta de resolució</b>",
 
   'propuestaresoluciondefTxt' => "Propòs al president de l'Agència de Desenvolupament Regional de les Illes Balears que dicti una resolució en els termes següents:",
 
   'propuestaresoluciondef_1_2_3_4_5_6' => "<ol>
-        <li>Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA%, a favor de %SOLICITANTE%, amb NIF %NIF%, amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br>
+        <li>Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br>
 			<ul>
 		    <li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
-				<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %AÑOS_DURACION_AVAL% anys </li><br> 
+				<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %AÑOS_DURACION_AVAL% anys</li><br> 
 				<li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li><br>  
 			</ul></li>
       <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt quinzè de les bases incloses a la Resolució de la convocatòria.</li><br>

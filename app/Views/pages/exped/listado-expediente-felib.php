@@ -2,12 +2,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <link rel="stylesheet" type="text/css" href="/public/assets/grocery_crud/themes/flexigrid/css/flexigrid.css" >
 
-<?php
-	//defined('BASEPATH') OR exit('No direct script access allowed');
-	$sort_by = "";
-	$sort_order = "";
-	$session = session();
-	?>
+<!----------------- Para poder consultar en VIAFIRMA el estado de los modelos de documentos --------------------------->
+<?php 
+include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/execute-curl.php';
+use App\Models\ExpedientesModel;
+$modelExp = new ExpedientesModel();
+//defined('BASEPATH') OR exit('No direct script access allowed');
+$sort_by = "";
+$sort_order = "";
+$session = session();
+?>
 
 <div class="row">
   <div class="col">
@@ -154,9 +158,9 @@
    	<div <?php echo($sort_by == 'fecha_completado' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_completado/" . (($sort_order == 'ASC' && $sort_by == 'fecha_completado') ? 'DESC' : 'ASC'), 'https');?>">Data complet</a>
 		</div>
-		<div <?php echo($sort_by == 'tipo_tramite' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+<!-- 		<div <?php echo($sort_by == 'tipo_tramite' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/tipo_tramite/" . (($sort_order == 'ASC' && $sort_by == 'tipo_tramite') ? 'DESC' : 'ASC'), 'https');?>">Linia de tràmit</a>					
-    </div>
+    </div> -->
 		<div <?php echo($sort_by == 'idExp' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/idExp/" . (($sort_order == 'ASC' && $sort_by == 'idExp') ? 'DESC' : 'ASC'), 'https');?>">N. exped.</a>
 		</div>
@@ -173,6 +177,9 @@
 	</div>
 	<div <?php echo($sort_by == 'fecha_firma_res' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_firma_res/" . (($sort_order == 'ASC' && $sort_by == 'fecha_firma_res') ? 'DESC' : 'ASC'), 'https');?>"><?php echo lang('message_lang.movil_tecnico_felib');?></a>
+	</div>
+	<div <?php echo($sort_by == 'situacion' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		Estat signatura
 	</div>
 	<div <?php echo($sort_by == 'situacion' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
 		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
@@ -192,7 +199,7 @@
 					?>
   	<div id ="fila" class = "detail-wrapper">
    		<span id = "fechaComletado" class = "detail-wrapper-col"><?php if ($item['fecha_completado'] != '0000-00-00 00:00:00' && $item['fecha_completado'] != '1970-01-01 01:00:00') {echo $item['fecha_completado'];} ?></span>
-			<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
+			<!-- <span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span> -->
 			<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
 			<span id = "solicitante" class = "detail-wrapper-col"><?php 
 				if ($item['tipo_tramite'] === 'FELIB') {
@@ -210,6 +217,42 @@
 		<span id = "empresa_consultor" class = "detail-wrapper-col"><?php echo $item['responsable_felib']; ?></span>
 		<span id = "nom_consultor" class = "detail-wrapper-col"><?php echo $item['tecnico_felib']; ?></span>
 		<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['movil_tecnico_felib']; ?></span>
+		<span class = "detail-wrapper-col">
+		<?php
+                	//Compruebo el estado de la firma de la declaración responsable.
+                  $thePublicAccessId = $modelExp->getPublicAccessId ($item['id']);
+	                 if (isset($thePublicAccessId))
+		                {
+		                  $PublicAccessId = $thePublicAccessId;
+	                    $requestPublicAccessId = $PublicAccessId;
+                      $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+		                  $respuesta = json_decode ($request, true);
+		                  $estado_firma = $respuesta['status'];
+											
+			                switch ($estado_firma)
+				                {
+				                    case 'NOT_STARTED':
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+				                        break;
+				                    case 'REJECTED':
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+				                        $estado_firma .= "</a>";				
+				                        break;
+				                    case 'COMPLETED':
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signat</div>";		
+				                        $estado_firma .= "</a>";					
+				                        break;
+				                    case 'IN_PROCESS':
+                                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
+				                        $estado_firma .= "</a>";						
+				                    default:
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
+				                }
+			                echo $estado_firma;
+                      $tipoMIME = "application/pdf";
+		                }?>
+
+		</span>
 		<span id = "situacion" class = "detail-wrapper-col">			
 			
 			<?php 

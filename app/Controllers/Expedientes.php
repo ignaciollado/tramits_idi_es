@@ -61,7 +61,9 @@ class Expedientes extends Controller
 		$data['totalExpedientes'] = count($data['expedientes']);
 		$data['titulo'] = lang('message_lang.todas_las_solicitudes')." ".$datoslineaConvo['convocatoria'];
 		echo view('templates/header/header', $data);
+		
 		if ($rol !== 'felib') {
+			echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 			echo view('pages/exped/listado-expediente', $data);
 		} else {
 			echo view('pages/exped/listado-expediente-felib', $data);

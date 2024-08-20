@@ -336,7 +336,7 @@
 				                        $estado_firma .= "</a>";				
 				                        break;
 				                    case 'COMPLETED':
-				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signades</div>";		
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signat</div>";		
 				                        $estado_firma .= "</a>";					
 				                        break;
 				                    case 'IN_PROCESS':

@@ -36,7 +36,7 @@ class Home extends BaseController
 		$rol = ($session->get('rol'));
 		
 		echo view('templates/header/header', $data);
-
+		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 		$modelExp = new ExpedientesModel();
 		$where = "tipo_tramite = '" . $rol . "'";
 		$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
