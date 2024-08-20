@@ -59,9 +59,11 @@ return [
 		<li>En data %FECHAINFORME%  s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li><br>
 		<li>En data %FECHAPROPUESTARESOLUCION_PROVISIONAL%, la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears va dictar proposta de resolució provisional en els següents termes::<br><br>  
 			Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br> 
-		  <ul><li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
-			<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %AÑOS_DURACION_AVAL% anys </li><br> 
-			<li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li></ul>  
+		  <ul>
+			<li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
+			<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys </li><br> 
+			<li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li>
+			</ul>  
 		</li><br>
 		<li>La proposta de resolució provisional es va notificar a l'entitat interessada el %FECHA_NOTIFICACION_PR_PROV%.</li><br> 			
 		<li>El %FECHA_LIMITE_ALEGACIONES% va finalitzar el termini de 10 dies hàbils sense que l'entitat interessada presentés al·legacions a la proposta de resolució provisional.</li>", 
