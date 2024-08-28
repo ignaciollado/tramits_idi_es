@@ -1,7 +1,7 @@
-<!------------------------------------------- Informe inici requeriment justificación DOC 18 SIN VIAFIRMA --------->
+<!------------------------------------------- Informe inici requeriment justificación DOC 12 SIN VIAFIRMA --------->
 <div class="card-itramits">
-  	<div class="card-itramits-body">
-    	Informe inici requeriment justificació
+  <div class="card-itramits-body">
+    Informe inici requeriment justificació **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -10,22 +10,20 @@
         else {?>
 			<button type = "button" class = "btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target= "#myInicioRequerimiento" id="myBtnInicioRequerimiento">Motiu del requeriment</button>
 			<span id="btn_18" class="">
-					<button id="wrapper_inicio_req_subsanacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaInformeInicioRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
-					<div id='infoMissingDataDoc18' class="alert alert-danger ocultar"></div>			
+					<button id="wrapper_inicio_req_justificacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaInformeInicioRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
+					<div id='infoMissingDataDoc12' class="alert alert-danger ocultar"></div>			
 			</span>
-			<span id="spinner_18" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
-	
 	</div>
 	<div class="card-itramits-footer">
 
-	<?php if ($expedientes['doc_inicio_requerimiento_justificacion'] !=0) { ?>
-		<a	class='btn btn-ver-itramits ocultar btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_inicio_requerimiento_justificacion');?>" target = "_self"><i class='fa fa-check'></i>Inici requeriment justificació</a>		
+	<?php if ($expedientes['doc_inicio_requerimiento_justificacion_adr_isba'] !=0) { ?>
+		<a	class='btn btn-ver-itramits ocultar btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_inicio_requerimiento_justificacion_adr_isba');?>" target = "_self"><i class='fa fa-check'></i>Inici requeriment justificació</a>		
 		<?php }?>
 		<?php
 	//Compruebo el estado de la firma del documento.
 	$db = \Config\Database::connect();
-	$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_inicio_requerimiento_justificacion.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
+	$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_inicio_requerimiento_justificacion_adr_isba.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
 	$query = $db->query($sql);
 	$row = $query->getRow();
 	if (isset($row))
@@ -89,42 +87,30 @@
 	function enviaInformeInicioRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		
-	 	let fecha_res_liquidacion = document.getElementById('fecha_res_liquidacion') //0000-00-00
-		let fecha_de_pago = document.getElementById('fecha_de_pago')
-		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
-		let fecha_max_desp_ampliacion = document.getElementById('fecha_max_desp_ampliacion')
+	 	let fecha_firma_res = document.getElementById('fecha_firma_res') //0000-00-00
+		/* let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre') */
 
-		let wrapper_inicio_req_subsanacion = document.getElementById('wrapper_inicio_req_subsanacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_18 = document.getElementById('spinner_18')
-		let infoMissingDataDoc18 = document.getElementById('infoMissingDataDoc18')
-		infoMissingDataDoc18.innerText = ""
+		let wrapper_inicio_req_justificacion = document.getElementById('wrapper_inicio_req_justificacion')
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let infoMissingDataDoc12 = document.getElementById('infoMissingDataDoc12')
+		infoMissingDataDoc12.innerText = ""
 
-		if(!fecha_res_liquidacion.value) {
-			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Data resolució de concessió<br>"
+		if(!fecha_firma_res.value) {
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
-		if(!fecha_de_pago.value) {
-			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Data pagament<br>"
+/* 		if(!fecha_reunion_cierre.value) {
+			infoMissingDataDoc12.innerHTML = infoMissingDataDoc12.innerHTML + "Data reunió tancament<br>"
 			todoBien = false
-		}
-		if(!fecha_reunion_cierre.value) {
-			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Data reunió tancament<br>"
-			todoBien = false
-		}
-		if(!fecha_max_desp_ampliacion.value) {
-			infoMissingDataDoc18.innerHTML = infoMissingDataDoc18.innerHTML + "Data màxima després d'ampliació<br>"
-			todoBien = false
-		}
+		} */
 
 		if (todoBien) {
-			infoMissingDataDoc18.classList.add('ocultar')
-			wrapper_inicio_req_subsanacion.disabled = true
-			wrapper_inicio_req_subsanacion.innerHTML = "Generant ..."
-			spinner_18.classList.remove('ocultar')
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_inicio_requerimiento_justificacion'
+			infoMissingDataDoc12.classList.add('ocultar')
+			wrapper_inicio_req_justificacion.disabled = true
+			wrapper_inicio_req_justificacion.innerHTML = "Generant i enviant..."
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_inicio_requerimiento_justificacion_adr_isba'
 		} else {
-			infoMissingDataDoc18.classList.remove('ocultar')
+			infoMissingDataDoc12.classList.remove('ocultar')
 		}
 	}
 </script>

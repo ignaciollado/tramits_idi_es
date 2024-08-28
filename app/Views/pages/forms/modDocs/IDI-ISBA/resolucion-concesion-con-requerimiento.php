@@ -1,21 +1,22 @@
 <!----------------------------------------- Resolución de concesión amb requeriment. DOC 7. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Resolució de concessió **testear** [PRE]
+		Resolució de concessió amb requeriment **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="wrapper_ResConcesion" class="btn btn-primary btn-acto-admin" onclick="enviaResolucionConcesionConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
+			<button id="wrapper_ResConcesionConReq" class="btn btn-primary btn-acto-admin" onclick="enviaResolucionConcesionConReq(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
 			<div id='infoMissingDataDoc6' class="alert alert-danger ocultar"></div>
 		<?php } ?>
 
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_res_concesion_adr_isba'] != 0) { ?>
+		<?php if ($expedientes['doc_res_concesion_con_requerimiento_adr_isba'] != 0) { ?>
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_res_concesion_adr_isba.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_res_concesion_con_requerimiento_adr_isba.pdf');
+
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -49,13 +50,13 @@
 <!-------------------------------------------------------------------------------------------------------------------->
 
 <script>
-	function enviaResolucionConcesion(id, convocatoria, programa, nifcif) {
+	function enviaResolucionConcesionConReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
-		let wrapper_ResConcesion = document.getElementById('wrapper_ResConcesion')
+		let wrapper_ResConcesionConReq = document.getElementById('wrapper_ResConcesionConReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
 		infoMissingDataDoc6.innerText = ""
@@ -79,9 +80,9 @@
 
 		if (todoBien) {
 			infoMissingDataDoc6.classList.add('ocultar')
-			wrapper_ResConcesion.disabled = true
-			wrapper_ResConcesion.innerHTML = "Generant i enviant..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_concesion_adr_isba'
+			wrapper_ResConcesionConReq.disabled = true
+			wrapper_ResConcesionConReq.innerHTML = "Generant i enviant..."
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_concesion_con_requerimiento_adr_isba'
 		} else {
 			infoMissingDataDoc6.classList.remove('ocultar')
 		}

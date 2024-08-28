@@ -1,7 +1,7 @@
-<!----------------------------------------- Informe inici requeriment d'esmena DOC 20 SIN VIAFIRMA --------->
+<!----------------------------------------- Informe post enmienda justificación DOC 14 --------->
 <div class="card-itramits">
-  	<div class="card-itramits-body">
-      Informe post esmena justificació
+  <div class="card-itramits-body">
+    Informe postesmena justificació **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -10,12 +10,10 @@
         else {?>
 			<button type = "button" class = "btn btn-primary btn-acto-admin" data-bs-toggle = "modal" data-bs-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera l'informe</button>
 			<span id="btn_20" class="">
-					<button id="wrapper_informe_sobre_subsanacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaInformeSobreSubsanacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
-					<div id='infoMissingDataDoc20' class="alert alert-danger ocultar"></div>
+				<button id="wrapper_informe_sobre_subsanacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaInformeSobreSubsanacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
+				<div id='infoMissingDataDoc14' class="alert alert-danger ocultar"></div>
 			</span>
-			<span id="spinner_20" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
-	
 	</div>
 	<div class="card-itramits-footer">
 	<?php if ($expedientes['doc_informe_sobre_la_subsanacion'] !=0) { ?>
@@ -64,22 +62,22 @@
                 <!-- Modal content-->
     			<div class="modal-content">
       				<div class="modal-header">
-      					<label for="motivoSobreSubsanacion"><strong>Una vegada transcorregut el termini, el tècnic exposa i proposa que:</strong></label>
+      					<label for="motivoSobreSubsanacion"><strong>Una vegada transcorregut el termini, el tècnic exposa que:</strong></label>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
-						<div class="form-group">
-							<textarea required rows="10" cols="30" name="motivoSobreSubsanacion" class="form-control" id = "motivoSobreSubsanacion" 
-							placeholder="El tècnic exposa que ..."><?php echo $expedientes['motivoSobreSubsanacion']; ?></textarea>
-        				</div>
-						<div class="form-group">
+							<div class="form-group">
+								<textarea required rows="10" cols="30" name="motivoSobreSubsanacion" class="form-control" id = "motivoSobreSubsanacion" 
+									placeholder="El tècnic exposa que ..."><?php echo $expedientes['motivoSobreSubsanacion']; ?></textarea>
+        			</div>
+							<!-- <div class="form-group">
 							<textarea required rows="10" cols="30" name="propuestaTecnicoSobreSubsanacion" class="form-control" id = "propuestaTecnicoSobreSubsanacion" 
 							placeholder="El tècnic proposa que ..."><?php echo $expedientes['propuestaTecnicoSobreSubsanacion']; ?></textarea>
-        				</div>					
+        		</div> -->			
 						<div class="form-group">
            				<button type="button" onclick = "javaScript: actualizaMotivoInformeSobreSubsanacion_click();" id="guardaMotivoInformeSobreSubsanacion" 
-							class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
-        				</div>				
+									class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
+        		</div>				
     					</div>
   					</div>
 				</div>
@@ -89,32 +87,31 @@
 	function enviaInformeSobreSubsanacion(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		
-	 	let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion') //0000-00-00
+	 	/* let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion') */ //0000-00-00
+		let fecha_not_req_just = document.getElementById('fecha_not_req_just')
 		let fecha_firma_requerimiento_justificacion = document.getElementById('fecha_firma_requerimiento_justificacion')
-
 		let wrapper_informe_sobre_subsanacion = document.getElementById('wrapper_informe_sobre_subsanacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_20 = document.getElementById('spinner_20')
-		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
-		infoMissingDataDoc20.innerText = ""
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let infoMissingDataDoc14 = document.getElementById('infoMissingDataDoc14')
+		infoMissingDataDoc14.innerText = ""
 
-		if(!fecha_propuesta_resolucion.value) {
-			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data firma proposta resolució<br>"
+		/* 		if(!fecha_propuesta_resolucion.value) {
+			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data firma proposta resolució<br>"
 			todoBien = false
-		}
+		} */
+
 		if(!fecha_firma_requerimiento_justificacion.value) {
-			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data firma requeriment justificació<br>"
+			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data firma requeriment justificació<br>"
 			todoBien = false
 		}
 
 		if (todoBien) {
-			infoMissingDataDoc20.classList.add('ocultar')
+			infoMissingDataDoc14.classList.add('ocultar')
 			wrapper_informe_sobre_subsanacion.disabled = true
-			wrapper_informe_sobre_subsanacion.innerHTML = "Generant ..."
-			spinner_20.classList.remove('ocultar')
+			wrapper_informe_sobre_subsanacion.innerHTML = "Generant i enviant..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_sobre_la_subsanacion'
 		} else {
-			infoMissingDataDoc20.classList.remove('ocultar')
+			infoMissingDataDoc14.classList.remove('ocultar')
 		}
 	}
 </script>

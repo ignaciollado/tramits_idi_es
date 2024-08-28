@@ -409,7 +409,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 		return;
 	}
 	let id = document.getElementById("id").value;
-	let fecha_res_liquidacion = document.getElementById("fecha_res_liquidacion").value; // Data SEU justificació
+	//let fecha_res_liquidacion = document.getElementById("fecha_res_liquidacion").value; // Data SEU justificació
 	let fecha_limite_justificacion = document.getElementById("fecha_limite_justificacion").value; // Referència SEU justificació
 	let fecha_not_res_pago = document.getElementById("fecha_not_res_pago").value; // Data notificació resolucio de pagament
 	let fecha_firma_requerimiento_justificacion = document.getElementById("fecha_firma_requerimiento_justificacion").value; // Data firma requeriment justificació
@@ -419,7 +419,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	let fecha_propuesta_rev = document.getElementById("fecha_propuesta_rev").value; // Data propuesta revocació
 	let fecha_resolucion_rev = document.getElementById("fecha_resolucion_rev").value; // Data resolución revocació
 	
-	for (let step = 0; step < 9; step++) {
+	for (let step = 0; step < 8; step++) {
 		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
@@ -429,7 +429,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	send_fase_4.disabled = true;
 	$.post(
 		"/public/assets/utils/actualiza_fase_4_justificacion_expediente_isba.php",
-		{ id: id, fecha_res_liquidacion: fecha_res_liquidacion, fecha_limite_justificacion: fecha_limite_justificacion, 
+		{ id: id, fecha_limite_justificacion: fecha_limite_justificacion, 
 			fecha_not_res_pago: fecha_not_res_pago, 
 			fecha_firma_requerimiento_justificacion: fecha_firma_requerimiento_justificacion,
 			fecha_not_req_just: fecha_not_req_just,
@@ -446,7 +446,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 				send_fase_4.className = "btn-itramits btn-success-itramits";
 				send_fase_4.disabled = false;
 			}
-			for (let step = 0; step < 9; step++) {
+			for (let step = 0; step < 8; step++) {
 				document.getElementsByClassName("form-group justificacion")[step].style.opacity = "1.0";
 			}			
 		}
@@ -545,7 +545,7 @@ function actualizaMotivoRequerimiento_idi_isba_click() {  //SE EMPLEA
 	);
 }
 
-function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
+function actualizaMotivoInicioRequerimiento_click() { 
 	let textoMotivoReq = document.getElementById("motivoInicioRequerimiento").value;
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("myInicioRequerimiento");
@@ -559,8 +559,8 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {
-				document.getElementById("wrapper_inicio_req_subsanacion").remove = "ocultar";
-				document.getElementById("wrapper_inicio_req_subsanacion").className = "btn btn-primary";
+				document.getElementById("wrapper_inicio_req_justificacion").remove = "ocultar";
+				document.getElementById("wrapper_inicio_req_justificacion").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 			}
@@ -568,7 +568,7 @@ function actualizaMotivoInicioRequerimiento_click() {  //SE EMPLEA
 	);
 }
 
-function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
+function actualizaMotivoRequerimientoJustificacion_click() { 
 	let textoMotivoReq = document.getElementById("motivoRequerimientoJustificacion").value;
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("myRequerimientoJustificacion");
@@ -594,16 +594,16 @@ function actualizaMotivoRequerimientoJustificacion_click() {  //SE EMPLEA
 
 function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
 	let textoMotivoInforme = document.getElementById("motivoSobreSubsanacion").value;
-	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value;
+/* 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value; */
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("mySobreSubsanacionRequerimiento");
-	if ( textoMotivoInforme === "" || propuestaTecnicoSobreSubsanacion === "" ) {
+	if ( textoMotivoInforme === "" ) {
 		alert ("Falta indicar el que exposa y/o el que proposa.")
 		return;
 	}	
 	$.post(
 		"/public/assets/utils/actualiza_motivo_informe_sobre_subsanacion_en_expediente.php",
-		{ id: id, textoMotivoInforme: textoMotivoInforme, propuestaTecnicoSobreSubsanacion: propuestaTecnicoSobreSubsanacion },
+		{ id: id, textoMotivoInforme: textoMotivoInforme },
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {

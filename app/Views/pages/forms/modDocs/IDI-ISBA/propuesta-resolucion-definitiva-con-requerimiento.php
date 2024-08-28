@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució definitiva. DOC 4. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució definitiva con requerimiento
+		Proposta de resolució definitiva amb requeriment **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -13,10 +13,9 @@
 
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_definitiva_adr_isba'] != 0) { ?>
-
+		<?php if ($expedientes['doc_prop_res_definitiva_con_requerimiento_adr_isba'] != 0) { ?>
 			<?php
-			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_definitiva_con_req_adr_isba.pdf');
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_definitiva_con_requerimiento_adr_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
 				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 				$requestPublicAccessId = $PublicAccessId;
@@ -88,7 +87,7 @@
 			wrapper_propuestaResDefinitivaConReq.disabled = true
 			wrapper_propuestaResDefinitivaConReq.innerHTML = "Generant i enviant ..."
 
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_req_adr_isba'
+			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_requerimiento_adr_isba'
 		} else {
 			infoMissingDataDoc4.classList.remove('ocultar')
 		}

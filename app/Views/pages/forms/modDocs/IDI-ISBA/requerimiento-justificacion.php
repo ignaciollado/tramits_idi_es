@@ -1,7 +1,7 @@
-<!----------------------------------------- Informe inici requeriment d'esmena SIN VIAFIRMA DOC 19--------->
+<!----------------------------------------- Requerimiento enmienda justificación DOC 13 ------------------------------------>
 <div class="card-itramits">
-  	<div class="card-itramits-body">
-      Requeriment d'esmena justificació 
+  <div class="card-itramits-body">
+    Requeriment d'esmena justificació **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -10,10 +10,9 @@
         else {?>
 			<button type = "button" class = "btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myRequerimientoJustificacion" id="myBtnRequerimientoJustificacion">Motiu del requeriment</button>
 			<span id="btn_19" class="">
-					<button id="wrapper_generadoc_req_justificacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaRequerimientoJustificacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a la firma de Gerència IDI</button>
-					<div id='infoMissingDataDoc19' class="alert alert-danger ocultar"></div>
-			</span>			
-			<span id="spinner_19" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+					<button id="wrapper_generadoc_req_justificacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaRequerimientoJustificacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a firma</button>
+					<div id='infoMissingDataDoc13' class="alert alert-danger ocultar"></div>
+			</span>
 		<?php }?>
 	
 	</div>
@@ -56,73 +55,65 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
  <!-- The Modal -->
- <div class="modal" id="myRequerimientoJustificacion">
+ 		<div class="modal" id="myRequerimientoJustificacion">
 				<div class="modal-dialog">
                 <!-- Modal content-->
     			<div class="modal-content" style = "width: 80%;">
-      				<div class="modal-header">
-								<h4 class="modal-title">Motiu del requeriment d'esmena:</h4>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      				</div>
-      				<div class="modal-body">
-						<div class="form-group">
-						<textarea required rows="10" cols="30" name="motivoRequerimientoJustificacion" class="form-control" id = "motivoRequerimientoJustificacion" 
-						placeholder="Motiu del requeriment d'esmena"><?php echo $expedientes['motivoRequerimientoJustificacion']; ?></textarea>
-        				</div>
-						<div class="form-group">
-           				<button type="button" onclick = "javaScript: actualizaMotivoRequerimientoJustificacion_click();" id="guardaMotivoRequerimientoJustificacion" 
-							class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
-        				</div>				
-    					</div>
-  					</div>
+      			<div class="modal-header">
+							<h4 class="modal-title">Motiu del requeriment d'esmena:</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      			</div>
+      			<div class="modal-body">
+							<div class="form-group">
+								<textarea required rows="10" cols="30" name="motivoRequerimientoJustificacion" class="form-control" id = "motivoRequerimientoJustificacion" 
+								placeholder="Motiu del requeriment d'esmena"><?php echo $expedientes['motivoRequerimientoJustificacion']; ?></textarea>
+        			</div>
+							<div class="form-group">
+           			<button type="button" onclick = "javaScript: actualizaMotivoRequerimientoJustificacion_click();" id="guardaMotivoRequerimientoJustificacion" 
+									class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
+        			</div>				
+    				</div>
+  			</div>
 				</div>
 		</div>
 <!------------------------------------------------------------------------------------------------------>
 		<script>
 	function enviaRequerimientoJustificacion(id, convocatoria, programa, nifcif) {
 		let todoBien = true
-
-		let fecha_resolucion = document.getElementById('fecha_resolucion') //0000-00-00
-		let fecha_de_pago = document.getElementById('fecha_de_pago')
-		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
+		let fecha_firma_res = document.getElementById('fecha_firma_res')
+		/* let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre') */
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
 		let fecha_inicio_req_justificacion = document.getElementById('fecha_inicio_req_justificacion')
-
 		let wrapper_generadoc_req_justificacion = document.getElementById('wrapper_generadoc_req_justificacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_19 = document.getElementById('spinner_19')
-		let infoMissingDataDoc19 = document.getElementById('infoMissingDataDoc19')
-		infoMissingDataDoc19.innerText = ""
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+		let infoMissingDataDoc13 = document.getElementById('infoMissingDataDoc13')
+		infoMissingDataDoc13.innerText = ""
+	
+ 		if(!fecha_firma_res.value) {
+			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Firma resolució<br>"
+			todoBien = false
+		}
 
-		if(!fecha_resolucion.value) {
-			infoMissingDataDoc19.innerHTML = infoMissingDataDoc19.innerHTML + "Data firma resolució<br>"
+/* 		if(!fecha_reunion_cierre.value) {
+			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Data reunió tancament<br>"
 			todoBien = false
-		}
-		if(!fecha_de_pago.value) {
-			infoMissingDataDoc19.innerHTML = infoMissingDataDoc19.innerHTML + "Data pagament<br>"
-			todoBien = false
-		}
-		if(!fecha_reunion_cierre.value) {
-			infoMissingDataDoc19.innerHTML = infoMissingDataDoc19.innerHTML + "Data reunió tancament<br>"
-			todoBien = false
-		}
+		} */
 		if(!fecha_limite_justificacion.value) {
-			infoMissingDataDoc19.innerHTML = infoMissingDataDoc19.innerHTML + "Data límit per justificar l'ajut rebut<br>"
+			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Data límit per justificar l'ajut rebut<br>"
 			todoBien = false
 		}
 		if(!fecha_firma_requerimiento_justificacion.value) {
-			infoMissingDataDoc19.innerHTML = infoMissingDataDoc19.innerHTML + "Data firma requeriment justificació<br>"
+			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Firma requeriment justificació<br>"
 			todoBien = false
 		}
 
 		if (todoBien) {
-			infoMissingDataDoc19.classList.add('ocultar')
+			infoMissingDataDoc13.classList.add('ocultar')
 			wrapper_generadoc_req_justificacion.disabled = true
-			wrapper_generadoc_req_justificacion.innerHTML = "Generant ..."
-			spinner_19.classList.remove('ocultar')
+			wrapper_generadoc_req_justificacion.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requerimiento_justificacion'
 		} else {
-			infoMissingDataDoc19.classList.remove('ocultar')
+			infoMissingDataDoc13.classList.remove('ocultar')
 		}
 	}
 

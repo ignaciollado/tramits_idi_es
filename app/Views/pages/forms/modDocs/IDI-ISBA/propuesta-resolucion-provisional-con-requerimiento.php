@@ -1,7 +1,7 @@
 <!----------------------------------------- Proposta de resolució provisional. DOC 3. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional con requerimiento **testear** [PRE]
+		Proposta de resolució provisional amb requeriment **testear** [PRE]
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -12,7 +12,7 @@
 		<?php } ?>
 	</div>
 	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_prop_res_provisional_adr_isba'] != 0) { ?>
+		<?php if ($expedientes['doc_prop_res_provisional_con_requerimiento_adr_isba'] != 0) { ?>
 
 			<?php
 			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_prop_res_provisional_con_requerimiento_adr_isba.pdf');

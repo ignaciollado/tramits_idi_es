@@ -1,17 +1,19 @@
 <?php
 require_once('tcpdf/tcpdf.php');
+
 setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
-use App\Models\MejorasExpedienteModel;
-        
-$configuracion = new ConfiguracionModel();
+
+$language = \Config\Services::language();
+$language->setLocale("ca");
+    
+$modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
-$mejorasSolicitud = new MejorasExpedienteModel();
 
-$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+$data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
@@ -25,13 +27,13 @@ $session = session();
 if ($session->has('logged_in')) {  
     $pieFirma =  $session->get('full_name');
 }
-
+$tipo_tramite = "ADR Balears - ISBA";
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
-        $this->Image($image_file, 20, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
@@ -50,10 +52,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
-$pdf->SetTitle("INFORME INICIO REQUERIMIENTO JUSTIFICACIÓN");
-$pdf->SetSubject("INFORME INICIO REQUERIMIENTO JUSTIFICACIÓN");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ISBA, PIMES, ADR Balears, GOIB");	
+$pdf->SetAuthor("AGENCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR BALEARS) - SISTEMES D'INFORMACIÓ");
+$pdf->SetTitle("INFORME POSTENMIENDA JUSTIFICACIÓN");
+$pdf->SetSubject("INFORME POSTENMIENDA JUSTIFICACIÓN");
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ISBA, PIMES, ADR BALEARS, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -74,16 +76,13 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 10);
-$pdf->setFontSubsetting(false);
-
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 25);
-$html =  "Document: informe inici <br>requeriment justificació<br>";
+$pdf->setY($currentY + 15);
+$html =  "Document: informe postesmena justificació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
@@ -94,87 +93,74 @@ $html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('helvetica', '', 10);
+$pdf->setFontSubsetting(false);
+
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 $pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
+$pdf->setY($currentY + 12);
 
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_inicio_requerimiento_subsanacion_asunto'));
-$intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
-$html = $intro;
+$asunto = lang('isba_14_informe_postenmienda_justificacion.intro');
+$asunto = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $asunto);
+$asunto = str_replace("%NIF%", $data['expediente']['nif'], $asunto);
+$html = $asunto;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('message_lang.doc_inicio_requerimiento_subsanacion_p1'));
-$parrafo_1 = str_replace("%FECHAFIRMARESOLUCION%", date_format(date_create($data['expediente']['fecha_res_liquidacion']),"d/m/Y"), $parrafo_1);  
+$pdf->setY($currentY + 5);
+$parrafo_1 = lang('isba_14_informe_postenmienda_justificacion.p1');
+$parrafo_1 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
-$html .= "</table>";
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'],  $parrafo_1);
+$html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$parrafo_2 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p2');
-$parrafo_2 = str_replace("%FECHAPAGOAYUDA%", date_format(date_create($data['expediente']['fecha_de_pago']),"d/m/Y"), $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_2);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_2 ."</td></tr>";
-$html .= "</table>";
+$parrafo_2 = lang('isba_14_informe_postenmienda_justificacion.p2');
+$parrafo_2 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO_JUSTIFICACION%", date_format(date_create($data['expediente']['fecha_not_req_just']),"d/m/Y"), $parrafo_2);
+$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
+$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
+$html = $parrafo_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$parrafo_3 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p3');
-$parrafo_3 = str_replace("%FECHAREUNIONCIERRE%", date_format(date_create($data['expediente']['fecha_reunion_cierre']),"d/m/Y"), $parrafo_3);
-$parrafo_3 = str_replace("%FECHAMAXJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_max_desp_ampliacion']),"d/m/Y"), $parrafo_3);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_3 ."</td></tr>";
-$html .= "</table>";
+$parrafo_3 = lang('isba_14_informe_postenmienda_justificacion.p3');
+$html = $parrafo_3;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$parrafo_4 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p4');
-$parrafo_4 = str_replace("%TEXTOLIBREINICIOREQ%", $data['expediente']['motivoInicioRequerimiento'], $parrafo_4);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_4 ."</td></tr>";
-$html .= "</table>";
+$parrafo_4 = lang('isba_14_informe_postenmienda_justificacion.p4');
+/* %FECHA_INFORME_INICIO_REQUE% */
+$parrafo_4 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoSobreSubsanacion'] , $parrafo_4);
+$html = $parrafo_4;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$conclusion = lang('message_lang.doc_inicio_requerimiento_subsanacion_conclusion');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $conclusion ."</td></tr>";
-$html .= "</table>";
+$parrafo_5 = lang('isba_14_informe_postenmienda_justificacion.p5');
+$html = $parrafo_5;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 15);
-$pdf->setX($currentX - 10);
-$firma = "El/la tècnic/a<br><br>".  $pieFirma;
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
-$html .= "</table>";
+$pdf->setY($currentY + 10);
 
+$parrafo_6 = lang('isba_14_informe_postenmienda_justificacion.p6');
+$html = $parrafo_6;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 10);
+$firma = lang('isba_14_informe_postenmienda_justificacion.firma');
+$firma = str_replace("%DGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
+$firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
+$html = $firma;
 $pdf->writeHTML($html, true, false, true, false, '');
 // ------------------------------------------------------------------------------------ //
 // ------------------------------------------------------------------------------------ //
@@ -182,4 +168,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_inicio_requerimiento_justificacion.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_informe_postenmienda_justificacion.pdf', 'F');

@@ -57,7 +57,7 @@ return [
 		<li>L'import econòmic d'aquesta convocatòria és de 500.000,00 €.</li><br> 
 		<li>Hi ha crèdit adequat i suficient amb càrrec als pressuposts de l'ADR Balears per a l'exercici de l'any 2024-2025.</li><br>
 		<li>En data %FECHAINFORME%  s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li><br>
-		<li>En data %FECHAPROPUESTARESOLUCION_PROVISIONAL%, la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears va dictar proposta de resolució provisional en els següents termes::<br><br>  
+		<li>En data %FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%, la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears va dictar proposta de resolució provisional en els següents termes::<br><br>  
 			Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br> 
 		  <ul>
 			<li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
@@ -84,10 +84,10 @@ return [
   'propuestaresoluciondefTxt' => "Propòs al president de l'Agència de Desenvolupament Regional de les Illes Balears que dicti una resolució en els termes següents:",
 
   'propuestaresoluciondef_1_2_3_4_5_6' => "<ol>
-        <li>Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br>
+      <li>Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA% a favor de %SOLICITANTE%, amb NIF %NIF% amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:<br>
 			<ul>
 		    <li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
-				<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %AÑOS_DURACION_AVAL% anys</li><br> 
+				<li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys</li><br> 
 				<li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li><br>  
 			</ul></li>
       <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt quinzè de les bases incloses a la Resolució de la convocatòria.</li><br>

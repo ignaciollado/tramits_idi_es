@@ -4,23 +4,24 @@ setlocale(LC_MONETARY,"es_ES");
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
 use App\Models\ExpedientesModel;
-use App\Models\MejorasExpedienteModel;
-        
-$configuracion = new ConfiguracionModel();
+
+$language = \Config\Services::language();
+$language->setLocale("ca");
+            
+$modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
-$mejorasSolicitud = new MejorasExpedienteModel();
-
-$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
+    
+$data['configuracion'] = $modelConfig->configuracionGeneral();
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
-
+    
 $db = \Config\Database::connect();
 $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
 foreach ($query->getResult() as $row) {
     $nif = $row->cifnif_propietario;
 }
-        
+            
 $session = session();
 if ($session->has('logged_in')) {  
     $pieFirma =  $session->get('full_name');
@@ -31,13 +32,14 @@ class MYPDF extends TCPDF {
     public function Header() {
         // Logo
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
-        $this->Image($image_file, 20, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        // $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
+        // align: T (top), M (middle), B (bottom), N (next line)
+        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
-        // Logo
-
-		// Position at 15 mm from bottom
+		// Texto pie de página
+        // Position at 15 mm from bottom
         $this->SetY(-15);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
@@ -74,16 +76,13 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 10);
-$pdf->setFontSubsetting(false);
-
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 25);
-$html =  "Document: informe inici <br>requeriment justificació<br>";
+$pdf->setY($currentY + 15);
+$html = "Document: informe inici requeriment<br>justificació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
@@ -94,83 +93,64 @@ $html .= "Codi SIA: ".$data['configuracionLinea']['codigoSIA']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 // set color for text
 $pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('helvetica', '', 10);
+$pdf->setFontSubsetting(false);
 // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 $pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_inicio_requerimiento_subsanacion_asunto'));
+$pdf->setY($currentY + 15);
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_12_informe_inicio_requerimiento_justificacion.intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = $intro;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$currentX = $pdf->getX();
+$pdf->setY($currentY + 5);
+$p1 = lang('isba_12_informe_inicio_requerimiento_justificacion.p1');
+$p1 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $p1);
+$p1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $p1);
+$p1 = str_replace("%NIF%", $data['expediente']['nif'], $p1);
+$p1 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $p1);
+$p1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $p1);
+$html = $p1;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$parrafo_2 = lang('isba_12_informe_inicio_requerimiento_justificacion.p2');
+/* %FECHA_REUNION_CIERRE%
+%FECHA_LIMITE_ALEGACIONES% */
+/* $parrafo_2 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y"), $parrafo_2); */
+$html = $parrafo_2;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$parrafo_3 = lang('isba_12_informe_inicio_requerimiento_justificacion.p3');
+$parrafo_3 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoRequerimiento'] , $parrafo_3);
+$html = $parrafo_3;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$parrafo_pre = "<b>".lang('isba_12_informe_inicio_requerimiento_justificacion.conclusion_tit')."</b>";
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_pre ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$parrafo_conclusion = lang('isba_12_informe_inicio_requerimiento_justificacion.conclusionTxt');
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_conclusion ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-$pdf->setX($currentX - 10);
-$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], lang('message_lang.doc_inicio_requerimiento_subsanacion_p1'));
-$parrafo_1 = str_replace("%FECHAFIRMARESOLUCION%", date_format(date_create($data['expediente']['fecha_res_liquidacion']),"d/m/Y"), $parrafo_1);  
-$parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
-$parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$parrafo_2 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p2');
-$parrafo_2 = str_replace("%FECHAPAGOAYUDA%", date_format(date_create($data['expediente']['fecha_de_pago']),"d/m/Y"), $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_2);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_2 ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$parrafo_3 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p3');
-$parrafo_3 = str_replace("%FECHAREUNIONCIERRE%", date_format(date_create($data['expediente']['fecha_reunion_cierre']),"d/m/Y"), $parrafo_3);
-$parrafo_3 = str_replace("%FECHAMAXJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_max_desp_ampliacion']),"d/m/Y"), $parrafo_3);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_3 ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$parrafo_4 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p4');
-$parrafo_4 = str_replace("%TEXTOLIBREINICIOREQ%", $data['expediente']['motivoInicioRequerimiento'], $parrafo_4);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_4 ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
-$conclusion = lang('message_lang.doc_inicio_requerimiento_subsanacion_conclusion');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $conclusion ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$currentX = $pdf->getX();
-$pdf->setY($currentY + 15);
-$pdf->setX($currentX - 10);
-$firma = "El/la tècnic/a<br><br>".  $pieFirma;
+$firma = lang('isba_12_informe_inicio_requerimiento_justificacion.firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";
@@ -182,4 +162,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_inicio_requerimiento_justificacion.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_inicio_requerimiento_justificacion_adr_isba.pdf', 'F');

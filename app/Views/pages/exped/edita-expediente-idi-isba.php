@@ -906,7 +906,7 @@
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-concesion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Resolución de concesión amb requeriment------------------------------->
-            <li>Resolución de concesión amb requeriment</li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-concesion-con-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
         </ol>
         </div>
@@ -1002,7 +1002,7 @@
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
             <div class="col">
-<!--     		<div class="form-group justificacion">
+        <!--     		<div class="form-group justificacion">
             <label for = "fecha_res_liquidacion"><strong>Data resolució de concessió:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_liquidacion" class = "form-control send_fase_4" id = "fecha_res_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_liquidacion']), 'Y-m-d');?>">
             </div> -->
@@ -1070,7 +1070,7 @@
             <!----------------------------------------- Requerimiento de subsanación justificación --------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe post subsanación de la documentación de justificación--------->
+            <!----------------------------------------- Informe post enmienda de la documentación de justificación--------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-sobre-subsanacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Envía formulario de justificación------------------------------------->
@@ -1367,7 +1367,7 @@
 
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
-            <ol start="25">
+            <ol start="16">
                 <!----------------------------------------- Reseolución desestimiento  DOC 22 SIN VIAFIRMA -------->
                 <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
                 <!------------------------------------------------------------------------------------------------->

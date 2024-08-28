@@ -45,6 +45,6 @@ return [
   'p4' => "L'informe tècnic de %FECHA_INFORME_INICIO_REQUE% indica que el beneficiari no compleix amb els requisits indicats en el punt 14 de la convocatòria per a la justificació correcta de l'ajut, per això es requereix al beneficiari la següent documentació: %TEXTO_LIBRE%.",
   'p5' => "El sol·licitant compta amb <b>15 dies hàbils, comptadors a partir del dia següent d'haver rebut (notificat)</b> el requeriment d'esmena, per esmenar els defectes de la justificació de l'aplicació dels fons de les operacions de finançament d'inversions productives.",
   'p6' => "En cas de no complir amb aquest requeriment  en el termini establert en el punt 14 de la convocatòria haurem d'iniciar el procediment de revocació de la subvenció. ",
-  'P7' => "Es recorda al beneficiari, que haurà d'adjuntar la documentació requerida a través del procediment establert a tal efecte a la Seu Electrònica de la CAIB.",
+  'p7' => "Es recorda al beneficiari, que haurà d'adjuntar la documentació requerida a través del procediment establert a tal efecte a la Seu Electrònica de la CAIB.",
   'firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>(BOIB núm %BOIBNUM%)"
 ];
