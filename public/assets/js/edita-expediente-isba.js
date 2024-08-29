@@ -189,27 +189,6 @@ function cambiaEstadoDoc(id) {
 	)
 }
 
-function generaRequerimiento(idExp) {
-	console.log ( "estoy en generar requerimiento" )
-		$.post(
-			"/public/assets/utils/obtiene_nombre_documentos.php",
-			{ id: idExp },
-			function (data) {
-					$.post(
-						"/public/assets/utils/actualiza_motivo_requerimiento_ils_en_expediente.php",
-						{ id: idExp, textoMotivoReq: data },
-						// 'data' contiene los nombres de los documentos en estado 'Rebutjat'
-						// actualiza el campo 'motivoRequerimientoIls' con los nombres de los documentos rechazados para, luego, generar el requerimiento
-						// actualizar el campo 'situación expediente' a "Requeriment signat"
-						function (data) {
-								window.open(`https://tramits.idi.es/public/index.php/expedientes/generaInformeILS/${idExp}/${convocatoria.value}/ILS/${nif.value}/doc_requeriment_ils`, "_self", "width=300, height=300")
-								}
-								)
-			}
-		)
-
-}
-
 function cambiaEstadoDocJustificacion(id) {
 	
 	let element = document.getElementById(id);
@@ -453,6 +432,48 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	);
 }
 
+function actualiza_fase_5_desestimiento_expediente_idi_isba(formName) {  //SE EMPLEA
+	console.log("fase_5_idi_isba")
+	if (!validateForm(formName)) {
+		return;
+	}
+	let id = document.getElementById("id").value;
+	let fecha_REC_desestimiento = document.getElementById("fecha_REC_desestimiento").value; // Data REC requeriment justificació
+	let ref_REC_desestimiento = document.getElementById("ref_REC_desestimiento").value; // Referència REC requeriment justificació
+	let fecha_firma_resolucion_desestimiento = document.getElementById("fecha_firma_resolucion_desestimiento").value; // Data propuesta revocació
+	let fecha_notificacion_desestimiento = document.getElementById("fecha_notificacion_desestimiento").value; // Data resolución revocació
+	
+	for (let step = 0; step < 4; step++) {
+		document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "0.1";
+	}
+
+	let send_fase_4 = document.getElementById("send_fase_4");
+	send_fase_4.innerHTML = "Un moment ...";
+	send_fase_4.className = "btn-itramits warning-msg";
+	send_fase_4.disabled = true;
+	$.post(
+		"/public/assets/utils/actualiza_fase_5_desestimiento_expediente_isba.php",
+		{ id: id,
+			fecha_REC_desestimiento: fecha_REC_desestimiento,
+			ref_REC_desestimiento: ref_REC_desestimiento,
+			fecha_firma_resolucion_desestimiento: fecha_firma_resolucion_desestimiento,
+			fecha_notificacion_desestimiento: fecha_notificacion_desestimiento
+		},
+		
+		function (data) {
+			$(".result").html(data);
+			if (data == 1) {
+				send_fase_4.innerHTML = "Actualitzar";
+				send_fase_4.className = "btn-itramits btn-success-itramits";
+				send_fase_4.disabled = false;
+			}
+			for (let step = 0; step < 4; step++) {
+				document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "1.0";
+			}			
+		}
+	);
+}
+
 function validateForm(formName) {
 	for(i=0; i < document.getElementById(formName).elements.length; i++){
 		if(document.getElementById(formName).elements[i].value == "" && document.getElementById(formName).elements[i].required){
@@ -594,7 +615,7 @@ function actualizaMotivoRequerimientoJustificacion_click() {
 
 function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
 	let textoMotivoInforme = document.getElementById("motivoSobreSubsanacion").value;
-/* 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value; */
+ 	let propuestaTecnicoSobreSubsanacion = document.getElementById("propuestaTecnicoSobreSubsanacion").value;
 	let id = document.getElementById("id").value;
 	let modal = document.getElementById("mySobreSubsanacionRequerimiento");
 	if ( textoMotivoInforme === "" ) {
@@ -603,7 +624,7 @@ function actualizaMotivoInformeSobreSubsanacion_click() { //SE EMPLEA
 	}	
 	$.post(
 		"/public/assets/utils/actualiza_motivo_informe_sobre_subsanacion_en_expediente.php",
-		{ id: id, textoMotivoInforme: textoMotivoInforme },
+		{ id: id, textoMotivoInforme: textoMotivoInforme, propuestaTecnicoSobreSubsanacion: propuestaTecnicoSobreSubsanacion },
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {
@@ -1060,11 +1081,6 @@ function eliminaArchivoDocIDI_click() {
 	);
 }
 
-function myFunction_click(id, nombre) {
-	document.cookie = "documento_actual = " + id;
-	console.log("++" + id + "++");
-}
-
 function eliminaArchivo_click() {
 	console.log(getCookie("documento_actual"));
 	let id = getCookie("documento_actual");
@@ -1365,6 +1381,7 @@ function eliminaDocJustificacion_click() {
 		location.reload();
 	});	
 }
+
 function eliminaDocSolicitud_click() {
 	let id = localStorage.getItem("documento_actual")
     let idDoc = id.replace("_del", "")

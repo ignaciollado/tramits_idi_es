@@ -82,7 +82,7 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html =  "Document: informe postesmena justificació<br>";
+$html =  "Document: informe sobre l'esmena<br>de la documentació de justificació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
@@ -131,6 +131,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_3 = lang('isba_14_informe_postenmienda_justificacion.p3');
+$parrafo_3 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoSobreSubsanacion'] , $parrafo_3);
 $html = $parrafo_3;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -138,21 +139,14 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_4 = lang('isba_14_informe_postenmienda_justificacion.p4');
 /* %FECHA_INFORME_INICIO_REQUE% */
-$parrafo_4 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoSobreSubsanacion'] , $parrafo_4);
 $html = $parrafo_4;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_5 = lang('isba_14_informe_postenmienda_justificacion.p5');
+$parrafo_5 = str_replace("%TEXTO_LIBRE_PROPUESTA%", $data['expediente']['propuestaTecnicoSobreSubsanacion'] , $parrafo_5);
 $html = $parrafo_5;
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 10);
-
-$parrafo_6 = lang('isba_14_informe_postenmienda_justificacion.p6');
-$html = $parrafo_6;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
@@ -168,4 +162,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_informe_postenmienda_justificacion.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_informe_sobre_la_subsanacion.pdf', 'F');

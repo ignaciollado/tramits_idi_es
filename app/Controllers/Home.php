@@ -250,10 +250,17 @@ class Home extends BaseController
 		];
 
 		/* $uri = new \CodeIgniter\HTTP\URI();	 */
-		
-		$data['titulo'] = lang('message_lang.titulo_sol_idigital');
+		if ($tipoTramite == 'ADR-ISBA') {
+			$data['titulo'] = "Ajuts a les despeses financeres a través de l'aval d'ISBA";
+		} else {
+			$data['titulo'] =  lang('message_lang.titulo_sol_idigital');
+		}
 		echo view('templates/header/header-form-justificacion', $data);
-		echo view('pages/forms/form-justificacion-ayuda', $data);
+		if ($tipoTramite == 'ADR-ISBA') {
+			echo view('pages/forms/form-justificacion-isba',$data);
+		} else  {
+			echo view('pages/forms/form-justificacion-ayuda',$data);
+		}
 		echo view('templates/footer/footer_form');
 	}	
 	

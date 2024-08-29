@@ -38,12 +38,12 @@
  */
 
 return [
-  'intro' => "Resolució del president de l'ADR Balears per la qual s'accepta la renúncia d'una subvenció a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives a favor de %SOLICITANTE%, amb NIF %NIF% (BOIB Núm. XX, %BOIBNUM%)",
-  'hechos' => "Fets",
+  'intro' => "<b>Resolució del president de l'ADR Balears per la qual s'accepta la renúncia d'una subvenció a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives a favor de %SOLICITANTE%, amb NIF %NIF% (BOIB Núm. XX, %BOIBNUM%)</b>",
+  'hechos' => "<b>Fets</b>",
   'hechos_1_2_3' => "<ol>
-                      <li>El dia %BOIBFECHA%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
+                      <li>El dia %FECHAPUBBOIB%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
                       <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%€ i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos, %IMPORTE_AVAL% al subsidi de l'aval i %IMPORTE_ESTUDIO% als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
-                      <li>En data %FECHA_DESESTIMIENTO%, l'ADR Balears va rebre la sol·licitud de renúncia de l'expedient %NUM_EXPEDIENTE% a nom de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm.%REFERENCIA_SEDE_DESESTIMIENTO, d'un ajut per un import de %IMPORTEAYUDA%€, dins l'esmentada convocatòria.</li><br>
+                      <li>En data %FECHA_DESESTIMIENTO%, l'ADR Balears va rebre la sol·licitud de renúncia de l'expedient %NUM_EXPEDIENTE% a nom de %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm.%REFERENCIA_SEDE_DESESTIMIENTO%, d'un ajut per un import de %IMPORTEAYUDA%€, dins l'esmentada convocatòria.</li><br>
                     </ol>",
   
   'fundamentosDeDerecho_tit' => "<b>Fonaments de dret</b>",

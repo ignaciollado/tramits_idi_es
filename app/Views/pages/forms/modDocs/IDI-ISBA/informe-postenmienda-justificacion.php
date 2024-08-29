@@ -8,7 +8,7 @@
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
-			<button type = "button" class = "btn btn-primary btn-acto-admin" data-bs-toggle = "modal" data-bs-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera l'informe</button>
+			<button type = "button" class = "btn btn-secondary btn-acto-admin" data-bs-toggle = "modal" data-bs-target = "#mySobreSubsanacionRequerimiento" id="myBtnSobreSubsanacionRequerimiento">Genera l'informe</button>
 			<span id="btn_20" class="">
 				<button id="wrapper_informe_sobre_subsanacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaInformeSobreSubsanacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
 				<div id='infoMissingDataDoc14' class="alert alert-danger ocultar"></div>
@@ -16,18 +16,15 @@
 		<?php }?>
 	</div>
 	<div class="card-itramits-footer">
-	<?php if ($expedientes['doc_informe_sobre_la_subsanacion'] !=0) { ?>
+<!-- 	<?php if ($expedientes['doc_informe_sobre_la_subsanacion'] !=0) { ?>
 		<a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_sobre_la_subsanacion');?>" target = "_self"><i class='fa fa-check'></i>Informe sobre l'esmena</a>		
-		<?php }?>
+		<?php }?> -->
 		<?php
 	//Compruebo el estado de la firma del documento.
-	$db = \Config\Database::connect();
-	$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_sobre_la_subsanacion.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";
-	$query = $db->query($sql);
-	$row = $query->getRow();
-	if (isset($row))
+	$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_informe_sobre_la_subsanacion.pdf');
+	if (isset($tieneDocumentosGenerados))
 	{
-		$PublicAccessId = $row->publicAccessId;
+		$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 	  $requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
@@ -60,9 +57,9 @@
 <div id="mySobreSubsanacionRequerimiento" class="modal">
 				<div class="modal-dialog">
                 <!-- Modal content-->
-    			<div class="modal-content">
+    				<div class="modal-content">
       				<div class="modal-header">
-      					<label for="motivoSobreSubsanacion"><strong>Una vegada transcorregut el termini, el tècnic exposa que:</strong></label>
+      					<label for="motivoSobreSubsanacion"><strong>Una vegada transcorregut el termini, el tècnic exposa i propossa que:</strong></label>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">
@@ -70,14 +67,14 @@
 								<textarea required rows="10" cols="30" name="motivoSobreSubsanacion" class="form-control" id = "motivoSobreSubsanacion" 
 									placeholder="El tècnic exposa que ..."><?php echo $expedientes['motivoSobreSubsanacion']; ?></textarea>
         			</div>
-							<!-- <div class="form-group">
-							<textarea required rows="10" cols="30" name="propuestaTecnicoSobreSubsanacion" class="form-control" id = "propuestaTecnicoSobreSubsanacion" 
-							placeholder="El tècnic proposa que ..."><?php echo $expedientes['propuestaTecnicoSobreSubsanacion']; ?></textarea>
-        		</div> -->			
-						<div class="form-group">
+							<div class="form-group">
+								<textarea required rows="10" cols="30" name="propuestaTecnicoSobreSubsanacion" class="form-control" id = "propuestaTecnicoSobreSubsanacion" 
+									placeholder="El tècnic proposa que ..."><?php echo $expedientes['propuestaTecnicoSobreSubsanacion']; ?></textarea>
+        			</div>		
+							<div class="form-group">
            				<button type="button" onclick = "javaScript: actualizaMotivoInformeSobreSubsanacion_click();" id="guardaMotivoInformeSobreSubsanacion" 
 									class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
-        		</div>				
+        			</div>				
     					</div>
   					</div>
 				</div>

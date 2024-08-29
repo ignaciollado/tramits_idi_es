@@ -12,24 +12,23 @@ $expediente = new ExpedientesModel();
 $data['configuracion'] = $configuracion->configuracionGeneral();   
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
-
+   
 $db = \Config\Database::connect();
 $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
-foreach ($query->getResult() as $row) {
-    $nif = $row->cifnif_propietario;
-}
+foreach ($query->getResult() as $row)
+        {
+        $nif = $row->cifnif_propietario;
+        }
         
-$session = session();
-if ($session->has('logged_in')) {  
-    $pieFirma =  $session->get('full_name');
-}
-
+    $session = session();
+        if ($session->has('logged_in')) {  
+           $pieFirma =  $session->get('full_name');
+        }
 class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
-        // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
         $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
@@ -50,9 +49,9 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetCreator(PDF_CREATOR);
 	
 $pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
-$pdf->SetTitle("RESOLUCIÓN DE DENEGACIÓN - ADR Balears - ISBA");
-$pdf->SetSubject("RESOLUCIÓN DE DENEGACIÓN - ADR Balears - ISBA");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ADR Balears - ISBA, PIMES, ADR Balears, CAIB");	
+$pdf->SetTitle("RESOLUCIÓN DE DESESTIMIENTO POR RENUNCIA");
+$pdf->SetSubject("RESOLUCIÓN DE DESESTIMIENTO POR RENUNCIA");
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ISBA, PIMES, ADR Balears, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -82,7 +81,7 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html = "Document: Resolució denegació <br>";
+$html = "Document: resolució de desistiment<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
@@ -98,71 +97,34 @@ $pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_15_resolucion_desestimiento_renuncia.intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
-$html .= "</table>";
+$intro = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $intro);
+$html = $intro;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_antecedentes') ."</b></td></tr>";
-$html .= "</table>";
+$html = lang('isba_15_resolucion_desestimiento_renuncia.hechos');
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracion']['num_BOIB'], $parrafo_1);
-$html = "<ol>";
-$html .= "<li>". $parrafo_1 ."</li>";
-$html .= "<br>";
-
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p2'));
-$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
-$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
-$parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
-$parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
-$html .= "<li>". $parrafo_2 ."</li>";
-$html .= "<br>";
-
-$parrafo_3 = str_replace("%FECHANOTIFICACION%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p3'));
-$html .= "<li>". $parrafo_3 ."</li>";
-$html .= "<br>";
-
-$parrafo_4 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_p4');
-$parrafo_4 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4);
-$parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
-$html .= "<li>". $parrafo_4 ."</li>";
-$html .= "</ol>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$resolucion = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$resolucion_1 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion_1');
-$resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
-$resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
-$html = "<ol>";
-$html .= "<li>". $resolucion_1 ."</li>";
-$html .= "<br>";
-
-$resolucion_2 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion_2');
-$html .= "<li>". $resolucion_2 ."</li>";
-$html .= "<br>";
-
-$resolucion_3 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_resolucion_3');
-$html .= "<li>". $resolucion_3 ."</li>";
-$html .= "</ol>";
+$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('isba_15_resolucion_desestimiento_renuncia.hechos_1_2_3'));
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
+$parrafo_1 = str_replace("%FECHAPUBBOIB%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
+$parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTEAYUDA", money_format("%i ", $data['expediente']['importe_prestamo']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_1);
+$parrafo_1 = str_replace("%NUM_EXPEDIENTE%", $data['expediente']['idExp']."/".$data['expediente']['convocatoria'], $parrafo_1);
+$parrafo_1 = str_replace("%FECHA_DESESTIMIENTO%", date_format(date_create($data['expediente']['fecha_REC_desestimiento']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%REFERENCIA_SEDE_DESESTIMIENTO%", $data['expediente']['ref_REC_desestimiento'], $parrafo_1);
+$html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
@@ -173,33 +135,59 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
-$recursos = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_recursos');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos ."</td></tr>";
-$html .= "</table>";
+$fundamentosDeDerecho_tit = lang('isba_15_resolucion_desestimiento_renuncia.fundamentosDeDerecho_tit');
+$html = $fundamentosDeDerecho_tit;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$fundamentosDeDerechoTxt = lang('isba_15_resolucion_desestimiento_renuncia.fundamentosDeDerechoTxt');
+$html = $fundamentosDeDerechoTxt;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 25);
+$dicto = lang('isba_15_resolucion_desestimiento_renuncia.dicto');
+$html = $dicto;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$resolucion = lang('isba_15_resolucion_desestimiento_renuncia.resolucion_tit');
+$html = $resolucion;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$recursos_1 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_recursos_1');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_1 ."</td></tr>";
-$html .= "</table>";
+$resolucion_1 = lang('isba_15_resolucion_desestimiento_renuncia.resolucion');
+$resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
+$resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
+$html = $resolucion_1;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$recursos = lang('isba_15_resolucion_desestimiento_renuncia.recursos_tit');
+$html = $recursos;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$recursos_2 = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_recursos_2');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_2 ."</td></tr>";
-$html .= "</table>";
+$recursos_1 = lang('isba_15_resolucion_desestimiento_renuncia.recursos');
+$html = $recursos_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
-$firma = lang('message_lang.doc_ils_resolucion_desestimiento_no_enmendar_firma');
-$firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
-$firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
+$pdf->setY($currentY + 3);
+$firma = lang('isba_15_resolucion_desestimiento_renuncia.firma');
+$firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
+$firma = str_replace("%DGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";
@@ -210,4 +198,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];  
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_denegacion_idi_isba.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_res_desestimiento_por_renuncia.pdf', 'F');

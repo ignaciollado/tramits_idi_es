@@ -1061,7 +1061,7 @@
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="11">
-            <!----------------- Resolución de pago y justificación FIRMA D GERENTE ------------------------------------------->
+            <!----------------- Resolución de pago y justificación ----------------------------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-y-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->  
             <!----------------------------------------- Informe inicio requerimento justificación ---------------------------->
@@ -1070,13 +1070,15 @@
             <!----------------------------------------- Requerimiento de subsanación justificación --------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/requerimiento-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe post enmienda de la documentación de justificación--------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-sobre-subsanacion.php';?></li>
+            <!----------------------------------------- Informe post enmienda de la documentación de justificación ----------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-postenmienda-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
+        </ol>
+        <ul> 
             <!----------------------------------------- Envía formulario de justificación------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/envia-formulario-justificacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-        </ol>    
+        </ul>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
@@ -1358,7 +1360,7 @@
                 <?php }
                     else {?>
                 <div class="form-group">
-                    <button type="button" onclick = "javaScript: actualiza_fase_5_desestimiento_expediente('exped-fase-5');" id="send_fase_5" onchange="avisarCambiosEnFormulario('send_fase_5', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                    <button type="button" onclick = "javaScript: actualiza_fase_5_desestimiento_expediente_idi_isba('exped-fase-5');" id="send_fase_5" onchange="avisarCambiosEnFormulario('send_fase_5', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
                 </div>
                 <?php }?>
 
@@ -1367,15 +1369,15 @@
 
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
-            <ol start="16">
-                <!----------------------------------------- Reseolución desestimiento  DOC 22 SIN VIAFIRMA -------->
-                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-desestimiento-por-renuncia.php';?></li>
+            <ol start="15">
+                <!----------------------------------------- Reseolución desestimiento  DOC 15 -------->
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-desestimiento-por-renuncia.php';?></li>
                 <!------------------------------------------------------------------------------------------------->
-                <!----------------- Propuesta resolución revocación por no justificar  DOC 23 SIN VIAFIRMA -------->
-                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-revocacion-por-no-justificar.php';?></li>
+                <!----------------- Propuesta resolución revocación por no justificar  DOC 16 -------->
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/propuesta-resolucion-revocacion-por-no-justificar.php';?></li>
                 <!------------------------------------------------------------------------------------------------->
-                <!----------------- Resolución revocación por no justificar  DOC 24 SIN VIAFIRMA ------------------>
-                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-revocacion-por-no-justificar.php';?></li>
+                <!----------------- Resolución revocación por no justificar  DOC 17 ------------------>
+                <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-revocacion-por-no-justificar.php';?></li>
                 <!------------------------------------------------------------------------------------------------->
             </ol>
         </div>
