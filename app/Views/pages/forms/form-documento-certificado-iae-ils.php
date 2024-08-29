@@ -52,7 +52,7 @@
 		  <div class = "content-file-upload">
   			<h5>[.pdf, .jpg, .png, .webp] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</h5>
 	  		  <div>
-					  <input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_certificadoIAE" name="file_certificadoIAE[]" required size="20" accept=".pdf, .jpg, .png, .webp"/>
+					  <input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_certificadoIAEIls" name="file_certificadoIAEIls[]" required size="20" accept=".pdf, .jpg, .png, .webp"/>
 				  </div>
 		  </div>
 	  </section>

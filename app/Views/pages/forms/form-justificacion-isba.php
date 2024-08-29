@@ -57,7 +57,6 @@
 				</div>
 			</div>
 		</fieldset>
-    
 		<fieldset>
 			<legend><h4><?php echo lang('message_lang.justificacion_memoria_actividades_isba');?>:</h4> </legend>
 			<div class="panel-justificacion">
@@ -69,7 +68,6 @@
 				</div>
 			</div>
 		</fieldset>
-
 		<fieldset>
 			<legend><h4><?php echo lang('message_lang.justificacion_facturas_isba');?>:</h4> </legend>
 			<div class="panel-justificacion">
@@ -138,8 +136,7 @@
 				</div>		
 			</div>
 		</fieldset>
-		
-    <fieldset class="submit-button">
+		<fieldset class="submit-button">
 			<button type="submit" disabled class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
 		</fieldset>
 		

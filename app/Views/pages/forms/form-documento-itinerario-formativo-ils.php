@@ -69,8 +69,8 @@
 <script>
 	$('#form_itinerarioFormativo').submit(function(){
 
-			let theForm = document.getElementById("form_itinerarioFormativo");
-			theForm.style.cursor = "progress";
+			let theForm=document.getElementById("form_itinerarioFormativo");
+			theForm.style.cursor="progress";
   			theForm.disabled = true;
   			theForm.style.opacity =".2";
 			$("#enviar_docs", this)
