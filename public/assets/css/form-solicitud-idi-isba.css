@@ -13,6 +13,10 @@ dialog {
   margin: auto;
   z-index: 9999;
 }
+
+.small, small {
+  font-size: 1rem;
+}
 #regForm {
   background-color: rgba(255, 255, 255, 1);
   padding: 3rem;
@@ -38,6 +42,11 @@ header .logo {
 }
 input[type="file"]:hover {
   cursor: pointer;
+}
+.input-disabled {
+  background-color: rgba(195, 202, 209, .6);
+  color: yellow;
+  cursor: default !important;
 }
 label {
   display: inline-block;
@@ -88,6 +97,13 @@ select:valid {
 }
 .main:hover input ~ .w3docs {
   background-color: rgba(255, 165, 0, 1);
+}
+.alert {
+  --bs-alert-padding-x: .5rem;
+  --bs-alert-padding-y: .5rem;
+}
+.form-check {
+  padding-left: .5em;
 }
 .checkmark {
   position: absolute;
@@ -141,8 +157,8 @@ input {
     visibility: visible!important;
 }
 select, input, textarea {
-  padding: .7rem;
-  margin: 1rem;
+  padding: .5rem;
+  margin: .7rem 0 .7rem 0;
   width: 100%;
   border: 2px solid rgba(248, 222, 0, 1);
   background-color: rgba(255, 255, 255, 1);
@@ -226,7 +242,8 @@ select, input, textarea {
   margin-bottom: 2rem;
 }
 .container-radio h6 {
-  font-size: 2rem;   
+  font-size: 1.5rem;   
+  margin-right: 2rem;
 }
 .container-radio .checkmark::after {
   top: 7px;
@@ -250,7 +267,7 @@ select, input, textarea {
   color: #fff;
   border: solid 1px #000;
   padding: 1rem 2rem;
-  font-size: 1.7rem;
+  font-size: 1rem;
   cursor: pointer;
   opacity: 1.0;
   margin-right: .1rem;
@@ -258,7 +275,7 @@ select, input, textarea {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
 .buttonAsistente:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 .buttonEnviar{
   border: 2px solid rgba(0, 0, 0, 1)!important;
@@ -270,17 +287,24 @@ select, input, textarea {
 }
   
 .stepContainer {
-  text-align:center;
+  background-color: #00145c;
+  padding: 1rem;
   margin-bottom: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  border:none;
+  z-index: 9999;
+  /* display:inline-block; */
 }
 
   /* Make circles that indicate the steps of the form: */
 .step {
-   /*  height: 3rem;
-    width: 3rem;
-    margin: 0 1rem; */
-    background-color: #003747;
-    color: rgba(255, 255, 255, 1);
+/*   height: 18px;
+  width: 18px;
+  margin: 2px 4px; */
+  background-color: #000;
+  color: rgba(255, 255, 255, 1);
    /*  border-radius: 50%;
     padding: 6px 3px 0 3px;
     text-align: center;
@@ -309,8 +333,7 @@ select, input, textarea {
 }
 .buttonContainer {
   float: right;
-  position: sticky;
-  top: 20px;
+
 }
 footer {
   position: sticky;
@@ -390,7 +413,7 @@ button {
 .header__formlineaidiisba {
   display: grid;
   grid-template-areas: 'idioma' 'logotipos' 'titulo' 'codigosia' 'solicitud';
-  gap: .5rem;
+ /*  gap: .5rem; */
 }
 
 .langtoggle {
@@ -402,6 +425,10 @@ button {
   grid-area: logotipos;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.logoarea a:nth-child(2) {
+  text-align: right;
 }
 
 .titleform {
@@ -424,10 +451,10 @@ button {
   grid-area: solicitud;
   border: 1px solid #003747;
   display: grid;
-  padding-top: .5rem;
+  /* padding-top: .5rem; */
   padding-bottom: .5rem;
   padding-right: .5rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .formspecifications_row {

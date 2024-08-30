@@ -47,19 +47,19 @@
 
 		<div class='logoarea'>
 			<a href='https://www.isbasgr.es/es/' target="_blank">
-				<img src='/public/assets/images/logo-isba-sgr-317.png' alt=' logo isba sgr'>
+				<img src='/public/assets/images/logo-isba-sgr-317.png' alt=' logo isba sgr' width="30%">
 			</a>
 			<a href='https://www.adrbalears.es' target="_blank" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)">
-				<img width="70%" src='/public/assets/images/ADRBalears-conselleria.jpg' alt='logo adr-balears-conselleria' title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)">
+				<img width="50%" src='/public/assets/images/ADRBalears-conselleria.jpg' alt='logo adr-balears-conselleria' title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)">
 			</a>
 		</div>
 
 		<div class='titleform'>
-			<h1><?php echo lang('message_lang.titulo_solicitud_idi_isba');?></h1>
+			<h3><?php echo lang('message_lang.titulo_solicitud_idi_isba');?></h3>
 		</div>
 
 		<div class="alert alert-danger" role="alert">
-			<h2> <strong><?php echo lang('message_lang.aviso_idi_isba_solicitud');?></strong> </h2>
+			<h4> <strong><?php echo lang('message_lang.aviso_idi_isba_solicitud');?></strong> </h4>
 		</div>
 
 		<!-- 		<div class='siacode'>

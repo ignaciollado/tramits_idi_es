@@ -1,0 +1,10 @@
+CRITICAL - 2024-08-30 11:06:47 --> Invalid argument supplied for foreach()
+#0 /home/pre-tramitsidi/www/app/Views/pages/exped/edita-expediente-idi-isba.php(1186): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', '/home/pre-trami...', 1186, Array)
+#1 /home/pre-tramitsidi/www/system/View/View.php(246): include('/home/pre-trami...')
+#2 /home/pre-tramitsidi/www/system/Common.php(1087): CodeIgniter\View\View->render('pages/exped/edi...', Array, true)
+#3 /home/pre-tramitsidi/www/app/Controllers/Expedientes.php(385): view('pages/exped/edi...', Array)
+#4 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Expedientes->edit('1066')
+#5 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expedientes))
+#6 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

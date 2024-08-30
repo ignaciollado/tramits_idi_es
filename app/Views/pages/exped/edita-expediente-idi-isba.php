@@ -1163,7 +1163,8 @@
 
         </div>
         <div class="col docsExpediente">
-        <h3>Justificants:</h3>
+            <h3>Justificants:</h3>
+
             <div id = "tab_plan">
                 <button class="accordion-exped">
                 <?php
@@ -1181,18 +1182,16 @@
    	                    <div>Document</div>
 	                    <div>Estat</div>
                     </div>
-
-	                <?php if($documentosJustifPlan): ?>
-                    <?php foreach($documentosJustifPlan as $docsJustif_item): 
+	                <?php if($file_DeclRespAplicadoFondoIsba): ?>
+                    <?php foreach($file_DeclRespAplicadoFondoIsba as $docsJustif_item): 
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $parametro = explode ("/",$path);
 			            $tipoMIME = $docsJustif_item->type;
-			            $nom_doc = $docsJustif_item->name;
-			        ?>
+			            $nom_doc = $docsJustif_item->name;?>
   	                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
-      	                <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
-   		                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
+      	                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
+   		                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
                            <?php
                             switch ($docsJustif_item->estado) {
 				                case 'Pendent':
@@ -1209,7 +1208,6 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        
                         </div>
                         <?php endforeach; ?>
                         <?php endif; ?> 

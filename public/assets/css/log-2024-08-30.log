@@ -1,0 +1,14 @@
+CRITICAL - 2024-08-30 10:47:23 --> Invalid argument supplied for foreach()
+#0 /home/pre-tramitsidi/www/app/Controllers/Expedientes.php(795): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', '/home/pre-trami...', 795, Array)
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Expedientes->do_justificacion_upload_isba('1076', '43036826P', 'ADR-ISBA', '2024', 'es')
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expedientes))
+#3 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-08-30 10:49:00 --> Invalid argument supplied for foreach()
+#0 /home/pre-tramitsidi/www/app/Controllers/Expedientes.php(795): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', '/home/pre-trami...', 795, Array)
+#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Expedientes->do_justificacion_upload_isba('1076', '43036826P', 'ADR-ISBA', '2024', 'es')
+#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expedientes))
+#3 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}

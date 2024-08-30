@@ -36,9 +36,9 @@
 <div class="stepContainer">
 	<span class="step">1</span>
 	<span class="step">2</span>
-  	<span class="step">3</span>
-  	<span class="step">4</span>
-  	<span class="step">5</span>
+  <span class="step">3</span>
+  <span class="step">4</span>
+  <span class="step">5</span>
 	<span class="step">6</span>
 	<span class="step">7</span>
 
@@ -318,23 +318,23 @@
 				</div>	
 			</li>
 
-			<div id="es-p-fisica">
+			<!-- <div id="es-p-fisica"> -->
 				<li id="li-doc-e">
 	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<div>
 						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 					</div>	
 				</li>	
-			</div>
+			<!-- </div> -->
 
-			<div id="es-p-juridica">
+			<!-- <div id="es-p-juridica"> -->
 				<li id="li-doc-f">
 	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<div>
 						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 					</div>
 				</li>	
-			</div>
+			<!-- </div> -->
 							<!-- 	<label for="idi_isba_b_EnIDI" class="main">
 					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
 					<input type="checkbox" id="idi_isba_b_EnIDI" name="idi_isba_b_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
@@ -344,7 +344,7 @@
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?></strong></h3>
 				<div id = "enviaridi_isba_g" class="ocultar">
 					<code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
-					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" size="50" accept=".pdf, .jpeg, .png" multiple/>
+					<input type = "file" id="documentacion_adjunta_requerida_idi_isba_g" name="documentacion_adjunta_requerida_idi_isba_g[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 				</div>
 				<label for="denegacion_g_expresa" class="main" >
 					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.autorizaciones_solicitud_no_autoriza');?> </label>

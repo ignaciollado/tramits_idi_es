@@ -305,13 +305,18 @@ class Expedientes extends Controller
 
 		$db = \Config\Database::connect();
 
-		//----------------------------------- Comprueba si ya hay algún documento de justificación --------------------
+		//----------------------------- Comprueba si ya hay algún documento de justificación --------------------
 
 		$data['totalDocsJustifPlan'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PlanTransformacionDigital', $id);
 		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
 		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
 
-		//-----------------------------Obtiene el detalle del Expediente-----------------------------------------------
+		$data['file_DeclRespAplicadoFondoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_DeclRespAplicadoFondoIsba', $id);
+		$data['file_MemoriaActividadesIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_MemoriaActividadesIsba', $id);
+		$data['file_FacturasEmitidasIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FacturasEmitidasIsba', $id);
+		$data['file_JustificantesPagoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificantesPagoIsba', $id);
+
+		//----------------------------- Obtiene el detalle del Expediente ----------------------------------------
 
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 		$idExp = $data['expedientes']['idExp'];
@@ -359,6 +364,11 @@ class Expedientes extends Controller
 		$data['documentosJustifPlan'] = $modelJustificacion->listDocumentosJustificacion('file_PlanTransformacionDigital', $id);
 		$data['documentosJustifFact'] = $modelJustificacion->listDocumentosJustificacion('file_FactTransformacionDigital', $id);
 		$data['documentosJustifPagos'] = $modelJustificacion->listDocumentosJustificacion('file_PagosTransformacionDigital', $id);
+
+		$data['documentosDeclRespAplicadoFondoIsba'] = $modelJustificacion->listDocumentosJustificacion('file_DeclRespAplicadoFondoIsba', $id);
+		$data['documentosMemoriaActividadesIsba'] = $modelJustificacion->listDocumentosJustificacion('file_MemoriaActividadesIsba', $id);
+		$data['documentosFacturasEmitidasIsba'] = $modelJustificacion->listDocumentosJustificacion('file_FacturasEmitidasIsba', $id);
+		$data['documentosJustificantesPagoIsba'] = $modelJustificacion->listDocumentosJustificacion('file_JustificantesPagoIsba', $id);
 
 		/* Todos los documentos de un expediente en la pestaña DETALL */
 		$data['documentosDetalle'] = $modelDocumentos->allExpedienteDocuments($id, 'detalle');
@@ -792,6 +802,8 @@ class Expedientes extends Controller
 
 		// Sube el file_DeclRespAplicadoFondoIsba
 		$documentosfile = $this->request->getFiles();
+		var_dump($documentosfile);
+
 		foreach ($documentosfile['file_DeclRespAplicadoFondoIsba'] as $decRespAplicFondo) {
 			if ($decRespAplicFondo->isValid() && !$decRespAplicFondo->hasMoved()) {
 				$newName = $decRespAplicFondo->getRandomName();

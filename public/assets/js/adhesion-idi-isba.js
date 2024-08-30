@@ -64,8 +64,8 @@ function onFormSubmit(e) {
 			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute ('class','aviso')
 			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("required", '')
 			document.getElementById('documentacion_adjunta_requerida_idi_isba_e').setAttribute("aria-required", 'true')
-			document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute("required", '')
-			document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute("aria-required", 'true')
+/* 			document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute("required", '')
+			document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute("aria-required", 'true') */
 			return
 		} else {
 			document.getElementById("documentacion_adjunta_requerida_idi_isba_e").style.backgroundColor = "#04aa6d"
@@ -96,8 +96,6 @@ function onFormSubmit(e) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").style.backgroundColor = "#04aa6d"
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").classList.remove('aviso')
 	}
-
-	alert (document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '', document.getElementById("importe_ayuda_solicita_idi_isba").value, document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' && document.getElementById("importe_ayuda_solicita_idi_isba").value)
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' && document.getElementById("importe_ayuda_solicita_idi_isba").value > 30000) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute ('class','aviso')
 		return
@@ -221,23 +219,23 @@ function deshabilitarSubidaDocumento (checkObj) {
 			break
 		case 'idi_isba_g_EnIDI':
 			if (checkObj.checked) {
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').removeAttribute("required")
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').removeAttribute("aria-required")
+/* 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').removeAttribute("required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').removeAttribute("aria-required") */
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').disabled = true
 			 } else {
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute('required', '')
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute('aria-required', 'true')
+/* 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute('required', '')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').setAttribute('aria-required', 'true') */
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_g').disabled = false
 			}
 			break
 		case 'idi_isba_h_EnIDI':
 			if (checkObj.checked) {
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("required")
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("aria-required")
+/* 				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("required")
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').removeAttribute("aria-required") */
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').disabled = true
 			} else {
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('required', '')
-				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('aria-required', 'true')
+/* 				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('required', '')
+				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').setAttribute('aria-required', 'true') */
 				document.getElementById('documentacion_adjunta_requerida_idi_isba_h').disabled = false
 			}
 			break

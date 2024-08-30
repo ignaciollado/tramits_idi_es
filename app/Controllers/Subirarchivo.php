@@ -1271,11 +1271,11 @@ class SubirArchivo extends BaseController
 			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_c'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
-			$file_document_veracidad_datos_bancarios = "NO";
-		} else {
-			$file_document_veracidad_datos_bancarios = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_c'][0]->getName() ){
+				$file_document_veracidad_datos_bancarios = "NO";
+			} else {
+				$file_document_veracidad_datos_bancarios = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_d'])) {
 			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_d'][0]->getName() ){
@@ -1285,60 +1285,60 @@ class SubirArchivo extends BaseController
 			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_e'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_e'][0]->getName() ){
-			$file_altaAutonomos = "NO";
-		} else {
-			$file_altaAutonomos = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_e'][0]->getName() ){
+				$file_altaAutonomos = "NO";
+			} else {
+				$file_altaAutonomos = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_f'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_f'][0]->getName() ){
-			$file_escrituraConstitucion = "NO";
-		} else {
-			$file_escrituraConstitucion = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_f'][0]->getName() ){
+				$file_escrituraConstitucion = "NO";
+			} else {
+				$file_escrituraConstitucion = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_g'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_g'][0]->getName() ){
-			$file_nifRepresentante = "NO";
-		} else {
-			$file_nifRepresentante = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_g'][0]->getName() ){
+				$file_nifRepresentante = "NO";
+			} else {
+				$file_nifRepresentante = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_h'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_h'][0]->getName() ){
-			$file_certificadoATIB = "NO";
-		} else {
-			$file_certificadoATIB = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_h'][0]->getName() ){
+				$file_certificadoATIB = "NO";
+			} else {
+				$file_certificadoATIB = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_i'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_i'][0]->getName() ){
-			$file_certificadoAEAT = "NO";
-		} else {
-			$file_certificadoAEAT = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_i'][0]->getName() ){
+				$file_certificadoAEAT = "NO";
+			} else {
+				$file_certificadoAEAT = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_j'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_j'][0]->getName() ){
-			$file_certificadoLey382003 = "NO";
-		} else {
-			$file_certificadoLey382003 = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_j'][0]->getName() ){
+				$file_certificadoLey382003 = "NO";
+			} else {
+				$file_certificadoLey382003 = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_k'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_k'][0]->getName() ){
-			$file_certificadoSGR = "NO";
-		} else {
-			$file_certificadoSGR = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_k'][0]->getName() ){
+				$file_certificadoSGR = "NO";
+			} else {
+				$file_certificadoSGR = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_l'])) {
-		if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_l'][0]->getName() ){
-			$file_contratoOperFinanc = "NO";
-		} else {
-			$file_contratoOperFinanc = "SI";
-		}
+			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_l'][0]->getName() ){
+				$file_contratoOperFinanc = "NO";
+			} else {
+				$file_contratoOperFinanc = "SI";
+			}
 		}
 		if (isset($documentosfile['documentacion_adjunta_requerida_idi_isba_m'])) {
 			if ( !$documentosfile['documentacion_adjunta_requerida_idi_isba_m'][0]->getName() ){
