@@ -21,17 +21,17 @@ function activaDesactivaFormulario (valor) {
       } else {
         allElements[i].disabled=false;
         allElements[i].style.opacity = "1.0"
-				document.getElementById("declaro_idi_isba_que_cumple_1").disabled = true;
-				document.getElementById("declaro_idi_isba_que_cumple_2").disabled = true;
-				document.getElementById("declaro_idi_isba_que_cumple_3").disabled = true;
-				document.getElementById("ayudasSubvenSICuales_dec_resp").disabled = true;
-				document.getElementById("declaro_idi_isba_que_cumple_5").disabled = true;
-				document.getElementById("declaro_idi_isba_que_cumple_6").disabled = true;
-				document.getElementById("declaro_idi_isba_que_cumple_7").disabled = true;
-				document.getElementById("declaro_idi_isba_que_cumple_8").disabled = true;
-				document.getElementById("documentacion_adjunta_requerida_idi_isba_a").disabled = true;
-				document.getElementById("documentacion_adjunta_requerida_idi_isba_c").disabled = true;
-				document.getElementById("documentacion_adjunta_requerida_idi_isba_n").disabled = true;
+		document.getElementById("declaro_idi_isba_que_cumple_1").disabled = true;
+		document.getElementById("declaro_idi_isba_que_cumple_2").disabled = true;
+		document.getElementById("declaro_idi_isba_que_cumple_3").disabled = true;
+		document.getElementById("ayudasSubvenSICuales_dec_resp").disabled = true;
+		document.getElementById("declaro_idi_isba_que_cumple_5").disabled = true;
+		document.getElementById("declaro_idi_isba_que_cumple_6").disabled = true;
+		document.getElementById("declaro_idi_isba_que_cumple_7").disabled = true;
+		document.getElementById("declaro_idi_isba_que_cumple_8").disabled = true;
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_a").disabled = true;
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_c").disabled = true;
+		document.getElementById("documentacion_adjunta_requerida_idi_isba_n").disabled = true;
       }
   }
 }
@@ -96,6 +96,8 @@ function onFormSubmit(e) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").style.backgroundColor = "#04aa6d"
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").classList.remove('aviso')
 	}
+
+	alert (document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '', document.getElementById("importe_ayuda_solicita_idi_isba").value, document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' && document.getElementById("importe_ayuda_solicita_idi_isba").value)
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_j").value === '' && document.getElementById("importe_ayuda_solicita_idi_isba").value > 30000) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_j").setAttribute ('class','aviso')
 		return
@@ -290,6 +292,7 @@ function selectorNoSi(field) {
 }
 
 function formatNumber(field) {
+	return
   // format number 1000000 to 1,234,567
 
   let actualFormatNumber = document.getElementById(field.id)

@@ -25,7 +25,7 @@ class MYPDF extends TCPDF {
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
-		$this->Cell(0, 5, "Agència de desenvolupament regional - Plaça Son Castelló 1 - Tel 971176161 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 5, "Institut d'Innovació Empresarial - Plaça Son Castelló 1 - Tel 971176161 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
         $this->Cell(0, 15, 'Pàgina '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
@@ -33,10 +33,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR BALEARS) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("Sol·licitud per a la concessió de la marca Indústria Local Sostenible");
 $pdf->SetSubject('DOCUMENT DE SOL·LICITUD');
-$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR BALEARS, GOIB');	
+$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, GOIB');	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -399,10 +399,13 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 
 ?>
 
+
 <div class="container">
 	<div><?php echo $html1;?></div>
 	<div><?php echo $html2;?></div>
 
+	<!-- <div class="cabecera-apartado"><?php //echo $html4;?></div> -->
+	<!-- <div ><?php //echo $html5;?></div> -->
 	<div class="cabecera-apartado"><?php echo $html6;?></div>
 	<div ><?php echo $html7;?></div>
 	<div class="cabecera-apartado"><?php echo $html8;?></div>
@@ -411,20 +414,24 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 	<div ><?php echo $html11;?></div>
 	<div class="cabecera-apartado"><?php echo $html12;?></div>
 	<div ><?php echo $html13;?></div>
+	<!--<div><?php echo $html14;?></div>-->
 	<div class="cabecera-apartado"><?php echo $html15;?></div>
 	<div ><?php echo $html16;?></div>
 	<div class="cabecera-apartado"><?php echo $html155;?></div>
 	<div ><?php echo $html166;?></div>
 	<div ><?php echo $html17;?></div>
 	<div ><?php echo $html18;?></div>
+	<!--<div><?php echo $html19;?></div>-->
 	<div ><?php echo $html20;?></div>
 	<div ><?php echo $html21;?></div>
 	<div class="cabecera-apartado"><?php echo $html22;?></div>
 	<div ><?php echo $html23;?></div>
 	<div ><?php echo $html24;?></div>
 	<div ><?php echo $html25;?></div>
+	<!--<div><?php echo $html26;?></div>-->
 	<div ><?php echo $html27;?></div>
 	<div ><?php echo $html28;?></div>
+	<!-- <div ><?php echo $html29;?></div> -->
 </div>
 <style>
 	html, body {
@@ -441,13 +448,12 @@ $pdf->Output(WRITEPATH.'documentos/'.$nif.'/'.$selloDeTiempo.'/'.$nif.'_dec_res_
 		margin-top:1rem;
 	}
 	.container {
-		width: 100%;
-  	margin: auto;
     max-width: 1140px;
     border: 1px solid black;
     background-color: #cdebe8;
     color: #000;
     border-radius: .5rem;
-		padding: 1rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
 	}
 </style>

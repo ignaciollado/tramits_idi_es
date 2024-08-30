@@ -80,7 +80,7 @@ function placeHolderOff() {
 
   /* memberAndrew.classList.remove('card--hiden'); */
   memberAndrew.forEach(function( itemCard ) {
-    itemCard.classList.remove('card--hidden');
+    itemCard.classList.remove('card--hiden');
   });
 }
 

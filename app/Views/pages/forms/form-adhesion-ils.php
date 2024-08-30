@@ -8,22 +8,23 @@
 	<div id="aviso" class="alert">
 		<?php echo lang('message_lang.intro_ils');?>
 	</div>
-	<?php
-		helper('cookie');
-		$language = \Config\Services::language();
-		$locale = $language->getLocale();
-	?>
+<?php
+	helper('cookie');
+	$language = \Config\Services::language();
+	$locale = $language->getLocale();
+?>
 <form name="adhesion_ils" id="adhesion_ils" action="<?php echo base_url('/public/index.php/subirarchivo/store_ils/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
 <div class="stepContainer">
 	<span class="step">1</span>
 	<span class="step">2</span>
-  <span class="step">3</span>
-  <span class="step">4</span>
-  <span class="step">5</span>
-	<div class="buttonContainer">
-    <button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
-    <button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
+  	<span class="step">3</span>
+  	<span class="step">4</span>
+  	<span class="step">5</span>
+	
+	<div  class="buttonContainer">
+    	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
+    	<button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
 	</div>
 </div>
 
@@ -33,7 +34,7 @@
 		<div>
 		<fieldset>
 			<label for = "rgpd" class="main" >
-				<span><?php echo lang('message_lang.rgpd_leido');?> <a href="#" data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
+				<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#"  data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 				<span class="w3docs"></span>
 			</label>
@@ -76,8 +77,12 @@
 
 <!--</div>-->
 
-<!-------------------------- 1. TIPO DE EMPRESA ---------------------------------------------------------------------------->
+<!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------------------->
+
+
+<!-------------------------- 2. TIPO DE EMPRESA ---------------------------------------------------------------------------->
 <div class="tab" id="empresa">
+	
   	<div id="formbox2" class="formbox">
 
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
@@ -90,6 +95,7 @@
 			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_pequenya');?>" id="pequenya" onchange = "javaScript: tipoSolicitante (this.id);" value="pequenya">
 			<span class="checkmark"></span>
 		</label>
+
 		<label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_mediana');?></h6>
 			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_mediana');?>" id="mediana" onchange = "javaScript: tipoSolicitante (this.id);" value="mediana">
 			<span class="checkmark"></span>
@@ -108,6 +114,7 @@
 	<div id="formbox">
 	<fieldset id="interesado">
 		<h2><?php echo lang('message_lang.identificacion_sol_ils');?></h2>
+		<!-- <input class="" type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value); tenemosDatosSolicitante (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" aria-required="true" name = "nif" id = "nif" minlength = "9" maxlength = "9"><span id = "info_lbl"></span> -->
 		<input class="" type = "text" onfocus="javaScript: limpiaInfo_lbl (this.value);" onBlur = "javaScript: validateFormField(this); averiguaTipoDocumento (this.value);" title="<?php echo lang('message_lang.nif_solicitante');?>" placeholder = "<?php echo lang('message_lang.nif_solicitante');?>" aria-required="true" name = "nif" id = "nif" minlength = "9" maxlength = "9"><span id = "info_lbl"></span>
 		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.solicitante_sol_idigital');?>" aria-required="true" name = "denom_interesado" id = "denom_interesado" size="220">
 		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.direccion_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.direccion_sol_idigital');?>" aria-required="true" name="domicilio" id="domicilio">
@@ -123,9 +130,9 @@
 		
 		<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 		<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
-		<!-- 		<input type="tel" name = "tel_representante" id = "tel_representante" title="<?php echo lang('message_lang.telefono_representante');?>" placeholder = "<?php echo lang('message_lang.telefono_representante');?>" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" onblur="javaScript: validateFormField(this);">
+<!-- 		<input type="tel" name = "tel_representante" id = "tel_representante" title="<?php echo lang('message_lang.telefono_representante');?>" placeholder = "<?php echo lang('message_lang.telefono_representante');?>" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" onblur="javaScript: validateFormField(this);">
 		<input type="email" aria-required="true" name = "mail_representante" id = "mail_representante" title="<?php echo lang('message_lang.mail_representante');?>" placeholder = "<?php echo lang('message_lang.mail_representante');?>" onblur="javaScript: validateFormField(this);">
- 		-->
+ -->
 
 	</fieldset> 
 	</div>
@@ -153,7 +160,7 @@
 			</div>
 			
 			<label for = "consentimiento_certificadoATIB" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>
-				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
+				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
 				<span class = "w3docs"></span>
 			</label>
 			<div id = "enviarcertificadoATIB" class = "ocultar">
@@ -213,12 +220,12 @@
 			</div>
 						<!-- </div> -->
 
-			<div class="caja-grupo">
-				<label class="container-radio"><h6><?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?></h6>
-					<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
-					<span id="informeCheck" class="checkmark checkmark-caja-grupo"></span>
-				</label>		
-			</div>
+		<div class="caja-grupo">
+			<label class="container-radio"><h6><?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?></h6>
+				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.informe_resumen_informe_inventario');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
+				<span id="informeCheck" class="checkmark checkmark-caja-grupo"></span>
+			</label>		
+		</div>
 						<div id="mostrarInformes" class="ocultar">			
 			<h3><strong><?php echo lang('message_lang.informe_resumen_ils');?></strong></h3> <code>[.pdf] <span class="container-radio-invalid">(Max. file size: 10.0 M)</span>:</code>
 			<div>
@@ -231,7 +238,7 @@
 						</div>
 		<div class="caja-grupo">						
 			<label class="container-radio"><h6><?php echo lang('message_lang.presentar_certificado_verificacion_ISO');?></h6>
-				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_certificado_verificacion_ISO');?>" id="certificado" onchange = "javaScript: presentarInformeOCertificado (this.id);">
+				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.prescertificado_verificacion_ISO');?>" id="certificado" onchange = "javaScript: presentarInformeOCertificado (this.id);">
 				<span id="certificadoCheck" class="checkmark checkmark-caja-grupo"></span>
 			</label>
 		</div>					
@@ -296,7 +303,8 @@ function showTab(n) {
     // Loop through the array elements
     for(var i = 0; i < itramitsCookies.length; i++) {
         var cookiePair = itramitsCookies[i].split("=");
-        /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
         if("itramitsCurrentLanguage" == cookiePair[0].trim()) {
             // Decode the cookie value and return
             let currentLanguage = decodeURIComponent(cookiePair[0].trim()+" "+cookiePair[1]);
@@ -318,16 +326,23 @@ function showTab(n) {
 		console.log ("dddd")
 		document.getElementById("file_escritura_empresa").style.display = "block";
 		document.getElementById("file_certificadoIAE").style.display = "block";
-	  submitBTN.innerHTML = "Enviar"
-	  submitBTN.setAttribute("title", "Enviar")
-	  submitBTN.setAttribute("value", "Submit")
-	  submitBTN.setAttribute("form", "adhesion_ils")
-	  submitBTN.setAttribute("onclick", "onFormSubmit(this)")
-		submitBTN.setAttribute("class", "buttonAsistente buttonEnviar");  
-  } else {
-		submitBTN.innerHTML = "Següent"
+
+	  	submitBTN.innerHTML = "Enviar"
+	  	submitBTN.setAttribute("title", "Enviar")
+	  	submitBTN.setAttribute("value", "Submit")
+	  	submitBTN.setAttribute("form", "adhesion_ils")
+	  	submitBTN.setAttribute("onclick", "onFormSubmit(this)")
+			submitBTN.setAttribute("class", "buttonAsistente buttonEnviar");  
+  	} else {
+			submitBTN.innerHTML = "Següent"
+		/* alert (getCookie('itramitsCurrentLanguage'))
+		if (getCookie("itramitsCurrentLanguage")==='ca') {
+			submitBTN.innerHTML = "Següent"
+		} else {
+		  	submitBTN.innerHTML = "Siguiente"
+		} */
 		submitBTN.setAttribute("onclick", "nextPrev(1)")
-  }
+  				}
   //... and run the function that will display the correct step indicator:
   fixStepIndicator(n)
 }
