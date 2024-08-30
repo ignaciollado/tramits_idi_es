@@ -82,13 +82,13 @@ function onFormSubmit(e) {
 		}
 	}
 
-	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_h").value === '' ) {
+/* 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_h").value === '' ) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").setAttribute ('class','aviso')
 		return
   } else {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").style.backgroundColor = "#04aa6d"
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_h").classList.remove('aviso')
-	}
+	} */
 	if ( document.getElementById("documentacion_adjunta_requerida_idi_isba_i").value === '' ) {
 		document.getElementById("documentacion_adjunta_requerida_idi_isba_i").setAttribute ('class','aviso')
 		return

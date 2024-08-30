@@ -39,6 +39,7 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(-5);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -50,7 +51,7 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("PROPUESTA RESOLUCIÓN REVOCACIÓN POR NO JUSTIFICAR");
 $pdf->SetSubject("PROPUESTA RESOLUCIÓN REVOCACIÓN POR NO JUSTIFICAR");
 $pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ISBA, PIMES, IDI, GOIB");	
@@ -101,7 +102,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_16_propuesta_resolucion_revocacion_no_justificar.intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
-$intro = str_replace("%%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $intro);
+$intro = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $intro);
 $html = $intro;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -135,7 +136,7 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
 $parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('isba_16_propuesta_resolucion_revocacion_no_justificar.antecedentes_5_7'));
-$html .= "<ol start='5'>". $parrafo_2 ."</ol>";
+$html .= '<ol start="5">'.$parrafo_2.'</ol>';;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 
@@ -155,6 +156,19 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_7 = lang('isba_16_propuesta_resolucion_revocacion_no_justificar.fundamentos_txt');
+$html = $parrafo_7;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 25);
+$parrafo_7 = lang('isba_16_propuesta_resolucion_revocacion_no_justificar.fundamentos_txt_1');
 $html = $parrafo_7;
 $pdf->writeHTML($html, true, false, true, false, '');
 

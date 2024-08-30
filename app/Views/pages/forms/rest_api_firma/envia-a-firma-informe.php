@@ -17,7 +17,7 @@
 			$telefono_cont = $data['ceoData']['telDGerente'];
 	}
 
-	echo "<br><br><div class='alert alert-dark' role='alert'><strong>se envía a:</strong> ".$adreca_mail."<br>";
+	echo "<br><br><div class='alert alert-dark' role='alert'><strong>Destinació:</strong> ".$adreca_mail."<br>";
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 		require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
 		require_once dirname(__FILE__) . '/model/AddresseeLine.php';
@@ -82,7 +82,7 @@
 		$doc = new Document;
  		$doc->filename = $nombreDocumento;
 		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento)));
-		echo "<strong>el archivo enviado es:</strong> ".WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento."<br>";
+		echo "<strong>Document per signar:</strong> ".WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento."<br>";
 
 		/* $doc->filename = "fichero_a_firmar.pdf";
 		$doc->base64 = chunk_split(base64_encode(file_get_contents('fichero_a_firmar.pdf')));
@@ -101,7 +101,7 @@
 
 	function execute($apiPath, $json, $methodName) {
 		$url = REST_API_URL.$apiPath;
-		echo "<br><br>-- "."\nMethod URL: ".$url."\n\n"."  --  ";
+		echo "<br>-- "."\nMethod URL: ".$url."\n\n"."  --  ";
 		
 		// Initiate curl
 		$ch = curl_init();
@@ -133,7 +133,7 @@
 		
 		// Execute
 		$result = curl_exec($ch);
-		echo "<strong>La respuesta ha sido:</strong><br>";
+		echo "<br><strong>La respuesta ha sido:</strong><br>";
 		var_dump($result);
 		echo "</div>";
 		// Closing

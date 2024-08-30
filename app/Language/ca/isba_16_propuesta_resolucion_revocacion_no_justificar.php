@@ -38,7 +38,7 @@
  */
 
 return [
-  'intro' => "Proposta de resolució de la directora gerent de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) per la qual es revoca la resolució de concessió de dia %FECHA_RESOL_CONCE% per la qual es va concedir un ajut a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives a favor de %SOLICITANTE%, amb NIF %NIF%",
+  'intro' => "<b>Proposta de resolució de la directora gerent de l'Agència de desenvolupament regional de les Illes Balears (ADR Balears) per la qual es revoca la resolució de concessió de dia %FECHA_RESOL_CONCE% per la qual es va concedir un ajut a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives a favor de %SOLICITANTE%, amb NIF %NIF%</b>",
   'antecedentes'      => "<b>Antecedents</b>",
   'antecedentes_1_4'  => "<ol>
           <li>El dia %FECHAPUBBOIB%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li>
@@ -59,7 +59,8 @@ return [
         <li>El Decret 6/2013, de 8 de febrer, de mesures de simplificació documental en els procediments administratius (BOIB núm. 21, de 12 de febrer).</li>
         <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li>
         <li>L'Ordre 9/2024 del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria (BOIB núm.40 de 23 de març de 2024).</li>
-    </ol><br><p>Per tot això, i d'acord amb allò que disposen els preceptes abans esmentats,</p>",
+    </ol>",
+  'fundamentos_txt_2' => "<br><p>Per tot això, i d'acord amb allò que disposen els preceptes abans esmentats,</p>",
   'propuesta_tit'     => "Proposta de revocació",
   'propuesta_txt'     => "<ol>
     <li>Es proposa revocar l'ajut concedit per la resolució de concessió de dia %FECHA_RESOL_CONCE% per import de %IMPORTEAYUDA% a nom de %SOLICITANTE% amb NIF %NIF%.</li>
