@@ -866,10 +866,10 @@
                 <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
                 <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
             </div>
-    		<div class="form-group validacion">
+            <!--     		<div class="form-group validacion">
                 <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
                 <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
-            </div>
+            </div> -->
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -1002,31 +1002,34 @@
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
             <div class="col">
-        <!--     		<div class="form-group justificacion">
+            <!--     		<div class="form-group justificacion">
             <label for = "fecha_res_liquidacion"><strong>Data resolució de concessió:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_liquidacion" class = "form-control send_fase_4" id = "fecha_res_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_liquidacion']), 'Y-m-d');?>">
             </div> -->
             <div class="form-group justificacion">
-            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament i justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
+            <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
+            <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" onchange = "javaScript: setFechaLimiteJustificacion(this.value, 6);" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
             </div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament i justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
-            </div>
-            <div class="form-group ejecucion">
+            <div class="form-group justificacion">
             <label for = "fecha_limite_justificacion"><strong>Data máxima justificació:</strong></label>
             <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
             <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_3" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
             </div>
-
+            <div class="form-group justificacion">
+            <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament i justificació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group justificacion">
+            <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament i justificació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
+            </div>
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Firma requeriment justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
             <label for = "fecha_not_req_just"><strong>Notificació requeriment de justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_req_just" class = "form-control send_fase_4" id = "fecha_not_req_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_req_just']), 'Y-m-d');?>">
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_req_just" class = "form-control send_fase_4" id = "fecha_not_req_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_req_just']), 'Y-m-d');?>">
             </div>            
             <div class="form-group justificacion">
             <label for = "fecha_REC_requerimiento_justificacion"><strong>Data SEU requeriment justificació:</strong></label>
@@ -1165,16 +1168,9 @@
         <div class="col docsExpediente">
             <h3>Justificants:</h3>
 
-            <div id = "tab_plan">
+            <div id = "tab_dec_resp_fondos">
                 <button class="accordion-exped">
-                <?php
-                    if ($expedientes['tipo_tramite'] =='Programa I') {
-	                    echo lang('message_lang.justificacion_plan_p1').": ";
-                    }
-                    else {
-	                    echo lang('message_lang.justificacion_plan_p2_p3').": ";
-                    }
-                ?>
+                    <?php echo lang('message_lang.justificacion_decl_resp_aplicado_fondo_isba');?>
                 </button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
@@ -1182,8 +1178,50 @@
    	                    <div>Document</div>
 	                    <div>Estat</div>
                     </div>
-	                <?php if($file_DeclRespAplicadoFondoIsba): ?>
-                    <?php foreach($file_DeclRespAplicadoFondoIsba as $docsJustif_item): 
+	                <?php if($documentosDeclRespAplicadoFondoIsba): 
+                    foreach($documentosDeclRespAplicadoFondoIsba as $docsJustif_item): 
+			            $path =  $docsJustif_item->created_at;
+			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
+			            $parametro = explode ("/",$path);
+			            $tipoMIME = $docsJustif_item->type;
+			            $nom_doc = $docsJustif_item->name;?>
+  	                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
+      	                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
+   		                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
+                           <?php
+                            switch ($docsJustif_item->estado) {
+				                case 'Pendent':
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+					                break;
+    				            case 'Aprovat':
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació correcta">Aprovat</button>';
+					                break;
+	    			            case 'Rebutjat':
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+					                break;
+                                default:
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                            }
+                            ?>
+                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                        </div>
+                        <?php endforeach; ?>
+                        <?php endif; ?> 
+                </div>
+            </div>
+
+            <div id = "tab_mem_actividades">
+                <button class="accordion-exped">
+                    <?php echo lang('message_lang.justificacion_memoria_actividades_isba');?>
+                </button>
+                <div class="panel-exped">
+                    <div class = "header-wrapper-docs-justificacion">
+  	                    <div>Rebut el</div>
+   	                    <div>Document</div>
+	                    <div>Estat</div>
+                    </div>
+	                <?php if($documentosDeclRespAplicadoFondoIsba): 
+                    foreach($documentosDeclRespAplicadoFondoIsba as $docsJustif_item): 
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $parametro = explode ("/",$path);
@@ -1222,8 +1260,8 @@
    	                    <div>Arxiu</div>
 	                    <div>Estat</div>
                     </div>
-                <?php if($documentosJustifFact): ?>
-                <?php foreach($documentosJustifFact as $docsJustif_item):
+                <?php if($documentosFacturasEmitidasIsba): ?>
+                <?php foreach($documentosFacturasEmitidasIsba as $docsJustif_item):
 
 			        $path =  $docsJustif_item->created_at;
 			        $selloDeTiempo = $docsJustif_item->selloDeTiempo;
@@ -1274,8 +1312,8 @@
    		                <div >Arxiu</div>
 		                <div >Estat</div>   
                     </div>
-                    <?php if($documentosJustifPagos): ?>
-                    <?php foreach($documentosJustifPagos as $docsJustif_item): ?>
+                    <?php if($documentosJustificantesPagoIsba): ?>
+                    <?php foreach($documentosJustificantesPagoIsba as $docsJustif_item): ?>
 			        <?php 
     			        // $path = str_replace ("D:\wampp\apache2\htdocs\pindust\writable\documentos/","", $docsJustif_item->created_at);
 			            // $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docsJustif_item->created_at);
@@ -1509,15 +1547,23 @@
 </style>
 
 <script>
-    if (<?php echo $totalDocsJustifPlan;?> === 0) {
-    	document.getElementById("tab_plan").classList.add ("warning-msg-justific");
+    if (<?php echo $totalDocsDeclRespAplicadoFondoIsba;?> === 0) {
+    	document.getElementById("tab_dec_resp_fondos").classList.add ("warning-msg-justific");
     }
     else
     {
-    	document.getElementById("tab_plan").classList.add ("success-msg-justific");
+    	document.getElementById("tab_dec_resp_fondos").classList.add ("success-msg-justific");
     }
 
-    if (<?php echo $totalDocsJustifFact;?> === 0) {
+    if (<?php echo $totalDocsMemoriaActividadesIsba;?> === 0) {
+    	document.getElementById("tab_mem_actividades").classList.add ("warning-msg-justific");
+    }
+    else
+    {
+    	document.getElementById("tab_mem_actividades").classList.add ("success-msg-justific");
+    }
+
+    if (<?php echo $totalDocsFacturasEmitidasIsba;?> === 0) {
     	document.getElementById("tab_facturas").classList.add ("warning-msg-justific");
     }
     else
@@ -1525,7 +1571,7 @@
     	document.getElementById("tab_facturas").classList.add ("success-msg-justific");
     }
 
-    if (<?php echo $totalDocsJustifPagos;?> === 0) {
+    if (<?php echo $totalDocsJustificantesPagoIsba;?> === 0) {
     	document.getElementById("tab_pagos").classList.add ("warning-msg-justific");
     }
     else

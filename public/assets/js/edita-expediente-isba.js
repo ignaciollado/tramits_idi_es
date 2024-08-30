@@ -520,7 +520,7 @@ function avisarCambiosEnFormulario(fase, elemento) {
 function setFechaLimiteJustificacion(fechaCierre, meses) {
 	let d = new Date(fechaCierre);
 	d.setMonth(d.getMonth() + meses);
-	console.log (d)
+	console.log (`----${d}---`)
 	if (d.getDay() == 6) {  //La fecha cae en Sábado hay que pasar la al primer lunes (+2 días)
 		d.setDate(d.getDate()+2);
 	}
@@ -529,7 +529,7 @@ function setFechaLimiteJustificacion(fechaCierre, meses) {
 	}
 	document.getElementById("fecha_limite_justificacion").value = d.toISOString().substr(0, 10);
 	let valorFechaJustificacion = document.getElementById("fecha_limite_justificacion").value;
-	let actualizaKickOff = "/public/assets/utils/actualiza_fechas_Cierre.php?"+ fechaCierre+"/"+valorFechaJustificacion+"/"+document.getElementById("id").value;
+	let actualizaKickOff = "/public/assets/utils/actualiza_fecha_limite_justificacion_isba.php?"+ fechaCierre+"/"+valorFechaJustificacion+"/"+document.getElementById("id").value;
 	fetch(actualizaKickOff)
 		.then((response) => response.text())
 		.then((data) => {

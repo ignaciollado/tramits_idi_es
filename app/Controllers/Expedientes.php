@@ -311,10 +311,10 @@ class Expedientes extends Controller
 		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
 		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
 
-		$data['file_DeclRespAplicadoFondoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_DeclRespAplicadoFondoIsba', $id);
-		$data['file_MemoriaActividadesIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_MemoriaActividadesIsba', $id);
-		$data['file_FacturasEmitidasIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FacturasEmitidasIsba', $id);
-		$data['file_JustificantesPagoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificantesPagoIsba', $id);
+		$data['totalDocsDeclRespAplicadoFondoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_DeclRespAplicadoFondoIsba', $id);
+		$data['totalDocsMemoriaActividadesIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_MemoriaActividadesIsba', $id);
+		$data['totalDocsFacturasEmitidasIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FacturasEmitidasIsba', $id);
+		$data['totalDocsJustificantesPagoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificantesPagoIsba', $id);
 
 		//----------------------------- Obtiene el detalle del Expediente ----------------------------------------
 
@@ -383,7 +383,6 @@ class Expedientes extends Controller
 		/* Muestra la vista */
 		echo view('templates/header/header', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-
 		if ($tipo_tramite === 'ILS') {
 			echo view('pages/exped/edita-expediente-ils', $data);
 		} else if ($tipo_tramite === 'ADR-ISBA') {
@@ -802,8 +801,6 @@ class Expedientes extends Controller
 
 		// Sube el file_DeclRespAplicadoFondoIsba
 		$documentosfile = $this->request->getFiles();
-		var_dump($documentosfile);
-
 		foreach ($documentosfile['file_DeclRespAplicadoFondoIsba'] as $decRespAplicFondo) {
 			if ($decRespAplicFondo->isValid() && !$decRespAplicFondo->hasMoved()) {
 				$newName = $decRespAplicFondo->getRandomName();
@@ -837,7 +834,6 @@ class Expedientes extends Controller
 					'cifnif_propietario' => $nif,
 					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
 					'corresponde_documento' => 'file_MemoriaActividadesIsba',
-					'listaEnumerativaDeGastos' => $listaEnumerativaDeGastos,
 					'importeTotalJustificado' => $totalEnvoiceLines,
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
@@ -861,6 +857,7 @@ class Expedientes extends Controller
 					'cifnif_propietario' => $nif,
 					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
 					'corresponde_documento' => 'file_FacturasEmitidasIsba',
+					'listaEnumerativaDeGastos' => $listaEnumerativaDeGastos,
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
 					'created_at'  => $factEmitidas->getTempName(),
