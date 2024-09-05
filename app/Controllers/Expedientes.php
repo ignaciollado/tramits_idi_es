@@ -5,9 +5,9 @@ namespace App\Controllers;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Controller;
 use App\Models\ExpedientesModel;
+use App\Models\DocumentosGeneradosModel;
 use App\Models\ConsultorModel;
 use App\Models\DocumentosModel;
-use App\Models\DocumentosTipoModel;
 use App\Models\DocumentosJustificacionModel;
 use App\Models\MejorasExpedienteModel;
 use App\Models\ConfiguracionModel;
@@ -300,6 +300,7 @@ class Expedientes extends Controller
 
 		$modelExp = new ExpedientesModel();
 		$modelDocumentos = new DocumentosModel();
+		$documentosGeneradosExp = new DocumentosGeneradosModel();
 		$modelJustificacion = new DocumentosJustificacionModel();
 		$modelMejorasSolicitud = new MejorasExpedienteModel();
 
@@ -336,6 +337,10 @@ class Expedientes extends Controller
 
 		$data['titulo'] = "Expedient: " . $idExp . "/" . $convocatoria . " (" . $tipo_tramite . ") - " . $solicitante . " - " . $nifcif;
 
+
+		//------------------------------- Todos los actos administrativos de este expediente ---------------------
+		$data['documentosGenerados'] = $documentosGeneradosExp->getPorExped($id, $convocatoria);
+	
 		/* ----Comprueba si ya tenemos alguno de los documentos en el IDI y que en la solicitud lo han marcado como SI lo tenemos---- */
 		if ($data['expedientes']['memoriaTecnicaEnIDI']) {
 			$modelDocumentos->findIfDocumentIsInIDI($id, $nifcif, 'file_memoriaTecnica', $tipo_tramite, $convocatoria);

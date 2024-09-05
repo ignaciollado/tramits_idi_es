@@ -1002,7 +1002,7 @@
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
             <div class="col">
-            <!--     		<div class="form-group justificacion">
+            <!--  <div class="form-group justificacion">
             <label for = "fecha_res_liquidacion"><strong>Data resolució de concessió:</strong></label>
             <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_liquidacion" class = "form-control send_fase_4" id = "fecha_res_liquidacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_liquidacion']), 'Y-m-d');?>">
             </div> -->
@@ -1625,3 +1625,35 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
 <script src="https://kit.fontawesome.com/1a19d0e4f2.js" crossorigin="anonymous"></script>
+
+<?php
+/* obtiene fecha firma/rechazo de los actos administrativos del expediente */
+if($documentosGenerados): 
+    foreach($documentosGenerados as $documentoGenerado):
+        // doc_prop_res_revocacion_por_no_justificar
+        // doc_requeriment_adr_isba
+        if ($documentoGenerado->corresponde_documento === 'doc_prop_res_revocacion_por_no_justificar') {
+            $requestPublicAccessId = $documentoGenerado->publicAccessId;
+            $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+            $respuesta = json_decode ($request, true);
+            if ($estado_firma === 'COMPLETED') {
+                echo gmdate("d-m-Y H:i:s", intval ($respuesta['endDate']/1000));
+            }
+            if ($estado_firma === 'REJECTED') {
+                echo gmdate("d-m-Y H:i:s", intval ($respuesta['rejectInfo']['rejectDate']/1000))."<br><br>";
+            }
+        }
+        if ($documentoGenerado->corresponde_documento === 'doc_requeriment_adr_isba') {
+            $requestPublicAccessId = $documentoGenerado->publicAccessId;
+            $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+            $respuesta = json_decode ($request, true);
+            if ($estado_firma === 'COMPLETED') {
+                echo gmdate("d-m-Y H:i:s", intval ($respuesta['endDate']/1000));
+            }
+            if ($estado_firma === 'REJECTED') {
+                echo gmdate("d-m-Y H:i:s", intval ($respuesta['rejectInfo']['rejectDate']/1000))."<br><br>";
+            }
+        }
+    endforeach;
+endif;
+?>

@@ -1,4 +1,4 @@
-﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+﻿<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
 <?php
 	$requestPublicAccessId = $PublicAccessId; // document public access id
 	$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
@@ -7,7 +7,7 @@
 	//La petición: url-inbox/api/v3/requests/{publicAccessId}
 	function execute($apiPath, $json, $methodName) {
 		$url = REST_API_URL.$apiPath;
-		// echo "\nMethod URL: ".$url."\n\n";
+		echo "\nMethod URL: ".$url."\n\n";
 		
 		// Initiate curl
 		$ch = curl_init();
@@ -43,7 +43,7 @@
 		// Closing
 		curl_close($ch);
 		return $result;		
-	}	
+	}
 		
 	function printResult($result) {
 	
@@ -77,7 +77,7 @@
 	}
 ?>
 		<script>
-		function goBack() {
+			function goBack() {
 		    window.history.back();
-		}
+			}
 		</script>

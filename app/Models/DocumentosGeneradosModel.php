@@ -39,11 +39,17 @@ class DocumentosGeneradosModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function getPorExped($idExp, $convocatoria) {
+        $sql = "SELECT id, name, corresponde_documento, publicAccessId FROM pindust_documentos_generados WHERE id_sol = $idExp AND convocatoria = '$convocatoria'";
+        $query = $this->query($sql);
+        $row = $query->getResult();
+        return $row;
+    }
+    
     public function documentosGeneradosPorExpedYTipo($idExp, $convocatoria, $nombreDocumento) {
         $sql = "SELECT * FROM pindust_documentos_generados WHERE name = '$nombreDocumento'
                 AND id_sol = $idExp AND convocatoria = '$convocatoria'";      
         $query = $this->query($sql);
-
         $row = $query->getRow();
         return $row;
     }
