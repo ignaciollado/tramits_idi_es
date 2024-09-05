@@ -665,7 +665,7 @@
         </div>
     </div>
     </div> <!-- Cierre fila Detalle -->
-</div> <!-- Cierre del tab Detalle -->
+</div><!-- Cierre del tab Detalle -->
 
 <div id="solicitud_tab" class="tab_fase_exp_content">
     <div class="row">
