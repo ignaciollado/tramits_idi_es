@@ -665,12 +665,11 @@ function actualizaMotivoDesestimientoRenuncia_click() {  //SE EMPLEA
 function actualizaMotivoRevocacionPorNoJustificar_click() {  //SE EMPLEA
 	let textoRevocacionPorNoJustificar = document.getElementById("textoRevocacionPorNoJustificar").value;
 	let id = document.getElementById("id").value;
-	let modal = document.getElementById("myDesestimientoRenuncia");
+	let modal = document.getElementById("myRevocacionPorNoJustificar");
 	if ( textoRevocacionPorNoJustificar === "" ) {
 		alert ("Falta indicar el motiu.")
 		return;
 	}
-	console.log (textoRevocacionPorNoJustificar, id, modal)
 	$.post(
 		"/public/assets/utils/actualiza_motivo_revocacion_por_no_justificar_en_expediente.php",
 		{ id: id, textoRevocacionPorNoJustificar: textoRevocacionPorNoJustificar },

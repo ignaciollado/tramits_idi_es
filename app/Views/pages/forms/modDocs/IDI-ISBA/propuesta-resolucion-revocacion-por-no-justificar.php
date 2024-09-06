@@ -1,7 +1,7 @@
-<!----------------------------------------- Propuesta de resolución de revocación por no justificar DOC 16 -------------------->
+<!----------------------------------------- Propuesta resolución de revocación por no justificar DOC 16 -------------------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Proposta de resolució de revocació per no justificar **** [PRE]
+    	Proposta de resolució de revocació per no justificar **testear** [PRE]
   	</div>
 		<div class="card-itramits-footer">
   		<?php

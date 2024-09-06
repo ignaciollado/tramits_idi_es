@@ -56,7 +56,7 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
  <!-- The Modal -->
- 		<div class="modal" id="myRequerimientoJustificacion">
+ 		<div id="myRequerimientoJustificacion" class="modal" tabindex="-1">
 				<div class="modal-dialog">
                 <!-- Modal content-->
     			<div class="modal-content" style = "width: 80%;">

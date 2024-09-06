@@ -56,7 +56,7 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <!-- The Modal -->
-<div id="mySobreSubsanacionRequerimiento" class="modal">
+<div id="mySobreSubsanacionRequerimiento" class="modal" tabindex="-1">
 				<div class="modal-dialog">
                 <!-- Modal content-->
     				<div class="modal-content">

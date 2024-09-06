@@ -50,7 +50,7 @@
 			 ?>
   </div> 
 </div>
-<div class="modal" id="motivoRequerimiento">
+<div id="motivoRequerimiento" class="modal" tabindex="-1">
   	<div class="modal-dialog">
     	<div class="modal-content">	
       		<div class="modal-header">

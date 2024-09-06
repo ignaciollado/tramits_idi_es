@@ -1,44 +1,100 @@
-<!----------------------------------------- Resolución revocació por no justificar DOC 24 SIN VIAFIRMA --------------------------------->
+<!----------------------------------------- Resolución revocació por no justificar DOC 17 --------------------------------->
 <div class="card-itramits">
-  	<div class="card-itramits-body">Resolució revocació per no justificar</div>
+  	<div class="card-itramits-body">Resolució revocació per no justificar **testear** [PRE]</div>
   	<div class="card-itramits-footer">
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>
         <?php }
         else {?>
 		 	<button type="button" class="btn btn-secondary btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myRevocacionPorNoJustificar" id="myBtnRevocacionPorNoJustificar">Motiu de la revocació</button>
-			<span id="btn_24" class="">
-    			<a id ="wrapper_motivoRevocacionPorNoJustificar" class="ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>"><i class='fa fa-info'></i> Genera la resolució</a>
-			</span>
-			<span id="spinner_24" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+
+				<span id="btn_17" class="">
+					<button id="wrapper_motivoRevocacionPorNoJustificar" class="btn btn-primary ocultar" onclick="enviaResolucionRevocacionPorNoJustificar(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar la resolució</button>
+					<div id='infoMissingDoc17' class="alert alert-danger ocultar btn-acto-admin"></div>
+				</span>
 		<?php }?>
 	</div>
   	<div class="card-itramits-footer">
-		<?php if ($expedientes['doc_res_revocacion_por_no_justificar'] !=0) { ?>
-	      <a	class='btn btn-success btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_res_revocacion_por_no_justificar');?>" target = "_self"><i class='fa fa-check'></i>La resolució</a>	
-		<?php }?>
+		<?php
+			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_res_revocacion_por_no_justificar.pdf');
+			if (isset($tieneDocumentosGenerados))
+				{
+				$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
+	  		$requestPublicAccessId = $PublicAccessId;
+				$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+				$respuesta = json_decode ($request, true);
+				$estado_firma = $respuesta['status'];
+				switch ($estado_firma) {
+					case 'NOT_STARTED':
+						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";
+						break;
+						case 'REJECTED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
+						$estado_firma .= "</a>";
+						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
+						$fecha_firma_req = gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
+						break;
+						case 'COMPLETED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";
+						$estado_firma .= "</a>";
+						$estado_firma .= gmdate("Y-m-d", intval ($respuesta['endDate']/1000));
+						$fecha_firma_req = gmdate("Y-m-d", intval ($respuesta['endDate']/1000));
+						break;
+						case 'IN_PROCESS':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";
+						$estado_firma .= "</a>";
+						default:
+						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
+				}
+				echo $estado_firma;
+				}
+			 ?>
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
-<div id="myRevocacionPorNoJustificar" class="modal" >
+<div id="myRevocacionPorNoJustificar" class="modal" tabindex="-1">
   	<div class="modal-dialog">
     	<div class="modal-content">	
 			<div class="modal-header">
 				<h4 class="modal-title">Motiu de la revocació per no justificar:</h4>
-        		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      		</div>
-      		<div class="modal-body">
-			  	<div class="form-group">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+			  <div class="form-group">
 					<textarea required rows="10" cols="30" name="textoRevocacionPorNoJustificar" class="form-control" id = "textoRevocacionPorNoJustificar" 
 					placeholder="Motiu de la revocació per no justificar"><?php echo $expedientes['motivoResolucionRevocacionPorNoJustificar']; ?></textarea>
-        		</div>
-      		</div>
-      		<div class="modal-footer">
-			  	<div class="form-group">
-           			<button type="button" onclick = "javaScript: actualizaMotivoRevocacionPorNoJustificar_click();" id="guardaMotivoRevocacionPorNoJustificar" 
+        </div>
+      </div>
+      <div class="modal-footer">
+			 	<div class="form-group">
+      		<button type="button" onclick = "javaScript: actualizaMotivoRevocacionPorNoJustificar_click();" id="guardaMotivoRevocacionPorNoJustificar" 
 					class="btn-itramits btn-success-itramits" data-bs-dismiss="modal">Guarda</button>
-        		</div>				
-      		</div>
+      	</div>				
+      </div>
     	</div>
   	</div>
 </div>
+
+
+<script>
+	function enviaResolucionRevocacionPorNoJustificar(id, convocatoria, programa, nifcif) {
+		let todoBien = true
+		let fecha_resolucion_rev = document.getElementById('fecha_resolucion_rev')
+		let wrapper_motivoRevocacionPorNoJustificar = document.getElementById('wrapper_motivoRevocacionPorNoJustificar')
+		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
+
+		if(!fecha_resolucion_rev.value) {
+			infoMissingDoc17.innerHTML = infoMissingDoc17.innerHTML + "Resolució de revocació<br>"
+			todoBien = false
+		}
+
+		if (todoBien) {
+			infoMissingDoc17.classList.add('ocultar')
+			wrapper_motivoRevocacionPorNoJustificar.disabled = true
+			wrapper_motivoRevocacionPorNoJustificar.innerHTML = "Generant i enviant ..."
+			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_revocacion_por_no_justificar'
+		} else {
+			infoMissingDoc17.classList.remove('ocultar')
+		}
+	}
+</script>

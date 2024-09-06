@@ -7,7 +7,7 @@
 		<?php
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
-			<button id="wrapper_ResConcesion" class="btn btn-primary btn-acto-admin" onclick="enviaResolucionConcesionConReg(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
+			<button id="wrapper_ResConcesion" class="btn btn-primary btn-acto-admin" onclick="enviaResolucionConcesion(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
 			<div id='infoMissingDataDoc6' class="alert alert-danger ocultar"></div>
 		<?php } ?>
 

@@ -2174,39 +2174,56 @@ class Expedientes extends Controller
 							echo view('pages/forms/go-back-footer', $data_footer);
 							break;
 			case "doc_res_desestimiento_por_renuncia": 									//VIAFIRMA DOC 15
-								$data_infor = [
-									'doc_res_desestimiento_por_renuncia' => $last_insert_id
-								];
-								$builder->where('id', $request->uri->getSegment(3));
-								$builder->update($data_infor);
-							
-								$data['byCEOSigned'] = false;
-								$data_footer = [
-									'tipoDoc' => " Resolució desistiment per renúncia",
-									'conVIAFIRMA' => false
-								];
-								echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-desestimiento-por-renuncia-adr-isba', $data); 
-								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-								echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-								echo view('pages/forms/go-back-footer', $data_footer);
-								break;
+				$data_infor = [
+					'doc_res_desestimiento_por_renuncia' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+					
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Resolució desistiment per renúncia",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-desestimiento-por-renuncia-adr-isba', $data); 
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
 			case "doc_prop_res_revocacion_por_no_justificar": 					//VIAFIRMA DOC 16
-									$data_infor = [
-										'doc_prop_res_revocacion_por_no_justificar' => $last_insert_id
-									];
-									$builder->where('id', $request->uri->getSegment(3));
-									$builder->update($data_infor);
+				$data_infor = [
+				'doc_prop_res_revocacion_por_no_justificar' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
 								
-									$data['byCEOSigned'] = false;
-									$data_footer = [
-										'tipoDoc' => " Proposta de resolució de revocació per no justificar",
-										'conVIAFIRMA' => false
-									];
-									echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-revocacion-por-no-justificar-adr-isba', $data); 
-									echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-									echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-									echo view('pages/forms/go-back-footer', $data_footer);
-									break;									
+				$data['byCEOSigned'] = false;
+				$data_footer = [
+					'tipoDoc' => " Proposta de resolució de revocació per no justificar",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-revocacion-por-no-justificar-adr-isba', $data); 
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+			case "doc_res_revocacion_por_no_justificar": 								//VIAFIRMA DOC 17
+					$data_infor = [
+					'doc_res_revocacion_por_no_justificar' => $last_insert_id
+					];
+					$builder->where('id', $request->uri->getSegment(3));
+					$builder->update($data_infor);
+									
+					$data['byCEOSigned'] = false;
+					$data_footer = [
+						'tipoDoc' => " Resolució de revocació per no justificar",
+						'conVIAFIRMA' => false
+					];
+					echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-resolucion-revocacion-por-no-justificar-adr-isba', $data); 
+					echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+					echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+					echo view('pages/forms/go-back-footer', $data_footer);
+					break;				
 		}
 		echo view('templates/footer/footer');
 	}

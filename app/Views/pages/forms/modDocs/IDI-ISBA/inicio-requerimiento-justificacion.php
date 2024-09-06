@@ -61,7 +61,7 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <!-- The Modal -->
- 		<div id="myInicioRequerimiento" class="modal">
+ 		<div id="myInicioRequerimiento" class="modal" tabindex="-1">
 				<div class="modal-dialog">
                 <!-- Modal content-->
     			<div class="modal-content">
