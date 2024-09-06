@@ -27,19 +27,21 @@
 				$estado_firma = $respuesta['status'];
 				switch ($estado_firma) {
 					case 'NOT_STARTED':
-					$estado_firma = "<div class = 'btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+					$estado_firma = "<div class = 'btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i>Pendent de signar</div>";
 					break;
 					case 'REJECTED':
 					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
-					$estado_firma .= "</a>";				
+					$estado_firma .= "</a>";
+					$fecha_firma_req = gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
 					break;
 					case 'COMPLETED':
 					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i>Signat</div>";		
-					$estado_firma .= "</a>";					
+					$estado_firma .= "</a>";
+					$fecha_firma_req = gmdate("Y-m-d", intval ($respuesta['endDate']/1000));
 					break;
 					case 'IN_PROCESS':
 					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i>En curs</div>";		
-					$estado_firma .= "</a>";						
+					$estado_firma .= "</a>";
 					default:
 					$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
 				}
@@ -70,8 +72,14 @@
     	</div>
   	</div>
 </div>
-
+<input type='hidden' id="fechaEstadoDocReq" value="<?php echo $fecha_firma_req;?>">
+<!-- <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script> -->
 <script>
+if (!document.getElementById("fecha_requerimiento").value) {
+	document.getElementById("fecha_requerimiento").value = document.getElementById("fechaEstadoDocReq").value
+	cambiarSituacionExpediente('send_fase_1', 'fecha_requerimiento')
+}
+
 function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 	let textoMotivoReq = document.getElementById("motivoRequerimientoTexto").value;
 	let id = document.getElementById("id").value;
@@ -95,15 +103,14 @@ function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
 	);
 }
 
-
-	function enviaRequerimiento(id, convocatoria, programa, nifcif) {
-		let todoBien = true
-		let wrapper_motivoRequerimiento = document.getElementById('wrapper_motivoRequerimiento')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainforme'
-		if (todoBien) {
-			wrapper_motivoRequerimiento.disabled = true
-			wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment'
-		}
+function enviaRequerimiento(id, convocatoria, programa, nifcif) {
+	let todoBien = true
+	let wrapper_motivoRequerimiento = document.getElementById('wrapper_motivoRequerimiento')
+	let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainforme'
+	if (todoBien) {
+		wrapper_motivoRequerimiento.disabled = true
+		wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."
+		window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment'
 	}
+}
 </script>

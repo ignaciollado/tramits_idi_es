@@ -349,7 +349,7 @@ function actualiza_fase_2_validacion_expediente_idi_isba(formName) {  //SE EMPLE
 	let fecha_firma_res = document.getElementById("fecha_firma_res").value; // Data notificació proposta resolució
 	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value; // ref_REC_enmienda
 
-	for (let step = 0; step < 7; step++) {
+	for (let step = 0; step < 6; step++) {
 		document.getElementsByClassName("form-group validacion")[step].style.opacity = "0.1";
 	}
 
@@ -375,7 +375,7 @@ function actualiza_fase_2_validacion_expediente_idi_isba(formName) {  //SE EMPLE
 				send_fase_2.className = "btn-itramits btn-success-itramits";
 				send_fase_2.disabled = false;
 			}
-			for (let step = 0; step < 7; step++) {
+			for (let step = 0; step < 6; step++) {
 				document.getElementsByClassName("form-group validacion")[step].style.opacity = "1.0";
 			}
 		}
@@ -1271,11 +1271,12 @@ async function configuraDetalle_OnLoad () {
 			  }
 }
 
-async function obtieneEstadoDelSello (publicId) {
+async function obtieneDatosFirmaDoc (publicId) {
 	let API_URI = "/public/assets/utils/comprobarEstadoSello.php?publicAccessId="+ publicId;
 	await fetch(API_URI)
 		.then((response) => response.text())
 		.then((data) => {
+			console.log (data)
 			switch (data)
 		{
 		case 'NOT_STARTED':
@@ -1415,4 +1416,37 @@ function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
 			}
 		}
 	);
+}
+
+function cambiarSituacionExpediente (fase, elemento) {
+	console.log (elemento, "cambiar situación expediente")
+	let theElement = document.getElementById(elemento)
+	let idExp = document.getElementById("id")
+	let nuevoEstado = ""
+	let itemID = 0
+	if (elemento === "fecha_requerimiento") {
+		nuevoEstado = "firmadoReq"
+		itemID = 6
+	}
+	if (elemento === "fecha_limite_justificacion") {
+		nuevoEstado = "pendienteJustificar"
+		itemID = 28
+	}
+	if (elemento === "fecha_not_propuesta_resolucion_prov") {
+		nuevoEstado = "emitidoIFPRProvPago"
+		itemID = 12
+	}
+	if (elemento === "fecha_limite_consultoria") {
+		nuevoEstado = "inicioConsultoria"
+		itemID = 20
+	}
+
+	if (theElement.value.length > 0) {
+		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_del_expediente.php?${nuevoEstado}/${idExp.value}`;
+			fetch(nuevaSituacion)
+				.then((response) => response.text())
+				.then((data) => {
+					document.getElementById("situacion_exped").options.item(itemID).selected = 'selected';
+			});
+	}
 }

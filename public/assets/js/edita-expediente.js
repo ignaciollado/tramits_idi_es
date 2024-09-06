@@ -686,15 +686,15 @@ function cambiarSituacionExpediente (fase, elemento) {
 	let itemID = 0
 	if (elemento === "fecha_limite_justificacion") {
 		nuevoEstado = "pendienteJustificar"
-		itemID = 25
+		itemID = 28
 	}
-	if (elemento === "fecha_not_propuesta_resolucion_prov") { /* fecha_not_propuesta_resolucion_prov */
+	if (elemento === "fecha_not_propuesta_resolucion_prov") {
 		nuevoEstado = "emitidoIFPRProvPago"
 		itemID = 12
 	}
 	if (elemento === "fecha_limite_consultoria") {
 		nuevoEstado = "inicioConsultoria"
-		itemID = 17
+		itemID = 20
 	}
 
 	if (theElement.value.length > 0) {

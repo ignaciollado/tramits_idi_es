@@ -1,13 +1,13 @@
 <?php
 // PRODUCCIÓN
-    const REST_API_URL = "https://inbox.viafirma.com/inbox/api/v3/";
-    const REST_API_KEY = "viafirma";
-    const REST_API_PASS = "HXN91O5HBYNUNGVRVTQKBFXWDLPIOMBPKIBSJNCC";
+/*   const REST_API_URL = "https://inbox.viafirma.com/inbox/api/v3/";
+  const REST_API_KEY = "viafirma";
+  const REST_API_PASS = "HXN91O5HBYNUNGVRVTQKBFXWDLPIOMBPKIBSJNCC"; */
 // DESARROLLO	
 
-//const REST_API_URL = "https://testservices.viafirma.com/inbox/api/v3/";
-//const REST_API_KEY = "dev_idi";
-//const REST_API_PASS = "V3CBFZVZS6THXSWZG9HL3AFF06KD4NGAQHGXGF6Y";
+const REST_API_URL = "https://sandbox.viafirma.com/inbox/api/v3/";
+const REST_API_KEY = "dev_idi";
+const REST_API_PASS = "V3CBFZVZS6THXSWZG9HL3AFF06KD4NGAQHGXGF6Y";
 
 $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
