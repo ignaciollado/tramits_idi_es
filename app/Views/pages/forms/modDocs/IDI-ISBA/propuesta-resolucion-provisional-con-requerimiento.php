@@ -1,4 +1,4 @@
-<!----------------------------------------- Proposta de resolució provisional. DOC 3. CON VIAFIRMA OK-->
+<!----------------------------------------- Proposta de resolució provisional amb requeriment. DOC 6-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
 		Proposta de resolució provisional amb requeriment **testear** [PRE]
@@ -8,7 +8,7 @@
 		if (!$esAdmin && !$esConvoActual) { ?>
 		<?php } else { ?>
 			<button id="wrapper_propuestaResProvisionalConReq" class="btn btn-primary btn-acto-admin" onclick="enviaPropResolucionResProvisionalConReq(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la proposta</button>
-			<div id='infoMissingDataDoc3' class="alert alert-danger ocultar"></div>
+			<div id='infoMissingDataDoc6' class="alert alert-danger ocultar"></div>
 		<?php } ?>
 	</div>
 	<div class="card-itramits-footer">
@@ -59,37 +59,37 @@
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let wrapper_propuestaResProvisionalConReq = document.getElementById('wrapper_propuestaResProvisionalConReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
-		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
-		infoMissingDataDoc3.innerText = ""
+		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
+		infoMissingDataDoc6.innerText = ""
 
 		if (!fecha_REC.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data SEU sol·licitud<br>"
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!ref_REC.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Referència SEU sol·licitud<br>"
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
 		if (!fecha_infor_fav_desf.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data firma informe favorable/desfavorable<br>"
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Data firma informe favorable/desfavorable<br>"
 			todoBien = false
 		}
 		if (!fecha_REC_enmienda.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Data SEU esmena<br>"
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
 		if (!ref_REC_enmienda.value) {
-			infoMissingDataDoc3.innerHTML = infoMissingDataDoc3.innerHTML + "Referència SEU esmena<br>"
+			infoMissingDataDoc6.innerHTML = infoMissingDataDoc6.innerHTML + "Referència SEU esmena<br>"
 			todoBien = false
 		}
 
 		if (todoBien) {
-			infoMissingDataDoc3.classList.add('ocultar')
+			infoMissingDataDoc6.classList.add('ocultar')
 			wrapper_propuestaResProvisionalConReq.disabled = true
 			wrapper_propuestaResProvisionalConReq.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_provisional_con_requerimiento_adr_isba'
 		} else {
-			infoMissingDataDoc3.classList.remove('ocultar')
+			infoMissingDataDoc6.classList.remove('ocultar')
 		}
 	}
 </script>
