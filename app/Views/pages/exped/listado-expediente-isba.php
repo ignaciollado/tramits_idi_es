@@ -18,11 +18,11 @@
 	
 	<div class="filter-area-col">
 		<div class="form-group">
-    		<input class="form-control-itramits" required placeholder="Convocatòria ..." type="text" list="convocatoria" name="convocatoria_fltr" id="convocatoria_fltr" minlength="4" maxlength="4" value = "<?php echo $session->get('convocatoria_fltr');?>">
+    		<input class="form-control-itramits" disabled required placeholder="Convocatòria ..." type="text" list="convocatoria" name="convocatoria_fltr" id="convocatoria_fltr" minlength="4" maxlength="4" value = "<?php echo $session->get('convocatoria_fltr');?>">
   			<datalist id="convocatoria">
 					<option value="2024">	
 					<option value="2023">
-    			<option value="2022">
+    				<option value="2022">
 					<option value="2021">
 					<option value="2020">
   			</datalist>
@@ -152,30 +152,30 @@
 <div class = "lista-exped-wrapper">
   <div class = "header-wrapper">
    	<div <?php echo($sort_by == 'fecha_completado' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_completado/" . (($sort_order == 'ASC' && $sort_by == 'fecha_completado') ? 'DESC' : 'ASC'), 'https');?>">Data complet</a>
-		</div>
-		<div <?php echo($sort_by == 'tipo_tramite' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/tipo_tramite/" . (($sort_order == 'ASC' && $sort_by == 'tipo_tramite') ? 'DESC' : 'ASC'), 'https');?>">Linia de tràmit</a>					
-    </div>
-		<div <?php echo($sort_by == 'idExp' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/idExp/" . (($sort_order == 'ASC' && $sort_by == 'idExp') ? 'DESC' : 'ASC'), 'https');?>">N. exped.</a>
-		</div>
-		<div <?php echo($sort_by == 'empresa' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-			<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa/" . (($sort_order == 'ASC' && $sort_by == 'empresa') ? 'DESC' : 'ASC'), 'https');?>">Ajuntament</a>					
-    </div>
-	<div class="header-wrapper-col">CIF</div>
-	<div class="header-wrapper-col">Batle/Batlesa</div>
-	<div <?php echo($sort_by == 'empresa_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/empresa_consultor/" . (($sort_order == 'ASC' && $sort_by == 'empresa_consultor') ? 'DESC' : 'ASC'), 'https');?>"><?php echo lang('message_lang.responsable_felib');?></a>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/fecha_completado/" . (($sort_order == 'ASC' && $sort_by == 'fecha_completado') ? 'DESC' : 'ASC'), 'https');?>">Data complet</a>
 	</div>
- 	<div <?php echo($sort_by == 'nom_consultor' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/nom_consultor/" . (($sort_order == 'ASC' && $sort_by == 'nom_consultor') ? 'DESC' : 'ASC'), 'https');?>"><?php echo lang('message_lang.tecnico_felib');?></a>
+	<div <?php echo($sort_by == 'tipo_tramite' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/tipo_tramite/" . (($sort_order == 'ASC' && $sort_by == 'tipo_tramite') ? 'DESC' : 'ASC'), 'https');?>">Linia de tràmit</a>					
+    </div>
+	<div <?php echo($sort_by == 'idExp' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/idExp/" . (($sort_order == 'ASC' && $sort_by == 'idExp') ? 'DESC' : 'ASC'), 'https');?>">N. exped.</a>
 	</div>
-	<div <?php echo($sort_by == 'fecha_firma_res' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/fecha_firma_res/" . (($sort_order == 'ASC' && $sort_by == 'fecha_firma_res') ? 'DESC' : 'ASC'), 'https');?>"><?php echo lang('message_lang.movil_tecnico_felib');?></a>
+	<div <?php echo($sort_by == 'empresa' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/empresa/" . (($sort_order == 'ASC' && $sort_by == 'empresa') ? 'DESC' : 'ASC'), 'https');?>">Solicitant</a>					
+    </div>
+	<div <?php echo($sort_by == 'nom_entidad' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/nom_entidad/" . (($sort_order == 'ASC' && $sort_by == 'nom_entidad') ? 'DESC' : 'ASC'), 'https');?>">Entitat finançera</a>					
+    </div>
+	<div class="header-wrapper-col">Data formalització aval</div>
+	<div class="header-wrapper-col">Termini aval</div>
+	<div <?php echo($sort_by == 'cuantia_aval_isba' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/cuantia_aval_isba/" . (($sort_order == 'ASC' && $sort_by == 'cuantia_aval_isba') ? 'DESC' : 'ASC'), 'https');?>">Quantia aval</a>					
+    </div>
+	<div <?php echo($sort_by == 'importe_ayuda_solicita_idi_isba' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/importe_ayuda_solicita_idi_isba/" . (($sort_order == 'ASC' && $sort_by == 'importe_ayuda_solicita_idi_isba') ? 'DESC' : 'ASC'), 'https');?>">AJUT per import de</a>
 	</div>
 	<div <?php echo($sort_by == 'situacion' ? 'class="header-wrapper-col sort_'.$sort_order.'"' : 'class="header-wrapper-col"'); ?>>
-		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientes/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
+		<a href="<?php echo base_url("/public/index.php/expedientes/ordenarExpedientesisba/situacion/" . (($sort_order == 'ASC' && $sort_by == 'situacion') ? 'DESC' : 'ASC'), 'https');?>">Situació</a>
 	</div>
 	<div class = "header-wrapper-col">
 		<span class='alert alert-info'>
@@ -192,27 +192,16 @@
 					?>
   	<div id ="fila" class = "detail-wrapper">
    		<span id = "fechaComletado" class = "detail-wrapper-col"><?php if ($item['fecha_completado'] != '0000-00-00 00:00:00' && $item['fecha_completado'] != '1970-01-01 01:00:00') {echo $item['fecha_completado'];} ?></span>
-			<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
-			<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
-			<span id = "solicitante" class = "detail-wrapper-col"><?php 
-				if ($item['tipo_tramite'] === 'FELIB') {
-					$empresa = explode("#", $item['empresa']);
-					echo "AJUNTAMENT de ".strtoupper($empresa[1]);
-				} else {
-					echo $item['empresa'];
-				}
-			?></span>
-			<span id = "semaforo" class = "detail-wrapper-col"><?php echo $item['nif'];?></span>
-		
-		
-		<span id = "ordenDePago" class = "detail-wrapper-col"><?php echo $item['alcalde_felib'];?></span>
-		
-		<span id = "empresa_consultor" class = "detail-wrapper-col"><?php echo $item['responsable_felib']; ?></span>
-		<span id = "nom_consultor" class = "detail-wrapper-col"><?php echo $item['tecnico_felib']; ?></span>
-		<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['movil_tecnico_felib']; ?></span>
+		<span id = "tipoTramite" class = "detail-wrapper-col"><?php echo $item['tipo_tramite']; ?></span>
+		<span id = "idExp" class = "detail-wrapper-col"><?php echo $item['idExp'].' / '.$item['convocatoria']; ?></span>												
+		<span id = "solicitante" class = "detail-wrapper-col"><?php echo $item['empresa'];?></span>
+		<span id = "nom_entidad" class = "detail-wrapper-col"><?php echo $item['nom_entidad'];?></span>
+		<span id = "fecha_aval_idi_isba" class = "detail-wrapper-col"><?php echo $item['fecha_aval_idi_isba'];?></span>
+		<span id = "plazo_aval_idi_isba" class = "detail-wrapper-col"><?php echo $item['plazo_aval_idi_isba'];?></span>
+		<span id = "cuantia_aval_idi_isba" class = "detail-wrapper-col"><?php echo $item['cuantia_aval_idi_isba'];?></span>
+		<span id = "importe_ayuda_solicita_idi_isba" class = "detail-wrapper-col"><?php echo $item['importe_ayuda_solicita_idi_isba']; ?></span>
 		<span id = "situacion" class = "detail-wrapper-col">			
-			
-			<?php 
+		<?php 
 			if ($item['situacion'] == "pendiente") {
 				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-final"><span title="Aquesta sol·licitud está pendent de validació">Pendent <br>de validar</span></div>'; 
 			}

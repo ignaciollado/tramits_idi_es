@@ -135,19 +135,20 @@ class Expedientes extends Controller
 		$rol =  $session->get('rol');
 		$where = "";
 
+		$where = 'convocatoria = ' . $this->request->getVar('convocatoria_fltr');
 		switch ($rol) {
 			case 'admin':
 				if ($this->request->getVar('convocatoria_fltr')) {
-					$where = 'convocatoria = ' . $this->request->getVar('convocatoria_fltr');
+					/* $where = 'convocatoria = ' . $this->request->getVar('convocatoria_fltr'); */
 					$where .= " AND tipo_tramite <> 'FELIB'";
 					$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr')); 
-				} else {
+				} /* else {
 					$where = 'convocatoria = ' . $currentYear; 
 					$session->set('convocatoria_fltr',  $currentYear);
-				}
+				} */
 
 				if ($this->request->getVar('programa_fltr')) {
-					$where = "tipo_tramite = '" . $this->request->getVar('programa_fltr') . "'";
+					$where .= " AND tipo_tramite = '" . $this->request->getVar('programa_fltr') . "'";
 					$session->set('programa_fltr', $this->request->getVar('programa_fltr'));
 				}
 
@@ -157,7 +158,7 @@ class Expedientes extends Controller
 					} else if ($this->request->getVar('convocatoria_fltr')) {
 						$where .= " AND situacion = '" . $this->request->getVar('situacion_fltr') . "'";
 					} else {
-						$where = "situacion = '" . $this->request->getVar('situacion_fltr') . "'";
+						$where .= " AND situacion = '" . $this->request->getVar('situacion_fltr') . "'";
 					}
 					$session->set('situacion_fltr', $this->request->getVar('situacion_fltr'));
 				}
@@ -172,7 +173,7 @@ class Expedientes extends Controller
 										OR nom_consultor LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' 
 										OR situacion  LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%' )";
 					} else {
-						$where = " tipo_tramite LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%'
+						$where .= " AND tipo_tramite LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%'
 										OR fecha_completado LIKE '" . $this->request->getVar('textoLibre_fltr') . "%'
 										OR idExp LIKE '%" . $this->request->getVar('textoLibre_fltr') . "%'
 										
@@ -198,14 +199,14 @@ class Expedientes extends Controller
 
 			default:
 				$session->set('programa_fltr', $rol);
-				$where = 'tipo_tramite = "' . $rol . '"';
+				$where .= 'tipo_tramite = "' . $rol . '"';
 				if ($this->request->getVar('convocatoria_fltr')) {
 					$where .= ' AND convocatoria = ' . $this->request->getVar('convocatoria_fltr');
 					$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr'));
-				} else {
+				} /* else {
 					$where = 'convocatoria = ' . $currentYear; //$this->request->getVar('convocatoria_fltr');
 					$session->set('convocatoria_fltr', $currentYear);
-				}
+				} */
 				$session->set('convocatoria_fltr', $this->request->getVar('convocatoria_fltr'));
 
 				if ($this->request->getVar('situacion_fltr')) {
@@ -251,15 +252,42 @@ class Expedientes extends Controller
 
 	function ordenarExpedientes($sort_by = 'fecha_REC', $sort_order = 'ASC')
 	{
+
 		$modelExp = new ExpedientesModel();
-		$data['expedientes'] = $modelExp->orderBy($sort_by, $sort_order)->findAll();
+/* 		$lineaConfig = new ConfiguracionLineaModel();
+		$datoslineaConvo = $lineaConfig->configuracionGeneral('XECS');
+		$where = "convocatoria = ".$datoslineaConvo['convocatoria'];
+		$session->set('convocatoria_fltr', $datoslineaConvo['convocatoria']);
+		echo $where."******".$sort_by."*******".$sort_order."*****"; */
+		/* return; */
+		$where = "convocatoria = 2024 AND tipo_tramite != 'felib' AND tipo_tramite != 'adr-isba'";
+		$data['expedientes'] = $modelExp->orderBy($sort_by, $sort_order)
+		->where($where)
+		->findAll();
+
 		$data['sort_by'] = $sort_by;
 		$data['sort_order'] = $sort_order;
-
 		$data['titulo'] = lang('message_lang.todas_las_solicitudes');
 		echo view('templates/header/header', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 		echo view('pages/exped/listado-expediente', $data);
+		echo view('templates/footer/footer');
+	}
+
+	function ordenarExpedientesisba($sort_by = 'fecha_REC', $sort_order = 'ASC')
+	{
+
+		$modelExp = new ExpedientesModel();
+		$where = "tipo_tramite = 'adr-isba'";
+		$data['expedientes'] = $modelExp->orderBy($sort_by, $sort_order)
+		->where($where)
+		->findAll();
+		$data['sort_by'] = $sort_by;
+		$data['sort_order'] = $sort_order;
+		$data['titulo'] = lang('message_lang.todas_las_solicitudes');
+		echo view('templates/header/header', $data);
+		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+		echo view('pages/exped/listado-expediente-isba', $data);
 		echo view('templates/footer/footer');
 	}
 
