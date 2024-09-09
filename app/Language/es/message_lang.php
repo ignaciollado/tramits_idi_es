@@ -670,7 +670,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'adherido_a_ils_si_no'  => "En el momento de la solicitud, su empresa ¿está adherida al programa ILS?",
 'no_adherido_a_ils'     => "NO",
 'adherido_a_ils'        => "SÍ",
-'empresa_eco_7_2'       => "7.2. En el caso que la empresa solicitante esté adherida al programa ILS – Industria Local Sostenible o que acredite que la inversión que financia es un proyecto certificado como verde según la Taxonomía de la UE. El importe de la ayuda para cubrir el coste del aval de las operaciones financieras de inversiones productivas cubrirá los siete años de la operación original, y son: el 100% del coste del aval los siete años de la operación, con la limitación del 1,25% sobre el importe del aval.",
+'empresa_eco_7_2'       => "7.2. En el caso que la empresa solicitante esté adherida al programa ILS - Industria Local Sostenible. El importe de la ayuda para cubrir el coste del aval de las operaciones financieras de inversiones productivas cubrirá los siete años de la operación original, y son: el 100% del coste del aval los siete años de la operación, con la limitación del 1,25% sobre el importe del aval.",
 'solicita_ayuda_idi_isba'  => "SOLICITO<br><small>De acuerdo con la convocatoria para el año 2024 de ayudas a las empresas industriales con actividad en las Islas Baleares
 para cubrir las comisiones de apertura y de estudio, los intereses y el coste del aval para operaciones de financiación de inversiones productivas,
  aprobada por Resolución del consejero de Empresa, Ocupación y Energía, los importes correspondientes para la operación, avalada por sociedad de garantía recíproca ISBA
