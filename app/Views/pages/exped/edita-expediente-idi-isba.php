@@ -1293,7 +1293,7 @@
             </div>
 
             <div id = "tab_facturas">
-                <button class="accordion-exped">Factures de l'habilitador digital:</button>
+                <button class="accordion-exped">Factures</button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>

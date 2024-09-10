@@ -130,6 +130,13 @@ $parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_s
 $parrafo_1 = str_replace("%NOMBRE_BANCO%", $data['expediente']['nom_entidad'], $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTE_PRESTAMO%", $data['expediente']['importe_prestamo'], $parrafo_1);
 $html = $parrafo_1;
+
+if ($ultimaMejora[2] && $ultimaMejora[3]) {
+    $parrafo_1m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('isba_5_propuesta_resolucion_prov_favorable.antecedentes_m'));
+    $parrafo_1m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_1m);
+    $html .= $parrafo_1m;
+}
+$html = "<ol>".$html."</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
@@ -141,14 +148,6 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 24);
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_9_resolucion_concesion.antecedentes_5'));
-
-if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $parrafo_3m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('isba_9_resolucion_concesion.doc_resolucion_concesion_con_req_p3m'));
-    $parrafo_3m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_3m);
-    $html .= "<li>". $parrafo_3m ."</li>";
-    $html .= "<br>";
-}
-
 $parrafo_2 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y"), $parrafo_2);
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
@@ -160,7 +159,11 @@ $parrafo_2 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_ava
 $parrafo_2 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_2);
 $parrafo_2 = str_replace("%FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_2);
 $parrafo_2 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_2);
-$html = '<ol start="5">'.$parrafo_2.'</ol>';
+if ($ultimaMejora[2] && $ultimaMejora[3]) {
+    $html = '<ol start="6">'.$parrafo_2.'</ol>';
+} else {
+    $html = '<ol start="5">'.$parrafo_2.'</ol>';
+}
 $pdf->writeHTML($html, true, false, true, false, '');
 
 

@@ -40,14 +40,15 @@
 return [
   'intro' => "Proposta de resolució definitiva de la directora gerent de l'Agència de Desenvolupament Regional de les Illes Balears sobre la concessió d'una subvenció a %SOLICITANTE%, amb NIF %NIF%, destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives",
   'antecedentes_tit' => "<b>Fets</b>",
-  'antecedentes_1_2_3_4' => "<ol>
+  'antecedentes_1_2_3_4' => "
     <li>El dia %BOIBFECHA%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
     <li>En data %FECHASOL%, l'entitat %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos, %IMPORTE_AVAL% al subsidi de l'aval i %IMPORTE_ESTUDIO% als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
   	<li>L'entitat sol·licitant ha subscrit l'operació corresponent de finançament mitjançant l'entitat de crèdit %NOMBRE_BANCO% per import de %IMPORTE_PRESTAMO% i s'ha constituït l'aval amb Isba SGR.</li><br>
     <li>En data %FECHAREQUERIMENT% es va notificar un requeriment al sol·licitant.</li><br>
     <li>En data %FECHAESMENA% l'ADR Balears va rebre l'esmena de %SOLICITANTE% amb NIF %NIF%.</li><br>
-   	<li>D'acord amb l'apartat onzè, paràgraf primer, estableix que les sol·licituds de subvenció s'han de resoldre a mesura que entrin en el registre de l'òrgan competent (rigorós ordre d'entrada), encara que no hagi acabat el termini de presentació, fins que s'exhaureixi el crèdit destinat a la convocatòria o, si escau, fins que es resolguin tots els expedients presentats dins el termini, segons l'article 10 de l'Ordre del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria.</li><br></ol>",
-  'antecedentes_5' => "<li>El/la tècnic/a de l'ADR Balears ha examinat la sol·licitud presentada per %SOLICITANTE%, i ha comprovat que:<br>
+   	<li>D'acord amb l'apartat onzè, paràgraf primer, estableix que les sol·licituds de subvenció s'han de resoldre a mesura que entrin en el registre de l'òrgan competent (rigorós ordre d'entrada), encara que no hagi acabat el termini de presentació, fins que s'exhaureixi el crèdit destinat a la convocatòria o, si escau, fins que es resolguin tots els expedients presentats dins el termini, segons l'article 10 de l'Ordre del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria.</li><br>",
+	'antecedentes_m' => "<li>En data %FECHARECM%, l'ADR Balears va rebre documentació per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %REFRECM%.</li><br>", 
+	'antecedentes_5' => "<li>El/la tècnic/a de l'ADR Balears ha examinat la sol·licitud presentada per %SOLICITANTE%, i ha comprovat que:<br>
 		<ul>
 			<li>Pot ser beneficiari de la subvenció objecte de convocatòria per la seva naturalesa.</li><br> 
 			<li>Ha presentat correctament la seva sol·licitud i la documentació dins el termini previst a la convocatòria.</li><br> 

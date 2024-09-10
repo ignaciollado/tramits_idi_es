@@ -15,6 +15,9 @@ $data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first(
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
 
+$data['ultimaMejora'] = $mejorasSolicitud->selectLastMejorasExpediente($id);
+$ultimaMejora = explode("##",  $data['ultimaMejora']);
+
 $db = \Config\Database::connect();
 $query = $db->query("SELECT * FROM pindust_documentos_generados WHERE id_sol=".$id." AND convocatoria='".$convocatoria."' AND tipo_tramite='".$programa."'");
 foreach ($query->getResult() as $row) {
@@ -128,8 +131,14 @@ $parrafo_1 = str_replace("%IMPORTE_PRESTAMO%", $data['expediente']['importe_pres
 $parrafo_1 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-
 $html = $parrafo_1;
+
+if ($ultimaMejora[2] && $ultimaMejora[3]) {
+    $parrafo_1m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('isba_5_propuesta_resolucion_prov_favorable.antecedentes_m'));
+    $parrafo_1m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_1m);
+    $html .= $parrafo_1m;
+}
+$html = "<ol>".$html."</ol>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
@@ -151,7 +160,11 @@ $parrafo_6 = str_replace("%AÑOS_DURACION_AVAL%", $data['expediente']['plazo_ava
 $parrafo_6 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $parrafo_6);
 $parrafo_6 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_6);
 $parrafo_6 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_6);
-$html = '<ol start="5">'.$parrafo_6.'</ol>';
+if ($ultimaMejora[2] && $ultimaMejora[3]) {
+    $html = '<ol start="6">'.$parrafo_2.'</ol>';
+} else {
+    $html = '<ol start="5">'.$parrafo_2.'</ol>';
+}
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
 $pdf->writeHTML($html, true, false, true, false, '');
