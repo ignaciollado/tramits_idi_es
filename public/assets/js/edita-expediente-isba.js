@@ -521,14 +521,20 @@ function avisarCambiosEnFormulario(fase, elemento) {
 	document.getElementById(fase).className = "error-msg";
 }
 
+function calcularFechaMaximaEnmienda(fecha, intervalo) {
+	let d = new Date(fecha)
+	d.setDate(d.getDate() + intervalo)
+	document.getElementById("fecha_maxima_enmienda").value = d.toISOString().substr(0, 10);
+}
+
 function setFechaLimiteJustificacion(fechaCierre, meses) {
 	let d = new Date(fechaCierre);
 	d.setMonth(d.getMonth() + meses);
-	console.log (`----${d}---`)
-	if (d.getDay() == 6) {  //La fecha cae en Sábado hay que pasar la al primer lunes (+2 días)
+	console.log (`---${d}---`)
+	if (d.getDay() == 6) { //La fecha cae en Sábado hay que pasar la al primer lunes (+2 días)
 		d.setDate(d.getDate()+2);
 	}
-	if (d.getDay() == 0) {  //La fecha cae en Domingo hay que pasar la al primer lunes (+1 días)
+	if (d.getDay() == 0) { //La fecha cae en Domingo hay que pasar la al primer lunes (+1 días)
 		d.setDate(d.getDate()+1);
 	}
 	document.getElementById("fecha_limite_justificacion").value = d.toISOString().substr(0, 10);
