@@ -79,12 +79,12 @@
 <script>
 	function enviaResolucionRevocacionPorNoJustificar(id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_resolucion_rev = document.getElementById('fecha_resolucion_rev')
+		let fecha_propuesta_rev = document.getElementById('fecha_propuesta_rev')
 		let wrapper_motivoRevocacionPorNoJustificar = document.getElementById('wrapper_motivoRevocacionPorNoJustificar')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 
-		if(!fecha_resolucion_rev.value) {
-			infoMissingDoc17.innerHTML = infoMissingDoc17.innerHTML + "Resolució de revocació<br>"
+		if(!fecha_propuesta_rev.value) {
+			infoMissingDoc17.innerHTML = infoMissingDoc17.innerHTML + "Proposta de revocació<br>"
 			todoBien = false
 		}
 

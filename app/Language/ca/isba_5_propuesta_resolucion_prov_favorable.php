@@ -70,7 +70,7 @@ return [
                           <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
                           <li>L'Ordre 9/2024 del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria (BOIB núm.40 de 23 de març de 2024).</li>",
   
-  'propuestaresoluciondef_tit' => "<b>Proposta de resolució definitiva</b>",
+  'propuestaresoluciondef_tit' => "<b>Proposta de resolució provisional favorable</b>",
 
   'propuestaresoluciondefTxt' => "Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:",
 

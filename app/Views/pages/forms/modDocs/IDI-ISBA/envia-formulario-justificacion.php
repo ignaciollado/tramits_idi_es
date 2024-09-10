@@ -45,7 +45,7 @@
 		
     </div>
  		<!-- The Modal para generar el correo de justificación-->
- 		<div class="modal" id="enviarFormJustificacionISBA">
+ 		<div class="modal" id="enviarFormJustificacionISBA" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">	
 					<div class="modal-header">
@@ -69,36 +69,5 @@
   </div>
 </div>
 <script>
-	function actaDeCierre(id, convocatoria, programa, nifcif) {
-		let todoBien = true
-		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
-		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
-		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
-		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });
-
-		infoMissingDataDoc20.innerText = ""
-
-		if (!fecha_reunion_cierre.value) {
-			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data reunió tancament<br>"
-			todoBien = false
-		}
-		if (!fecha_limite_justificacion.value) {
-			infoMissingDataDoc20.innerHTML = infoMissingDataDoc20.innerHTML + "Data límit per justificar l'ajut rebut<br>"
-			todoBien = false
-		}
-		if (todoBien) {
-			infoMissingDataDoc20.classList.add('ocultar')
-			myActaDeCierre.show()
-		} else {
-			infoMissingDataDoc20.classList.remove('ocultar')
-		}
-	}
-
-	function enviaActaDeCierre() {
-		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
-		myBtnActaDeCierre.disabled = true
-		myBtnActaDeCierre.innerHTML = "Enviant ..."
-	}
+	
 </script>

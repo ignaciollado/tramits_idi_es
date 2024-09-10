@@ -344,7 +344,7 @@ class Expedientes extends Controller
 		$data['totalDocsMemoriaActividadesIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_MemoriaActividadesIsba', $id);
 		$data['totalDocsFacturasEmitidasIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FacturasEmitidasIsba', $id);
 		$data['totalDocsJustificantesPagoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificantesPagoIsba', $id);
-
+		$data['totalDocsDeclaracionIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_DeclaracionIsba', $id);
 		//----------------------------- Obtiene el detalle del Expediente ----------------------------------------
 
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
@@ -402,6 +402,8 @@ class Expedientes extends Controller
 		$data['documentosMemoriaActividadesIsba'] = $modelJustificacion->listDocumentosJustificacion('file_MemoriaActividadesIsba', $id);
 		$data['documentosFacturasEmitidasIsba'] = $modelJustificacion->listDocumentosJustificacion('file_FacturasEmitidasIsba', $id);
 		$data['documentosJustificantesPagoIsba'] = $modelJustificacion->listDocumentosJustificacion('file_JustificantesPagoIsba', $id);
+		$data['documentosDeclaracionIsba'] = $modelJustificacion->listDocumentosJustificacion('file_DeclaracionIsba', $id);
+
 
 		/* Todos los documentos de un expediente en la pestaña DETALL */
 		$data['documentosDetalle'] = $modelDocumentos->allExpedienteDocuments($id, 'detalle');
@@ -923,6 +925,28 @@ class Expedientes extends Controller
 				$last_insert_id = $save->connID->insert_id;
 			}
 		}
+		// Sube los file_DeclaracionIsba
+		$documentosfile = $this->request->getFiles();
+		foreach ($documentosfile['file_DeclaracionIsba'] as $justifPago) {
+			if ($justifPago->isValid() && !$justifPago->hasMoved()) {
+				$newName = $justifPago->getRandomName();
+				$justifPago->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' => $newName,
+					'type' => $justifPago->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'corresponde_documento' => 'file_DeclaracionIsba',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $justifPago->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+			}
+		}		
 		/* ------------------ actualiza el estado del expediente a 'pendienteRECJustificar' ---------------*/
 		$sql = 'UPDATE pindust_expediente SET situacion="pendienteRECJustificar" WHERE id =' . $id;
 		$db->simpleQuery($sql);

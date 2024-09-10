@@ -50,22 +50,21 @@
 
 function generaPropuestaResolucionRevocacionPorNoJustificar(id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_REC_desestimiento = document.getElementById('fecha_REC_desestimiento')
-		let ref_REC_desestimiento = document.getElementById('ref_REC_desestimiento')
+		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
 
 		let btnPropuestaResolucionRevocacionPorNoJustificar = document.getElementById('btnPropuestaResolucionRevocacionPorNoJustificar')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDoc16 = document.getElementById('infoMissingDoc16')
 		infoMissingDoc16.innerText = ""
 
-		if(!fecha_REC_desestimiento.value) {
-			infoMissingDoc16.innerHTML = infoMissingDoc16.innerHTML + "Data SEU desistiment<br>"
+		if(!fecha_notificacion_resolucion.value) {
+			infoMissingDoc16.innerHTML = infoMissingDoc16.innerHTML + "Notificació resolució<br>"
 			todoBien = false
 		}
-		if(!ref_REC_desestimiento.value) {
+		/* 		if(!ref_REC_desestimiento.value) {
 			infoMissingDoc16.innerHTML = infoMissingDoc16.innerHTML + "Referència SEU desistiment<br>"
 			todoBien = false
-		}
+		} */
 
 		if (todoBien) {
 			infoMissingDoc16.classList.add('ocultar')

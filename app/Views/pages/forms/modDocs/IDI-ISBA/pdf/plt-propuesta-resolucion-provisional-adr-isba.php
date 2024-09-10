@@ -149,7 +149,7 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $parrafo_2 = lang('isba_5_propuesta_resolucion_prov_favorable.antecedentes_5');
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
-$parrafo_2 = str_replace("%FECHAINFORME%", $data['expediente']['empresa'], $parrafo_2);
+$parrafo_2 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y"), $parrafo_2);
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
     $html = '<ol start="6">'.$parrafo_2.'</ol>';
 } else {
