@@ -190,9 +190,7 @@ $parrafo_7 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solic
 $parrafo_7 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_7);
 $parrafo_7 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $parrafo_7);
 $parrafo_7 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_7);
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>".$parrafo_7."</td></tr>";
-$html .= "</table>";
+$html = $parrafo_7;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();

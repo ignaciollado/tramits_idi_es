@@ -55,8 +55,13 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
-		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
+
+		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
+		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
+		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
+		let fecha_firma_propuesta_resolucion_def = document.getElementById('fecha_firma_propuesta_resolucion_def')
+		let fecha_not_propuesta_resolucion_def = document.getElementById('fecha_not_propuesta_resolucion_def')
+
 		let wrapper_ResConcesion = document.getElementById('wrapper_ResConcesion')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc9 = document.getElementById('infoMissingDataDoc9')
@@ -70,15 +75,27 @@
 			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Referència SEU sol·licitud<br>"
 			todoBien = false
 		}
-		if (!fecha_REC_enmienda.value) {
-			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Data SEU esmena<br>"
+		if (!fecha_infor_fav_desf.value) {
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "	Firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
-		if (!ref_REC_enmienda.value) {
-			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Referència SEU esmena<br>"
+		if (!fecha_firma_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Firma proposta resolució provisional<br>"
 			todoBien = false
 		}
-
+		if (!fecha_not_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "	Notificació proposta resolució provisional<br>"
+			todoBien = false
+		}
+		if (!fecha_firma_propuesta_resolucion_def.value) {
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Firma proposta resolució definitiva<br>"
+			todoBien = false
+		}
+		if (!fecha_not_propuesta_resolucion_def.value) {
+			infoMissingDataDoc9.innerHTML = infoMissingDataDoc9.innerHTML + "Notificació proposta resolució definitiva<br>"
+			todoBien = false
+		}
+	
 		if (todoBien) {
 			infoMissingDataDoc9.classList.add('ocultar')
 			wrapper_ResConcesion.disabled = true

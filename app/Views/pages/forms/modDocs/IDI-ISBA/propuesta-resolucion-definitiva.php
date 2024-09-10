@@ -77,14 +77,14 @@
 			todoBien = false
 		}
 
-		if (!fecha_REC_enmienda.value) {
+/* 		if (!fecha_REC_enmienda.value) {
 			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
 		if (!ref_REC_enmienda.value) {
 			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Referència SEU esmena<br>"
 			todoBien = false
-		}
+		} */
 
 		if (todoBien) {
 			infoMissingDataDoc7.classList.add('ocultar')

@@ -72,14 +72,14 @@
 			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
-		if (!fecha_REC_enmienda.value) {
+/* 		if (!fecha_REC_enmienda.value) {
 			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
 		if (!ref_REC_enmienda.value) {
 			infoMissingDataDoc5.innerHTML = infoMissingDataDoc5.innerHTML + "Referència SEU esmena<br>"
 			todoBien = false
-		}
+		} */
 
 		if (todoBien) {
 			infoMissingDataDoc5.classList.add('ocultar')

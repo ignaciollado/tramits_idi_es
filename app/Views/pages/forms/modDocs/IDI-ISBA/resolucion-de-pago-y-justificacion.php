@@ -1,4 +1,4 @@
-<!-----------------------------------------Resolució de pagament sense requeriment. DOC 27.-->
+<!-----------------------------------------Resolució de pagament sense requeriment. DOC 11.-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Resolució de pagament i justificació **testear** [PRE]
@@ -55,7 +55,11 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
     let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 	 	let fecha_not_propuesta_resolucion_def = document.getElementById('fecha_not_propuesta_resolucion_def') //0000-00-00
 		let fecha_firma_res = document.getElementById('fecha_firma_res')
-		
+
+		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
+		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
+    let ref_REC_justificacion = document.getElementById('ref_REC_justificacion')
+
 		let btnResPagoSinReq = document.getElementById('btnResPagoSinReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc27 = document.getElementById('infoMissingDataDoc27')
@@ -73,13 +77,25 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma proposta resolució provisional<br>"
 			todoBien = false
 		}
-    
 	 	if(!fecha_not_propuesta_resolucion_def.value) {
 			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data notificació proposta resolució definitiva<br>"
 			todoBien = false
 		}
 		if(!fecha_firma_res.value) {
 			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma resolució<br>"
+			todoBien = false
+		}
+
+		if(!fecha_notificacion_resolucion.value) {
+			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Notificació resolució<br>"
+			todoBien = false
+		}
+	 	if(!fecha_REC_justificacion.value) {
+			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data SEU justificació<br>"
+			todoBien = false
+		}
+		if(!ref_REC_justificacion.value) {
+			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Referència SEU justificació<br>"
 			todoBien = false
 		}
 
