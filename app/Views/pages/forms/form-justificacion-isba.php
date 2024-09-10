@@ -180,23 +180,4 @@
 		}
 	});
 </script>
-
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-				<h4 class="modal-title"><?php echo lang('message_lang.clausula_idi');?></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div><span style='font-size:8pt'><span style='font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>
-				<?php echo lang('message_lang.rgpd_txt');?>
-      	</span></div>
-      	<div class="modal-footer">
-        	<button type = "button" id = "documentacion_justificacion" class = "btn btn-default" data-dismiss="modal"><?php echo lang('message_lang.cierra');?></button>
-      	</div>
-    	</div>
-  	</div>
-	</div>
-</div>
 </section>
