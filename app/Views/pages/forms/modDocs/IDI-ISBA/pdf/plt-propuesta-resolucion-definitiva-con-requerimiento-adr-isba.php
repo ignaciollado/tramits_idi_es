@@ -42,6 +42,8 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
+
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
