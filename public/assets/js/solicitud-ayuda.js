@@ -784,6 +784,7 @@ function addInvoiceLine() {
 	importeFactura.value = 0
 	fechaPagoInput.value = ""
 	document.getElementById('total-invoice-lines').value = parseFloat(importeFacturaTotal)
+	console.log ("importeFacturaTotal", importeFacturaTotal)
 	setTotalInvoice()
 }
 
@@ -792,7 +793,8 @@ function setTotalInvoice() {
 	let importeIVA = document.getElementById("importe-iva")
 	let importeFactura = document.getElementById("importe-factura")
 	importeFactura.value = parseFloat(baseImponible.value) + parseFloat(importeIVA.value)
-	importeFacturaTotal += parseFloat(baseImponible.value)
+	importeFacturaTotal = parseFloat(baseImponible.value)
+	console.log ("baseImponible, importeIVA, importeFactura", baseImponible.value, importeIVA.value, importeFactura.value, importeFacturaTotal)
 }
 
 function enableSubmitButtons() {
