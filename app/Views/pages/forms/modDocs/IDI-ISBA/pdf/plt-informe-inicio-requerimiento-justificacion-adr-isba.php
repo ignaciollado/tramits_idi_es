@@ -111,7 +111,7 @@ $p1 = lang('isba_12_informe_inicio_requerimiento_justificacion.p1');
 $p1 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $p1);
 $p1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $p1);
 $p1 = str_replace("%NIF%", $data['expediente']['nif'], $p1);
-$p1 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $p1);
+$p1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $p1);
 $p1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $p1);
 $html = $p1;
 $pdf->writeHTML($html, true, false, true, false, '');

@@ -114,7 +114,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%FECHARESPRESI%", $data['configuracion']['respresidente'], lang('isba_2_resolucion_desestimiento_por_no_enmendar.p1'));
+$parrafo_1 = str_replace("%FECHARESPRESI%", date_format(date_create($data['configuracion']['respresidente']),"d/m/Y"), lang('isba_2_resolucion_desestimiento_por_no_enmendar.p1'));
 $parrafo_1 = str_replace("%FECHAPUBBOIB%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%CONVO%", $convocatoria, $parrafo_1);
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $parrafo_1);

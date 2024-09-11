@@ -115,7 +115,7 @@ $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], l
 $parrafo_1 = str_replace("%FECHAFIRMARESOLUCION%", date_format(date_create($data['expediente']['fecha_res_liquidacion']),"d/m/Y"), $parrafo_1);  
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_1);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_1 ."</td></tr>";
 $html .= "</table>";
@@ -127,7 +127,7 @@ $pdf->setY($currentY + 5);
 $pdf->setX($currentX - 10);
 $parrafo_2 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p2');
 $parrafo_2 = str_replace("%FECHAPAGOAYUDA%", date_format(date_create($data['expediente']['fecha_de_pago']),"d/m/Y"), $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_2);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_2 ."</td></tr>";
 $html .= "</table>";

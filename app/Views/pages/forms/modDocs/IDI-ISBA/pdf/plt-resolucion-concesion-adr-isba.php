@@ -86,7 +86,7 @@ $pdf->AddPage();
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
 $html =  "Document: resolució de concessió<br>amb requeriment<br>";
-$html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
+$html .= "Núm. Expedient: ".$data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -123,12 +123,12 @@ $parrafo_1 = str_replace("%BOIBFECHA%", date_format(date_create($data['configura
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
 $parrafo_1 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%FECHASOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_1);
 $parrafo_1 = str_replace("%NOMBRE_BANCO%", $data['expediente']['nom_entidad'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE_PRESTAMO%", $data['expediente']['importe_prestamo'], $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_PRESTAMO%", money_format("%i ", $data['expediente']['importe_prestamo']), $parrafo_1);
 $html = $parrafo_1;
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
@@ -151,12 +151,12 @@ $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('
 $parrafo_2 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y"), $parrafo_2);
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_2);
 $parrafo_2 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_idi_isba']),"d/m/Y") , $parrafo_2);
 $parrafo_2 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_2);
 $parrafo_2 = str_replace("%FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_2);
 $parrafo_2 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_2);
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
@@ -216,12 +216,12 @@ $pdf->setY($currentY + 4);
 $resolucion = lang('isba_9_resolucion_concesion.resolucion');
 $resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $resolucion);
 $resolucion = str_replace("%NIF%", $data['expediente']['nif'], $resolucion);
-$resolucion = str_replace("%IMPORTEAYUDA%", $data['expediente']['importe_ayuda_solicita_idi_isba'], $resolucion);
-$resolucion = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $resolucion);
-$resolucion = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $resolucion);
+$resolucion = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $resolucion);
+$resolucion = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $resolucion);
+$resolucion = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $resolucion);
 $resolucion = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_idi_isba']),"d/m/Y") , $resolucion);
 $resolucion = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $resolucion);
-$resolucion = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $resolucion);
+$resolucion = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $resolucion);
 $html = $resolucion;
 $pdf->writeHTML($html, true, false, true, false, '');
 

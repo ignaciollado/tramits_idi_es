@@ -115,7 +115,7 @@ $parrafo_1 = lang('isba_13_requerimiento_enmienda_justificacion.p1');
 $parrafo_1 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_1);
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'],  $parrafo_1);
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');

@@ -41,6 +41,8 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
+
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -131,13 +133,13 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_4 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('isba_1_requerimiento.p3'));
-$parrafo_4 = str_replace("%EMPRESA%", $data['expediente']['empresa'], $parrafo_4);
-$parrafo_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4);
-$parrafo_4 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4);
-$parrafo_4 = str_replace("%IMPORTE%", $data['expediente']['Importe'], $parrafo_4);
+$parrafo_3 = str_replace("%FECHA_SOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('isba_1_requerimiento.p3'));
+$parrafo_3 = str_replace("%EMPRESA%", $data['expediente']['empresa'], $parrafo_3);
+$parrafo_3 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_3);
+$parrafo_3 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_3);
+$parrafo_3 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_3);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_4 ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_3 ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 

@@ -57,7 +57,7 @@ $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("RESOLUCIÓN REVOCACIÓN POR NO JUSTIFICAR");
 $pdf->SetSubject("RESOLUCIÓN REVOCACIÓN POR NO JUSTIFICAR");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ISBA, PIMES, IDI, GOIB");	
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ISBA, PIMES, ADR Balears, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -122,10 +122,10 @@ $parrafo_1 = str_replace("%BOIBFECHA%", date_format(date_create($data['configura
 $parrafo_1 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_prestamo']), $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE_INTERESES%", $data['expediente']['intereses_ayuda_solicita_idi_isba'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE_AVAL%", $data['expediente']['coste_aval_solicita_idi_isba'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", $data['expediente']['gastos_aval_solicita_idi_isba'], $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_1);
 $parrafo_1 = str_replace("%FECHA_NOTIFICACION_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_notificacion_resolucion']),"d/m/Y"), $parrafo_1);
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
@@ -140,7 +140,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
 $parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('isba_17_resolucion_revocacion_no_justificar.antecedentes_5_9'));
 $parrafo_2 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_2);
-$parrafo_2 = str_replace("%FECHA_NOTIFICACION_PR_REVOCACION%", $data['expediente']['fecha_resolucion_rev'], $parrafo_2);
+$parrafo_2 = str_replace("%FECHA_NOTIFICACION_PR_REVOCACION%", date_format(date_create($data['expediente']['fecha_resolucion_rev']),"d/m/Y"), $parrafo_2);
 $parrafo_2 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoResolucionRevocacionPorNoJustificar'], $parrafo_2);
 $html = '<ol start="5">'.$parrafo_2.'</ol>';
 $pdf->writeHTML($html, true, false, true, false, '');
@@ -184,7 +184,7 @@ $parrafo_9 = lang('isba_17_resolucion_revocacion_no_justificar.propuesta_txt');
 $parrafo_9 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y") , $parrafo_9);
 $parrafo_9 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_9);
 $parrafo_9 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_9);
-$parrafo_9 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_prestamo']), $parrafo_9);
+$parrafo_9 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_9);
 $html = $parrafo_9;
 $pdf->writeHTML($html, true, false, true, false, '');
 
