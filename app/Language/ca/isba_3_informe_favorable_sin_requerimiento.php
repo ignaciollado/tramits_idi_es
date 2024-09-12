@@ -43,7 +43,7 @@ return [
   'hechos_1_2_3_4' => "<ol>
         <li>Mitjançant la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR Balears) %RESPRESIDENTE% es va aprovar la convocatòria per a l'any %CONVO% d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives (BOIB núm. %BOIBNUM%).</li><br>
         <li>En data %FECHASOLICITUD%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria,  dels quals %IMPORTE_INTERESES% euros corresponen al subsidi d'interessos, %IMPORTE_AVAL% euros al subsidi de  l'aval i %IMPORTE_APERTURA% euros als ajuts per cobrir les despeses d'obertura i estudi.</li><br>,
-		    <li>Una vegada revisada la sol·licitud d'ajut, s'ha comprovat que es va presentar dins el termini i que compleix amb els requisits establerts en la convocatòriaEn data %FECHARECM%, l'ADR Balears va rebre documentació per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %REFRECM%.</li><br>, 
+		    <li>Una vegada revisada la sol·licitud d'ajut, s'ha comprovat que es va presentar dins el termini i que compleix amb els requisits establerts en la convocatòria.</li><br>, 
         <li>Hi ha crèdit adequat i suficient per atendre aquesta sol·licitud d'ajut.</li></ol><br>
         <p>Aquest informe serveix de base per a la proposta de resolució i resolució de concessió de l'ajut.</p>",
   'conclusion_tit' => "Conclusió",

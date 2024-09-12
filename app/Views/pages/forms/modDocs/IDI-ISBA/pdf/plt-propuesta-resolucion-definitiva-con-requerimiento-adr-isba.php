@@ -159,15 +159,16 @@ $parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $parr
 $parrafo_6 = str_replace("%NIF%", $data['expediente']['nif'] , $parrafo_6);
 $parrafo_6 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_6);
 $parrafo_6 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_6);
-$parrafo_6 = str_replace("%AÑOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_6);
+$parrafo_6 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_6);
 $parrafo_6 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $parrafo_6);
 $parrafo_6 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_6);
 $parrafo_6 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_6);
-/* %FECHA_LIMITE_ALEGACIONES% */
+$parrafo_6 = str_replace("%FECHA_LIMITE_ALEGACIONES%", date_format(date_create($data['expediente']['fecha_maxima_enmienda']),"d/m/Y"), $parrafo_6);
+
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $html = '<ol start="8">'.$parrafo_2.'</ol>';
+    $html = '<ol start="8">'.$parrafo_6.'</ol>';
 } else {
-    $html = '<ol start="7">'.$parrafo_2.'</ol>';
+    $html = '<ol start="7">'.$parrafo_6.'</ol>';
 }
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);

@@ -305,6 +305,16 @@ function formatNumber(field) {
 	}
 }
 
+function calculaTotalPresupuestoProyecto() {
+	let interesesAval = document.getElementById("intereses_ayuda_solicita_idi_isba")
+	let costeAval = document.getElementById("coste_aval_solicita_idi_isba")
+	let gastosAval = document.getElementById("gastos_aval_solicita_idi_isba")
+	let importeAyudaSolicitada = document.getElementById("importe_ayuda_solicita_idi_isba")
+	importeAyudaSolicitada.value = 0
+	console.log (parseFloat(interesesAval.value)+parseFloat(costeAval.value)+parseFloat(gastosAval.value))
+	importeAyudaSolicitada.value = parseFloat(interesesAval.value)+parseFloat(costeAval.value)+parseFloat(gastosAval.value)
+}
+
 function muestraSubeArchivo (id) {
 		console.log ("-"+id+"-")
 		let elementA = document.getElementById("enviarnifEmpresa")

@@ -69,12 +69,12 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data notificació proposta resolució provisional<br>"
 			todoBien = false
 		}
-		if(!fecha_firma_propuesta_resolucion_def.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma proposta resolució definitiva<br>"
-			todoBien = false
-		}
 		if(!fecha_firma_propuesta_resolucion_prov.value) {
 			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma proposta resolució provisional<br>"
+			todoBien = false
+		}
+		if(!fecha_firma_propuesta_resolucion_def.value) {
+			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma proposta resolució definitiva<br>"
 			todoBien = false
 		}
 	 	if(!fecha_not_propuesta_resolucion_def.value) {

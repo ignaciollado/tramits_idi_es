@@ -59,11 +59,21 @@
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
+		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
+		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let wrapper_propuestaResDefinitiva = document.getElementById('wrapper_propuestaResDefinitiva')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc7 = document.getElementById('infoMissingDataDoc7')
 		infoMissingDataDoc7.innerText = ""
 
+		if (!fecha_firma_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Firma proposta resolució provisional<br>"
+			todoBien = false
+		}
+		if (!fecha_not_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Notificació proposta resolució provisional<br>"
+			todoBien = false
+		}
 		if (!fecha_REC.value) {
 			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data SEU sol·licitud<br>"
 			todoBien = false
@@ -76,15 +86,6 @@
 			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Firma informe favorable/desfavorable<br>"
 			todoBien = false
 		}
-
-/* 		if (!fecha_REC_enmienda.value) {
-			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Data SEU esmena<br>"
-			todoBien = false
-		}
-		if (!ref_REC_enmienda.value) {
-			infoMissingDataDoc7.innerHTML = infoMissingDataDoc7.innerHTML + "Referència SEU esmena<br>"
-			todoBien = false
-		} */
 
 		if (todoBien) {
 			infoMissingDataDoc7.classList.add('ocultar')

@@ -193,16 +193,16 @@
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" name = "importe_presupuesto_idi_isba" id="importe_presupuesto_idi_isba" maxlength = "9" size="9">
 		</fieldset>
     <fieldset>
-			<h2><?php echo lang('message_lang.solicita_ayuda_idi_isba');?></h2>
-			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9">
 			<h3 for=''><?php echo lang('message_lang.detalle_importe_ayuda_solicitado_idi_isba');?></h3>
 			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" name = "intereses_ayuda_solicita_idi_isba" id="intereses_ayuda_solicita_idi_isba" maxlength = "9" size="9">
+			<input type = "text" min="0" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_subvencion_intereses_idi_isba');?>" name = "intereses_ayuda_solicita_idi_isba" id="intereses_ayuda_solicita_idi_isba" maxlength = "9" size="9">
 			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" name = "coste_aval_solicita_idi_isba" id="coste_aval_solicita_idi_isba" maxlength = "9" size="9">
+			<input type = "text" min="0" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_coste_aval_isba_idi_isba');?>" name = "coste_aval_solicita_idi_isba" id="coste_aval_solicita_idi_isba" maxlength = "9" size="9">
 			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
-			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9">
+			<input type = "text" min="0" onblur="javaScript: calculaTotalPresupuestoProyecto(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9">
+
+			<h2><?php echo lang('message_lang.solicita_ayuda_idi_isba');?></h2>
+			<input disabled readonly type = "text" min="0" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9">
 		</fieldset>
 	</div>
 </div>

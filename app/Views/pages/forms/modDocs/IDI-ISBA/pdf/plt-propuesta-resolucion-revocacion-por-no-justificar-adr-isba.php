@@ -39,7 +39,7 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
-        $this->SetX(-5);
+        $this->SetX(5);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -136,7 +136,7 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
 $parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('isba_16_propuesta_resolucion_revocacion_no_justificar.antecedentes_5_7'));
-$html .= '<ol start="5">'.$parrafo_2.'</ol>';;
+$html = '<ol start="5">'.$parrafo_2.'</ol>';;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 
@@ -168,7 +168,7 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
-$parrafo_7 = lang('isba_16_propuesta_resolucion_revocacion_no_justificar.fundamentos_txt_1');
+$parrafo_7 = lang('isba_16_propuesta_resolucion_revocacion_no_justificar.fundamentos_txt_2');
 $html = $parrafo_7;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -190,9 +190,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-$firma = lang('isba_16_propuesta_resolucion_revocacion_no_justificar.doc_prop_resolucion_revocacion_por_no_justificar_firma');
-$firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
-$firma = str_replace("%DIRECTORAGERENTEIDI%", $data['configuracion']['directorGerenteIDI'], $firma);
+$firma = lang('isba_16_propuesta_resolucion_revocacion_no_justificar.firma');
+$firma = str_replace("%DGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
 
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

@@ -116,7 +116,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 2);
-$parrafo_1 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), lang('isba_11_resolucion_pago_y_justificacion.fets_1_2_3_4_5_6'));
+$parrafo_1 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), lang('isba_11_resolucion_pago_y_justificacion.fets_1_2_3_4_5'));
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
 $parrafo_1 = str_replace("%FECHAPUBBOIB%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%CONVO%", $convocatoria, $parrafo_1);
@@ -135,9 +135,6 @@ $parrafo_1 = str_replace("%FECHA_NOTIF_PRPROV%", date_format(date_create($data['
 $parrafo_1 = str_replace("%FECHA_PROP_RESOL_PROVISIONAL%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%FECHA_PR_DEFINITIVA%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_def']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%FECHA_NOTIF_PRPDEF%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_def']),"d/m/Y"), $parrafo_1);
-$parrafo_1 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $parrafo_1);
-$parrafo_1 = str_replace("%FECHA_SEDE_JUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y"), $parrafo_1);
-
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -148,9 +145,17 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 30);
 
-$parrafo_1 = str_replace("%FECHA_SEDE_JUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y"), lang('isba_11_resolucion_pago_y_justificacion.fets_7'));
-$parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
-$html = '<ol start="7">'.$parrafo_1.'</ol>';
+$parrafo_7 = str_replace("%FECHA_SEDE_JUSTIFICACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion']),"d/m/Y"), lang('isba_11_resolucion_pago_y_justificacion.fets_7'));
+$parrafo_7 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_7);
+$parrafo_7 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_7);
+$parrafo_7 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y"), $parrafo_7);
+$parrafo_7 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_7);
+$parrafo_7 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_7);
+$parrafo_7 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_7);
+$parrafo_7 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_7);
+$parrafo_7 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $parrafo_7);
+$parrafo_7 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_7);
+$html = '<ol start="6">'.$parrafo_7.'</ol>';
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $parrafo_2 = lang('isba_11_resolucion_pago_y_justificacion.fundamentosDeDerecho_tit');
@@ -183,16 +188,17 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_7 = lang('isba_11_resolucion_pago_y_justificacion.resolucion');
-$parrafo_7 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_7);
-$parrafo_7 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_7);
-$parrafo_7 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_7);
-$parrafo_7 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_7);
-$parrafo_7 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_7);
-$parrafo_7 = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_7);
-$parrafo_7 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $parrafo_7);
-$parrafo_7 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_7);
-$html = $parrafo_7;
+$resolucion = lang('isba_11_resolucion_pago_y_justificacion.resolucion');
+$resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $resolucion);
+$resolucion = str_replace("%NIF%", $data['expediente']['nif'], $resolucion);
+$resolucion = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $resolucion);
+$resolucion = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $resolucion);
+$resolucion = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $resolucion);
+$resolucion = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $resolucion);
+$resolucion = str_replace("%ANYOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $resolucion);
+$resolucion = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $resolucion);
+
+$html = $resolucion;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();

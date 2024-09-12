@@ -136,7 +136,7 @@ $parrafo_1_4 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1_4);
 $html = $parrafo_1_4;
 
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $parrafo_1m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('isba_5_propuesta_resolucion_prov_favorable.antecedentes_m'));
+    $parrafo_1m = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , lang('isba_7_propuesta_resolucion_def_favorable.antecedentes_m'));
     $parrafo_1m = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_1m);
     $html .= $parrafo_1m;
 }
@@ -149,23 +149,24 @@ $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVertical.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
-$parrafo_6 = lang('isba_7_propuesta_resolucion_def_favorable.antecedentes_5');
-$parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_6);
-$parrafo_6 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y"), $parrafo_6);
-$parrafo_6 = str_replace("%FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_6);
-$parrafo_6 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_6);
-$parrafo_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $parrafo_6);
-$parrafo_6 = str_replace("%NIF%", $data['expediente']['nif'] , $parrafo_6);
-$parrafo_6 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_6);
-$parrafo_6 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_6);
-$parrafo_6 = str_replace("%AÑOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_6);
-$parrafo_6 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $parrafo_6);
-$parrafo_6 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_6);
-$parrafo_6 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_6);
+$parrafo_5 = lang('isba_7_propuesta_resolucion_def_favorable.antecedentes_5');
+$parrafo_5 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_5);
+$parrafo_5 = str_replace("%FECHAINFORME%", date_format(date_create($data['expediente']['fecha_infor_fav_desf']),"d/m/Y"), $parrafo_5);
+$parrafo_5 = str_replace("%FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_5);
+$parrafo_5 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_5);
+$parrafo_5 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $parrafo_5);
+$parrafo_5 = str_replace("%NIF%", $data['expediente']['nif'] , $parrafo_5);
+$parrafo_5 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_5);
+$parrafo_5 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_5);
+$parrafo_5 = str_replace("%AÑOS_DURACION_AVAL%", $data['expediente']['plazo_aval_idi_isba'], $parrafo_5);
+$parrafo_5 = str_replace("%FECHA_AVAL%", date_format(date_create($data['expediente']['fecha_aval_isba']),"d/m/Y"), $parrafo_5);
+$parrafo_5 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_5);
+$parrafo_5 = str_replace("%FECHA_PROPUESTA_RESOLUCION_PROVISIONAL%", date_format(date_create($data['expediente']['fecha_firma_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_5);
+$parrafo_5 = str_replace("%FECHA_NOTIFICACION_PR_PROV%", date_format(date_create($data['expediente']['fecha_not_propuesta_resolucion_prov']),"d/m/Y"), $parrafo_5);
 if ($ultimaMejora[2] && $ultimaMejora[3]) {
-    $html = '<ol start="6">'.$parrafo_2.'</ol>';
+    $html = '<ol start="6">'.$parrafo_5.'</ol>';
 } else {
-    $html = '<ol start="5">'.$parrafo_2.'</ol>';
+    $html = '<ol start="5">'.$parrafo_5.'</ol>';
 }
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);

@@ -12,7 +12,6 @@ $language->setLocale("ca");
 $modelConfig = new ConfiguracionModel();
 $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
-/* $mejorasSolicitud = new MejorasExpedienteModel(); */
 
 $data['configuracion'] = $modelConfig->configuracionGeneral();
 $data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
@@ -129,13 +128,8 @@ $parrafo_1_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expedien
 $parrafo_1_2 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_1_2);
 $parrafo_1_2 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_1_2);
 $parrafo_1_2 = str_replace("%IMPORTE_APERTURA%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_1_2);
-/* if ($ultimaMejora[2] && $ultimaMejora[3]) { */
-    $parrafo_1_2 = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , $parrafo_1_2);
-    $parrafo_1_2 = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_1_2);
-    $html = $parrafo_1_2;
-/* } */
 
-/* $html .= $parrafo_1_2; */
+$html = $parrafo_1_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer

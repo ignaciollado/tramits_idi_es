@@ -45,7 +45,7 @@ return [
         <li>En data %FECHASOLICITUD%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA% , i documentació adjunta en el marc de l'esmentada resolució de convocatòria,  dels quals %IMPORTE_INTERESES% euros corresponen al subsidi d'interessos, %IMPORTE_AVAL% euros al subsidi de l'aval i %IMPORTE_APERTURA% euros als ajuts per cobrir les despeses d'obertura i estudi.</li><br>,
 		    <li>En data %FECHAREQUERIMIENTO% es va notificar un requeriment al sol·licitant.  </li><br>
 		    <li>En data %FECHAENMIENDA% l'ADR Balears va rebre l'esmena de %SOLICITANTE% amb NIF %NIF% i amb registre d'entrada núm. %REFERENCIA_ESMENA_REC%, d'un ajut per un import de %IMPORTEAYUDA%, dels quals %IMPORTE_INTERESES% euros corresponen al subsidi d'interessos, %IMPORTE_AVAL% euros al subsidi de l'aval i %IMPORTE_APERTURA% euros als ajuts per cobrir les despeses d'obertura i estudi.</li><br>,
-		    <li>Una vegada revisada la sol·licitud d'ajut, s'ha comprovat que es va presentar dins el termini i que compleix amb els requisits establerts en la convocatòriaEn data %FECHARECM%, l'ADR Balears va rebre documentació per completar la sol·licitud en concepte de millora amb registre d'entrada núm. %REFRECM%.</li><br>, 
+		    <li>Una vegada revisada la sol·licitud d'ajut, s'ha comprovat que es va presentar dins el termini i que compleix amb els requisits establerts en la convocatòria.</li><br>, 
         <li>Hi ha crèdit adequat i suficient per atendre aquesta sol·licitud d'ajut.</li><br>
         <p>Aquest informe serveix de base per a la proposta de resolució i resolució de concessió de l'ajut.</p>",
   'conclusion_tit' => "Conclusió",

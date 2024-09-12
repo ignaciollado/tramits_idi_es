@@ -58,6 +58,9 @@
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
+		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
+		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
+		let fecha_maxima_enmienda = document.getElementById('fecha_maxima_enmienda')
 		let wrapper_propuestaResDefinitivaConReq = document.getElementById('wrapper_propuestaResDefinitivaConReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc8 = document.getElementById('infoMissingDataDoc8')
@@ -75,15 +78,26 @@
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data firma informe favorable/desfavorable<br>"
 			todoBien = false
 		}
-		if (!fecha_REC_enmienda.value) {
+/* 		if (!fecha_REC_enmienda.value) {
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data SEU esmena<br>"
 			todoBien = false
 		}
 		if (!ref_REC_enmienda.value) {
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Referència SEU esmena<br>"
 			todoBien = false
+		} */
+		if (!fecha_maxima_enmienda.value) {
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data màxima per esmenar [data notificació req + 10 dies naturals]<br>"
+			todoBien = false
 		}
-
+		if (!fecha_firma_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Firma proposta resolució provisional<br>"
+			todoBien = false
+		}
+		if (!fecha_not_propuesta_resolucion_prov.value) {
+			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Notificació proposta resolució provisional<br>"
+			todoBien = false
+		}
 		if (todoBien) {
 			infoMissingDataDoc8.classList.add('ocultar')
 			wrapper_propuestaResDefinitivaConReq.disabled = true

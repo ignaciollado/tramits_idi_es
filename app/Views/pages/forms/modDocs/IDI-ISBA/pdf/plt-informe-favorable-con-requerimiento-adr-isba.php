@@ -131,12 +131,6 @@ $parrafo_12 = str_replace("%IMPORTE_APERTURA%", money_format("%i ", $data['exped
 $parrafo_12 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , $parrafo_12);
 $parrafo_12 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , $parrafo_12);
 $parrafo_12 = str_replace("%REFERENCIA_ESMENA_REC%", $data['expediente']['ref_REC_enmienda'], $parrafo_12);
-/* $html = $parrafo_12;
-if ($ultimaMejora[2] && $ultimaMejora[3]) { */
-    $parrafo_12 = str_replace("%FECHARECM%", date_format(date_create($ultimaMejora[2]),"d/m/Y") , $parrafo_12);
-    $parrafo_12 = str_replace("%REFRECM%", $ultimaMejora[3], $parrafo_12);
-    /* $html .= $parrafo_12; */
-/* } */ 
 $html = $parrafo_12;
 $pdf->writeHTML($html, true, false, true, false, '');
 
