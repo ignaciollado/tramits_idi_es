@@ -71,6 +71,7 @@ ul { list-style-type: none; }
   .sidenav a {font-size: 18px;}
 }
 </style>
+
 <header>
 <?php
 	$session = session();
@@ -92,12 +93,18 @@ ul { list-style-type: none; }
 			<?php if ($session->get('rol') == 'adr-isba') {?>
 					<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></a></li>		
 			<?php }?>
-			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/expedientes/');?>" target="_self">
-			<?php if ($session->get('rol') !== 'felib' && $session->get('rol') !== 'adr-isba') {
-				echo lang('message_lang.expediente_menu');
-			 } else {?>
+
+			<?php if ($session->get('rol') !== 'felib' && $session->get('rol') !== 'adr-isba') {?>
+				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/expedientes/');?>" target="_self">
+			
+			<?php	echo lang('message_lang.expediente_menu');
+			 } 
+			
+			if ($session->get('rol') == 'felib') {
+			 ?>
 				Ajuntaments adherits
-			<?php }
+			<?php 
+			}
 			?>
 			</a></li>
 
