@@ -75,11 +75,11 @@
     				            		<option <?php if ($session->get('situacion_fltr') == "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
     				            		<option <?php if ($session->get('situacion_fltr') == "notificadoIFPRProvPago") { echo "selected";}?> value = "notificadoIFPRProvPago" class="sitValidacion"> PR Provisional NOTIFICADA (DATA) AUT</option>
 
-	    			            		<option <?php if ($session->get('situacion_fltr') == "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva emetre</option>
+	    			            		<option <?php if ($session->get('situacion_fltr') == "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva Enviada a firma</option>
 														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva signada PENDENT de notificar</option>
 														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitivaNotificada") { echo "selected";}?> value = "emitidaPRDefinitivaNotificada" class="sitValidacion"> PR definitiva NOTIFICADA</option>
 
-                        		<option <?php if ($session->get('situacion_fltr') == "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió emetre</option>
+                        		<option <?php if ($session->get('situacion_fltr') == "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió enviada a firma</option>
                         		<option <?php if ($session->get('situacion_fltr') == "emitidaResConcesion") { echo "selected";}?> value = "emitidaResConcesion" class="sitValidacion"> Resolució de concessió signada PENDENT de notificar</option>
                         		<option <?php if ($session->get('situacion_fltr') == "notificadaResConcesion") { echo "selected";}?> value = "notificadaResConcesion" class="sitValidacion"> Resolució de concessió NOTIFICADA</option>
             		        		
@@ -317,7 +317,7 @@
 			}
 			else if ($item['situacion'] == "emitirPRDefinitiva")  {?>
 				<div  id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl">
-					<span title="Aquesta sol·licitud s'ha d'emetre PR pagament definitiva"><strong>PR definitiva emetre</strong></span>
+					<span title="Aquesta sol·licitud s'ha d'emetre PR pagament definitiva"><strong>PR definitiva Enviada a firma</strong></span>
 				</div>				
 			<?php }
 			else if ($item['situacion'] == "emitidaPRDefinitiva") {
@@ -327,7 +327,7 @@
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha notificat PR definitiva"><strong>PR definitiva<br> NOTIFICADA</strong></span></div>';				
 			}			
 			else if ($item['situacion'] == "emitirResConcesion") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre la Resolució concessió"><strong>Resolució<br>concessió emetre</strong></span></div>';				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre la Resolució concessió"><strong>Resolució<br>concessió enviada a firma</strong></span></div>';				
 			}
 			else if ($item['situacion'] == "emitidaResConcesion") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha emès la Resolució de concessió"><strong>Resolució<br>de concessió signada PENDENT de notificar</strong></span></div>';				

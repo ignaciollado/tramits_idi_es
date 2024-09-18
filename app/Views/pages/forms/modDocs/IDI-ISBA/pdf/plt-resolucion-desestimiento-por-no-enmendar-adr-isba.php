@@ -116,14 +116,14 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%FECHARESPRESI%", date_format(date_create($data['configuracion']['respresidente']),"d/m/Y"), lang('isba_2_resolucion_desestimiento_por_no_enmendar.p1'));
+$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('isba_2_resolucion_desestimiento_por_no_enmendar.p1'));
 $parrafo_1 = str_replace("%FECHAPUBBOIB%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%CONVO%", $convocatoria, $parrafo_1);
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $parrafo_1);
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
-$parrafo_2 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('isba_2_resolucion_desestimiento_por_no_enmendar.p2'));
+$parrafo_2 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y"), lang('isba_2_resolucion_desestimiento_por_no_enmendar.p2'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
 $html .= "<li>". $parrafo_2 ."</li>";

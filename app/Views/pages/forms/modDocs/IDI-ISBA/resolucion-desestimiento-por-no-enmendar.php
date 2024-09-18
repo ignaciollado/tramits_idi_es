@@ -14,7 +14,6 @@
 					<button id="generaElDesestimiento" class="btn btn-primary btn-acto-admin" onclick="enviaDesestimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
 					<div id='infoMissingDataDoc2' class="alert alert-danger ocultar"></div>
 				</span>
-					<span id="spinner_2" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>  
 
 	</div>
@@ -64,7 +63,6 @@
 		let fecha_requerimiento_notif= document.getElementById('fecha_requerimiento_notif')
 	
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
-		let spinner_2 = document.getElementById('spinner_2')
 		let generaElDesestimiento = document.getElementById('generaElDesestimiento')
 		let infoMissingDataDoc2 = document.getElementById('infoMissingDataDoc2')
 		infoMissingDataDoc2.innerText = ""
@@ -78,7 +76,7 @@
 			todoBien = false
 		}
 		if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Data notificació requeriment"
+			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Notificació requeriment"
 			todoBien = false
 		}
 
@@ -86,7 +84,6 @@
 			infoMissingDataDoc2.classList.add('ocultar')
 			generaElDesestimiento.setAttribute("disabled", true)
 			generaElDesestimiento.innerHTML = "Generant i enviant ..."
-			spinner_2.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar_adr_isba'
 		} else {
 			infoMissingDataDoc2.classList.remove('ocultar')

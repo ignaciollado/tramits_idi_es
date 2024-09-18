@@ -101,7 +101,7 @@ $pdf->setFontSubsetting(false);
 $pdf->writeHTMLCell(90, '', 120, 40, $html, 0, 1, 1, true, 'J', true);
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
+$pdf->setY($currentY + 11);
 $intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_3_informe_favorable_sin_requerimiento.intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -110,7 +110,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 6);
+$pdf->setY($currentY + 4);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('isba_3_informe_favorable_sin_requerimiento.hechos_tit') ."</b></td></tr>";
 $html .= "</table>";
@@ -128,20 +128,16 @@ $parrafo_1_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expedien
 $parrafo_1_2 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_1_2);
 $parrafo_1_2 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_1_2);
 $parrafo_1_2 = str_replace("%IMPORTE_APERTURA%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_1_2);
-
 $html = $parrafo_1_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
-// remove default header/footer
-$pdf->setPrintHeader(false);
+/* $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVertical.png';
-// $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
-// align: T (top), M (middle), B (bottom), N (next line)
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-
+ */
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 30);
+$pdf->setY($currentY + 4);
 $parrafo_pre = lang('isba_3_informe_favorable_sin_requerimiento.conclusion_tit');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_pre ."</td></tr>";
@@ -149,7 +145,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
+$pdf->setY($currentY + 4);
 $parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_3_informe_favorable_sin_requerimiento.conclusionTxt'));
 $parrafo_conclusion = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_conclusion);
@@ -162,7 +158,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 10);
+$pdf->setY($currentY + 5);
 $firma = lang('isba_3_informe_favorable_sin_requerimiento.firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";

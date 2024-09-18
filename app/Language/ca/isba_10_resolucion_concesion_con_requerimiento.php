@@ -43,7 +43,7 @@ return [
   'fets_tit' => "Fets",
 
   'fets_1_2_3_4_5_6' => "
-      <li>El dia %BOIBFECHA%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR) de %FECHARESPRESIDI% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
+      <li>El dia %BOIBFECHA%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR) de %RESPRESIDENTE% per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
       <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos, %IMPORTE_AVAL% al subsidi de l'aval i %IMPORTE_ESTUDIO% als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
       <li>L'entitat sol·licitant ha subscrit l'operació corresponent de finançament mitjançant l'entitat de crèdit %NOMBRE_BANCO% per import de %IMPORTE_AVAL% i s'ha constituït l'aval amb Isba SGR.</li><br> 
       <li>En data %FECHAREQUERIMENT% es va notificar un requeriment al sol·licitant</li><br>

@@ -121,7 +121,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
 $parrafo_1 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), lang('isba_10_resolucion_concesion_con_requerimiento.fets_1_2_3_4_5_6'));
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
-$parrafo_1 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracion']['respresidente']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], $parrafo_1);
 $parrafo_1 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
