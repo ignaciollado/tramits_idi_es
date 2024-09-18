@@ -236,7 +236,7 @@ if ($declaro_idi_isba_que_cumple_4 != "SI") {
 
 $html13 .= "</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_5')."</li>";
-$html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li>";
+/* $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li>"; */
 $html13 .= "</ol></td></tr>";
 $html13 .= "</table>";
 

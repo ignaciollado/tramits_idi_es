@@ -202,7 +202,8 @@
 			<input type = "text" min="0" onblur="javaScript: calculaTotalPresupuestoProyecto(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_gastos_apertura_estudio_idi_isba');?>" name = "gastos_aval_solicita_idi_isba" id="gastos_aval_solicita_idi_isba" maxlength = "9" size="9">
 
 			<h2><?php echo lang('message_lang.solicita_ayuda_idi_isba');?></h2>
-			<input disabled readonly type = "text" min="0" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9">
+			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
+			<input type = "text" min="0" required aria-required="true" title = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" placeholder = "<?php echo lang('message_lang.solicita_ayuda_importe_idi_isba');?>" name = "importe_ayuda_solicita_idi_isba" id="importe_ayuda_solicita_idi_isba" maxlength = "9" size="9">
 		</fieldset>
 	</div>
 </div>
