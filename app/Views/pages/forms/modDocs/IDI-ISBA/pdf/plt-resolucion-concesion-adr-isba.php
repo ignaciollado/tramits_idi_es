@@ -87,7 +87,7 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html =  "Document: resolució de concessió<br>amb requeriment<br>";
+$html =  "Document: resolució de concessió<br>";
 $html .= "Núm. Expedient: ".$data['expediente']['idExp']."/".$data['expediente']['convocatoria']."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
@@ -249,7 +249,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $firma = lang('isba_9_resolucion_concesion.firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
-$firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
+$firma = str_replace("%DGERENTE%",$data['configuracion']['directorGerenteIDI'], $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";

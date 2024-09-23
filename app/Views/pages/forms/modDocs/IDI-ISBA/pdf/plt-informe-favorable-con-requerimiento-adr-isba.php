@@ -154,7 +154,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_4_informe_favorable_con_requerimiento.conclusionTxt'));
 $parrafo_conclusion = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_conclusion);
-$parrafo_conclusion = str_replace("%IMPORTEAYUDA",  money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_conclusion);
+$parrafo_conclusion = str_replace("%IMPORTEAYUDA%",  money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%IMPORTE_APERTURA%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_conclusion);

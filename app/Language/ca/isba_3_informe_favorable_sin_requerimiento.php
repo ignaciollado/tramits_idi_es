@@ -43,10 +43,10 @@ return [
   'hechos_1_2_3_4' => "<ol>
     <li>Mitjançant la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR Balears), Alejandro Sáenz de San Pedro García, es va aprovar la convocatòria per als anys 2024-2025 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives (BOIB núm. %BOIBNUM%).</li><br>
     <li>En data %FECHASOLICITUD%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA%, i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos, %IMPORTE_AVAL% al subsidi de  l'aval i %IMPORTE_APERTURA% als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
-	  <li>Una vegada revisada la sol·licitud d'ajut, s'ha comprovat que es va presentar dins el termini i que compleix amb els requisits establerts en la convocatòria.</li><br>
+    <li>Una vegada revisada la sol·licitud d'ajut, s'ha comprovat que es va presentar dins el termini i que compleix amb els requisits establerts en la convocatòria.</li><br>
     <li>Hi ha crèdit adequat i suficient per atendre aquesta sol·licitud d'ajut.</li></ol>
     <p>Aquest informe serveix de base per a la proposta de resolució i resolució de concessió de l'ajut.</p><br>",
-  'conclusion_tit' => "<b>Conclusió</b>",
+  'conclusion_tit' => "<b><u>Conclusió</u></b>",
   'conclusionTxt'  => "Atès que el sol·licitant compleix amb els requisits establerts en la convocatòria, propòs a la directora gerent i al president de l'ADR Balears que dictin una proposta de resolució i resolució de concessió respectivament, a favor de %SOLICITANTE% amb NIF %NIF% d'un ajut per un import de %IMPORTEAYUDA%, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos, %IMPORTE_AVAL% al subsidi de  l'aval i %IMPORTE_APERTURA% als ajuts per cobrir les despeses d'obertura i estudi.",
   'firma' => "Palma, en data de la signatura electrònica<br><br>El/la tècnic/a"
 ];

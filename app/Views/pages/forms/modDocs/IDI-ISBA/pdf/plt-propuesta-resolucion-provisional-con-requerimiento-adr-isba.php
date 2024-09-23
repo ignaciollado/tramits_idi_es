@@ -211,10 +211,10 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
-$pdf->setPrintHeader(false);
+/* $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVertical.png';
-$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false); */
 
 $parrafo_8 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), lang('isba_6_propuesta_resolucion_prov_favorable_con_requerimiento.propuestaresoluciondef_4_5'));
 $html = '<ol start="4">'.$parrafo_8.'</ol>';

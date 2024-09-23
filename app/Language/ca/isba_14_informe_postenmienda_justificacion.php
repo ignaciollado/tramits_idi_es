@@ -39,9 +39,9 @@
 
 return [
   'intro' => "<b>Informe sobre l'esmena de la documentació justificativa de la subvenció concedida a %SOLICITANTE% amb NIF %NIF%</b>",
-  'p1' => "El %FECHA_RESOL_CONCE% es va concedir l'ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTEAYUDA% , en el marc de la convocatòria de subvencions per als anys 2024-2025 d'ajut a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives (BOIB Núm. %BOIBNUM%).",
-  'p2' => "El %FECHA_NOTIFICACION_REQUERIMIENTO_JUSTIFICACION%, l'ADR Balears va fer un requeriment d'esmena de la documentació justificativa a %SOLICITANTE% amb NIF %NIF%, a on es donaven 15 dies hàbils comptadors a partir del dia següent d'haver rebut (notificat) el requeriment d'esmena per fer arribar la documentació pertinent.",
-  'p3' => "Una vegada transcorregut el termini per a esmenar la justificació, el/la tècnic/a que ha revisat la documentació exposa que: %TEXTO_LIBRE%",
+  'p1' => "El %FECHA_RESOL_CONCE% es va concedir l'ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTEAYUDA%, en el marc de la convocatòria de subvencions per als anys 2024-2025 d'ajut a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives (BOIB Núm. %BOIBNUM%).",
+  'p2' => "El %FECHA_NOTIFICACION_REQUERIMIENTO_JUSTIFICACION%, l'ADR Balears va fer un requeriment d'esmena de la documentació justificativa a %SOLICITANTE% amb NIF %NIF%, al qual es donaven 15 dies hàbils comptadors a partir del dia següent d'haver rebut (notificat) el requeriment d'esmena per fer arribar la documentació pertinent.",
+  'p3' => "Una vegada transcorregut el termini per esmenar la justificació, el/la tècnic/a que ha revisat la documentació exposa que: %TEXTO_LIBRE%",
   'p4' => "<b>Conclusió</b>",
   'p5' => "Per tot això, propòs %TEXTO_LIBRE_PROPUESTA%",
   'firma' => "El/la tècnic/a de l'ADR Balears"
