@@ -1,7 +1,8 @@
 <!------------------------------------------- Informe inici requeriment justificación DOC 18 SIN VIAFIRMA --------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Informe inici requeriment justificació
+    	Informe inici requeriment justificació<br>
+			<small>Pendent crear plantilla json</small>
 	</div>
 	<div class="card-itramits-footer">
 		<?php

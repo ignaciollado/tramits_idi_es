@@ -1,6 +1,9 @@
 <!----------------------------------------- Resolució desistiment por renuncia DOC 22 SIN VIAFIRMA --------------------------------->
 <div class="card-itramits">
-  <div class="card-itramits-body">Resolució desistiment per renúncia</div>
+  <div class="card-itramits-body">
+		Resolució desistiment per renúncia<br>
+		<small>Pendent crear plantilla json</small>
+	</div>
   	<div class="card-itramits-footer">
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>

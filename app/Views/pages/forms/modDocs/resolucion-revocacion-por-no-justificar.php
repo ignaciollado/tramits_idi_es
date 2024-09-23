@@ -1,6 +1,9 @@
 <!----------------------------------------- Resolución revocació por no justificar DOC 24 SIN VIAFIRMA --------------------------------->
 <div class="card-itramits">
-  	<div class="card-itramits-body">Resolució revocació per no justificar</div>
+  	<div class="card-itramits-body">
+			Resolució revocació per no justificar<br>
+			<small>Pendent crear plantilla json</small>
+		</div>
   	<div class="card-itramits-footer">
 	  <?php
         if ( !$esAdmin && !$esConvoActual ) {?>

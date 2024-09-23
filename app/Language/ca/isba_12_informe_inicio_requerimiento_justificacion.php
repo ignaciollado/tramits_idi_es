@@ -39,9 +39,9 @@
 
 return [
   'intro' => "Informe d'inici de requeriment d'esmena de la documentació justificativa d'una subvenció a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives a favor de %SOLICITANTE%, amb NIF %NIF%",
-  'p1' => "El %FECHA_RESOL_CONCE%, es va concedir l'ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTEAYUDA% , en el marc de la convocatòria de subvencions per a l'any 2024-25 de l'ajut de a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives (BOIB Núm. XX, %BOIBNUM%).",
-  'p2' => "Tal com marca la convocatòria en el punt catorzè, beneficiari té sis mesos des de la resolució de la concessió de l’ajut per efectuar la justificació davant l’òrgan instructor. En tot cas, la data màxima de justificació és el dia 15 de novembre del 2025. En conseqüència, el %DATA_MAXIMA_JUSTIFICACIO% era la data màxima per justificar la subvenció.",
-  'p3' => "Una vegada revisat l'expedient es pot constatar que  %TEXTO_LIBRE%",
+  'p1' => "El %FECHA_RESOL_CONCE%, es va concedir l'ajut a favor de %SOLICITANTE% amb NIF %NIF% per valor de %IMPORTEAYUDA% , en el marc de la convocatòria de subvencions per a l'any 2024-25 de l'ajut de a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives (BOIB Núm. %BOIBNUM%).",
+  'p2' => "Tal com marca la convocatòria en el punt catorzè, beneficiari té sis mesos des de la resolució de la concessió de l'ajut per efectuar la justificació davant l'òrgan instructor. En tot cas, la data màxima de justificació és el dia 15 de novembre del 2025. En conseqüència, el %DATA_MAXIMA_JUSTIFICACIO% era la data màxima per justificar la subvenció.",
+  'p3' => "Una vegada revisat l'expedient es pot constatar que %TEXTO_LIBRE%",
   'conclusion_tit' => "Conclusió",
   'conclusionTxt'  => "Per tot això, propòs fer un requeriment d'esmena de la documentació justificativa de la subvenció concedida.",
   'firma' => "Palma, en data de la signatura electrònica<br><br>El/la tècnic/a"

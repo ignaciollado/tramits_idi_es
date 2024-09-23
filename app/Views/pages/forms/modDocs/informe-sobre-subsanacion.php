@@ -1,7 +1,8 @@
 <!----------------------------------------- Informe inici requeriment d'esmena DOC 20 SIN VIAFIRMA --------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-      Informe post esmena justificació
+      Informe post esmena justificació<br>
+			<small>Pendent crear plantilla json</small>
 	</div>
 	<div class="card-itramits-footer">
 		<?php

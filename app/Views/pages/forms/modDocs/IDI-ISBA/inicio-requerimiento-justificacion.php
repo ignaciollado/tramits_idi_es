@@ -66,7 +66,7 @@
                 <!-- Modal content-->
     			<div class="modal-content">
       				<div class="modal-header">
-      					<h4><strong>Escriu el motiu de l'inici del requeriment:</strong></h4>
+      					<h4><strong>Escriu el motiu de l'inici del requeriment de justificació:</strong></h4>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       				</div>
       				<div class="modal-body">

@@ -121,16 +121,14 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_2 = lang('isba_12_informe_inicio_requerimiento_justificacion.p2');
-/* %FECHA_REUNION_CIERRE%
-%FECHA_LIMITE_ALEGACIONES% */
-/* $parrafo_2 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y"), $parrafo_2); */
+$parrafo_2 = str_replace("%DATA_MAXIMA_JUSTIFICACIO%", date_format(date_create($data['expediente']['fecha_limite_justificacion']),"d/m/Y"), $parrafo_2);
 $html = $parrafo_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_3 = lang('isba_12_informe_inicio_requerimiento_justificacion.p3');
-$parrafo_3 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoRequerimiento'] , $parrafo_3);
+$parrafo_3 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoInicioRequerimiento'] , $parrafo_3);
 $html = $parrafo_3;
 $pdf->writeHTML($html, true, false, true, false, '');
 
