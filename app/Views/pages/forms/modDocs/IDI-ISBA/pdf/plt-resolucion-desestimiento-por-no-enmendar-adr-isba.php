@@ -123,13 +123,25 @@ $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $parra
 $html = "<ol>";
 $html .= "<li>". $parrafo_1 ."</li>";
 $html .= "<br>";
-$parrafo_2 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y"), lang('isba_2_resolucion_desestimiento_por_no_enmendar.p2'));
+
+$parrafo_2 = str_replace("%FECHASOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), lang('isba_2_resolucion_desestimiento_por_no_enmendar.p2'));
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']),  $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_2);
+$parrafo_2 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_2);
 $html .= "<li>". $parrafo_2 ."</li>";
 $html .= "<br>";
-$parrafo_3 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.p3');
+
+$parrafo_3 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y"), lang('isba_2_resolucion_desestimiento_por_no_enmendar.p3'));
+$parrafo_3 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_3);
+$parrafo_3 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_3);
 $html .= "<li>". $parrafo_3 ."</li>";
+$html .= "<br>";
+
+$parrafo_4 = lang('isba_2_resolucion_desestimiento_por_no_enmendar.p4');
+$html .= "<li>". $parrafo_4 ."</li>";
 $html .= "<br>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
