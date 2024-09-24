@@ -196,7 +196,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                     <label for="iae">Activitat econòmica (IAE):</label>
                     <input type="text" name="iae" class="form-control" readonly disabled id = "iae" maxlength = "4" size="4" placeholder="IAE" value="<?php echo $expedientes['iae'];?>">
                 </div>
-                
                 <div class="form-group general">
                     <label for="importe_minimis">Importe minimis (€):</label>
                     <input type="text" name="importe_minimis" class="form-control" readonly disabled id = "importe_minimis" maxlength = "4" size="4" placeholder="Import minimis" value="<?php echo $importe_minimis;?>">
@@ -279,9 +278,9 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
                             <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
-                            <option <?php if ($expedientes['situacion'] === "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
+                                <option <?php if ($expedientes['situacion'] === "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
     				            <option <?php if ($expedientes['situacion'] === "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
-    				            <option <?php if ($expedientes['situacion'] === "notificadoIFPRProvPago") { echo "selected";}?> value = "notificadoIFPRProvPago" class="sitValidacion"> PR Provisional NOTIFICADA (DATA) AUT</option>
+    				            <option <?php if ($expedientes['situacion'] === "notificadoIFPRProvPago") { echo "selected";}?> value = "notificadoIFPRProvPago" class="sitValidacion"> PR Provisional NOTIFICADA (DATA) AUT**</option>
 	    			            <option <?php if ($expedientes['situacion'] === "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva Enviada a firma</option>
 							    <option <?php if ($expedientes['situacion'] === "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva signada PENDENT de notificar</option>
 							    <option <?php if ($expedientes['situacion'] === "emitidaPRDefinitivaNotificada") { echo "selected";}?> value = "emitidaPRDefinitivaNotificada" class="sitValidacion"> PR definitiva NOTIFICADA</option>

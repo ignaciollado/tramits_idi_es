@@ -119,7 +119,7 @@ $parrafo_1 = str_replace("%FECHAPUBBOIB%", date_format(date_create($data['config
 $parrafo_1 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTEAYUDA", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTE_ESTUDIO%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_1);
@@ -184,7 +184,7 @@ $parrafo_9 = lang('isba_16_propuesta_resolucion_revocacion_no_justificar.propues
 $parrafo_9 = str_replace("%FECHA_RESOL_CONCE%", date_format(date_create($data['expediente']['fecha_firma_res']),"d/m/Y") , $parrafo_9);
 $parrafo_9 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_9);
 $parrafo_9 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_9);
-$parrafo_9 = str_replace("%IMPORTEAYUDA", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_9);
+$parrafo_9 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_9);
 $html = $parrafo_9;
 $pdf->writeHTML($html, true, false, true, false, '');
 

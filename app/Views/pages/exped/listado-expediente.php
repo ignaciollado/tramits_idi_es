@@ -282,14 +282,7 @@
 			/*  */
 			else if ($item['situacion'] == "emitirIFPRProvPago") {?>
 				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl">
-					<span title="Aquesta sol·licitud s'ha d'emetre IF+PR provisional">
 						<strong>IF + PR<br>Provisional emetre</strong>
-					</span>
-				</div>
-			<?php }
-			else if ($item['situacion'] == "emitidoIFPRProvPago") {?>
-				<div  id="'.$item['id'].'" class = "btn-itramits validacion-lbl validacion-lbl-emesa">
-						<strong>IF + PR Provisional emesa</strong>
 				</div>
 				<div class="btn-itramits validacion-lbl add-margin-top">
 					<?php
@@ -311,6 +304,31 @@
 						echo "</span>";
 					?>
 				</div>
+			<?php }
+			else if ($item['situacion'] == "emitidoIFPRProvPago") {?>
+				<div  id="'.$item['id'].'" class = "btn-itramits validacion-lbl validacion-lbl-emesa">
+						<strong>IF + PR Provisional emesa</strong>
+				</div>
+<!-- 				<div class="btn-itramits validacion-lbl add-margin-top">
+					<?php
+						$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
+						$actualDate = date_create(date("Y-m-d"));
+						$date2 =  date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
+						$diff  = date_diff($actualDate, $date2);
+						$faltan = $diff->format("%a dies");
+						echo "<small>Lectura notificació:<br>".$item['fecha_not_propuesta_resolucion_prov']."</small><br>";
+						echo "<small>Enviament acte administratiu nº ¿7-8?:<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
+						if ($faltan >= 5) {?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-dark">
+						<?php } elseif ( $faltan > 0) { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge blink">									
+						<?php } else { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-danger">
+						<?php } 
+						echo 'resten <strong>'.$faltan .'</strong> naturals';
+						echo "</span>";
+					?>
+				</div> -->
 			<?php }
 			else if ($item['situacion'] == "notificadoIFPRProvPago") {
 					echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha notificat PR Provisional"><strong>PR Provisional<br> NOTIFICADA (DATA) AUT</strong></span></div>';				

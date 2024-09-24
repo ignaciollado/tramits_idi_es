@@ -141,7 +141,7 @@ $pdf->setY($currentY + 5);
 $pdf->setX($currentX - 10);
 $parrafo_3 = lang('message_lang.doc_inicio_requerimiento_subsanacion_p3');
 $parrafo_3 = str_replace("%FECHAREUNIONCIERRE%", date_format(date_create($data['expediente']['fecha_reunion_cierre']),"d/m/Y"), $parrafo_3);
-$parrafo_3 = str_replace("%FECHAMAXJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_max_desp_ampliacion']),"d/m/Y"), $parrafo_3);
+$parrafo_3 = str_replace("%FECHAMAXJUSTIFICACION%", date_format(date_create($data['expediente']['fecha_limite_justificacion']),"d/m/Y"), $parrafo_3);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $parrafo_3 ."</td></tr>";
 $html .= "</table>";

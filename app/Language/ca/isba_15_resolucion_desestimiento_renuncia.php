@@ -38,7 +38,7 @@
  */
 
 return [
-  'intro' => "<b>Resolució del president de l'ADR Balears per la qual s'accepta la renúncia d'una subvenció a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives a favor de %SOLICITANTE%, amb NIF %NIF% (BOIB Núm. XX, %BOIBNUM%)</b>",
+  'intro' => "<b>Resolució del president de l'ADR Balears per la qual s'accepta la renúncia d'una subvenció a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives a favor de %SOLICITANTE%, amb NIF %NIF% (BOIB Núm. %BOIBNUM%)</b>",
   'hechos' => "<b>Fets</b>",
   'hechos_1_2_3' => "<ol>
                       <li>El dia %FECHAPUBBOIB%, es va publicar en el BOIB núm. %BOIBNUM% la Resolució del president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR), Alejandro Sáenz de San Pedro García, per la qual s'aprova la convocatòria per als anys 2024-25 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>

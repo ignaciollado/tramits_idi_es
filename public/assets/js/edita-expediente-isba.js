@@ -1442,8 +1442,8 @@ function cambiarSituacionExpediente (fase, elemento) {
 		itemID = 28
 	}
 	if (elemento === "fecha_not_propuesta_resolucion_prov") {
-		nuevoEstado = "emitidoIFPRProvPago"
-		itemID = 12
+		nuevoEstado = "emitirIFPRProvPago"
+		itemID = 11
 	}
 	if (elemento === "fecha_limite_consultoria") {
 		nuevoEstado = "inicioConsultoria"

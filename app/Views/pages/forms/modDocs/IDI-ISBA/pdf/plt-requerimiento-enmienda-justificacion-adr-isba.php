@@ -107,7 +107,7 @@ $pdf->setY($currentY + 12);
 $asunto = lang('isba_13_requerimiento_enmienda_justificacion.asunto');
 $asunto = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $asunto);
 $asunto = str_replace("%NIF%", $data['expediente']['nif'], $asunto);
-$asunto = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $asunto);
+$asunto = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $asunto);
 $html = $asunto;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -125,22 +125,20 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_2 = lang('isba_13_requerimiento_enmienda_justificacion.p2');
-/* %FECHA_REUNION_CIERRE% */
-$parrafo_2 = str_replace("%FECHA_LIMITE_JUSTIFICACION%", date_format(date_create($data['expediente']['fecha_limite_justificacion']),"d/m/Y"), $parrafo_2);
+$parrafo_2 = str_replace("%DATA_MAXIMA_JUSTIFICACIO%", date_format(date_create($data['expediente']['fecha_limite_justificacion']),"d/m/Y"), $parrafo_2);
 $html = $parrafo_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_3 = lang('isba_13_requerimiento_enmienda_justificacion.p3');
+$parrafo_3 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoRequerimientoJustificacion'], $parrafo_3);
 $html = $parrafo_3;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_4 = lang('isba_13_requerimiento_enmienda_justificacion.p4');
-/* %FECHA_INFORME_INICIO_REQUE% */
-$parrafo_4 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoRequerimientoJustificacion'] , $parrafo_4);
 $html = $parrafo_4;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -157,12 +155,6 @@ $pdf->setY($currentY + 10);
 $parrafo_6 = lang('isba_13_requerimiento_enmienda_justificacion.p6');
 $parrafo_6 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoRequerimientoJustificacion'] , $parrafo_6);
 $html = $parrafo_6;
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$parrafo_7 = lang('isba_13_requerimiento_enmienda_justificacion.p7');
-$html = $parrafo_7;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 
