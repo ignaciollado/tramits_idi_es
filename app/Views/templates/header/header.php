@@ -98,13 +98,7 @@ ul { list-style-type: none; }
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/expedientes/');?>" target="_self">
 			
 			<?php	echo lang('message_lang.expediente_menu');
-			 } 
-			
-			if ($session->get('rol') == 'felib') {
-			 ?>
-				Ajuntaments adherits
-			<?php 
-			}
+			 }
 			?>
 			</a></li>
 
