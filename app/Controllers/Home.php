@@ -9,13 +9,22 @@ class Home extends BaseController
 	public function index()
 	{
 		$session = session();
+		$rol = ($session->get('rol'));
 		if ($session->has('username')) {
-		    echo $session->get('username');
+		  echo $session->get('username');
 			$request = \Config\Services::request();		
-			$serverData = $request->getServer();
+			/* $serverData = $request->getServer(); */
 			$data['titulo'] = lang('message_lang.titulo');
 			echo view('templates/header/header', $data);
-			echo view('pages/content');
+			if ($rol === 'felib') {
+				echo view('pages/exped/listado-expediente-felib', $data);
+			} 
+			if ($rol === 'adr-isba') {
+				echo view('pages/exped/listado-expediente-isba', $data);
+			}
+			if ($rol === 'felib' && $rol === 'adr-isba') {
+				echo view('pages/content', $data);
+			}
 			echo view('templates/footer/footer', $data);
 		} else {
 			 return redirect('public/index.php/loginController/login');
@@ -26,7 +35,6 @@ class Home extends BaseController
 	{
 		$generalConfig = new ConfiguracionModel;
 		$data['configuracion'] = $generalConfig->configuracionGeneral(); 
-
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
 		$idioma =  $request->uri->getSegment(2); 
@@ -34,7 +42,6 @@ class Home extends BaseController
 		$data['titulo'] = lang('message_lang.titulo');
 		$session = session();
 		$rol = ($session->get('rol'));
-		
 		echo view('templates/header/header', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 		$modelExp = new ExpedientesModel();
@@ -46,13 +53,13 @@ class Home extends BaseController
 		$data['titulo'] = lang('message_lang.todas_las_solicitudes')." FELIB";
 		if ($rol === 'felib') {
 			echo view('pages/exped/listado-expediente-felib', $data);
-		} else if ($rol === 'adr-isba') {
+		} 
+		if ($rol === 'adr-isba') {
 			echo view('pages/exped/listado-expediente-isba', $data);
 		}
-		else {
+		if ($rol === 'felib' && $rol === 'adr-isba') {
 			echo view('pages/content', $data);
 		}
-
 		echo view('templates/footer/footer');
 	}
 	

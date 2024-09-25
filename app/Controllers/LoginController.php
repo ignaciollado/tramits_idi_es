@@ -3,6 +3,7 @@ namespace App\Controllers;
 use App\Models\LoginModel;
 use CodeIgniter\Controller;
 use CodeIgniter\I18n\Time;
+use App\Models\ExpedientesModel;
 
 define("REST_API_URL", "https://www.googleapis.com/oauth2/v3/certs");
 require_once '../vendor/autoload.php';
@@ -18,10 +19,27 @@ class LoginController extends Controller
     // show the login form
   public function index() {
 		$session = \Config\Services::session();
+		$rol = ($session->get('rol'));
+
 		if($session->get('logged_in')) {
 			$data['titulo'] = lang('message_lang.titulo');
 			echo view('templates/header/header', $data);
-			echo view('pages/content');
+			if ($rol === 'felib') {
+				$modelExp = new ExpedientesModel();
+				$where = "tipo_tramite = '" . $rol . "'";
+				$data['expedientes'] = $modelExp->orderBy('fecha_completado', 'DESC')
+					->where($where)
+					->findAll();	
+				$data['totalExpedientes'] = count($data['expedientes']);
+				echo view('pages/content-felib', $data);
+			} 
+			if ($rol === 'adr-isba') {
+				echo view('pages/exped/listado-expediente-isba', $data);
+			}
+			if ($rol === 'felib' && $rol === 'adr-isba') {
+				echo view('pages/content', $data);
+			}
+
 			echo view('templates/footer/footer', $data);	
 		}else{
 			$session = session();  

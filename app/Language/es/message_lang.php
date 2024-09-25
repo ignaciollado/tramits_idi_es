@@ -259,7 +259,6 @@ return [
    'felib_p3' => "Programa <a href='https://www.adrbalears.es/ibtalent' target='_ablank'><span class='emprendre'>Ibtalent</span></a>, per impulsar la competitivitat de les empreses a través de la gestió i millora del talent del seu personal.",
    'felib_p4' => "Programa <a href='https://www.adrbalears.es/ibgestio-xecs' target='_ablank'><span class='emprendre'>Ibgestió xecs</span></a>, per ajudar les empreses en l’adquisició d’eines de millora de la gestió.",
    'felib_p5' => "Programa <a href='https://www.adrbalears.es/ibdigitalitzacio-xecs' target='_ablank'><span class='emprendre'>Ibdigitalització xecs</span></a>, per donar suport a les empreses en el seu procés de transformació digital.",
-
    'felib_p6' => "Programa <a href='https://www.adrbalears.es/emblematicsbalears' target='_ablank'><span class='connectar'>Emblemàtics</span></a> Illes Balears, per donar visibilitat i promocionar el comerç tradicional.",
    'felib_p7' => "Programa <a href='https://www.adrbalears.es/ibcomerc-a-escola' target='_ablank'><span class='connectar'>Ibcomerç a l'escola</span></a>, per donar a conèixer els comerç local als alumnes de primària.",
    'felib_p8' => "Gestió i promoció de la marca <a href='https://www.adrbalears.es/pa-daqui-forn-i-tradicio' target='_ablank'><span class='connectar'>«Pa d’aquí, forn i tradició»</span></a>, marca col·lectiva que distingeix els forns artesanals dels municipis.",
@@ -268,10 +267,25 @@ return [
    'felib_p11' => "Programa <a href='https://www.adrbalears.es/ibavals-industria' target='_ablank'><span class='connectar'>Ibavals Indústria</span></a>, ajuts per a empreses industrials per cobrir les despeses d'operacions de finançament per a inversions productives.",
    'felib_p12' => "Programa <a href='https://www.adrbalears.es/exposabyidi' target='_ablank'><span class='connectar'>Ibexposa producte local</span></a>, per millorar l’espai expositiu de venda pel comerç i la indústria dels municipis.",
    'felib_p13' => "Programa <a href='https://www.adrbalears.es/ibrelleu' target='_ablank'><span class='connectar'>Ibrelleu</span></a>, per facilitar a les persones emprenedores l’accés al mercat de compravenda de petites i mitjanes empreses (relleu empresarial).",
-
    'felib_p14' => "Programa <a href='' target='_ablank'><span class='projectar'>Ibexporta</span></a>, per facilitar l'accés als mercats exteriors a les empreses.",
    'felib_p15' => "Programa <a href='https://www.adrbalears.es/ibexporta-xecs' target='_ablank'><span class='projectar'>Ibexporta xecs</span></a>, finançament de plans d'internacionalització per a les empreses de les Illes Balears.",
 
+   'felib_short_p1' => "<a href='https://www.adrbalears.es/ibemprenjove' target='_ablank'><span class='emprendre'>Ibemprenjove</span></a>",
+   'felib_short_p2' => "<a href='https://www.adrbalears.es/ibempren' target='_ablank'><span class='emprendre'>Ibempren</span></a>",
+   'felib_short_p3' => "<a href='https://www.adrbalears.es/ibtalent' target='_ablank'><span class='emprendre'>Ibtalent</span></a>",
+   'felib_short_p4' => "<a href='https://www.adrbalears.es/ibgestio-xecs' target='_ablank'><span class='emprendre'>Ibgestió xecs</span></a>",
+   'felib_short_p5' => "<a href='https://www.adrbalears.es/ibdigitalitzacio-xecs' target='_ablank'><span class='emprendre'>Ibdigitalització xecs</span></a>",
+   'felib_short_p6' => "<a href='https://www.adrbalears.es/emblematicsbalears' target='_ablank'><span class='connectar'>Emblemàtics</span></a>",
+   'felib_short_p7' => "<a href='https://www.adrbalears.es/ibcomerc-a-escola' target='_ablank'><span class='connectar'>Ibcomerç a l'escola</span></a>",
+   'felib_short_p8' => "<a href='https://www.adrbalears.es/pa-daqui-forn-i-tradicio' target='_ablank'><span class='connectar'>«Pa d’aquí, forn i tradició»</span></a>",
+   'felib_short_p9' => "<a href='https://www.adrbalears.es/industria-local-sostenible' target='_ablank'><span class='connectar'>ILS marca garantia</span></a>",
+   'felib_short_p10' => "<a href='https://www.adrbalears.es/ibsostenibilitat-xecs' target='_ablank'><span class='connectar'>Ibsostenibilitat xecs</span></a>",
+   'felib_short_p11' => "<a href='https://www.adrbalears.es/ibavals-industria' target='_ablank'><span class='connectar'>Ibavals Indústria</span></a>",
+   'felib_short_p12' => "<a href='https://www.adrbalears.es/exposabyidi' target='_ablank'><span class='connectar'>Ibexposa producte local</span></a>",
+   'felib_short_p13' => "<a href='https://www.adrbalears.es/ibrelleu' target='_ablank'><span class='connectar'>Ibrelleu</span></a>",
+   'felib_short_p14' => "<a href='' target='_ablank'><span class='projectar'>Ibexporta</span></a>",
+   'felib_short_p15' => "<a href='https://www.adrbalears.es/ibexporta-xecs' target='_ablank'><span class='projectar'>Ibexporta xecs</span></a>",
+   
    'cuantia_ayuda_info'                => "  <div>4.2. El número de horas subvencionadas oscilará entre un mínimo de 40 horas, 60 horas y un máximo de 80 horas. La empresa podrá decidir el número de horas que necesita, en función del tamaño y de la complejidad de sus procesos productivos. Para cada 10 horas de consultoría, 2 tendrán que ser horas de consultoría presenciales. Así:</div>
 	<ul>
     <li> Si la empresa define una consultoría necesaria de 40 horas, 8 horas serían presenciales y 32 horas serían de consultoría en linea para la elaboración del plan de transformación digital, con un coste de 3.000 €. La ADR Balears librará un 80 % del coste (2.400 €) y la empresa el 20 % restante (600 €).</li>
