@@ -284,7 +284,7 @@
 				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl">
 						<strong>IF + PR<br>Provisional emetre</strong>
 				</div>
-				<div class="btn-itramits validacion-lbl add-margin-top">
+				<div class=" add-margin-top">
 					<?php
 						$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
 						$actualDate = date_create(date("Y-m-d"));
@@ -292,7 +292,14 @@
 						$diff  = date_diff($actualDate, $date2);
 						$faltan = $diff->format("%a dies");
 						echo "<small>Lectura notificació:<br>".$item['fecha_not_propuesta_resolucion_prov']."</small><br>";
-						echo "<small>Enviament acte administratiu nº ¿7-8?:<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
+						echo "<small>Notificació requeriment:<br>".$item['fecha_requerimiento_notif']."</small><br>";
+						echo "<small>Enviament Proposta resolució definitiva:<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
+						if (!$item['fecha_requerimiento_notif']) {
+							echo "<script>window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_adr_isba'</script>";
+					 	}
+						else {
+							echo "<script>window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_requerimiento_adr_isba'</script>";
+						}					
 						if ($faltan >= 5) {?>
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-dark">
 						<?php } elseif ( $faltan > 0) { ?>
@@ -537,7 +544,7 @@ else if ($item['situacion'] == "empresaDenegada") {
   	}
   	return "";
 	}
-</script>
+</>
 
 <?php 
 function sumarDiasHabiles($fechaInicial, $dias) {

@@ -31,3 +31,13 @@ function cambiarTexto(id) {
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/" + ";SameSite=Strict";
     }  
 }
+
+function enviaPropResolucionResDefinitiva(id, convocatoria, programa, nif) {
+    alert (id, convocatoria, programa, nif)
+    console.log(id, convocatoria, programa, nif)
+}
+
+function enviaPropResolucionResDefinitivaConReq(id, convocatoria, programa, nif) {
+    alert (id, convocatoria, programa, nif)
+    console.log(id, convocatoria, programa, nif)
+}

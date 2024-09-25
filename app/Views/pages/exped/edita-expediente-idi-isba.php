@@ -905,10 +905,6 @@
                 <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
                 <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
             </div>
-            <!--     		<div class="form-group validacion">
-                <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
-                <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
-            </div> -->
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }

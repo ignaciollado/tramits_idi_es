@@ -77,7 +77,8 @@ class ExpedientesModel extends Model
         $query = $this->query($sql);
         $results = $query->getResultArray();
         if (!$results) {
-            throw new \Exception('E1111'); /* Could not find expediente for specified felib_p */
+            //throw new \Exception('E1111'); /* Could not find councils for specified felib_p */
+            return 0;
         }
         foreach ($results as $row) {
             $totalSolicitudes = $row['totalCityCouncils'];
@@ -90,7 +91,8 @@ class ExpedientesModel extends Model
         $query = $this->query($sql);
         $results = $query->getResultArray();
         if (!$results) {
-            throw new \Exception('E1111'); /* Could not find expediente for specified felib_p */
+            //throw new \Exception('E1111'); /* Could not find councils for specified felib_p */
+            return 0;
         }
         return $results;
     }

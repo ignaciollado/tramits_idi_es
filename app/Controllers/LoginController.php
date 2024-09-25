@@ -20,7 +20,6 @@ class LoginController extends Controller
   public function index() {
 		$session = \Config\Services::session();
 		$rol = ($session->get('rol'));
-
 		if($session->get('logged_in')) {
 			$data['titulo'] = lang('message_lang.titulo');
 			echo view('templates/header/header', $data);

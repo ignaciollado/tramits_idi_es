@@ -57,7 +57,7 @@ class Home extends BaseController
 		if ($rol === 'adr-isba') {
 			echo view('pages/exped/listado-expediente-isba', $data);
 		}
-		if ($rol === 'felib' && $rol === 'adr-isba') {
+		if ($rol !== 'felib' && $rol !== 'adr-isba') {
 			echo view('pages/content', $data);
 		}
 		echo view('templates/footer/footer');
