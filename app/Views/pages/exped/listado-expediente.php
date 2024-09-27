@@ -295,10 +295,10 @@
 						echo "<small>Notificació requeriment:<br>".$item['fecha_requerimiento_notif']."</small><br>";
 						echo "<small>Enviament Proposta resolució definitiva:<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
 						if (!$item['fecha_requerimiento_notif']) {
-							echo "<script>window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_adr_isba'</script>";
+							echo "window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_adr_isba'";
 					 	}
 						else {
-							echo "<script>window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_requerimiento_adr_isba'</script>";
+							echo "window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_requerimiento_adr_isba'";
 						}					
 						if ($faltan >= 5) {?>
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-dark">

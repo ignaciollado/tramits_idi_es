@@ -48,10 +48,8 @@
 					$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 				}
 			echo $estado_firma;
-	}	?>
-		
-		<?php }?>
-		
+		}
+		}?>
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
@@ -103,10 +101,10 @@
 			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Data límit per justificar l'ajut rebut<br>"
 			todoBien = false
 		}
-		if(!fecha_firma_requerimiento_justificacion.value) {
+/* 		if(!fecha_firma_requerimiento_justificacion.value) {
 			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Firma requeriment justificació<br>"
 			todoBien = false
-		}
+		} */
 
 		if (todoBien) {
 			infoMissingDataDoc13.classList.add('ocultar')

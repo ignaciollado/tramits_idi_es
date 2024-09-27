@@ -124,7 +124,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_2 = lang('isba_14_informe_postenmienda_justificacion.p2');
-$parrafo_2 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO_JUSTIFICACION%", date_format(date_create($data['expediente']['fecha_not_req_just']),"d/m/Y"), $parrafo_2);
+$parrafo_2 = str_replace("%FECHA_NOTIFICACION_REQUERIMIENTO_JUSTIFICACION%", date_format(date_create($data['expediente']['fecha_firma_requerimiento_justificacion']),"d/m/Y"), $parrafo_2);
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
 $html = $parrafo_2;

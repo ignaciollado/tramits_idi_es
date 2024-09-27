@@ -196,7 +196,6 @@ $firma = str_replace("%DGERENTE%", $data['configuracion']['directorGerenteIDI'],
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";
-
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // ------------------------------------------------------------------------------------ //
