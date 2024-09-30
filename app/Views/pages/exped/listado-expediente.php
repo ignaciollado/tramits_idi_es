@@ -265,7 +265,7 @@
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl solicitud-lbl-emit-req"><span title="Aquesta sol·licitud está pendent emetre requeriment">Emetre<br>requeriment</span></div>'; 
 			}
 			else if ($item['situacion'] == "firmadoReq") {
-				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud s´ha signat el requeriment"><strong>Requeriment signat<br>pendent de notificar</strong></span></div>'; 				
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud el requeriment está signat pendent de notificar"><strong>Requeriment signat<br>pendent de notificar</strong></span></div>'; 				
 			}
 			else if ($item['situacion'] == "notificadoReq") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits solicitud-lbl"><span title="Aquesta sol·licitud s´ha notificat el requeriment"><strong>Requeriment notificat</strong></span></div>'; 				

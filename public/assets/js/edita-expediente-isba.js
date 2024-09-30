@@ -553,7 +553,6 @@ function setFechaLimiteJustificacion(fechaCierre, meses) {
 }
 
 function actualizaRequired(valor) {
-
 }
 
 function actualizaMotivoRequerimiento_idi_isba_click() {  //SE EMPLEA
@@ -1430,7 +1429,7 @@ function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
 }
 
 function cambiarSituacionExpediente (fase, elemento) {
-	console.log (elemento, "cambiar situación expediente")
+	console.log (fase, elemento, "cambiar situación expediente")
 	let theElement = document.getElementById(elemento)
 	let idExp = document.getElementById("id")
 	let nuevoEstado = ""
@@ -1454,6 +1453,39 @@ function cambiarSituacionExpediente (fase, elemento) {
 
 	if (theElement.value.length > 0) {
 		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_del_expediente.php?${nuevoEstado}/${idExp.value}`;
+			fetch(nuevaSituacion)
+				.then((response) => response.text())
+				.then((data) => {
+					document.getElementById("situacion_exped").options.item(itemID).selected = 'selected';
+			});
+	}
+}
+
+function cambiarSituacionExpedienteYSetAuto (fase, elemento, setAuto) {
+	console.log (fase, elemento, setAuto, "cambiar situación expediente")
+	let theElement = document.getElementById(elemento)
+	let idExp = document.getElementById("id")
+	let nuevoEstado = ""
+	let itemID = 0
+	if (elemento === "fecha_requerimiento") {
+		nuevoEstado = "firmadoReq"
+		itemID = 6
+	}
+	if (elemento === "fecha_limite_justificacion") {
+		nuevoEstado = "pendienteJustificar"
+		itemID = 28
+	}
+	if (elemento === "fecha_not_propuesta_resolucion_prov") {
+		nuevoEstado = "emitirIFPRProvPago"
+		itemID = 11
+	}
+	if (elemento === "fecha_limite_consultoria") {
+		nuevoEstado = "inicioConsultoria"
+		itemID = 20
+	}
+
+	if (theElement.value.length > 0) {
+		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_y_setauto_del_expediente.php?${nuevoEstado}/${idExp.value}/${setAuto}`;
 			fetch(nuevaSituacion)
 				.then((response) => response.text())
 				.then((data) => {

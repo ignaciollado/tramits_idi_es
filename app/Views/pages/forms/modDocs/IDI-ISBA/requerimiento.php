@@ -72,12 +72,13 @@
     	</div>
   	</div>
 </div>
-<input type='hidden' id="fechaEstadoDocReqISBA" value="<?php echo $fecha_firma_req;?>">
+<input type='text' id="fechaEstadoDocReqISBA" value="<?php echo $fecha_firma_req;?>">
 <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
 <script>
-if (!document.getElementById("fecha_requerimiento").value) {
+let setAtuto = document.getElementById("fecha_requerimiento_setauto")
+if (document.getElementById("fechaEstadoDocReqISBA").value && setAtuto.value === 'NO') {
 	document.getElementById("fecha_requerimiento").value = document.getElementById("fechaEstadoDocReqISBA").value
-	cambiarSituacionExpediente('send_fase_1', 'fecha_requerimiento')
+	cambiarSituacionExpedienteYSetAuto('desde requeriment', 'fecha_requerimiento', 'SI')
 }
 
 function actualizaMotivoRequerimiento_click() {

@@ -713,23 +713,24 @@
            <form action="" onload = "javaScript: actualizaRequired();" name="exped-fase-1" id="exped-fase-1" method="post" accept-charset="utf-8">
                 <div class="form-group solicitud">
                     <label for = "fecha_REC"><strong>Data SEU sol·licitud:</strong></label>
-			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
+			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
                 </div>
                 <div class="form-group solicitud">
                     <label for = "ref_REC"><strong>Referència SEU sol·licitud:</strong></label>
-                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
+                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
                 </div>
                 <div class="form-group solicitud">
                     <label for = "fecha_REC_enmienda"><strong>Data SEU esmena:</strong></label>
-		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
+		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
                 </div>		
                 <div class="form-group solicitud">
                     <label for = "ref_REC_enmienda"><strong>Referència SEU esmena:</strong></label>
-                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
+                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_enmienda" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento"><strong>Firma requeriment:</strong></label>
-                    <input type = "date" name = "fecha_requerimiento" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_requerimiento" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento']), 'Y-m-d');?>"/>
+                    <input type = "date" name = "fecha_requerimiento" class = "form-control send_fase_1" id = "fecha_requerimiento" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento']), 'Y-m-d');?>"/>
+                    <input type = "text" readonly disabled name = "fecha_requerimiento_setauto" class = "form-control send_fase_1" id = "fecha_requerimiento_setauto" value = "<?php echo $expedientes['fecha_requerimiento_setauto'];?>"/>
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento_notif"><strong>Notificació requeriment:</strong></label>
@@ -737,7 +738,7 @@
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento_notif"><strong>Data màxima per esmenar [data notificació req + 10 dies naturals]:</strong></label>
-                    <input type = "date" name = "fecha_maxima_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" disabled readonly class = "form-control send_fase_1" id = "fecha_maxima_enmienda" value = "<?php echo date_format(date_create($expedientes['fecha_maxima_enmienda']), 'Y-m-d');?>"/>
+                    <input type = "date" name = "fecha_maxima_enmienda" disabled readonly class = "form-control send_fase_1" id = "fecha_maxima_enmienda" value = "<?php echo date_format(date_create($expedientes['fecha_maxima_enmienda']), 'Y-m-d');?>"/>
                 </div>
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
@@ -1044,7 +1045,7 @@
             <div class="form-group justificacion">
             <label for = "fecha_limite_justificacion"><strong>Data máxima justificació:</strong></label>
             <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
-            <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_4" onchange = "javaScript: cambiarSituacionExpediente('send_fase_3', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
+            <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_4" onchange = "javaScript: cambiarSituacionExpediente('send_fase_4', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
             <label for = "fecha_REC_justificacion"><strong>Data SEU justificació:</strong></label>

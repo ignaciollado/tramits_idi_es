@@ -254,7 +254,7 @@ class Expedientes extends Controller
 	{
 
 		$modelExp = new ExpedientesModel();
-/* 		$lineaConfig = new ConfiguracionLineaModel();
+		/* 		$lineaConfig = new ConfiguracionLineaModel();
 		$datoslineaConvo = $lineaConfig->configuracionGeneral('XECS');
 		$where = "convocatoria = ".$datoslineaConvo['convocatoria'];
 		$session->set('convocatoria_fltr', $datoslineaConvo['convocatoria']);
