@@ -1078,14 +1078,14 @@
             <label for = "ref_REC_requerimiento_justificacion"><strong>Referència SEU requeriment justificació:</strong></label>
             <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
         	</div>
-		    <div class="form-group justificacion">
+        <!-- 		    <div class="form-group justificacion">
             <label for = "fecha_propuesta_rev"><strong>Proposta de revocació:</strong></label>
             <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_propuesta_rev" class = "form-control send_fase_4" id = "fecha_propuesta_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_propuesta_rev'];?>">
         	</div>
             <div class="form-group justificacion">
             <label for = "fecha_resolucion_rev"><strong>Resolució de revocació:</strong></label>
             <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_resolucion_rev" class = "form-control send_fase_4" id = "fecha_resolucion_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_resolucion_rev'];?>">
-        	</div>
+        	</div> -->
 
                 <?php
                     if ( !$esAdmin && !$esConvoActual ) {?>
@@ -1483,6 +1483,14 @@
                 <label for = "fecha_notificacion_desestimiento"><strong>Data notificació desistiment:</strong></label>
                 <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_notificacion_desestimiento" class = "form-control send_fase_5" id = "fecha_notificacion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_desestimiento']), 'Y-m-d');?>">
             </div>
+            <div class="form-group desistimiento">
+                <label for = "fecha_propuesta_rev"><strong>Proposta de revocació:</strong></label>
+                <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_propuesta_rev" class = "form-control send_fase_5" id = "fecha_propuesta_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_propuesta_rev'];?>">
+        	</div>
+            <div class="form-group desistimiento">
+                <label for = "fecha_resolucion_rev"><strong>Resolució de revocació:</strong></label>
+                <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_resolucion_rev" class = "form-control send_fase_5" id = "fecha_resolucion_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_resolucion_rev'];?>">
+        	</div>
 
                 <?php
                     if ( !$esAdmin && !$esConvoActual ) {?>
@@ -1492,7 +1500,6 @@
                     <button type="button" onclick = "javaScript: actualiza_fase_5_desestimiento_expediente_idi_isba('exped-fase-5');" id="send_fase_5" onchange="avisarCambiosEnFormulario('send_fase_5', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
                 </div>
                 <?php }?>
-
             </form>
         </div>
 

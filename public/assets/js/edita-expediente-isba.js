@@ -1,13 +1,11 @@
 const mainNode = document.querySelector('body');
 mainNode.onload = configuraDetalle_OnLoad;
 
-$(document).ready(function () {
+/* $(document).ready(function () {
 
 	idExp = document.getElementById("id")
 	programa = document.getElementById("programa")
-	if (programa.value === "ILS") {
-		compruebaEstadoDocumentosRequeridos(idExp.value)
-	}
+
 	$("#exped-fase-1").submit(function () {
 		$("#send-exped-fase-1", this)
 			.html("Actualitzant, un moment per favor.")
@@ -15,7 +13,7 @@ $(document).ready(function () {
 			.css("background-color", "orange")
 			.css("cursor", " progress");
 	});
-});
+}); */
 
 const form = document.getElementById('subir_faseExpedSolicitud');
 
@@ -388,6 +386,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 		return;
 	}
 	let id = document.getElementById("id").value;
+	fecha_notificacion_resolucion
 	let fecha_REC_justificacion = document.getElementById("fecha_REC_justificacion").value; // Data SEU justificació
 	let ref_REC_justificacion = document.getElementById("ref_REC_justificacion").value; // Data SEU justificació
 	let fecha_not_res_pago = document.getElementById("fecha_not_res_pago").value; // Data notificació resolucio de pagament
@@ -395,11 +394,10 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	let fecha_not_req_just = document.getElementById("fecha_not_req_just").value // Data notificació requeriment justificació
 	let fecha_REC_requerimiento_justificacion = document.getElementById("fecha_REC_requerimiento_justificacion").value; // Data REC requeriment justificació
 	let ref_REC_requerimiento_justificacion = document.getElementById("ref_REC_requerimiento_justificacion").value; // Referència REC requeriment justificació
-	let fecha_propuesta_rev = document.getElementById("fecha_propuesta_rev").value; // Data propuesta revocació
-	let fecha_resolucion_rev = document.getElementById("fecha_resolucion_rev").value; // Data resolución revocació
+
 	let fecha_firma_res_pago_just = document.getElementById("fecha_firma_res_pago_just").value; // Firma resolució de pagament i justificació
 
-	for (let step = 0; step < 12; step++) {
+	for (let step = 0; step < 10; step++) {
 		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
@@ -417,9 +415,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 			fecha_firma_requerimiento_justificacion: fecha_firma_requerimiento_justificacion,
 			fecha_not_req_just: fecha_not_req_just,
 			fecha_REC_requerimiento_justificacion: fecha_REC_requerimiento_justificacion,
-			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion,
-			fecha_propuesta_rev: fecha_propuesta_rev,
-			fecha_resolucion_rev: fecha_resolucion_rev
+			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion
 		},
 		
 		function (data) {
@@ -429,7 +425,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 				send_fase_4.className = "btn-itramits btn-success-itramits";
 				send_fase_4.disabled = false;
 			}
-			for (let step = 0; step < 12; step++) {
+			for (let step = 0; step < 10; step++) {
 				document.getElementsByClassName("form-group justificacion")[step].style.opacity = "1.0";
 			}			
 		}
@@ -446,32 +442,36 @@ function actualiza_fase_5_desestimiento_expediente_idi_isba(formName) {  //SE EM
 	let ref_REC_desestimiento = document.getElementById("ref_REC_desestimiento").value; // Referència REC requeriment justificació
 	let fecha_firma_resolucion_desestimiento = document.getElementById("fecha_firma_resolucion_desestimiento").value; // Data propuesta revocació
 	let fecha_notificacion_desestimiento = document.getElementById("fecha_notificacion_desestimiento").value; // Data resolución revocació
-	
-	for (let step = 0; step < 4; step++) {
+	let fecha_propuesta_rev = document.getElementById("fecha_propuesta_rev").value; // Data propuesta revocació
+	let fecha_resolucion_rev = document.getElementById("fecha_resolucion_rev").value; // Data resolución revocació
+
+	for (let step = 0; step < 6; step++) {
 		document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "0.1";
 	}
 
-	let send_fase_4 = document.getElementById("send_fase_4");
-	send_fase_4.innerHTML = "Un moment ...";
-	send_fase_4.className = "btn-itramits warning-msg";
-	send_fase_4.disabled = true;
+	let send_fase_5 = document.getElementById("send_fase_5");
+	send_fase_5.innerHTML = "Un moment ...";
+	send_fase_5.className = "btn-itramits warning-msg";
+	send_fase_5.disabled = true;
 	$.post(
 		"/public/assets/utils/actualiza_fase_5_desestimiento_expediente_isba.php",
 		{ id: id,
 			fecha_REC_desestimiento: fecha_REC_desestimiento,
 			ref_REC_desestimiento: ref_REC_desestimiento,
 			fecha_firma_resolucion_desestimiento: fecha_firma_resolucion_desestimiento,
-			fecha_notificacion_desestimiento: fecha_notificacion_desestimiento
+			fecha_notificacion_desestimiento: fecha_notificacion_desestimiento,
+			fecha_propuesta_rev: fecha_propuesta_rev,
+			fecha_resolucion_rev: fecha_resolucion_rev
 		},
 		
 		function (data) {
 			$(".result").html(data);
 			if (data == 1) {
-				send_fase_4.innerHTML = "Actualitzar";
-				send_fase_4.className = "btn-itramits btn-success-itramits";
-				send_fase_4.disabled = false;
+				send_fase_5.innerHTML = "Actualitzar";
+				send_fase_5.className = "btn-itramits btn-success-itramits";
+				send_fase_5.disabled = false;
 			}
-			for (let step = 0; step < 4; step++) {
+			for (let step = 0; step < 6; step++) {
 				document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "1.0";
 			}			
 		}
@@ -522,6 +522,10 @@ function avisarCambiosEnFormulario(fase, elemento) {
 }
 
 function calcularFechaMaximaEnmienda(fecha, intervalo) {
+	if (!fecha) {
+		document.getElementById("fecha_maxima_enmienda").value = null
+		return
+	}
 	let d = new Date(fecha)
 	d.setDate(d.getDate() + intervalo)
 	document.getElementById("fecha_maxima_enmienda").value = d.toISOString().substr(0, 10);
@@ -1144,9 +1148,7 @@ function goBack() {   //SE EMPLEA
 }
 
 async function configuraDetalle_OnLoad () {
-
-	let obtieneSello, estadoFirma;
-	let i=0, src, publicId;
+	let i=0
 	console.log ("estoy en onload")
 	
 	tabcontent = document.getElementsByClassName("tab_fase_exp_content");

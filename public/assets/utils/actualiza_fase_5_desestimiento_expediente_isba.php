@@ -6,6 +6,8 @@ $fecha_REC_desestimiento = mysqli_real_escape_string($conn, $_POST["fecha_REC_de
 $ref_REC_desestimiento = mysqli_real_escape_string($conn, $_POST["ref_REC_desestimiento"]);
 $fecha_firma_resolucion_desestimiento = mysqli_real_escape_string($conn, $_POST["fecha_firma_resolucion_desestimiento"]);
 $fecha_notificacion_desestimiento = mysqli_real_escape_string($conn, $_POST["fecha_notificacion_desestimiento"]);
+$fecha_propuesta_rev = mysqli_real_escape_string($conn, $_POST["fecha_propuesta_rev"]);
+$fecha_resolucion_rev = mysqli_real_escape_string($conn, $_POST["fecha_resolucion_rev"]);
 
 if (strpos($fecha_REC_desestimiento, "/") > 0) {
   $fecha_REC_desestimiento = explode(" ", $fecha_REC_desestimiento);
@@ -38,7 +40,9 @@ $query = "UPDATE pindust_expediente
     fecha_REC_desestimiento = '" . $date_REC_requerimiento_justificacion ."',
     ref_REC_desestimiento = '" . mb_strtoupper($ref_REC_desestimiento) ."',
     fecha_firma_resolucion_desestimiento = '" . $fecha_firma_resolucion_desestimiento . "',
-    fecha_notificacion_desestimiento = '" . $fecha_notificacion_desestimiento . "' 
+    fecha_notificacion_desestimiento = '" . $fecha_notificacion_desestimiento . "',
+    fecha_propuesta_rev = '" . $fecha_propuesta_rev . "',
+    fecha_resolucion_rev = '" . $fecha_resolucion_rev . "' 
     WHERE  id = " . $id;
 
 $result = mysqli_query($conn, $query);
