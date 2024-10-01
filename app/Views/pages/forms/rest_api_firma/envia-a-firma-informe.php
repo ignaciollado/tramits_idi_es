@@ -8,16 +8,20 @@
   $nif = $nifcif;
 	$adreca_mail = $session->get('username');
 	$telefono_cont = $session->get('telefono');
+
 		
 	if ( $byCEOSigned ) {
-    	$configuracion = new ConfiguracionModel();
-			$theUserCode = $adreca_mail;
-    	$data['ceoData'] = $configuracion->where('activeGeneralData', 'SI')->first();
-			$adreca_mail = $data['ceoData']['eMailDGerente'];
-			$telefono_cont = $data['ceoData']['telDGerente'];
+    $configuracion = new ConfiguracionModel();
+		$theUserCode = $adreca_mail;
+    $data['ceoData'] = $configuracion->where('activeGeneralData', 'SI')->first();
+		$adreca_mail = $data['ceoData']['eMailDGerente'];
+		$telefono_cont = $data['ceoData']['telDGerente'];
 	}
 
-	echo "<br><br><div class='alert alert-dark' role='alert'><strong>Destinació:</strong> ".$adreca_mail."<br>";
+	if (!$fromAutoSend) {
+		echo "<br><br><div class='alert alert-dark' role='alert'><strong>Destinació:</strong> ".$adreca_mail."</div><br>";
+	}
+
 		require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 		require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
 		require_once dirname(__FILE__) . '/model/AddresseeLine.php';
@@ -82,8 +86,9 @@
 		$doc = new Document;
  		$doc->filename = $nombreDocumento;
 		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento)));
-		echo "<strong>Document per signar:</strong> ".WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento."<br>";
-
+		if (!$fromAutoSend) {
+			echo "<strong>Document per signar:</strong> ".WRITEPATH.'documentos/'.$nif.'/informes/'.$nombreDocumento."<br>";
+		}
 		/* $doc->filename = "fichero_a_firmar.pdf";
 		$doc->base64 = chunk_split(base64_encode(file_get_contents('fichero_a_firmar.pdf')));
 		echo $doc->filename."-"; */
@@ -93,15 +98,16 @@
 		
 		// Set json
 		$json = json_encode($request);
-		/* echo "----".$json."-----"; */
 
 		$json = str_replace(array('\r','\n'),'',$json)."<br>";
-		$resultRequest = execute("requests", $json, __FUNCTION__);
+		$resultRequest = execute("requests", $json, __FUNCTION__, $fromAutoSend);
 		printResult($resultRequest, $last_insert_id, $nombreDocumento);
 
-	function execute($apiPath, $json, $methodName) {
+	function execute($apiPath, $json, $methodName, $fromAutoSend) {
 		$url = REST_API_URL.$apiPath;
-		echo "<br>-- "."\nMethod URL: ".$url."\n\n"."  --  ";
+		if (!$fromAutoSend) {
+			echo "<br>-- "."\nMethod URL: ".$url."\n\n"."  --  ";
+		}
 		
 		// Initiate curl
 		$ch = curl_init();
@@ -133,8 +139,18 @@
 		
 		// Execute
 		$result = curl_exec($ch);
-		echo "<br><strong>La respuesta ha sido:</strong><br>";
-		var_dump($result);
+		echo "<br><div class='alert alert-dark' role='alert'>";
+		echo "<strong>La respuesta ha sido:</strong><br>";
+		$data = json_decode($result, true);
+
+// Mostrar algunos datos
+echo "Sender User Code: " . $data['sender']['userCode'] . "<br>";
+echo "Subject: " . $data['subject'] . "<br>";
+echo "Message: " . $data['message'] . "<br>";
+$formatted_date = date("Y-m-d H:i:s", $data['sendDate']/ 1000);
+echo "Sent date: " . $formatted_date . "<br>";
+
+echo "Public Access ID: " . $data['publicAccessId'] . "<br>";
 		echo "</div>";
 		// Closing
 		curl_close($ch);
@@ -151,17 +167,7 @@
 		];
 
 		$builder->where('id', $last_insert_id);
-		$builder->update($data);	
-
-		/**echo "<div class='further'>";
-		echo "<div class='container'>";
-		echo "<div style='margin-top:100px;'></div>";
-		echo "<div class='alert alert-info'>S'ha generat correctament el document: <strong>".$tipo_Doc."</strong></div>";
-		echo "<div class='alert alert-info'>En la teva safata d'entrada de correu electrònic tens una petició per a signar electrònicament aquest document.</div>";
-		echo "<div><button class='btn-primary-itramits' onclick='goBack()'>Tornar</button></div>";
-		echo "<br>";
-		echo "</div>";
-		echo "</div>";*/
+		$builder->update($data);
 	}
 ?>
 
