@@ -48,7 +48,7 @@ class DocumentosGeneradosModel extends Model
     
     public function documentosGeneradosPorExpedYTipo($idExp, $convocatoria, $nombreDocumento) {
         $sql = "SELECT * FROM pindust_documentos_generados WHERE name = '$nombreDocumento'
-                AND id_sol = $idExp AND convocatoria = '$convocatoria'";      
+                AND id_sol = $idExp AND convocatoria = '$convocatoria'";
         $query = $this->query($sql);
         $row = $query->getRow();
         return $row;

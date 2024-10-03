@@ -1,6 +1,6 @@
-const mainNode = document.querySelector('body');
-mainNode.onload = configuraDetalle_OnLoad;
-
+/* let mainNodeISBA = document.querySelector('body');
+mainNodeISBA.onload = configuraDetalle_OnLoad;
+ */
 /* $(document).ready(function () {
 
 	idExp = document.getElementById("id")
@@ -15,7 +15,7 @@ mainNode.onload = configuraDetalle_OnLoad;
 	});
 }); */
 
-const form = document.getElementById('subir_faseExpedSolicitud');
+/* const form = document.getElementById('subir_faseExpedSolicitud'); */
 
 function openFaseExped(evt, faseName, backgroundColor, id) {
 	var i, tabcontent, tablinks;
@@ -394,10 +394,11 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	let fecha_not_req_just = document.getElementById("fecha_not_req_just").value // Data notificació requeriment justificació
 	let fecha_REC_requerimiento_justificacion = document.getElementById("fecha_REC_requerimiento_justificacion").value; // Data REC requeriment justificació
 	let ref_REC_requerimiento_justificacion = document.getElementById("ref_REC_requerimiento_justificacion").value; // Referència REC requeriment justificació
-
+	let fecha_inf_inicio_req_justif = document.getElementById("fecha_inf_inicio_req_justif").value;
+	let fecha_inf_post_enmienda_justif = document.getElementById("fecha_inf_post_enmienda_justif").value;
 	let fecha_firma_res_pago_just = document.getElementById("fecha_firma_res_pago_just").value; // Firma resolució de pagament i justificació
 
-	for (let step = 0; step < 10; step++) {
+	for (let step = 0; step < 12; step++) {
 		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
@@ -410,12 +411,14 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 		{ id: id, 
 			fecha_REC_justificacion: fecha_REC_justificacion, 
 			ref_REC_justificacion: ref_REC_justificacion,
-			fecha_firma_res_pago_just: fecha_firma_res_pago_just,
 			fecha_not_res_pago: fecha_not_res_pago, 
 			fecha_firma_requerimiento_justificacion: fecha_firma_requerimiento_justificacion,
 			fecha_not_req_just: fecha_not_req_just,
 			fecha_REC_requerimiento_justificacion: fecha_REC_requerimiento_justificacion,
-			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion
+			ref_REC_requerimiento_justificacion: ref_REC_requerimiento_justificacion,
+			fecha_inf_inicio_req_justif: fecha_inf_inicio_req_justif,
+			fecha_inf_post_enmienda_justif: fecha_inf_post_enmienda_justif,
+			fecha_firma_res_pago_just: fecha_firma_res_pago_just
 		},
 		
 		function (data) {
@@ -425,7 +428,7 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 				send_fase_4.className = "btn-itramits btn-success-itramits";
 				send_fase_4.disabled = false;
 			}
-			for (let step = 0; step < 10; step++) {
+			for (let step = 0; step < 12; step++) {
 				document.getElementsByClassName("form-group justificacion")[step].style.opacity = "1.0";
 			}			
 		}
@@ -444,8 +447,10 @@ function actualiza_fase_5_desestimiento_expediente_idi_isba(formName) {  //SE EM
 	let fecha_notificacion_desestimiento = document.getElementById("fecha_notificacion_desestimiento").value; // Data resolución revocació
 	let fecha_propuesta_rev = document.getElementById("fecha_propuesta_rev").value; // Data propuesta revocació
 	let fecha_resolucion_rev = document.getElementById("fecha_resolucion_rev").value; // Data resolución revocació
+	let fecha_not_pr_revocacion = document.getElementById("fecha_not_pr_revocacion").value;
+	let fecha_not_r_revocacion = document.getElementById("fecha_not_r_revocacion").value;
 
-	for (let step = 0; step < 6; step++) {
+	for (let step = 0; step < 8; step++) {
 		document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "0.1";
 	}
 
@@ -461,7 +466,9 @@ function actualiza_fase_5_desestimiento_expediente_idi_isba(formName) {  //SE EM
 			fecha_firma_resolucion_desestimiento: fecha_firma_resolucion_desestimiento,
 			fecha_notificacion_desestimiento: fecha_notificacion_desestimiento,
 			fecha_propuesta_rev: fecha_propuesta_rev,
-			fecha_resolucion_rev: fecha_resolucion_rev
+			fecha_resolucion_rev: fecha_resolucion_rev,
+			fecha_not_pr_revocacion: fecha_not_pr_revocacion,
+			fecha_not_r_revocacion: fecha_not_r_revocacion
 		},
 		
 		function (data) {
@@ -471,7 +478,7 @@ function actualiza_fase_5_desestimiento_expediente_idi_isba(formName) {  //SE EM
 				send_fase_5.className = "btn-itramits btn-success-itramits";
 				send_fase_5.disabled = false;
 			}
-			for (let step = 0; step < 6; step++) {
+			for (let step = 0; step < 8; step++) {
 				document.getElementsByClassName("form-group desistimiento")[step].style.opacity = "1.0";
 			}			
 		}
@@ -491,34 +498,6 @@ function validateForm(formName) {
 
 function avisarCambiosEnFormulario(fase, elemento) {
 	let respuesta = false;
-	return
-	if (elemento === "porcentajeConcedido") {
-			let actualizaimporteAyuda = "/public/assets/utils/actualiza_importe_ayuda.php?"+document.getElementById("programa").value+"/"+document.getElementById("porcentajeConcedido").value+"/"+document.getElementById("id").value;
-			fetch(actualizaimporteAyuda)
-				.then((response) => response.text())
-				.then((data) => {
-					document.getElementById("importeAyuda").value = data;
-				});
-	}
-
-	if (elemento === "ordenDePago") {
-		if (document.getElementById(elemento).value === "SI") {
-			let dateObj = new Date();
-			let month = String(dateObj.getMonth() + 1).padStart(2, '0');
-			let year = dateObj.getFullYear();
-			let day = String(dateObj.getDate()).padStart(2, '0');
-			date = year+"-"+month+"-"+day;
-			console.log(elemento +"-"+ date)
-			document.getElementById("fechaEnvioAdministracion").value = date;
-		} else {
-			document.getElementById("fechaEnvioAdministracion").value = '';
-		}
-		document.getElementById("fechaEnvioAdministracion").style.backgroundColor = "#000dff";
-		document.getElementById("fechaEnvioAdministracion").style.color = "#fff";
-
-	}
-
-	document.getElementById(fase).className = "error-msg";
 }
 
 function calcularFechaMaximaEnmienda(fecha, intervalo) {
@@ -1393,6 +1372,17 @@ function eliminaDocJustificacion_click() {
 	});	
 }
 
+function eliminaDocDesestimiento_click() {
+	let id = localStorage.getItem("documento_actual")
+  let idDoc = id.replace("_del", "")
+	document.getElementById(id).setAttribute("disabled", true);
+  document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+	let corresponde_documento = 'file_resguardoREC';
+	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
+		location.reload();
+	});	
+}
+
 function eliminaDocSolicitud_click() {
 	let id = localStorage.getItem("documento_actual")
     let idDoc = id.replace("_del", "")
@@ -1406,6 +1396,7 @@ function eliminaDocSolicitud_click() {
 
 function activarUploadBtn(element, btnToActivate) {
 	localStorage.setItem("requiredDocumentToUpload", element.id)
+	document.getElementById('selectedDocToUpload').value = element.id
 	document.getElementById(btnToActivate).removeAttribute("disabled")
 }
 
@@ -1461,35 +1452,49 @@ function cambiarSituacionExpediente (fase, elemento) {
 	}
 }
 
-function cambiarSituacionExpedienteYSetAuto (fase, elemento, setAuto) {
-	console.log (fase, elemento, setAuto, "cambiar situación expediente")
-	let theElement = document.getElementById(elemento)
+function cambiarSituacionExpedienteYSetAuto (fase, campoBBDD, setAuto) {
+	console.log (fase, campoBBDD, setAuto, "cambiar situación expediente")
+	let theElement = document.getElementById(campoBBDD)
 	let idExp = document.getElementById("id")
 	let nuevoEstado = ""
 	let itemID = 0
-	if (elemento === "fecha_requerimiento") {
+	if (campoBBDD === "fecha_requerimiento") {
 		nuevoEstado = "firmadoReq"
 		itemID = 6
 	}
-	if (elemento === "fecha_limite_justificacion") {
+	if (campoBBDD === "fecha_limite_justificacion") {
 		nuevoEstado = "pendienteJustificar"
 		itemID = 28
 	}
-	if (elemento === "fecha_not_propuesta_resolucion_prov") {
+	if (campoBBDD === "fecha_not_propuesta_resolucion_prov") {
 		nuevoEstado = "emitirIFPRProvPago"
 		itemID = 11
 	}
-	if (elemento === "fecha_limite_consultoria") {
+	if (campoBBDD === "fecha_limite_consultoria") {
 		nuevoEstado = "inicioConsultoria"
 		itemID = 20
 	}
 
+	if (campoBBDD === "fecha_firma_propuesta_resolucion_def") {
+		nuevoEstado = "emitidaPRDefinitiva"
+		itemID = 15
+	}
+
+	console.log (theElement.value.length)
 	if (theElement.value.length > 0) {
-		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_y_setauto_del_expediente.php?${nuevoEstado}/${idExp.value}/${setAuto}`;
+		let nuevaSituacion = `/public/assets/utils/actualiza_situacion_y_setauto_del_expediente.php?${nuevoEstado}/${idExp.value}/${setAuto}/${campoBBDD}_setauto`;
 			fetch(nuevaSituacion)
 				.then((response) => response.text())
 				.then((data) => {
 					document.getElementById("situacion_exped").options.item(itemID).selected = 'selected';
 			});
 	}
+}
+
+function getLocalStorage (variable) {
+	return localStorage.getItem(variable)
+}
+
+function setLocalStorage(id, nombre) {
+	localStorage.setItem("documento_actual", id);
 }

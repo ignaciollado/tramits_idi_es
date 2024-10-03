@@ -22,19 +22,19 @@
 				$request = execute("requests/" . $requestPublicAccessId, null, __FUNCTION__);
 				$respuesta = json_decode($request, true);
 				$estado_firma = $respuesta['status'];
-				switch ($estado_firma) {
+					switch ($estado_firma) {
 					case 'NOT_STARTED':
 						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";				
 						break;
 						case 'REJECTED':
 							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
 							$estado_firma .= "</a>";
-							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));			
+							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
 							break;
 							case 'COMPLETED':
 							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
 							$estado_firma .= "</a>";
-							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));					
+							$fecha_firma_PRDefinitiva = gmdate("Y-m-d", intval ($respuesta['endDate']/1000));			
 							break;
 						case 'IN_PROCESS':
 						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
@@ -48,9 +48,15 @@
 		<?php } ?>
 	</div>
 </div>
+<input type='text' disabled id="fechaFirmaPRDefinitiva" value="<?php echo $fecha_firma_PRDefinitiva;?>">
 <!-------------------------------------------------------------------------------------------------------------------->
-
+<!-- <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script> -->
 <script>
+	let setAutoDoc8 = document.getElementById("fecha_firma_propuesta_resolucion_def_setauto")
+	if (document.getElementById("fechaFirmaPRDefinitiva").value && setAutoDoc8.value === 'NO') {
+		document.getElementById("fecha_firma_propuesta_resolucion_def").value = document.getElementById("fechaFirmaPRDefinitiva").value
+		cambiarSituacionExpedienteYSetAuto('desde PR definitiva con requerimiento', 'fecha_firma_propuesta_resolucion_def', 'SI')
+	}
 	function enviaPropResolucionResDefinitivaConReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -78,14 +84,6 @@
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data firma informe favorable/desfavorable<br>"
 			todoBien = false
 		}
-/* 		if (!fecha_REC_enmienda.value) {
-			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data SEU esmena<br>"
-			todoBien = false
-		}
-		if (!ref_REC_enmienda.value) {
-			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Referència SEU esmena<br>"
-			todoBien = false
-		} */
 		if (!fecha_maxima_enmienda.value) {
 			infoMissingDataDoc8.innerHTML = infoMissingDataDoc8.innerHTML + "Data màxima per esmenar [data notificació req + 10 dies naturals]<br>"
 			todoBien = false

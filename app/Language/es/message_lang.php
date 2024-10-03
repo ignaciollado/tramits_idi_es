@@ -84,6 +84,7 @@ return [
    'tramite_procedimiento_texto'   => "Solicitud de ayudas a micro empresas, pequeñas y medianas empresas para cubrir gastos financieros de operaciones de financiación de inversiones productivas previstas en el Plan Estratégico Industrial 2018-2025",
 
    'titulo_justificacion_idigital'	  => "Solicitud de pago de la ayuda de cheques de consultoría para la competitividad industrial de las Islas Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada.",
+   'titulo_justificacion_isba'        => "",
    'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
    'subtitulo_sol_idigital'			  => "RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
 	https://www.caib.es/seucaib/es/200/persones/tramites/tramite/6087813/
@@ -108,14 +109,15 @@ return [
    'nota_info_felib'					  => "Una vez firmada la solicitud, recibirá otro correo electrónico con una copia del documento que se acaba de generar. Este documento, en formato pdf, nos lo puede que hacer llegar a la ADR Balears por medio de la dirección electrónica <strong>info@adrbalears.es</strong>. En caso de no hacerlo, no la podremos procesar.",
    'nota_info_rec_justif'			  => "Una vez firmado el requerimiento de justificación, recibirá un correo electrónico con una copia del documento firmado. Este documento, en formato pdf, nos lo tiene que hacer llegar al ADR Balears por medio de la <strong>SEDE ELECTRÓNICA DE CAIB (Acceso al trámite telemático)'</strong>. En caso de no hacerlo, no lo podremos procesar.",
 
-   'contacto_idi_pindust'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@adrbalears.es o por teléfono: 971 17 61 61 + 62894 ",
+   'contacto_idi_pindust'         => "Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@adrbalears.es o por teléfono: 971 17 61 61 + 62894 ",
    'contacto_idi_ils'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: pjordi@adrbalears.es o por teléfono: 971 17 61 61 + 62891 ",   
-   'contacto_idi_felib'             => "Si necesita contactarnos, lo puede hacer por correo electrónico: info@adrbalears.es o por teléfono: 971 17 61 61 + 62735 ",   
-   'enviado_correo_ok'                => "Hemos enviado un correo electrónico a la dirección ",
-   'una_vez_firmado'                  => "Una vez la recibamos por medio de la <strong>SEDE ELECTRÓNICA CAIB</strong>, procederemos a tramitarla.",
-   'intro_sol_idigital'			      => "Convocatoria para la concesión de ayudas de cheques de consultoría para impulsar a la industria de Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada.",
-   'intro_ils'			                  => "Las industrias interesadas en adherirse al programa han de rellenar el siguiente formulario de solicitud de adhesión",
-   'intro_ils_solicitud'			     => "Solicitud para la concesión de la marca Indústria Local Sostenible",
+   'contacto_idi_felib'           => "Si necesita contactarnos, lo puede hacer por correo electrónico: info@adrbalears.es o por teléfono: 971 17 61 61 + 62735 ",   
+   'enviado_correo_ok'            => "Hemos enviado un correo electrónico a la dirección ",
+   'una_vez_firmado'              => "Una vez la recibamos por medio de la <strong>SEDE ELECTRÓNICA CAIB</strong>, procederemos a tramitarla.",
+   'intro_sol_idigital'			    => "Convocatoria para la concesión de ayudas de cheques de consultoría para impulsar a la industria de Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada.",
+   'intro_sol_isba'  			    => "Convocatória para los años 2024 y 2025 de ajudas a la microempresa, pequeña y mediana empresa de carácter industrial de les Illes Balears que tengan aprobadas operaciones financieras avaladas por una Sociedad de Garantía Recíproca, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas",
+   'intro_ils'			             => "Las industrias interesadas en adherirse al programa han de rellenar el siguiente formulario de solicitud de adhesión",
+   'intro_ils_solicitud'			 => "Solicitud para la concesión de la marca Indústria Local Sostenible",
 
    'convocatoria_sol_idigital'	      => "Convocatoria ",
    'titulo_sol_idigital_consul'       => "Declaración responsable del consultor para el programa de transformación digital<br>en el marco del programa 'Idigital'",
@@ -164,6 +166,8 @@ return [
    'justificacion_doc'			        => "Documento",
    'justificacion_exp'			        => "Expediente",   
    'justificacion_declaracion'        => "Que he aportado la documentación siguiente como justificación de la convocatoria de ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada:",
+   'justificacion_declaracion_isba'   => "Que he aportado la documentación siguiente como justificación de la convocatoria de ayudas a la microempresa, pequeña y mediana empresa de carácter industrial de las Illes Balears que tengan aprobadas operaciones financieras avaladas por una Sociedad de Garantía Recíproca, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas.",
+   'justificacion_declarcion_isba_txt' => "Declaración de ISBA-SBR",
    'justificacion_declaracion_PII_PIII' => ", declaro que he aplicado los fondos percibidos al pago objeto de la convocatoria según el punto 12.2 las bases y adjunto la siguiente documentación como justificación",
     
    'justificacion_plan_p1'            => "El plan o los informes de acuerdo con el programa que justifico",

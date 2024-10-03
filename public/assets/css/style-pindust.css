@@ -357,8 +357,13 @@ code {
   margin-bottom: .4rem !important;
 }
 
+.small, small {
+  font-size: .8em;
+}
+
 .badge {
 	font-weight: 400;
+	width: 100%;
 }
 
 #formbox {

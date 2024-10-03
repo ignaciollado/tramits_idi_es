@@ -142,7 +142,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
 $parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('isba_17_resolucion_revocacion_no_justificar.antecedentes_5_9'));
 $parrafo_2 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_2);
-$parrafo_2 = str_replace("%FECHA_NOTIFICACION_PR_REVOCACION%", date_format(date_create($data['expediente']['fecha_resolucion_rev']),"d/m/Y"), $parrafo_2);
+$parrafo_2 = str_replace("%FECHA_NOTIFICACION_PR_REVOCACION%", date_format(date_create($data['expediente']['fecha_not_pr_revocacion']),"d/m/Y"), $parrafo_2);
 $parrafo_2 = str_replace("%TEXTO_LIBRE%", $data['expediente']['motivoResolucionRevocacionPorNoJustificar'], $parrafo_2);
 $html = '<ol start="5">'.$parrafo_2.'</ol>';
 $pdf->writeHTML($html, true, false, true, false, '');

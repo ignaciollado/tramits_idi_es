@@ -31,7 +31,7 @@
 		<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
   </fieldset> 
 
-	<?php echo lang('message_lang.intro_sol_idigital');?>
+	<?php echo lang('message_lang.intro_sol_isba').".<br><br>";?>
 
 <form action="<?php echo base_url('/public/index.php/expedientes/do_justificacion_upload_isba/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	<input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
@@ -140,7 +140,7 @@
 		</fieldset>
 
 		<fieldset> 
-			<legend><h4><?php echo lang('message_lang.justificacion_declaracion_isba');?>:</h4> </legend>
+			<legend><h4><?php echo lang('message_lang.justificacion_declarcion_isba_txt');?>:</h4> </legend>
 			<div class="panel-justificacion">
 				<div class = "content-file-upload">
 				<h5>[.pdf]:</h5>

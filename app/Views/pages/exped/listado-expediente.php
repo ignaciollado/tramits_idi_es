@@ -4,6 +4,10 @@
 
 <?php
 	//defined('BASEPATH') OR exit('No direct script access allowed');
+	$db = \Config\Database::connect();
+	date_default_timezone_set("Europe/Madrid");
+	$selloDeTiempo = date("d_m_Y_h_i_sa");
+	$builder = $db->table('pindust_expediente');
 	$sort_by = "";
 	$sort_order = "";
 	$session = session();
@@ -22,7 +26,7 @@
   			<datalist id="convocatoria">
 				<option value="2024">	
 				<option value="2023">
-    			<option value="2022">
+    		<option value="2022">
 				<option value="2021">
 				<option value="2020">
   			</datalist>
@@ -41,13 +45,13 @@
   			<datalist id="programa">
 			  	<option value="Programa iDigital 20">
     			<option value="Programa I">
-				<option value="Programa II">
-				<option value="Programa III">	
+					<option value="Programa II">
+					<option value="Programa III">	
     			<option value="Programa III actuacions corporatives">
     			<option value="Programa III actuacions producte">
-				<option value="Programa IV">
-				<option value="ILS">
-				<option value="ADR-ISBA">
+					<option value="Programa IV">
+					<option value="ILS">
+					<option value="ADR-ISBA">
   			</datalist>
   		</div>
 	</div>
@@ -61,12 +65,12 @@
                             <option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la <span class="seu-elect">SEU</span> electrònica</option>
                             <option <?php if ($session->get('situacion_fltr') == "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
                             <option <?php if ($session->get('situacion_fltr') == "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
-                            <option <?php if ($session->get('situacion_fltr') == "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb <br>requeriment pendent</option>
+                            <option <?php if ($session->get('situacion_fltr') == "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb requeriment pendent</option>
                             <option <?php if ($session->get('situacion_fltr') == "emitirReq") { echo "selected";}?> value = "emitirReq" class="sitSolicitud"> Emetre requeriment</option>
                             <option <?php if ($session->get('situacion_fltr') == "firmadoReq") { echo "selected";}?> value = "firmadoReq" class="sitSolicitud"> Requeriment signat pendent de notificar</option>
                             <option <?php if ($session->get('situacion_fltr') == "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitSolicitud"> Requeriment notificat</option>
-                            <option <?php if ($session->get('situacion_fltr') == "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment <br>per esmena</option>
-                            <option <?php if ($session->get('situacion_fltr') == "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per <br>esmena emès</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment per esmena</option>
+                            <option <?php if ($session->get('situacion_fltr') == "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per esmena emès</option>
 														<option <?php if ($session->get('situacion_fltr') == "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
@@ -281,34 +285,99 @@
 			}
 			/*  */
 			else if ($item['situacion'] == "emitirIFPRProvPago") {?>
-				<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl">
+				<div id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl">
 						<strong>IF + PR<br>Provisional emetre</strong>
+						<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
+						echo "<br>sense requeriment";
+						$tipoDocumento = 'doc_prop_res_definitiva_adr_isba';
+					} else {
+						echo "<br>amb requeriment";
+						$tipoDocumento = 'doc_prop_res_definitiva_con_requerimiento_adr_isba';
+					}?>
 				</div>
 				<div class=" add-margin-top">
 					<?php
-						$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
+						$date1 = date_create($item['fecha_not_propuesta_resolucion_prov']); 
 						$actualDate = date_create(date("Y-m-d"));
-						$date2 =  date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
-						$diff  = date_diff($actualDate, $date2);
-						$faltan = $diff->format("%a dies");
-						echo "<small>Lectura notificació:<br>".$item['fecha_not_propuesta_resolucion_prov']."</small><br>";
-						echo "<small>Notificació requeriment:<br>".$item['fecha_requerimiento_notif']."</small><br>";
-						echo "<small>Enviament Proposta resolució definitiva:<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
-						if (!$item['fecha_requerimiento_notif']) {
-							echo "window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_adr_isba'";
-					 	}
-						else {
-							echo "window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_requerimiento_adr_isba'";
-						}					
+						$date2 = date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
+						$diff = $actualDate->diff($date2);
+						$faltan = $diff->format("%r%a dies");
+						$faltanNumber = $diff->format("%r%a");
+						settype($faltanNumber, "integer");
 						if ($faltan >= 5) {?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-dark">
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-dark">
 						<?php } elseif ( $faltan > 0) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge blink">									
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge blink">									
 						<?php } else { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-danger">
-						<?php } 
-						echo 'resten <strong>'.$faltan .'</strong> naturals';
-						echo "</span>";
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-danger">
+						<?php }
+						echo "<small>S'enviarà el<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
+						echo "</span><br>";
+						echo '<span class="badge bg-warning"><small>(resten <strong>'.$faltan.'</strong> naturals)</small></span><br>';
+
+						if ( empty($item['fecha_requerimiento_sended']) && ($faltanNumber <= 0) && ($item['tipo_tramite'] === 'ADR-ISBA')) {/* Si no se ha hecho el envío automático y han transcurrido los 10 días*/
+							$data['id'] = $item['id'];
+							$data['idExp'] = $item['idExp'];
+							$data['convocatoria'] = $item['convocatoria'];
+							$data['programa'] = $item['tipo_tramite'];
+							$data['nifcif'] = mb_strtoupper($item['nif']);
+							$data['byCEOSigned'] = false;
+							$nombreDocumento = $tipoDocumento . ".pdf";
+							$data['nombreDocumento'] = str_replace("doc_", $item['idExp'] . "_" . $item['convocatoria'] . "_", $nombreDocumento);
+							$documentos = $db->table('pindust_documentos_generados');
+							$documentos->where('id_sol', $item['id']);
+							$documentos->where('corresponde_documento', $tipoDocumento);
+							$documentos->where('convocatoria', $item['convocatoria']);
+							$documentos->delete();
+				
+							$data_file = [
+								'id_sol' => $item['id'],
+								'name' =>  $tipoDocumento . ".pdf",
+								'type' => 'application/pdf',
+								'cifnif_propietario' => $item['nif'],
+								'tipo_tramite' => $item['tipo_tramite'],
+								'corresponde_documento' => $tipoDocumento,
+								'datetime_uploaded' => time(),
+								'convocatoria' => $item['convocatoria'],
+								'created_at'  => WRITEPATH . 'documentos/' . $data['nifcif'] . '/informes/' . $selloDeTiempo . '/' . $tipoDocumento . ".pdf",
+								'selloDeTiempo'  => $selloDeTiempo
+							];
+				
+							$documentos->insert($data_file);
+							$last_insert_id = $db->insertID();
+							$data['last_insert_id'] = $last_insert_id;
+							$dir = WRITEPATH . 'documentos/' . $item['nif'] . '/informes/';
+							if (!is_dir($dir)) {
+								mkdir($dir, 0775, true);
+							}
+							if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
+								$data_infor = [
+									'doc_prop_res_definitiva_adr_isba' => $last_insert_id
+								];
+								$builder->where('id', $item['id']);
+								$builder->update($data_infor);
+						  	echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
+								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
+					 		}
+							else {
+								$data_infor = [
+									'doc_prop_res_definitiva_con_requerimiento_adr_isba' => $last_insert_id
+								];
+								$builder->where('id', $item['id']);
+								$builder->update($data_infor);
+						 		echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-con-requerimiento-adr-isba', $data);
+								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
+							}					
+						} else {
+							if (!empty($item['fecha_requerimiento_sended'])) {
+							$formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000);
+							echo "<span class='badge bg-success'><small>Enviat el<br>".$formatted_date."</small></span>";
+							} else {
+								echo "<span class='badge bg-secondary'><small>Document pendent d'enviament</small></span>";
+							}
+						}
 					?>
 				</div>
 			<?php }
@@ -544,7 +613,7 @@ else if ($item['situacion'] == "empresaDenegada") {
   	}
   	return "";
 	}
-</>
+</script>
 
 <?php 
 function sumarDiasHabiles($fechaInicial, $dias) {

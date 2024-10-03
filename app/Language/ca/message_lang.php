@@ -85,6 +85,8 @@ return [
    'tramite_procedimiento_texto'   => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
 
    'titulo_justificacion_idigital' => "Sol·licitud de pagament de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
+   'titulo_justificacion_isba'     => "Sol·licitud de pagament d’ajuts a la microempresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives.",
+
    'titulo_requerimiento_idigital' => "Requeriment documentació/informació adicional.",
    'subtitulo_sol_idigital'		  => "RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
    https://www.caib.es/seucaib/ca/200/persones/tramites/tramite/6087813
@@ -117,6 +119,7 @@ return [
    'enviado_correo_ok'             => "Hem enviat un correu electrònic a la adreça ",
    'una_vez_firmado'               => "Una vegada la rebem, procedirem a tramitar-la.",
    'intro_sol_idigital'			     => "Convocatòria per a la concessió d'ajuts de xecs de consultoria per impulsar la indústria de Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
+   'intro_sol_isba'  			     => "Convocatòria per als anys 2024 i 2025 d’ajuts a la microempresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives",
    'intro_ils'			              => "Les indústries interessades a adherir-se al programa han d'emplenar el següent formulari de sol·licitud d'adhesió",
    'intro_ils_solicitud'			  => "Sol·licitud per a la concessió de la marca Indústria Local Sostenible",
 
@@ -171,6 +174,8 @@ municipi.",
    'justificacion_doc'			        => "Document",
    'justificacion_exp'			        => "Expedient",   
    'justificacion_declaracion'        => "Que he aportat la documentació següent com a justificació de la convocatòria d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en materèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
+   'justificacion_declaracion_isba'   => "Que he aportat la documentació següent com a justificació de la convocatòria d'ajuts a la microempresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives.",
+   'justificacion_declarcion_isba_txt' => "Declaració d'ISBA-SBR",
    'justificacion_declaracion_PII_PIII' => ", declar que he aplicat els fons percebuts al pagament objecte de la convocatòria segons el punt 12.2 de la mateixa, i adjunt la següent documentació com a justificació",
   
    'justificacion_plan_p1'            => "El pla o els informes d'acord amb el programa que justifico",
@@ -651,7 +656,7 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
                                              <li>Una Declaració responsable de la persona titular de l'empresa o de qui la representa legalment.</li>
                                        </ol>",
 'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
-'operacion_financiera_idi_isba'  => "DADES OPERACIÓ FINANÇERA<br>Finalitat de la inversió",
+'operacion_financiera_idi_isba'  => "DADES OPERACIÓ FINANCERA<br>Finalitat de la inversió",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTEC",
 
 'entidad_financiera_idi_isba'    => "Nom entitat finançera",
@@ -660,9 +665,9 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
 'carencia_prestamo_entidad_idi_isba'     => "Carència prèstec entitat finançera (si escau) en anys",
 
 'operacion_financiera_aval_idi_isba'  => "AVAL d'ISBA, SGR",
-'cuantia_prestamo_idi_isba'      => "Quantia aval de ISBA, SGR (€)",
-'plazo_prestamo_idi_isba'        => "Termini aval de ISBA, SGR (en anys)",
-'carencia_idi_isba'              => "Carència aval de ISBA, SGR (en anys)",
+'cuantia_prestamo_idi_isba'      => "Quantia aval d'ISBA, SGR (€)",
+'plazo_prestamo_idi_isba'        => "Termini aval d'ISBA, SGR (en anys)",
+'carencia_idi_isba'              => "Carència aval d'ISBA, SGR (en anys)",
 'fecha_del_aval_idi_isba'        => "Data formalització aval",
 'proyecto_de_inversion_idi_isba' => "PROJECTE D'INVERSIÓ",
 'proyecto_de_inversion_idi_isba_finalidad' => "Finalitat de la inversió",

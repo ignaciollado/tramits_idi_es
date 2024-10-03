@@ -9,7 +9,7 @@
         <?php }
       else {?>
 			<button id="btnResPagoSinReq" class='btn btn-primary btn-acto-admin' onclick="generaResolucionPagoSinReq(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
-			<div id='infoMissingDataDoc27' class="alert alert-danger ocultar btn-acto-admin"></div>
+			<div id='infoMissingDataDoc11' class="alert alert-danger ocultar btn-acto-admin"></div>
 		<?php }?>
 	</div>
   	<div class="card-itramits-footer">
@@ -55,57 +55,56 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
     let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 	 	let fecha_not_propuesta_resolucion_def = document.getElementById('fecha_not_propuesta_resolucion_def') //0000-00-00
 		let fecha_firma_res = document.getElementById('fecha_firma_res')
-
 		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
 		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
     let ref_REC_justificacion = document.getElementById('ref_REC_justificacion')
 
 		let btnResPagoSinReq = document.getElementById('btnResPagoSinReq')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
-		let infoMissingDataDoc27 = document.getElementById('infoMissingDataDoc27')
-		infoMissingDataDoc27.innerText = ""
+		let infoMissingDataDoc11 = document.getElementById('infoMissingDataDoc11')
+		infoMissingDataDoc11.innerText = ""
 
 		if(!fecha_not_propuesta_resolucion_prov.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data notificació proposta resolució provisional<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Notificació proposta resolució provisional<br>"
 			todoBien = false
 		}
 		if(!fecha_firma_propuesta_resolucion_prov.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma proposta resolució provisional<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Firma proposta resolució provisional<br>"
 			todoBien = false
 		}
 		if(!fecha_firma_propuesta_resolucion_def.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma proposta resolució definitiva<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Firma proposta resolució definitiva<br>"
 			todoBien = false
 		}
 	 	if(!fecha_not_propuesta_resolucion_def.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data notificació proposta resolució definitiva<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Notificació proposta resolució definitiva<br>"
 			todoBien = false
 		}
 		if(!fecha_firma_res.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data firma resolució<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
 
 		if(!fecha_notificacion_resolucion.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Notificació resolució<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Notificació resolució<br>"
 			todoBien = false
 		}
 	 	if(!fecha_REC_justificacion.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Data SEU justificació<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Data SEU justificació<br>"
 			todoBien = false
 		}
 		if(!ref_REC_justificacion.value) {
-			infoMissingDataDoc27.innerHTML = infoMissingDataDoc27.innerHTML + "Referència SEU justificació<br>"
+			infoMissingDataDoc11.innerHTML = infoMissingDataDoc11.innerHTML + "Referència SEU justificació<br>"
 			todoBien = false
 		}
 
 		if (todoBien) {
-			infoMissingDataDoc27.classList.add('ocultar')
+			infoMissingDataDoc11.classList.add('ocultar')
 			btnResPagoSinReq.disabled = true
 			btnResPagoSinReq.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_pago_y_justificacion_adr_isba'
 		} else {
-			infoMissingDataDoc27.classList.remove('ocultar')
+			infoMissingDataDoc11.classList.remove('ocultar')
 		}
 	}
 

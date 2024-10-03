@@ -4,12 +4,16 @@ require_once 'conectar_a_bbdd.php';
 $id = mysqli_real_escape_string($conn, $_POST["id"]); 
 $fecha_REC_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_REC_justificacion"]);
 $ref_REC_justificacion = mysqli_real_escape_string($conn, $_POST["ref_REC_justificacion"]);
-$fecha_firma_res_pago_just =  mysqli_real_escape_string($conn, $_POST["fecha_firma_res_pago_just"]);
 $fecha_not_res_pago = mysqli_real_escape_string($conn, $_POST["fecha_not_res_pago"]);
 $fecha_firma_requerimiento_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_firma_requerimiento_justificacion"]);
 $fecha_not_req_just = mysqli_real_escape_string($conn, $_POST["fecha_not_req_just"]);
 $fecha_REC_requerimiento_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_REC_requerimiento_justificacion"]);
 $ref_REC_requerimiento_justificacion = mysqli_real_escape_string($conn, $_POST["ref_REC_requerimiento_justificacion"]);
+
+$fecha_inf_inicio_req_justif = mysqli_real_escape_string($conn, $_POST["fecha_inf_inicio_req_justif"]);
+$fecha_inf_post_enmienda_justif = mysqli_real_escape_string($conn, $_POST["fecha_inf_post_enmienda_justif"]);
+$fecha_firma_res_pago_just =  mysqli_real_escape_string($conn, $_POST["fecha_firma_res_pago_just"]);
+
 /* $fecha_propuesta_rev = mysqli_real_escape_string($conn, $_POST["fecha_propuesta_rev"]);
 $fecha_resolucion_rev = mysqli_real_escape_string($conn, $_POST["fecha_resolucion_rev"]); */
 
@@ -52,7 +56,9 @@ $query = "UPDATE pindust_expediente
     fecha_REC_justificacion = '" . $date_REC_justificacion  ."',
     ref_REC_justificacion = '" . $ref_REC_justificacion  ."',
     fecha_firma_res_pago_just = '" . $fecha_firma_res_pago_just  ."',
-    fecha_not_res_pago  = '" . $fecha_not_res_pago  ."',
+    fecha_not_res_pago = '" . $fecha_not_res_pago  ."',
+    fecha_inf_inicio_req_justif = '" . $fecha_inf_inicio_req_justif ."',
+    fecha_inf_post_enmienda_justif = '" . $fecha_inf_post_enmienda_justif ."',
     fecha_firma_requerimiento_justificacion = '" . $fecha_firma_requerimiento_justificacion ."',
     fecha_not_req_just = '" . $fecha_not_req_just ."',
     fecha_REC_requerimiento_justificacion = '" . $date_REC_requerimiento_justificacion ."',

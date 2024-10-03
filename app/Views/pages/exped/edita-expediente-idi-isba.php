@@ -1,6 +1,12 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/public/assets/css/style-idi-isba.css"/>
+<script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
+<script>
+    const mainNodeISBA = document.querySelector('body');
+    mainNodeISBA.onload = configuraDetalle_OnLoad;
+    const form = document.getElementById('subir_faseExpedSolicitud');
+</script>
 <?php
     use App\Models\DocumentosGeneradosModel;
     use App\Models\MejorasExpedienteModel;
@@ -71,7 +77,6 @@
                         <label for="programa">Programa:</label>
 		    	        <input type="text" name="programa" list="listaProgramas" class="form-control" readonly disabled id = "programa" value="<?php echo $expedientes['tipo_tramite'];?>">
                     </div>
-
                     <div class="form-group general">
                         <label for="telefono_rep"><strong>Mòbil a efectes de notificacions:</strong></label>
                         <input type="tel"  readonly disabled name="telefono_rep" class="form-control" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_rep" placeholder = "Mòbil a efectes de notificacions" minlength = "9" maxlength = "9" value = "<?php echo $expedientes['telefono_rep']; ?>">
@@ -230,12 +235,12 @@
                             <option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la SEU electrònica</option>
                             <option <?php if ($expedientes['situacion'] === "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud"> Pendent de validar</option>
                             <option <?php if ($expedientes['situacion'] === "comprobarAnt") { echo "selected";}?> value = "comprobarAnt" class="sitSolicitud"> Comprovar Antonia</option>
-                            <option <?php if ($expedientes['situacion'] === "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb <br>requeriment pendent</option>
+                            <option <?php if ($expedientes['situacion'] === "comprobarAntReg") { echo "selected";}?> value = "comprobarAntReg" class="sitSolicitud"> Comprovar Antonia amb requeriment pendent</option>
                             <option <?php if ($expedientes['situacion'] === "emitirReq") { echo "selected";}?> value = "emitirReq" class="sitSolicitud"> Emetre requeriment</option>
                             <option <?php if ($expedientes['situacion'] === "firmadoReq") { echo "selected";}?> value = "firmadoReq" class="sitSolicitud"> Requeriment signat pendent de notificar</option>
                             <option <?php if ($expedientes['situacion'] === "notificadoReq") { echo "selected";}?> value = "notificadoReq" class="sitSolicitud"> Requeriment notificat</option>
-                            <option <?php if ($expedientes['situacion'] === "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment <br>per esmena</option>
-                            <option <?php if ($expedientes['situacion'] === "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per <br>esmena emès</option>
+                            <option <?php if ($expedientes['situacion'] === "emitirDesEnmienda") { echo "selected";}?> value = "emitirDesEnmienda" class="sitSolicitud"> Emetre desistiment per esmena</option>
+                            <option <?php if ($expedientes['situacion'] === "emitidoDesEnmienda") { echo "selected";}?> value = "emitidoDesEnmienda" class="sitSolicitud"> Desistiment per esmena emès</option>
 							<option <?php if ($expedientes['situacion'] === "Desestimiento") { echo "selected";}?> value = "Desestimiento" class="sitSolicitud"> Desistiment</option>
                         </optgroup>
                         <optgroup style="background-color:#1ecbe1;color:#000;" label="Fase validació:">
@@ -308,8 +313,8 @@
 			        <div>Estat</div>
 			        <div>Acció</div>
   		        </div>
-                <?php if($documentosDetalle){ ?>
-                <?php foreach($documentosDetalle as $docs_item): 
+                <?php if($documentosDetalle){ 
+                    foreach($documentosDetalle as $docs_item): 
 			            $path = $docs_item->created_at;
                         $id_doc = $docs_item->id;
 			            $parametro = explode ("/",$path);
@@ -351,11 +356,20 @@
                             case 'file_altaAutonomos':
                                 $nom_doc = "El certificat d'estar en el règim especial de treballadors autònoms o en un règim alternatiu equivalent";
                                 break;
+                            case 'file_contratoOperFinanc':
+                                $nom_doc = "Contracte operació finançera";
+                                break;
+                            case 'file_avalOperFinanc':
+                                $nom_doc = "Aval operació finançera";
+                                break;
+                            case 'file_declaracionResponsable':
+                                $nom_doc = "Declaració responsable de l'empresa";
+                                break;
 			                default:
 					            $nom_doc = "¿ ".$docs_item->corresponde_documento." ?"; 
 			            } 
                     ?>
-                    <?php if ($docs_item->docRequerido == 'SI') {?>
+                   
   			            <div id ="fila" class = "detail-wrapper-docs general">
     				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", "-", $docs_item->selloDeTiempo); ?></span>
 				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
@@ -377,18 +391,18 @@
                             ?>
                             <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class="detail-wrapper-docs-col">
-                                <button <?php if ($docs_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docs_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocRequeridoISBA"><strong>Elimina</strong></button>
+                                <button <?php if ($docs_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: setLocalStorage (this.id, this.name);" id="<?php echo $docs_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocRequeridoISBA"><strong>Elimina</strong></button>
                             </span>
   			            </div>
-                    <?php }?>
+                  
                 <?php endforeach; ?>
 
                 <div class="modal" id="eliminaDocRequeridoISBA">
 			        <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-            		            <h4>Aquesta acció no es podrá desfer</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h4 class="modal-title">Atenció: aquesta acció no es podrá desfer!</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
            			            <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
@@ -488,6 +502,9 @@
                                             <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedDetalleRequerido[]" id="nombrefaseExpedDetalleRequerido" size="20" accept=".pdf" multiple />
                                         </div>
                                         <div>
+                                            <input type='text' class='form-control' id="selectedDocToUpload" name="selectedDocToUpload">
+                                        </div>
+                                        <div>
                                             <input id="subeDocsDetalleRequeridoBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" disabled/>
                                         </div>
                                     </div>
@@ -560,7 +577,7 @@
                             ?>
                             <span id = "estado-doc-no-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
 	        		        <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docs_opc_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docs_opc_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocNoRequeridoISBA"><strong>Elimina</strong></button>
+                                <button <?php if ($docs_opc_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: setLocalStorage (this.id, this.name);" id="<?php echo $docs_opc_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocNoRequeridoISBA"><strong>Elimina</strong></button>
                             </span>
   			            </div>
                     <?php }?>
@@ -687,14 +704,14 @@
 			    <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-        		            Aquesta acció no es podrá desfer.
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h4 class="modal-title">Atenció: aquesta acció no es podrá desfer!</h4>
+                        <button type="button" class="close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
     			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocNoRequerido_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
@@ -729,8 +746,8 @@
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento"><strong>Firma requeriment:</strong></label>
-                    <input type = "date" name = "fecha_requerimiento" class = "form-control send_fase_1" id = "fecha_requerimiento" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento']), 'Y-m-d');?>"/>
-                    <input type = "text" readonly disabled name = "fecha_requerimiento_setauto" class = "form-control send_fase_1" id = "fecha_requerimiento_setauto" value = "<?php echo $expedientes['fecha_requerimiento_setauto'];?>"/>
+                    <input type = "date" disabled name = "fecha_requerimiento" class = "form-control" id = "fecha_requerimiento" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento']), 'Y-m-d');?>"/>
+                    <input type = "hidden" readonly disabled name = "fecha_requerimiento_setauto" class = "form-control send_fase_1" id = "fecha_requerimiento_setauto" value = "<?php echo $expedientes['fecha_requerimiento_setauto'];?>"/>
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento_notif"><strong>Notificació requeriment:</strong></label>
@@ -738,7 +755,7 @@
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento_notif"><strong>Data màxima per esmenar [data notificació req + 10 dies naturals]:</strong></label>
-                    <input type = "date" name = "fecha_maxima_enmienda" disabled readonly class = "form-control send_fase_1" id = "fecha_maxima_enmienda" value = "<?php echo date_format(date_create($expedientes['fecha_maxima_enmienda']), 'Y-m-d');?>"/>
+                    <input type = "date" name = "fecha_maxima_enmienda" disabled readonly class = "form-control" id = "fecha_maxima_enmienda" value = "<?php echo date_format(date_create($expedientes['fecha_maxima_enmienda']), 'Y-m-d');?>"/>
                 </div>
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
@@ -773,7 +790,7 @@
                         <div id ="mejora_<?php echo $mejorasSolicitud_item['id'];?>" class = "detail-wrapper-docs-3 detail-wrapper-docs-solicitud">
                             <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['fecha_rec_mejora'] ;?></span>
                             <span class = "detail-wrapper-docs-col"><?php echo $mejorasSolicitud_item['ref_rec_mejora'] ;?></span>
-                            <span class = "detail-wrapper-docs-col trash"><?php echo '<button onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="'.$mejorasSolicitud_item['id'].'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#modalEliminaMejora"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>';?></span>
+                            <span class = "detail-wrapper-docs-col trash"><?php echo '<button onclick = "javaScript: setLocalStorage (this.id, this.name);" id="'.$mejorasSolicitud_item['id'].'" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target="#modalEliminaMejora"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>';?></span>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -829,7 +846,7 @@
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocSolicitud"><strong>Elimina</strong></button>
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: setLocalStorage (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocSolicitud"><strong>Elimina</strong></button>
                             </span>
 	                        </div>
                         <?php 
@@ -842,14 +859,14 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-	    	                    <h4>Aquesta acció no es podrá desfer.</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <h4 class="modal-title">Atenció: aquesta acció no es podrá desfer!</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body"> 
     		            		<h5 class="modal-title">Eliminar definitivament el document?</h5>
                                 <div class="modal-footer">
-		                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocSolicitud_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+		                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
+                                    <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocSolicitud_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                                 </div>
                             </div>
                         </div>
@@ -896,7 +913,8 @@
             </div>
 		    <div class="form-group validacion">
                 <label for = "fecha_firma_propuesta_resolucion_def"><strong>Firma proposta resolució definitiva:</strong></label>
-                <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
+                <input type = "date" disabled name = "fecha_firma_propuesta_resolucion_def" class = "form-control" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
+                <input type = "hidden" readonly disabled name = "fecha_firma_propuesta_resolucion_def_setauto" class = "form-control send_fase_1" id = "fecha_firma_propuesta_resolucion_def_setauto" value = "<?php echo $expedientes['fecha_firma_propuesta_resolucion_def_setauto'];?>"/>
             </div>
 		    <div class="form-group validacion">
                 <label for = "fecha_not_propuesta_resolucion_def"><strong>Notificació proposta resolució definitiva:</strong></label>
@@ -984,7 +1002,7 @@
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><strong>Elimina</strong></button>
+                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: setLocalStorage (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocValidacion"><strong>Elimina</strong></button>
                             </span>
 	                </div>
                 <?php }
@@ -996,15 +1014,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Aquesta acció no es podrá desfer</h4>
-                            <button type="button" class="close" data-dismiss="modal"></button>
+                            <h4 class="modal-title">Atenció: aquesta acció no es podrá desfer!</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
     			            <h5 class="modal-title">Eliminar definitivament el document?</h5>
                         </div>
                         <div class="modal-footer">
-    		                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                            <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+    		                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
+                            <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocValidacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                         </div>
                     </div>
                 </div>
@@ -1045,7 +1063,7 @@
             <div class="form-group justificacion">
             <label for = "fecha_limite_justificacion"><strong>Data máxima justificació:</strong></label>
             <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
-            <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control send_fase_4" onchange = "javaScript: cambiarSituacionExpediente('send_fase_4', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
+            <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control" onchange = "javaScript: cambiarSituacionExpediente('send_fase_4', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
             <label for = "fecha_REC_justificacion"><strong>Data SEU justificació:</strong></label>
@@ -1063,6 +1081,16 @@
             <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament i justificació:</strong></label>
             <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
             </div>
+
+            <div class="form-group justificacion">
+            <label for = "fecha_inf_inicio_req_justif"><strong>Informe inici requeriment justificació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_inf_inicio_req_justif" class = "form-control send_fase_4" id = "fecha_inf_inicio_req_justif" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_inf_inicio_req_justif']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group justificacion">
+            <label for = "fecha_inf_post_enmienda_justif"><strong>Informe post esmena justificació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_inf_post_enmienda_justif" class = "form-control send_fase_4" id = "fecha_inf_post_enmienda_justif" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_inf_post_enmienda_justif']), 'Y-m-d');?>">
+            </div>  
+
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Firma requeriment justificació:</strong></label>
             <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
@@ -1079,7 +1107,7 @@
             <label for = "ref_REC_requerimiento_justificacion"><strong>Referència SEU requeriment justificació:</strong></label>
             <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
         	</div>
-        <!-- 		    <div class="form-group justificacion">
+            <!-- 		    <div class="form-group justificacion">
             <label for = "fecha_propuesta_rev"><strong>Proposta de revocació:</strong></label>
             <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_propuesta_rev" class = "form-control send_fase_4" id = "fecha_propuesta_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_propuesta_rev'];?>">
         	</div>
@@ -1142,7 +1170,7 @@
                     <div id ="fila" class = "detail-wrapper-docs-4 detail-wrapper-docs-justificacion">
                         <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
                         <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <?php
+                        <?php
                             switch ($docSolicitud_item->estado) {
 				                case 'Pendent':
     					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
@@ -1157,11 +1185,11 @@
     					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                        <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                         <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
                             <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: justificacion_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocJustificacion"><strong>Elimina</strong></button>';?></span>		
                         <?php } else {?>
-                            <span id = "accion" class = "detail-wrapper-docs-col small">No es pot esborrar</span>			
+                            <span id = "accion" class = "detail-wrapper-docs-col small">No es pot eliminar</span>			
                         <?php } ?>			
                     </div>
                 <?php }
@@ -1172,15 +1200,15 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4>Aquesta acció no es podrá desfer.</h4>
-                                <button type="button" class="close" data-dismiss="modal"></button>
+                            <h4 class="modal-title">Atenció: aquesta acció no es podrá desfer!</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <h5 class="modal-title">Eliminar definitivament aquest document?</h5>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocJustificacion_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>
@@ -1485,12 +1513,21 @@
                 <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_notificacion_desestimiento" class = "form-control send_fase_5" id = "fecha_notificacion_desestimiento" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_desestimiento']), 'Y-m-d');?>">
             </div>
             <div class="form-group desistimiento">
-                <label for = "fecha_propuesta_rev"><strong>Proposta de revocació:</strong></label>
+                <label for = "fecha_propuesta_rev"><strong>Proposta de Resolució de Revocació:</strong></label>
                 <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_propuesta_rev" class = "form-control send_fase_5" id = "fecha_propuesta_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_propuesta_rev'];?>">
         	</div>
             <div class="form-group desistimiento">
                 <label for = "fecha_resolucion_rev"><strong>Resolució de revocació:</strong></label>
                 <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_resolucion_rev" class = "form-control send_fase_5" id = "fecha_resolucion_rev"  maxlength = "16" value = "<?php echo $expedientes['fecha_resolucion_rev'];?>">
+        	</div>
+
+            <div class="form-group desistimiento">
+                <label for = "fecha_not_pr_revocacion"><strong>Notificació Proposta de Resolució de Revocació:</strong></label>
+                <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_pr_revocacion" class = "form-control send_fase_5" id = "fecha_not_pr_revocacion"  maxlength = "16" value = "<?php echo $expedientes['fecha_not_pr_revocacion'];?>">
+        	</div>
+            <div class="form-group desistimiento">
+                <label for = "fecha_not_r_revocacion"><strong>Notificació Resolució de revocació:</strong></label>
+                <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_r_revocacion" class = "form-control send_fase_5" id = "fecha_not_r_revocacion"  maxlength = "16" value = "<?php echo $expedientes['fecha_not_r_revocacion'];?>">
         	</div>
 
                 <?php
@@ -1559,7 +1596,7 @@
                     ?>
                     <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                     <span class = "detail-wrapper-docs-col trash">
-                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocDesestimiento"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
+                        <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: setLocalStorage (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocDesestimiento"><i class="bi bi-trash-fill" style="font-size: 1.5rem; color: red;"></i></button>
                     </span> 
                 </div>
             <?php }
@@ -1571,14 +1608,14 @@
                     <!-- Modal content-->
                     <div class="modal-content" style = "width: 60%;">
                         <div class="modal-header">
-    		                Aquesta acció no es podrá desfer.
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Atenció: aquesta acció no es podrá desfer!</h4>
+                        <button type="button" class="close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
     	    		        <h5 class="modal-title">Eliminar definitivament el document?</h5>
                             <div class="modal-footer">
-    		                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancela</button>
-                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocDesestimiento_click();" class="btn btn-default" data-dismiss="modal">Confirma</button>
+    		                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancela</button>
+                                <button type="button" class="btn btn-danger" onclick = "javaScript: eliminaDocDesestimiento_click();" class="btn btn-default" data-bs-dismiss="modal">Confirma</button>
                             </div>
                         </div>
                     </div>

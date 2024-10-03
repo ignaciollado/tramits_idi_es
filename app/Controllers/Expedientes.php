@@ -542,13 +542,14 @@ class Expedientes extends Controller
 				}
 				if ($nuevoDocumento->isValid() && !$nuevoDocumento->hasMoved()) {
 					// $newName = $nuevoDocumento->getRandomName();
+					$correspondeDocumento = $this->request->getPost('selectedDocToUpload');
 					$nuevoDocumento->move($fullPath, str_replace(" ", "_", $fileName));
 					$data_file = [
 						'name' 						=> str_replace(" ", "_", $fileName),
 						'type' 						=> $nuevoDocumento->getClientMimeType(),
 						'cifnif_propietario' 		=> $nif,
 						'tipo_tramite' 				=> $tipo_tramite,
-						'corresponde_documento' 	=> 'file_faseExped' . $faseExped,
+						'corresponde_documento' 	=> $correspondeDocumento, //'file_faseExped' . $faseExped,
 						'datetime_uploaded' 		=> time(),
 						'convocatoria' 				=> $convocatoria,
 						'created_at' 				=> $nuevoDocumento->getTempName(),
@@ -964,8 +965,8 @@ class Expedientes extends Controller
 		$data['id'] = $id;
 		$data['memoriaEconomicaJustificativa'] = $listaEnumerativaDeGastos;
 		$data['importeTotalJustificado'] = $totalEnvoiceLines;
-		echo view('templates/header/header_form_requerimiento_resultado', $data);
-		echo view('pages/forms/documento-justificacion-ayuda', $data);
+		echo view('templates/header/header_form_requerimiento_isba_resultado', $data);
+		echo view('pages/forms/documento-justificacion-ayuda-isba', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-justificacion', $data);
 		echo view('templates/footer/footer');
