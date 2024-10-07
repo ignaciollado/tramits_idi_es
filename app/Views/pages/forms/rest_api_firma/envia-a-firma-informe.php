@@ -9,7 +9,6 @@
 	$adreca_mail = $session->get('username');
 	$telefono_cont = $session->get('telefono');
 
-		
 	if ( $byCEOSigned ) {
     $configuracion = new ConfiguracionModel();
 		$theUserCode = $adreca_mail;
@@ -69,7 +68,7 @@
 	$request->addresseeLines = $lines;
 		
 	// Subject, message and sender notification level
-	$request->subject = "Gestor de tràmits administratius"; //lang('message_lang.titulo_sol_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
+	$request->subject = $nombreDocumento; //lang('message_lang.titulo_sol_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
 	$request->message = "Document per signar"; //lang('message_lang.subtitulo_sol_idigital'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 	$request->senderNotificationLevel = "ALL";
 	$request->signatureLevel = "ALL";
@@ -95,7 +94,7 @@
 
 	$json = str_replace(array('\r','\n'),'',$json)."<br>";
 	$resultRequest = execute("requests", $json, __FUNCTION__);
-	printResult($resultRequest, $last_insert_id);
+	printResult($resultRequest, $last_insert_id, $nombreDocumento);
 
 	function execute($apiPath, $json, $methodName) {
 		$url = REST_API_URL.$apiPath;
@@ -131,13 +130,13 @@
 		// Execute
 		$result = curl_exec($ch);
 		$data = json_decode($result, true);
-    echo "<br><div class='alert alert-dark' role='alert'>";
+		echo "<br><div class='alert alert-dark' role='alert'>";
 		echo "<strong>Dades de la sol·licitud de signatura:</strong><br>";
-    echo "Destinatari: <strong>" . $data['addresseeLines'][0]['addresseeGroups'][0]['userEntities'][0]['userCode'] . "</strong><br>";
-    echo "Dotument per signar: <strong>" . $data['documentsToSign'][0]['filename'] . "</strong><br>";
-    $formatted_date = date("Y-m-d H:i:s", $data['sendDate']/ 1000);
-    echo "Data de enviament: " . $formatted_date . "<br>";
-    echo "Public Access ID: " . $data['publicAccessId'] . "<br>";
+		echo "Destinatari: <strong>" . $data['addresseeLines'][0]['addresseeGroups'][0]['userEntities'][0]['userCode'] . "</strong><br>";
+		echo "Dotument per signar: <strong>" . $data['documentsToSign'][0]['filename'] . "</strong><br>";
+		$formatted_date = date("Y-m-d H:i:s", $data['sendDate']/ 1000);
+		echo "Data de enviament: " . $formatted_date . "<br>";
+		echo "Public Access ID: " . $data['publicAccessId'] . "<br>";
 		echo "</div>";
 		// Closing
 		curl_close($ch);

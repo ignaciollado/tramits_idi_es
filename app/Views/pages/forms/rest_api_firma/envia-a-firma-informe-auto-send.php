@@ -116,9 +116,9 @@ if (is_null($json)) {
 	curl_setopt($ch, CURLOPT_HTTPGET, 1);
 } else {
 	if ($methodName=='createUser') {
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 	} else {
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 	}
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json; charset=utf-8","Accept:application/json, text/javascript, */*; q=0.01"));
