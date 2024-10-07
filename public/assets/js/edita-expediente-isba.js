@@ -1420,7 +1420,7 @@ function actualizaMotivoRequerimientoIdiIsba_click() {  //SE EMPLEA
 }
 
 function cambiarSituacionExpediente (fase, elemento) {
-	console.log (fase, elemento, "cambiar situación expediente")
+	console.log (fase, elemento, "cambiar situación expediente isba")
 	let theElement = document.getElementById(elemento)
 	let idExp = document.getElementById("id")
 	let nuevoEstado = ""
@@ -1434,8 +1434,8 @@ function cambiarSituacionExpediente (fase, elemento) {
 		itemID = 28
 	}
 	if (elemento === "fecha_not_propuesta_resolucion_prov") {
-		nuevoEstado = "emitirIFPRProvPago"
-		itemID = 11
+		nuevoEstado = "notificadoIFPRProvPago"
+		itemID = 13
 	}
 	if (elemento === "fecha_limite_consultoria") {
 		nuevoEstado = "inicioConsultoria"

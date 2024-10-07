@@ -22,7 +22,6 @@
 	$id = $expedientes['id'];
 	$nifcif = $expedientes['nif'];
     $convocatoriaEnCurso = $configuracion['convocatoria'];
-
     $esAdmin = ($session->get('rol') == 'admin');
     $esConvoActual = ($convocatoria == $convocatoriaEnCurso);
 
@@ -217,7 +216,7 @@
 
     		        <div class="form-group general">
                         <label for="tecnicoAsignado">Tècnica asignada:</label>
-                        <input type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
+                        <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type="text" name="tecnicoAsignado" onChange="avisarCambiosEnFormulario('send_fase_0')" list="listaTecnicos" class="form-control send_fase_0" id = "tecnicoAsignado" min="0" placeholder="Tècnica asignada" value="<?php echo $expedientes['tecnicoAsignado']; ?>">
 			            <datalist id="listaTecnicos">
     			            <option value="Vittoria">
 				            <option value="Caterina Mas">
@@ -229,7 +228,7 @@
 
 		            <div class="form-group general">
                         <label for = "situacion_exped"><strong>Situació:</strong></label>
-                        <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onchange="compruebaExistenciaFecha('send_fase_0', this.id)">
+                        <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> onchange="compruebaExistenciaFecha('send_fase_0', this.id)">
     		    		<option disabled <?php if ($expedientes['situacion'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
                         <optgroup style="background-color:#F51720;color:#000;" label="Fase sol·licitud:">
                             <option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud"> No ha passat per la SEU electrònica</option>
@@ -377,21 +376,23 @@
                             <?php
                             switch ($docs_item->estado) {
 				                case 'Pendent':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            //$estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+
 					                break;
     				            case 'Aprovat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "" title="Es una documentació correcta">Aprovat</button>';
 					                break;
 	    			            case 'Rebutjat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "" title="Es una documentació equivocada">Rebutjat</button>';
 					                break;
                                 default:
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
                             <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
                             <span class="detail-wrapper-docs-col">
-                                <button <?php if ($docs_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: setLocalStorage (this.id, this.name);" id="<?php echo $docs_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocRequeridoISBA"><strong>Elimina</strong></button>
+                                <button  <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> <?php if ($docs_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: setLocalStorage (this.id, this.name);" id="<?php echo $docs_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#eliminaDocRequeridoISBA"><strong>Elimina</strong></button>
                             </span>
   			            </div>
                   
@@ -730,32 +731,32 @@
            <form action="" onload = "javaScript: actualizaRequired();" name="exped-fase-1" id="exped-fase-1" method="post" accept-charset="utf-8">
                 <div class="form-group solicitud">
                     <label for = "fecha_REC"><strong>Data SEU sol·licitud:</strong></label>
-			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
+			        <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
                 </div>
                 <div class="form-group solicitud">
                     <label for = "ref_REC"><strong>Referència SEU sol·licitud:</strong></label>
-                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
+                    <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
                 </div>
                 <div class="form-group solicitud">
                     <label for = "fecha_REC_enmienda"><strong>Data SEU esmena:</strong></label>
-		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
+		    	    <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
                 </div>		
                 <div class="form-group solicitud">
                     <label for = "ref_REC_enmienda"><strong>Referència SEU esmena:</strong></label>
-                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_enmienda" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
+                    <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_enmienda" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento"><strong>Firma requeriment:</strong></label>
-                    <input type = "date" disabled name = "fecha_requerimiento" class = "form-control" id = "fecha_requerimiento" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento']), 'Y-m-d');?>"/>
+                    <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" disabled name = "fecha_requerimiento" class = "form-control" id = "fecha_requerimiento" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento']), 'Y-m-d');?>"/>
                     <input type = "hidden" readonly disabled name = "fecha_requerimiento_setauto" class = "form-control send_fase_1" id = "fecha_requerimiento_setauto" value = "<?php echo $expedientes['fecha_requerimiento_setauto'];?>"/>
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento_notif"><strong>Notificació requeriment:</strong></label>
-                    <input type = "date" name = "fecha_requerimiento_notif" onchange = "javaScript: calcularFechaMaximaEnmienda(this.value, 10);" class = "form-control send_fase_1" id = "fecha_requerimiento_notif" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento_notif']), 'Y-m-d');?>"/>
+                    <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" name = "fecha_requerimiento_notif" onchange = "javaScript: calcularFechaMaximaEnmienda(this.value, 10);" class = "form-control send_fase_1" id = "fecha_requerimiento_notif" value = "<?php echo date_format(date_create($expedientes['fecha_requerimiento_notif']), 'Y-m-d');?>"/>
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento_notif"><strong>Data màxima per esmenar [data notificació req + 10 dies naturals]:</strong></label>
-                    <input type = "date" name = "fecha_maxima_enmienda" disabled readonly class = "form-control" id = "fecha_maxima_enmienda" value = "<?php echo date_format(date_create($expedientes['fecha_maxima_enmienda']), 'Y-m-d');?>"/>
+                    <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" name = "fecha_maxima_enmienda" disabled readonly class = "form-control" id = "fecha_maxima_enmienda" value = "<?php echo date_format(date_create($expedientes['fecha_maxima_enmienda']), 'Y-m-d');?>"/>
                 </div>
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
@@ -1058,7 +1059,7 @@
             <div class="col">
             <div class="form-group justificacion">
             <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
-            <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_4" id = "fecha_notificacion_resolucion" onchange = "javaScript: setFechaLimiteJustificacion(this.value, 6);" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_4" id = "fecha_notificacion_resolucion" onchange = "javaScript: setFechaLimiteJustificacion(this.value, 6);" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
             <label for = "fecha_limite_justificacion"><strong>Data máxima justificació:</strong></label>
@@ -1067,45 +1068,45 @@
             </div>
             <div class="form-group justificacion">
             <label for = "fecha_REC_justificacion"><strong>Data SEU justificació:</strong></label>
-			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
+			<input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
             </div>	
 		    <div class="form-group justificacion">
             <label for = "ref_REC_justificacion"><strong>Referència SEU justificació:</strong></label>
-            <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
         	</div>
             <div class="form-group justificacion">
             <label for = "fecha_firma_res_pago_just"><strong>Firma resolució de pagament i justificació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_res_pago_just" class = "form-control send_fase_4" id = "fecha_firma_res_pago_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res_pago_just']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
             <label for = "fecha_not_res_pago"><strong>Notificació resolució de pagament i justificació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_res_pago" class = "form-control send_fase_4" id = "fecha_not_res_pago" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_res_pago']), 'Y-m-d');?>">
             </div>
 
             <div class="form-group justificacion">
             <label for = "fecha_inf_inicio_req_justif"><strong>Informe inici requeriment justificació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_inf_inicio_req_justif" class = "form-control send_fase_4" id = "fecha_inf_inicio_req_justif" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_inf_inicio_req_justif']), 'Y-m-d');?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" placeholder = "dd/mm/yyyy" name = "fecha_inf_inicio_req_justif" class = "form-control send_fase_4" id = "fecha_inf_inicio_req_justif" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_inf_inicio_req_justif']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
             <label for = "fecha_inf_post_enmienda_justif"><strong>Informe post esmena justificació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_inf_post_enmienda_justif" class = "form-control send_fase_4" id = "fecha_inf_post_enmienda_justif" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_inf_post_enmienda_justif']), 'Y-m-d');?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" placeholder = "dd/mm/yyyy" name = "fecha_inf_post_enmienda_justif" class = "form-control send_fase_4" id = "fecha_inf_post_enmienda_justif" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_inf_post_enmienda_justif']), 'Y-m-d');?>">
             </div>  
 
 		    <div class="form-group justificacion">
             <label for = "fecha_firma_requerimiento_justificacion"><strong>Firma requeriment justificació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
             <label for = "fecha_not_req_just"><strong>Notificació requeriment de justificació:</strong></label>
-            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_req_just" class = "form-control send_fase_4" id = "fecha_not_req_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_req_just']), 'Y-m-d');?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" placeholder = "dd/mm/yyyy" name = "fecha_not_req_just" class = "form-control send_fase_4" id = "fecha_not_req_just" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_req_just']), 'Y-m-d');?>">
             </div>            
             <div class="form-group justificacion">
             <label for = "fecha_REC_requerimiento_justificacion"><strong>Data SEU requeriment justificació:</strong></label>
-			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
+			<input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
             </div>	
 		    <div class="form-group justificacion">
             <label for = "ref_REC_requerimiento_justificacion"><strong>Referència SEU requeriment justificació:</strong></label>
-            <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
+            <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
         	</div>
             <!-- 		    <div class="form-group justificacion">
             <label for = "fecha_propuesta_rev"><strong>Proposta de revocació:</strong></label>
@@ -1121,7 +1122,7 @@
                 <?php }
                     else {?>
                     <div class="form-group">
-                        <button type="button"  onclick = "javaScript: actualiza_fase_4_justificacion_expediente_idi_isba('exped-fase-4');" id="send_fase_4" onChange="avisarCambiosEnFormulario('send_fase_4', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
+                        <button <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type="button"  onclick = "javaScript: actualiza_fase_4_justificacion_expediente_idi_isba('exped-fase-4');" id="send_fase_4" onChange="avisarCambiosEnFormulario('send_fase_4', this.id)" class="btn-itramits btn-success-itramits">Actualitzar</button>
                     </div>
                 <?php }?>
             
@@ -1130,26 +1131,8 @@
         </form>
         </div>
         <div class="col docsExpediente">
-        <h3>Actes administratius:</h3>
-        <ol start="11">
-            <!----------------- Resolución de pago y justificación ----------------------------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-y-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->  
-            <!----------------------------------------- Informe inicio requerimento justificación ---------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/inicio-requerimiento-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Requerimiento de subsanación justificación --------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/requerimiento-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe post enmienda de la documentación de justificación ----------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/informe-postenmienda-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-        </ol>
-        <ul> 
-            <!----------------------------------------- Envía formulario de justificación------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/envia-formulario-justificacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
-        </ul>    
+            <!-- <h3>Actes administratius:</h3> -->
+            
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
@@ -1230,8 +1213,7 @@
                         </div>
                     <?php }?>
                 </form>             
-        </div>
-
+            </div>
         </div>
         <div class="col docsExpediente">
             <h3>Justificants:</h3>

@@ -286,100 +286,9 @@
 			/*  */
 			else if ($item['situacion'] == "emitirIFPRProvPago") {?>
 				<div id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl">
-						<strong>IF + PR<br>Provisional emetre</strong>
-						<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
-						echo "<br>sense requeriment";
-						$tipoDocumento = 'doc_prop_res_definitiva_adr_isba';
-					} else {
-						echo "<br>amb requeriment";
-						$tipoDocumento = 'doc_prop_res_definitiva_con_requerimiento_adr_isba';
-					}?>
+						<strong>IF + PR<br>Provisional emetre</strong>	
 				</div>
-				<div class=" add-margin-top">
-					<?php
-						$date1 = date_create($item['fecha_not_propuesta_resolucion_prov']); 
-						$actualDate = date_create(date("Y-m-d"));
-						$date2 = date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
-						$diff = $actualDate->diff($date2);
-						$faltan = $diff->format("%r%a dies");
-						$faltanNumber = $diff->format("%r%a");
-						settype($faltanNumber, "integer");
-						if ($faltan >= 5) {?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-dark">
-						<?php } elseif ( $faltan > 0) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge blink">									
-						<?php } else { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-danger">
-						<?php }
-						echo "<small>S'enviarà el<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
-						echo "</span><br>";
-						echo '<span class="badge bg-warning"><small>(resten <strong>'.$faltan.'</strong> naturals)</small></span><br>';
 
-						if ( empty($item['fecha_requerimiento_sended']) && ($faltanNumber <= 0) && ($item['tipo_tramite'] === 'ADR-ISBA')) {/* Si no se ha hecho el envío automático y han transcurrido los 10 días*/
-							$data['id'] = $item['id'];
-							$data['idExp'] = $item['idExp'];
-							$data['convocatoria'] = $item['convocatoria'];
-							$data['programa'] = $item['tipo_tramite'];
-							$data['nifcif'] = mb_strtoupper($item['nif']);
-							$data['byCEOSigned'] = false;
-							$nombreDocumento = $tipoDocumento . ".pdf";
-							$data['nombreDocumento'] = str_replace("doc_", $item['idExp'] . "_" . $item['convocatoria'] . "_", $nombreDocumento);
-							$documentos = $db->table('pindust_documentos_generados');
-							$documentos->where('id_sol', $item['id']);
-							$documentos->where('corresponde_documento', $tipoDocumento);
-							$documentos->where('convocatoria', $item['convocatoria']);
-							$documentos->delete();
-				
-							$data_file = [
-								'id_sol' => $item['id'],
-								'name' =>  $tipoDocumento . ".pdf",
-								'type' => 'application/pdf',
-								'cifnif_propietario' => $item['nif'],
-								'tipo_tramite' => $item['tipo_tramite'],
-								'corresponde_documento' => $tipoDocumento,
-								'datetime_uploaded' => time(),
-								'convocatoria' => $item['convocatoria'],
-								'created_at'  => WRITEPATH . 'documentos/' . $data['nifcif'] . '/informes/' . $selloDeTiempo . '/' . $tipoDocumento . ".pdf",
-								'selloDeTiempo'  => $selloDeTiempo
-							];
-				
-							$documentos->insert($data_file);
-							$last_insert_id = $db->insertID();
-							$data['last_insert_id'] = $last_insert_id;
-							$dir = WRITEPATH . 'documentos/' . $item['nif'] . '/informes/';
-							if (!is_dir($dir)) {
-								mkdir($dir, 0775, true);
-							}
-							if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
-								$data_infor = [
-									'doc_prop_res_definitiva_adr_isba' => $last_insert_id
-								];
-								$builder->where('id', $item['id']);
-								$builder->update($data_infor);
-						  	echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
-								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
-					 		}
-							else {
-								$data_infor = [
-									'doc_prop_res_definitiva_con_requerimiento_adr_isba' => $last_insert_id
-								];
-								$builder->where('id', $item['id']);
-								$builder->update($data_infor);
-						 		echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-con-requerimiento-adr-isba', $data);
-								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
-							}					
-						} else {
-							if (!empty($item['fecha_requerimiento_sended'])) {
-							$formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000);
-							echo "<span class='badge bg-success'><small>Enviat el<br>".$formatted_date."</small></span>";
-							} else {
-								echo "<span class='badge bg-secondary'><small>Document pendent d'enviament</small></span>";
-							}
-						}
-					?>
-				</div>
 			<?php }
 			else if ($item['situacion'] == "emitidoIFPRProvPago") {?>
 				<div  id="'.$item['id'].'" class = "btn-itramits validacion-lbl validacion-lbl-emesa">
@@ -406,9 +315,105 @@
 					?>
 				</div> -->
 			<?php }
-			else if ($item['situacion'] == "notificadoIFPRProvPago") {
-					echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha notificat PR Provisional"><strong>PR Provisional<br> NOTIFICADA (DATA) AUT</strong></span></div>';				
-			}
+			else if ($item['situacion'] == "notificadoIFPRProvPago") {?>
+				<div id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
+					<span title="Aquesta sol·licitud s'ha notificat PR Provisional">
+					<strong>PR Provisional<br> NOTIFICADA (DATA) AUT</strong>
+					<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
+						echo "<br>sense requeriment";
+						$tipoDocumento = 'doc_prop_res_definitiva_adr_isba';
+					} else {
+						echo "<br>amb requeriment";
+						$tipoDocumento = 'doc_prop_res_definitiva_con_requerimiento_adr_isba';
+					}?>
+					</span>
+				</div>
+				<div class=" add-margin-top">
+					<?php
+						$date1 = date_create($item['fecha_not_propuesta_resolucion_prov']); 
+						$actualDate = date_create(date("Y-m-d"));
+						$date2 = date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
+						$diff = $actualDate->diff($date2);
+						$faltan = $diff->format("%r%a dies");
+						$faltanNumber = $diff->format("%r%a");
+						settype($faltanNumber, "integer");
+						if ($faltan >= 5) {?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-dark">
+						<?php } elseif ( $faltan > 0) { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge blink">									
+						<?php } else { ?>
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-danger">
+						<?php }
+						echo "<small>S'enviarà el<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
+						echo "</span><br>";
+						echo '<span class="badge bg-warning"><small>(resten <strong>'.$faltan.'</strong> naturals)</small></span><br>';
+						if ( empty($item['fecha_requerimiento_sended']) && ($faltanNumber <= 0) && ($item['tipo_tramite'] === 'ADR-ISBA')) { /* Si no se ha hecho el envío automático y han transcurrido los 10 días*/
+							$data['id'] = $item['id'];
+							$data['idExp'] = $item['idExp'];
+							$data['convocatoria'] = $item['convocatoria'];
+							$data['programa'] = $item['tipo_tramite'];
+							$data['nifcif'] = mb_strtoupper($item['nif']);
+							$data['byCEOSigned'] = false;
+							$nombreDocumento = $tipoDocumento . ".pdf";
+							$data['nombreDocumento'] = str_replace("doc_", $item['idExp'] . "_" . $item['convocatoria'] . "_", $nombreDocumento);
+							$documentos = $db->table('pindust_documentos_generados');
+							$documentos->where('id_sol', $item['id']);
+							$documentos->where('corresponde_documento', $tipoDocumento);
+							$documentos->where('convocatoria', $item['convocatoria']);
+							$documentos->delete();
+					
+							$data_file = [
+								'id_sol' => $item['id'],
+								'name' =>  $tipoDocumento . ".pdf",
+								'type' => 'application/pdf',
+								'cifnif_propietario' => $item['nif'],
+								'tipo_tramite' => $item['tipo_tramite'],
+								'corresponde_documento' => $tipoDocumento,
+								'datetime_uploaded' => time(),
+								'convocatoria' => $item['convocatoria'],
+								'created_at'  => WRITEPATH . 'documentos/' . $data['nifcif'] . '/informes/' . $selloDeTiempo . '/' . $tipoDocumento . ".pdf",
+								'selloDeTiempo'  => $selloDeTiempo
+							];
+					
+							$documentos->insert($data_file);
+							$last_insert_id = $db->insertID();
+							$data['last_insert_id'] = $last_insert_id;
+							$dir = WRITEPATH . 'documentos/' . $item['nif'] . '/informes/';
+							if (!is_dir($dir)) {
+								mkdir($dir, 0775, true);
+							}
+							if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
+								$data_infor = [
+									'doc_prop_res_definitiva_adr_isba' => $last_insert_id
+								];
+								$builder->where('id', $item['id']);
+								$builder->update($data_infor);
+								echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
+								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
+							}
+							else {
+								$data_infor = [
+									'doc_prop_res_definitiva_con_requerimiento_adr_isba' => $last_insert_id
+								];
+								$builder->where('id', $item['id']);
+								$builder->update($data_infor);
+							 echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-con-requerimiento-adr-isba', $data);
+								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
+							}					
+						}	else {
+							if (!empty($item['fecha_requerimiento_sended'])) {
+								$formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000);
+								echo "<span class='badge bg-success'><small>Enviat el<br>".$formatted_date."</small></span>";
+								} else {
+								echo "<span class='badge bg-secondary'><small>Document pendent d'enviament</small></span>";
+							}
+						}
+					?>
+				</div>
+
+			<?php }
 			else if ($item['situacion'] == "emitirPRDefinitiva")  {?>
 				<div  id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl">
 					<span title="Aquesta sol·licitud s'ha d'emetre PR pagament definitiva"><strong>PR definitiva Enviada a firma</strong></span>
