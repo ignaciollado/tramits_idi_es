@@ -250,8 +250,7 @@
 		<span id = "empresa_consultor" class = "detail-wrapper-col"><?php echo $item['empresa_consultor']; ?></span>
 		<span id = "nom_consultor" class = "detail-wrapper-col"><?php echo $item['nom_consultor']; ?></span>
 		<span id = "fecha_not_propuesta_resolucion_def" class = "detail-wrapper-col"><?php echo $item['fecha_not_propuesta_resolucion_def']; ?></span>
-		<span id = "situacion" class = "detail-wrapper-col">			
-			
+		<span id = "situacion" class = "detail-wrapper-col">
 			<?php 
 			if ($item['situacion'] == "pendiente") {
 				echo '<div  id="'.$item['id'].'" class = "btn-idi btn-itramits solicitud-final"><span title="Aquesta sol·licitud está pendent de validació">Pendent <br>de validar</span></div>'; 
@@ -294,32 +293,12 @@
 				<div  id="'.$item['id'].'" class = "btn-itramits validacion-lbl validacion-lbl-emesa">
 						<strong>IF + PR Provisional emesa</strong>
 				</div>
-<!-- 				<div class="btn-itramits validacion-lbl add-margin-top">
-					<?php
-						$date1  = date_create($item['fecha_not_propuesta_resolucion_prov']); 
-						$actualDate = date_create(date("Y-m-d"));
-						$date2 =  date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
-						$diff  = date_diff($actualDate, $date2);
-						$faltan = $diff->format("%a dies");
-						echo "<small>Lectura notificació:<br>".$item['fecha_not_propuesta_resolucion_prov']."</small><br>";
-						echo "<small>Enviament acte administratiu nº ¿7-8?:<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
-						if ($faltan >= 5) {?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-dark">
-						<?php } elseif ( $faltan > 0) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge blink">									
-						<?php } else { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable, acte administratiu nº ¿7-8?" class="badge bg-danger">
-						<?php } 
-						echo 'resten <strong>'.$faltan .'</strong> naturals';
-						echo "</span>";
-					?>
-				</div> -->
 			<?php }
 			else if ($item['situacion'] == "notificadoIFPRProvPago") {?>
 				<div id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
 					<span title="Aquesta sol·licitud s'ha notificat PR Provisional">
-					<strong>PR Provisional<br> NOTIFICADA (DATA) AUT</strong>
-					<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
+					<strong>PR Provisional<br>NOTIFICADA (DATA) AUT</strong>
+					<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va con o sin requerimiento */
 						echo "<br>sense requeriment";
 						$tipoDocumento = 'doc_prop_res_definitiva_adr_isba';
 					} else {
@@ -330,6 +309,7 @@
 				</div>
 				<div class=" add-margin-top">
 					<?php
+						echo "<span class='badge badge-primary'><small>S'enviarà el ".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10).'</small></span><br>';
 						$date1 = date_create($item['fecha_not_propuesta_resolucion_prov']); 
 						$actualDate = date_create(date("Y-m-d"));
 						$date2 = date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
@@ -340,14 +320,14 @@
 						if ($faltan >= 5) {?>
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-dark">
 						<?php } elseif ( $faltan > 0) { ?>
-							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge blink">									
+							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-warning blink">									
 						<?php } else { ?>
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-danger">
 						<?php }
-						echo "<small>S'enviarà el<br>".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)."</small><br>";
+						echo "<small>(resten <strong>".$faltan."</strong> naturals)</small><br>";
 						echo "</span><br>";
-						echo '<span class="badge bg-warning"><small>(resten <strong>'.$faltan.'</strong> naturals)</small></span><br>';
-						if ( empty($item['fecha_requerimiento_sended']) && ($faltanNumber <= 0) && ($item['tipo_tramite'] === 'ADR-ISBA')) { /* Si no se ha hecho el envío automático y han transcurrido los 10 días*/
+						
+						if (empty($item['fecha_requerimiento_sended']) && ($faltanNumber <= 0) && ($item['tipo_tramite'] === 'ADR-ISBA')) { /* Si no se ha hecho el envío automático y han transcurrido los 10 días*/
 							$data['id'] = $item['id'];
 							$data['idExp'] = $item['idExp'];
 							$data['convocatoria'] = $item['convocatoria'];
