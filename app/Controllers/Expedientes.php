@@ -365,7 +365,6 @@ class Expedientes extends Controller
 
 		$data['titulo'] = "Expedient: " . $idExp . "/" . $convocatoria . " (" . $tipo_tramite . ") - " . $solicitante . " - " . $nifcif;
 
-
 		//------------------------------- Todos los actos administrativos de este expediente ---------------------
 		$data['documentosGenerados'] = $documentosGeneradosExp->getPorExped($id, $convocatoria);
 	
@@ -403,7 +402,6 @@ class Expedientes extends Controller
 		$data['documentosFacturasEmitidasIsba'] = $modelJustificacion->listDocumentosJustificacion('file_FacturasEmitidasIsba', $id);
 		$data['documentosJustificantesPagoIsba'] = $modelJustificacion->listDocumentosJustificacion('file_JustificantesPagoIsba', $id);
 		$data['documentosDeclaracionIsba'] = $modelJustificacion->listDocumentosJustificacion('file_DeclaracionIsba', $id);
-
 
 		/* Todos los documentos de un expediente en la pestaña DETALL */
 		$data['documentosDetalle'] = $modelDocumentos->allExpedienteDocuments($id, 'detalle');

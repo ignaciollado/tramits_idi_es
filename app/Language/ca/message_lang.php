@@ -180,6 +180,7 @@ municipi.",
   
    'justificacion_plan_p1'            => "El pla o els informes d'acord amb el programa que justifico",
    'justificacion_plan_doc'           => "Memòria tècnica d'actuació: El <strong>pla o informe</strong> d'acord amb el programa que justifico",
+   'justificacion_informe_calculo'    => "Els informes de càlcul de petjada de carboni",
 
    'justificacion_plan_p2_p3'         => "El pla o els informes",
    'justificacion_mem_econom_titulo'  => "Memòria econòmica justificativa",

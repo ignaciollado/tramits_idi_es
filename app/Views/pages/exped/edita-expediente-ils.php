@@ -1001,19 +1001,25 @@
         </div>
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
-        <ol start="17">
-            <!----------------------------------------- Resolución de concesión ---------------------------------------------->
-            <li><?php echo "Resolució concessió ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion.php';?></li>
+        <ol start="10">
+            <!-------------------------------------- Informe favorable renovación -------------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-informe-favorable.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe inicio requerimiento de subsanación -------------------------->
-            <li><?php echo "Informe inici requeriment d'esmena ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/inicio-requerimiento-subsanacion.php';?></li>
+            <!-------------------------------------- Informe favorable renovación con requerimiento -------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-informe-favorable-con-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Requerimiento de subsanación ----------------------------------------->
-            <li><?php echo "Requeriment d'esmena ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/requerimiento-subsanacion.php';?></li>
+            <!-------------------------------------- Informe desfavorable renovación ----------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-informe-desfavorable.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------- Informe sobre la subsanación de la documentación de justificación ---->
-            <li><?php echo "Informe sobre l'esmena de la documentació de justificació ¿ToDo?"; //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-sobre-subsanacion.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->                            
+            <!----------------------------------------- Resolución de renovación marca --------------------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-resolucion-renovacion-marca.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------- Resolución de renovación marca con requimiento ---->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-resolucion-renovacion-marca-con-requerimiento.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------- Resolución de revocación ---->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-resolucion-revocacion.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->                                                 
         </ol>    
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
@@ -1105,12 +1111,7 @@
             <div id = "tab_plan">
                 <button class="accordion-exped">
                 <?php
-                    if ($expedientes['tipo_tramite'] =='Programa I') {
-	                    echo lang('message_lang.justificacion_plan_p1').": ";
-                    }
-                    else {
-	                    echo lang('message_lang.justificacion_plan_p2_p3').": ";
-                    }
+                   echo lang('message_lang.justificacion_informe_calculo');
                 ?>
                 </button>
                 <div class="panel-exped">
@@ -1155,7 +1156,7 @@
             </div>
 
             <div id = "tab_facturas">
-                <button class="accordion-exped">Factures de l'habilitador digital:</button>
+                <button class="accordion-exped">Compromís de reducció de les emissió</button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
@@ -1206,7 +1207,7 @@
                 </div>
             </div>
 
-            <div id = "tab_pagos" class="active">
+            <!-- <div id = "tab_pagos" class="active">
                 <button class="accordion-exped">Justificants de pagament a l'habilitador digital:</button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
@@ -1252,14 +1253,14 @@
                     <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-            </div>
+            </div> -->
 
-            <div><a href="<?php echo base_url('public/index.php/home/justificacion_cheques/').'/'.$expedientes['id'].'/'.$expedientes['nif'].'/'.$expedientes['tipo_tramite'].'/'.$expedientes['convocatoria'].'/ca';?>" target = "_blank">Formulari de requeriment de justificació</a></div>
+            <div><a href="<?php echo base_url('public/index.php/home/justificacion_cheques/').'/'.$expedientes['id'].'/'.$expedientes['nif'].'/'.$expedientes['tipo_tramite'].'/'.$expedientes['convocatoria'].'/ca';?>" target = "_blank">Formulari per a la renovació de la marca ILS</a></div>
             <div><a href="<?php 
                 if (isset($selloDeTiempo)) {
                     echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_justificacion_solicitud_ayuda.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');
                 }
-            ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a></div>
+            ?>" target = "_blank">Mostrar la declaració responsable sense signar</a></div>
         </div>
     </div>
 </div>

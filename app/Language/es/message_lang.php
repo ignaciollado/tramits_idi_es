@@ -172,6 +172,8 @@ return [
     
    'justificacion_plan_p1'            => "El plan o los informes de acuerdo con el programa que justifico",
    'justificacion_plan_doc'           => "Memoria técnica de actuación: El <strong>plan o informe</strong> de acuerdo con el programa que justifico",
+   'justificacion_informe_calculo'    => "Los informes de cálculo de la huella de carbono",
+   
    'justificacion_plan_p2_p3'         => "El plan o los informes",
    'justificacion_mem_econom_titulo'  => "Memoria económica justificativa",
    'justificacion_mem_econom'         => "Memoria económica justificativa (anexo 7) junto con",
