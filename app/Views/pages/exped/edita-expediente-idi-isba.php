@@ -1062,7 +1062,7 @@
             <input <?php if($session->get('rol') === 'adr-isba') { echo 'disabled';}?> type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_4" id = "fecha_notificacion_resolucion" onchange = "javaScript: setFechaLimiteJustificacion(this.value, 6);" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
-            <label for = "fecha_limite_justificacion"><strong>Data máxima justificació:</strong></label>
+            <label for = "fecha_limite_justificacion"><strong>Data límit per justificar:</strong></label>
             <span class="form-control send_fase_3 ocultar" id="nueva_fecha_limite_justificacion"></span>
             <input disabled readonly type = "date" name = "fecha_limite_justificacion" class = "form-control" onchange = "javaScript: cambiarSituacionExpediente('send_fase_4', this.id)" id = "fecha_limite_justificacion" value = "<?php echo date_format(date_create($expedientes['fecha_limite_justificacion']), 'Y-m-d');?>">
             </div>
