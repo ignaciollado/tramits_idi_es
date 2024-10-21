@@ -63,6 +63,22 @@ a:hover {
   width: 50rem;
 }
 
+
+.picture-gallery{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  border: 1px dotted lightgray;
+}
+
+.card {
+  border: 1px solid #43584a;
+}
+
+.card-picture-list:hover {
+  background-color: rgba(54, 84, 70, .1);
+}
+
 @media only screen and (max-width: 600px) {
   .card__empresas, .container {
     grid-template-columns: 1fr;

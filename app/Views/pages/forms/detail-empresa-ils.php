@@ -1,12 +1,10 @@
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/public/assets/css/ils.css"/>	
-
-
+<link rel="stylesheet" type="text/css" href="/public/assets/css/ils.css"/>
 	<!-- The form filter area visible -->
 <section class='container empresa__detail' onload="">
 <?php
-
+    helper('filesystem');
 		if ($empresas) {
 
 					 foreach ($empresas as $row) {
@@ -23,8 +21,9 @@
         <h2 class="card-title"><?php echo  $row->empresa;?></h2>
         <p class="card-text"><?php echo  $row->nif;?></p>
         <p class="card-text"><?php echo  $row->domicilio;?></p>
-        <?php $domicilio = str_split($row->domicilio, "#");?>
-        <p class="card-text"><?php echo  $domicilio[1]." (".$domicilio[0].")" ;?></p>
+        <?php //$domicilio = str_split($row->domicilio, "#");?>
+        <p class="card-text"><?php $row->domicilio;?></p>
+        <p class="card-text"><?php //echo  $domicilio[1]." (".$domicilio[0].")" ;?></p>
         <p class="card-text"><?php echo  $row->telefono;?></p>
         <p class="card-text"><a target="_blank" href="<?php echo "https://". $row->sitio_web_empresa;?>"><?php echo  $row->sitio_web_empresa;?></a></p>
         <p class="card-text"><a target="_blank" href="<?php echo $row->video_empresa;?>"><?php echo  $row->video_empresa;?></a></p>
@@ -32,6 +31,32 @@
         <p class="card-text"><?php echo  $row->canales_comercializacion_empresa;?></p>
       </div>
     </article>
+
+    <h1>Our Picture gallery</h1>
+    <section class="picture-gallery">
+      <?php for ($x = 0; $x <= 9; $x++) {;?>
+        <div class="card card-picture-list">
+
+          <?php if ($row->nif === 'A07166085' || $row->nif === 'A07090707') {?>
+              <img src="https://docs.tramits.adrbalears.es/writable/gallery-ils/<?php echo  $row->nif.'/'.($x+1).".jpg";?>" class="card-img-top" alt="<?php echo  $row->empresa;?>">
+              <div class="card-body">
+              </div>
+            <?php } else {?>
+              <img src="https://dummyjson.com/image/520" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h4>Picture #<?php echo ($x+1);?></h4>
+                <p class="card-text">If you send us ten photos of your company, we will publish them in this section.</p>
+                <h5>Picture specification needed</h5>
+                <ul>
+                  <li>Max width: 1320px</li>
+                  <li>Pixels depth: 72 ppp</li>
+                  <li>File format: webp or jpg</li>
+              </ul>
+            </div>
+          <?php }?>
+        </div>
+      <?php };?>
+    </section>
 
   <!-- <div class="card" aria-hidden="true" id="cardPlaceHolder">
   <img src="https://via.placeholder.com/450" class="card-img-top" alt="...">
