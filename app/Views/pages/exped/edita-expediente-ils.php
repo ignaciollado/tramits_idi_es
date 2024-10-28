@@ -632,22 +632,22 @@
     <div class="col-sm-2 docsExpediente">
         <h3>Detall:</h3>   
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>" onload = "javaScript: actualizaRequired();" name="exped-fase-2" id="exped-fase-2" method="post" accept-charset="utf-8">
-                <div class="form-group validacion">
-                    <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable :</strong></label>
-		            <input type = "date" name = "fecha_infor_fav" class = "form-control send_fase_2" id = "fecha_infor_fav" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav']), 'Y-m-d');?>">
-                </div>
-                <div class="form-group validacion">
-                    <label for = "fecha_infor_fav_desf"><strong>Firma informe desfavorable:</strong></label>
-		            <input type = "date" name = "fecha_infor_desf" class = "form-control send_fase_2" id = "fecha_infor_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_desf']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_resolucion"><strong>Firma resolució:</strong></label>
-                    <input type = "date" name = "fecha_resolucion" class = "form-control send_fase_2" id = "fecha_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_resolucion']), 'Y-m-d');?>">
-                </div>
-    		    <div class="form-group validacion">
-                    <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució concessió:</strong></label>
-                    <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
-                </div>
+            <div class="form-group validacion">
+                <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable :</strong></label>
+		        <input type = "date" name = "fecha_infor_fav" class = "form-control send_fase_2" id = "fecha_infor_fav" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav']), 'Y-m-d');?>">
+            </div>
+            <div class="form-group validacion">
+                <label for = "fecha_infor_fav_desf"><strong>Firma informe desfavorable:</strong></label>
+		        <input type = "date" name = "fecha_infor_desf" class = "form-control send_fase_2" id = "fecha_infor_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_desf']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_resolucion"><strong>Firma resolució:</strong></label>
+                <input type = "date" name = "fecha_resolucion" class = "form-control send_fase_2" id = "fecha_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_resolucion']), 'Y-m-d');?>">
+            </div>
+    		<div class="form-group validacion">
+                <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució concessió:</strong></label>
+                <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
+            </div>
 
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>

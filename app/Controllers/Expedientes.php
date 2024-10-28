@@ -1788,7 +1788,6 @@ class Expedientes extends Controller
 
 		$save = $documentos->insert($data_file);
 		$last_insert_id = $db->insertID();
-		//$last_insert_id = $save->connID->insert_id;
 		$data['last_insert_id'] = $last_insert_id;
 		$dir = WRITEPATH . 'documentos/' . $request->uri->getSegment(6) . '/informes/';
 
@@ -1797,7 +1796,7 @@ class Expedientes extends Controller
 		}
 		echo view('templates/header/header', $data);
 		switch ($tipoDocumento) {
-			case "doc_requeriment_ils": //va a VIAFIRMA DOC 1
+			case "doc_requeriment_ils": 													//DOC 1
 				$data_infor = [
 					'doc_requeriment_ils' => $last_insert_id
 				];
@@ -1813,7 +1812,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_res_desestimiento_por_no_enmendar_ils": //SIN VIAFIRMA DOC 2
+			case "doc_res_desestimiento_por_no_enmendar_ils": 		//DOC 2
 				$data_infor = [
 					'doc_res_desestimiento_por_no_enmendar_ils' => $last_insert_id
 				];
@@ -1829,7 +1828,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_informe_favorable_con_requerimiento_ils": //va a VIAFIRMA DOC 3
+			case "doc_informe_favorable_con_requerimiento_ils": 	//DOC 3
 				$data_infor = [
 					'doc_informe_favorable_con_requerimiento_ils' => $last_insert_id
 				];
@@ -1845,7 +1844,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_informe_favorable_sin_requerimiento_ils": //va a VIAFIRMA DOC 4
+			case "doc_informe_favorable_sin_requerimiento_ils": 	//DOC 4
 				$data_infor = [
 					'doc_informe_favorable_con_requerimiento_ils' => $last_insert_id
 				];
@@ -1861,7 +1860,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_informe_desfavorable_con_requerimiento_ils": //va a VIAFIRMA DOC 5
+			case "doc_informe_desfavorable_con_requerimiento_ils"://DOC 5
 				$data_infor = [
 					'doc_informe_desfavorable_con_requerimiento_ils' => $last_insert_id
 				];
@@ -1877,7 +1876,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_res_denegacion_con_req_ils": //SIN VIAFIRMA DOC 6
+			case "doc_res_denegacion_con_req_ils": 								//DOC 6
 				$data_infor = [
 					'doc_res_denegacion_con_req_ils' => $last_insert_id
 				];
@@ -1893,7 +1892,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_resolucion_concesion_adhesion_ils":  //SIN VIAFIRMA DOC 7
+			case "doc_resolucion_concesion_adhesion_ils":  				//DOC 7
 				$data_infor = [
 					'doc_res_concesion_adhesion_sin_req_ils' => $last_insert_id
 				];
@@ -1904,12 +1903,10 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/ILS/pdf/plt-resolucion-concesion-adhesion-ils', $data);
-				/* 					echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-					echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data); */
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_resolucion_concesion_adhesion_con_req_ils":  //va a VIAFIRMA DOC 8
+			case "doc_resolucion_concesion_adhesion_con_req_ils": //DOC 8
 				$data_infor = [
 					'doc_res_concesion_adhesion_con_req_ils' => $last_insert_id
 				];
@@ -1924,6 +1921,96 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
+			case "doc_renovacion_informe_favorable_ils":					//DOC 10
+				$data_infor = [
+					'doc_renovacion_informe_favorable_ils' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$save_exped = $builder->update($data_infor);
+				$data_footer = [
+					'tipoDoc' => " Renovació: informe favorable ILS",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-informe-favorable-ils', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+			case "doc_renovacion_informe_favorable_con_req_ils":	//DOC 11
+				$data_infor = [
+					'doc_renovacion_informe_favorable_con_req_ils' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$save_exped = $builder->update($data_infor);
+				$data_footer = [
+					'tipoDoc' => " Renovació: informe favorable con requerimiento ILS",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-informe-favorable-con-requerimiento-ils', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+			case 'doc_renovacion_informe_desfavorable_ils':				//DOC 12
+				$data_infor = [
+					'doc_renovacion_informe_desfavorable_ils' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$save_exped = $builder->update($data_infor);
+				$data_footer = [
+					'tipoDoc' => " Renovació: informe desfavorable ILS",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-informe-desfavorable-ils', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;
+			case 'doc_renovacion_resolucion_renovacion_marca_ils': //DOC 13
+				$data_infor = [
+					'doc_renovacion_resolucion_renovacion_marca_ils' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$save_exped = $builder->update($data_infor);
+				$data_footer = [
+					'tipoDoc' => " Renovació: resolució de renovació marca ILS",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-resolucion-renovacion-marca-ils', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);				
+				break;
+			case 'doc_renovacion_resolucion_renovacion_marca_con_req_ils': //DOC 14
+				$data_infor = [
+					'doc_renovacion_resolucion_renovacion_marca_con_req_ils' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$save_exped = $builder->update($data_infor);
+				$data_footer = [
+					'tipoDoc' => " Renovació: resolució de renovació marca amb requeriment ILS",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-resolucion-renovacion-marca-con-requerimiento-ils', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);						
+				break;
+			case 'doc_renovacion_resolucion_revocacion_ils': //DOC 15
+				$data_infor = [
+					'doc_renovacion_resolucion_revocacion_ils' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$save_exped = $builder->update($data_infor);
+				$data_footer = [
+					'tipoDoc' => " Renovació: resolució de revocació marca ILS",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-resolucion-revocacion-marca-ils', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);						
+				break;				
 		}
 	}
 

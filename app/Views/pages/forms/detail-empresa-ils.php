@@ -2,7 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/public/assets/css/ils.css"/>
 	<!-- The form filter area visible -->
-<section class='container empresa__detail' onload="window.scroll({top: 0, left: 0, behavior: 'smooth',})">
+<section class='container empresa__detail'>
 <?php
     helper('filesystem');
     $request = \Config\Services::request();
@@ -50,6 +50,7 @@
               </ul>
             </div>
           <?php }?>
+          
         </div>
       <?php };?>
     </section>

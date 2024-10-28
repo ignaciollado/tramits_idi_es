@@ -2,7 +2,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	 Informe favorable <strong>amb</strong> requeriment
-	
   	</div>
   	<div class="card-itramits-footer">
 
