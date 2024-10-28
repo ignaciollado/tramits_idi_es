@@ -63,8 +63,7 @@ a:hover {
   width: 50rem;
 }
 
-
-.picture-gallery{
+.picture-gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -79,8 +78,12 @@ a:hover {
   background-color: rgba(54, 84, 70, .1);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 795px) {
   .card__empresas, .container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  .picture-gallery {
     grid-template-columns: 1fr;
   }
   .alert-success {
