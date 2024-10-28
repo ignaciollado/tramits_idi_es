@@ -64,14 +64,86 @@ a:hover {
 }
 
 .picture-gallery {
+  --s: 100%; /* control the size */
+  --g: 1rem;  /* control the gap */
+  --f: 2;   /* control the scale factor */
+  
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  border: 1px dotted lightgray;
+  gap: var(--g);
+  width: 100%;
+  grid-template-columns: repeat(2,auto);
+  place-content: center;
+  background: transparent;
+  margin-top: 1rem;
 }
+
+.hello {
+  opacity: 1 !important;
+}
+.full {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.full .content {
+  background-color: rgba(0,0,0,0.75) !important;
+  height: auto;
+  width: 100%;
+  display: grid;
+}
+.full .content img {
+  left: 50%;
+  transform: translate3d(0, 0, 0);
+  animation: zoomin 1s ease;
+  max-width: 100%;
+  max-height: auto;
+  margin: auto;
+}
+.byebye {
+  opacity: 0;
+}
+.byebye:hover {
+  transform: scale(0.2) !important;
+}
+.picture-gallery {
+  display: grid;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 8px;
+}
+.picture-gallery img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 16px #333;
+  transition: all 1.5s ease;
+}
+.picture-gallery img:hover {
+  box-shadow: 0 0 32px #333;
+}
+.picture-gallery .content {
+  padding: 4px;
+}
+.picture-gallery .card-picture-list {
+  transition: grid-row-start 300ms linear;
+  transition: transform 300ms ease;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.picture-gallery .card-picture-list:hover {
+  transform: scale(1.025);
+}
+
 
 .card {
   border: 1px solid #43584a;
+}
+
+.card-picture-list {
+  border: none;
 }
 
 .card-picture-list:hover {

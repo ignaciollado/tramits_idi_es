@@ -29,14 +29,14 @@
       </div>
     </article>
 
-    <section class="picture-gallery">
+    <section class="picture-gallery" id="gallery">
       <?php for ($x = 0; $x <= 9; $x++) {;?>
-        <div class="card card-picture-list">
+        <div class="card-picture-list">
 
           <?php if ($row->nif === 'A07166085' || $row->nif === 'A07090707') {?>
+            <div class="content">
               <img src="https://docs.tramits.adrbalears.es/writable/gallery-ils/<?php echo  $row->nif.'/'.($x+1).".webp";?>" class="card-img-top" alt="<?php echo  $row->empresa;?>">
-              <div class="card-body">
-              </div>
+            </div>  
             <?php } else {?>
               <img src="https://dummyjson.com/image/520" class="card-img-top" alt="...">
               <div class="card-body">
@@ -53,25 +53,6 @@
         </div>
       <?php };?>
     </section>
-
-  <!-- <div class="card" aria-hidden="true" id="cardPlaceHolder">
-  <img src="https://via.placeholder.com/450" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder col-6"></span>
-    </h5>
-    <p class="card-text placeholder-glow">
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-  </div>
-</div> -->
-
-
 <?php 
 }
 
@@ -86,29 +67,38 @@
 
 <script>
 
-/* function hidePlaceHolder() { */
-
-  console.log ("estoy en el detalle y la galería de imágenes", localStorage.getItem(''))
-  window.scroll({top: 0, left: 0, behavior: "smooth",})
-  setTimeout(placeHolderOff, 1000)
-
-/* } */
-
-function placeHolderOff() {
-  let memberAndrewPlaceHolder = document.querySelectorAll("#cardPlaceHolder")
-  let memberAndrew = document.querySelectorAll("#card");
-
-
-  /* memberAndrewPlaceHolder.style.display = "none"; */
-  memberAndrewPlaceHolder.forEach(function( itemHolder ) {
-   itemHolder.style.display = "none";
-  });
-
-  /* memberAndrew.classList.remove('card--hiden'); */
-  memberAndrew.forEach(function( itemCard ) {
-    itemCard.classList.remove('card--hiden');
-  });
-}
+var gallery = document.querySelector('#gallery');
+var getVal = function (elem, style) { return parseInt(window.getComputedStyle(elem).getPropertyValue(style)); };
+var getHeight = function (item) { return item.querySelector('.content').getBoundingClientRect().height; };
+var resizeAll = function () {
+    var altura = getVal(gallery, 'grid-auto-rows');
+    var gap = getVal(gallery, 'grid-row-gap');
+    gallery.querySelectorAll('.card-picture-list').forEach(function (item) {
+        var el = item;
+        el.style.gridRowEnd = "span " + Math.ceil((getHeight(item) + gap) / (altura + gap));
+    });
+};
+gallery.querySelectorAll('img').forEach(function (item) {
+    item.classList.add('byebye');
+    if (item.complete) {
+        console.log(item.src);
+    }
+    else {
+        item.addEventListener('load', function () {
+            var altura = getVal(gallery, 'grid-auto-rows');
+            var gap = getVal(gallery, 'grid-row-gap');
+            var gitem = item.parentElement.parentElement;
+            gitem.style.gridRowEnd = "span " + Math.ceil((getHeight(gitem) + gap) / (altura + gap));
+            item.classList.remove('byebye');
+        });
+    }
+});
+window.addEventListener('resize', resizeAll);
+gallery.querySelectorAll('.card-picture-list').forEach(function (item) {
+    item.addEventListener('click', function () {        
+        item.classList.toggle('full');        
+    });
+});
 
 </script>
 
