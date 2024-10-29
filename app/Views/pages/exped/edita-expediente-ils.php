@@ -432,7 +432,7 @@
 
                 <div>
                     <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
-                    <?php //Compruebo el estado de la firma del documento.
+                    <?php 
 	                $db = \Config\Database::connect();
 	                $sql = "SELECT PublicAccessId FROM pindust_expediente WHERE id=".$expedientes['id'];
 
@@ -469,13 +469,12 @@
 
                 </div>
                 <div class="btn-group" role="group">
-                <!-----------------------------------------Envía formulario solicitud datos adicionales de la empresa ----------------->
+                <!-----------------------------------------Envía formulario solicitud datos adicionales de la empresa -->
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-form-datos-empresa.php';?>
                 <!------------------------------------------------------------------------------------------------------>
                 <!-----------------------------------------Envía manual y logotipos ILS ----------------->
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-manual-logotipos-ils.php';?>
                 <!------------------------------------------------------------------------------------------------------>
-
                 <br><a target="_blank" class = "btn-primary-itramits" href="<?php echo base_url('/public/index.php/home/datos_empresa_ils/'.$id.'/'.$expedientes['nif'].$programa.$convocatoria);?>"><small>Sol·licitud de dades adicionals per a la web de ILS (ús intern IDI)</small></span></a>
             </div>
             </div>

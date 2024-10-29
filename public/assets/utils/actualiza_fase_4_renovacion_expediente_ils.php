@@ -50,17 +50,18 @@ if ( (strlen($date_REC_justificacion_renov) != 0) && ($date_REC_justificacion_re
 $query = "UPDATE pindust_expediente 
     SET
     fecha_completado = '" . $fecha_completado ."',
-    fecha_REC_enmienda_renov = '" . $date_REC_enmienda_renov ."', 
-    ref_REC_justificacion = '" . mb_strtoupper($ref_REC_justificacion) ."', 
-    fecha_res_liquidacion = '" . $fecha_res_liquidacion ."', 
-    fecha_not_liquidacion = '" . $fecha_not_liquidacion ."', 
-    fecha_firma_requerimiento_justificacion = '" . $fecha_firma_requerimiento_justificacion ."', 
+    fecha_renovacion = '" . $fecha_renovacion ."',
+    fecha_infor_fav_renov = '" . $fecha_infor_fav_renov ."',
+    fecha_infor_desf_renov = '" . $fecha_infor_desf_renov ."',    
+    fecha_REC_enmienda_renov = '" . $date_REC_enmienda_renov ."',
     fecha_REC_justificacion_renov = '" . $date_REC_justificacion_renov ."',
-    ref_REC_requerimiento_justificacion = '" . mb_strtoupper($ref_REC_requerimiento_justificacion) ."'
+    ref_REC_justificacion_renov = '" . mb_strtoupper($ref_REC_justificacion_renov) ."',
+    fecha_resolucion_renov = '" . $fecha_resolucion_renov ."',
+    fecha_notificacion_renov = '" . $fecha_notificacion_renov ."',
+    fecha_res_revocacion_marca = '" . $fecha_res_revocacion_marca ."'
 
     WHERE  id = " . $id;
 
-echo $query;
 $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 echo $result;

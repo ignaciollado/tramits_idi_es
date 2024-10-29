@@ -1,5 +1,4 @@
 <!----------------------------------------- Enviar formulario solicitud de datos adicionales de la emrpesa ILS -->
-
 	  	<?php
         if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
@@ -22,11 +21,11 @@
 							<span>Vols enviar un correu electrònic al sol·licitant de l'adhesió a ILS perquè pugui afegir dades de l'empresa?</span>
 						</div>	
 						<div class="form-group">
-           				    <button type="button" onclick = "javaScript: enviaMailFormEmpresa_click();" id="enviaMailFormEmpresa" class="btn-itramits btn-success-itramits">Enviar
-							   <span id="spinner_17ils1" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
-							   </button>
-							   <span id="mensaje" class ="ocultar info-msg"></span>
-        				</div>	
+           			<button type="button" onclick = "javaScript: enviaMailFormEmpresa_click();" id="enviaMailFormEmpresa" class="btn-itramits btn-success-itramits">Enviar
+							  	<span id="spinner_17ils1" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
+							  </button>
+							  <span id="mensaje" class ="ocultar info-msg"></span>
+        		</div>	
 					</div>
 				</div>
 			</div>

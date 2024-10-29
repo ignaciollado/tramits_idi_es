@@ -44,8 +44,8 @@
 	<!-- HEADER: MENU + HEROE SECTION -->
 	<header class="header__formempresasils">
 		<fieldset  class="header__formempresasils--logo">
-			<a href="http://www.idi.es" target="_blank">
-				<img class="logo" alt="logo" title="logo" src="<?php echo base_url() ."/public/assets/images/logo_idi_conselleria_ils.jpg";?>" />
+			<a href="http://www.adrbalears.es" target="_blank">
+				<img class="logo" alt="logo" title="ADR Balers" src="<?php echo base_url() ."/public/assets/images/ADRBalears-conselleria.jpg";?>" />
 			</a>
 		</fieldset>
 		<fieldset  class="header__formempresasils--documento">

@@ -532,7 +532,7 @@ function actualiza_fase_4_renovacion_expediente_ils(formName) {  //SE EMPLEA
   let fecha_notificacion_renov = document.getElementById("fecha_notificacion_renov").value; // Data notificació renovació
   let fecha_res_revocacion_marca = document.getElementById("fecha_res_revocacion_marca").value; // Data resolució revocació
 
-	for (let step = 0; step < 8; step++) {
+	for (let step = 0; step < 9; step++) {
 		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
@@ -557,7 +557,7 @@ function actualiza_fase_4_renovacion_expediente_ils(formName) {  //SE EMPLEA
 				send_fase_4.className = "btn-itramits btn-success-itramits";
 				send_fase_4.disabled = false;
 			}
-			for (let step = 0; step < 8; step++) {
+			for (let step = 0; step < 9; step++) {
 				document.getElementsByClassName("form-group justificacion")[step].style.opacity = "1.0";
 			}
 		}

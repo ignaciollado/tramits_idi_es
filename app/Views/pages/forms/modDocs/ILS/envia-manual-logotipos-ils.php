@@ -19,11 +19,11 @@
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-						<span>Vols enviar un correu electrònic al sol·licitant perquè ens faci arribar el document?</span>
+						<span>Vols enviar un correu electrònic amb els manuls i logotips de ILS?</span>
 						</div>	
 						<div class="form-group">
-           				    <button type="button" onclick = "javaScript: enviaMailManualYLogotipo_click();" id="enviaMailManualYLogotipo" class="btn-itramits btn-success-itramits">Enviar
-							   <span id="spinner_ManualYLogotipo" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
+           		<button type="button" onclick = "javaScript: enviaMailManualYLogotipo_click();" id="enviaMailManualYLogotipo" class="btn-itramits btn-success-itramits">Enviar
+							  <span id="spinner_ManualYLogotipo" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
 							</button>
 							<span id="mensajeManualYLogotipo" class ="ocultar info-msg"></span>
         				</div>	
