@@ -520,20 +520,19 @@ function actualiza_fase_4_renovacion_expediente_ils(formName) {  //SE EMPLEA
 	if (!validateForm(formName)) {
 		return;
 	}
-    alert("Recordatorio: está pendiente de que me digáis que Actos administrativos van y su formato")
-	let id = document.getElementById("id").value;
-	let fecha_renovacion = document.getElementById("fecha_adhesion_ils").value; // Data renovació
-	let fecha_renovacion_concesion = document.getElementById("fecha_seguimiento_adhesion_ils").value; // Data renovació concesió
-	let fecha_limite_presentacion_renovacion = document.getElementById("fecha_limite_presentacion").value; // Data límit presentació renovació
-	let fecha_REC_justificacion = document.getElementById("fecha_rec_informe_seguimiento").value; // Data REC justificació
-	let ref_REC_justificacion = document.getElementById("ref_REC_informe_seguimiento").value; //Referència REC justificació 
-    let fecha_res_liquidacion = document.getElementById("fecha_res_liquidacion").value; // Data resolució de concessió
-    let fecha_not_liquidacion = document.getElementById("fecha_not_liquidacion").value; // Data notificació resolució
-    let fecha_firma_requerimiento_justificacion = document.getElementById("fecha_firma_requerimiento_justificacion").value; // Data firma requeriment justificació
-    let fecha_REC_requerimiento_justificacion = document.getElementById("fecha_REC_requerimiento_justificacion").value; // Data REC requeriment justificació
-    let ref_REC_requerimiento_justificacion = document.getElementById("ref_REC_requerimiento_justificacion").value; // Referència REC requeriment justificació
 
-	for (let step = 0; step < 10; step++) {
+	let id = document.getElementById("id").value;
+	let fecha_renovacion = document.getElementById("fecha_renovacion").value; // Data renovació
+	let fecha_infor_fav_renov = document.getElementById("fecha_infor_fav_renov").value; // Data informe favorable
+	let fecha_infor_desf_renov = document.getElementById("fecha_infor_desf_renov").value; // Data informe desfavorable
+	let fecha_REC_enmienda_renov = document.getElementById("fecha_REC_enmienda_renov").value; // Data REC enmienda
+	let fecha_REC_justificacion_renov	= document.getElementById("fecha_REC_justificacion_renov").value; //Data REC justificació renovació
+  let ref_REC_justificacion_renov = document.getElementById("ref_REC_justificacion_renov").value; // Ref REC justificació renovació
+  let fecha_resolucion_renov = document.getElementById("fecha_resolucion_renov").value; // Data resolució renovació
+  let fecha_notificacion_renov = document.getElementById("fecha_notificacion_renov").value; // Data notificació renovació
+  let fecha_res_revocacion_marca = document.getElementById("fecha_res_revocacion_marca").value; // Data resolució revocació
+
+	for (let step = 0; step < 8; step++) {
 		document.getElementsByClassName("form-group justificacion")[step].style.opacity = "0.1";
 	}
 
@@ -544,12 +543,11 @@ function actualiza_fase_4_renovacion_expediente_ils(formName) {  //SE EMPLEA
 
 	$.post(
 		"/public/assets/utils/actualiza_fase_4_renovacion_expediente_ils.php",
-		{ id: id, fecha_renovacion: fecha_renovacion, fecha_renovacion_concesion: fecha_renovacion_concesion,
-			fecha_limite_presentacion_renovacion: fecha_limite_presentacion_renovacion, fecha_REC_justificacion: fecha_REC_justificacion,
-			ref_REC_justificacion: ref_REC_justificacion, fecha_res_liquidacion: fecha_res_liquidacion,
-            fecha_not_liquidacion: fecha_not_liquidacion, fecha_firma_requerimiento_justificacion: fecha_firma_requerimiento_justificacion,
-            fecha_REC_requerimiento_justificacion: fecha_REC_requerimiento_justificacion,
-            ref_REC_requerimiento_justificacion, ref_REC_requerimiento_justificacion
+		{ id: id, fecha_renovacion: fecha_renovacion, fecha_infor_fav_renov: fecha_infor_fav_renov,
+			fecha_infor_desf_renov: fecha_infor_desf_renov, fecha_REC_enmienda_renov: fecha_REC_enmienda_renov,
+			fecha_REC_justificacion_renov: fecha_REC_justificacion_renov, ref_REC_justificacion_renov: ref_REC_justificacion_renov,
+      fecha_resolucion_renov: fecha_resolucion_renov, fecha_notificacion_renov: fecha_notificacion_renov,
+      fecha_res_revocacion_marca: fecha_res_revocacion_marca
 		 },
 		
 		function (data) {
@@ -559,7 +557,7 @@ function actualiza_fase_4_renovacion_expediente_ils(formName) {  //SE EMPLEA
 				send_fase_4.className = "btn-itramits btn-success-itramits";
 				send_fase_4.disabled = false;
 			}
-			for (let step = 0; step < 10; step++) {
+			for (let step = 0; step < 8; step++) {
 				document.getElementsByClassName("form-group justificacion")[step].style.opacity = "1.0";
 			}
 		}

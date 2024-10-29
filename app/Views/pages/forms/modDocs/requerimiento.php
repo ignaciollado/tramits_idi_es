@@ -3,7 +3,6 @@
     	Requeriment sol·licitud
   	</div>
 	<div class="card-itramits-footer">
-
 		<?php
     if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
@@ -13,7 +12,6 @@
 					<button id="wrapper_motivoRequerimiento" class="btn btn-primary ocultar" onclick="enviaRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
 			</span>
 		<?php }?>
-	
 	</div>
   <div class ="card-itramits-footer">
 		<?php

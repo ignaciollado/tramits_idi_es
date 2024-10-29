@@ -52,8 +52,8 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetCreator(PDF_CREATOR);
 	
 $pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
-$pdf->SetTitle("RESOLUCIÓN DE CONCESIÓN ILS");
-$pdf->SetSubject("RESOLUCIÓN DE CONCESIÓN ILS");
+$pdf->SetTitle("RESOLUCIÓN DE REVOCACIÓN MARCA ILS");
+$pdf->SetSubject("RESOLUCIÓN DE REVOCACIÓN MARCA ILS");
 $pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, CAIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
@@ -84,7 +84,7 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html = "Document: resolució de concessió<br>";
+$html = "Document: resolució de revocació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -206,4 +206,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_resolucion_concesion_adhesion_ils.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_renovacion_resolucion_renovacion_marca_ils.pdf', 'F');

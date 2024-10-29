@@ -5,13 +5,13 @@
   	</div>
 		<div class="card-itramits-footer">
   		<?php
-      if ( !$esAdmin && !$esConvoActual ) {?>
-        <?php }
-      else {?>
-			<button id="btnResConcesionFavSinReq" class='btn btn-primary btn-acto-admin' onclick="generaResolucionConcesionFavSinReq(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
-			<div id='infoMissingDataDoc16' class="alert alert-danger ocultar btn-acto-admin"></div>
-		<?php }?>
-	</div>
+      	if ( !$esAdmin && !$esConvoActual ) {
+        }
+      	else {?>
+				<button id="btnResConcesionFavSinReq" class='btn btn-primary btn-acto-admin' onclick="generaResolucionConcesionFavSinReq(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
+				<div id='infoMissingDataDoc16' class="alert alert-danger ocultar btn-acto-admin"></div>
+			<?php }?>
+		</div>
   	<div class="card-itramits-footer">
 			<?php
 			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_res_concesion_favorable_sin_req.pdf');

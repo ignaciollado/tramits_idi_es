@@ -2,6 +2,8 @@
 <link rel="stylesheet" type="text/css" href="/public/assets/css/style-idi-ils.css"/>
 
 <?php
+    use App\Models\DocumentosGeneradosModel;
+    $modelDocumentosGenerados = new DocumentosGeneradosModel();
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
 	$programa = $expedientes['tipo_tramite'];
@@ -489,22 +491,22 @@
             <h3>Detall:</h3>
            <form action="" onload = "javaScript: actualizaRequired();" name="exped-fase-1" id="exped-fase-1" method="post" accept-charset="utf-8">
                 <div class="form-group solicitud">
-                    <label for = "fecha_REC"><strong>Data REC sol·licitud:</strong></label>
+                    <label for = "fecha_REC"><strong>Data SEU sol·licitud:</strong></label>
 			        <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC']);?>"/>
 			        <!-- <input type = "text" placeholder = "aaaa-mm-dd hh:mm:ss" name = "fecha_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC" value = "<?php //echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/> -->
                 </div>
                 <div class="form-group solicitud">
-                    <label for = "ref_REC"><strong>Referència REC sol·licitud:</strong></label>
-                    <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
+                    <label for = "ref_REC"><strong>Referència SEU sol·licitud:</strong></label>
+                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC"  maxlength = "16" value = "<?php echo $expedientes['ref_REC'];?>">
                 </div>
                 <div class="form-group solicitud">
-                    <label for = "fecha_REC_enmienda"><strong>Data REC esmena:</strong></label>
+                    <label for = "fecha_REC_enmienda"><strong>Data SEU esmena:</strong></label>
 		    	    <!-- <input type = "datetime-local" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php //echo date_format(date_create($expedientes['fecha_REC_enmienda']),"Y-m-d\Th:m");?>"/> -->
 		    	    <input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "fecha_REC_enmienda" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda']);?>"/>
                 </div>		
                 <div class="form-group solicitud">
-                    <label for = "ref_REC_enmienda"><strong>Referència REC esmena:</strong></label>
-                    <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
+                    <label for = "ref_REC_enmienda"><strong>Referència SEU esmena:</strong></label>
+                    <input type = "text" placeholder = "El número del SEU o el número del resguard del sol·licitant" name = "ref_REC_enmienda" onChange="avisarCambiosEnFormulario('send_fase_1', this.id)" class = "form-control send_fase_1" id = "ref_REC_enmienda"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_enmienda'];?>">
                 </div>
 		        <div class="form-group solicitud">
                     <label for = "fecha_requerimiento"><strong>Data firma requeriment:</strong></label>
@@ -944,65 +946,41 @@
             <form action="" onload="javaScript: actualizaRequired();" name="exped-fase-4" id="exped-fase-4" method="post" accept-charset="utf-8">
             <div class="row">
             <div class="col">  
-    		<div class="form-group justificacion">
-            <label for = "fecha_renovacion"><strong>**Data renovació marca:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_renovacion" class = "form-control send_fase_4" id = "fecha_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_renovacion']), 'Y-m-d');?>">
+            <div class="form-group justificacion">
+            <label for = "fecha_renovacion"><strong>Data renovació marca:</strong></label>
+            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_renovacion" class = "form-control send_fase_4" id = "fecha_renovacion" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_renovacion']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
-            <label for = "fecha_renovacion_concesion"><strong>--Data renovació concesió:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_renovacion_concesion" class = "form-control send_fase_4" id = "fecha_renovacion_concesion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_renovacion_concesion']), 'Y-m-d');?>">
+            <label for = "fecha_infor_fav_renov"><strong>Data informe favorable renovació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_infor_fav_renov" class = "form-control send_fase_4" id = "fecha_infor_fav_renov" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_renov']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
-            <label for = "fecha_informe_favorable_renovacion"><strong>Data informe favorable renovació:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_informe_favorable_renovacion" class = "form-control send_fase_4" id = "fecha_informe_favorable_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_informe_favorable_renovacion']), 'Y-m-d');?>">
+            <label for = "fecha_infor_desf_renov"><strong>Data informe desfavorable renovació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_infor_desf_renov" class = "form-control send_fase_4" id = "fecha_infor_desf_renov" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_infor_desf_renov']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
-            <label for = "fecha_informe_desfavorable_renovacion"><strong>Data informe desfavorable renovació:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_informe_desfavorable_renovacion" class = "form-control send_fase_4" id = "fecha_informe_desfavorable_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_informe_desfavorable_renovacion']), 'Y-m-d');?>">
-            </div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_firma_requerimiento_justificacion"><strong>**Data firma requeriment justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_firma_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_firma_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_firma_requerimiento_justificacion']), 'Y-m-d');?>">
-            </div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_notif_requerimiento_justificacion"><strong>Data notificació requeriment justificació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_notif_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_notif_requerimiento_justificacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_notif_requerimiento_justificacion']), 'Y-m-d');?>">
-            </div> 
-            <div class="form-group justificacion">
-            <label for = "fecha_rec_enmienda_renovacion"><strong>Data REC esmena renovació:</strong></label>
-			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_rec_enmienda_renovacion" class = "form-control send_fase_4" id = "fecha_rec_enmienda_renovacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_rec_enmienda_renovacion']);?>" />
+            <label for = "fecha_REC_enmienda_renov"><strong>Data REC esmena:</strong></label>
+			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda_renov" class = "form-control send_fase_4" id = "fecha_REC_enmienda_renov" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda_renov']);?>" />
             </div>                                          
-    		<div class="form-group justificacion">
-            <label for = "fecha_limite_presentacion_renovacion"><strong>--Data límit presentació renovació:</strong></label>
-            <input type = "date" title ="Es la data adhesió mes DOS ANYS" placeholder = "dd/mm/yyyy" name = "fecha_limite_presentacion_renovacion" class = "form-control send_fase_4" id = "fecha_limite_presentacion_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_limite_presentacion_renovacion']), 'Y-m-d');?>">
-            </div>
             <div class="form-group justificacion">
-            <label for = "fecha_REC_justificacion"><strong>**Data REC justificació renovació:</strong></label>
-			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion" class = "form-control send_fase_4" id = "fecha_REC_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion']);?>" />
+            <label for = "fecha_REC_justificacion_renov"><strong>Data REC justificació renovació:</strong></label>
+			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion_renov" class = "form-control send_fase_4" id = "fecha_REC_justificacion_renov" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion_renov']);?>" />
             </div>
 		    <div class="form-group justificacion">
-            <label for = "ref_REC_justificacion"><strong>**Referència REC justificació:</strong></label>
-            <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_justificacion" class = "form-control send_fase_4" id = "ref_REC_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion'];?>">
+            <label for = "ref_REC_justificacion_renov"><strong>Referència REC justificació:</strong></label>
+            <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_justificacion_renov" class = "form-control send_fase_4" id = "ref_REC_justificacion_renov"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_justificacion_renov'];?>">
         	</div>
     		<div class="form-group justificacion">
-            <label for = "fecha_res_renovacion"><strong>Data resolució de renovació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_res_renovacion" class = "form-control send_fase_4" id = "fecha_res_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_res_renovacion']), 'Y-m-d');?>">
+            <label for = "fecha_resolucion_renov"><strong>Resolució de renovació:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_resolucion_renov" class = "form-control send_fase_4" id = "fecha_resolucion_renov" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_resolucion_renov']), 'Y-m-d');?>">
             </div>
 		    <div class="form-group justificacion">
-            <label for = "fecha_not_renovacion"><strong>Data notificació renovació:</strong></label>
-            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_not_renovacion" class = "form-control send_fase_4" id = "fecha_not_renovacion" minlength = "19" maxlength = "19" value = "<?php echo date_format(date_create($expedientes['fecha_not_renovacion']), 'Y-m-d');?>">
+            <label for = "fecha_notificacion_renov"><strong>Notificació renovació:</strong></label>
+            <input type = "date"  placeholder = "dd/mm/yyyy" name = "fecha_notificacion_renov" class = "form-control send_fase_4" id = "fecha_notificacion_renov" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_renov']), 'Y-m-d');?>">
             </div>			
-            <div class="form-group justificacion">
-            <label for = "fecha_REC_requerimiento_justificacion"><strong>--Data REC requeriment justificació:</strong></label>
-			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "fecha_REC_requerimiento_justificacion" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_requerimiento_justificacion']);?>" />
-            </div>	
 		    <div class="form-group justificacion">
-            <label for = "ref_REC_requerimiento_justificacion"><strong>--Referència REC requeriment justificació:</strong></label>
-            <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "ref_REC_requerimiento_justificacion" class = "form-control send_fase_4" id = "ref_REC_requerimiento_justificacion"  maxlength = "16" value = "<?php echo $expedientes['ref_REC_requerimiento_justificacion'];?>">
-        	</div>
-		    <div class="form-group justificacion">
-            <label for = "fecha_resol_revocacion"><strong>Resolució revocació:</strong></label>
-            <input type = "text" placeholder = "El número del REC o el número del resguard del sol·licitant" name = "fecha_resol_revocacion" class = "form-control send_fase_4" id = "fecha_resol_revocacion"  maxlength = "16" value = "<?php echo $expedientes['fecha_resol_revocacion'];?>">
+            <label for = "fecha_res_revocacion_marca"><strong>Resolució revocació:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_res_revocacion_marca" class = "form-control send_fase_4" id = "fecha_res_revocacion_marca"  minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_res_revocacion_marca']), 'Y-m-d');?>">
         	</div>
                 <?php
                     if ( !$esAdmin && !$esConvoActual ) {?>
