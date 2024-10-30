@@ -61,46 +61,17 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
-$mail->Subject = "Dades per a la web de Industria Local Sostenible - ILS";
-$email_message = "<!DOCTYPE html>";
-$email_message .= "<html lang='es'>";
-$email_message .= "<html>";
-$email_message .= "<head>";
-$email_message .= "<meta charset = 'utf-8'>";
-$email_message .= "<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>";
-$email_message .= "<title>Adhesió al programa Industria Local Sostenible Illes Balears - ADR Balears</title>";
-$email_message .= "</head>";
-$email_message .= "<body>";
-$email_message .= "<div class='container'>";
-$email_message .= "<table data-toggle='table'";
-$email_message .= "<tbody>";
-$email_message .= "<tr style='width:100%;text-align:left;'><td style='font-size: 14px;'>";
-$email_message .= "<div>Benvolgut senyor / Benvolguda senyora,</div>";
-$email_message .= "<br><div>Ara que s'ha adherit al nostre programa ILS (Indústria Local Sostenible) ens agradaria publicar una fitxa de la seva empresa en la nostra web 
-(www.industrialocalsostenible.es). <br><br>Per a això necessitem que ens faci arribar algunes dades addicionals per mitjà del següent formulari:</div>";
-$email_message .= "<div><a title='Obrir el formulari per comunicar-nos dades de la seva empresa' href = 'https://tramits.idi.es/public/index.php/home/datos_empresa_ils/".$_POST["id"]."/".$nif."/".$tipoTramite."/".$convocatoria."/ca'>Formulari de requeriment de dades d'empresa</a></div>";
+$subject = "Dades per a la web de Industria Local Sostenible - ILS - ADR Balears";
+$mail->Subject = "=?UTF-8?B?".base64_encode($subject)."=?=";
+$mensajeLayout = file_get_contents('contents-datos-adicionales-ils.html');
+$mensajeLayout = str_replace("%ID%", $_POST["id"], $mensajeLayout);
+$mensajeLayout = str_replace("%NIF%", $nif, $mensajeLayout);
+$mensajeLayout = str_replace("%TIPOTRAMITE%", $tipoTramite, $mensajeLayout);
+$mensajeLayout = str_replace("%CONVOCATORIA%", $convocatoria, $mensajeLayout);
 
-    $email_message .= "<br><div>Pilar Jordi Amorós</div>";
-    $email_message .= "<br><div>Cap de Servei de Política Industrial</div>";
-    $email_message .= "<div><strong>Agència de desenvolupament regional de les Illes Balears</strong></div>";
-    $email_message .= "<div><strong>Conselleria Empresa, Ocupació i Energia</strong></div>";
-    $email_message .= "<div>Telèfon 971 176161 + 62891</div>";
-    $email_message .= "<div>Plaça de Son Castelló, 1</div>";
-    $email_message .= "<div>07009 Palma</div></td></tr>";
-    $email_message .= "<tr style='width:100%;text-align:left;'><td>www.adrbalears.es</td></tr>";
-$email_message .= "</tbody>";
-$email_message .= "</table>";
-$email_message .= "<br>";
-$email_message .= "<br>";
-$email_message .= "<br>";	
-$email_message .= $firma;
-$email_message .= $notalegal;
-$email_message .= "</div>";
-$email_message .= "</body>";
-$email_message .= "</html>";
-
-$mail->Body    = $email_message;
-$mail->AltBody = $email_message;
+$mail->msgHTML( $mensajeLayout , __DIR__);
+//Replace the plain text body with one created manually
+$mail->AltBody = $mensajeLayout;
 
 if(!$mail->Send())
 {
