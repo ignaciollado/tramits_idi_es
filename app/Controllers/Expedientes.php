@@ -346,7 +346,6 @@ class Expedientes extends Controller
 		$data['totalDocsJustificantesPagoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificantesPagoIsba', $id);
 		$data['totalDocsDeclaracionIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_DeclaracionIsba', $id);
 		//----------------------------- Obtiene el detalle del Expediente ----------------------------------------
-
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 		$idExp = $data['expedientes']['idExp'];
 		$convocatoria = $data['expedientes']['convocatoria'];

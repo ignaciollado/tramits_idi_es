@@ -19,7 +19,7 @@
   					</div>
     				<div class="modal-body">
 						<div class="form-group">
-						<span>Vols enviar un correu electrònic amb els manuls i logotips de ILS?</span>
+						<span>Vols enviar un correu electrònic amb els manuals i logotips de ILS?</span>
 						</div>	
 						<div class="form-group">
            		<button type="button" onclick = "javaScript: enviaMailManualYLogotipo_click();" id="enviaMailManualYLogotipo" class="btn-itramits btn-success-itramits">Enviar

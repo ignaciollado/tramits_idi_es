@@ -648,4 +648,22 @@ class Home extends BaseController
 
 		echo view('pages/forms/detail-empresa-ils', $data);
 	}
+
+	public function renovacion_marca_ils($page = 'forms/form-adhesion-ils')
+	{
+		helper('form');
+		helper('filesystem');
+		helper('cookie');
+		$language = \Config\Services::language();
+		$language->setLocale('ca'); 
+		$cookie = array(
+			'name'   => 'CurrentLanguage',
+			'value'  => 'ca',                            
+			'expire' => '7200',                                                                                   
+			'secure' => true
+			);
+   		set_cookie($cookie);
+		echo view('templates/header/header_form_adhesion_ils');
+		echo view('pages/forms/form-renovacion-ils');
+	}
 }

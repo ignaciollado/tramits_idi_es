@@ -34,12 +34,21 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // In this case, we setup a test email account with the following credentials:
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
-$mail->Username = "tramits@tramits.idi.es";  // SMTP username
-$mail->Password = "Lvsy2r7[4,4}"; // SMTP password
+if ($base_url === "pre-tramitsidi") {
+    $mail->Username = "pre-tramits@pre-tramits.idi.es";  // SMTP username
+} else {
+    $mail->Username = "tramits@tramits.idi.es";  // SMTP username
+}
+$mail->Password = "Lvsy2r7[4,4}*1"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
-$mail->From = "tramits@tramits.idi.es";
-$mail->FromName = "ADR Balears";
+if ($base_url === "pre-tramitsidi") {
+    $mail->From = "pre-tramits@pre-tramits.idi.es";  // SMTP username
+    $mail->FromName = "PRE-ADR Balears";
+} else {
+    $mail->From = "tramits@tramits.idi.es";  // SMTP username
+    $mail->FromName = "ADR Balears";
+}
 // Lo que verá del remitente el destinatario
 $mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
 // La dirección a la que contestará el destinatario

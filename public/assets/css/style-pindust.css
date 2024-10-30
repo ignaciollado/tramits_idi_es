@@ -361,6 +361,10 @@ code {
   font-size: .8em;
 }
 
+.btn-group {
+	width: 100%;
+}
+
 .badge {
 	font-weight: 400;
 	width: 100%;

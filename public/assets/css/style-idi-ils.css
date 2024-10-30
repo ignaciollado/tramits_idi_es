@@ -19,6 +19,12 @@
       color: #fff;
   }
 
+  ul {
+    border: 1px solid #365446;
+    border-radius: .5rem;
+    padding: 1rem;
+  }
+
   /* Change background color of buttons on hover */
 
   .tab_fase_exp button:hover {
@@ -46,6 +52,10 @@
   .form-check-input {
     float: inherit!important;
     margin-left: -1.5rem!important;
+  }
+
+  .col {
+    margin: 1rem;
   }
 
   /* Style the tab content */

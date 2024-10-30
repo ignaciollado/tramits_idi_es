@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/public/assets/css/style-idi-ils.css"/>
 
 <?php
@@ -68,15 +68,9 @@
                     </div>
     		        <div class="form-group general">
                         <label for="programa">Programa:</label>
-		    	        <input type="text" name="programa" list="listaProgramas" class="form-control" readonly disabled id = "programa" value="<?php echo $expedientes['tipo_tramite'];?>">
+		    	        <input type="text" name="programa" class="form-control" readonly disabled id = "programa" value="<?php echo $expedientes['tipo_tramite'];?>">
                     </div>
-                    <datalist id="listaProgramas">
-    			        <option value="Programa I">
-				        <option value="Programa II">
-				        <option value="Programa III">
-                        <option value="ILS">
-  			        </datalist>
-
+                    
                     <div class="form-group general">
                         <label for="telefono_rep"><strong>Mòbil a efectes de notificacions:</strong></label>
                         <input type="tel" name="telefono_rep" class="form-control send_fase_0" required <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "telefono_rep" placeholder = "Mòbil a efectes de notificacions" minlength = "9" maxlength = "9" value = "<?php echo $expedientes['telefono_rep']; ?>">
@@ -352,8 +346,7 @@
 			            <div >Estat</div>
                         <div>Acció</div>
   		            </div>
-                    <?php if($documentos){ ?>
-
+                    <?php if($documentosDetalle){ ?>
                         <?php foreach($documentosDetalle as $docs_opc_item): 
 			            $path = $docs_opc_item->created_at;
 			            $parametro = explode ("/",$path);
@@ -431,22 +424,13 @@
                     </div>
 
                 <div>
-                    <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
-                    <?php 
-	                $db = \Config\Database::connect();
-	                $sql = "SELECT PublicAccessId FROM pindust_expediente WHERE id=".$expedientes['id'];
-
-	                $query = $db->query($sql);
-	                $row = $query->getRow();
-	                if (isset($row))
-		            {
-		                $PublicAccessId = $row->PublicAccessId;
-	                    $requestPublicAccessId = $PublicAccessId;
-                        $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
-		                $respuesta = json_decode ($request, true);
-		                $estado_firma = $respuesta['status'];
-			            switch ($estado_firma)
-    				    {
+                <small>Estat de la signatura de la declaració responsable i de la sol·licitud:</small>
+                <?php 
+                    $request = execute("requests/".$expedientes['PublicAccessId'], null, __FUNCTION__);
+		            $respuesta = json_decode ($request, true);
+		            $estado_firma = $respuesta['status'];
+			        switch ($estado_firma)
+    				{
 	    			        case 'NOT_STARTED':
 				                $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
 				                break;
@@ -465,8 +449,7 @@
 				                $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
 				        }
 			            echo $estado_firma;
-		            }?>
-
+		        ?>
                 </div>
                 <div class="btn-group" role="group">
                 <!-----------------------------------------Envía formulario solicitud datos adicionales de la empresa -->
@@ -475,8 +458,8 @@
                 <!-----------------------------------------Envía manual y logotipos ILS ----------------->
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/envia-manual-logotipos-ils.php';?>
                 <!------------------------------------------------------------------------------------------------------>
-                <br><a target="_blank" class = "btn-primary-itramits" href="<?php echo base_url('/public/index.php/home/datos_empresa_ils/'.$id.'/'.$expedientes['nif'].$programa.$convocatoria);?>"><small>Sol·licitud de dades adicionals per a la web de ILS (ús intern IDI)</small></span></a>
-            </div>
+                <br><a target="_blank" class = "btn-primary-itramits" href="<?php echo base_url('/public/index.php/home/datos_empresa_ils/'.$id.'/'.$expedientes['nif'].$programa.$convocatoria);?>"><small>Sol·licitud de dades adicionals per a la web de ILS<br>(ús intern)</small></span></a>
+                </div>
             </div>
 
         </div>
@@ -1015,8 +998,36 @@
             <!----------------------------------------- Resolución de revocación ---->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-resolucion-revocacion.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->                                                 
-        </ol>    
-            <h3>Documents de l'expedient:</h3>
+        </ol>
+        <ul>
+            <li>
+                <button type = "button" id="enviar-a-renovacio" class = "btn btn-dark btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myEnviarRenovacion" id="myBtnEnviarRenovacion">Enviar el formulari per a la renovació de marca</button>
+            </li>
+        </ul>
+        <!-- The Modal para generar el correo de justificación-->
+ 		<div class="modal" id="myEnviarRenovacion">
+			<div class="modal-dialog">
+				<div class="modal-content">	
+					<div class="modal-header">
+						<h4 class="modal-title">Enviar el formulari de renovació de la marca</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  				    </div>
+    				<div class="modal-body">
+						<div class="form-group">
+							<span>Vols enviar un correu electrònic amb el formulari de renovació de la marca?</span>
+						</div>	
+						<div class="form-group">
+           		            <button type="button" onclick = "javaScript: enviaMailRenovacionILS_click();" id="enviaMailRenovacionILS" class="btn-itramits btn-success-itramits">Enviar
+							    <span id="spinner_formularioMarca" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:24px; color:#1AB394;"></i></span>
+							</button>
+							<span id="mensajeFormularioMarca" class ="ocultar info-msg"></span>
+        				</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
                     <div >Pujat el</div>
@@ -1202,54 +1213,6 @@
                 </div>
             </div>
 
-            <!-- <div id = "tab_pagos" class="active">
-                <button class="accordion-exped">Justificants de pagament a l'habilitador digital:</button>
-                <div class="panel-exped">
-                    <div class = "header-wrapper-docs-justificacion">
-		                <div >Rebut el</div>
-   		                <div >Arxiu</div>
-		                <div >Estat</div>   
-                    </div>
-                    <?php if($documentosJustifPagos): ?>
-                    <?php foreach($documentosJustifPagos as $docsJustif_item): ?>
-			        <?php 
-    			        // $path = str_replace ("D:\wampp\apache2\htdocs\pindust\writable\documentos/","", $docsJustif_item->created_at);
-			            // $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docsJustif_item->created_at);
-			            $path =  $docsJustif_item->created_at;
-			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
-			            $tipoMIME = $docsJustif_item->type;
-			            $nom_doc = $docsJustif_item->name;
-                        //echo "#### ". $selloDeTiempo . " ####";
-			        ?>
-
-                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
-                        <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	     
-   		                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
-
-                           <?php
-                            switch ($docsJustif_item->estado) {
-				                case 'Pendent':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
-                            }
-                            ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>                        
-                        
-
-		            </div>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-            </div> -->
-
             <div><a href="<?php echo base_url('public/index.php/home/justificacion_cheques/').'/'.$expedientes['id'].'/'.$expedientes['nif'].'/'.$expedientes['tipo_tramite'].'/'.$expedientes['convocatoria'].'/ca';?>" target = "_blank">Formulari per a la renovació de la marca ILS</a></div>
             <div><a href="<?php 
                 if (isset($selloDeTiempo)) {
@@ -1292,7 +1255,6 @@
     }
 
     .panel-exped {
-        /* padding: 0 18px; */
         background-color: white;
         max-height: 0;
         overflow: hidden;
@@ -1362,6 +1324,6 @@
 </script>
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/public/assets/js/edita-expediente-ils.js"></script>
 <script src="https://kit.fontawesome.com/1a19d0e4f2.js" crossorigin="anonymous"></script>

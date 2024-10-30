@@ -731,7 +731,6 @@ function actualizaMotivoRequerimientoIls_click() {  //SE EMPLEA en ILS
 				document.getElementById("wrapper_motivoRequerimientoIls").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				//document.getElementById("wrapper_generaRequerimiento").style.display = "none";
 			}
 		}
 	);
@@ -770,7 +769,6 @@ function enviaAFirmaRequerimiento_click(parametro) {
 
 function enviaMailJustificacion_click() {
 	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarJustificador");
 	document.getElementById("spinner_151").classList.remove("ocultar");
 	document.getElementById("enviaMailJustificacion").disabled.true;
 	$.post(
@@ -783,7 +781,6 @@ function enviaMailJustificacion_click() {
 				document.getElementById("enviaMailJustificacion").style.display = "none";
 				document.getElementById("mensaje").classList.remove("ocultar");
 				document.getElementById("mensaje").innerHTML = data;
-				//$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 			}
 		}
 	);
@@ -791,7 +788,6 @@ function enviaMailJustificacion_click() {
 
 function enviaMailFormEmpresa_click() {
 	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarFormularioEmpresa");
 	document.getElementById("spinner_17ils1").classList.remove("ocultar");
 	document.getElementById("enviaMailFormEmpresa").disabled.true;
 	$.post(
@@ -812,8 +808,6 @@ function enviaMailFormEmpresa_click() {
 function enviaMailEscrituraEmpresa_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ESCRITURA").value;
-
-	var modal = document.getElementById("myEnviarFormularioEscrituraEmpresa");
 	document.getElementById("spinner_EscrituraEmpresa").classList.remove("ocultar");
 	document.getElementById("enviaMailEscrituraEmpresa").disabled.true;
 	$.post(
@@ -834,8 +828,6 @@ function enviaMailEscrituraEmpresa_click() {
 function enviaMailCertificadoIAE_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IAE").value;
-
-	var modal = document.getElementById("myEnviarFormularioCertificadoIAE");
 	document.getElementById("spinner_CertificadoIAE").classList.remove("ocultar");
 	document.getElementById("enviaMailCertificadoIAE").disabled.true;
 	$.post(
@@ -856,8 +848,6 @@ function enviaMailCertificadoIAE_click() {
 function enviaMailDocumentoIdentificacion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_IDSOL").value;
-
-	var modal = document.getElementById("myEnviarFormularioDocumentoIdentificacion");
 	document.getElementById("spinner_DocumentoIdentificacion").classList.remove("ocultar");
 	document.getElementById("enviaMailDocumentoIdentificacion").disabled.true;
 	$.post(
@@ -878,8 +868,6 @@ function enviaMailDocumentoIdentificacion_click() {
 function enviaMailCertificadoSegSoc_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_TGSS").value;
-
-	var modal = document.getElementById("myEnviarFormularioCertificadoSegSoc");
 	document.getElementById("spinner_CertificadoSegSoc").classList.remove("ocultar");
 	document.getElementById("enviaMailCertificadoSegSoc").disabled.true;
 	$.post(
@@ -900,8 +888,6 @@ function enviaMailCertificadoSegSoc_click() {
 function enviaMailCertificadoATIB_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ATIB").value;
-
-	var modal = document.getElementById("myEnviarFormularioCertificadoATIB");
 	document.getElementById("spinner_CertificadoATIB").classList.remove("ocultar");
 	document.getElementById("enviaMailCertificadoATIB").disabled.true;
 	$.post(
@@ -922,8 +908,6 @@ function enviaMailCertificadoATIB_click() {
 function enviaMailInformeResumen_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_RESUMEN").value;
-
-	var modal = document.getElementById("myEnviarFormularioInformeResumen");
 	document.getElementById("spinner_InformeResumen").classList.remove("ocultar");
 	document.getElementById("enviaMailInformeResumen").disabled.true;
 	$.post(
@@ -944,9 +928,6 @@ function enviaMailInformeResumen_click() {
 function enviaMailCompromisoReduccion_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_REDUCCION").value;
-
-	var modal = document.getElementById("myEnviarFormularioCompromisoReduccion");
-	//document.getElementById("enviaMailCompromisoReduccion").innerText = "Enviant...";
 	document.getElementById("spinner_CompromisoReduccion").classList.remove("ocultar");
 	document.getElementById("enviaMailCompromisoReduccion").disabled = true;
 
@@ -968,8 +949,6 @@ function enviaMailCompromisoReduccion_click() {
 function enviaMailItinerarioFormativo_click() {
 	let id = document.getElementById("id").value;
 	let id_doc = document.getElementById("id_doc_ITINERARIO").value;
-
-	var modal = document.getElementById("myEnviarFormularioItinerarioFormativo");
 	document.getElementById("spinner_ItinerarioFormativo").classList.remove("ocultar");
 	document.getElementById("enviaMailItinerarioFormativo").disabled.true;
 	$.post(
@@ -1011,7 +990,6 @@ function enviaMailInformeGEH_click() {
 
 function enviaMailManualYLogotipo_click() {
 	let id = document.getElementById("id").value;
-	var modal = document.getElementById("myEnviarManualYLogotipo");
 	document.getElementById("spinner_ManualYLogotipo").classList.remove("ocultar");
 	document.getElementById("enviaMailManualYLogotipo").disabled.true;
 	$.post(
@@ -1024,6 +1002,25 @@ function enviaMailManualYLogotipo_click() {
 				document.getElementById("enviaMailManualYLogotipo").style.display = "none";
 				document.getElementById("mensajeManualYLogotipo").classList.remove("ocultar");
 				document.getElementById("mensajeManualYLogotipo").innerHTML = data;
+			}
+		}
+	);
+}
+
+function enviaMailRenovacionILS_click() {
+	let id = document.getElementById("id").value;
+	document.getElementById("spinner_formularioMarca").classList.remove("ocultar");
+	document.getElementById("enviaMailRenovacionILS").disabled.true;
+	$.post(
+		"/public/assets/utils/enviaCorreoElectronicoRenovacionMarca.php",
+		{ id: id },
+		function (data) {
+			console.log(data);
+			if (data) {
+				document.getElementById("spinner_formularioMarca").classList.add("ocultar");
+				document.getElementById("enviaMailRenovacionILS").style.display = "none";
+				document.getElementById("mensajeFormularioMarca").classList.remove("ocultar");
+				document.getElementById("mensajeFormularioMarca").innerHTML = data;
 			}
 		}
 	);

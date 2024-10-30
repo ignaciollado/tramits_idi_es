@@ -19,7 +19,6 @@
 
     echo '<div class="alert alert-warning" role="alert">Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
 
-    /* $convocatoriaEnCurso = $configuracion['convocatoria']; */
     $convocatoriaEnCurso = $configuracionLinea['convocatoria'];
 
     $esAdmin = ($session->get('rol') == 'admin');
@@ -1110,7 +1109,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         <div class="col docsExpediente">
             <h3>Actes administratius:</h3>
             <ol start="19">
-            <!-----------------------------------------19.-abril_Acta Kick off ------------------------------------>
+            <!-----------------------------------------19.-abril_Acta Kick off ------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-kickoff.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             <!-----------------------------------------20.-mayo_Acta de cierre ---->
@@ -1118,7 +1117,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <!------------------------------------------------------------------------------------------------------>
             </ol>
         </div>
-
         <div class="col docsExpediente">
         <div class="col">
             <h3>Documents de l'expedient:</h3>
