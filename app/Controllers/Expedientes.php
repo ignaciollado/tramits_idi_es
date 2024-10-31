@@ -335,7 +335,6 @@ class Expedientes extends Controller
 		$db = \Config\Database::connect();
 
 		//----------------------------- Comprueba si ya hay algún documento de justificación --------------------
-
 		$data['totalDocsJustifPlan'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PlanTransformacionDigital', $id);
 		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
 		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
@@ -345,6 +344,10 @@ class Expedientes extends Controller
 		$data['totalDocsFacturasEmitidasIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FacturasEmitidasIsba', $id);
 		$data['totalDocsJustificantesPagoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificantesPagoIsba', $id);
 		$data['totalDocsDeclaracionIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_DeclaracionIsba', $id);
+
+		$data['totalDocsJustifInformeCalcILS'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificacionInformeCalculo', $id);
+		$data['totalDocsJustifCompromisoReduccionILS'] = $modelJustificacion->checkIfDocumentoJustificacion('file_CompromisoReduccion', $id);
+
 		//----------------------------- Obtiene el detalle del Expediente ----------------------------------------
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 		$idExp = $data['expedientes']['idExp'];
@@ -402,6 +405,9 @@ class Expedientes extends Controller
 		$data['documentosJustificantesPagoIsba'] = $modelJustificacion->listDocumentosJustificacion('file_JustificantesPagoIsba', $id);
 		$data['documentosDeclaracionIsba'] = $modelJustificacion->listDocumentosJustificacion('file_DeclaracionIsba', $id);
 
+		$data['documentosJustifInformeCalcILS'] = $modelJustificacion->listDocumentosJustificacion('file_JustificacionInformeCalculo', $id);
+		$data['documentosJustifCompromisoReduccionILS'] = $modelJustificacion->listDocumentosJustificacion('file_CompromisoReduccion', $id);
+
 		/* Todos los documentos de un expediente en la pestaña DETALL */
 		$data['documentosDetalle'] = $modelDocumentos->allExpedienteDocuments($id, 'detalle');
 
@@ -429,7 +435,6 @@ class Expedientes extends Controller
 
 	public function do_upload($id = null, $nif = null, $tipo_tramite = null, $convocatoria = null, $tipoJustDoc = null, $faseExped = null)
 	{
-		/* /public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Solicitud') */
 		helper('filesystem');
 		helper(['form', 'url']);
 		$request = \Config\Services::request();
@@ -964,6 +969,93 @@ class Expedientes extends Controller
 		$data['importeTotalJustificado'] = $totalEnvoiceLines;
 		echo view('templates/header/header_form_requerimiento_isba_resultado', $data);
 		echo view('pages/forms/documento-justificacion-ayuda-isba', $data);
+		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+		echo view('pages/forms/rest_api_firma/envia-a-firma-justificacion', $data);
+		echo view('templates/footer/footer');
+	}
+
+	public function do_renovacion_ils_upload($id, $nif, $tipo_tramite, $convocatoria, $idioma)
+	{
+		helper('filesystem');
+		helper(['form', 'url']);
+		helper('cookie');
+		$language = \Config\Services::language();
+		$language->setLocale($idioma);
+		set_cookie('pindust_id', $id, '3600');
+		set_cookie('nif', $nif, '3600');
+		set_cookie('tipoTramite', $tipo_tramite, '3600');
+		set_cookie('convocatoria', $convocatoria, '3600');
+		set_cookie('idioma', $idioma, '3600');
+
+		$db = \Config\Database::connect();
+		$documentosJustif = $db->table('pindust_documentos_justificacion');
+		date_default_timezone_set("Europe/Madrid");
+		$selloTiempo = date("d_m_Y_h_i_sa");
+		$tipo_tramite = str_replace("%20", " ", $tipo_tramite);
+
+		// Sube el file_JustificacionInformeCalculo
+		$documentosfile = $this->request->getFiles();
+		foreach ($documentosfile['file_JustificacionInformeCalculo'] as $informeCalculo) {
+			if ($informeCalculo->isValid() && !$informeCalculo->hasMoved()) {
+				$newName = $informeCalculo->getRandomName();
+				$informeCalculo->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' =>  $newName,
+					'type' => $informeCalculo->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite,
+					'corresponde_documento' => 'file_JustificacionInformeCalculo',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $informeCalculo->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+				$data ['id_sol'] = $id;
+			}
+		}
+		// Sube las file_CompromisoReduccion
+		$documentosfile = $this->request->getFiles(); 
+		foreach ($documentosfile['file_CompromisoReduccion'] as $compromisoReduccion) {
+			if ($compromisoReduccion->isValid() && !$compromisoReduccion->hasMoved()) {
+				$newName = $compromisoReduccion->getRandomName();
+				$compromisoReduccion->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' => $newName,
+					'type' => $compromisoReduccion->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite,
+					'corresponde_documento' => 'file_CompromisoReduccion',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $compromisoReduccion->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+			}
+		}
+
+		/* ------------------ actualiza el estado del expediente a 'pendienteRECJustificar' ---------------*/
+		$sql = 'UPDATE pindust_expediente SET situacion="pendienteRECJustificar" WHERE id =' . $id;
+		$db->simpleQuery($sql);
+		/*-------------------------------------------------------------------------------------------------*/
+
+		$data['titulo'] = "Expedient: " . $id . " / " . $tipo_tramite[1];
+		$query = $db->query("SELECT * FROM pindust_expediente WHERE id =" . $id);
+		$expediente = $query->getResult();
+		foreach ($expediente as $exped_item) :
+			$data['telefono_not'] = $exped_item->telefono_rep;
+			$data['email_not'] = $exped_item->email_rep;
+			$data['nif'] = $exped_item->nif;
+		endforeach;
+		$data['selloTiempo'] = $selloTiempo;
+		$data['id'] = $id;
+		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);
+		echo view('pages/forms/documento-justificacion-renovacion-ils', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 		echo view('pages/forms/rest_api_firma/envia-a-firma-justificacion', $data);
 		echo view('templates/footer/footer');

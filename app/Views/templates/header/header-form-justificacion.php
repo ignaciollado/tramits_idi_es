@@ -36,8 +36,8 @@ $request = \Config\Services::request();
 $data['expedientes'] = $modelExp->where('id', $id)->first();
 ?>
 <!-- HEADER: MENU + HEROE SECTION -->
-<header>
-	<div class="menu">
+<header class="header-justificacion">
+	<div>
 		<ul>
 			<li class="logo-justificacion">
 				<a href="http://www.adrbalears.es" target="_self">
@@ -60,7 +60,7 @@ $data['expedientes'] = $modelExp->where('id', $id)->first();
 			</li>
 		</ul>
 	</div>	
-  <div class="p-2 bg-white text-center">
+  <div class="bg-white text-center">
 		<div class="btn-group" role="group" aria-label="lang toggle">
 			<a href="<?php echo base_url('/public/index.php/home/set_lang_justific/ca/').'/'.$id.'/'.$nif.'/'.$tipoTramite; ?>" class="btn btn-outline-primary" role="button"> Català</a>
 			<a href="<?php echo base_url('/public/index.php/home/set_lang_justific/es/').'/'.$id.'/'.$nif.'/'.$tipoTramite; ?>" class="btn btn-outline-primary" role="button"> Castellano</a>

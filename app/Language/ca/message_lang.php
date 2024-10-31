@@ -122,7 +122,10 @@ return [
    'intro_sol_isba'  			     => "Convocatòria per als anys 2024 i 2025 d’ajuts a la microempresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives",
    'intro_ils'			              => "Les indústries interessades a adherir-se al programa han d'emplenar el següent formulari de sol·licitud d'adhesió",
    'intro_ils_solicitud'			  => "Sol·licitud per a la concessió de la marca Indústria Local Sostenible",
-
+   'renovacion_marca_ils'          => "Renovació de la marca ILS",
+   'intro_renovacion_marca_ils'    => "Formulari per a la renovació de la marca ILS",
+   'renovacion_marca_ils_declaracion' => "aporta la documentació que acredita la reducció de les emissions de gasos d’efecte hivernacle per a la renovació a l’adhesió de la marca de garantia Indústria Local Sostenible (ILS)",
+   
    'convocatoria_sol_idigital'	  => "Convocatòria ",
    'titulo_sol_idigital_consul'    => "Declaració responsable del consultor per al programa de transformació digital<br>en el marc del programa 'Idigital'",
    'titulo_rep_legal'              => "REPRESENTANT LEGAL",
@@ -181,7 +184,7 @@ municipi.",
    'justificacion_plan_p1'            => "El pla o els informes d'acord amb el programa que justifico",
    'justificacion_plan_doc'           => "Memòria tècnica d'actuació: El <strong>pla o informe</strong> d'acord amb el programa que justifico",
    'justificacion_informe_calculo'    => "Els informes de càlcul de petjada de carboni",
-
+   'justificacion_comprimiso_reduccion' => "Compromís de reducció de les emissions",
    'justificacion_plan_p2_p3'         => "El pla o els informes",
    'justificacion_mem_econom_titulo'  => "Memòria econòmica justificativa",
    'justificacion_mem_econom'         => "Memòria econòmica justificativa (annex 7) juntament amb",

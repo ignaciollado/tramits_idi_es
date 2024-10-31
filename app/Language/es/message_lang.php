@@ -118,7 +118,10 @@ return [
    'intro_sol_isba'  			    => "Convocatória para los años 2024 y 2025 de ajudas a la microempresa, pequeña y mediana empresa de carácter industrial de les Illes Balears que tengan aprobadas operaciones financieras avaladas por una Sociedad de Garantía Recíproca, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas",
    'intro_ils'			             => "Las industrias interesadas en adherirse al programa han de rellenar el siguiente formulario de solicitud de adhesión",
    'intro_ils_solicitud'			 => "Solicitud para la concesión de la marca Indústria Local Sostenible",
-
+   'renovacion_marca_ils'          => "Renovación de la marca ILS",
+   'intro_renovacion_marca_ils'    => "Formulario para la renovación de la marca ILS",
+   'renovacion_marca_ils_declaracion' => "aporta la documentación que acredita la reducción de les emisiones de gases de efecto hivernadero para la renovación a la adhesión de la marca de garantía Industria Local Sostenible (ILS)",
+   
    'convocatoria_sol_idigital'	      => "Convocatoria ",
    'titulo_sol_idigital_consul'       => "Declaración responsable del consultor para el programa de transformación digital<br>en el marco del programa 'Idigital'",
    'titulo_rep_legal'                 => "REPRESENTANTE LEGAL",   
@@ -173,7 +176,8 @@ return [
    'justificacion_plan_p1'            => "El plan o los informes de acuerdo con el programa que justifico",
    'justificacion_plan_doc'           => "Memoria técnica de actuación: El <strong>plan o informe</strong> de acuerdo con el programa que justifico",
    'justificacion_informe_calculo'    => "Los informes de cálculo de la huella de carbono",
-   
+   'justificacion_comprimiso_reduccion' => "Compromiso de reducción de las emisiones",
+
    'justificacion_plan_p2_p3'         => "El plan o los informes",
    'justificacion_mem_econom_titulo'  => "Memoria económica justificativa",
    'justificacion_mem_econom'         => "Memoria económica justificativa (anexo 7) junto con",

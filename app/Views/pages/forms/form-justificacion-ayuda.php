@@ -35,7 +35,6 @@
 
 <form action="<?php echo base_url('/public/index.php/expedientes/do_justificacion_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion" id="form_justificacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	<input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
-
 	<fieldset>
 		<h4><?php echo lang('message_lang.solicitante');?>
 			<span><strong><?php echo $data['expedientes']['empresa'];?></strong></span> <?php echo lang('message_lang.conCIF');?><span><?php echo $data['expedientes']['nif'];?></span>
@@ -135,7 +134,7 @@
 </form>
 <div class="alert alert-info"> 
 	<i class="fa fa-info-circle" style="font-size:24px;color:red;"></i> info
-	<span > <?php echo lang('message_lang.upload_multiple');?></span>
+	<span> <?php echo lang('message_lang.upload_multiple');?></span>
 </div>
 
 <script>

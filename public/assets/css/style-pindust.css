@@ -13,6 +13,10 @@ button:hover {
   grid-template-columns: auto auto auto;
 	justify-content: space-between;
 }
+.header-justificacion {
+	margin: 0 auto;
+  max-width: 1160px;
+}
 .container-add-line{
 	background-color: #e0fafd;
   padding: .5rem;

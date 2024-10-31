@@ -218,11 +218,11 @@ class Home extends BaseController
 	
 	public function set_lang_req ()
 	{
-		$uri = new \CodeIgniter\HTTP\URI();	
+		$uri = new \CodeIgniter\HTTP\URI();
 		$language = \Config\Services::language();
 		$request = \Config\Services::request();
-		$idioma =  $request->uri->getSegment(3); 
-		$language->setLocale($idioma); 
+		$idioma =  $request->uri->getSegment(3);
+		$language->setLocale($idioma);
 		helper('form');
 		helper('filesystem');
 		$data['titulo'] = lang('message_lang.titulo_sol_idigital');
@@ -429,9 +429,9 @@ class Home extends BaseController
 				'id' => $id,
 				'idioma' => 'ca',
 				'titulo' => "Dades adicionals de l'empresa per publicar a la web de ILS"
-			];
+		];
 		echo view('templates/header/header_form_ils', $data);
-		echo view('pages/forms/form-datos-empresa-ils', $data);
+		echo view('pages/forms/modDocs/ILS/form-datos-empresa-ils', $data);
 		echo view('templates/footer/footer_form');
 	}
 
@@ -455,7 +455,7 @@ class Home extends BaseController
 			'titulo' => "Datos de la empresa para publicar en la web ILS"
 		];
 		echo view('templates/header/header_form_ils', $data);
-		echo view('pages/forms/form-datos-empresa-ils', $data);
+		echo view('pages/forms/modDocs/ILS/form-datos-empresa-ils', $data);
 		echo view('templates/footer/footer_form');
 	}
 
@@ -649,21 +649,29 @@ class Home extends BaseController
 		echo view('pages/forms/detail-empresa-ils', $data);
 	}
 
-	public function renovacion_marca_ils($page = 'forms/form-adhesion-ils')
+	public function renovacion_marca_ils($id, $idioma = 'ca')
 	{
 		helper('form');
 		helper('filesystem');
 		helper('cookie');
+		$request = \Config\Services::request();
 		$language = \Config\Services::language();
-		$language->setLocale('ca'); 
+		$idioma = $request->uri->getSegment(7);
+		$language->setLocale($idioma);
 		$cookie = array(
 			'name'   => 'CurrentLanguage',
-			'value'  => 'ca',                            
+			'value'  => $idioma,                            
 			'expire' => '7200',                                                                                   
 			'secure' => true
 			);
-   		set_cookie($cookie);
-		echo view('templates/header/header_form_adhesion_ils');
-		echo view('pages/forms/form-renovacion-ils');
+   	set_cookie($cookie);
+		 $data = [
+			'id' => $id,
+			'idioma' => $idioma,
+			'titulo' => "Dades adicionals de l'empresa per publicar a la web de ILS"
+		];
+		echo view('templates/header/header_form_ils', $data);
+		echo view('pages/forms/modDocs/ILS/form-renovacion-ils', $data);
+		echo view('templates/footer/footer_form');
 	}
 }

@@ -1,51 +1,43 @@
 * {
-    box-sizing: border-box;
-  }
-body {
-    background-color: rgba(241, 241, 241, 0);
-    max-width: 100%;
-    margin: auto!important;
-    display: flex;
-    flex-direction: column;
+  box-sizing: border-box;
 }
-
+body {
+  background-color: rgba(241, 241, 241, 0);
+  max-width: 100%;
+  margin: auto!important;
+  display: flex;
+  flex-direction: column;
+}
 article {
   display: grid;
   max-width: 1110px;
   margin: auto;
   margin-bottom: 6rem;
 }
-
 dl, dd {
-    margin-top: 0;
-    margin-bottom: 1rem!important;
+  margin-top: 0;
+  margin-bottom: 1rem!important;
 }
-
 ol, ul {
   margin-top: 2rem;
-  margin-bottom: 2rem !important;
-  margin-left: 4rem !important;
+  margin-bottom: 2rem!important;
+  margin-left: 4rem!important;
 }
-
 ol{
   font-family: Montserrat;
   font-size: 2rem;
 }
-
 ul {
   list-style-type: none;
 }
-
 section {
-    margin: 0 auto;
-    max-width: 1100px;
-    padding: .5rem .75rem .5rem .75rem;
+  margin: 0 auto;
+  max-width: 1100px;
 }
 
 h4 {
-  font-size: 1.5rem !important;
+  font-size: 1.5rem!important;
 }
-
 #regForm {
   background-color: rgba(255, 255, 255, 1);
   padding: 3rem;
@@ -218,24 +210,23 @@ select, input, textarea {
 .container-radio h6 {
     font-size: 2rem;   
 }
-
 .container-radio .checkmark::after {
-    top: 7px;
-    left: 7px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgb(0, 0, 0, 1);
-    background-color: rgba(0, 0, 0, 1);
-    background-position-x: 0%;
-    background-position-y: 0%;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-image: none;
-    background-size: auto;
-    background-origin: padding-box;
-    background-clip: border-box;
-    } 
+  top: 7px;
+  left: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 1);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: none;
+  background-size: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+} 
 .buttonAsistente {
     background-color: #0098cb;
     color: rgba(0, 0, 0, 1);
@@ -266,50 +257,50 @@ select, input, textarea {
   margin-bottom: 1rem;
 }
 
-  /* Make circles that indicate the steps of the form: */
-  .step {
-    height: 3rem;
-    width: 3rem;
-    margin: 0 1rem;
-    background-color: rgba(190, 0, 44, 1);
-    color: rgba(255, 255, 255, 1);
-    border-radius: 50%;
-    padding: 6px 3px 0 3px;
-    text-align: center;
-    display: inline-block;
-    opacity: 0.9;
-  }
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 3rem;
+  width: 3rem;
+  margin: 0 1rem;
+  background-color: rgba(190, 0, 44, 1);
+  color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  padding: 6px 3px 0 3px;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.9;
+}
 
 .container-radio-invalid {
-    background-color: rgba(190, 0, 44, 1);
-    color:rgba(255, 255, 255, 1);
-    padding: .3rem;
+  background-color: rgba(190, 0, 44, 1);
+  color:rgba(255, 255, 255, 1);
+  padding: .3rem;
 }
 .container-radio-valid {
   background-color: rgba(255, 255, 255, 1);
   color:rgba(0, 0, 0, 1)
 }  
 .step.active {
-    opacity: 1;
-  }
+  opacity: 1;
+}
   
 /* Mark the steps that are finished and valid: */
 .step.finish {
-    background-color: rgba(204, 233, 230, 1);
-  }
+  background-color: rgba(204, 233, 230, 1);
+}
 .mainButtonContainer{
-    overflow:auto;
-  }
+  overflow:auto;
+}
 .buttonContainer {
-    float:right;
-    padding: .5rem 0;
-  }
+  float:right;
+  padding: .5rem 0;
+}
 footer {
-    position: sticky;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .alert-info, .btn-success {

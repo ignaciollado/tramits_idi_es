@@ -1114,12 +1114,8 @@
         </div>
         <div class="col docsExpediente">
         <h3>Justificants:</h3>
-            <div id = "tab_plan">
-                <button class="accordion-exped">
-                <?php
-                   echo lang('message_lang.justificacion_informe_calculo');
-                ?>
-                </button>
+            <div id = "tab_informes_calculo">
+                <button class="accordion-exped"><?php echo lang('message_lang.justificacion_informe_calculo');?></button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
@@ -1127,8 +1123,8 @@
 	                    <div>Estat</div>
                     </div>
 
-	                <?php if($documentosJustifPlan): ?>
-                    <?php foreach($documentosJustifPlan as $docsJustif_item): 
+	                <?php if($documentosJustifInformeCalcILS): ?>
+                    <?php foreach($documentosJustifInformeCalcILS as $docsJustif_item): 
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $parametro = explode ("/",$path);
@@ -1161,17 +1157,16 @@
                 </div>
             </div>
 
-            <div id = "tab_facturas">
-                <button class="accordion-exped">Compromís de reducció de les emissió</button>
+            <div id = "tab_comprimiso_reduccion">
+                <button class="accordion-exped"><?php echo lang('message_lang.justificacion_comprimiso_reduccion');?></button>
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
    	                    <div>Arxiu</div>
 	                    <div>Estat</div>
                     </div>
-                <?php if($documentosJustifFact): ?>
-                <?php foreach($documentosJustifFact as $docsJustif_item):
-
+                <?php if($documentosJustifCompromisoReduccionILS): ?>
+                <?php foreach($documentosJustifCompromisoReduccionILS as $docsJustif_item):
 			        $path =  $docsJustif_item->created_at;
 			        $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			        $tipoMIME = $docsJustif_item->type;
@@ -1216,7 +1211,7 @@
             <div><a href="<?php echo base_url('public/index.php/home/justificacion_cheques/').'/'.$expedientes['id'].'/'.$expedientes['nif'].'/'.$expedientes['tipo_tramite'].'/'.$expedientes['convocatoria'].'/ca';?>" target = "_blank">Formulari per a la renovació de la marca ILS</a></div>
             <div><a href="<?php 
                 if (isset($selloDeTiempo)) {
-                    echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_justificacion_solicitud_ayuda.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');
+                    echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_renovacion_marca_ils.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');
                 }
             ?>" target = "_blank">Mostrar la declaració responsable sense signar</a></div>
         </div>
@@ -1263,28 +1258,20 @@
 </style>
 
 <script>
-    if (<?php echo $totalDocsJustifPlan;?> === 0) {
-    	document.getElementById("tab_plan").classList.add ("warning-msg-justific");
+    if (<?php echo $totalDocsJustifInformeCalcILS;?> === 0) {
+    	document.getElementById("tab_informes_calculo").classList.add ("warning-msg-justific");
     }
     else
     {
-    	document.getElementById("tab_plan").classList.add ("success-msg-justific");
+    	document.getElementById("tab_informes_calculo").classList.add ("success-msg-justific");
     }
 
-    if (<?php echo $totalDocsJustifFact;?> === 0) {
-    	document.getElementById("tab_facturas").classList.add ("warning-msg-justific");
+    if (<?php echo $totalDocsJustifCompromisoReduccionILS;?> === 0) {
+    	document.getElementById("tab_comprimiso_reduccion").classList.add ("warning-msg-justific");
     }
     else
     {
-    	document.getElementById("tab_facturas").classList.add ("success-msg-justific");
-    }
-
-    if (<?php echo $totalDocsJustifPagos;?> === 0) {
-    	document.getElementById("tab_pagos").classList.add ("warning-msg-justific");
-    }
-    else
-    {
-	    document.getElementById("tab_pagos").classList.add ("success-msg-justific");
+    	document.getElementById("tab_comprimiso_reduccion").classList.add ("success-msg-justific");
     }
 </script>
 
