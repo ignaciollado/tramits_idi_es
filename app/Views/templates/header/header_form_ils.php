@@ -5,38 +5,30 @@
 	<title><?php echo lang('message_lang.titulo_sol_form_ils');?></title>
 	<meta name="description" content="Assistent per sol·licitar l'adhesió al programa i formar part d'ILS">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Latest compiled and minified CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<!-- jQuery library -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- -->
-<!-- <script src="https://use.fontawesome.com/5db4446d08.js"></script>
- -->
-<!-- Latest compiled JavaScript -->
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/estilos.css"/>	
 </head>
 
 <?php
-		use App\Models\ConfiguracionModel;
-		use App\Models\ExpedientesModel;
-		$configuracion = new ConfiguracionModel();
-		$modelExp = new ExpedientesModel();
-		$db = \Config\Database::connect();
+	use App\Models\ConfiguracionModel;
+	use App\Models\ExpedientesModel;
+	$configuracion = new ConfiguracionModel();
+	$modelExp = new ExpedientesModel();
+	$db = \Config\Database::connect();
 		
-		$uri = new \CodeIgniter\HTTP\URI();
-		$request = \Config\Services::request();
+	$uri = new \CodeIgniter\HTTP\URI();
+	$request = \Config\Services::request();
 	
-		$language = \Config\Services::language();
-		$language->setLocale($idioma);
+	$language = \Config\Services::language();
+	$language->setLocale($idioma);
 	
-		$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
-		$data['expedientes'] = $modelExp->where('id', $id)->first();
-		$nif = $data['expedientes']['nif'];
-		$tipoTramite = $data['expedientes']['tipo_tramite'];
-		$convocatoria = $data['expedientes']['convocatoria'];
+	$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+	$data['expedientes'] = $modelExp->where('id', $id)->first();
+	$nif = $data['expedientes']['nif'];
+	$tipoTramite = $data['expedientes']['tipo_tramite'];
+	$convocatoria = $data['expedientes']['convocatoria'];
 ?>
 
 <body>

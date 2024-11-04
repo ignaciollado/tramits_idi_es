@@ -127,6 +127,7 @@
 		</fieldset>
 		<fieldset class="submit-button">
 			<button type="submit" disabled class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+
 		</fieldset>
 		
 

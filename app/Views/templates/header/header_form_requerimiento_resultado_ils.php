@@ -1,15 +1,46 @@
-<!-- <header>
-
-	<div class="menu">
-		<ul>
-		<li class="logo"><a href="http://www.idi.es" target="_self"><img height = "54" title="IDI Logo"
-																					alt = "<?php echo lang('message_lang.datos_empresa_ils_titulo');?>"
-																					src = "<?php echo base_url()."/public/assets/images/logo_idi_conselleria.jpg";?>" ></a>
-			</li>
-		</ul>
-	</div>	
-</header> -->
-
-<article  class="alert alert-info">
-<h2><?php echo lang('message_lang.datos_empresa_ils_recibidos');?></h2>
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<meta charset="UTF-8">
+	<title><?php echo lang('message_lang.titulo_sol_form_ils');?></title>
+	<meta name="description" content="Assistent per sol·licitar l'adhesió al programa i formar part d'ILS">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="icon" type="image/png" href="/public/assets/images/adr-balears.png" />
+	<link rel="stylesheet" type="text/css" href="/public/assets/css/style-pindust.css"/>
+	<link rel="stylesheet" type="text/css" href="/public/assets/css/estilos.css"/>
+	<link rel="stylesheet" type="text/css" href="/public/assets/css/form-adhesion-ils.css"/>
+</head>
+<?php
+	use App\Models\ConfiguracionModel;
+	use App\Models\ExpedientesModel;
+	$configuracion = new ConfiguracionModel();
+	$modelExp = new ExpedientesModel();
+	$db = \Config\Database::connect();
+	
+	$uri = new \CodeIgniter\HTTP\URI();
+	$request = \Config\Services::request();
+	$language = \Config\Services::language();
+	$language->setLocale($idioma);
+	
+	$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
+	$data['expedientes'] = $modelExp->where('id', $id)->first();
+	$nif = $data['expedientes']['nif'];
+	$tipoTramite = $data['expedientes']['tipo_tramite'];
+	$convocatoria = $data['expedientes']['convocatoria'];
+?>
+<body>
+<article>
+<header class="header__formempresasils">
+	<fieldset class="header__formempresasils--logo">
+		<a href="http://www.adrbalears.es" target="_blank">
+			<img class="logo" alt="logo" title="ADR Balers" src="<?php echo base_url() ."/public/assets/images/con-adr-ils.svg";?>" />
+		</a>
+	</fieldset>
+	<fieldset class="header__formempresasils--documento">
+   	<h5><?php echo lang('message_lang.justificacion_exp');?>:  <?php echo $data['expedientes']['idExp'];?> / <?php echo $data['expedientes']['convocatoria'];?></h5>
+   	<h5><?php echo lang('message_lang.destino_solicitud');?>: <?php echo lang('message_lang.idi');?></h5>
+   	<h5><?php echo lang('message_lang.codigo_dir3');?> <?php echo $data['configuracion']['emisorDIR3'];?></h5>
+ 	</fieldset>
+</header>
 </article>

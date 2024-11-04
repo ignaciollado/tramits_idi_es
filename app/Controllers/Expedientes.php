@@ -995,25 +995,27 @@ class Expedientes extends Controller
 
 		// Sube el file_JustificacionInformeCalculo
 		$documentosfile = $this->request->getFiles();
-		foreach ($documentosfile['file_JustificacionInformeCalculo'] as $informeCalculo) {
-			if ($informeCalculo->isValid() && !$informeCalculo->hasMoved()) {
-				$newName = $informeCalculo->getRandomName();
-				$informeCalculo->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
-				$data_file = [
-					'name' =>  $newName,
-					'type' => $informeCalculo->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite,
-					'corresponde_documento' => 'file_JustificacionInformeCalculo',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'created_at'  => $informeCalculo->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $id
-				];
-				$save = $documentosJustif->insert($data_file);
-				$last_insert_id = $save->connID->insert_id;
-				$data ['id_sol'] = $id;
+		if ($documentosfile['file_JustificacionInformeCalculo']) {
+			foreach ($documentosfile['file_JustificacionInformeCalculo'] as $informeCalculo) {
+				if ($informeCalculo->isValid() && !$informeCalculo->hasMoved()) {
+					$newName = $informeCalculo->getRandomName();
+					$informeCalculo->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+					$data_file = [
+						'name' =>  $newName,
+						'type' => $informeCalculo->getClientMimeType(),
+						'cifnif_propietario' => $nif,
+						'tipo_tramite' => $tipo_tramite,
+						'corresponde_documento' => 'file_JustificacionInformeCalculo',
+						'datetime_uploaded' => time(),
+						'convocatoria' => $convocatoria,
+						'created_at'  => $informeCalculo->getTempName(),
+						'selloDeTiempo'  => $selloTiempo,
+						'id_sol'         => $id
+					];
+					$save = $documentosJustif->insert($data_file);
+					$last_insert_id = $save->connID->insert_id;
+					$data ['id_sol'] = $id;
+				}
 			}
 		}
 		// Sube las file_CompromisoReduccion
@@ -1057,7 +1059,7 @@ class Expedientes extends Controller
 		echo view('templates/header/header_form_requerimiento_resultado_ils', $data);
 		echo view('pages/forms/documento-justificacion-renovacion-ils', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-		echo view('pages/forms/rest_api_firma/envia-a-firma-justificacion', $data);
+		echo view('pages/forms/rest_api_firma/envia-a-firma-renovacion-ils', $data);
 		echo view('templates/footer/footer');
 	}
 

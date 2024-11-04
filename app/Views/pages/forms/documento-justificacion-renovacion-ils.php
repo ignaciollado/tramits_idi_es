@@ -76,13 +76,13 @@ $data['expedientes'] = $modelExp->where('id', $id)->first();
 $pdf->AddPage();
 $currentY = $pdf->getY();
 
-$html = "<strong>".lang('message_lang.justificacion_titulo')."</strong><br><br>";
+$html = "<strong>".lang('message_lang.renovacion_marca_ils')."</strong><br><br>";
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(180, '', 20, 60, $html, 0, 1, 1, true, 'J', true);
 
-$html = "<strong>".lang('message_lang.titulo_justificacion_idigital')."</strong><br><br>";
-$html .= "<strong>".lang('message_lang.destino_solicitud').": Agència de desenvolupament regional de les Illes Balears</strong><br><br>";
+$html = "<strong>".lang('message_lang.intro_pdf_renovacion_marca_ils')."</strong><br><br>";
+$html .= "<strong>".lang('message_lang.destino_solicitud')."</strong>: Agència de desenvolupament regional de les Illes Balears<br><br>";
 $html .= "<strong>".lang('message_lang.codigo_dir3')."</strong>".$data['configuracion']['emisorDIR3']."<br>";
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
@@ -90,19 +90,9 @@ $pdf->writeHTMLCell(167, '', 20, 70, $html, 0, 1, 1, true, 'J', true);
 
 echo "<content><section>".$html;
 
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.identificacion_sol_idigital').":<br><br>".lang('message_lang.solicitante_sol_idigital').": ".$data['expedientes']['empresa']." NIF: ".$data['expedientes']['nif']."<br>";
+$html = "<br><table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><strong>".lang('message_lang.identificacion_sol_idigital')."</strong>:<br><br>".lang('message_lang.solicitante_sol_idigital').": ".$data['expedientes']['empresa']." NIF: ".$data['expedientes']['nif']."<br>";
 $html .= lang('message_lang.nom_rep_legal_sol_idigital').": ".$data['expedientes']['nombre_rep']." ".lang('message_lang.nif_rep_legal_sol_idigital')." ".$data['expedientes']['nif_rep']."<br><br>";
-$html .= lang('message_lang.select_programa_justificacion').":<br><br>";
-$html .= $data['expedientes']['tipo_tramite']."</td></tr>";
-$html .= "</table>";
-echo $html;
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
-
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_total_justificacion').": ".$importeTotalJustificado." €<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
@@ -111,7 +101,7 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.declaro')."<br><br>".lang('message_lang.justificacion_declaracion').":<br>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><strong>".lang('message_lang.declaro')."</strong><br><br>".lang('message_lang.justificacion_declaracion_ils').":<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
@@ -138,25 +128,14 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(158, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td>";
-$html .= "<strong>".lang('message_lang.justificacion_mem_econom_titulo').":</strong><br>";
-$html .= $memoriaEconomicaJustificativa;
-$html .= "</td></tr>";
-$html .= "</table>";
-echo $html;
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
-
 /* ------------------firma el documento ------------------------------ */
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
-$html = "<table cellpadding='5' style='font-size: 7px; width: 100%; border: 1px solid #fff;'>";
-$html .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:8px;'>".lang('message_lang.firmo_documento_justificacion')."</td></tr><br>";
+$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #fff;'>";
+$html .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;'>".lang('message_lang.firmo_documento_renovacion_ils')."</td></tr><br>";
 $html .= "</table>";
 
 echo $html;
@@ -164,7 +143,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
 $pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
 
-// ---------------------------------------------------------RGDP----------------------- //
+// --------------------------------------RGDP----------------------- //
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
 $html29 = "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";

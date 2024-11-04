@@ -85,7 +85,9 @@ return [
    'tramite_procedimiento_texto'   => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
 
    'titulo_justificacion_idigital' => "Sol·licitud de pagament de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
-   'titulo_justificacion_isba'     => "Sol·licitud de pagament d’ajuts a la microempresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives.",
+   'titulo_justificacion_isba'     => "Sol·licitud de pagament d’ajuts a la microempresa, petita i mitjana empresa de caràcter indústrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives.",
+   'titulo_renovacion_ils'         => "Sol·licitud de renovació de la marca Industria Local Sostenible (ILS) de la Agència de desenvolupament regional de les Illes Balears.",
+
 
    'titulo_requerimiento_idigital' => "Requeriment documentació/informació adicional.",
    'subtitulo_sol_idigital'		  => "RECORDAU QUE, UNA VEGADA SIGNADA LA SOL·LICITUD, HEU DE DESCARREGAR EL PDF I REGISTRAR-HO EN EL TRÀMIT “SOL·LICITUD” PER MITJÀ DEL BOTÓ “ACCÉS AL TRÀMIT TELEMÀTIC” QUE ES TROBA EN EL SEGÜENT ENLLAÇ:
@@ -99,7 +101,8 @@ return [
    Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@adrbalears.es i/o per telèfon: 971 17 61 61 + 62891",
 
    'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses de caràcter industrial de les Illes Balears per cobrir despeses financeres d'operacions de finançament d'inversions productives, eficiència energètica i transformació digital previstes en el Pla Estratègic Industrial 2018-2023",
-   'subtitulo_justificacion_idigital'	 => "RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",     
+   'subtitulo_justificacion_idigital'	 => "RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",
+   'subtitulo_renovacion_ils'	 => "RECORDAU QUE UNA VEGADA SIGNADA LA PETICIÓ DE RENOVACIO DE LA MARCA HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",
    'subtitulo_solicitud_felib' => "",
    'enviado_correo_electron'          => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'ajut</strong> perquè la signeu electrònicament.",
    'enviado_correo_electron_ils'      => "Us hem enviat un correu electrònic a l'adreça que ens heu facilitat amb la <strong>sol·licitud d'adhesió a ILS</strong> perquè la signeu electrònicament.",
@@ -111,7 +114,8 @@ return [
    'nota_info_rec'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'ADR Balears per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)</strong>. En cas de no fer-ho, no la podrem processar.",
    'nota_info_felib'					  => "Una vegada signada la sol·licitud, rebreu un altre correu electrònic amb una còpia del document. Aquest document, en format pdf, ens ho heu de fer arribar a l'ADR Balears per mitjà de la <strong>info@adrbalears.es</strong>. En cas de no fer-ho, no la podrem processar.",
    'nota_info_rec_justif'			  => "Una vegada signat el requeriment de justificació, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'ADR Balears per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no el podrem processar.",
-   
+   'nota_info_rec_renovacion_ils'  => "Una vegada signada la petició de renovació de la marca ILS, rebrà un correu electrònic amb una còpia del document signat. Aquest document, en format pdf, ens ho heu de fer arribar a l'ADR Balears per mitjà de la <strong>SEU ELECTRÒNICA DE CAIB (Accés al tràmit telemàtic)'</strong>. En cas de no fer-ho, no el podrem processar.",
+
    'contacto_idi_pindust'          => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@adrbalears.es i per telèfon: 971 17 61 61 + 62894 ",
    'contacto_idi_ils'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: pjordi@adrbalears.es i per telèfon: 971 17 61 61 + 62891 ",
    'contacto_idi_felib'              => "Si necessitau contactar-nos, ho podeu fer per correu electrònic: info@adrbalears.es i per telèfon: 971 17 61 61 + 62735 ",
@@ -123,6 +127,7 @@ return [
    'intro_ils'			              => "Les indústries interessades a adherir-se al programa han d'emplenar el següent formulari de sol·licitud d'adhesió",
    'intro_ils_solicitud'			  => "Sol·licitud per a la concessió de la marca Indústria Local Sostenible",
    'renovacion_marca_ils'          => "Renovació de la marca ILS",
+   'intro_pdf_renovacion_marca_ils' => "Sol·licitud de renovació de la marca Indústria Local Sostenible (ILS) de l'Agència de desenvolupament regional dels Illes Balears",
    'intro_renovacion_marca_ils'    => "Formulari per a la renovació de la marca ILS",
    'renovacion_marca_ils_declaracion' => "aporta la documentació que acredita la reducció de les emissions de gasos d’efecte hivernacle per a la renovació a l’adhesió de la marca de garantia Indústria Local Sostenible (ILS)",
    
@@ -178,6 +183,8 @@ municipi.",
    'justificacion_exp'			        => "Expedient",   
    'justificacion_declaracion'        => "Que he aportat la documentació següent com a justificació de la convocatòria d'ajuts de xecs de consultoria per a la competitivitat industrial de les Illes Balears en materèria de digitalització, internacionalització, sostenibilitat i gestió avançada",
    'justificacion_declaracion_isba'   => "Que he aportat la documentació següent com a justificació de la convocatòria d'ajuts a la microempresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives.",
+   'justificacion_declaracion_ils'    => "Que he aportat la documentació següent per a la renovació de la marca ILS de la Agència de desenvolupament regional de les Illes Balears",
+
    'justificacion_declarcion_isba_txt' => "Declaració d'ISBA-SBR",
    'justificacion_declaracion_PII_PIII' => ", declar que he aplicat els fons percebuts al pagament objecte de la convocatòria segons el punt 12.2 de la mateixa, i adjunt la següent documentació com a justificació",
   
@@ -193,7 +200,7 @@ municipi.",
    'justificacion_justificantes_doc'  => "Els justificants de pagaments realitzats al consultor",
    'justificacion_justificantes_dec_resp'  => "Els <strong>justificants de pagaments realitzats al consultor</strong> en els terminis establerts en la convocatòria.",
    'firmo_documento_justificacion'    => "Sign aquest document a l'efecte de justificar la convocatòria d'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears per l'any 2024 i sol·licitar el pagament de la subvenció concedida.",
-
+   'firmo_documento_renovacion_ils' => "Sign aquest document a l'efecte de sol·licitar la renovació de la marca Industria Local Sostenible (ILS) de la Agència de desenvolupament regional de les Illes Balears.",
    'enviar_documentacion'  			  => "Enviar la documentació",
    'programa'                         => "1. SELECCIONAU EL PROGRAMA D'AJUDA QUE SOL·LICITAU",
    'programa_continuacion'            => "(Seleccionau només una opció. Presenti una sol·licitud per a cada programa)",

@@ -58,8 +58,8 @@
 		$request->addresseeLines = $lines;
 		
 		// Subject, message and sender notification level
-		$request->subject = lang('message_lang.titulo_justificacion_idigital'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
-		$request->message = lang('message_lang.subtitulo_justificacion_idigital'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
+		$request->subject = lang('message_lang.titulo_renovacion_ils'); // "Sol·licitud d'ajuts per al disseny de plans de transformació digital en el marc del programa 'Idigital'";
+		$request->message = lang('message_lang.subtitulo_renovacion_ils'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 		$request->senderNotificationLevel = "ALL";
 		$request->stampName = "bar_code";
 		//$request->useDefaultStamp = true;
@@ -70,17 +70,15 @@
 		// Adding a document to sign
 		$doc = new Document;
 
-		$doc->filename = $nif.'_dec_res_solicitud_iDigital.pdf';
-		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/justificacion/'.$selloTiempo.'/'.$nif.'_justificacion_solicitud_ayuda.pdf')));	
+		$doc->filename = $nif.'_renovacion_marca_ils.pdf';
+		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/justificacion/'.$selloTiempo.'/'.$doc->filename)));	
 
 		$documentsToSign = array ($doc);
 		$request->documentsToSign = $documentsToSign;
 		
 		// Set json
 		$json = json_encode($request);
-		/* echo $json; */
 		$resultRequest = execute("requests", $json, __FUNCTION__);
-		/* echo "----".$resultRequest."------"; */
 		printResult($resultRequest, $id_sol, $tipo_Doc, $adreca_mail);
 
 	
@@ -128,7 +126,6 @@
 		echo "<content>";
 		echo "<section>";
 		$respuesta = json_decode ($result, true);
-		/* echo "****". $respuesta . "*****"; */
 		echo "<div class='alert alert-info'><strong>".$respuesta['subject']."</strong></div>";
 
 		$db      = \Config\Database::connect();
@@ -139,8 +136,8 @@
 		$builder->where('id', $id_sol);
 		$builder->update($data);	
 		
-		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_justif')." <strong>".$adreca_mail."</strong></div>";
-		echo "<div class='alert alert-warning'>".lang('message_lang.nota_info_rec_justif')."</div>";
+		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_ils')." <strong>".$adreca_mail."</strong></div>";
+		echo "<div class='alert alert-warning'>".lang('message_lang.nota_info_rec_renovacion_ils')."</div>";
 		echo "<div class='alert alert-info'>".lang('message_lang.contacto_idi_pindust')."</div>";		
 		echo "<div class='alert alert-info'>".lang('message_lang.una_vez_firmado')."</div>";
 		echo "</section>";

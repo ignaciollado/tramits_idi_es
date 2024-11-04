@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="/public/assets/css/form-adhesion-ils.css"/>
 
 <!-- CONTENT -->
-<?php 
+<?php
+	helper('cookie');
 	use App\Models\ConfiguracionModel;
 	use App\Models\ExpedientesModel;
 	use App\Models\ConfiguracionLineaModel;
@@ -24,7 +25,8 @@
 ?>
 
 <section>
-  <fieldset class="alert alert-info">
+	<h3><?php echo lang('message_lang.intro_renovacion_marca_ils');?></h3>
+	<fieldset class="alert alert-info">
 		<h5><?php echo lang('message_lang.justificacion_doc');?>: <strong><?php echo lang('message_lang.renovacion_marca_ils');?></strong></h5>
 		<h5><?php echo lang('message_lang.justificacion_exp');?>:  <?php echo $data['expedientes']['idExp'];?> / <?php echo $data['expedientes']['convocatoria'];?></h5>
 		<h5>Núm. REC GOIB: <?php echo $data['expedientes']['ref_REC'];?></h5>
@@ -33,11 +35,8 @@
 		<h5><?php echo lang('message_lang.codigo_sia');?>: <?php echo $data['configuracionLinea']['codigoSIA'];?></h5>
   </fieldset> 
 
-	<?php echo lang('message_lang.intro_renovacion_marca_ils');?>
-
 <form onsubmit="justificacionILSSubmit()" action="<?php echo base_url('/public/index.php/expedientes/do_renovacion_ils_upload/'.$data['expedientes']['id'].'/'.$data['expedientes']['nif'].'/'.$data['expedientes']['tipo_tramite'].'/'.$data['expedientes']['convocatoria'].'/'. $idioma);?>" name="form_justificacion_ils" id="form_justificacion_ils" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	<input type = "hidden" name="id_sol" id="id_sol" value = "<?php echo $data['expedientes']['id'];?>">
-
 	<fieldset>
 		<h4><?php echo lang('message_lang.solicitante');?>
 			<span><strong><?php echo $data['expedientes']['empresa'];?></strong></span> <?php echo lang('message_lang.conCIF');?><span><strong><?php echo $data['expedientes']['nif'];?></strong></span>
@@ -49,6 +48,12 @@
  
 	<fieldset>
 		<h4><?php echo lang('message_lang.justificacion_informe_calculo');?>:</h4>
+		<input  type="checkbox" class="form-check-input" id="politica-privacidad" onchange="adrBalearsTieneInformes(this)">
+		<?php if (get_cookie('CurrentLanguage') === 'es') {?>
+    	<label class="form-check-label" for="adr-balears-tiene-informes">Marcad si la ADR Balears ya dispone de los informes</label>
+		<?php } else {;?>
+			<label class="form-check-label" for="adr-balears-tiene-informes">Marcau si l'ADR Balears ja disposa dels informes</label>
+		<?php };?>
 			<div class="panel-justificacion">
 				<div class = "content-file-upload">
 					<h5>[.pdf]:</h5>
@@ -72,11 +77,13 @@
 	</fieldset>
 
 	<fieldset class="submit-button">
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-    <label class="form-check-label" for="flexCheckChecked">Checked checkbox</label>
-  </div>
-		<button type="submit" class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+		<button type="submit" disabled class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+    <input  type="checkbox" class="form-check-input" id="politica-privacidad" onchange="changeSubmitState(this)">
+		<?php if (get_cookie('CurrentLanguage') === 'es') {?>
+    	<label class="form-check-label" for="politica-privacidad"> <a href='https://www.adrbalears.es/politica-de-privacidad/2777' target="_blank">He leído y acepto la política de privacidad de ADR Balears</a></label>
+		<?php } else {;?>
+			<label class="form-check-label" for="politica-privacidad"> <a href='https://www.adrbalears.es/politica-de-privacidad/2776' target="_blank">He llegit i accepto la política de privacitat de ADR Balears</a></label>
+		<?php };?>
 	</fieldset>
 </form>
 <div class="alert alert-info"> 
@@ -85,6 +92,15 @@
 </div>
 
 <script>
+	function adrBalearsTieneInformes (element) {
+		let uploadReports = document.getElementById('file_JustificacionInformeCalculo')
+		uploadReports.disabled = element.checked
+	}
+	function changeSubmitState (element) {
+		let submitButton = document.getElementById('enviar_docs')
+		submitButton.disabled = !element.checked
+	}
+
   function justificacionILSSubmit() {
 	let theForm = document.getElementById("form_justificacion_ils");
 	theForm.style.cursor="progress";
@@ -96,23 +112,4 @@
 			.css("background-color","orange");
   }
 </script>
-
-<div id="myModal" class="modal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-				<h4 class="modal-title"><?php echo lang('message_lang.clausula_idi');?></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div><span style='font-size:8pt'><span style='font-family:Trebuchet\ MS,Default\ Sans\ Serif,Verdana,Arial,Helvetica,sans-serif'>
-				<?php echo lang('message_lang.rgpd_txt');?>
-      	</span></div>
-      	<div class="modal-footer">
-        	<button type = "button" id = "documentacion_justificacion" class = "btn btn-default" data-dismiss="modal"><?php echo lang('message_lang.cierra');?></button>
-      	</div>
-    	</div>
-  	</div>
-	</div>
-</div>
 </section>
