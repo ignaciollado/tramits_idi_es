@@ -1,7 +1,11 @@
 <!----------------------------------------- Proposta de resolució definitiva amb requeriment DOC 8 -->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució definitiva amb requeriment **testear** [PRE]
+		Proposta de resolució definitiva amb requeriment
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			**testear** [PRE]
+		<?php }?>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -22,24 +26,25 @@
 				$request = execute("requests/" . $requestPublicAccessId, null, __FUNCTION__);
 				$respuesta = json_decode($request, true);
 				$estado_firma = $respuesta['status'];
-					switch ($estado_firma) {
+				switch ($estado_firma) {
 					case 'NOT_STARTED':
 						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";				
 						break;
-						case 'REJECTED':
-							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
-							$estado_firma .= "</a>";
-							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
-							break;
-							case 'COMPLETED':
-							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
-							$estado_firma .= "</a>";
-							$fecha_firma_PRDefinitiva = gmdate("Y-m-d", intval ($respuesta['endDate']/1000));			
-							break;
-						case 'IN_PROCESS':
+					case 'REJECTED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
+						$estado_firma .= "</a>";
+						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
+						break;
+					case 'COMPLETED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
+						$estado_firma .= "</a>";
+						$fecha_firma_PRDefinitiva = gmdate("Y-m-d", intval ($respuesta['endDate']/1000));
+						break;
+					case 'IN_PROCESS':
 						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
-						$estado_firma .= "</a>";						
-						default:
+						$estado_firma .= "</a>";
+						break;
+					default:
 						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 				}
 				echo $estado_firma;
@@ -48,15 +53,18 @@
 		<?php } ?>
 	</div>
 </div>
-<input type='text' disabled id="fechaFirmaPRDefinitiva" value="<?php echo $fecha_firma_PRDefinitiva;?>">
+<input type='hidden' disabled id="fechaFirmaPRDefinitiva" value="<?php echo $fecha_firma_PRDefinitiva;?>">
 <!-------------------------------------------------------------------------------------------------------------------->
-<!-- <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script> -->
 <script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 	let setAutoDoc8 = document.getElementById("fecha_firma_propuesta_resolucion_def_setauto")
+
 	if (document.getElementById("fechaFirmaPRDefinitiva").value && setAutoDoc8.value === 'NO') {
 		document.getElementById("fecha_firma_propuesta_resolucion_def").value = document.getElementById("fechaFirmaPRDefinitiva").value
 		cambiarSituacionExpedienteYSetAuto('desde PR definitiva con requerimiento', 'fecha_firma_propuesta_resolucion_def', 'SI')
 	}
+	
 	function enviaPropResolucionResDefinitivaConReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -68,7 +76,6 @@
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let fecha_maxima_enmienda = document.getElementById('fecha_maxima_enmienda')
 		let wrapper_propuestaResDefinitivaConReq = document.getElementById('wrapper_propuestaResDefinitivaConReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc8 = document.getElementById('infoMissingDataDoc8')
 		infoMissingDataDoc8.innerText = ""
 

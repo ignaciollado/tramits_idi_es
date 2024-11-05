@@ -1,7 +1,11 @@
 <!----------------------------------------- Resolución desestimiento por renuncia DOC 15 -------------------->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Resolucio desistiment per renúncia **testear** [PRE]
+    	Resolucio desistiment per renúncia
+			<?php
+			if ($base_url === "pre-tramitsidi") {?>
+				**testear** [PRE]
+			<?php }?>			
   	</div>
 		<div class="card-itramits-footer">
   		<?php
@@ -23,22 +27,23 @@
 				$estado_firma = $respuesta['status'];
 				switch ($estado_firma) {
 					case 'NOT_STARTED':
-						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";				
+						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";
 						break;
-						case 'REJECTED':
-							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
-							$estado_firma .= "</a>";
-							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));			
-							break;
-							case 'COMPLETED':
-							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
-							$estado_firma .= "</a>";
-							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));					
-							break;
-						case 'IN_PROCESS':
-						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
-						$estado_firma .= "</a>";						
-						default:
+					case 'REJECTED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
+						$estado_firma .= "</a>";
+						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
+						break;
+					case 'COMPLETED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";
+						$estado_firma .= "</a>";
+						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));
+						break;
+					case 'IN_PROCESS':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";
+						$estado_firma .= "</a>";
+						break;
+					default:
 						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 					}
 				echo $estado_firma;
@@ -47,6 +52,8 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 
 function generaResolucionDesestimientoPorRenuncia(id, convocatoria, programa, nifcif) {
 		let todoBien = true
@@ -54,7 +61,6 @@ function generaResolucionDesestimientoPorRenuncia(id, convocatoria, programa, ni
 		let ref_REC_desestimiento = document.getElementById('ref_REC_desestimiento')
 
 		let btnResolucionDesestimientoRenuncia = document.getElementById('btnResolucionDesestimientoRenuncia')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDoc15 = document.getElementById('infoMissingDoc15')
 		infoMissingDoc15.innerText = ""
 

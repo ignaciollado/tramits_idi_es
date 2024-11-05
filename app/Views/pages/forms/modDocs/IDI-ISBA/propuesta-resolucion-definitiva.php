@@ -1,7 +1,11 @@
 <!----------------------------------------- Proposta de resolució definitiva. DOC 7. CON VIAFIRMA OK-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució definitiva **testear** [PRE]
+		Proposta de resolució definitiva
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			**testear** [PRE]
+		<?php }?>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -27,20 +31,21 @@
 					case 'NOT_STARTED':
 						$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";				
 						break;
-						case 'REJECTED':
-							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
-							$estado_firma .= "</a>";
-							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));			
-							break;
-							case 'COMPLETED':
-							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
-							$estado_firma .= "</a>";
-							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));					
-							break;
-						case 'IN_PROCESS':
+					case 'REJECTED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
+						$estado_firma .= "</a>";
+						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));			
+						break;
+					case 'COMPLETED':
+						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
+						$estado_firma .= "</a>";
+						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));					
+						break;
+					case 'IN_PROCESS':
 						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
-						$estado_firma .= "</a>";						
-						default:
+						$estado_firma .= "</a>";	
+						break;					
+					default:
 						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 				}
 				echo $estado_firma;
@@ -52,6 +57,9 @@
 <!-------------------------------------------------------------------------------------------------------------------->
 
 <script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
+
 	function enviaPropResolucionResDefinitiva(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -62,7 +70,6 @@
 		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let wrapper_propuestaResDefinitiva = document.getElementById('wrapper_propuestaResDefinitiva')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc7 = document.getElementById('infoMissingDataDoc7')
 		infoMissingDataDoc7.innerText = ""
 

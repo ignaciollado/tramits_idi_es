@@ -1,7 +1,0 @@
-CRITICAL - 2024-11-04 10:27:10 --> Invalid argument supplied for foreach()
-#0 /home/tramitsidi/www/app/Controllers/Expedientes.php(998): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', '/home/tramitsid...', 998, Array)
-#1 /home/tramitsidi/www/system/CodeIgniter.php(914): App\Controllers\Expedientes->do_renovacion_ils_upload('573', '43036826P', 'ILS', '2023', 'ca')
-#2 /home/tramitsidi/www/system/CodeIgniter.php(400): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expedientes))
-#3 /home/tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#4 /home/tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
-#5 {main}

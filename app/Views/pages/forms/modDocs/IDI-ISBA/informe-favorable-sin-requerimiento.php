@@ -1,20 +1,22 @@
 <!-- -------------------------------------- Informe favorable sense requeriment  DOC 4-------------------------------------->
 <div class="card-itramits">
-  	<div class="card-itramits-body">
-    	Informe favorable **testear** [PRE]
-  	</div>
-	<div class="card-itramits-footer">
-
+  <div class="card-itramits-body">
+   	Informe favorable
 		<?php
-        if ( !$esAdmin && !$esConvoActual ) {?>
-        <?php }
-        else {?>
-				<span id="btn_4" class="">	
-					<button id="generaInfFavSinReq" class = "btn btn-primary btn-acto-admin" onclick="enviaInformeFavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
-					<div id='infoMissingDataDoc4' class="alert alert-danger ocultar btn-acto-admin"></div>
-				</span>
+		if ($base_url === "pre-tramitsidi") {?>
+			**testear** [PRE]
 		<?php }?>
-	
+  </div>
+	<div class="card-itramits-footer">
+	<?php
+  	if ( !$esAdmin && !$esConvoActual ) {?>
+      <?php }
+    else {?>
+			<span id="btn_4" class="">	
+				<button id="generaInfFavSinReq" class = "btn btn-primary btn-acto-admin" onclick="enviaInformeFavorableSinRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera l'informe</button>
+				<div id='infoMissingDataDoc4' class="alert alert-danger ocultar btn-acto-admin"></div>
+			</span>
+			<?php }?>
 	</div>  
   	<div class="card-itramits-footer">
 		<?php if ($expedientes['doc_informe_favorable_sin_requerimiento_adr_isba'] != 0) { 
@@ -51,15 +53,15 @@
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
-
 <script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 
 	function enviaInformeFavorableSinRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let generaInfFavSinReq = document.getElementById('generaInfFavSinReq')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc4 = document.getElementById('infoMissingDataDoc4')
 		infoMissingDataDoc4.innerText = ""
 
@@ -81,5 +83,4 @@
 			infoMissingDataDoc4.classList.remove('ocultar')
 		}
 	}
-
 </script>

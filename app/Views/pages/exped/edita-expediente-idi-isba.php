@@ -30,6 +30,7 @@
         'programa' => $programa
     ];
     $session->set($expedienteID);
+    $base_url = $_SERVER['USER'];
 ?>
 
     <!---------------------- Para poder consultar el estado de firma de los documentos ------->

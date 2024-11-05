@@ -2,7 +2,11 @@
 <div class="card-itramits">
 
   <div class="card-itramits-body">
-  	Resolució desistiment per no esmenar **testear** [PRE]
+  	Resolució desistiment per no esmenar
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			**testear** [PRE]
+		<?php }?>
   </div>
 
   	<div class="card-itramits-footer">
@@ -25,7 +29,7 @@
 	if ($tieneDocumentosGenerados)
 		{
 		$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
-	  	$requestPublicAccessId = $PublicAccessId;
+	  $requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
 		$estado_firma = $respuesta['status'];
@@ -39,16 +43,16 @@
 							$estado_firma .= "</a>";
 							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));			
 							break;
-							case 'COMPLETED':
+						case 'COMPLETED':
 							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
 							$estado_firma .= "</a>";
 							$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));					
 							break;
 						case 'IN_PROCESS':
-						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
-						$estado_firma .= "</a>";						
+							$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
+							$estado_firma .= "</a>";						
 						default:
-						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
+							$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 				}
 			echo $estado_firma;
 		}?>
@@ -56,13 +60,13 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 	function enviaDesestimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_requerimiento_notif= document.getElementById('fecha_requerimiento_notif')
-	
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let generaElDesestimiento = document.getElementById('generaElDesestimiento')
 		let infoMissingDataDoc2 = document.getElementById('infoMissingDataDoc2')
 		infoMissingDataDoc2.innerText = ""
@@ -79,7 +83,6 @@
 			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Notificació requeriment"
 			todoBien = false
 		}
-
 		if (todoBien) {
 			infoMissingDataDoc2.classList.add('ocultar')
 			generaElDesestimiento.setAttribute("disabled", true)

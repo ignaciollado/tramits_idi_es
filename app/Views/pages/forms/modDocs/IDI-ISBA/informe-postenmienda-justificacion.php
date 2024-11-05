@@ -1,7 +1,11 @@
 <!----------------------------------------- Informe post enmienda justificación DOC 14 --------->
 <div class="card-itramits">
   <div class="card-itramits-body">
-    Informe postesmena justificació **testear** [PRE]
+    Informe postesmena justificació
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			**testear** [PRE]
+		<?php }?>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -16,10 +20,7 @@
 		<?php }?>
 	</div>
 	<div class="card-itramits-footer">
-<!-- 	<?php if ($expedientes['doc_informe_sobre_la_subsanacion'] !=0) { ?>
-		<a	class='btn btn-ver-itramits' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_informe_sobre_la_subsanacion');?>" target = "_self"><i class='fa fa-check'></i>Informe sobre l'esmena</a>		
-		<?php }?> -->
-		<?php
+	<?php
 	//Compruebo el estado de la firma del documento.
 	$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_informe_sobre_la_subsanacion.pdf');
 	if (isset($tieneDocumentosGenerados))
@@ -36,18 +37,19 @@
 				case 'REJECTED':
 					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
 					$estado_firma .= "</a>";
-					$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));			
+					$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
 					break;
-					case 'COMPLETED':
+				case 'COMPLETED':
 					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
 					$estado_firma .= "</a>";
-					$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));					
+					$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));
 					break;
 				case 'IN_PROCESS':
-				$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
-				$estado_firma .= "</a>";						
+					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
+					$estado_firma .= "</a>";						
+					break;
 				default:
-				$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
+					$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 			}
 			echo $estado_firma;
 	}
@@ -82,22 +84,18 @@
 				</div>
 		</div>
 
-		<script>
+<script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
+
 	function enviaInformeSobreSubsanacion(id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		
-	 	/* let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion') */ //0000-00-00
 		let fecha_not_req_just = document.getElementById('fecha_not_req_just')
 		let fecha_firma_requerimiento_justificacion = document.getElementById('fecha_firma_requerimiento_justificacion')
 		let wrapper_informe_sobre_subsanacion = document.getElementById('wrapper_informe_sobre_subsanacion')
 		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc14 = document.getElementById('infoMissingDataDoc14')
 		infoMissingDataDoc14.innerText = ""
-
-		/* 		if(!fecha_propuesta_resolucion.value) {
-			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data firma proposta resolució<br>"
-			todoBien = false
-		} */
 
 		if(!fecha_firma_requerimiento_justificacion.value) {
 			infoMissingDataDoc14.innerHTML = infoMissingDataDoc14.innerHTML + "Data firma requeriment justificació<br>"

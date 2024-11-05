@@ -1,7 +1,11 @@
 <!----------------------------------------- Requerimiento enmienda justificación DOC 13 ------------------------------------>
 <div class="card-itramits">
   <div class="card-itramits-body">
-    Requeriment d'esmena justificació **testear** [PRE]
+    Requeriment d'esmena justificació
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			**testear** [PRE]
+		<?php }?>		
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -14,7 +18,6 @@
 					<div id='infoMissingDataDoc13' class="alert alert-danger ocultar"></div>
 			</span>
 		<?php }?>
-	
 	</div>
 	<div class="card-itramits-footer">
 		<?php if ($expedientes['doc_requerimiento_justificacion'] !=0) { ?>
@@ -31,20 +34,21 @@
 				case 'NOT_STARTED':
 					$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i> Pendent de signar</div>";				
 					break;
-					case 'REJECTED':
-						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
-						$estado_firma .= "</a>";
-						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));			
-						break;
-						case 'COMPLETED':
-						$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
-						$estado_firma .= "</a>";
-						$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));					
-						break;
-					case 'IN_PROCESS':
+				case 'REJECTED':
+					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i> Signatura rebutjada</div>";
+					$estado_firma .= "</a>";
+					$estado_firma .= gmdate("d-m-Y", intval ($respuesta['rejectInfo']['rejectDate']/1000));
+					break;
+				case 'COMPLETED':
+					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i> Signat</div>";		
+					$estado_firma .= "</a>";
+					$estado_firma .= gmdate("d-m-Y", intval ($respuesta['endDate']/1000));
+					break;
+				case 'IN_PROCESS':
 					$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i> En curs</div>";		
-					$estado_firma .= "</a>";						
-					default:
+					$estado_firma .= "</a>";
+					break;
+				default:
 					$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 				}
 			echo $estado_firma;
@@ -76,15 +80,16 @@
 				</div>
 		</div>
 <!------------------------------------------------------------------------------------------------------>
-		<script>
+<script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
+
 	function enviaRequerimientoJustificacion(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_firma_res = document.getElementById('fecha_firma_res')
-		/* let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre') */
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
 		let fecha_inicio_req_justificacion = document.getElementById('fecha_inicio_req_justificacion')
 		let wrapper_generadoc_req_justificacion = document.getElementById('wrapper_generadoc_req_justificacion')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc13 = document.getElementById('infoMissingDataDoc13')
 		infoMissingDataDoc13.innerText = ""
 	
@@ -93,18 +98,10 @@
 			todoBien = false
 		}
 
-/* 		if(!fecha_reunion_cierre.value) {
-			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Data reunió tancament<br>"
-			todoBien = false
-		} */
 		if(!fecha_limite_justificacion.value) {
 			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Data límit per justificar l'ajut rebut<br>"
 			todoBien = false
 		}
-/* 		if(!fecha_firma_requerimiento_justificacion.value) {
-			infoMissingDataDoc13.innerHTML = infoMissingDataDoc13.innerHTML + "Firma requeriment justificació<br>"
-			todoBien = false
-		} */
 
 		if (todoBien) {
 			infoMissingDataDoc13.classList.add('ocultar')

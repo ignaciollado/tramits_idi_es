@@ -1,9 +1,12 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Requeriment **testear** [PRE]
+    	Requeriment 
+			<?php
+			if ($base_url === "pre-tramitsidi") {?>
+				 **testear** [PRE]
+			<?php }?>
   	</div>
 	<div class="card-itramits-footer">
-
 		<?php
     if ( !$esAdmin && !$esConvoActual ) {?>
       <?php }
@@ -13,7 +16,6 @@
 					<button id="wrapper_motivoRequerimiento" class="btn btn-primary ocultar" onclick="enviaRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
 			</span>
 		<?php }?>
-	
 	</div>
   <div class ="card-itramits-footer">
 		<?php
@@ -73,8 +75,9 @@
   	</div>
 </div>
 <input type='hidden' disabled id="fechaEstadoDocReqISBA" value="<?php echo $fecha_firma_req;?>">
-<!-- <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script> -->
 <script>
+const actualBaseUrl = window.location.origin
+let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 let setAutoDoc1 = document.getElementById("fecha_requerimiento_setauto")
 if (document.getElementById("fechaEstadoDocReqISBA").value && setAutoDoc1.value === 'NO') {
 	document.getElementById("fecha_requerimiento").value = document.getElementById("fechaEstadoDocReqISBA").value
@@ -107,7 +110,6 @@ function actualizaMotivoRequerimiento_click() {
 function enviaRequerimiento(id, convocatoria, programa, nifcif) {
 	let todoBien = true
 	let wrapper_motivoRequerimiento = document.getElementById('wrapper_motivoRequerimiento')
-	let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 	if (todoBien) {
 		wrapper_motivoRequerimiento.disabled = true
 		wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."
