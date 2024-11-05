@@ -15,7 +15,15 @@ dialog {
 }
 
 i {
+  font-size: 3rem; color: rgb(0, 55, 71);
+}
+
+.horizontal-aline {
   vertical-align: middle;
+}
+
+.step i  {
+  font-size: 2rem; color: rgb(255, 255, 255);
 }
 
 .small, small {
@@ -307,13 +315,17 @@ select, input, textarea {
 /*   height: 18px;
   width: 18px;
   margin: 2px 4px; */
-  background-color: #000;
-  color: rgba(255, 255, 255, 1);
+  /* background-color: #000;
+  color: rgba(255, 255, 255, 1); */
    /*  border-radius: 50%;
     padding: 6px 3px 0 3px;
     text-align: center;
     display: inline-block;
     opacity: 0.9; */
+}
+
+.step-margin {
+  margin-right: .5rem;
 }
 
 .container-radio-invalid {
@@ -330,14 +342,13 @@ select, input, textarea {
 }
 /* Mark the steps that are finished and valid: */
 .step.finish {
-    background-color: rgba(204, 233, 230, 1);
+  background-color: transparent;
 }
 .mainButtonContainer{
-    overflow:auto;
+  overflow:auto;
 }
 .buttonContainer {
   float: right;
-
 }
 footer {
   position: sticky;

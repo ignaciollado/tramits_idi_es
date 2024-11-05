@@ -637,7 +637,7 @@ Al seu torn, li informem que pot contactar amb el Delegat de Protecció de Dades
 'documentacion_necesaria_pymes_idi_isba'  => "<div class='alert alert-info' role='alert'>
 Abans de començar, és recomanable tenir preparada la següent documentació (punt Novè de la convocatòria):</div>
    <ol class='formbox' style='list-style-type: lower-alpha;' start='1'>
-      <li><i>El document normalitzat de sol·licitud de subvenció d'aquesta convocatòria, el qual es genera al final d'aquest assistent en prémer sobre el botó 'Enviar' i que rebrà per correu electrònic</i>.</li>
+      <li>El document normalitzat de sol·licitud de subvenció d'aquesta convocatòria, el qual es genera al final d'aquest assistent en prémer sobre el botó 'Enviar' i que rebrà per correu electrònic.</li>
       <li>Descripció de l'empresa i la seva activitat, model de negoci i detall de la inversió/Inversions previstes.</li>
       <li>Declaració responsable de la veracitat de les dades bancàries aportades que es troba inclòs en la sol·licitud de l'ajuda.</li>
       <li>Certificat de l'IAE actualitzat en el moment de la sol·licitud.</li>

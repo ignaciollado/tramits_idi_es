@@ -228,7 +228,7 @@ select.invalid, input.invalid {
   height: 17px;
   width: 17px;
   margin: 0 2px;
-  background-color: #bbbbbb;
+  background-color: transparent;
   border: none;  
   border-radius: 50%;
   display: inline-block;

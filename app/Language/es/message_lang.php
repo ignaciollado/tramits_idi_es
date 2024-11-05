@@ -614,7 +614,7 @@ return [
 'documentacion_necesaria_pymes_idi_isba'  => "<div class='alert alert-info' role='alert'>
 Antes de empezar, es recomendable tener preparada la siguiente documentación (punto Noveno de la convocatoria):</div>
    <ol class='formbox' style='list-style-type: lower-alpha;' start='1'>
-      <li><i>El documento normalizado de solicitud de subvención de esta convocatoria, el cual se genera al final de este asistente al pulsar sobre el botón 'Enviar' y que recibirá por correo electrónico</i>.</li>
+      <li>El documento normalizado de solicitud de subvención de esta convocatoria, el cual se genera al final de este asistente al pulsar sobre el botón 'Enviar' y que recibirá por correo electrónico.</li>
       <li>Descripción de la empresa y su actividad, modelo de negocio y detalle de la inversión/Inversiones previstas.</li>
       <li>Declaración responsable de la veracidad de los datos bancarios aportados que se encuentra incluido en la solicitud de la ayuda.</li>
       <li>Certificado del IAE actualizado en el momento de la sol·licitud.</li>
