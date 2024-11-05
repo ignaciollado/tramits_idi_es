@@ -17,9 +17,8 @@ class MYPDF extends TCPDF {
 		}
     // Page footer
     public function Footer() {
-        // Logo
-
-		// Position at 15 mm from bottom
+      // Logo
+			// Position at 15 mm from bottom
         $this->SetY(-15);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
@@ -32,10 +31,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("Sol·licitud d'ajuts a microempreses, petites i mitjanes per cobrir despeses financeres");
-$pdf->SetSubject('DOCUMENT DE SOL·LICITUD');
-$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, ISBA, GOIB');	
+$pdf->SetSubject('DOCUMENT DE SOL·LICITUD ISBA');
+$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, PIMES, ADR Balears, ISBA, GOIB');	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -229,11 +228,9 @@ $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_1')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_2')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_3')."</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_4');
-
 if ($declaro_idi_isba_que_cumple_4 != "SI") {
 	$html13 .= "<br><ul><li><b>". money_format("%i ", $ayudasSubvenSICuales_dec_resp) ." €</b></li></ul><br>";
 }
-
 $html13 .= "</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_5')."</li>";
 /* $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li>"; */
@@ -257,7 +254,7 @@ $currentX = $pdf->getX();
 $pdf->setY($currentY + 25);
 $pdf->setX($currentX);
 $html14 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html14 .= '<tr><td><ol start="8">';
+$html14 .= '<tr><td><ol start="7">';
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>";

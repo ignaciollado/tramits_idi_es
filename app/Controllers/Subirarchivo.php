@@ -1240,7 +1240,6 @@ class SubirArchivo extends BaseController
 		/* -------------------------------6. DECLARO-------------------------------------------- */
 		//declaración responsable punto 1
 		
-
 		$declaro_idi_isba_que_cumple_1 = "SI";
 		$declaro_idi_isba_que_cumple_2 = "SI";
 		$declaro_idi_isba_que_cumple_3 = "SI";

@@ -685,7 +685,7 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
 'presupuesto_proyecto_de_inversion_idi_isba' => "PRESSUPOST DEL PROJECTE D'INVERSIÓ",
 'importe_del_presupuesto_idi_isba'  => "Import del pressupost (IVA inclós)",
 'detalle_importe_ayuda_solicitado_idi_isba' => "Amb el següent detall:",
-'declaro_idi_isba_que_cumple_0'  => "La veracitat de les dades aportades a aquesta sol3licitud.",
+'declaro_idi_isba_que_cumple_0'  => "La veracitat de les dades aportades a aquesta sol.licitud.",
 'declaro_idi_isba_que_cumple_1'  => "Que la persona o entitat sol·licitant compleix els requisits de petita o mitjana empresa, d'acord amb l'annex 1 del Reglament (UE) núm. 651/2014 de la Comissió, de 17 de juny de 2014 pel qual es declaren determinades categories d'ajuda compatibles amb el mercat interior en aplicació dels articles 107 i 108 del Tractat, compleix amb els requisits per ser considerat una pime.",
 'declaro_idi_isba_que_cumple_2'  => "Que la persona o entitat beneficiària no està sotmesa a cap causa de prohibició o d'incompatibilitat per rebre l'ajuda segons la legislació vigent i que el sol·licitant no ha estat sancionat o condemnat per resolució administrativa o sentència judicial ferma per discriminació salarial, assetjament moral o qualsevol tipus de tracte desigual, per raó de sexe, en l'àmbit de les relacions laborals.",
 'declaro_idi_isba_que_cumple_3'  => "Que la persona o entitat sol·licitant durà a terme l'activitat d'inversió, així com la justificació de la realització de l'activitat i el compliment dels requisits i condicions que determinen la concessió de la subvenció.",
