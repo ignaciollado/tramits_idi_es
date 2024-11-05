@@ -133,8 +133,8 @@ return [
    
    'convocatoria_sol_idigital'	  => "Convocatòria ",
    'titulo_sol_idigital_consul'    => "Declaració responsable del consultor per al programa de transformació digital<br>en el marc del programa 'Idigital'",
-   'titulo_rep_legal'              => "REPRESENTANT LEGAL",
-   'titulo_notificiaciones'        => "CANAL PREFERENT DE NOTIFICACIÓ <br><br><small>D'acord amb l'apartat 17 de la convocatòria les notificacions i les comunicacions a la persona sol·licitant
+   'titulo_rep_legal'              => "Representant legal",
+   'titulo_notificiaciones'        => "CANAL DE NOTIFICACIÓ<br><br><small>D'acord amb l'apartat 17 de la convocatòria les notificacions i les comunicacions a la persona sol·licitant
    es duran a terme per via telemàtica a l'adreça de correu electrònic que hagi designat la persona sol·licitant a efectes de notificacións en aquest formulari de sol·licitud.
    Els avisos de la posada a disposició de la notificació a la Carpeta Ciutadana del <a target='_blank' href='https://sede.administracion.gob.es/carpeta/clave.html'>Punto de Acceso General electrónico (Mi carpeta)</a> s'enviaran a l'adreça de correu
       electrònic que heu designat a les dades del declarant</small>",
@@ -666,8 +666,8 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
                                              <li>El document normalitzat de sol·licitud de subvenció d'aquesta convocatòria.</li>
                                              <li>Una Declaració responsable de la persona titular de l'empresa o de qui la representa legalment.</li>
                                        </ol>",
-'identificacion_sol_idi_isba'    => "Identificació del SOL·LICITANT",
-'operacion_financiera_idi_isba'  => "DADES OPERACIÓ FINANCERA<br>Finalitat de la inversió",
+'identificacion_sol_idi_isba'    => "IDENTIFICACIÓ DEL SOL·LICITANT",
+'operacion_financiera_idi_isba'  => "DADES DE L'OPERACIÓ FINANCERA<br>Finalitat de la inversió",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTEC",
 
 'entidad_financiera_idi_isba'    => "Nom entitat finançera",
@@ -706,7 +706,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'declaro_idi_isba_ayudas_recibidas' => "Relació de totes les ajudes i les subvencions sol·licitades o rebudes:",
 'direccion_general_politica_industrial_idi_isba' => "De la Direcció General de Politica Indústrial",
 'otros_declaro_idi_isba' => "Altres",
-'documentacion_adjunta_requerida_idi_isba' => "Documentació",
+'documentacion_adjunta_requerida_idi_isba' => "DOCUMENTACIÓ",
 'documentacion_adjunta_requerida_idi_isba_a' => "El document normalitzat de sol·licitud de subvenció d'aquesta convocatòria, el qual es genera en enviar aquesta sol·licitud.",
 'documentacion_adjunta_requerida_idi_isba_b' => "Descripció de l'empresa i la seva activitat i detall de la inversió/inversions previstes.",
 'documentacion_adjunta_requerida_idi_isba_c' => "Declaració responsable de la veracitat de les dades bancàries segons model CAIB.",

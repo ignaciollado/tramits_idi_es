@@ -61,7 +61,7 @@ $mail->WordWrap = 50;
 // set email format to HTML
 $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8'; 
-$subject = "Dades per a la web de Industria Local Sostenible - ILS - ADR Balears";
+$subject = "Dades per a la web de Industria Local Sostenible (ILS) - ADR Balears";
 $mail->Subject = "=?UTF-8?B?".base64_encode($subject)."=?=";
 $mensajeLayout = file_get_contents('contents-datos-adicionales-ils.html');
 $mensajeLayout = str_replace("%ID%", $_POST["id"], $mensajeLayout);

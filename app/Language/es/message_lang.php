@@ -131,7 +131,7 @@ return [
    'convocatoria_sol_idigital'	      => "Convocatoria ",
    'titulo_sol_idigital_consul'       => "Declaración responsable del consultor para el programa de transformación digital<br>en el marco del programa 'Idigital'",
    'titulo_rep_legal'                 => "REPRESENTANTE LEGAL",   
-   'titulo_notificiaciones'           => "CANAL PREFERENTE DE NOTIFICACIÓN <br><br><small>De acuerdo con el apartado 17 de la convocatoria, las notificaciones y las comunicaciones a la persona
+   'titulo_notificiaciones'           => "CANAL DE NOTIFICACIÓN<br><br><small>De acuerdo con el apartado 17 de la convocatoria, las notificaciones y las comunicaciones a la persona
    solicitante se realizarán por vía telemática a la dirección de correo electrónico que haya designado la persona solicitante.
    Los avisos de la puesta a disposición de la notificación en la Carpeta Ciutadana del <a target='_blank' href='https://sede.administracion.gob.es/carpeta/clave.html'>Punto de Acceso General electrónico (Mi carpeta)</a> se enviarán a la dirección de correo
     electrónico que ha designado en los datos del declarante.</small>",   
@@ -643,8 +643,8 @@ Antes de empezar, es recomendable tener preparada la siguiente documentación (p
                                              <li>El documento normalizado de solicitud de subvención de esta convocatoria.</li>
                                              <li>Una Declaración responsable de la persona titular de la empresa o de quien la representa legalmente.</li>
                                        </ol>',
-'identificacion_sol_idi_isba'    => "Identificación del SOLICITANTE",
-'operacion_financiera_idi_isba'  => "DATOS OPERACIÓN FINANCIERA<br>Finalidad de la inversión",
+'identificacion_sol_idi_isba'    => "IDENTIFICACIÓN DEL SOLICITANTE",
+'operacion_financiera_idi_isba'  => "DATOS DE LA OPERACIÓN FINANCIERA<br>Finalidad de la inversión",
 'operacion_financiera_prestamo_idi_isba'  => "PRÉSTAMO",
 'entidad_financiera_idi_isba'       => "Entidad financiera",
 'importe_prestamo_entidad_idi_isba' => "Importe de la operación",
@@ -682,7 +682,7 @@ Se debe acreditar el cumplimiento en el plazo de 10 días hábiles desde la noti
 'declaro_idi_isba_ayudas_recibidas' => "Relació de totes les ajudes i les subvencions sol·licitades o rebudes:",
 'direccion_general_politica_industrial_idi_isba'   => "De la Dirección General de Politica Industrial",
 'otros_declaro_idi_isba'   => "Otros",
-'documentacion_adjunta_requerida_idi_isba' => "Documentación",
+'documentacion_adjunta_requerida_idi_isba' => "DOCUMENTACIÓN",
 'documentacion_adjunta_requerida_idi_isba_a' => "El documento normalizado de solicitud de subvención de esta convocatoria, el cual se genera al enviar esta solicitud.",
 'documentacion_adjunta_requerida_idi_isba_b' => "Descripción de la empresa y su actividad y detalle de la inversión/inversiones previstas.",
 'documentacion_adjunta_requerida_idi_isba_c' => "Declaración responsable de la veracidad de los datos bancarios según modelo CAIB.",

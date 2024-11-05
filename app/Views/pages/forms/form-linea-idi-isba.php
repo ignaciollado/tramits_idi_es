@@ -93,7 +93,7 @@
 <div class="tab">
 	<div id="formbox">
 		<fieldset id="interesado">
-			<h2>1. <?php echo lang('message_lang.identificacion_sol_idi_isba');?></h2>
+			<h2><i class="bi bi-1-circle-fill" style="font-size: 3rem; color: rgb(0, 152, 203);"></i> <?php echo lang('message_lang.identificacion_sol_idi_isba');?></h2>
 			<div aria-live="polite" aria-atomic="true" class="position-relative">
 				<div class="toast-container top-0 end-0 p-3">
 					<div id="liveToast" class="toast align-items-center text-bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -139,7 +139,7 @@
 <div class="tab">	
 	<div id="formbox">
     	<fieldset>
-			<h2>2. <?php echo lang('message_lang.titulo_notificiaciones');?></h2>
+			<h2><i class="bi bi-2-circle-fill" style="font-size: 3rem; color: rgb(0, 152, 203);"></i> <?php echo lang('message_lang.titulo_notificiaciones');?></h2>
 			<input type = "email" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220">
 			<input type = "tel" onblur="javaScript: validateFormField(this);" required title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" ><p id="mensaje_tel"></p>
 		</fieldset>
@@ -149,7 +149,7 @@
 <div class="tab">	
 	<div id="formbox">
     <fieldset>
-		<h2>3. <?php echo lang('message_lang.operacion_financiera_idi_isba');?></h2>
+		<h2><i class="bi bi-3-circle-fill" style="font-size: 3rem; color: rgb(0, 152, 203);"></i> <?php echo lang('message_lang.operacion_financiera_idi_isba');?></h2>
 		<input type = "text" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" placeholder = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" data-error = "<?php echo lang('message_lang.entidad_financiera_idi_isba');?>" aria-required="true" name = "nom_entidad" id="nom_entidad" size="220" required>
 		<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 		<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" title = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-error = "<?php echo lang('message_lang.importe_prestamo_entidad_idi_isba');?>" data-type="currency" aria-required="true" name = "importe_prestamo" id="importe_prestamo" required>
@@ -166,7 +166,7 @@
 <div class="tab">
 	<div id="formbox">
     <fieldset>
-			<h2>4. <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
+			<h2><i class="bi bi-4-circle-fill" style="font-size: 3rem; color: rgb(0, 152, 203);"></i> <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
 			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220">
 		</fieldset>
 <!-------------------------- 5. SOLICITA AYUDA ------------------------------------------------------------------------>
@@ -187,7 +187,7 @@
 			<div class="alert alert-primary ocultar" role="alert" id="empresa_eco"><?php echo lang('message_lang.empresa_eco_7_2');?></div>
 		</fieldset>
 		<fieldset>
-			<h2>5. <?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');?></h2>
+			<h2><i class="bi bi-5-circle-fill" style="font-size: 3rem; color: rgb(0, 152, 203);"></i> <?php echo lang('message_lang.presupuesto_proyecto_de_inversion_idi_isba');?></h2>
 			<small class="alert alert-info" role="alert"><?php echo lang('message_lang.texto_info_numeros');?></small>
 			<input type = "text" min="0" onblur="javaScript: validateFormField(this); formatNumber(this)" required aria-required="true" title = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" placeholder = "<?php echo lang('message_lang.importe_del_presupuesto_idi_isba');?>" name = "importe_presupuesto_idi_isba" id="importe_presupuesto_idi_isba" maxlength = "9" size="9">
 		</fieldset>
@@ -210,9 +210,9 @@
 <div class="tab">	
 	<div id="formbox">
 		<fieldset>
-		<h2>6. <?php echo lang('message_lang.declaro');?></h2>
+		<h2><i class="bi bi-6-circle-fill" style="font-size: 3rem; color: rgb(0, 152, 203);"></i> <?php echo lang('message_lang.declaro');?></h2>
 		<ol>
-		<li>
+			<li>
 				<div class="form-check">
 					<label class="main container-radio" for="declaro_idi_isba_que_cumple_0">
 						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_0');?>
@@ -241,20 +241,20 @@
 			</li>
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_3">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_3');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_3');?>" checked name="declaro_idi_isba_que_cumple_3[]" id="declaro_idi_isba_que_cumple_3"  onchange = "javaScript: muestraSubeArchivo(this.id);">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_3">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_3');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_3');?>" checked name="declaro_idi_isba_que_cumple_3[]" id="declaro_idi_isba_que_cumple_3"  onchange = "javaScript: muestraSubeArchivo(this.id);">							
+						<span class="w3docs"></span>
+					</label>
 				</div>					
 			</li>
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_4">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_4');?>
-							<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_4');?>" checked name="declaro_idi_isba_que_cumple_4" id="declaro_idi_isba_que_cumple_4" onchange = "javaScript: muestraSubeArchivo(this.id);">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_4">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_4');?>
+						<input class="requerido" type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_4');?>" checked name="declaro_idi_isba_que_cumple_4" id="declaro_idi_isba_que_cumple_4" onchange = "javaScript: muestraSubeArchivo(this.id);">							
+						<span class="w3docs"></span>
+					</label>
 				</div>
 				<div id = "contenedorAyudasRecibidas" class="">
 						<label for = "ayudasSubvenSICuales_dec_resp"><h5><?php echo lang('message_lang.declaro_idi_isba_ayudas_recibidas');?></h5></label>
@@ -263,92 +263,92 @@
 			</li>
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_5">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_5');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_5');?>" checked name="declaro_idi_isba_que_cumple_5" id="declaro_idi_isba_que_cumple_5">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_5">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_5');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_5');?>" checked name="declaro_idi_isba_que_cumple_5" id="declaro_idi_isba_que_cumple_5">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_7">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_7');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_7');?>" checked name="declaro_idi_isba_que_cumple_7[]" id="declaro_idi_isba_que_cumple_7">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_7">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_7');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_7');?>" checked name="declaro_idi_isba_que_cumple_7[]" id="declaro_idi_isba_que_cumple_7">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_8">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_8');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_8');?>" checked name="declaro_idi_isba_que_cumple_8[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_8">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_8');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_8');?>" checked name="declaro_idi_isba_que_cumple_8[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_9">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>" checked name="declaro_idi_isba_que_cumple_9[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_9">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>" checked name="declaro_idi_isba_que_cumple_9[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>			
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_10">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_10');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_10');?>" checked name="declaro_idi_isba_que_cumple_10[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_10">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_10');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_10');?>" checked name="declaro_idi_isba_que_cumple_10[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>					
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_11">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>" checked name="declaro_idi_isba_que_cumple_11[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_11">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>" checked name="declaro_idi_isba_que_cumple_11[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>					
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_12">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_12');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_12');?>" checked name="declaro_idi_isba_que_cumple_12[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_12">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_12');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_12');?>" checked name="declaro_idi_isba_que_cumple_12[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>				
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_13">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_13');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_13');?>" checked name="declaro_idi_isba_que_cumple_13[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_13">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_13');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_13');?>" checked name="declaro_idi_isba_que_cumple_13[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>				
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_14">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_14');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_14');?>" checked name="declaro_idi_isba_que_cumple_14[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_14">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_14');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_14');?>" checked name="declaro_idi_isba_que_cumple_14[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>					
 			<li>
 				<div class="form-check">
-  					<label class="main container-radio" for="declaro_idi_isba_que_cumple_15">
-							<?php echo lang('message_lang.declaro_idi_isba_que_cumple_15');?>
-							<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_15');?>" checked name="declaro_idi_isba_que_cumple_15[]" id="declaro_idi_isba_que_cumple_8">							
-							<span class="w3docs"></span>
-						</label>
+  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_15">
+						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_15');?>
+						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_15');?>" checked name="declaro_idi_isba_que_cumple_15[]" id="declaro_idi_isba_que_cumple_8">							
+						<span class="w3docs"></span>
+					</label>
 				</div>		
 			</li>				
 			
@@ -360,7 +360,7 @@
 <div class="tab">
 	<div id="formbox">
 		<fieldset>
-			<h2>8. <?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba');?></h2>
+			<h2><i class="bi bi-8-circle-fill" style="font-size: 3rem; color: rgb(0, 152, 203);"></i> <?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba');?></h2>
 			<ol style="list-style-type: lower-alpha;">
 			<li>
 				<div class="form-check">
