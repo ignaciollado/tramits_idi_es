@@ -41,7 +41,7 @@ if ($base_url === "pre-tramitsidi") {
 }
 $mail->Password = "Lvsy2r7[4,4}*1"; // SMTP password
 $mail->Port = 587; //el puerto smtp
-$mail->SMTPDebug = 0;
+$mail->SMTPDebug = 4;
 if ($base_url === "pre-tramitsidi") {
     $mail->From = "pre-tramits@pre-tramits.idi.es";  // SMTP username
     $mail->FromName = "PRE-ADR Balears";
