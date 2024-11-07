@@ -704,7 +704,7 @@ class SubirArchivo extends BaseController
 		}
  
 		$empresa = $this->request->getVar('denom_interesado');
-		$nif = $this->request->getVar('nif');
+		$nif = strtoupper($this->request->getVar('nif'));
 		$domicilio = $this->request->getVar('domicilio');
 		$localidad = $this->request->getVar('localidad');
 		$cpostal = $this->request->getVar('cpostal');
@@ -731,7 +731,7 @@ class SubirArchivo extends BaseController
 			'tipo_solicitante' => $tipoSolicitante,
 			'fecha_completado' => date("Y-m-d H:i:s"),
 			'empresa' => $empresa,
-			'nif' => strtoupper($nif),
+			'nif' => $nif,
 			'domicilio' => $domicilio,
 			'localidad' => $localidad,
 			'cpostal' => $cpostal,
@@ -779,7 +779,7 @@ class SubirArchivo extends BaseController
 			 
 
 	 	$save_exp = $expediente->insert($data_exp);
-		//var_dump(($save_exp));
+
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
@@ -1352,7 +1352,7 @@ class SubirArchivo extends BaseController
 			}
 		}
 
- 		$nif = trim($this->request->getVar('nif'));
+ 		$nif = strtoupper(trim($this->request->getVar('nif')));
 		$empresa = $this->request->getVar('denom_interesado');
 		$domicilio = $this->request->getVar('domicilio');
 		$localidad = $this->request->getVar('localidad');
@@ -1392,7 +1392,7 @@ class SubirArchivo extends BaseController
 			'tipo_solicitante' => $tipoSolicitante,
 			'fecha_completado' => date("Y-m-d H:i:s"),
 			'empresa' => $empresa,
-			'nif' => strtoupper($nif),
+			'nif' => $nif,
 			'domicilio' => $domicilio,
 			'localidad' => $localidad,
 			'cpostal' => $cpostal,
@@ -1457,14 +1457,14 @@ class SubirArchivo extends BaseController
 			'convocatoria' => $convocatoria
 		];
 	 	$save_exp = $expediente->insert($data_exp);
+		/* var_dump($save_exp); */
 	 	$last_insert_id = $save_exp->connID->insert_id;
 	 	$data_exp ['selloDeTiempo'] = $selloTiempo;
 	 	$data_exp ['last_insert_id'] = $last_insert_id;
 
 		/* Si no existe la carpeta donde se guardará todo, se crea */
-
-		if (!file_exists( WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo."/") ) {
-			mkdir(WRITEPATH.'documentos/'.strtoupper($nif).'/'.$selloTiempo, 0755, true);
+		if (!file_exists(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo."/") ) {
+			mkdir(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo, 0755, true);
 		}
   	/* ----------------------------------------------------------------------------------------------------------------- */
 		/* --------------------------------documentos apartado b.----------------------------------------------------------- */

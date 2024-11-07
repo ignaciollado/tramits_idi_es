@@ -14,6 +14,12 @@ article {
   margin: auto;
   margin-bottom: 2rem;
 }
+.bi {
+  font-size: 2rem;
+}
+.checbox-invisible {
+  visibility: hidden!important;
+}
 dl, dd {
   margin-top: 0;
   margin-bottom: 1rem!important;
@@ -272,7 +278,7 @@ select, input, textarea {
   height: 3rem;
   width: 3rem;
   margin: 0 1rem;
-  background-color: rgba(190, 0, 44, 1);
+  background-color: rgb(74, 89, 77);
   color: rgba(255, 255, 255, 1);
   border-radius: 50%;
   padding: 6px 3px 0 3px;

@@ -19,9 +19,9 @@
 <div class="stepContainer">
 	<span class="step step-margin"><i class="bi bi-1-circle-fill"></i></span>
 	<span class="step step-margin"><i class="bi bi-2-circle-fill"></i></span>
-  <span class="step step-margin"><i class="bi bi-3-circle-fill"></i></span>
-  <span class="step step-margin"><i class="bi bi-4-circle-fill"></i></span>
-  <span class="step step-margin"><i class="bi bi-5-circle-fill"></i></span>
+  	<span class="step step-margin"><i class="bi bi-3-circle-fill"></i></span>
+  	<span class="step step-margin"><i class="bi bi-4-circle-fill"></i></span>
+  	<span class="step step-margin"><i class="bi bi-5-circle-fill"></i></span>
 
 	<div class="buttonContainer">
     	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
@@ -34,9 +34,9 @@
 	<div class="tab">
 		<div>
 		<fieldset>
-			<label for = "rgpd" class="main" >
-				<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#" data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
-					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
+			<label for = "rgpd" class="main">
+				<span><?php echo lang('message_lang.rgpd_leido');?> <a href="#" data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
+					<input type="checkbox" class="requerido checbox-invisible" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 				<span class="w3docs"></span>
 			</label>
 		</fieldset>
@@ -152,7 +152,7 @@
     <fieldset>
 		<h2><?php echo lang('message_lang.autorizaciones_solicitud_ils');?></h2>
 			<label for = "consentimiento_identificacion" class="main"><?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>
-				<input title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked type="checkbox" name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
+				<input class="checbox-invisible" title = "<?php echo lang('message_lang.consentimiento_identificacion_solicitante');?>" checked type="checkbox" name="consentimiento_identificacion" id="consentimiento_identificacion" onchange = "javaScript: muestraSubeArchivo(this.id);">
 				<span class = "w3docs"></span>
 			</label>
 			<div id = "enviardocumentoIdentificacion" class = "ocultar">
@@ -160,7 +160,7 @@
 			</div>
 			
 			<label for = "consentimiento_certificadoATIB" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>
-				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
+				<input class="checbox-invisible" title = "<?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
 				<span class = "w3docs"></span>
 			</label>
 			<div id = "enviarcertificadoATIB" class = "ocultar">
@@ -175,22 +175,22 @@
 		<h2>6. <?php echo lang('message_lang.declaracion_responsable_cabecera_ils');?></h2>
 
 		<label for = "declaracion_responsable_i" class="main"><?php echo lang('message_lang.declaracion_responsable_i_ils');?>
-			<input title = "<?php echo lang('message_lang.declaracion_responsable_i_ils');?>" disabled checked type="checkbox" name="declaracion_responsable_i" id="declaracion_responsable_i" onchange = "javaScript: muestraSubeArchivo(this.id);">
+			<input class="checbox-invisible" title = "<?php echo lang('message_lang.declaracion_responsable_i_ils');?>" disabled checked type="checkbox" name="declaracion_responsable_i" id="declaracion_responsable_i" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
 
 			<label for = "declaracion_responsable_v" class="main"><?php echo lang('message_lang.declaracion_responsable_v_ils');?>
-			<input title = "<?php echo lang('message_lang.declaracion_responsable_v');?>" disabled checked type="checkbox" name="declaracion_responsable_v" id="declaracion_responsable_v" onchange = "javaScript: muestraSubeArchivo(this.id);">
+			<input class="checbox-invisible" title = "<?php echo lang('message_lang.declaracion_responsable_v');?>" disabled checked type="checkbox" name="declaracion_responsable_v" id="declaracion_responsable_v" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
 		    
 			<label for = "declaracion_responsable_vii" class="main"><?php echo lang('message_lang.declaracion_responsable_vii_ils');?>
-			<input title = "<?php echo lang('message_lang.declaracion_responsable_vii_ils');?>" disabled checked type="checkbox" name="declaracion_responsable_vii" id="declaracion_responsable_vii" onchange = "javaScript: muestraSubeArchivo(this.id);">
+			<input class="checbox-invisible" title = "<?php echo lang('message_lang.declaracion_responsable_vii_ils');?>" disabled checked type="checkbox" name="declaracion_responsable_vii" id="declaracion_responsable_vii" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
 		    
 			<label for = "declaracion_responsable_ix" class="main"><?php echo lang('message_lang.declaracion_responsable_ix_ils');?>
-			<input title = "<?php echo lang('message_lang.declaracion_responsable_ix_ils');?>" disabled checked type="checkbox" name="declaracion_responsable_ix" id="declaracion_responsable_ix" onchange = "javaScript: muestraSubeArchivo(this.id);">
+			<input class="checbox-invisible" title = "<?php echo lang('message_lang.declaracion_responsable_ix_ils');?>" disabled checked type="checkbox" name="declaracion_responsable_ix" id="declaracion_responsable_ix" onchange = "javaScript: muestraSubeArchivo(this.id);">
 			<span class = "w3docs"></span>
 			</label>
     						
