@@ -2,6 +2,7 @@
 	<script defer type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
 	<script defer type="text/javascript" src="/public/assets/js/adhesion-ils.js"></script>	
 	<link rel="stylesheet" type="text/css" href="/public/assets/css/form-adhesion-ils.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <section id="formulario_solicitud">
 
@@ -16,13 +17,13 @@
 <form name="adhesion_ils" id="adhesion_ils" action="<?php echo base_url('/public/index.php/subirarchivo/store_ils/'.$viaSolicitud.'/'.$locale);?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
 <div class="stepContainer">
-	<span class="step">1</span>
-	<span class="step">2</span>
-  	<span class="step">3</span>
-  	<span class="step">4</span>
-  	<span class="step">5</span>
-	
-	<div  class="buttonContainer">
+	<span class="step step-margin"><i class="bi bi-1-circle-fill"></i></span>
+	<span class="step step-margin"><i class="bi bi-2-circle-fill"></i></span>
+  <span class="step step-margin"><i class="bi bi-3-circle-fill"></i></span>
+  <span class="step step-margin"><i class="bi bi-4-circle-fill"></i></span>
+  <span class="step step-margin"><i class="bi bi-5-circle-fill"></i></span>
+
+	<div class="buttonContainer">
     	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
     	<button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
 	</div>
@@ -34,7 +35,7 @@
 		<div>
 		<fieldset>
 			<label for = "rgpd" class="main" >
-				<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#"  data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
+				<span ><?php echo lang('message_lang.rgpd_leido');?> <a href="#" data-toggle="modal" data-target="#rgpdModal"><abbr title='Reglament general de protecció de dades'>RGPD.</abbr></a></span>
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 				<span class="w3docs"></span>
 			</label>
@@ -42,7 +43,6 @@
 		</div>
 
 		<fieldset>
-    		<!-- <h3><?php echo lang('message_lang.documentacion_necesaria');?></h3> -->
 			<?php echo lang('message_lang.documentacion_necesaria_pymes_ils');?>
 			<?php echo lang('message_lang.documentacion_necesaria_si_no_autoriza');?>
 			<h3><?php echo lang('message_lang.documentacion_resultante_cabecera');?></h3>
@@ -160,7 +160,7 @@
 			</div>
 			
 			<label for = "consentimiento_certificadoATIB" class="main"><?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>
-				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
+				<input title = "<?php echo lang('message_lang.doy_mi_consentimiento_pdf');?>" checked type="checkbox" name="consentimiento_certificadoATIB" id="consentimiento_certificadoATIB" onchange = "javaScript: muestraSubeArchivo(this.id);">
 				<span class = "w3docs"></span>
 			</label>
 			<div id = "enviarcertificadoATIB" class = "ocultar">
@@ -222,7 +222,7 @@
 
 		<div class="caja-grupo">
 			<label class="container-radio"><h6><?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?></h6>
-				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.informe_resumen_informe_inventario');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
+				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_informes_calculo_huella_carbono');?>" id="informe" onchange = "javaScript: presentarInformeOCertificado (this.id);">
 				<span id="informeCheck" class="checkmark checkmark-caja-grupo"></span>
 			</label>		
 		</div>
@@ -238,7 +238,7 @@
 						</div>
 		<div class="caja-grupo">						
 			<label class="container-radio"><h6><?php echo lang('message_lang.presentar_certificado_verificacion_ISO');?></h6>
-				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.prescertificado_verificacion_ISO');?>" id="certificado" onchange = "javaScript: presentarInformeOCertificado (this.id);">
+				<input type="radio" name="informeOCertificado" title="<?php echo lang('message_lang.presentar_certificado_verificacion_ISO');?>" id="certificado" onchange = "javaScript: presentarInformeOCertificado (this.id);">
 				<span id="certificadoCheck" class="checkmark checkmark-caja-grupo"></span>
 			</label>
 		</div>					

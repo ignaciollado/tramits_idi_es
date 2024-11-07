@@ -407,7 +407,6 @@ class Home extends BaseController
 			echo view('pages/forms/form-solicitud-ayuda-desactivada', $data);
 			echo view('templates/footer/footer_form');
 		}
-		
 	}
 
 	public function datos_empresa_ils( $id )

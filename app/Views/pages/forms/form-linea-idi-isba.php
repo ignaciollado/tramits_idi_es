@@ -206,7 +206,7 @@
 		</fieldset>
 	</div>
 </div>
-<!-------------------------- 6. DECLARO ----------------------------------------------------------------------------------->
+<!-------------------------- 6. DECLARO       ----------------------------------------------------------------------------->
 <div class="tab">	
 	<div id="formbox">
 		<fieldset>
@@ -288,15 +288,15 @@
 					</label>
 				</div>		
 			</li>
-			<li>
+			<!-- <li>
 				<div class="form-check">
   				<label class="main container-radio" for="declaro_idi_isba_que_cumple_9">
-						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>
+						<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>
 						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>" checked name="declaro_idi_isba_que_cumple_9[]" id="declaro_idi_isba_que_cumple_8">							
 						<span class="w3docs"></span>
 					</label>
 				</div>		
-			</li>			
+			</li>	 -->		
 			<li>
 				<div class="form-check">
   				<label class="main container-radio" for="declaro_idi_isba_que_cumple_10">
@@ -306,15 +306,15 @@
 					</label>
 				</div>		
 			</li>					
-			<li>
+			<!-- <li>
 				<div class="form-check">
   				<label class="main container-radio" for="declaro_idi_isba_que_cumple_11">
-						<?php echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>
+						<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>
 						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>" checked name="declaro_idi_isba_que_cumple_11[]" id="declaro_idi_isba_que_cumple_8">							
 						<span class="w3docs"></span>
 					</label>
 				</div>		
-			</li>					
+			</li> -->			
 			<li>
 				<div class="form-check">
   				<label class="main container-radio" for="declaro_idi_isba_que_cumple_12">

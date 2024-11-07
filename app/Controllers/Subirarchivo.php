@@ -1240,6 +1240,7 @@ class SubirArchivo extends BaseController
 		/* -------------------------------6. DECLARO-------------------------------------------- */
 		//declaración responsable punto 1
 		
+		$declaro_idi_isba_que_cumple_0 = "SI";
 		$declaro_idi_isba_que_cumple_1 = "SI";
 		$declaro_idi_isba_que_cumple_2 = "SI";
 		$declaro_idi_isba_que_cumple_3 = "SI";
@@ -1254,10 +1255,14 @@ class SubirArchivo extends BaseController
 		}
 		$ayudasSubvenSICuales_dec_resp = $this->request->getVar('ayudasSubvenSICuales_dec_resp');
 		$declaro_idi_isba_que_cumple_5 = "SI";
-		$declaro_idi_isba_que_cumple_6 = "SI";
 		$declaro_idi_isba_que_cumple_7 = "SI";
 		$declaro_idi_isba_que_cumple_8 = "SI";
-		
+		$declaro_idi_isba_que_cumple_10= "SI";
+		$declaro_idi_isba_que_cumple_12= "SI";
+		$declaro_idi_isba_que_cumple_13= "SI";
+		$declaro_idi_isba_que_cumple_14= "SI";
+		$declaro_idi_isba_que_cumple_15= "SI";
+
 		/* -------------------------------DOCUMENTACIÓN DE IDI-ISBA------------------------------------ */
  		/* -------------------------------7. DOCUMENTACIÓN--------------------------------------------- */
  		$documentosfile = $this->request->getFiles(); 
@@ -1403,14 +1408,19 @@ class SubirArchivo extends BaseController
 			'telefono_contacto_rep' 	=> $telefono_contacto_rep, //uso este otro ya que en IDI-ISBA necesitan un teléfono de contacto
 			'condicion_rep' 	=> $condicion_rep,
 
+			'declaro_idi_isba_que_cumple_0' 	=> $declaro_idi_isba_que_cumple_0,
 			'declaro_idi_isba_que_cumple_1' 	=> $declaro_idi_isba_que_cumple_1,
 			'declaro_idi_isba_que_cumple_2' 	=> $declaro_idi_isba_que_cumple_2,
 			'declaro_idi_isba_que_cumple_3' 	=> $declaro_idi_isba_que_cumple_3,
 			'declaro_idi_isba_que_cumple_4' 	=> $declaro_idi_isba_que_cumple_4,
 			'declaro_idi_isba_que_cumple_5' 	=> $declaro_idi_isba_que_cumple_5,
-			'declaro_idi_isba_que_cumple_6' 	=> $declaro_idi_isba_que_cumple_6,
 			'declaro_idi_isba_que_cumple_7' 	=> $declaro_idi_isba_que_cumple_7,
 			'declaro_idi_isba_que_cumple_8' 	=> $declaro_idi_isba_que_cumple_8,
+			'declaro_idi_isba_que_cumple_10'	=> $declaro_idi_isba_que_cumple_10,
+			'declaro_idi_isba_que_cumple_12'	=> $declaro_idi_isba_que_cumple_12,
+			'declaro_idi_isba_que_cumple_13'	=> $declaro_idi_isba_que_cumple_13,
+			'declaro_idi_isba_que_cumple_14'	=> $declaro_idi_isba_que_cumple_14,
+			'declaro_idi_isba_que_cumple_15'	=> $declaro_idi_isba_que_cumple_15,
 
 			'file_memoriaTecnica'							=> $file_memoriaTecnica,
 			'file_document_veracidad_datos_bancarios' 	=> $file_document_veracidad_datos_bancarios,
