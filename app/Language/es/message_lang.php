@@ -76,6 +76,7 @@ return [
 
    'titulo_sol_idigital'			  => "Solicitud de ayuda y/o subvención",
    'titulo_adhesion_ils'			  => "Solicitud de adhesión a ILS",
+
    'titulo_solicitud_idi_isba'     => "Ayudas a los gastos financieros a través del aval de ISBA",
    'titulo_solicitud_felib'        => "SOL·LICITUD D’ADHESIÓ ALS PROGRAMES QUE OFEREIX ALS MUNICIPIS L’AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears)",
 
@@ -87,12 +88,12 @@ return [
    'titulo_justificacion_isba'     => "Solicitud de pago de ayudas a la microempresa, pequeña y mediana empresa de carácter industrial de les Illes Balears que tengan aprobadas operaciones financieras avaladas por una Sociedad de Garantía Recíproca, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas.",
    'titulo_renovacion_ils'         => "Solicitud de renovación de la marca Industria Local Sostenible (ILS) de la Agencia de desarrollo regional de les Illes Balears.",
 
-   'titulo_requerimiento_idigital'	  => "Requerimento documentación/información adicional.",
-   'subtitulo_sol_idigital'			  => "RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
+   'titulo_requerimiento_idigital' => "Requerimento documentación/información adicional.",
+   'subtitulo_sol_idigital'		  => "RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF Y REGISTRARLO EN EL TRÁMITE “SOLICITUD” A TRAVÉS DEL BOTÓN “ACCESO AL TRÁMITE TELEMÁTICO” QUE SE ENCUENTRA EN EL SIGUIENTE ENLACE:
 	https://www.caib.es/seucaib/es/200/persones/tramites/tramite/6087813/
    
    Si necesita contactarnos, puede hacerlo por correo electrónico: pindust@adrbalears.es y/o por teléfono: 971 17 61 61 + 62894", 
-   'subtitulo_adhesion_ils'			  => "La solicitud de adhesión a ILS esta pendiente de firmar, por favor, entre en el documento y fírmelo.
+   'subtitulo_adhesion_ils'			=> "La solicitud de adhesión a ILS esta pendiente de firmar, por favor, entre en el documento y fírmelo.
    RECUERDE QUE, UNA VEZ FIRMADA LA SOLICITUD, TIENE QUE DESCARGAR EL PDF FIRMADO Y REGISTRARLO POR MEDIO DE LA SEDE ELECTRÓNICA DE CAIB EN EL SEGUIENTE ENLACE:
    https://www.caib.es/seucaib/es/201/empreses/tramites/tramite/5400391/
    SI NO PASA POR LA SEDE ELECTRÓNICA DE CAIB SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.

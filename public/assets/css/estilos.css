@@ -225,10 +225,10 @@ select.invalid, input.invalid {
 
 /* Make circles that indicate the steps of the form: */
 .step {
-  height: 17px;
-  width: 17px;
-  margin: 0 2px;
-  background-color: transparent;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  background: transparent;
   border: none;  
   border-radius: 50%;
   display: inline-block;
@@ -240,9 +240,9 @@ select.invalid, input.invalid {
 }
 
 /* Mark the steps that are finished and valid: */
-.step.finish {
+/* .step.finish {
   background-color: #497786;
-}
+} */
 .resumen_inscripcion_evento {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);

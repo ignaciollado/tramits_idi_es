@@ -723,8 +723,6 @@ class SubirArchivo extends BaseController
 		 	$hay_rep = "NO";
 	 		}
 		$hay_consultor = "NO"; 
-	 
-		$importeAyuda = 0;
 
 		$data_exp = [
 			'idExp' => $idExp,
@@ -839,7 +837,7 @@ class SubirArchivo extends BaseController
  		/* ------------------------------------------------------------------------------------------------------------ */	
  		/* --------------------------------sede social, múltiples documentos--------------------OK--------------------- */
  		if (isset($documentosfile['file_escritura_empresa' ])) {
-		foreach($documentosfile['file_escritura_empresa' ] as $sedeSocial)
+			foreach($documentosfile['file_escritura_empresa' ] as $sedeSocial)
 			{
 			if ($sedeSocial->isValid() && ! $sedeSocial->hasMoved())
 				{
@@ -864,9 +862,9 @@ class SubirArchivo extends BaseController
  		/* ------------------------------------------------------------------------------------------------------------ */	
  		/* --------------------------------memoria técnica, múltiples documentos------------------OK--------------------- */
  		if (isset($documentosfile['file_memoriaTecnica'])) {
-	 	foreach($documentosfile['file_memoriaTecnica'] as $memoriaTecnica)
-		 {
-		 if ($memoriaTecnica->isValid() && ! $memoriaTecnica->hasMoved())
+	 		foreach($documentosfile['file_memoriaTecnica'] as $memoriaTecnica)
+		 	{
+		 	if ($memoriaTecnica->isValid() && ! $memoriaTecnica->hasMoved())
 			 {
 				 $memoriaTecnica->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $memoriaTecnica->getRandomName());
 				 $data_file = [
@@ -889,7 +887,7 @@ class SubirArchivo extends BaseController
 		/* --------------------------------------------------------------------------------------------------------------- */
  		/* --------------------------------sube certificado IAE, múltiples documentos----------------OK--------------------- */
  		if (isset($documentosfile['file_certificadoIAE'])) {
-		foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
+			foreach($documentosfile['file_certificadoIAE'] as $certificadoIAE)
 			{
 			if ($certificadoIAE->isValid() && ! $certificadoIAE->hasMoved())
 				{
@@ -913,8 +911,8 @@ class SubirArchivo extends BaseController
  		/* ----------------------------------------------------------------------------------------------------------- */
  		/* --------------------------------nif empresa, múltiples documentos------------------------------------------ */
  		if (isset($documentosfile['file_nifEmpresa'])) {
-	 	foreach($documentosfile['file_nifEmpresa'] as $nifEmpresa)
-		 {
+	 		foreach($documentosfile['file_nifEmpresa'] as $nifEmpresa)
+		 	{
 			 if ($nifEmpresa->isValid() && ! $nifEmpresa->hasMoved())
 			 {
 				 $nifEmpresa->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $nifEmpresa->getRandomName());
@@ -938,8 +936,8 @@ class SubirArchivo extends BaseController
  		/* ------------------------------------------------------------------------------------------------------- */
  		/* ---------------- logotipo de la empresa para publicar luego en la web, múltiples documentos------------ */
  		if (isset($documentosfile['file_logotipoEmpresaIls'])) {
-	 	foreach($documentosfile['file_logotipoEmpresaIls'] as $logotipoEmpresaIls)
-		 {
+	 		foreach($documentosfile['file_logotipoEmpresaIls'] as $logotipoEmpresaIls)
+		 	{
 			 if ($logotipoEmpresaIls->isValid() && ! $logotipoEmpresaIls->hasMoved())
 				 {
 					 $logotipoEmpresaIls->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $logotipoEmpresaIls->getRandomName());
@@ -964,8 +962,8 @@ class SubirArchivo extends BaseController
  		/* ----------------------------------------------------------------------------------------------------- */
  		/* ----------------------------- declaración responsable, múltiples documentos ------------------------- */
  		if (isset($documentosfile['file_lineaProduccionBalearesIls'])) {
-	 	foreach($documentosfile['file_lineaProduccionBalearesIls'] as $declaracionResponsableIls)
-		 {
+	 		foreach($documentosfile['file_lineaProduccionBalearesIls'] as $declaracionResponsableIls)
+		 	{
 			 if ($declaracionResponsableIls->isValid() && ! $declaracionResponsableIls->hasMoved())
 				 {
 					 $declaracionResponsableIls->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $declaracionResponsableIls->getRandomName());
@@ -988,8 +986,8 @@ class SubirArchivo extends BaseController
  		/* ----------------------------------------------------------------------------------------------------- */
  		/* ------------------------------------------ informe resumen, múltiples documentos -------------------- */
  		if (isset($documentosfile['file_informeResumenIls'])) {
-	 	foreach($documentosfile['file_informeResumenIls'] as $informeResumenIls)
-		 {
+	 		foreach($documentosfile['file_informeResumenIls'] as $informeResumenIls)
+		 	{
 			 if ($informeResumenIls->isValid() && ! $informeResumenIls->hasMoved())
 				 {
 					 $informeResumenIls->move(WRITEPATH.'documentos/'.$nif.'/'.$selloTiempo.'/', $informeResumenIls->getRandomName());
@@ -1012,7 +1010,7 @@ class SubirArchivo extends BaseController
  		/* ----------------------------------------------------------------------------------------------------- */
  		/* ------------------------------------------ informe inventario, múltiples documentos -------------------- */
  		if (isset($documentosfile['file_informeInventarioIls'])) {
-		foreach($documentosfile['file_informeInventarioIls'] as $informeInventarioIls)
+			foreach($documentosfile['file_informeInventarioIls'] as $informeInventarioIls)
 			{
 				if ($informeInventarioIls->isValid() && ! $informeInventarioIls->hasMoved())
 					{
@@ -1036,7 +1034,7 @@ class SubirArchivo extends BaseController
  		/* ----------------------------------------------------------------------------------------------------- */
  		/* ------------------------------------------ certificado de verificación ISO 14064-1 -------------------- */
  		if (isset($documentosfile['file_certificado_verificacion_ISO'])) {
-		foreach($documentosfile['file_certificado_verificacion_ISO'] as $certificadoVerificacionISO)
+			foreach($documentosfile['file_certificado_verificacion_ISO'] as $certificadoVerificacionISO)
 			{
 				if ($certificadoVerificacionISO->isValid() && ! $certificadoVerificacionISO->hasMoved())
 					{
@@ -1060,7 +1058,7 @@ class SubirArchivo extends BaseController
  		/* ----------------------------------------------------------------------------------------------------- */
  		/* ------------------------------------------ certificado itinerario formativo -------------------- */
  		if (isset($documentosfile['file_certificado_itinerario_formativo'])) {
-		foreach($documentosfile['file_certificado_itinerario_formativo'] as $certificadoItinerarioFormativo)
+			foreach($documentosfile['file_certificado_itinerario_formativo'] as $certificadoItinerarioFormativo)
 			{
 				if ($certificadoItinerarioFormativo->isValid() && ! $certificadoItinerarioFormativo->hasMoved())
 					{
@@ -1084,7 +1082,7 @@ class SubirArchivo extends BaseController
 		/* ----------------------------------------------------------------------------------------------------- */
  		/* ------------------------------------------ modelo ejemplo, múltiples documentos -------------------- */
  		if (isset($documentosfile['file_modeloEjemploIls'])) {
-		foreach($documentosfile['file_modeloEjemploIls'] as $modeloEjemploIls)
+			foreach($documentosfile['file_modeloEjemploIls'] as $modeloEjemploIls)
 			{
 				if ($modeloEjemploIls->isValid() && ! $modeloEjemploIls->hasMoved())
 					{
@@ -1107,7 +1105,7 @@ class SubirArchivo extends BaseController
 		}	
  		/* ----------------------------------------------------------------------------------------------------- */	
  
-		$data_file['titulo'] = "Resumen de la solicitud solicitud de adhsión a ILS";
+		$data_file['titulo'] = "Resumen de la solicitud solicitud de adhsión a la marca ILS";
 
 	 	echo view('pages/forms/solicitud-concesion-marca-ils', $data_exp);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data_exp);
@@ -1244,7 +1242,6 @@ class SubirArchivo extends BaseController
 		$declaro_idi_isba_que_cumple_1 = "SI";
 		$declaro_idi_isba_que_cumple_2 = "SI";
 		$declaro_idi_isba_que_cumple_3 = "SI";
-
 		//declaración responsable punto 4
 		if ($this->request->getVar('declaro_idi_isba_que_cumple_4')!=null) {
 			if ($this->request->getVar('declaro_idi_isba_que_cumple_4') == "on"){
@@ -1262,7 +1259,6 @@ class SubirArchivo extends BaseController
 		$declaro_idi_isba_que_cumple_13= "SI";
 		$declaro_idi_isba_que_cumple_14= "SI";
 		$declaro_idi_isba_que_cumple_15= "SI";
-
 		/* -------------------------------DOCUMENTACIÓN DE IDI-ISBA------------------------------------ */
  		/* -------------------------------7. DOCUMENTACIÓN--------------------------------------------- */
  		$documentosfile = $this->request->getFiles(); 

@@ -41,7 +41,7 @@
   <span class="step step-margin"><i class="bi bi-5-circle-fill"></i></span>
 	<span class="step step-margin"><i class="bi bi-6-circle-fill"></i></span>
 	<span class="step step-margin"><i class="bi bi-7-circle-fill"></i></span>
-
+	<span class="step step-margin"><i class="bi bi-8-circle-fill"></i></span>
 	<div class="buttonContainer">
     	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
     	<button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>

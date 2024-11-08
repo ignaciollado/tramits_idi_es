@@ -19,9 +19,9 @@
 <div class="stepContainer">
 	<span class="step step-margin"><i class="bi bi-1-circle-fill"></i></span>
 	<span class="step step-margin"><i class="bi bi-2-circle-fill"></i></span>
-  	<span class="step step-margin"><i class="bi bi-3-circle-fill"></i></span>
-  	<span class="step step-margin"><i class="bi bi-4-circle-fill"></i></span>
-  	<span class="step step-margin"><i class="bi bi-5-circle-fill"></i></span>
+  <span class="step step-margin"><i class="bi bi-3-circle-fill"></i></span>
+  <span class="step step-margin"><i class="bi bi-4-circle-fill"></i></span>
+  <span class="step step-margin"><i class="bi bi-5-circle-fill"></i></span>
 
 	<div class="buttonContainer">
     	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
@@ -77,16 +77,15 @@
 
 <!--</div>-->
 
-<!-------------------------- 1. SELECCIONA EL PROGRAMA --------------------------------------------------------------------->
+<!-------------------------- 1. SELECCIONA EL PROGRAMA -------------------------------------------------------------->
 
 
-<!-------------------------- 2. TIPO DE EMPRESA ---------------------------------------------------------------------------->
+<!-------------------------- 2. TIPO DE EMPRESA --------------------------------------------------------------------->
 <div class="tab" id="empresa">
-	
   	<div id="formbox2" class="formbox">
 
     <fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
-		<h2><?php echo lang('message_lang.solicitante_tipo');?></h2>
+		<h2><i class="bi bi-2-circle-fill"></i> <?php echo lang('message_lang.solicitante_tipo');?></h2>
  		<label class="container-radio"><h6><?php echo lang('message_lang.solicitante_tipo_autonomo');?></h6>
 			<input type="radio" name="tipo_solicitante" title="<?php echo lang('message_lang.solicitante_tipo_autonomo');?>" id="autonomo" onchange = "javaScript: tipoSolicitante (this.id);" value="autonomo">
 			<span class="checkmark"></span>
@@ -130,24 +129,22 @@
 		
 		<input type="text" aria-required="true" name = "nom_representante" id = "nom_representante" title="<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nom_rep_legal_sol_idigital');?>" onblur="javaScript: validateFormField(this);">
 		<input type="text" aria-required="true" name = "nif_representante" id = "nif_representante" title="<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.nif_rep_legal_sol_idigital');?>" minlength = "9" maxlength = "9" onblur="javaScript: validateFormField(this);">
-<!-- 		<input type="tel" name = "tel_representante" id = "tel_representante" title="<?php echo lang('message_lang.telefono_representante');?>" placeholder = "<?php echo lang('message_lang.telefono_representante');?>" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" onblur="javaScript: validateFormField(this);">
+		<!-- 		<input type="tel" name = "tel_representante" id = "tel_representante" title="<?php echo lang('message_lang.telefono_representante');?>" placeholder = "<?php echo lang('message_lang.telefono_representante');?>" maxlength = "9" size="9" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" onblur="javaScript: validateFormField(this);">
 		<input type="email" aria-required="true" name = "mail_representante" id = "mail_representante" title="<?php echo lang('message_lang.mail_representante');?>" placeholder = "<?php echo lang('message_lang.mail_representante');?>" onblur="javaScript: validateFormField(this);">
- -->
-
+ 		-->
 	</fieldset> 
 	</div>
 </div>
 
-<!-------------------------- 4. NOTIFICACIÓN y AUTORIZACIONES --------------------------------------------------------------------->
+<!-------------------------- 4. NOTIFICACIÓN, AUTORIZACIONES y DECLARACIÓN RESPONSABLE------------------------------->
 <div class="tab">
 	<div id="formbox">
     <fieldset>
-		<h2><?php echo lang('message_lang.titulo_notificiaciones');?></h2>
+		<h2><i class="bi bi-4-circle-fill"></i> <?php echo lang('message_lang.titulo_notificiaciones');?></h2>
 		<input type = "tel" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.tel_rep_legal_sol_idigital');?>" aria-required="true" name = "tel_representante" id="tel_representante" maxlength = "9" size="9" ><p id="mensaje_tel"></p>
 		<input type = "email" onblur="javaScript: validateFormField(this);" title = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" placeholder = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" data-error = "<?php echo lang('message_lang.mail_rep_legal_sol_idigital');?>" aria-required="true" name = "mail_representante" id="mail_representante" size="220">		 
 	</fieldset>
 	</div>
-
 	<div id="formbox">
     <fieldset>
 		<h2><?php echo lang('message_lang.autorizaciones_solicitud_ils');?></h2>

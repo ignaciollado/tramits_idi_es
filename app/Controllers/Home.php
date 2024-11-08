@@ -271,7 +271,7 @@ class Home extends BaseController
 		echo view('templates/footer/footer_form');
 	}	
 	
-	public function dec_resp_consul($page = 'forms/form-dec-resp-consultor-idigital')
+	public function dec_resp_consul ($page = 'forms/form-dec-resp-consultor-idigital')
 	{
 		helper('form');
 		helper('filesystem');
@@ -297,7 +297,7 @@ class Home extends BaseController
 	}
 	//--------------------------------------------------------------------
 
-	public function solicitud_adhesion_ils($page = 'forms/form-adhesion-ils')
+	public function solicitud_adhesion_ils ($page = 'forms/form-adhesion-ils')
 	{
 		helper('form');
 		helper('filesystem');
@@ -316,7 +316,7 @@ class Home extends BaseController
 		echo view('pages/forms/form-adhesion-ils');
 	}
 
-	public function solicitud_adhesion_felib($page = 'forms/form-adhesion-felib')
+	public function solicitud_adhesion_felib ($page = 'forms/form-adhesion-felib')
 	{
 		helper('form');
 		helper('filesystem');
@@ -339,7 +339,7 @@ class Home extends BaseController
 		echo view('pages/forms/form-adhesion-felib');
 	}
 
-	public function solicitud_adhesion_ils_es($page = 'forms/form-adhesion-ils')
+	public function solicitud_adhesion_ils_es ($page = 'forms/form-adhesion-ils')
 	{
 		helper('form');
 		helper('filesystem');

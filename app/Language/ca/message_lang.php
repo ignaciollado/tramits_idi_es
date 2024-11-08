@@ -76,7 +76,8 @@ return [
    'titulo_sol_form_ils'	        => "Programa d'adhesió a Industria Local Sostenible (ILS)",
 
    'titulo_sol_idigital'			  => "Sol·licitud ajut i/o subvenció",
-   'titulo_adhesion_ils'			  => "Sol·licitud d'adhesió a ILS",
+   'titulo_adhesion_ils'  	        => "Sol·licitud d'adhesió a ILS",
+   
    'titulo_solicitud_idi_isba'     => "Ajuts a les despeses financeres a través de l'aval d'ISBA",
    'titulo_solicitud_felib'        => "SOL·LICITUD D’ADHESIÓ ALS PROGRAMES QUE OFEREIX ALS MUNICIPIS L’AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears)",
 
@@ -100,7 +101,7 @@ return [
    SI NO PASSA PER LA SEU ELECTRÒNICA CAIB S'ENTENDRÀ QUE LA SOL·LICITUD NO HA ESTAT PRESENTADA.
    Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@adrbalears.es i/o per telèfon: 971 17 61 61 + 62891",
 
-   'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses de caràcter industrial de les Illes Balears per cobrir despeses financeres d'operacions de finançament d'inversions productives, eficiència energètica i transformació digital previstes en el Pla Estratègic Industrial 2018-2023",
+   'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses de caràcter industrial de les Illes Balears per cobrir despeses financeres d'operacions de finançament d'inversions productives, eficiència energètica i transformació digital previstes en el Pla Estratègic Industrial 2018-2025",
    'subtitulo_justificacion_idigital'	 => "RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",
    'subtitulo_renovacion_ils'	 => "RECORDAU QUE UNA VEGADA SIGNADA LA PETICIÓ DE RENOVACIO DE LA MARCA HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",
    'subtitulo_solicitud_felib' => "",

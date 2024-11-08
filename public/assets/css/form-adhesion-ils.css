@@ -274,7 +274,7 @@ select, input, textarea {
 }
 
 /* Make circles that indicate the steps of the form: */
-.step {
+/* .step {
   height: 3rem;
   width: 3rem;
   margin: 0 1rem;
@@ -285,7 +285,7 @@ select, input, textarea {
   text-align: center;
   display: inline-block;
   opacity: 0.9;
-}
+} */
 
 .container-radio-invalid {
   background-color: rgba(190, 0, 44, 1);
@@ -301,9 +301,9 @@ select, input, textarea {
 }
   
 /* Mark the steps that are finished and valid: */
-.step.finish {
+/* .step.finish {
   background-color: rgba(204, 233, 230, 1);
-}
+} */
 .mainButtonContainer{
   overflow:auto;
 }
