@@ -27,7 +27,7 @@
 <div class="row">
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2024">
-      <h5 class="card-title">Convocatòria 2024 <span id="totalSolicitudes2024">0</span></h5>
+      <h5 class="card-title">Convocatòria 2024 <span id="totalSolicitudes2024">[0]</span></h5>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Programa I (iDigital)</button>
@@ -60,7 +60,7 @@
               <span class="badge bg-primary" id="totalPendienteII_2024">0</span>
               <span class="badge bg-secondary" id="totalInicioConsultoriaII_2024">0</span>
               <span class="badge text-bg-success" id="totalSolicitudesII_2024">0</span>
-              <span class="badge text-bg-success" id="totalFinalizadoII_2024">0</span>
+              <!-- <span class="badge text-bg-success" id="totalFinalizadoII_2024">0</span> -->
               <span class="badge text-bg-success" id="importeConcedidoII_2024">0.00</span>
             </li></ul>
           
@@ -317,19 +317,18 @@
 <button class="accordion"><h1>ADR-ISBA</h1></button>
 <div class="panel" style="display:block;">
   <section id="sectionILS">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ADR-ISBA/'.date("Y"));?>" target="_self">Expedients</a></h2>
+    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ADR-ISBA/');?>" target="_self">Expedients</a></h2>
 	  <fieldset>
       <div>
-        <span id="totalSolicitudesILS_2022"></span>
-        <span id="importeTotalILS_2022"></span>
-        <span id="importeConcedidoILS_2022"></span>
+        <span id="totalSolicitudesAdrIsba"></span>
+        <span id="importeTotalAdrIsba"></span>
+        <span id="importeConcedidoAdrIsba"></span>
       </div>
       <div>
-          <span id="totalSolicitudesILSNoREC_2022"></span>
-          <span id="totalSolicitudesILSPendientes_2022"></span>
-          <span id="totalSolicitudesILSDenegadas_2022"></span>
-          <span id="totalSolicitudesILSAdheridas_2022"></span>
-        <!--   <span id="totalSolicitudesILSJustificado_2022"></span> -->
+          <span id="totalSolicitudesAdrIsbaNoREC_2022"></span>
+          <span id="totalSolicitudesAdrIsbaPendientes_2022"></span>
+          <span id="totalSolicitudesAdrIsbaDenegadas_2022"></span>
+          <span id="totalSolicitudesAdrIsbaAdheridas_2022"></span>
       </div>
 	  </fieldset>
   </section>

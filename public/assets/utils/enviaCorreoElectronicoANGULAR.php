@@ -69,7 +69,10 @@ switch ($project) {
 		break;
 	case 'Comunicació':
 		$projectMail = "info@idi.es";
-		break;	
+		break;
+		case 'Tester':
+			$projectMail = "illado@idi.caib.es";
+			break;	
 	default:
 		$projectMail = "info@idi.es";
 }
@@ -90,7 +93,7 @@ $mail->SMTPAuth = true;     // turn on SMTP authentication
 // email: send_from_PHPMailer@bradm.inmotiontesting.com
 // pass: password
 $mail->Username = "tramits@tramits.idi.es";  // SMTP username
-$mail->Password = "Lvsy2r7[4,4}"; // SMTP password
+$mail->Password = "Lvsy2r7[4,4}*1"; // SMTP password
 $mail->Port = 587; //el puerto smtp
 $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
