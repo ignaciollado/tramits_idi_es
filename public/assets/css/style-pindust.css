@@ -23,6 +23,9 @@ button:hover {
 	border-radius: .5rem;
 	border: 1px solid rgb(0, 0, 0);
 }
+ol, ul {
+  padding-left: 0;
+}
 .container-add-line > button{
 	text-align: right;
  }
@@ -371,7 +374,7 @@ code {
 
 .badge {
 	font-weight: 400;
-	width: 100%;
+	/* width: 100%; */
 }
 
 #formbox {

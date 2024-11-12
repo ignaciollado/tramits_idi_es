@@ -6,11 +6,10 @@ $items = parse_url( $url);
 $itemsArray = explode  ("/", $items['query']);
 
 $convocatoria = $itemsArray[0];
+$convocatoria = str_replace("%22", "", $convocatoria);
 
 $query = 'SELECT count(id) AS totalExpedientes FROM pindust_expediente WHERE ' .$convocatoria;
-
 $result = mysqli_query($conn, $query);
-/* echo $query." "; */
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
        $totalExpedientes = $row["totalExpedientes"];

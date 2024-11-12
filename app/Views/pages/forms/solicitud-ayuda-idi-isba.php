@@ -233,7 +233,6 @@ if ($declaro_idi_isba_que_cumple_4 != "SI") {
 }
 $html13 .= "</li>";
 $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_5')."</li>";
-/* $html13 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_6')."</li>"; */
 $html13 .= "</ol></td></tr>";
 $html13 .= "</table>";
 
@@ -257,9 +256,7 @@ $html14 = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'
 $html14 .= '<tr><td><ol start="7">';
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_7')."</li>";
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_8')."</li>";
-/* $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_9')."</li>"; */
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_10')."</li>";
-/* $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_11')."</li>"; */
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_12')."</li>";
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_13')."</li>";
 $html14 .= "<li>".lang('message_lang.declaro_idi_isba_que_cumple_14')."</li>";
@@ -311,7 +308,7 @@ if ( $file_escrituraConstitucion == "SI") {
 if ( $file_nifRepresentante  == "NO") {
 	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_g')."</li>";		
 }
-if ( $file_certificadoATIB == "SI") {
+if ( $file_certificadoATIB == "NO") {
 	$html16 .= "<li>".lang('message_lang.documentacion_adjunta_requerida_idi_isba_h')."</li>";		
 }
 if ( $file_certificadoAEAT == "SI") {

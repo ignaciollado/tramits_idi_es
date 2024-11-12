@@ -43,8 +43,8 @@
 	<span class="step step-margin"><i class="bi bi-7-circle-fill"></i></span>
 	<span class="step step-margin"><i class="bi bi-8-circle-fill"></i></span>
 	<div class="buttonContainer">
-    	<button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
-    	<button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
+    <button title="<?php echo lang('message_lang.btn_previous');?>" onClick="nextPrev(-1)" type="button" class="buttonAsistente" id="prevBtn"><?php echo lang('message_lang.btn_previous');?></button>
+    <button title="<?php echo lang('message_lang.btn_next');?>"  onClick="nextPrev(1)" disabled class="ocultar" type="button"  id="nextBtn"><?php echo lang('message_lang.btn_next');?></button>
 	</div>
 </div>
 
@@ -65,7 +65,7 @@
 		<?php echo lang('message_lang.documentacion_resultante_idi_isba');?>
 	</fieldset>
 </div>
-<!-------------------------- 0. TIPO DE SOLICITANTE ----------------------------------------------------------------------->
+<!-------------------------- 0. TIPO DE SOLICITANTE ------------------------------------------------------------------>
 <div class="tab" id="empresa">
 	<div id="formbox2" class="formbox">
   	<fieldset><span class="ocultar" id="aviso2"><?php echo lang('message_lang.marque_una_opcion');?></span>
@@ -89,7 +89,7 @@
   	</fieldset>
 	</div>
 </div>
-<!-------------------------- 1. IDENTIFICACIÓN DEL SOLICITANTE ------------------------------------------------------------>
+<!-------------------------- 1. IDENTIFICACIÓN DEL SOLICITANTE ------------------------------------------------------->
 <div class="tab">
 	<div id="formbox">
 		<fieldset id="interesado">
@@ -135,7 +135,7 @@
 		</fieldset> 
 	</div>
 </div>	
-<!-------------------------- 2. CANAL NOTIFICACIÓN y AUTORIZACIONES ------------------------------------------------------->
+<!-------------------------- 2. CANAL NOTIFICACIÓN y AUTORIZACIONES -------------------------------------------------->
 <div class="tab">	
 	<div id="formbox">
     	<fieldset>
@@ -145,7 +145,7 @@
 		</fieldset>
 	</div>
 </div>
-<!-------------------------- 3. OPERACIÓN FINANCIERA ---------------------------------------------------------------------->
+<!-------------------------- 3. OPERACIÓN FINANCIERA ----------------------------------------------------------------->
 <div class="tab">	
 	<div id="formbox">
     <fieldset>
@@ -162,14 +162,14 @@
 	</fieldset>
 	</div>
 </div>
-<!-------------------------- 4. PROYECTO DE INVERSIÓN --------------------------------------------------------------------->
+<!-------------------------- 4. PROYECTO DE INVERSIÓN ---------------------------------------------------------------->
 <div class="tab">
 	<div id="formbox">
     <fieldset>
 			<h2><i class="bi bi-4-circle-fill"></i> <?php echo lang('message_lang.proyecto_de_inversion_idi_isba');?></h2>
 			<input type = "text" onblur="javaScript: validateFormField(this);" required aria-required="true" title = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" placeholder = "<?php echo lang('message_lang.proyecto_de_inversion_idi_isba_finalidad');?>" name = "finalidad_inversion_idi_isba" id="finalidad_inversion_idi_isba" maxlength = "220" size="220">
 		</fieldset>
-<!-------------------------- 5. SOLICITA AYUDA ------------------------------------------------------------------------>
+<!-------------------------- 5. SOLICITA AYUDA ----------------------------------------------------------------------->
 		<fieldset>
 			<h2><?php echo lang('message_lang.adherido_a_ils_si_no');?></h2>
 			<div class="form-check form-check-inline">
@@ -206,7 +206,7 @@
 		</fieldset>
 	</div>
 </div>
-<!-------------------------- 6. DECLARO       ----------------------------------------------------------------------------->
+<!-------------------------- 6. DECLARO ----------------------------------------------------------------------------->
 <div class="tab">	
 	<div id="formbox">
 		<fieldset>
@@ -288,15 +288,6 @@
 					</label>
 				</div>		
 			</li>
-			<!-- <li>
-				<div class="form-check">
-  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_9">
-						<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>
-						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_9');?>" checked name="declaro_idi_isba_que_cumple_9[]" id="declaro_idi_isba_que_cumple_8">							
-						<span class="w3docs"></span>
-					</label>
-				</div>		
-			</li>	 -->		
 			<li>
 				<div class="form-check">
   				<label class="main container-radio" for="declaro_idi_isba_que_cumple_10">
@@ -306,15 +297,6 @@
 					</label>
 				</div>		
 			</li>					
-			<!-- <li>
-				<div class="form-check">
-  				<label class="main container-radio" for="declaro_idi_isba_que_cumple_11">
-						<?php //echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>
-						<input class="requerido" disabled type="checkbox" title = "<?php echo lang('message_lang.declaro_idi_isba_que_cumple_11');?>" checked name="declaro_idi_isba_que_cumple_11[]" id="declaro_idi_isba_que_cumple_8">							
-						<span class="w3docs"></span>
-					</label>
-				</div>		
-			</li> -->			
 			<li>
 				<div class="form-check">
   				<label class="main container-radio" for="declaro_idi_isba_que_cumple_12">
@@ -391,28 +373,19 @@
 				</div>	
 			</li>
 
-			<!-- <div id="es-p-fisica"> -->
-				<li id="li-doc-e">
-	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+			<li id="li-doc-e">
+	 			<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<div>
 						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_e" name="documentacion_adjunta_requerida_idi_isba_e[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_e');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 					</div>	
-				</li>	
-			<!-- </div> -->
+			</li>
 
-			<!-- <div id="es-p-juridica"> -->
-				<li id="li-doc-f">
-	 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
+			<li id="li-doc-f">
+	 			<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?></strong></h3><code>[.pdf, .jpeg, .png] <span class="badge text-bg-info">(Max. file size: 10.0 M)</span>:</code>
 					<div>
 						<input type = "file" id="documentacion_adjunta_requerida_idi_isba_f" name="documentacion_adjunta_requerida_idi_isba_f[]" title="<?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_f');?>" class="mostrar-siempre" size="50" accept=".pdf, .jpeg, .png" multiple/>
 					</div>
-				</li>	
-			<!-- </div> -->
-							<!-- 	<label for="idi_isba_b_EnIDI" class="main">
-					<label class="alert alert-warning" role="alert"><?php echo lang('message_lang.documentoEnIDI');?> </label>
-					<input type="checkbox" id="idi_isba_b_EnIDI" name="idi_isba_b_EnIDI" class="requerido" onChange="javaScript: deshabilitarSubidaDocumento (this);" required>
-					<span class="w3docs"></span>
-				</label> -->
+			</li>
 			<li>
 				<h3><strong><?php echo lang('message_lang.documentacion_adjunta_requerida_idi_isba_g');?></strong></h3>
 				<div id = "enviaridi_isba_g" class="ocultar">
