@@ -1,6 +1,10 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Requeriment sol·licitud
+    	Requeriment
+			<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			<span class="label label-warning">***testear*** [PRE]</span>
+		<?php }?>
   	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -71,40 +75,39 @@
   	</div>
 </div>
 <input type='hidden' id="fechaEstadoDocReq" value="<?php echo $fecha_firma_req;?>">
-<!-- <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script> -->
 <script>
-if (!document.getElementById("fecha_requerimiento").value) {
-	document.getElementById("fecha_requerimiento").value = document.getElementById("fechaEstadoDocReq").value
-	cambiarSituacionExpediente('send_fase_1', 'fecha_requerimiento')
-}
-
-function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
-	let textoMotivoReq = document.getElementById("motivoRequerimientoTexto").value;
-	let id = document.getElementById("id").value;
-	let modal = document.getElementById("motivoRequerimiento");
-	if ( textoMotivoReq === "" ) {
-		alert ("Falta indicar el motiu.")
-		return;
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme'	
+	if (!document.getElementById("fecha_requerimiento").value) {
+		document.getElementById("fecha_requerimiento").value = document.getElementById("fechaEstadoDocReq").value
+		cambiarSituacionExpediente('send_fase_1', 'fecha_requerimiento')
 	}
-	$.post(
-		"/public/assets/utils/actualiza_motivo_requerimiento_en_expediente.php",
-		{ id: id, textoMotivoReq: textoMotivoReq },
-		function (data) {
-			$(".result").html(data);
-			if (data == 1) {
-				document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
-				console.log (document.getElementById("wrapper_motivoRequerimiento").innerText)
-				modal.style.display = "none";
-				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-			}
+
+	function actualizaMotivoRequerimiento_click() {  //SE EMPLEA
+		let textoMotivoReq = document.getElementById("motivoRequerimientoTexto").value;
+		let id = document.getElementById("id").value;
+		let modal = document.getElementById("motivoRequerimiento");
+		if ( textoMotivoReq === "" ) {
+			alert ("Falta indicar el motiu.")
+			return;
 		}
-	);
-}
+		$.post(
+			"/public/assets/utils/actualiza_motivo_requerimiento_en_expediente.php",
+			{ id: id, textoMotivoReq: textoMotivoReq },
+			function (data) {
+				$(".result").html(data);
+				if (data == 1) {
+					document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
+					modal.style.display = "none";
+					$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
+				}
+			}
+		);
+	}
 
 function enviaRequerimiento(id, convocatoria, programa, nifcif) {
 	let todoBien = true
 	let wrapper_motivoRequerimiento = document.getElementById('wrapper_motivoRequerimiento')
-	let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainforme'
 	if (todoBien) {
 		wrapper_motivoRequerimiento.disabled = true
 		wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."

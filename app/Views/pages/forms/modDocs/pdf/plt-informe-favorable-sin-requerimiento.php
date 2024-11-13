@@ -143,7 +143,9 @@ $parrafo_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expedien
 $parrafo_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1_2);
 $parrafo_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1_2);
 $parrafo_1_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_1_2);
-$parrafo_1_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1_2);
+/* $parrafo_1_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1_2); */
+$fmt = new NumberFormatter( 'es_ES', NumberFormatter::CURRENCY );
+$parrafo_1_2 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_1_2);
 $parrafo_1_2 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_1_2);
 $html = $parrafo_1_2;
 
@@ -159,7 +161,8 @@ $parrafo_4_5 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $par
 $parrafo_4_5 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4_5);
 $parrafo_4_5 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_4_5);
 $parrafo_4_5 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_4_5);
-$parrafo_4_5 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4_5);
+/* $parrafo_4_5 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4_5); */
+$parrafo_4_5 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_4_5);
 $parrafo_4_5 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_4_5);
 
 $html .= $parrafo_4_5;
@@ -186,7 +189,8 @@ $pdf->setY($currentY + 5);
 $parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('4_informe_favorable_sin_requerimiento.4_conclusionTxt'));
 $parrafo_conclusion = str_replace("%SALTOLINEA%", "<br><br>", $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_conclusion);
-$parrafo_conclusion = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_conclusion);
+/* $parrafo_conclusion = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_conclusion); */
+$parrafo_conclusion = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_conclusion);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_conclusion ."</td></tr>";

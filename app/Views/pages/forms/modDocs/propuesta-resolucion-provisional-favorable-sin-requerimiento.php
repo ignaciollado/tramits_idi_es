@@ -1,7 +1,11 @@
 <!----------------------------------------- Proposta de resolució provisional favorable sense requeriment DOC 7 --------------------------------->
 <div class="card-itramits">
 	<div class="card-itramits-body">
-		Proposta de resolució provisional favorable<br>sense requeriment
+		Proposta de resolució provisional favorable
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			<span class="label label-warning">**testear** [PRE]</span>
+		<?php }?>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -46,13 +50,14 @@
 <!------------------------------------------------------------------------------------------------------>
 
 <script>
+	const actualBaseUrl = window.location.origin
+	let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme'
 	function enviaPropResolucionProvisionalFavorableSinReg(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let btnPropResProvfavSinReq = document.getElementById('btnPropResProvfavSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingData7 = document.getElementById('infoMissingData7')
 		infoMissingData7.innerText = ""
 
@@ -65,7 +70,7 @@
 			todoBien = false
 		}
 		if (!fecha_infor_fav_desf.value) {
-			infoMissingData7.innerHTML = infoMissingData7.innerHTML + "Data firma informe favorable / desfavorable<br>"
+			infoMissingData7.innerHTML = infoMissingData7.innerHTML + "Firma informe favorable / desfavorable<br>"
 			todoBien = false
 		}
 

@@ -19,6 +19,7 @@
         'programa' => $programa
     ];
     $session->set($expedienteID);
+    $base_url = $_SERVER['USER'];
 ?>
 
     <!---------------------- Para poder consultar en VIAFIRMA el estado de los modelos de los actos administrativos ------->

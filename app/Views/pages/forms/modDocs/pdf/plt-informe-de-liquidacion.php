@@ -117,7 +117,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 1);
 $parrafo_1 = lang('message_lang.doc_informe_de_liquidacion_p1');
 $parrafo_1 = str_replace("%FECHAFIRMARESCONCESION%", date_format(date_create($data['expediente']['fecha_resolucion']),"d/m/Y"), $parrafo_1);
-$parrafo_1 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']);
+$parrafo_1 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']));
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
 $parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);

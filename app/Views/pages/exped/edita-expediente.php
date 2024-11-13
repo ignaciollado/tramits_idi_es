@@ -20,7 +20,6 @@
     echo '<div class="alert alert-warning" role="alert">Nombre total de sol·licituds d´aquesta línia d´ajuda: '.$totalConvocatorias.'</div>';
 
     $convocatoriaEnCurso = $configuracionLinea['convocatoria'];
-
     $esAdmin = ($session->get('rol') == 'admin');
     $esConvoActual = ($convocatoria == $convocatoriaEnCurso);
 
@@ -29,7 +28,7 @@
         'programa' => $programa
     ];
     $session->set($expedienteID);
-
+    $base_url = $_SERVER['USER'];
 /* Si no hay IMPORTE AYUDA, Calcula el importe según el programa y el número de convocatorias a las que se ha  presentado */
 
 if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
@@ -118,7 +117,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     } else {
         $importeAyuda = $expedientes['importeAyuda'];
     }
-   /*  $importeAyuda = number_format($importeAyuda, 2, ',', '.');
+    /*  $importeAyuda = number_format($importeAyuda, 2, ',', '.');
     $importe_minimis = number_format($expedientes['importe_minimis'], 2, ',', '.'); */
     if ($expedientes["convocatoria"] == date("Y")) { 
         $isDisabled = "disabled";
@@ -834,35 +833,34 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     <div class="col-sm-2 docsExpediente">
         <h3>Detall:</h3>   
         <form action="<?php echo base_url('public/index.php/expedientes/update');?>"  name="exped-fase-2" id="exped-fase-2" method="post" accept-charset="utf-8">
-                <div class="form-group validacion">
-                    <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable / desfavorable:</strong></label>
-		            <input type = "date" name = "fecha_infor_fav_desf" class = "form-control send_fase_2" id = "fecha_infor_fav_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_desf']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Firma proposta resolució provisional:</strong></label>
-                    <input type = "date" name = "fecha_firma_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_prov']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_prov"><strong>Notificació proposta resolució provisional:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_prov" onchange = "javaScript: cambiarSituacionExpediente('send_fase_2', this.id);" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_prov']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_propuesta_resolucion_def"><strong>Firma proposta resolució definitiva:</strong></label>
-                    <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
-                </div>
-		        <div class="form-group validacion">
-                    <label for = "fecha_not_propuesta_resolucion_def"><strong>Notificació proposta resolució definitiva:</strong></label>
-                    <input type = "date" name = "fecha_not_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
-                </div>                
-		        <div class="form-group validacion">
-                    <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
-                    <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
-                </div>
-    		    <div class="form-group validacion">
-                    <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
-                    <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
-                </div>
-
+            <div class="form-group validacion">
+                <label for = "fecha_infor_fav_desf"><strong>Firma informe favorable / desfavorable:</strong></label>
+		        <input type = "date" name = "fecha_infor_fav_desf" class = "form-control send_fase_2" id = "fecha_infor_fav_desf" value = "<?php echo date_format(date_create($expedientes['fecha_infor_fav_desf']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_firma_propuesta_resolucion_prov"><strong>Firma proposta resolució provisional:</strong></label>
+                <input type = "date" name = "fecha_firma_propuesta_resolucion_prov" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_prov']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_not_propuesta_resolucion_prov"><strong>Notificació proposta resolució provisional:</strong></label>
+                <input type = "date" name = "fecha_not_propuesta_resolucion_prov" onchange = "javaScript: cambiarSituacionExpediente('send_fase_2', this.id);" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_prov" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_prov']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_firma_propuesta_resolucion_def"><strong>Firma proposta resolució definitiva:</strong></label>
+                <input type = "date" name = "fecha_firma_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_firma_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_firma_propuesta_resolucion_def']), 'Y-m-d');?>">
+            </div>
+		    <div class="form-group validacion">
+                <label for = "fecha_not_propuesta_resolucion_def"><strong>Notificació proposta resolució definitiva:</strong></label>
+                <input type = "date" name = "fecha_not_propuesta_resolucion_def" class = "form-control send_fase_2" id = "fecha_not_propuesta_resolucion_def" value = "<?php echo date_format(date_create($expedientes['fecha_not_propuesta_resolucion_def']), 'Y-m-d');?>">
+            </div>                
+		    <div class="form-group validacion">
+                <label for = "fecha_firma_res"><strong>Firma resolució:</strong></label>
+                <input type = "date" name = "fecha_firma_res" class = "form-control send_fase_2" id = "fecha_firma_res" value = "<?php echo date_format(date_create($expedientes['fecha_firma_res']), 'Y-m-d');?>">
+            </div>
+    		<div class="form-group validacion">
+                <label for = "fecha_notificacion_resolucion"><strong>Notificació resolució:</strong></label>
+                <input type = "date" name = "fecha_notificacion_resolucion" class = "form-control send_fase_2" id = "fecha_notificacion_resolucion" value = "<?php echo date_format(date_create($expedientes['fecha_notificacion_resolucion']), 'Y-m-d');?>">
+            </div>
                 <?php
                 if ( !$esAdmin && !$esConvoActual ) {?>
                 <?php }
@@ -916,12 +914,12 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         <div class="col docsExpediente">
         <h3>Actes administratius:</h3>
         <ol start="3">
-            <!-----------------------------------------3. Informe favorable amb requeriment------------>
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-con-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------4. Informe favorable sense requeriment--------->
+            <!-----------------------------------------3. Informe favorable sense requeriment--------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-sin-requerimiento.php';?></li>
-            <!------------------------------------------------------------------------------------------------------>
+            <!----------------------------------------------------------------------------------------->
+            <!-----------------------------------------4. Informe favorable amb requeriment------------>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-favorable-con-requerimiento.php';?></li>
+            <!----------------------------------------------------------------------------------------->
             <!-----------------------------------------6. Informe desfavorable sense requeriment-->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/informe-desfavorable-sin-requerimiento.php';?></li>
             <!------------------------------------------------------------------------------------------------------>

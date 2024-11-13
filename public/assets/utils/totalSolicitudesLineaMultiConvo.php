@@ -3,7 +3,7 @@
 require_once 'conectar_a_bbdd.php';
 $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
-$itemsArray = explode  ("/", $items['query']);
+$itemsArray = explode("/", $items['query']);
 
 $tipo_tramite = $itemsArray[0];
 $tipo_tramite = str_replace("%27%27", "'", $tipo_tramite);
