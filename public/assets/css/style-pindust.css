@@ -5,6 +5,7 @@
 	background-color: #a3d4db;
 	outline: none;
 }
+
 button:hover {
 	cursor:pointer!important;
 }

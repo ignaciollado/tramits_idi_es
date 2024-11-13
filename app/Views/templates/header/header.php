@@ -63,7 +63,6 @@ ul { list-style-type: none; }
 #main {
   transition: margin-left .5s;
   padding: .5rem;
-  /* min-height:100%; */
 }
 
 @media screen and (max-height: 450px) {
@@ -77,7 +76,7 @@ ul { list-style-type: none; }
 	$session = session();
 	$rol = ($session->get('rol'));
 	?>
-<div id="mySidenav" class="sidenav">
+<section id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="menu">
 		<ul>
@@ -142,13 +141,13 @@ ul { list-style-type: none; }
 
 		</ul>
 	</div>
-</div>
+</section>
 </header>
 <div id="main">
 	<div class="heroe main-header">
-		<button type="button"  onclick="openNav()" class="btn item1" title="open menu"><i class="bi bi-menu-app" style="font-size: 2.5rem; "></i></button>
-		<h1 class="item2"><?= esc($titulo); ?></h1>
-		<img class="item3" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)" height="40px"
+		<button type="button" onclick="openNav()" class="btn" title="open menu"><i class="bi bi-list" style="font-size: 3.5rem; "></i></button>
+		<h1 ><?= esc($titulo); ?></h1>
+		<img title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)" width="62" height="auto"
 			alt="Visita la web oficial de l'ADR Balears"
 			src="/public/assets/images/adr-balears.png">
 	</div>

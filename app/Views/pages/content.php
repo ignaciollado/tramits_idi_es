@@ -1,33 +1,20 @@
+<?php 
+  use App\Models\ExpedientesModel;
+  $modelExp = new ExpedientesModel();
+  $totalexpedAZero = "<span class='badge bg-secondary'>".$modelExp->getWithZeroIdSol()."</span>";
+?>
 <!-- CONTENT -->
 <input type="hidden" name="updateInterval" class="form-control" id="updateInterval" value = "<?php echo $configuracion['updateInterval'];?>">
 <script type="text/javascript" src="/public/assets/js/content.js"></script>
 <div class="container">
-<!------------------------------------------------------ILS---------------------------------------------------------------->  
-<button class="accordion"><h1>ILS</h1></button>
-<div class="panel" style="display:block;">
-  <section id="sectionILS">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ILS');?>" target="_self">Expedients</a></h2>
-	  <fieldset>
-      <div>
-        <span class="badge text-bg-success" id="totalSolicitudesILSAdheridas"></span>
-      </div>
-	  </fieldset>
-  </section>
-</div>
-<?php 
-    use App\Models\ExpedientesModel;
-    $modelExp = new ExpedientesModel();
-    $totalexpedAZero = "<span class='badge bg-secondary'>".$modelExp->getWithZeroIdSol()."</span>";
-    ?>
+
 <!-----------------------------------------------------CHEQUES---------------------------------------------------------------->
-<!-- <button class="accordion"><h1>XECS</h1></button> -->
-<!-- <div class="panel" style="display:block;"> -->
 <!------------------------------------------------------2024------------------------------------------------------------------>
 <button class="accordion accordion--convo"><h1>Xecs consultoria</h1></button>
 <div class="row">
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2024">
-      <div class="btn btn-primary position-relative"><h5 class="card-title">Convocatòria 2024</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2024">0</span></div>
+      <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2024 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2024">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePI2024" aria-expanded="true" aria-controls="collapsePI2024">Programa I (iDigital)</button>
@@ -121,7 +108,7 @@
 
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2023">
-    <div class="btn btn-primary position-relative"><h5 class="card-title">Convocatòria 2023</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2023">0</span></div>
+    <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2023 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2023">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2023PI" aria-expanded="true" aria-controls="collapse2023PI">Programa I (iDigital)</button>
@@ -176,8 +163,8 @@
   </div>
 
   <div class="col-sm-12 mb-3 mb-sm-0">
-    <div class="accordion" id="accordeonConvo2023">
-    <div class="btn btn-primary position-relative"><h5 class="card-title">Convocatòria 2022</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2022">0</span></div>
+    <div class="accordion" id="accordeonConvo2022">
+    <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2022 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2022">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2022PI" aria-expanded="true" aria-controls="collapse2022PI">Programa I (iDigital)</button>
@@ -191,7 +178,6 @@
               <span class="badge text-bg-success" id="totalSolicitudesFinalizadasI_2022">0</span>
               <span class="badge text-bg-success" id="importeConcedidoI_2022">0.00</span>
             </li></ul>
-          
           </div>
         </div>
       </div>
@@ -209,7 +195,6 @@
               <span class="badge text-bg-success" id="totalSolicitudesFinalizadasII_2022">0</span>
               <span class="badge text-bg-success" id="importeConcedidoII_2022">0.00</span>
             </li></ul>
-          
           </div>
         </div>
       </div>
@@ -227,7 +212,6 @@
               <span class="badge text-bg-success" id="totalSolicitudesFinalizadasIII_2022">0</span>
               <span class="badge text-bg-success" id="importeConcedidoIII_2022">0.00</span>
             </li></ul>
-          
           </div>
         </div>
       </div>      
@@ -236,8 +220,8 @@
   </div>
 
   <div class="col-sm-12 mb-3 mb-sm-0">
-    <div class="accordion" id="accordeonConvo2023">
-    <div class="btn btn-primary position-relative"><h5 class="card-title">Convocatòria 2021 </h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2021">0</span></div>
+    <div class="accordion" id="accordeonConvo2021">
+    <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2021 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2021">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Programa I (iDigital)</button>
@@ -304,30 +288,65 @@
   </div> -->
 
 <!---------------------------------------------------------------------------------------------------------------------------->
-
-<!------------------------------------------------------IDI-ISBA-------------------------------------------------------------->  
-<button class="accordion"><h1>ADR-ISBA</h1></button>
-<div class="panel" style="display:block;">
-  <section id="sectionILS">
-    <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ADR-ISBA/');?>" target="_self">Expedients</a></h2>
-	  <fieldset>
-      <div>
-        <span id="totalSolicitudesAdrIsba"></span>
-        <span id="importeTotalAdrIsba"></span>
-        <span id="importeConcedidoAdrIsba"></span>
-      </div>
-      <div>
-          <span id="totalSolicitudesAdrIsbaNoREC_2022"></span>
-          <span id="totalSolicitudesAdrIsbaPendientes_2022"></span>
-          <span id="totalSolicitudesAdrIsbaDenegadas_2022"></span>
-          <span id="totalSolicitudesAdrIsbaAdheridas_2022"></span>
-      </div>
-	  </fieldset>
-  </section>
+<!------------------------------------------------------ILS---------------------------------------------------------------->  
+<div class="accordion" id="accordionILS">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseILS" aria-expanded="true" aria-controls="collapseILS">
+        <div class="btn btn-primary position-relative"><h5 class="card-title">Línia ILS</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesILS">0</span></div>
+      </button>
+    </h2>
+    <div id="collapseILS" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionILS">
+      <section id="sectionILS">
+        <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ILS');?>" target="_self">Expedients</a></h2>
+        <fieldset>
+          <div>
+            <span id="totalSolicitudesAdrIsba"></span>
+            <span id="importeTotalAdrIsba"></span>
+            <span id="importeConcedidoAdrIsba"></span>
+          </div>
+          <div>
+              <span id="totalSolicitudesAdrIsbaNoREC_2022"></span>
+              <span id="totalSolicitudesAdrIsbaPendientes_2022"></span>
+              <span id="totalSolicitudesAdrIsbaDenegadas_2022"></span>
+              <span id="totalSolicitudesAdrIsbaAdheridas_2022"></span>
+          </div>
+        </fieldset>
+        </section>
+    </div>
+  </div>
 </div>
+<!------------------------------------------------------IDI-ISBA-------------------------------------------------------------->  
+<div class="accordion" id="accordionISBA">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseISBA" aria-expanded="true" aria-controls="collapseISBA">
+          <div class="btn btn-primary position-relative"><h5 class="card-title">Línia ADR-ISBA</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesISBA">0</span></div>
+        </button>
+      </h2>
+      <div id="collapseISBA" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionISBA">
+        <section id="sectionISBA">
+          <h2><a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/ADR-ISBA/');?>" target="_self">Expedients</a></h2>
+          <fieldset>
+            <div>
+              <span id="totalSolicitudesAdrIsba"></span>
+              <span id="importeTotalAdrIsba"></span>
+              <span id="importeConcedidoAdrIsba"></span>
+            </div>
+            <div>
+              <span id="totalSolicitudesAdrIsbaNoREC_2022"></span>
+              <span id="totalSolicitudesAdrIsbaPendientes_2022"></span>
+              <span id="totalSolicitudesAdrIsbaDenegadas_2022"></span>
+              <span id="totalSolicitudesAdrIsbaAdheridas_2022"></span>
+            </div>
+          </fieldset>
+        </section>
+      </div>
+    </div>
+  </div>
 </div>  
 <!-------------------------------------------------------------------------------------------------------------------------->
-</div>
+
 
 <script>
   var acc = document.getElementsByClassName("accordion");

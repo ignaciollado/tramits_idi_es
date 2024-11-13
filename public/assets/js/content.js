@@ -19,7 +19,12 @@ window.addEventListener('load', (event) => {
 /*     totalSolicitudesConvocatoria('2020')
     totalSolicitudesPrograma('2020', 'Programa iDigital 20')
     importeTotalConcedidoPrograma('2020', 'Programa iDigital 20') */
-    
+
+    /* ILS */
+    totalSolicitudesLineaMultiConvo("\'ILS\'")
+    /* ISBA */
+    totalSolicitudesLineaMultiConvo("\'ADR-ISBA\'")
+
     /* convo 2021 */
     totalSolicitudesConvocatoria('2021')
 
@@ -101,14 +106,30 @@ window.addEventListener('load', (event) => {
 
 async function totalSolicitudesConvocatoria(convo) {
     let resultadoP;
-	let recurso = '/public/assets/utils/totalSolicitudesPorConvocatoria.php?convocatoria="'+ convo +'"'
+	let recurso = '/public/assets/utils/totalSolicitudesPorConvocatoria.php?convocatoria="'+convo+'"'
     resultadoP = document.getElementById('totalSolicitudesXecs'+convo)
+    await fetch(recurso).then(totalRequests => totalRequests.json()).then((totalRequests) => {
+        resultadoP.innerText = totalRequests
+        resultadoP.title = "Total sol·licituds: "+ totalRequests
+    })
+}
+
+async function totalSolicitudesLineaMultiConvo(tipoTramite) {
+    let resultadoP;
+    switch (tipoTramite) {
+        case "\'ILS\'":
+            resultadoP = document.getElementById('totalSolicitudesILS')
+            break;
+        case "\'ADR-ISBA\'":
+            resultadoP = document.getElementById('totalSolicitudesISBA')
+            break;
+    }
+	let recurso = "/public/assets/utils/totalSolicitudesLineaMultiConvo.php?tipo_tramite='"+tipoTramite+"'"
 
     await fetch(recurso).then(totalRequests => totalRequests.json()).then((totalRequests) => {
         resultadoP.innerText = totalRequests
         resultadoP.title = "Total sol·licituds: "+ totalRequests
     })
-
 }
 
 async function totalSolicitudesPrograma(convo, stage) {
