@@ -1,7 +1,10 @@
 <!-----------------------------------------Resolució denegació favorable amb requeriment. DOC 18.-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Resolució denegació<br>sense requeriment
+    	Resolució denegació
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
   	</div>
 		<div class="card-itramits-footer">
   		<?php
@@ -56,7 +59,6 @@ function generaResolucionDenegacionSinReq(id, convocatoria, programa, nifcif) {
 		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnResDenegacionSinReq = document.getElementById('btnResDenegacionSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc18 = document.getElementById('infoMissingDataDoc18')
 		infoMissingDataDoc18.innerText = ""
 

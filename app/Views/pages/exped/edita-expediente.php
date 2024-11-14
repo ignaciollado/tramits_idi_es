@@ -120,7 +120,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     }
     /*  $importeAyuda = number_format($importeAyuda, 2, ',', '.');
     $importe_minimis = number_format($expedientes['importe_minimis'], 2, ',', '.'); */
-    if ($expedientes["convocatoria"] == date("Y")) { 
+    if ($expedientes["convocatoria"] != date("Y")) { 
         $isDisabled = "disabled";
     }
 	?>
@@ -951,18 +951,18 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <!-----------------------------------------14. Proposta de resolució definitiva desfavorable amb requeriment------>
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/propuesta-resolucion-definitiva-desfavorable-con-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------15. Resolució de concessió favorable amb requeriment------------------->
-             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->
             <!-----------------------------------------16. Resolució de concessió favorable sense requeriment----------------->
-             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-sin-requerimiento.php';?></li>
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-sin-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!-----------------------------------------17. Resolució de denegació amb requeriment----------------------------->
-             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-con-requerimiento.php';?></li>
+            <!-----------------------------------------15. Resolució de concessió favorable amb requeriment------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-concesion-con-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!-----------------------------------------18. Resolució de denegació sense requeriment--------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-sin-requerimiento.php';?></li>
-            <!---------------------------------------------------------------------------------------------------------------->                        
+            <!---------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------17. Resolució de denegació amb requeriment----------------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/resolucion-denegacion-con-requerimiento.php';?></li>
+            <!---------------------------------------------------------------------------------------------------------------->          
         </ol>
         </div>
         <div class="col docsExpediente">

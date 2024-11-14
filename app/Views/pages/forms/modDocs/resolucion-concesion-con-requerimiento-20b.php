@@ -2,6 +2,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
       Resolució de concessió amb requeriment (20b)
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -12,7 +15,6 @@
 					<button id="generaResolucioConcesio20b" class='btn btn-primary btn-acto-admin' onclick="enviaResolucionConcesionConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Genera la resolució</button>
 					<div id='infoMissingDataDoc20b' class="alert alert-danger ocultar btn-acto-admin"></div>
 				</span>
-				<span id="spinner_20b" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:20px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>
@@ -39,8 +41,6 @@
 		let fecha_not_liquidacion = document.getElementById('fecha_not_liquidacion')
 
 		let generaResolucioConcesio20b = document.getElementById('generaResolucioConcesio20b')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_20b = document.getElementById('spinner_20b')
 		let infoMissingDataDoc20b = document.getElementById('infoMissingDataDoc20b')
 		infoMissingDataDoc20b.innerText = ""
 
@@ -82,8 +82,7 @@
 		if (todoBien) {
 			infoMissingDataDoc20b.classList.add('ocultar')
 			generaResolucioConcesio20b.disabled = true
-			generaResolucioConcesio20b.innerHTML = "Generant ..."
-			spinner_20b.classList.remove('ocultar')
+			generaResolucioConcesio20b.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_resolucion_concesion_con_req_20b'
 		} else {
 			infoMissingDataDoc20b.classList.remove('ocultar')

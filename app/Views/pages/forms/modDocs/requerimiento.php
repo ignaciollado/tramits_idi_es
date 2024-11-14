@@ -3,7 +3,7 @@
     	Requeriment
 			<?php if ($base_url === "pre-tramitsidi") {?>
 				<span class="label label-warning">***testear*** [PRE]</span>
-			<?php }?>		
+			<?php }?>
   	</div>
 	<div class="card-itramits-footer">
 		<?php

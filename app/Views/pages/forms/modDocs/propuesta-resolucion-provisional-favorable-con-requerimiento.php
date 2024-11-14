@@ -2,6 +2,10 @@
 <div class="card-itramits">
 	<div class="card-itramits-body">
 		Proposta de resolució provisional favorable<br>amb requeriment
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			<span class="label label-warning">**testear** [PRE]</span>
+		<?php }?>
 	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -54,7 +58,6 @@
 		/* let fecha_firma_res = document.getElementById('fecha_firma_res') */
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf') //0000-00-00
 		let btnPropResProvfavConReq = document.getElementById('btnPropResProvfavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc8 = document.getElementById('infoMissingDataDoc8')
 		infoMissingDataDoc8.innerText = ""
 

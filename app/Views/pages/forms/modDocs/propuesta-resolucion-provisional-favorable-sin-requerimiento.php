@@ -50,8 +50,6 @@
 <!------------------------------------------------------------------------------------------------------>
 
 <script>
-/* 	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme' */
 	function enviaPropResolucionProvisionalFavorableSinReg(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')

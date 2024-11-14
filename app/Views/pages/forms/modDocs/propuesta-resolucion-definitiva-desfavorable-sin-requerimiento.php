@@ -1,7 +1,11 @@
 <!----------------------------------------- Proposta de resolució definitiva desfavorable sense requeriment. DOC 13.-->
 <div class="card-itramits">
   <div class="card-itramits-body">
-    Proposta de resolució definitiva desfavorable<br>sense requeriment
+    Proposta de resolució definitiva desfavorable
+		<?php
+		if ($base_url === "pre-tramitsidi") {?>
+			<span class="label label-warning">**testear** [PRE]</span>
+		<?php }?>
   </div>
   <div class="card-itramits-footer">
   	<?php
@@ -53,7 +57,6 @@
 	 	let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov') //0000-00-00
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnPropResDefDesfavSinReq = document.getElementById('btnPropResDefDesfavSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc13 = document.getElementById('infoMissingDataDoc13')
 		infoMissingDataDoc13.innerText = ""
 

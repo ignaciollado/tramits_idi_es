@@ -1,5 +1,5 @@
 const mainNode = document.querySelector('body');
-let currentExpSituation = document.getElementById("situacion_exped").selectedIndex
+/* let currentExpSituation = document.getElementById("situacion_exped").selectedIndex */
 const actualBaseUrl = window.location.origin
 let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme'
 
@@ -673,6 +673,7 @@ function validateForm(formName) {
 function compruebaExistenciaFecha(fase, elemento) {
 	let theElement = document.getElementById(elemento)
 	let selectedIndexElement = theElement.selectedIndex
+	let currentExpSituation = document.getElementById("situacion_exped").selectedIndex
 	console.log (fase, theElement.value, selectedIndexElement, currentExpSituation, document.getElementById("fecha_not_propuesta_resolucion_prov").value, document.getElementById("fecha_not_propuesta_resolucion_prov").value.length)
 	if (theElement.value === "emitidoIFPRProvPago") {
 		if (document.getElementById("fecha_not_propuesta_resolucion_prov").value.length === 0) {
@@ -958,7 +959,6 @@ function actualizaMotivoDenegacion_click() {  //SE EMPLEA
 				document.getElementById("btnPropResProvDesfavConReq").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				document.getElementById("myBtnResProvDenegacionConReq").style.display = "none";
 			}
 		}
 	);
@@ -982,7 +982,6 @@ function actualizaMotivoDenegacionSinReq_click() {  //SE EMPLEA
 				document.getElementById("btnPropResProvDesfavSinReq").className = "btn btn-primary";
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
-				document.getElementById("myBtnResProvDenegacionSinReq").style.display = "none";
 			}
 		}
 	);

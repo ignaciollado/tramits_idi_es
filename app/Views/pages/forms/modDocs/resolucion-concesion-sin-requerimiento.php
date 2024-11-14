@@ -1,7 +1,10 @@
 <!-----------------------------------------Resolució concessió favorable sense requeriment. DOC 16.-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	Resolució concessió favorable<br>sense requeriment
+    	Resolució concessió favorable
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
   	</div>
 		<div class="card-itramits-footer">
   		<?php
@@ -50,13 +53,10 @@
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
 		let ref_REC = document.getElementById('ref_REC')
-	 	//let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif') //0000-00-00
-		//let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 		let fecha_firma_propuesta_resolucion_def = document.getElementById('fecha_firma_propuesta_resolucion_def')
 		let fecha_not_propuesta_resolucion_def = document.getElementById('fecha_not_propuesta_resolucion_def')
 		let btnResConcesionFavSinReq = document.getElementById('btnResConcesionFavSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc16 = document.getElementById('infoMissingDataDoc16')
 		infoMissingDataDoc16.innerText = ""
 

@@ -58,6 +58,7 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -69,10 +70,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("INFORME DESFAVORABLE CON REQUERIMIENTO");
 $pdf->SetSubject("INFORME DESFAVORABLE CON REQUERIMIENTO");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, GOIB");	
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -92,7 +93,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
+$fmt = new NumberFormatter( 'es_ES', NumberFormatter::CURRENCY );
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -143,7 +144,7 @@ $parrafo_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expedien
 $parrafo_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1_2);
 $parrafo_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1_2);
 $parrafo_1_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_1_2);
-$parrafo_1_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_1_2);
+$parrafo_1_2 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_1_2);
 $parrafo_1_2 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_1_2);
 $html = $parrafo_1_2;
 
@@ -158,7 +159,7 @@ $parrafo_4_6 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['exp
 $parrafo_4_6 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4_6);
 $parrafo_4_6 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4_6);
 $parrafo_4_6 = str_replace("%NUMREC%", $data['expediente']['ref_REC_enmienda'], $parrafo_4_6);
-$parrafo_4_6 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4_6);
+$parrafo_4_6 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_4_6);
 $parrafo_4_6 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_4_6);
 $parrafo_4_6 = str_replace("%TEXTOLIBRE%", $data['expediente']['motivoDenegacion'], $parrafo_4_6);
 $html .= $parrafo_4_6;

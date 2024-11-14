@@ -2,6 +2,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Resolució denegació<br>amb requeriment
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
   	</div>
 		<div class="card-itramits-footer">
   		<?php
@@ -56,7 +59,6 @@ function generaResolucionDenegacionConReq(id, convocatoria, programa, nifcif) {
 		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnResDenegacionConReq = document.getElementById('btnResDenegacionConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc17 = document.getElementById('infoMissingDataDoc17')
 		infoMissingDataDoc17.innerText = ""
 

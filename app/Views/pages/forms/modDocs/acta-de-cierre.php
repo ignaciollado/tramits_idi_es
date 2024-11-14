@@ -2,6 +2,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Acta de tancament
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
   	</div>
   	<div class="card-itramits-footer">
 	  	<?php
@@ -140,7 +143,6 @@
 				</div>
 			</div>
 		</div>
-		
   	</div>
 </div>
 <script>
@@ -149,7 +151,6 @@
 		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
 		let fecha_limite_justificacion = document.getElementById('fecha_limite_justificacion')
 		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
 		const myActaDeCierre = new bootstrap.Modal(document.getElementById('myActaDeCierre'), {  keyboard: false });
 
@@ -174,6 +175,6 @@
 	function enviaActaDeCierre() {
 		let myBtnActaDeCierre = document.getElementById('myBtnActaDeCierre')
 		myBtnActaDeCierre.disabled = true
-		myBtnActaDeCierre.innerHTML = "Enviant ..."
+		myBtnActaDeCierre.innerHTML = "Generant i enviant ..."
 	}
 </script>

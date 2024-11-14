@@ -2,6 +2,9 @@
 <div class="card-itramits">
   <div class="card-itramits-body">
      Informe desfavorable amb requeriment
+		 <?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>		 
   </div>
   <div class="card-itramits-footer" aria-label="generar informe">
 
@@ -14,49 +17,41 @@
 					<button id="wrapper_generaInformeDesfConReq" class='btn btn-primary ocultar btn-acto-admin' onclick="enviaInformeDesfavorableConRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
 					<div id='infoMissingDataDoc6' class="alert alert-danger ocultar"></div>
 				</span>
-			<span id="spinner_4" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>	
 		<?php }?>
 			
 	</div>
 
   	<div class="card-itramits-footer">
 	<?php 
-		$db = \Config\Database::connect();
-		$sql = "SELECT * FROM pindust_documentos_generados WHERE name='doc_informe_desfavorable_con_requerimiento.pdf' AND id_sol=".$expedientes['id']." AND convocatoria='".$expedientes['convocatoria']."'";// AND tipo_tramite='".$expedientes['tipo_tramite']."'";
-		$query = $db->query($sql);
-		$row = $query->getRow();
-		if (isset($row))
+		$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'], 'doc_informe_desfavorable_con_requerimiento.pdf');
+		if (isset($tieneDocumentosGenerados))
 		{
-	   	$PublicAccessId = $row->publicAccessId;
+		$PublicAccessId = $tieneDocumentosGenerados->publicAccessId;
 		$requestPublicAccessId = $PublicAccessId;
 		$request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
 		$respuesta = json_decode ($request, true);
 		$estado_firma = $respuesta['status'];
 		switch ($estado_firma) {
 			case 'NOT_STARTED':
-			$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+			$estado_firma = "<div class='btn btn-info btn-acto-admin'><i class='fa fa-info-circle'></i>Pendent de signar</div>";
 			break;
 			case 'REJECTED':
 			$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'btn btn-warning btn-acto-admin'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
-			$estado_firma .= "</a>";				
+			$estado_firma .= "</a>";
 			break;
 			case 'COMPLETED':
-			$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i>Signat</div>";		
-			$estado_firma .= "</a>";					
+			$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-success btn-acto-admin'><i class='fa fa-check'></i>Signat</div>";
+			$estado_firma .= "</a>";
 			break;
 			case 'IN_PROCESS':
-			$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i>En curs</div>";		
-			$estado_firma .= "</a>";						
+			$estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='btn btn-secondary btn-acto-admin'><i class='fa fa-check'></i>En curs</div>";
+			$estado_firma .= "</a>";
 			default:
 			$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
-/* 			$estado_firma .= "<a href=".base_url('/public/index.php/expedientes/muestrainforme/'.$expedientes['id'].'/2024/'.$expedientes['tipo_tramite'].'/'.$expedientes['nif'].'/doc_informe_desfavorable_con_requerimiento'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME).">PDF</a>";
-			$estado_firma .= "</a>"; */
 			}
 			echo $estado_firma;
 		}			
-			 ?>		
-
-
+			 ?>
 <div class="modal" id="mygeneraInformeDesfConReq">
   	<div class="modal-dialog">
     	<div class="modal-content">
@@ -94,8 +89,6 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let generaInfFavConReq = document.getElementById('wrapper_generaInformeDesfConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_4 = document.getElementById('spinner_4')
 		let infoMissingDataDoc6 = document.getElementById('infoMissingDataDoc6')
 		infoMissingDataDoc6.innerText = ""
 
@@ -123,8 +116,7 @@
 		if (todoBien) {
 			infoMissingDataDoc6.classList.add('ocultar')
 			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
-			spinner_4.classList.remove('ocultar')
+			generaInfFavConReq.innerHTML = "Generant i enviant..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_desfavorable_con_requerimiento'
 		} else {
 			infoMissingDataDoc6.classList.remove('ocultar')

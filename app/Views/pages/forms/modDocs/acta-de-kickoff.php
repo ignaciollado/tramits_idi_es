@@ -2,6 +2,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	 Acta de Kick off
+			 <?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>			 
 		</div>
   	<div class="card-itramits-footer">
 	  	<?php
@@ -149,6 +152,6 @@
 	function enviaElActaDeKickOff() {
 		let myBtnactaDeKickOff = document.getElementById('myBtnactaDeKickOff')
 		myBtnactaDeKickOff.disabled = true
-		myBtnactaDeKickOff.innerHTML = "Enviant ..."
+		myBtnactaDeKickOff.innerHTML = "Generant i enviant ..."
 	}
 </script>

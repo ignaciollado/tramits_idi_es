@@ -2,6 +2,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Resolució concessió favorable<br>amb requeriment
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
   	</div>
 		<div class="card-itramits-footer">
   		<?php
@@ -56,7 +59,6 @@
 		let fecha_firma_propuesta_resolucion_prov = document.getElementById('fecha_firma_propuesta_resolucion_prov')
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let btnResConcesionFavConReq = document.getElementById('btnResConcesionFavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let infoMissingDataDoc15 = document.getElementById('infoMissingDataDoc15')
 		infoMissingDataDoc15.innerText = ""
 
