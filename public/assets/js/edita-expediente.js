@@ -1,5 +1,8 @@
 const mainNode = document.querySelector('body');
 let currentExpSituation = document.getElementById("situacion_exped").selectedIndex
+const actualBaseUrl = window.location.origin
+let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme'
+
 mainNode.onload = configuraDetalle_OnLoad;
 
 $(document).ready(function () {

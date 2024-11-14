@@ -64,6 +64,8 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
+
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -98,7 +100,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
+$fmt = new NumberFormatter( 'es_ES', NumberFormatter::CURRENCY );
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -143,13 +145,14 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
 $antecedentes_1_2 = str_replace("%FECHARESPRESIDI%", date_format(date_create($data['configuracionLinea']['fechaResPresidIDI']),"d/m/Y"), lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_1_2'));
 $antecedentes_1_2 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $antecedentes_1_2);
+$antecedentes_1_2 = str_replace("%CONVO%", $convocatoria, $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%NIF%", $data['expediente']['nif'], $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $antecedentes_1_2);
-$antecedentes_1_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $antecedentes_1_2);
+$antecedentes_1_2 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $antecedentes_1_2);
 $antecedentes_1_2 = str_replace("%PROGRAMA%", $tipo_tramite, $antecedentes_1_2);
 $html = $antecedentes_1_2;
 
@@ -162,7 +165,7 @@ if ($ultimaMejora[2] && $ultimaMejora[3]) {
 $antecedentes_4_5 = str_replace("%DATANOTREQ%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , lang('2_resolucion_desestimiento_por_no_enmendar.2_antecedentes_4_5'));
 $antecedentes_4_5 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $antecedentes_4_5);
 $antecedentes_4_5 = str_replace("%NIF%", $data['expediente']['nif'], $antecedentes_4_5);
-$antecedentes_4_5 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $antecedentes_4_5);
+$antecedentes_4_5 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $antecedentes_4_5);
 $antecedentes_4_5 = str_replace("%PROGRAMA%", $tipo_tramite, $antecedentes_4_5);
 $html .= $antecedentes_4_5;
 $pdf->writeHTML($html, true, false, true, false, '');
@@ -211,10 +214,10 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$resolucion = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('2_resolucion_desestimiento_por_no_enmendar.2_resolucion'));
+/* $resolucion = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('2_resolucion_desestimiento_por_no_enmendar.2_resolucion')); */
+$antecedentes_4_5 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), lang('2_resolucion_desestimiento_por_no_enmendar.2_resolucion'));
 $resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion);
 $resolucion = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion);
-$resolucion = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , $resolucion);
 $resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion);
 $resolucion = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion);
 $html = $resolucion;

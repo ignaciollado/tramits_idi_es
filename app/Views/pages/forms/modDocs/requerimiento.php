@@ -1,10 +1,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Requeriment
-			<?php
-		if ($base_url === "pre-tramitsidi") {?>
-			<span class="label label-warning">***testear*** [PRE]</span>
-		<?php }?>
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>		
   	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -52,8 +51,8 @@
 			 ?>
   </div> 
 </div>
-<div class="modal" id="motivoRequerimiento">
-  	<div class="modal-dialog">
+<article class="modal" id="motivoRequerimiento">
+  	<section class="modal-dialog">
     	<div class="modal-content">	
       		<div class="modal-header">
         		<h4 class="modal-title">Motiu del requeriment:</h4>
@@ -62,7 +61,7 @@
       		<div class="modal-body">
 				<div class="form-group">
 					<textarea required rows="10" cols="30" name="motivoRequerimientoTexto" class="form-control" id = "motivoRequerimientoTexto" 
-					placeholder="Motiu del requeriment"><?php echo $expedientes['motivoRequerimiento']; ?></textarea>
+					placeholder="Quin es el motiu del requeriment?"><?php echo $expedientes['motivoRequerimiento']; ?></textarea>
         		</div>		
       		</div>
       		<div class="modal-footer">
@@ -72,12 +71,10 @@
 				</div>		
       		</div>
     	</div>
-  	</div>
-</div>
+  	</section>
+</article>
 <input type='hidden' id="fechaEstadoDocReq" value="<?php echo $fecha_firma_req;?>">
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme'	
 	if (!document.getElementById("fecha_requerimiento").value) {
 		document.getElementById("fecha_requerimiento").value = document.getElementById("fechaEstadoDocReq").value
 		cambiarSituacionExpediente('send_fase_1', 'fecha_requerimiento')

@@ -2,10 +2,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Informe favorable
-			<?php
-		if ($base_url === "pre-tramitsidi") {?>
-			<span class="label label-warning">***testear*** [PRE]</span>
-		<?php }?>			
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
   	</div>
 	<div class="card-itramits-footer">
 
@@ -63,8 +62,6 @@
 <!------------------------------------------------------------------------------------------------------>
 
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme'	
 	function enviaInformeFavorableSinRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -87,7 +84,7 @@
 		if (todoBien) {
 			infoMissingDataDoc4.classList.add('ocultar')
 			generaInfFavSinReq.disabled = true
-			generaInfFavSinReq.innerHTML = "Generant ..."
+			generaInfFavSinReq.innerHTML = "Generant i enviant..."
 			spinner_4.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_sin_requerimiento'
 		} else {

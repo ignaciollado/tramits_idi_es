@@ -57,6 +57,7 @@ class MYPDF extends TCPDF {
 		// Texto pie de página
         // Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -91,7 +92,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
+$fmt = new NumberFormatter( 'es_ES', NumberFormatter::CURRENCY );
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -142,7 +143,7 @@ $parrafo_12 = str_replace("%FECHAREC%", date_format(date_create($data['expedient
 $parrafo_12 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_12);
 $parrafo_12 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_12);
 $parrafo_12 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_12);
-$parrafo_12 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_12);
+$parrafo_12 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_12);
 $parrafo_12 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_12);
 
 $html = $parrafo_12;
@@ -158,7 +159,7 @@ $parrafo_4_7 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['exp
 $parrafo_4_7 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_4_7);
 $parrafo_4_7 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_4_7);
 $parrafo_4_7 = str_replace("%NUMREC%", $data['expediente']['ref_REC_enmienda'], $parrafo_4_7);
-$parrafo_4_7 = str_replace("%IMPORTE%",  money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_4_7);
+$parrafo_4_7 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_4_7);
 $parrafo_4_7 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_4_7);
 $html .= $parrafo_4_7;
 $pdf->writeHTML($html, true, false, true, false, '');
@@ -184,7 +185,7 @@ $pdf->setY($currentY + 5);
 $parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('3_informe_favorable_con_requerimiento.3_conclusionTxt'));
 $parrafo_conclusion = str_replace("%SALTOLINEA%", "<br><br>", $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_conclusion);
-$parrafo_conclusion = str_replace("%IMPORTE%",  money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_conclusion);
+$parrafo_conclusion = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_conclusion);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $parrafo_conclusion ."</td></tr>";

@@ -85,7 +85,7 @@ ul { list-style-type: none; }
 				<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/set_lang/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_idigital_menu');?></a></li>
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_ils/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_ils_menu');?></a></li>
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_linea_idi_isba/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_linea_idi_isba_menu');?></a></li>	
-			<?php }?>	
+			<?php }?>
 			<?php if ($session->get('rol') == 'felib') {?>
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/home/solicitud_adhesion_felib/ca'); ?>" target = "_blank"><?php echo lang('message_lang.sol_adhesion_felib_menu');?></a></li>		
 			<?php }?>
@@ -100,7 +100,7 @@ ul { list-style-type: none; }
 			<?php }?>
 			<?php if ($session->get('rol') == 'admin') {?>
 			<li class="menu-item"><a href="<?php echo base_url('/public/index.php/custodia/');?>" target="_self">CUSTODIA</a></li>
-			<?php }?>	
+			<?php }?>
 			<?php if ($session->get('rol') !== 'felib' && $session->get('rol') !== 'adr-isba') {?>		
 				<li class="menu-item"><a href="<?php echo base_url('public/index.php/home/dec_resp_consul/'); ?>" target = "_blank"><?php echo lang('message_lang.dec_resp_con_menu');?></a></li>				
 			<?php }?>
@@ -127,18 +127,15 @@ ul { list-style-type: none; }
 			<?php }?>
 			<?php if ($session->get('rol')=='admin') {?>	
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/crud/customers_management'); ?>" target="_self">Control ordre</a></li>
-			<?php }?>					
+			<?php }?>
 			<?php if ($session->get('rol')=='admin') {?>	
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/configuracion/configurador_edit'); ?>" target="_self"><?php echo lang('message_lang.config_general');?></a></li>
 				<li class="menu-item"><a href="<?php echo base_url('/public/index.php/configGestorAyudas/profile_management'); ?>" target="_self"><?php echo lang('message_lang.config_linea');?></a></li>
-
 			<?php }?>
 			<?php if ($session->get('rol')=='admin') {?>	
 				<li class="menu-item"><a href="https://soporte.viafirma.com/" target="_self">Soporte técnico VIAFIRMA</a></li>
-			<?php }?>			
-			
+			<?php }?>
 			<li class="menu-item"><button class = "btn btn-logout" title = "Sortida" onclick = "signOut()"><i class="bi bi-box-arrow-right" style="font-size: 2.5rem; color: cornflowerblue;"></i></button></li>
-
 		</ul>
 	</div>
 </section>

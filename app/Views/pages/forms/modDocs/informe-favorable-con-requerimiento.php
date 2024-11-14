@@ -2,6 +2,9 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Informe favorable amb requeriment
+			<?php if ($base_url === "pre-tramitsidi") {?>
+				<span class="label label-warning">***testear*** [PRE]</span>
+			<?php }?>
   	</div>
   	<div class="card-itramits-footer">
 	<?php
@@ -64,7 +67,6 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let generaInfFavConReq = document.getElementById('generaInfFavConReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
 		let spinner_3 = document.getElementById('spinner_3')
 		let infoMissingDataDoc3 = document.getElementById('infoMissingDataDoc3')
 		infoMissingDataDoc3.innerText = ""
@@ -93,7 +95,7 @@
 		if (todoBien) {
 			infoMissingDataDoc3.classList.add('ocultar')
 			generaInfFavConReq.disabled = true
-			generaInfFavConReq.innerHTML = "Generant ..."
+			generaInfFavConReq.innerHTML = "Generant i enviant..."
 			spinner_3.classList.remove('ocultar')
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_con_requerimiento'
 		} else {

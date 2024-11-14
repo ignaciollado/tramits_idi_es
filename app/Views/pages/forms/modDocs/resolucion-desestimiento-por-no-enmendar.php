@@ -2,10 +2,9 @@
 <div class="card-itramits">
   <div class="card-itramits-body">
   	Resolució de desistiment per no esmenar
-		<?php
-		if ($base_url === "pre-tramitsidi") {?>
-			<span class="label label-warning">**testear** [PRE]</span>
-		<?php }?>
+		<?php if ($base_url === "pre-tramitsidi") {?>
+			<span class="label label-warning">***testear*** [PRE]</span>
+		<?php }?>		
   </div>
 
   	<div class="card-itramits-footer">
@@ -58,8 +57,6 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generaInforme'		
 	function enviaDesestimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -79,7 +76,7 @@
 			todoBien = false
 		}
 		if(!fecha_requerimiento_notif.value) {
-			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Data notificació requeriment<br>"
+			infoMissingDataDoc2.innerHTML = infoMissingDataDoc2.innerHTML + "Notificació requeriment<br>"
 			todoBien = false
 		}
 		if (todoBien) {
