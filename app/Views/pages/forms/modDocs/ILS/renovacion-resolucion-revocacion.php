@@ -54,7 +54,6 @@
 		let ref_REC = document.getElementById('ref_REC')
 
 		let btnRenResolucionRevocacionMarcaILS = document.getElementById('btnRenResolucionRevocacionMarcaILS')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeILS'
 		let infoMissingDataDoc15ILS = document.getElementById('infoMissingDataDoc15ILS')
 		infoMissingDataDoc15ILS.innerText = ""
 
@@ -71,7 +70,7 @@
 			infoMissingDataDoc15ILS.classList.add('ocultar')
 			btnRenResolucionRevocacionMarcaILS.disabled = true
 			btnRenResolucionRevocacionMarcaILS.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_renovacion_resolucion_revocacion_ils'
+			window.location.href = base_url_ils+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_renovacion_resolucion_revocacion_ils'
 		} else {
 			infoMissingDataDoc15ILS.classList.remove('ocultar')
 		}

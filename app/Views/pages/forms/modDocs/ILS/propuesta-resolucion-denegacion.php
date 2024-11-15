@@ -12,7 +12,6 @@
 				<button id="wrapper_motivoDenegacion_5" onclick="enviaResDenegacionConRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')"><i title="Enviar a firma de Gerència" class="fa-solid fa-signature fa-2xl" style="color: #00145c;"></i></button>
 				<div id='infoMissingDataDoc5' class="alert alert-danger ocultar"></div>
 			</span>
-			<span id="spinner_5" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>
 
 	</div>
@@ -64,10 +63,7 @@
 		let fecha_REC_enmienda = document.getElementById('fecha_REC_enmienda')
 		let ref_REC_enmienda = document.getElementById('ref_REC_enmienda')
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
-
 		let wrapper_motivoDenegacion_5 = document.getElementById('wrapper_motivoDenegacion_5')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
-		let spinner_5 = document.getElementById('spinner_5')
 		let infoMissingDataDoc5 = document.getElementById('infoMissingDataDoc5')
 		infoMissingDataDoc5.innerText = ""
 
@@ -95,7 +91,7 @@
 		if (todoBien) {
 			infoMissingDataDoc5.classList.add('ocultar')
 			wrapper_motivoDenegacion_5.disabled = true
-			wrapper_motivoDenegacion_5.innerHTML = "Generant la resolució..."
+			wrapper_motivoDenegacion_5.innerHTML = "Generant i enviant ..."
 			spinner_5.classList.remove('ocultar')
 			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_denegacion_con_req_idi_isba'
 		} else {

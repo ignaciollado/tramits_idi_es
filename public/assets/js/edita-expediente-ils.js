@@ -1,4 +1,5 @@
 const mainNode = document.querySelector('body');
+let base_url_ils = actualBaseUrl+'/public/index.php/expedientes/generainformeILS'
 mainNode.onload = configuraDetalle_OnLoad;
 
 $(document).ready(function () {

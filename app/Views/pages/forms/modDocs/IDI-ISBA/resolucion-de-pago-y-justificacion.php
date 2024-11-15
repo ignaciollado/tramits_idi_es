@@ -52,10 +52,6 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
-
 function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
@@ -108,7 +104,7 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 			infoMissingDataDoc11.classList.add('ocultar')
 			btnResPagoSinReq.disabled = true
 			btnResPagoSinReq.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_pago_y_justificacion_adr_isba'
+			window.location.href = actualBaseUrl+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_pago_y_justificacion_adr_isba'
 		} else {
 			infoMissingDataDoc11.classList.remove('ocultar')
 		}

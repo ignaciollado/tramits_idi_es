@@ -52,7 +52,6 @@
 		let ref_REC = document.getElementById('ref_REC')
 
 		let btnRenInformeFavorableconReqILS = document.getElementById('btnRenInformeFavorableconReqILS')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generainformeILS'
 		let infoMissingDataDoc11ILS = document.getElementById('infoMissingDataDoc11ILS')
 		infoMissingDataDoc11ILS.innerText = ""
 
@@ -69,7 +68,7 @@
 			infoMissingDataDoc11ILS.classList.add('ocultar')
 			btnRenInformeFavorableconReqILS.disabled = true
 			btnRenInformeFavorableconReqILS.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_renovacion_informe_favorable_con_req_ils'
+			window.location.href = base_url_ils+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_renovacion_informe_favorable_con_req_ils'
 		} else {
 			infoMissingDataDoc11ILS.classList.remove('ocultar')
 		}

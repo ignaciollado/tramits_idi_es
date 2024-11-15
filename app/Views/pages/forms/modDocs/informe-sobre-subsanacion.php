@@ -14,7 +14,6 @@
 					<button id="wrapper_informe_sobre_subsanacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaInformeSobreSubsanacion(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
 					<div id='infoMissingDataDoc20' class="alert alert-danger ocultar"></div>
 			</span>
-			<span id="spinner_20" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>
@@ -92,10 +91,7 @@
 		
 	 	let fecha_propuesta_resolucion = document.getElementById('fecha_propuesta_resolucion') //0000-00-00
 		let fecha_firma_requerimiento_justificacion = document.getElementById('fecha_firma_requerimiento_justificacion')
-
 		let wrapper_informe_sobre_subsanacion = document.getElementById('wrapper_informe_sobre_subsanacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_20 = document.getElementById('spinner_20')
 		let infoMissingDataDoc20 = document.getElementById('infoMissingDataDoc20')
 		infoMissingDataDoc20.innerText = ""
 
@@ -111,8 +107,7 @@
 		if (todoBien) {
 			infoMissingDataDoc20.classList.add('ocultar')
 			wrapper_informe_sobre_subsanacion.disabled = true
-			wrapper_informe_sobre_subsanacion.innerHTML = "Generant ..."
-			spinner_20.classList.remove('ocultar')
+			wrapper_informe_sobre_subsanacion.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_sobre_la_subsanacion'
 		} else {
 			infoMissingDataDoc20.classList.remove('ocultar')

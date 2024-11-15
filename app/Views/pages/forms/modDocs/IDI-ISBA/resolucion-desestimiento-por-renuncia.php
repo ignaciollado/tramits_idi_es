@@ -52,9 +52,6 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 function generaResolucionDesestimientoPorRenuncia(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC_desestimiento = document.getElementById('fecha_REC_desestimiento')
@@ -77,7 +74,7 @@ function generaResolucionDesestimientoPorRenuncia(id, convocatoria, programa, ni
 			infoMissingDoc15.classList.add('ocultar')
 			btnResolucionDesestimientoRenuncia.disabled = true
 			btnResolucionDesestimientoRenuncia.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_renuncia'
+			window.location.href = base_url_isba+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_renuncia'
 		} else {
 			infoMissingDoc15.classList.remove('ocultar')
 		}

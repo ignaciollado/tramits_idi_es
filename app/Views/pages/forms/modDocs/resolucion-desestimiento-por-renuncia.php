@@ -13,8 +13,7 @@
 			<span id="btn_22" class="">
 					<button id="wrapper_motivoDesestimientoRenuncia" class='btn btn-primary ocultar btn-acto-admin' onclick="generaResolucionPorDesestimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
 					<div id='infoMissingDataDoc22' class="alert alert-danger ocultar"></div>
-			</span>		
-			<span id="spinner_22" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			</span>
 		<?php }?>  
 	</div>
   	<div class="card-itramits-footer">
@@ -56,8 +55,6 @@
 		let ref_REC_desestimiento = document.getElementById('ref_REC_desestimiento')
 		
 		let wrapper_motivoDesestimientoRenuncia = document.getElementById('wrapper_motivoDesestimientoRenuncia')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_22 = document.getElementById('spinner_22')
 		let infoMissingDataDoc22 = document.getElementById('infoMissingDataDoc22')
 		infoMissingDataDoc22.innerText = ""
 
@@ -81,8 +78,7 @@
 		if (todoBien) {
 			infoMissingDataDoc22.classList.add('ocultar')
 			wrapper_motivoDesestimientoRenuncia.disabled = true
-			wrapper_motivoDesestimientoRenuncia.innerHTML = "Generant ..."
-			spinner_22.classList.remove('ocultar')
+			wrapper_motivoDesestimientoRenuncia.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_renuncia'
 		} else {
 			infoMissingDataDoc22.classList.remove('ocultar')

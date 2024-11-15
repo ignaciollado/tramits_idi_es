@@ -13,8 +13,7 @@
 			<span id="btn_23" class="">
 				<button id="wrapper_motivoResolucionRevocacionPorNoJustificar" class='btn btn-secondary btn-acto-admin ocultar' onclick="enviaPropuestaResalucionRevocacionPorNoJustificar(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar l'informe</button>
 				<div id='infoMissingDataDoc23' class="alert alert-danger ocultar"></div>
-			</span>		
-			<span id="spinner_23" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
+			</span>
 		<?php }?>
 	</div>
   	<div class="card-itramits-footer">
@@ -58,9 +57,6 @@
 			let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
 			let ref_REC_justificacion = document.getElementById('ref_REC_justificacion')
 			let fecha_requerimiento_notif = document.getElementById('fecha_requerimiento_notif')
-
-			let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-			let spinner_23 = document.getElementById('spinner_23')
 			let infoMissingDataDoc23 = document.getElementById('infoMissingDataDoc23')
 			infoMissingDataDoc23.innerText = ""
 			if(!fecha_REC.value) {
@@ -102,8 +98,7 @@
 			if (todoBien) {
 				infoMissingDataDoc23.classList.add('ocultar')
 				generaInfFavConReq.disabled = true
-				generaInfFavConReq.innerHTML = "Generant ..."
-				spinner_23.classList.remove('ocultar')
+				generaInfFavConReq.innerHTML = "Generant i enviant ..."
 				window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_prop_res_revocacion_por_no_justificar'
 			} else {
 				infoMissingDataDoc23.classList.remove('ocultar')

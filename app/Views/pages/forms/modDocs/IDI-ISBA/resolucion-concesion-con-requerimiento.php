@@ -57,9 +57,6 @@
 <!-------------------------------------------------------------------------------------------------------------------->
 
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 	function enviaResolucionConcesionConReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -118,7 +115,7 @@
 			infoMissingDataDoc10.classList.add('ocultar')
 			wrapper_ResConcesionConReq.disabled = true
 			wrapper_ResConcesionConReq.innerHTML = "Generant i enviant..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_concesion_con_requerimiento_adr_isba'
+			window.location.href = base_url_isba + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_concesion_con_requerimiento_adr_isba'
 		} else {
 			infoMissingDataDoc10.classList.remove('ocultar')
 		}

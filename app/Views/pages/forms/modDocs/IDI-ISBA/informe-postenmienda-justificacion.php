@@ -85,15 +85,11 @@
 		</div>
 
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 	function enviaInformeSobreSubsanacion(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_not_req_just = document.getElementById('fecha_not_req_just')
 		let fecha_firma_requerimiento_justificacion = document.getElementById('fecha_firma_requerimiento_justificacion')
 		let wrapper_informe_sobre_subsanacion = document.getElementById('wrapper_informe_sobre_subsanacion')
-		let base_url = 'https://pre-tramits.idi.es/public/index.php/expedientes/generainformeIDI_ISBA'
 		let infoMissingDataDoc14 = document.getElementById('infoMissingDataDoc14')
 		infoMissingDataDoc14.innerText = ""
 
@@ -106,7 +102,7 @@
 			infoMissingDataDoc14.classList.add('ocultar')
 			wrapper_informe_sobre_subsanacion.disabled = true
 			wrapper_informe_sobre_subsanacion.innerHTML = "Generant i enviant..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_sobre_la_subsanacion'
+			window.location.href = base_url_isba+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_sobre_la_subsanacion'
 		} else {
 			infoMissingDataDoc14.classList.remove('ocultar')
 		}

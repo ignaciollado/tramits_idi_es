@@ -90,8 +90,6 @@
 		let fecha_inicio_req_justificacion = document.getElementById('fecha_inicio_req_justificacion')
 
 		let wrapper_generadoc_req_justificacion = document.getElementById('wrapper_generadoc_req_justificacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_19 = document.getElementById('spinner_19')
 		let infoMissingDataDoc19 = document.getElementById('infoMissingDataDoc19')
 		infoMissingDataDoc19.innerText = ""
 
@@ -119,8 +117,7 @@
 		if (todoBien) {
 			infoMissingDataDoc19.classList.add('ocultar')
 			wrapper_generadoc_req_justificacion.disabled = true
-			wrapper_generadoc_req_justificacion.innerHTML = "Generant ..."
-			spinner_19.classList.remove('ocultar')
+			wrapper_generadoc_req_justificacion.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requerimiento_justificacion'
 		} else {
 			infoMissingDataDoc19.classList.remove('ocultar')

@@ -14,7 +14,6 @@
 					<button id="wrapper_inicio_req_subsanacion" class='btn btn-secondary ocultar btn-acto-admin' onclick="enviaInformeInicioRequerimiento(<?php echo $id;?>, '<?php echo $convocatoria;?>', '<?php echo $programa;?>', '<?php echo $nifcif;?>')">Envia a signar el requeriment</button>
 					<div id='infoMissingDataDoc18' class="alert alert-danger ocultar"></div>			
 			</span>
-			<span id="spinner_18" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>
@@ -89,15 +88,11 @@
 <script>
 	function enviaInformeInicioRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		
 	 	let fecha_res_liquidacion = document.getElementById('fecha_res_liquidacion') //0000-00-00
 		let fecha_de_pago = document.getElementById('fecha_de_pago')
 		let fecha_reunion_cierre = document.getElementById('fecha_reunion_cierre')
 		let fecha_max_desp_ampliacion = document.getElementById('fecha_max_desp_ampliacion')
-
 		let wrapper_inicio_req_subsanacion = document.getElementById('wrapper_inicio_req_subsanacion')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_18 = document.getElementById('spinner_18')
 		let infoMissingDataDoc18 = document.getElementById('infoMissingDataDoc18')
 		infoMissingDataDoc18.innerText = ""
 
@@ -121,8 +116,7 @@
 		if (todoBien) {
 			infoMissingDataDoc18.classList.add('ocultar')
 			wrapper_inicio_req_subsanacion.disabled = true
-			wrapper_inicio_req_subsanacion.innerHTML = "Generant ..."
-			spinner_18.classList.remove('ocultar')
+			wrapper_inicio_req_subsanacion.innerHTML = "Generant i enviant..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_inicio_requerimiento_justificacion'
 		} else {
 			infoMissingDataDoc18.classList.remove('ocultar')

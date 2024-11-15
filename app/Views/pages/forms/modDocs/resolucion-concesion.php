@@ -12,7 +12,6 @@
 					<button id="generadoc_res_conces_sin_req" class='btn btn-primary btn-acto-admin' onclick="generaResolucionConcesion(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Generar la resolució</button>
 					<div id='infoMissingDataDoc17' class="alert alert-danger ocultar"></div>
 				</span>	
-			<span id="spinner_17" class ="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php }?>
 	
 	</div>
@@ -34,8 +33,6 @@
 		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
 		let ref_REC_justificacion = document.getElementById('ref_REC_justificacion')
 		let generadoc_res_conces_sin_req = document.getElementById('generadoc_res_conces_sin_req')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_17 = document.getElementById('spinner_17')
 		let infoMissingDataDoc17 = document.getElementById('infoMissingDataDoc17')
 		infoMissingDataDoc17.innerText = ""
 
@@ -71,8 +68,7 @@
 		if (todoBien) {
 			infoMissingDataDoc17.classList.add('ocultar')
 			generadoc_res_conces_sin_req.disabled = true
-			generadoc_res_conces_sin_req.innerHTML = "Generant ..."
-			spinner_17.classList.remove('ocultar')
+			generadoc_res_conces_sin_req.innerHTML = "Generant i enviant ..."
 			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_conces_sin_req'
 		} else {
 			infoMissingDataDoc17.classList.remove('ocultar')

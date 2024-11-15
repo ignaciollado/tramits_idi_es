@@ -57,8 +57,6 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 		let fecha_REC_justificacion = document.getElementById('fecha_REC_justificacion')
 		
 		let btnResPagoSinReq = document.getElementById('btnResPagoSinReq')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let infoMissingDataDoc27 = document.getElementById('infoMissingDataDoc27')
 		infoMissingDataDoc27.innerText = ""
 
 		if(!fecha_not_propuesta_resolucion_prov.value) {

@@ -59,9 +59,6 @@
 </div>
 
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 	function enviaResDenegacionConRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -93,7 +90,7 @@
 			infoMissingDataDoc5.classList.add('ocultar')
 			wrapper_motivoDenegacion_5.disabled = true
 			wrapper_motivoDenegacion_5.innerHTML = "Generant i enviant..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_denegacion_idi_isba'
+			window.location.href = actualBaseUrl + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_denegacion_idi_isba'
 		} else {
 			infoMissingDataDoc5.classList.remove('ocultar')
 		}

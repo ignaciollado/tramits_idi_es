@@ -1,21 +1,4 @@
-/* let mainNodeISBA = document.querySelector('body');
-mainNodeISBA.onload = configuraDetalle_OnLoad;
- */
-/* $(document).ready(function () {
-
-	idExp = document.getElementById("id")
-	programa = document.getElementById("programa")
-
-	$("#exped-fase-1").submit(function () {
-		$("#send-exped-fase-1", this)
-			.html("Actualitzant, un moment per favor.")
-			.attr("disabled", "disabled")
-			.css("background-color", "orange")
-			.css("cursor", " progress");
-	});
-}); */
-
-/* const form = document.getElementById('subir_faseExpedSolicitud'); */
+let base_url_isba = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 
 function openFaseExped(evt, faseName, backgroundColor, id) {
 	var i, tabcontent, tablinks;

@@ -12,7 +12,6 @@
 				<button id="wrapper_motivoDenegacion_7" class='btn btn-primary ocultar btn-acto-admin' onclick="enviaPropuestaResDenegacionConRequerimiento(<?php echo $id; ?>, '<?php echo $convocatoria; ?>', '<?php echo $programa; ?>', '<?php echo $nifcif; ?>')">Envia a signar</button>
 				<div id='infoMissingDataDoc7' class="alert alert-danger ocultar"></div>
 			</span>
-			<span id="spinner_7" class="ocultar"><i class="fa fa-refresh fa-spin" style="font-size:16px; color:#000000;"></i></span>
 		<?php } ?>
 
 	</div>
@@ -86,8 +85,6 @@
 		let fecha_infor_fav_desf = document.getElementById('fecha_infor_fav_desf')
 
 		let wrapper_motivoDenegacion_7 = document.getElementById('wrapper_motivoDenegacion_7')
-		let base_url = 'https://tramits.idi.es/public/index.php/expedientes/generaInforme'
-		let spinner_7 = document.getElementById('spinner_7')
 		let infoMissingDataDoc7 = document.getElementById('infoMissingDataDoc7')
 		infoMissingDataDoc7.innerText = ""
 
@@ -116,7 +113,6 @@
 			infoMissingDataDoc7.classList.add('ocultar')
 			wrapper_motivoDenegacion_7.disabled = true
 			wrapper_motivoDenegacion_7.innerHTML = "Enviant ..."
-			spinner_7.classList.remove('ocultar')
 			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_denegacion_con_req'
 		} else {
 			infoMissingDataDoc7.classList.remove('ocultar')

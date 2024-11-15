@@ -52,9 +52,6 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 function generaPropuestaResolucionRevocacionPorNoJustificar(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
@@ -72,7 +69,7 @@ function generaPropuestaResolucionRevocacionPorNoJustificar(id, convocatoria, pr
 			infoMissingDoc16.classList.add('ocultar')
 			btnPropuestaResolucionRevocacionPorNoJustificar.disabled = true
 			btnPropuestaResolucionRevocacionPorNoJustificar.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_prop_res_revocacion_por_no_justificar'
+			window.location.href = base_url_isba+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_prop_res_revocacion_por_no_justificar'
 		} else {
 			infoMissingDoc16.classList.remove('ocultar')
 		}

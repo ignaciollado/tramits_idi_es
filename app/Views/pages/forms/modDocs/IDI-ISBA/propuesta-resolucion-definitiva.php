@@ -57,9 +57,6 @@
 <!-------------------------------------------------------------------------------------------------------------------->
 
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 	function enviaPropResolucionResDefinitiva(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -98,7 +95,7 @@
 			infoMissingDataDoc7.classList.add('ocultar')
 			wrapper_propuestaResDefinitiva.disabled = true
 			wrapper_propuestaResDefinitiva.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_adr_isba'
+			window.location.href = base_url_isba + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_adr_isba'
 		} else {
 			infoMissingDataDoc7.classList.remove('ocultar')
 		}

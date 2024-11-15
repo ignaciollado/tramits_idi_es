@@ -369,25 +369,39 @@
 			            } 
                     ?>
                    
-  			            <div id ="fila" class = "detail-wrapper-docs general">
-    				        <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", "-", $docs_item->selloDeTiempo); ?></span>
-				            <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-      			            <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite;?></span>
-                            <?php
-                            switch ($docs_item->estado) {
-				                case 'Pendent':
-    					            //$estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "" title="Aquesta documentació està pendent de revisió">Pendent</button>';
-
-					                break;
-    				            case 'Aprovat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "" title="Es una documentació correcta">Aprovat</button>';
-					                break;
-	    			            case 'Rebutjat':
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "" title="Es una documentació equivocada">Rebutjat</button>';
-					                break;
-                                default:
-    					            $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+  			        <div id ="fila" class = "detail-wrapper-docs general">
+    				    <span id = "convocatoria" class = "detail-wrapper-docs-col date-docs-col"><?php echo str_replace ("_", "-", $docs_item->selloDeTiempo); ?></span>
+				        <span id = "tipoTramite" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docs_item->name.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
+      			        <span id = "fechaCompletado" class = "detail-wrapper-docs-col"><?php echo $docs_item->tipo_tramite;?></span>
+                        <?php
+                        switch ($docs_item->estado) {
+				            case 'Pendent':
+                               if ($esAdmin) {
+                                    $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+                                } else {
+                                    $estado_doc = '<span class = "btn btn-itramits isa_info" title="Aquesta documentació està pendent de revisió">Pendent</span>';
+                                }
+					            break;
+    				        case 'Aprovat':
+                                if ($esAdmin) {
+                                    $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació correcta">Aprovat</button>';
+                                } else {
+                                    $estado_doc = '<span class = "btn btn-itramits isa_success" title="Es una documentació correcta">Aprovat</span>';
+                                }
+					            break;
+	    			        case 'Rebutjat':
+                                if ($esAdmin) {
+                                    $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+                                } else {
+                                    $estado_doc = '<span class = "btn btn-itramits isa_error" title="Es una documentació equivocada">Rebutjat</span>';
+                                }
+					            break;
+                            default:
+                            if ($esAdmin) {
+                                $estado_doc = '<button id="'.$docs_item->id."#".$docs_item->tipo_tramite."#".$id."#".$docs_item->corresponde_documento.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                            } else {
+                                $estado_doc = '<span class = "btn btn-itramits isa_caducado" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                            }                            
                             }
                             ?>
                             <span id = "estado-doc-requerido" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>

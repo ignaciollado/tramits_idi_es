@@ -76,8 +76,6 @@
 </div>
 <input type='hidden' disabled id="fechaEstadoDocReqISBA" value="<?php echo $fecha_firma_req;?>">
 <script>
-const actualBaseUrl = window.location.origin
-let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 let setAutoDoc1 = document.getElementById("fecha_requerimiento_setauto")
 if (document.getElementById("fechaEstadoDocReqISBA").value && setAutoDoc1.value === 'NO') {
 	document.getElementById("fecha_requerimiento").value = document.getElementById("fechaEstadoDocReqISBA").value
@@ -99,7 +97,6 @@ function actualizaMotivoRequerimiento_click() {
 			$(".result").html(data);
 			if (data == 1) {
 				document.getElementById("wrapper_motivoRequerimiento").className = "btn btn-primary";
-				console.log (document.getElementById("wrapper_motivoRequerimiento").innerText)
 				modal.style.display = "none";
 				$("div").removeClass("modal-backdrop fade in"); // modal-backdrop fade in
 			}
@@ -113,7 +110,7 @@ function enviaRequerimiento(id, convocatoria, programa, nifcif) {
 	if (todoBien) {
 		wrapper_motivoRequerimiento.disabled = true
 		wrapper_motivoRequerimiento.innerHTML = "Generant i enviant ..."
-		window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment_adr_isba'
+		window.location.href = base_url_isba+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requeriment_adr_isba'
 	}
 }
 </script>

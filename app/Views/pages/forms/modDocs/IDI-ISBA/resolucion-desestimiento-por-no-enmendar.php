@@ -60,8 +60,6 @@
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 	function enviaDesestimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -87,7 +85,7 @@
 			infoMissingDataDoc2.classList.add('ocultar')
 			generaElDesestimiento.setAttribute("disabled", true)
 			generaElDesestimiento.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar_adr_isba'
+			window.location.href = base_url_isba+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_desestimiento_por_no_enmendar_adr_isba'
 		} else {
 			infoMissingDataDoc2.classList.remove('ocultar')
 		}

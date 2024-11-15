@@ -59,9 +59,6 @@
 <!------------------------------------------------------------------------------------------------------>
 
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 	function enviaInformeFavorableConRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_REC = document.getElementById('fecha_REC')
@@ -98,7 +95,7 @@
 			infoMissingDataDoc3.classList.add('ocultar')
 			generaInfFavConReq.disabled = true
 			generaInfFavConReq.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_con_requerimiento_adr_isba'
+			window.location.href = base_url_isba+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_informe_favorable_con_requerimiento_adr_isba'
 		} else {
 			infoMissingDataDoc3.classList.remove('ocultar')
 		}

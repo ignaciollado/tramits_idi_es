@@ -56,8 +56,6 @@
 <input type='hidden' disabled id="fechaFirmaPRDefinitiva" value="<?php echo $fecha_firma_PRDefinitiva;?>">
 <!-------------------------------------------------------------------------------------------------------------------->
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 	let setAutoDoc8 = document.getElementById("fecha_firma_propuesta_resolucion_def_setauto")
 
 	if (document.getElementById("fechaFirmaPRDefinitiva").value && setAutoDoc8.value === 'NO') {
@@ -108,7 +106,7 @@
 			wrapper_propuestaResDefinitivaConReq.disabled = true
 			wrapper_propuestaResDefinitivaConReq.innerHTML = "Generant i enviant ..."
 
-			window.location.href = base_url + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_requerimiento_adr_isba'
+			window.location.href = base_url_isba + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_prop_res_definitiva_con_requerimiento_adr_isba'
 		} else {
 			infoMissingDataDoc8.classList.remove('ocultar')
 		}

@@ -81,9 +81,6 @@
 		</div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 	function enviaRequerimientoJustificacion(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_firma_res = document.getElementById('fecha_firma_res')
@@ -107,7 +104,7 @@
 			infoMissingDataDoc13.classList.add('ocultar')
 			wrapper_generadoc_req_justificacion.disabled = true
 			wrapper_generadoc_req_justificacion.innerHTML = "Generant i enviant ..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requerimiento_justificacion'
+			window.location.href = actualBaseUrl+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_requerimiento_justificacion'
 		} else {
 			infoMissingDataDoc13.classList.remove('ocultar')
 		}

@@ -91,9 +91,6 @@
 
 		<!------------------------------------------------------------------------------------------------------>
 <script>
-	const actualBaseUrl = window.location.origin
-	let base_url = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
-
 	function enviaInformeInicioRequerimiento(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 	 	let fecha_firma_res = document.getElementById('fecha_firma_res') //0000-00-00
@@ -110,7 +107,7 @@
 			infoMissingDataDoc12.classList.add('ocultar')
 			wrapper_inicio_req_justificacion.disabled = true
 			wrapper_inicio_req_justificacion.innerHTML = "Generant i enviant..."
-			window.location.href = base_url+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_inicio_requerimiento_justificacion_adr_isba'
+			window.location.href = actualBaseUrl+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_inicio_requerimiento_justificacion_adr_isba'
 		} else {
 			infoMissingDataDoc12.classList.remove('ocultar')
 		}
