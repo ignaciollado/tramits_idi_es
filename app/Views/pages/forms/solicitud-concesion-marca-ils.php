@@ -1,13 +1,13 @@
 <?php
 helper('cookie');
 $language = \Config\Services::language();
-$locale = $language->getLocale();
+$language->setLocale($idioma);
 
 require_once('tcpdf/tcpdf.php');
 
 use App\Models\ConfiguracionModel;
-	$modelConfig = new ConfiguracionModel();
-	$data['configuracion'] = $modelConfig->where('convocatoria_activa', true)->first();	
+$modelConfig = new ConfiguracionModel();
+$data['configuracion'] = $modelConfig->where('convocatoria_activa', true)->first();	
 
 class MYPDF extends TCPDF {
     //Page header
@@ -22,10 +22,12 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
+
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
-		$this->Cell(0, 5, "Institut d'Innovació Empresarial - Plaça Son Castelló 1 - Tel 971176161 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 5, "Agència de Desenvolupament Regional - Plaça Son Castelló 1 - Tel 971176161 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
         $this->Cell(0, 15, 'Pàgina '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
@@ -33,10 +35,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("Sol·licitud per a la concessió de la marca Indústria Local Sostenible");
-$pdf->SetSubject('DOCUMENT DE SOL·LICITUD');
-$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, GOIB');	
+$pdf->SetSubject('DOCUMENT DE SOL·LICITUD ADHESIÓ A ILS');
+$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, GOIB');	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -57,7 +59,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-$pdf->SetFont('helvetica', '', 12);
+$pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
 
 // --------------------------------------------------------------CABECERA Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
@@ -111,15 +113,15 @@ $html5 .= "</table>";
 $currentY = $pdf->getY();
 $currentX = $pdf->getX();
 $pdf->setY($currentY + 5);
-$pdf->setX($currentX - 10);
+/* $pdf->setX($currentX - 10); */
 //$pdf->writeHTML($html5, true, false, true, false, '');
 
 // ------------------------------------------------------------------1. TIPO DE EMPRESA------------------------------------------------------------ //
 // ------------------------------------------------------------------------------------------------------------------------------------------------ //
-$currentY = $pdf->getY();
+/* $currentY = $pdf->getY();
 $currentX = $pdf->getX();
-$pdf->setY($currentY + 5);
-/*  $pdf->setX($currentX - 10); */
+$pdf->setY($currentY + 5); */
+/* $pdf->setX($currentX - 10); */
 $html6 =  lang('message_lang.solicitante_tipo_ils'); // TIPO DE EMPRESA
 $pdf->Cell(0, 10, $html6, 1, 1, 'C');
 

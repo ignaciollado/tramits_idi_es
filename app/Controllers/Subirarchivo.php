@@ -786,7 +786,7 @@ class SubirArchivo extends BaseController
 		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos------------ */
 
 		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
-		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
+			foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
 			{
 				if ($copiaDocumentoIdentificacion->isValid() && ! $copiaDocumentoIdentificacion->hasMoved())
 					{
