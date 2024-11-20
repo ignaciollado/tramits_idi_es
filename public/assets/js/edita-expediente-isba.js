@@ -1,3 +1,4 @@
+const actualBaseUrl = window.location.origin
 let base_url_isba = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 
 function openFaseExped(evt, faseName, backgroundColor, id) {

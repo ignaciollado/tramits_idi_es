@@ -46,6 +46,6 @@ return [
     <li>En data %FECHANOTREQ% , es va notificar un requeriment a l'empresa %SOLICITANTE%, amb NIF %NIF% per completar la documentació per a la renovació de la marca.</li><br>
     <li>En data %FECHARECJUSTRENOVACIO% i referència %REFREQJUST% , l'empresa %SOLICITANTE%, amb NIF %NIF% va presentar la documentació per a la renovació de la marca.</li><br>",
   'conclusion_tit' => "<b>Conclusió</b>",
-  'conclusionTxt'  => "Una vegada revisada la documentació de renovació de marca, s'ha comprovat que compleix amb els requisits de renovació establerts en el Reglament de la Marca de Garantia ILS, propòs al president de l'ADR Balears que dicti una resolució de renovació de la marca Indústria Local Sostenible per un període de 2 anys.Aquest informe serveix de base per a la resolució de renovació de la marca.",
+  'conclusionTxt'  => "Una vegada revisada la documentació de renovació de marca, s'ha comprovat que compleix amb els requisits de renovació establerts en el Reglament de la Marca de Garantia ILS, propòs al president de l'ADR Balears que dicti una resolució de renovació de la marca Indústria Local Sostenible per un període de 2 anys.<br><br>Aquest informe serveix de base per a la resolució de renovació de la marca.",
   'firma' => "Palma, en data de la signatura electrònica<br><br>El/la tècnic/a"
 ];

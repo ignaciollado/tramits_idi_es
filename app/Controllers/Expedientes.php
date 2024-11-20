@@ -1992,7 +1992,7 @@ class Expedientes extends Controller
 				$builder->where('id', $request->uri->getSegment(3));
 				$save_exped = $builder->update($data_infor);
 				$data_footer = [
-					'tipoDoc' => " Informe favorable ILS",
+					'tipoDoc' => "Renovació: Informe favorable ILS",
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-informe-favorable-ils', $data);
@@ -2007,7 +2007,7 @@ class Expedientes extends Controller
 				$builder->where('id', $request->uri->getSegment(3));
 				$save_exped = $builder->update($data_infor);
 				$data_footer = [
-					'tipoDoc' => " Informe favorable amb requeriment ILS",
+					'tipoDoc' => "Renovació: Informe favorable amb requeriment ILS",
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-informe-favorable-con-requerimiento-ils', $data);
@@ -2015,17 +2015,17 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case 'doc_renovacion_informe_desfavorable_ils':								//DOC 12
+			case 'doc_renovacion_informe_desfavorable_con_req_ils': 			//DOC 12
 				$data_infor = [
-					'doc_renovacion_informe_desfavorable_ils' => $last_insert_id
+					'doc_renovacion_informe_desfavorable_con_req_ils' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$save_exped = $builder->update($data_infor);
 				$data_footer = [
-					'tipoDoc' => " Informe desfavorable ILS",
+					'tipoDoc' => "Renovació: Informe desfavorable amb requeriment ILS",
 					'conVIAFIRMA' => false
 				];
-				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-informe-desfavorable-ils', $data);
+				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-informe-desfavorable-con-requerimiento-ils', $data);
 				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);

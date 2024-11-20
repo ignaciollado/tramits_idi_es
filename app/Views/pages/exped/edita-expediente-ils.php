@@ -942,9 +942,17 @@
             <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_infor_desf_renov" class = "form-control send_fase_4" id = "fecha_infor_desf_renov" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_infor_desf_renov']), 'Y-m-d');?>">
             </div>
             <div class="form-group justificacion">
+            <label for = "fecha_firma_req_renov"><strong>Data firma requeriment:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_firma_req_renov" class = "form-control send_fase_4" id = "fecha_firma_req_renov" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_firma_req_renov']), 'Y-m-d');?>">
+            </div>
+            <div class="form-group justificacion">
+            <label for = "fecha_notif_req_renov"><strong>Data notificació requeriment:</strong></label>
+            <input type = "date" placeholder = "dd/mm/yyyy" name = "fecha_notif_req_renov" class = "form-control send_fase_4" id = "fecha_notif_req_renov" minlength = "10" maxlength = "10" value = "<?php echo date_format(date_create($expedientes['fecha_notif_req_renov']), 'Y-m-d');?>">
+            </div>            
+            <div class="form-group justificacion">
             <label for = "fecha_REC_enmienda_renov"><strong>Data REC esmena:</strong></label>
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_enmienda_renov" class = "form-control send_fase_4" id = "fecha_REC_enmienda_renov" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_enmienda_renov']);?>" />
-            </div>                                          
+            </div>
             <div class="form-group justificacion">
             <label for = "fecha_REC_justificacion_renov"><strong>Data REC justificació renovació:</strong></label>
 			<input type = "text" placeholder = "dd/mm/aaaa hh:mm:ss" name = "fecha_REC_justificacion_renov" class = "form-control send_fase_4" id = "fecha_REC_justificacion_renov" value = "<?php echo str_replace("0000-00-00 00:00:00", "", $expedientes['fecha_REC_justificacion_renov']);?>" />
@@ -987,8 +995,8 @@
             <!-------------------------------------- Informe favorable renovación con requerimiento -------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-informe-favorable-con-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
-            <!-------------------------------------- Informe desfavorable renovación ----------------------------------------->
-            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-informe-desfavorable.php';?></li>
+            <!-------------------------------------- Informe desfavorable renovación con requerimiento ----------------------->
+            <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-informe-desfavorable-con-requerimiento.php';?></li>
             <!---------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------- Resolución de renovación marca --------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/ILS/renovacion-resolucion-renovacion-marca.php';?></li>

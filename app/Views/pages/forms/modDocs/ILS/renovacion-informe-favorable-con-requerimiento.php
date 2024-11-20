@@ -1,7 +1,11 @@
 <!-- -------------------------------------- Renovación informe favorable con requerimiento DOC 11-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Informe favorable amb requeriment [falta json]
+    	Informe favorable amb requeriment
+			<?php
+			if ($base_url === "pre-tramitsidi") {?>
+				 **testear** [PRE]
+			<?php }?>
   	</div>
 	<div class="card-itramits-footer">
 	<?php
@@ -48,19 +52,39 @@
 <script>
 	function generaRenovacionInformeFavorableConReqILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_REC = document.getElementById('fecha_REC')
-		let ref_REC = document.getElementById('ref_REC')
+		let fecha_resolucion = document.getElementById('fecha_resolucion')
+		let fecha_resolucion_renov = document.getElementById('fecha_resolucion_renov')
+		let fecha_REC_justificacion_renov = document.getElementById('fecha_REC_justificacion_renov')
+		let ref_REC_justificacion_renov = document.getElementById('ref_REC_justificacion_renov')
+		let fecha_firma_req_renov = document.getElementById('fecha_firma_req_renov')
+		let fecha_notif_req_renov = document.getElementById('fecha_notif_req_renov')
 
 		let btnRenInformeFavorableconReqILS = document.getElementById('btnRenInformeFavorableconReqILS')
 		let infoMissingDataDoc11ILS = document.getElementById('infoMissingDataDoc11ILS')
 		infoMissingDataDoc11ILS.innerText = ""
 
-		if(!fecha_REC.value) {
-			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Data SEU sol·licitud<br>"
+		if(!fecha_resolucion.value) {
+			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
-		if(!ref_REC.value) {
-			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Referència SEU sol·licitud<br>"
+		if(!fecha_firma_req_renov.value) {
+			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Data firma requeriment<br>"
+			todoBien = false
+		}
+		if(!fecha_notif_req_renov.value) {
+			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Data notificació requeriment<br>"
+			todoBien = false
+		}
+		if(!fecha_REC_justificacion_renov.value) {
+			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Data REC justificació renovació<br>"
+			todoBien = false
+		}
+		if(!ref_REC_justificacion_renov.value) {
+			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Referència REC justificació<br>"
+			todoBien = false
+		}
+		if(!fecha_resolucion_renov.value) {
+			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Resolució de renovació<br>"
 			todoBien = false
 		}
 		

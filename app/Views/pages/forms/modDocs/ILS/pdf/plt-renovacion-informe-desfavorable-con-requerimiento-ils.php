@@ -53,8 +53,8 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetCreator(PDF_CREATOR);
 	
 $pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
-$pdf->SetTitle("RENOVACIÓN INFORME FAVORABLE ILS");
-$pdf->SetSubject("RENOVACIÓN INFORME FAVORABLE ILS");
+$pdf->SetTitle("RENOVACIÓN INFORME DESFAVORABLE CON REQUERIMIENTO ILS");
+$pdf->SetSubject("RENOVACIÓN INFORME DESFAVORABLE CON REQUERIMIENTO ILS");
 $pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, CAIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
@@ -85,7 +85,7 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html = "Document: informe favorable amb req<br>";
+$html = "Document: informe desfavorable renovació<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -101,7 +101,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('ILS_11_renovacion_informe_favorable_con_req.intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('ILS_12_renovacion_informe_desfavorable_con_req.intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -111,41 +111,39 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('ILS_11_renovacion_informe_favorable_con_req.hechos_tit') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('ILS_12_renovacion_informe_desfavorable_con_req.hechos_tit') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_1 = lang('ILS_11_renovacion_informe_favorable_con_req.hechos_1_2_3_4');
+$parrafo_1 = lang('ILS_12_renovacion_informe_desfavorable_con_req.hechos_1_2_3_4');
 $parrafo_1 = str_replace("%FECHARESOLUCION%", date_format(date_create($data['expediente']['fecha_resolucion']),"d/m/Y"), $parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
 $parrafo_1 = str_replace("%FECHANOTREQ%", date_format(date_create($data['expediente']['fecha_notif_req_renov']),"d/m/Y"), $parrafo_1);
-$parrafo_1 = str_replace("%FECHARECJUSTRENOVACIO%", $data['expediente']['fecha_REC_justificacion_renov'], $parrafo_1);
-$parrafo_1 = str_replace("%REFREQJUST%", $data['expediente']['ref_REC_justificacion_renov'], $parrafo_1);
 
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
-
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$parrafo_2 = lang('ILS_11_renovacion_informe_favorable_con_req.conclusion_tit');
+$parrafo_2 = lang('ILS_12_renovacion_informe_desfavorable_con_req.conclusion_tit');
 $html = $parrafo_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 10);
-$parrafo_3 = lang('ILS_11_renovacion_informe_favorable_con_req.conclusionTxt');
+$parrafo_3 = lang('ILS_12_renovacion_informe_desfavorable_con_req.conclusionTxt');
+$parrafo_3 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_3);
+$parrafo_3 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_3);
 $html = $parrafo_3;
 $pdf->writeHTML($html, true, false, true, false, '');
 
-
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$firma = lang('ILS_11_renovacion_informe_favorable_con_req.firma');
+$firma = lang('ILS_12_renovacion_informe_desfavorable_con_req.firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'] , $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
@@ -158,4 +156,4 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //ob_end_clean();
  /* Finalmente se genera el PDF */
 $numExped = $data['expediente']['idExp']."_".$data['expediente']['convocatoria'];
-$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_renovacion_informe_favorable_con_req_ils.pdf', 'F');
+$pdf->Output(WRITEPATH.'documentos/'.$nif.'/informes/'.$numExped.'_renovacion_informe_desfavorable_con_req_ils.pdf', 'F');

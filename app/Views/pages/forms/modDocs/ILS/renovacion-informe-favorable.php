@@ -1,7 +1,11 @@
 <!-- -------------------------------------- Renovación informe favorable DOC 10-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Informe favorable [falta json]
+    	 Informe favorable
+			 <?php
+			if ($base_url === "pre-tramitsidi") {?>
+				 **testear** [PRE]
+			<?php }?>
   	</div>
 	<div class="card-itramits-footer">
 	<?php
@@ -48,16 +52,16 @@
 <script>
 	function generaRenovacionInformeFavorableILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
+		let fecha_resolucion = document.getElementById('fecha_resolucion')
 		let fecha_resolucion_renov = document.getElementById('fecha_resolucion_renov')
 		let fecha_REC_justificacion_renov = document.getElementById('fecha_REC_justificacion_renov')
 		let ref_REC_justificacion_renov = document.getElementById('ref_REC_justificacion_renov')
 		let btnRenInformeFavorableILS = document.getElementById('btnRenInformeFavorableILS')
 		let infoMissingDataDoc10ILS = document.getElementById('infoMissingDataDoc10ILS')
-
 		infoMissingDataDoc10ILS.innerText = ""
 
-		if(!fecha_resolucion_renov.value) {
-			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Resolució de renovació<br>"
+		if(!fecha_resolucion.value) {
+			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
 		if(!fecha_REC_justificacion_renov.value) {
@@ -67,7 +71,12 @@
 		if(!ref_REC_justificacion_renov.value) {
 			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Referència REC justificació<br>"
 			todoBien = false
-		}		
+		}
+		if(!fecha_resolucion_renov.value) {
+			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Resolució de renovació<br>"
+			todoBien = false
+		}
+
 		if (todoBien) {
 			infoMissingDataDoc10ILS.classList.add('ocultar')
 			btnRenInformeFavorableILS.disabled = true

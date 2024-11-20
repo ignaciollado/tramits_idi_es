@@ -6,6 +6,10 @@ $fecha_completado = mysqli_real_escape_string($conn, $_POST["fecha_completado"])
 $fecha_renovacion = mysqli_real_escape_string($conn, $_POST["fecha_renovacion"]); // Data renovació
 $fecha_infor_fav_renov = mysqli_real_escape_string($conn, $_POST["fecha_infor_fav_renov"]); // Data informe favorable
 $fecha_infor_desf_renov = mysqli_real_escape_string($conn, $_POST["fecha_infor_desf_renov"]); // Data informe desfavorable
+
+$fecha_firma_req_renov = mysqli_real_escape_string($conn, $_POST["fecha_firma_req_renov"]); // Data firma requerimiento
+$fecha_notif_req_renov = mysqli_real_escape_string($conn, $_POST["fecha_notif_req_renov"]); // Data notificación requerimiento
+
 $fecha_REC_enmienda_renov = mysqli_real_escape_string($conn, $_POST["fecha_REC_enmienda_renov"]); // Data REC enmienda
 $fecha_REC_justificacion_renov	= mysqli_real_escape_string($conn, $_POST["fecha_REC_justificacion_renov"]); //Data REC justificació renovació
 $ref_REC_justificacion_renov = mysqli_real_escape_string($conn, $_POST["ref_REC_justificacion_renov"]); // Ref REC justificació renovació
@@ -52,7 +56,9 @@ $query = "UPDATE pindust_expediente
     fecha_completado = '" . $fecha_completado ."',
     fecha_renovacion = '" . $fecha_renovacion ."',
     fecha_infor_fav_renov = '" . $fecha_infor_fav_renov ."',
-    fecha_infor_desf_renov = '" . $fecha_infor_desf_renov ."',    
+    fecha_infor_desf_renov = '" . $fecha_infor_desf_renov ."',
+    fecha_firma_req_renov = '" . $fecha_firma_req_renov ."',
+    fecha_notif_req_renov = '" . $fecha_notif_req_renov ."',
     fecha_REC_enmienda_renov = '" . $date_REC_enmienda_renov ."',
     fecha_REC_justificacion_renov = '" . $date_REC_justificacion_renov ."',
     ref_REC_justificacion_renov = '" . mb_strtoupper($ref_REC_justificacion_renov) ."',
@@ -61,7 +67,6 @@ $query = "UPDATE pindust_expediente
     fecha_res_revocacion_marca = '" . $fecha_res_revocacion_marca ."'
 
     WHERE  id = " . $id;
-
 $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 echo $result;
