@@ -1013,6 +1013,10 @@ function enviaMailManualYLogotipo_click() {
 
 function enviaMailRenovacionILS_click() {
 	let id = document.getElementById("id").value;
+	const now = new Date();
+	const newState = "pendienteJustificar"
+	now.setDate(now.getDate() + 20);
+	console.log("nueva fecha ", `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`)
 	document.getElementById("spinner_formularioMarca").classList.remove("ocultar");
 	document.getElementById("enviaMailRenovacionILS").disabled.true;
 	$.post(
@@ -1025,6 +1029,22 @@ function enviaMailRenovacionILS_click() {
 				document.getElementById("enviaMailRenovacionILS").style.display = "none";
 				document.getElementById("mensajeFormularioMarca").classList.remove("ocultar");
 				document.getElementById("mensajeFormularioMarca").innerHTML = data;
+
+				const itemID = 13 /* ID correspondiente a la situación 'Pendiente de justificar' */
+				let newSituation = `/public/assets/utils/actualiza_situacion_del_expediente.php?${newState}/${idExp.value}`;
+				fetch(newSituation)
+					.then((response) => console.log(response.text()))
+					.then((data) => {
+						let newJustificationDate = `/public/assets/utils/actualiza_fecha_justificacion.php?${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}/${idExp.value}`;
+						fetch(newJustificationDate)
+							.then((response) => response.text())
+							.then((data) => {
+							document.getElementById("nueva_fecha_limite_justificacion").innerHTML = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`
+							document.getElementById('nueva_fecha_limite_justificacion').classList.remove("ocultar")
+							document.getElementById("fecha_limite_justificacion").setAttribute("hidden", true) 
+							document.getElementById("situacion_exped").options.item(itemID).selected = 'selected';
+						});
+					});
 			}
 		}
 	);

@@ -91,7 +91,6 @@
 				            ?>
 			            <input type="text" name="Poblacio" class="form-control" readonly disabled id = "Poblacio" placeholder="Població" value="<?php echo $localidad[1].' ('.$localidad[0].')';?>">
                     </div>
-
                 </div>
 	            <div class="col">
                     <div class="form-group general">
@@ -147,6 +146,9 @@
                            	<option <?php if ($expedientes['situacion'] === "idResolucionDenegacionNotificada") { echo "selected";}?> value = "idResolucionDenegacionNotificada" class="sitEjecucion_ils"> ID + resolució denegació notificada</option>
                            	<option <?php if ($expedientes['situacion'] === "empresaDenegada") { echo "selected";}?> value = "empresaDenegada" class="sitEjecucion_ils"> Empresa denegada</option>
                         </optgroup>
+                        <optgroup style="background-color:#f37020;color:#000;" label="Fase renovació marca:">
+                            <option <?php if ($expedientes['situacion'] === "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion_ils"> Pendent de justificar</option>
+                        </optgroup>                        
 			            </select>
 		            </div>
                     <div class="form-group general">
@@ -1217,7 +1219,7 @@
                 </div>
             </div>
 
-            <div><a href="<?php echo base_url('public/index.php/home/justificacion_cheques/').'/'.$expedientes['id'].'/'.$expedientes['nif'].'/'.$expedientes['tipo_tramite'].'/'.$expedientes['convocatoria'].'/ca';?>" target = "_blank">Formulari per a la renovació de la marca ILS</a></div>
+            <div><a href="<?php echo base_url('public/index.php/home/renovacion_marca_ils/').'/'.$expedientes['id'].'/'.$expedientes['nif'].'/'.$expedientes['tipo_tramite'].'/'.$expedientes['convocatoria'].'/ca';?>" target = "_blank">Formulari per a la renovació de la marca ILS</a></div>
             <div><a href="<?php 
                 if (isset($selloDeTiempo)) {
                     echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_renovacion_marca_ils.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');

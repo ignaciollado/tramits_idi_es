@@ -51,14 +51,14 @@
 <script>
 	function generaRenovacionInformeDesfavorableILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_resolucion = document.getElementById('fecha_resolucion')
+		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
 		let fecha_notif_req_renov = document.getElementById('fecha_notif_req_renov')
 		let btnRenInformeDesfavorableILS = document.getElementById('btnRenInformeDesfavorableILS')
 		let infoMissingDataDoc12ILS = document.getElementById('infoMissingDataDoc12ILS')
 		infoMissingDataDoc12ILS.innerText = ""
 
-		if(!fecha_resolucion.value) {
-			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Firma resolució<br>"
+		if(!fecha_notificacion_resolucion.value) {
+			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Notificació resolució concessió<br>"
 			todoBien = false
 		}
 		if(!fecha_notif_req_renov.value) {

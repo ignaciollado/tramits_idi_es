@@ -37,9 +37,9 @@ class MYPDF extends TCPDF {
     // Page footer
     public function Footer() {
         // Logo
-
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -52,8 +52,8 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetCreator(PDF_CREATOR);
 	
 $pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
-$pdf->SetTitle("RESOLUCIÓN DE REVOCACIÓN MARCA ILS");
-$pdf->SetSubject("RESOLUCIÓN DE REVOCACIÓN MARCA ILS");
+$pdf->SetTitle("RESOLUCIÓN DE RENOVACIÓN DE LA MARCA ILS");
+$pdf->SetSubject("RESOLUCIÓN DE RENOVACIÓN DE LA MARCA ILS");
 $pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, CAIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
@@ -84,7 +84,7 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html = "Document: resolució de revocació<br>";
+$html = "Document: resolució de renovació marca<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Codi SIA: ".$data['configuracion']['codigoSIA']."<br>";
 $html .= "Emissor (DIR3): ".$data['configuracion']['emisorDIR3']."<br>";
@@ -100,7 +100,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_ils_resolucion_concesion_sin_req_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('ILS_13_resolucion_renov_sin_req.13_intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -110,63 +110,34 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_ils_resolucion_concesion_sin_req_antecedentes') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('ILS_13_resolucion_renov_sin_req.13_fets_tit') ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
-$parrafo_1 = lang('message_lang.doc_ils_resolucion_concesion_sin_req_p1');
-$html = "<ol>";
-$html .= "<li>". $parrafo_1 ."</li>";
-$html .= "<br>";
-
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_ils_resolucion_concesion_sin_req_p2'));
-$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
-$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
-$parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
-$html .= "<li>". $parrafo_2 ."</li>";
-$html .= "<br>";
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 4);
-$parrafo_3 = str_replace("%FECHAINFORMEFAV%", date_format(date_create($data['expediente']['fecha_infor_fav']),"d/m/Y") ,lang('message_lang.doc_ils_resolucion_concesion_sin_req_p3'));
-$html .= "<li>". $parrafo_3 ."</li>";
-$html .= "</ol>";
+$parrafo_2 = lang('ILS_13_resolucion_renov_sin_req.13_antecedents_1_2_3_4');
+$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'],$parrafo_2);
+$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'],$parrafo_2);
+$parrafo_2 = str_replace("%FECHARESOLUCION%", date_format(date_create($data['expediente']['fecha_resolucion']),"d/m/Y") ,$parrafo_2);
+$parrafo_2 = str_replace("%FECHARECRENOVACION%", date_format(date_create($data['expediente']['fecha_renovacion']),"d/m/Y") ,$parrafo_2);
+$parrafo_2 = str_replace("%REFRECRENOVACION%", "???????????????",$parrafo_2);
+$parrafo_2 = str_replace("%FECHAINFORMEFAVRENOVACION%", date_format(date_create($data['expediente']['fecha_infor_fav_renov']),"d/m/Y") ,$parrafo_2);
+$html = $parrafo_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 10);
-$resolucion = lang('message_lang.doc_ils_resolucion_concesion_sin_req_resolucion');
+$pdf->setY($currentY + 5);
+$resolucion = lang('ILS_13_resolucion_renov_sin_req.13_resolucio_tit');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 1);
-$resolucion_1 = lang('message_lang.doc_ils_resolucion_concesion_sin_req_resolucion_1');
-$resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $resolucion_1);
-$resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'], $resolucion_1);
-$resolucion_1 = str_replace("%FECHADESDECONCESION%", date_format(date_create($data['expediente']['fecha_adhesion_ils']),"d/m/Y"), $resolucion_1);
-$dateTo =  date_add(date_create($data['expediente']['fecha_adhesion_ils']), date_interval_create_from_date_string("2 years") );
-$resolucion_1 = str_replace("%FECHAHASTACONCESION%", date_format($dateTo,"d/m/Y"), $resolucion_1);
-
-$html = "<ol>";
-$html .= "<li>". $resolucion_1 ."</li>";
-$html .= "<br>";
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$resolucion_2 = lang('message_lang.doc_ils_resolucion_concesion_sin_req_resolucion_2');
-$html .= "<li>". $resolucion_2 ."</li>";
-$html .= "<br>";
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$resolucion_3 = lang('message_lang.doc_ils_resolucion_concesion_sin_req_resolucion_3');
-$html .= "<li>". $resolucion_3 ."</li>";
-$html .= "</ol>";
+$pdf->setY($currentY + 5);
+$fundamentosDeDerecho = lang('ILS_13_resolucion_renov_sin_req.13_fundamentosDeDerechoTxt');
+$html = $fundamentosDeDerecho;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
@@ -177,23 +148,66 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
-$recursos = lang('message_lang.doc_ils_resolucion_concesion_sin_req_inter_recursos');
+$fundamentosDeDerecho_2 = lang('ILS_13_resolucion_renov_sin_req.13_fundamentosDeDerechoTxt_2');
+$html = "<table cellpadding='5'>";
+$html .= '<tr><td><ol start="5">'. $fundamentosDeDerecho_2 .'</ol></td></tr>';
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$recursos = lang('ILS_13_resolucion_renov_sin_req.13_dicto');
+$html = "<table cellpadding='5'>";
+$html .= "<tr><td>". $recursos ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$resolucio_tit = lang('ILS_13_resolucion_renov_sin_req.13_resolucio_tit');
+$html = "<table cellpadding='5'>";
+$html .= "<tr><td>". $resolucio_tit ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$resolucio = lang('ILS_13_resolucion_renov_sin_req.13_resolucio');
+$resolucio = str_replace("%SOLICITANTE%", $data['expediente']['empresa'],$resolucio);
+$resolucio = str_replace("%NIF%", $data['expediente']['nif'],$resolucio);
+$resolucio = str_replace("%DESDEFECHANOTRESRENOVACION%", date_format(date_create($data['expediente']['fecha_notificacion_renov']),"d/m/Y") ,$resolucio);
+$dateTo =  date_add(date_create($data['expediente']['fecha_notificacion_renov']), date_interval_create_from_date_string("2 years") );
+$resolucio = str_replace("%HASTAFECHANOTRESRENOVACION%", date_format($dateTo,"d/m/Y") ,$resolucio);
+$html = "<table cellpadding='5'>";
+$html .= "<tr><td>". $resolucio ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVertical.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 25);
+$recursos_tit = lang('ILS_13_resolucion_renov_sin_req.13_recursos_tit');
+$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_tit ."</td></tr>";
+$html .= "</table>";
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$recursos = lang('ILS_13_resolucion_renov_sin_req.13_recursos');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$recursos_texto = lang('message_lang.doc_ils_resolucion_concesion_sin_req_inter_recursos_texto');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_texto ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$firma = lang('message_lang.doc_ils_resolucion_concesion_sin_req_firma');
+$firma = lang('ILS_13_resolucion_renov_sin_req.13_firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'] , $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";

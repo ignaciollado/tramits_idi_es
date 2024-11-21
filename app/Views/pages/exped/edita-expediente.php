@@ -306,7 +306,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         	    	            <option <?php if ($expedientes['situacion'] === "emitirResPagoyJust") { echo "selected";}?> value = "emitirResPagoyJust" class="sitEjecucion"> Resolució de pagament i justificació emetre</option>
         	    	            <option <?php if ($expedientes['situacion'] === "emitidoResPagoyJust") { echo "selected";}?> value = "emitidoResPagoyJust" class="sitEjecucion"> Resolució de pagament i justificació emesa</option>
         	    	            <option <?php if ($expedientes['situacion'] === "Finalizado") { echo "selected";}?> value = "Finalizado" class="sitEjecucion"> Finalitzat</option>
-                            </optgroup>   
+                            </optgroup>
                             <optgroup  style="background-color:#fff;color:#6d9eeb;" label="En cas de requeriment:">
             		            <option <?php if ($expedientes['situacion'] === "emitirReqJust") { echo "selected";}?> value = "emitirReqJust" class="sitEjecucion"> Requeriment de justificació emetre</option>
         	    	            <option <?php if ($expedientes['situacion'] === "emitidoReqJust") { echo "selected";}?> value = "emitidoReqJust" class="sitEjecucion"> Requeriment de justificació emes</option>
@@ -315,7 +315,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
         	    	            <option <?php if ($expedientes['situacion'] === "emitirResRevocacion") { echo "selected";}?> value = "emitirResRevocacion" class="sitEjecucion"> Resolució de revocació emetre</option>
         	    	            <option <?php if ($expedientes['situacion'] === "emitidoResRevocacion") { echo "selected";}?> value = "emitidoResRevocacion" class="sitEjecucion"> Resolució de revocació emesa</option>
         	    	            <option <?php if ($expedientes['situacion'] === "revocado") { echo "selected";}?> value = "revocado" class="sitEjecucion"> Revocat</option>
-                            </optgroup>                          
+                            </optgroup>
                         </optgroup>
 			        </select>
 		        </div>

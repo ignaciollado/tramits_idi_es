@@ -1,7 +1,11 @@
 <!-- -------------------------------------- Renovacion resolución de renovación de marca con requerimiento DOC 14-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Resolució de renovació de marca amb requeriment [falta json]
+     Resolució de renovació de marca amb requeriment 
+		<?php
+			if ($base_url === "pre-tramitsidi") {?>
+				**testear** [PRE]
+		<?php }?>
   	</div>
 	<div class="card-itramits-footer">
 		<?php
@@ -48,22 +52,39 @@
 <script>
 	function generaRenovacionResolucionRenovacionConReqILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_REC = document.getElementById('fecha_REC')
-		let ref_REC = document.getElementById('ref_REC')
+		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
+		let fecha_renovacion = document.getElementById('fecha_renovacion')
+		alert ("%REFRECRENOVACION%")
+		let fecha_notif_req_renov = document.getElementById('fecha_notif_req_renov')
+		alert ("%FECHARECREQJUST%")
+		let fecha_infor_fav_renov = document.getElementById('fecha_infor_fav_renov')
+		let fecha_notificacion_renov = document.getElementById('fecha_notificacion_renov')
 
 		let btnRenResolucionRenovacionMarcaConReqILS = document.getElementById('btnRenResolucionRenovacionMarcaConReqILS')
 		let infoMissingDataDoc14ILS = document.getElementById('infoMissingDataDoc14ILS')
 		infoMissingDataDoc14ILS.innerText = ""
 
-		if(!fecha_REC.value) {
-			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Data SEU sol·licitud<br>"
+		if(!fecha_notificacion_resolucion.value) {
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Notificació resolució concessió<br>"
 			todoBien = false
 		}
-		if(!ref_REC.value) {
-			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Referència SEU sol·licitud<br>"
+		if(!fecha_renovacion.value) {
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Data renovació marca<br>"
 			todoBien = false
 		}
-		
+		if(!fecha_notif_req_renov.value) {
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Data notificació requeriment<br>"
+			todoBien = false
+		}
+		if(!fecha_infor_fav_renov.value) {
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Data informe favorable renovació<br>"
+			todoBien = false
+		}
+		if(!fecha_notificacion_renov.value) {
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Notificació renovació<br>"
+			todoBien = false
+		}
+
 		if (todoBien) {
 			infoMissingDataDoc14ILS.classList.add('ocultar')
 			btnRenResolucionRenovacionMarcaConReqILS.disabled = true

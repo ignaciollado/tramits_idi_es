@@ -1,7 +1,11 @@
 <!-- -------------------------------------- Renovacion resolución de revocació DOC 15-->
 <div class="card-itramits">
   	<div class="card-itramits-body">
-    	 Resolució de revocació [falta json]
+    	 Resolució de revocació
+			<?php
+			if ($base_url === "pre-tramitsidi") {?>
+				**testear** [PRE]
+			<?php }?>			 
   	</div>
 	<div class="card-itramits-footer">
 
@@ -50,21 +54,27 @@
 <script>
 	function generaRenovacionResolucionRevocacionILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_REC = document.getElementById('fecha_REC')
-		let ref_REC = document.getElementById('ref_REC')
+		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
+		let fecha_notif_req_renov = document.getElementById('fecha_notif_req_renov')
+		let fecha_infor_desf_renov = document.getElementById('fecha_infor_desf_renov')
 
 		let btnRenResolucionRevocacionMarcaILS = document.getElementById('btnRenResolucionRevocacionMarcaILS')
 		let infoMissingDataDoc15ILS = document.getElementById('infoMissingDataDoc15ILS')
 		infoMissingDataDoc15ILS.innerText = ""
 
-		if(!fecha_REC.value) {
-			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Data SEU sol·licitud<br>"
+		if(!fecha_notificacion_resolucion.value) {
+			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Notificació resolució concessió<br>"
 			todoBien = false
 		}
-		if(!ref_REC.value) {
-			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Referència SEU sol·licitud<br>"
+		if(!fecha_infor_desf_renov.value) {
+			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Data informe desfavorable renovació<br>"
 			todoBien = false
 		}
+		if(!fecha_notif_req_renov.value) {
+			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Data notificació requeriment<br>"
+			todoBien = false
+		}
+
 		
 		if (todoBien) {
 			infoMissingDataDoc15ILS.classList.add('ocultar')

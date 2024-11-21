@@ -5,6 +5,7 @@
 			<?php if ($base_url === "pre-tramitsidi") {?>
 				<span class="label label-warning">***testear*** [PRE]</span>
 			<?php }?>
+			<button type = "button" id="enviar-a-justificar" class = "btn btn-dark btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
   	</div>
   	<div class="card-itramits-footer">
 	  	<?php
@@ -15,8 +16,7 @@
 			<?php }?>
 
 			<span id="btn_15" class="">
-    		<a id="wrapper_ActaDeCierre" class = "btn btn-primary ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" onclick="enviaActaDeCierre()">Envia a signar l'acta</a>   
-				<button type = "button" id="enviar-a-justificar" class = "btn btn-dark btn-acto-admin" data-bs-toggle="modal" data-bs-target="#myEnviarJustificador" id="myBtnEnviarJustificador">Envia el formulari de justificació</button>
+    		<a id="wrapper_ActaDeCierre" class = "btn btn-primary ocultar btn-acto-admin" href="<?php echo base_url('public/index.php/expedientes/generaInforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_acta_de_cierre');?>" onclick="enviaActaDeCierre()">Envia a signar l'acta</a>
 			</span>	
 			<div id='infoMissingDataDoc20' class = "alert alert-danger ocultar"></div>
 		</div>
@@ -56,7 +56,6 @@
 
 		<?php }?>
 		<div id="wrapper_generaActaDeCierre" class="">
-		
     </div>
 
     <!-- The Modal para generar el acta de cierre-->

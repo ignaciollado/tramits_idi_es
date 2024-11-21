@@ -1143,8 +1143,8 @@ function enviaMailJustificacion_click() {
 				document.getElementById("mensaje").classList.remove("ocultar");
 				document.getElementById("mensaje").innerHTML = data;
 
-				const newState = "pendienteJustificar"
-				const itemID = 25
+				/* const newState = "pendienteJustificar" */
+				const itemID = 28 /*  es el ID de la situación 'Pendiente de justificar */
 				let newSituation = `/public/assets/utils/actualiza_situacion_del_expediente.php?${newState}/${idExp.value}`;
 				fetch(newSituation)
 					.then((response) => console.log(response.text()))
