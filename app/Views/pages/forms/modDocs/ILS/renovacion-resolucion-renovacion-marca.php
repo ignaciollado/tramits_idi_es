@@ -51,30 +51,29 @@
 <script>
 	function generaRenovacionResolucionRenovacionILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
-		let fecha_renovacion = document.getElementById('fecha_renovacion')
-		alert ("%REFRECRENOVACION%")
+		let fecha_resolucion = document.getElementById('fecha_resolucion')
 		let fecha_infor_fav_renov = document.getElementById('fecha_infor_fav_renov')
-		let fecha_notificacion_renov = document.getElementById('fecha_notificacion_renov')
+		let fecha_REC_justificacion_renov = document.getElementById('fecha_REC_justificacion_renov')
+		let ref_REC_justificacion_renov = document.getElementById('ref_REC_justificacion_renov')
 
 		let btnRenResolucionRenovacionMarcaILS = document.getElementById('btnRenResolucionRenovacionMarcaILS')
 		let infoMissingDataDoc13ILS = document.getElementById('infoMissingDataDoc13ILS')
 		infoMissingDataDoc13ILS.innerText = ""
 
-		if(!fecha_notificacion_resolucion.value) {
-			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Notificació resolució concessió<br>"
-			todoBien = false
-		}
-		if(!fecha_renovacion.value) {
-			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Data renovació marca<br>"
+		if(!fecha_resolucion.value) {
+			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
 		if(!fecha_infor_fav_renov.value) {
 			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Data informe favorable renovació<br>"
 			todoBien = false
 		}
-		if(!fecha_notificacion_renov.value) {
-			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Notificació renovació<br>"
+		if(!fecha_REC_justificacion_renov.value) {
+			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Data REC justificació renovació<br>"
+			todoBien = false
+		}
+		if(!ref_REC_justificacion_renov.value) {
+			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Referència REC justificació<br>"
 			todoBien = false
 		}
 	

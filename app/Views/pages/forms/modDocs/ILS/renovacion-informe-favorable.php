@@ -52,7 +52,7 @@
 <script>
 	function generaRenovacionInformeFavorableILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
+		let fecha_resolucion = document.getElementById('fecha_resolucion')
 		let fecha_resolucion_renov = document.getElementById('fecha_resolucion_renov')
 		let fecha_REC_justificacion_renov = document.getElementById('fecha_REC_justificacion_renov')
 		let ref_REC_justificacion_renov = document.getElementById('ref_REC_justificacion_renov')
@@ -60,8 +60,8 @@
 		let infoMissingDataDoc10ILS = document.getElementById('infoMissingDataDoc10ILS')
 		infoMissingDataDoc10ILS.innerText = ""
 
-		if(!fecha_notificacion_resolucion.value) {
-			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Notificació resolució concessió<br>"
+		if(!fecha_resolucion.value) {
+			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
 		if(!fecha_REC_justificacion_renov.value) {
@@ -72,10 +72,6 @@
 			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Referència REC justificació<br>"
 			todoBien = false
 		}
-/* 		if(!fecha_resolucion_renov.value) {
-			infoMissingDataDoc10ILS.innerHTML = infoMissingDataDoc10ILS.innerHTML + "Resolució de renovació<br>"
-			todoBien = false
-		} */
 
 		if (todoBien) {
 			infoMissingDataDoc10ILS.classList.add('ocultar')

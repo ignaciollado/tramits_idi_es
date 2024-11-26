@@ -43,7 +43,7 @@ return [
   '13_antecedents_1_2_3_4' => "<ol>
       <li>La marca de garantia núm. 4113843 ILS INDÚSTRIA LOCAL SOSTENIBLE (figurativa), en classes 35 i 42, va ser aprovada per l'Oficina Espanyola de Patents i Marques el 20 de desembre de 2021, i publicada la F. de concessió el 28 de desembre de 2021.</li><br>
       <li>En data %FECHARESOLUCION%, el president de l'IDI (ara ADR Balears) va emetre resolució de concessió a favor de %SOLICITANTE%, amb NIF %NIF%.</li><br>
-			<li>En data %FECHARECRENOVACION%, l'ADR Balears va rebre la sol·licitud de renovació de marca al programa ILS de l'empresa %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %REFRECRENOVACION%.</li><br>
+			<li>En data %FECHARECJUSTIFRENOVACION%, l'ADR Balears va rebre la sol·licitud de renovació de marca al programa ILS de l'empresa %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %REFRECRENOVACION%.</li><br>
 			<li>En data %FECHAINFORMEFAVRENOVACION% el/la tècnica de l'ADR Balears va emetre informe favorable a la renovació de la concessió de la marca, atès que l'empresa sol·licitant acredita el compliment dels requisits establerts en el reglament per a la renovació de la marca ILS.</li><br>",
   '13_resolucio_tit' => "<b>Resolució</b>",
 

@@ -119,10 +119,10 @@ $pdf->setY($currentY + 4);
 $parrafo_2 = lang('ILS_13_resolucion_renov_sin_req.13_antecedents_1_2_3_4');
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'],$parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'],$parrafo_2);
-$parrafo_2 = str_replace("%FECHARESOLUCION%", date_format(date_create($data['expediente']['fecha_resolucion']),"d/m/Y") ,$parrafo_2);
-$parrafo_2 = str_replace("%FECHARECRENOVACION%", date_format(date_create($data['expediente']['fecha_renovacion']),"d/m/Y") ,$parrafo_2);
-$parrafo_2 = str_replace("%REFRECRENOVACION%", "???????????????",$parrafo_2);
-$parrafo_2 = str_replace("%FECHAINFORMEFAVRENOVACION%", date_format(date_create($data['expediente']['fecha_infor_fav_renov']),"d/m/Y") ,$parrafo_2);
+$parrafo_2 = str_replace("%FECHARESOLUCION%", date_format(date_create($data['expediente']['fecha_resolucion']),"d/m/Y"),$parrafo_2);
+$parrafo_2 = str_replace("%FECHARECJUSTIFRENOVACION%", date_format(date_create($data['expediente']['fecha_REC_justificacion_renov']),"d/m/Y"),$parrafo_2);
+$parrafo_2 = str_replace("%REFRECRENOVACION%", $data['expediente']['ref_REC_justificacion_renov'],$parrafo_2);
+$parrafo_2 = str_replace("%FECHAINFORMEFAVRENOVACION%", date_format(date_create($data['expediente']['fecha_infor_fav_renov']),"d/m/Y"),$parrafo_2);
 $html = $parrafo_2;
 $pdf->writeHTML($html, true, false, true, false, '');
 
