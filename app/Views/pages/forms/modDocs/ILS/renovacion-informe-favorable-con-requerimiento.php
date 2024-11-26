@@ -83,10 +83,10 @@
 			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Referència REC justificació<br>"
 			todoBien = false
 		}
-		if(!fecha_resolucion_renov.value) {
+/* 		if(!fecha_resolucion_renov.value) {
 			infoMissingDataDoc11ILS.innerHTML = infoMissingDataDoc11ILS.innerHTML + "Resolució de renovació<br>"
 			todoBien = false
-		}
+		} */
 		
 		if (todoBien) {
 			infoMissingDataDoc11ILS.classList.add('ocultar')
