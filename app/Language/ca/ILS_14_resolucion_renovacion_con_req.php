@@ -52,8 +52,8 @@ return [
                   
   '14_resolucion_tit' => "<b>Resolució</b>",
   '14_resolucion'  => "<ol>
-      <li>Atorgar la renovació de la marca d'Indústria Local Sostenible, a favor de l'empresa %SOLICITANTE%, amb NIF %NIF%, des de data %DESDEFECHANOTRESRENOVACION% fins a %HASTAFECHANOTRESRENOVACION%.</li><br>
-      <li>S'informa que l'empresa ha de complir les obligacions i condicions d'ús de la marca establertes a l'article 10 del Reglament d'ús de la marca de garantia Indústria Local Sostenible i que la variació o alteració de qualsevol del requisits de la marca s'ha de comunicar a l'ADR Balears. Tal com estableix l'article 11 del Reglament de la marca, la renovació de la marca es realitzarà sempre que es mantinguin inalterables les condicions i el compliment dels requisits amb els quals es va concedir l'autorització d'ús.</li><br>	     
+      <li>Atorgar la renovació de la marca d'Indústria Local Sostenible, a favor de l'empresa %SOLICITANTE%, amb NIF %NIF%, des de %DESDEFECHAINFFAVRENOVACION% fins a %HASTAFECHAINFFAVRENOVACION%.</li><br>
+		  <li>S'informa que l'empresa ha de complir les obligacions i condicions d'ús de la marca establertes a l'article 10 del Reglament d'ús de la marca de garantia Indústria Local Sostenible, i que la variació o alteració de qualsevol del requisits de la marca s'ha de comunicar a l'ADR Balears. Tal com estableix l'article 11 del Reglament de la marca, la renovació de la marca es realitzarà sempre que es mantinguin inalterables les condicions i el compliment dels requisits amb els quals es va concedir l'autorització d'ús.</li><br>
       <li>Aquesta Resolució es notificarà al beneficiari.</li></ol>",
 
   '14_recursos_tit'   => "<b>Interposició de recursos</b>",

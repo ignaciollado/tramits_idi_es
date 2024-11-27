@@ -22,6 +22,8 @@
 	$data['configuracion'] = $configuracion->where('convocatoria_activa', 1)->first();
 	$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ILS', $data['configuracion']['convocatoria']);
 	$data['expedientes'] = $modelExp->where('id', $id)->first();
+
+	$base_url = $_SERVER['USER'];
 ?>
 
 <section>
@@ -73,6 +75,13 @@
 						<input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_CompromisoReduccion" name = "file_CompromisoReduccion[]" required size = "20" accept = ".pdf" multiple />
 					</div>
 				</div>
+			</div>
+			<div class='panel-justificacion'>
+				<?php if ($base_url == 'pre-tramitsidi') {;?>
+					<a href='https://pre-tramits.idi.es/public/assets/docs_logos_ils/formulario-ils-compromiso-reduccion.pdf' target="_blank" title="CLICK to open pdf form"><?php echo lang('message_lang.justificacion_formulario_red_emis');?></a>
+				<?php } else {?>
+					<a href='https://tramits.idi.es/public/assets/docs_logos_ils/formulario-ils-compromiso-reduccion.pdf' target="_blank" title="CLICK to open pdf form"><?php echo lang('message_lang.justificacion_formulario_red_emis');?></a>
+				<?php }?>
 			</div>
 	</fieldset>
 

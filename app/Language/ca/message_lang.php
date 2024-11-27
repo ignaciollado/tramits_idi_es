@@ -57,7 +57,6 @@ return [
    'justificacion_facturas_isba'                 => "Còpia de les factures",
    'justificacion_justificantes_pago_isba'       => "Còpia dels justificants de pagament",
 
-
    'asistente_de_tramitacion'      => 'Assistent de tramitació',
    'btn_next'                      => 'Següent',
    'btn_previous'                  => 'Anterior',
@@ -193,6 +192,7 @@ municipi.",
    'justificacion_plan_doc'           => "Memòria tècnica d'actuació: El <strong>pla o informe</strong> d'acord amb el programa que justifico",
    'justificacion_informe_calculo'    => "Els informes de càlcul de petjada de carboni",
    'justificacion_comprimiso_reduccion' => "Compromís de reducció de les emissions",
+   'justificacion_formulario_red_emis' => "Aqui podeu descarregar el formulari pdf del 'Compromís de reducció de la petjada de carboni'",
    'justificacion_plan_p2_p3'         => "El pla o els informes",
    'justificacion_mem_econom_titulo'  => "Memòria econòmica justificativa",
    'justificacion_mem_econom'         => "Memòria econòmica justificativa (annex 7) juntament amb",

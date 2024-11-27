@@ -186,6 +186,7 @@ return [
    'justificacion_plan_doc'           => "Memoria técnica de actuación: El <strong>plan o informe</strong> de acuerdo con el programa que justifico",
    'justificacion_informe_calculo'    => "Los informes de cálculo de la huella de carbono",
    'justificacion_comprimiso_reduccion' => "Compromiso de reducción de las emisiones",
+   'justificacion_formulario_red_emis' => "Aquí puede descargar el formulario pdf del 'Compromís de reducció de la petjada de carboni'",
 
    'justificacion_plan_p2_p3'         => "El plan o los informes",
    'justificacion_mem_econom_titulo'  => "Memoria económica justificativa",
