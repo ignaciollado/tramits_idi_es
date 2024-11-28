@@ -2071,8 +2071,8 @@ class Expedientes extends Controller
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/ILS/pdf/plt-renovacion-resolucion-revocacion-marca-ils', $data);
-				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				//echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				//echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);						
 				break;				
 		}

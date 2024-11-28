@@ -51,13 +51,16 @@ return [
       <li>En data %FECHAINFORMEFAVRENOVACION% el/la tècnica de l'ADR Balears va emetre informe favorable a la renovació de la concessió de la marca, atès que l'empresa sol·licitant acredita el compliment dels requisits establerts en el reglament per a la renovació de la marca ILS.</li><br>",
                   
   '14_resolucion_tit' => "<b>Resolució</b>",
+
   '14_resolucion'  => "<ol>
-      <li>Atorgar la renovació de la marca d'Indústria Local Sostenible, a favor de l'empresa %SOLICITANTE%, amb NIF %NIF%, des de %DESDEFECHAINFFAVRENOVACION% fins a %HASTAFECHAINFFAVRENOVACION%.</li><br>
-		  <li>S'informa que l'empresa ha de complir les obligacions i condicions d'ús de la marca establertes a l'article 10 del Reglament d'ús de la marca de garantia Indústria Local Sostenible, i que la variació o alteració de qualsevol del requisits de la marca s'ha de comunicar a l'ADR Balears. Tal com estableix l'article 11 del Reglament de la marca, la renovació de la marca es realitzarà sempre que es mantinguin inalterables les condicions i el compliment dels requisits amb els quals es va concedir l'autorització d'ús.</li><br>
-      <li>Aquesta Resolució es notificarà al beneficiari.</li></ol>",
+			<li>Atorgar la renovació de la marca d'Indústria Local Sostenible, a favor de l'empresa %SOLICITANTE%, amb NIF %NIF%, des de %DESDEFECHANOTRESRENOVACION% fins a %HASTAFECHANOTRESRENOVACION%.</li><br>
+			<li>S'informa que l'empresa ha de complir les obligacions i condicions d'ús de la marca establertes a l'article 10 del Reglament d'ús de la marca de garantia Indústria Local Sostenible, i que la variació o alteració de qualsevol del requisits de la marca s'ha de comunicar a l'ADR Balears. Tal com estableix l'article 11 del Reglament de la marca, la renovació de la marca es realitzarà sempre que es mantinguin inalterables les condicions i el compliment dels requisits amb els quals es va concedir l'autorització d'ús.</li><br>
+			<li>Aquesta Resolució es notificarà al beneficiari.</li></ol>",
 
   '14_recursos_tit'   => "<b>Interposició de recursos</b>",
+
   '14_recursos'       => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
-    <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
-  '14_firma' => "Palma, en data de la signatura electrònica<br><br>El president de l'ADR Balears<br><br>Alejandro Sáenz de San Pedro García<br>"
+			<p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
+  
+'14_firma' => "Palma, en data de la signatura electrònica<br><br>El president de l'ADR Balears<br><br>Alejandro Sáenz de San Pedro García<br>"
 ];

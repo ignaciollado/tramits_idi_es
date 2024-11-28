@@ -44,7 +44,10 @@
 				$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
 			}
 			echo $estado_firma;
-			}	?>
+			}	
+			if (isset($tieneDocumentosGenerados)) {?>
+				<a class='btn btn-warning btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_renovacion_resolucion_renovacion_marca_con_req_ils');?>" target = "_self"><i class='fa fa-check'></i>La resolució <br>amb <br>requeriment</a>		
+			<?php }?>
   </div>	
 
 </div>
@@ -54,6 +57,7 @@
 		let todoBien = true
 		let fecha_resolucion = document.getElementById('fecha_resolucion')
 		let fecha_infor_fav_renov = document.getElementById('fecha_infor_fav_renov')
+		let fecha_notif_req_renov = document.getElementById('fecha_notif_req_renov')
 		let fecha_REC_justificacion_renov = document.getElementById('fecha_REC_justificacion_renov')
 		let ref_REC_justificacion_renov = document.getElementById('ref_REC_justificacion_renov')
 
@@ -62,19 +66,23 @@
 		infoMissingDataDoc14ILS.innerText = ""
 
 		if(!fecha_resolucion.value) {
-			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Firma resolució<br>"
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
+		if(!fecha_notif_req_renov.value) {
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Data notificació requeriment<br>"
+			todoBien = false
+		}		
 		if(!fecha_infor_fav_renov.value) {
-			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Data informe favorable renovació<br>"
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Data informe favorable renovació<br>"
 			todoBien = false
 		}
 		if(!fecha_REC_justificacion_renov.value) {
-			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Data REC justificació renovació<br>"
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Data REC justificació renovació<br>"
 			todoBien = false
 		}
 		if(!ref_REC_justificacion_renov.value) {
-			infoMissingDataDoc13ILS.innerHTML = infoMissingDataDoc13ILS.innerHTML + "Referència REC justificació<br>"
+			infoMissingDataDoc14ILS.innerHTML = infoMissingDataDoc14ILS.innerHTML + "Referència REC justificació<br>"
 			todoBien = false
 		}
 

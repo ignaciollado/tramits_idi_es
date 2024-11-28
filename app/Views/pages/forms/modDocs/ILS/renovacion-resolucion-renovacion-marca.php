@@ -44,7 +44,10 @@
 				$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
 			}
 			echo $estado_firma;
-			}	?>
+			}	
+			if (isset($tieneDocumentosGenerados)) {?>
+				<a class='btn btn-warning btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_renovacion_resolucion_renovacion_marca_ils');?>" target = "_self"><i class='fa fa-check'></i>La resolució</a>		
+			<?php }?>
   </div>
 </div>
 <!------------------------------------------------------------------------------------------------------>

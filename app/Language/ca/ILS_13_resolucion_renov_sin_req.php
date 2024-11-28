@@ -41,36 +41,21 @@ return [
   '13_fets_tit' => "<b>Antecedents</b>",
 
   '13_antecedents_1_2_3_4' => "<ol>
-      <li>La marca de garantia núm. 4113843 ILS INDÚSTRIA LOCAL SOSTENIBLE (figurativa), en classes 35 i 42, va ser aprovada per l'Oficina Espanyola de Patents i Marques el 20 de desembre de 2021, i publicada la F. de concessió el 28 de desembre de 2021.</li><br>
-      <li>En data %FECHARESOLUCION%, el president de l'IDI (ara ADR Balears) va emetre resolució de concessió a favor de %SOLICITANTE%, amb NIF %NIF%.</li><br>
-			<li>En data %FECHARECJUSTIFRENOVACION%, l'ADR Balears va rebre la sol·licitud de renovació de marca al programa ILS de l'empresa %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %REFRECRENOVACION%.</li><br>
-			<li>En data %FECHAINFORMEFAVRENOVACION% el/la tècnica de l'ADR Balears va emetre informe favorable a la renovació de la concessió de la marca, atès que l'empresa sol·licitant acredita el compliment dels requisits establerts en el reglament per a la renovació de la marca ILS.</li><br>",
-  '13_resolucio_tit' => "<b>Resolució</b>",
+    <li>La marca de garantia núm. 4113843 ILS INDÚSTRIA LOCAL SOSTENIBLE (figurativa), en classes 35 i 42, va ser aprovada per l'Oficina Espanyola de Patents i Marques el 20 de desembre de 2021, i publicada la F. de concessió el 28 de desembre de 2021.</li><br>
+    <li>En data %FECHARESOLUCION%, el president de l'IDI (ara ADR Balears) va emetre resolució de concessió a favor de %SOLICITANTE%, amb NIF %NIF%.</li><br>
+		<li>En data %FECHARECJUSTIFRENOVACION%, l'ADR Balears va rebre la sol·licitud de renovació de marca al programa ILS de l'empresa %SOLICITANTE%, amb NIF %NIF% i amb registre d'entrada núm. %REFRECRENOVACION%.</li><br>
+		<li>En data %FECHAINFORMEFAVRENOVACION% el/la tècnica de l'ADR Balears va emetre informe favorable a la renovació de la concessió de la marca, atès que l'empresa sol·licitant acredita el compliment dels requisits establerts en el reglament per a la renovació de la marca ILS.</li><br>",
 
-  '13_fundamentosDeDerechoTxt' => "<ol>
-      <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
-      <li>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</li><br>
-      <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><br>
-      <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
-    </ol>",
-  '13_fundamentosDeDerechoTxt_2' => "
-      <li>La Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</li><br>
-      <li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2021-2023, aprovat per l'Acord del Consell de Govern de dia 20 de desembre de 2021 (BOIB núm. 175, de 23 de desembre) i prorrogat fins que s'aprovi i desplegui els efectes el nou Pla Estratègic de Subvencions. En concret està especificat a l'objectiu III.2.2 destinat a impulsar la indústria de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat.</li><br>
-      <li>El Decret 6/2013, de 8 de febrer, de mesures de simplificació documental en els procediments administratius (BOIB núm. 21, de 12 de febrer).</li><br>
-      <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
-      <li>L'Ordre de la consellera de Comerç, Indústria i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria de promoció industrial (BOIB núm. 52, de 17 d'abril de 2008).</li>
-    ",
-  '13_dicto' => "Per tot això, dict la següent",
+  '13_resolucion_tit' => "<b>Resolució</b>",
 
-  '13_resolucio_tit' => "<b>Resolució</b>",
-
-  '13_resolucio' => "<ol>
-      <li>Atorgar la renovació de la marca d'Indústria Local Sostenible, a favor de l'empresa %SOLICITANTE%, amb NIF %NIF%, des de %DESDEFECHAINFFAVRENOVACION% fins a %HASTAFECHAINFFAVRENOVACION%.</li><br>
-		  <li>S'informa que l'empresa ha de complir les obligacions i condicions d'ús de la marca establertes a l'article 10 del Reglament d'ús de la marca de garantia Indústria Local Sostenible, i que la variació o alteració de qualsevol del requisits de la marca s'ha de comunicar a l'ADR Balears. Tal com estableix l'article 11 del Reglament de la marca, la renovació de la marca es realitzarà sempre que es mantinguin inalterables les condicions i el compliment dels requisits amb els quals es va concedir l'autorització d'ús.</li><br>
-      <li>Aquesta Resolució es notificarà al beneficiari.</li></ol>",
+  '13_resolucion' => "<ol>
+    <li>Atorgar la renovació de la marca d'Indústria Local Sostenible, a favor de l'empresa %SOLICITANTE%, amb NIF %NIF%, des de %DESDEFECHANOTRESRENOVACION% fins a %HASTAFECHANOTRESRENOVACION%.</li><br>
+		<li>S'informa que l'empresa ha de complir les obligacions i condicions d'ús de la marca establertes a l'article 10 del Reglament d'ús de la marca de garantia Indústria Local Sostenible, i que la variació o alteració de qualsevol del requisits de la marca s'ha de comunicar a l'ADR Balears. Tal com estableix l'article 11 del Reglament de la marca, la renovació de la marca es realitzarà sempre que es mantinguin inalterables les condicions i el compliment dels requisits amb els quals es va concedir l'autorització d'ús.</li><br>
+		<li>Aquesta Resolució es notificarà al beneficiari.</li></ol>",
 
   '13_recursos_tit' => "<b>Interposició de recursos</b>",
-  '13_recursos'   => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Institut d'Innovació Empresarial de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
-                <p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
-  '13_firma' => "Palma, en data de la signatura electrònica<br><br>El President de l'ADR Balears<br><br>Alejandro Sáenz de San Pedro García<br>"
+  '13_recursos'   => "<p>Contra aquesta Resolució, que exhaureix la via administrativa, es pot interposar un recurs potestatiu de reposició davant el president de l'Agència de Desenvolupament Regional de les Illes Balears (ADR Balears) en el termini d'un mes comptador des de l'endemà de la notificació, d'acord amb l'article 124 de la Llei 39/2015, d'1 d'octubre, del procediment administratiu comú de les administracions públiques, i l'article 57 de la Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</p>
+			<p>També es pot interposar directament un recurs contenciós administratiu davant la Sala Contenciosa Administrativa del Tribunal Superior de Justícia de les Illes Balears en el termini de dos mesos comptadors des de l'endemà de la notificació, d'acord amb l'article 46 de la Llei 29/1998, de 13 de juliol, reguladora de la jurisdicció contenciosa administrativa.</p>",
+  
+'13_firma' => "Palma, en data de la signatura electrònica<br><br>El President de l'ADR Balears<br><br>Alejandro Sáenz de San Pedro García<br>"
 ];

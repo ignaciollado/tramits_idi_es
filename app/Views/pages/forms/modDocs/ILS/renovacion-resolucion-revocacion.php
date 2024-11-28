@@ -46,24 +46,25 @@
 				$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i>Desconegut</div>";
 			}
 			echo $estado_firma;
-			}	?>
-  </div>
-
+			}	
+			if (isset($tieneDocumentosGenerados)) {?>
+				<a class='btn btn-warning btn-acto-admin' href="<?php echo base_url('public/index.php/expedientes/muestrainforme/'.$id.'/'.$convocatoria.'/'.$programa.'/'.$nifcif.'/doc_renovacion_resolucion_revocacion_ils');?>" target = "_self"><i class='fa fa-check'></i>La revocació</a>		
+			<?php }?>
+</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
 	function generaRenovacionResolucionRevocacionILS (id, convocatoria, programa, nifcif) {
 		let todoBien = true
-		let fecha_notificacion_resolucion = document.getElementById('fecha_notificacion_resolucion')
+		let fecha_resolucion = document.getElementById('fecha_resolucion')
 		let fecha_notif_req_renov = document.getElementById('fecha_notif_req_renov')
 		let fecha_infor_desf_renov = document.getElementById('fecha_infor_desf_renov')
-
 		let btnRenResolucionRevocacionMarcaILS = document.getElementById('btnRenResolucionRevocacionMarcaILS')
 		let infoMissingDataDoc15ILS = document.getElementById('infoMissingDataDoc15ILS')
 		infoMissingDataDoc15ILS.innerText = ""
 
-		if(!fecha_notificacion_resolucion.value) {
-			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Notificació resolució concessió<br>"
+		if(!fecha_resolucion.value) {
+			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Firma resolució<br>"
 			todoBien = false
 		}
 		if(!fecha_infor_desf_renov.value) {
@@ -74,8 +75,6 @@
 			infoMissingDataDoc15ILS.innerHTML = infoMissingDataDoc15ILS.innerHTML + "Data notificació requeriment<br>"
 			todoBien = false
 		}
-
-		
 		if (todoBien) {
 			infoMissingDataDoc15ILS.classList.add('ocultar')
 			btnRenResolucionRevocacionMarcaILS.disabled = true

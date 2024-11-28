@@ -118,12 +118,11 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $parrafo_1 = lang('ILS_15_resolucion_revocacion.15_antecedents_1_2_3_4');
-$parrafo_1 = str_replace("%FECHARESOLUCION%", date_format(date_create($data['expediente']['fecha_notificacion_resolucion']),"d/m/Y") ,$parrafo_1);
+$parrafo_1 = str_replace("%FECHARESOLUCION%", date_format(date_create($data['expediente']['fecha_resolucion']),"d/m/Y") ,$parrafo_1);
 $parrafo_1 = str_replace("%FECHANOTREQ%", date_format(date_create($data['expediente']['fecha_notif_req_renov']),"d/m/Y") ,$parrafo_1);
 $parrafo_1 = str_replace("%FECHAINFDESRENOVACION%", date_format(date_create($data['expediente']['fecha_infor_desf_renov']),"d/m/Y") ,$parrafo_1);
 $parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
 $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
-$parrafo_1 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_1);
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
