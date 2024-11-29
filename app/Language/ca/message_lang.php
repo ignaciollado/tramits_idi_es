@@ -127,7 +127,7 @@ return [
    'intro_ils'			              => "Les indústries interessades a adherir-se al programa han d'emplenar el següent formulari de sol·licitud d'adhesió",
    'intro_ils_solicitud'			  => "Sol·licitud per a la concessió de la marca Indústria Local Sostenible",
    'renovacion_marca_ils'          => "Renovació de la marca ILS",
-   'intro_pdf_renovacion_marca_ils' => "Sol·licitud de renovació de la marca Indústria Local Sostenible (ILS) de l'Agència de desenvolupament regional dels Illes Balears",
+   'intro_pdf_renovacion_marca_ils' => "Sol·licitud de renovació de la marca Indústria Local Sostenible (ILS) de l'Agència de desenvolupament regional dels Illes Balears.",
    'intro_renovacion_marca_ils'    => "Formulari per a la renovació de la marca ILS",
    'renovacion_marca_ils_declaracion' => "aporta la documentació que acredita la reducció de les emissions de gasos d’efecte hivernacle per a la renovació a l’adhesió de la marca de garantia Indústria Local Sostenible (ILS)",
    
@@ -244,7 +244,7 @@ municipi.",
 
    'tel_rep_legal_sol_idigital' 	     => "Telèfon mòbil del sol·licitant o del representant",
    
-   'nom_rep_legal_sol_idigital'       => "Nombre del representant legal",
+   'nom_rep_legal_sol_idigital'       => "Nom del representant legal",
    'nif_rep_legal_sol_idigital'       => "DNI del representant legal",
    'direccion_rep_legal_sol_idigital' => "Adreça del representant legal",
    'cp_sol_rep_legal_idigital'         => "Còdi postal del representant legal",
