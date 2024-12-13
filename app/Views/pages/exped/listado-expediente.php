@@ -121,23 +121,28 @@
                             </optgroup>                          
                         </optgroup>
 						<?php } else {?>
-						<optgroup class="sitSolicitud_cab_ils" label="Fase sol·licitud:">
-                           	<option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud_ils"> No ha passat per la <span class="seu-elect">SEU</span></option>
-                           	<option <?php if ($session->get('situacion_fltr') === "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud_ils"> Pendent de validar</option>
-                           	<option <?php if ($session->get('situacion_fltr') === "reqFirmado") { echo "selected";}?> value = "reqFirmado" class="sitSolicitud_ils"> Requeriment signat</option>
-                           	<option <?php if ($session->get('situacion_fltr') === "reqNotificado") { echo "selected";}?> value = "reqNotificado" class="sitSolicitud_ils"> Requeriment notificat + 30 dies per subsanar</option>
+						<optgroup class="solicitud_tab" label="Fase sol·licitud:">
+                           	<option <?php if ($session->get('situacion_fltr') === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitEjecucion_ils"> No ha passat per la <span class="seu-elect">SEU</span></option>
+                           	<option <?php if ($session->get('situacion_fltr') === "pendiente") { echo "selected";}?> value = "pendiente" class="sitEjecucion_ils"> Pendent de validar</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "reqFirmado") { echo "selected";}?> value = "reqFirmado" class="sitEjecucion_ils"> Requeriment signat</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "reqNotificado") { echo "selected";}?> value = "reqNotificado" class="sitEjecucion_ils"> Requeriment notificat + 30 dies per subsanar</option>
                         </optgroup>
-						<optgroup class="sitAdhesion_cab_ils" label="Fase adhesió:">
-                           	<option <?php if ($session->get('situacion_fltr') === "ifResolucionEmitida") { echo "selected";}?> value = "ifResolucionEmitida" class="sitAdhesion_ils"> IF + resolució emesa</option>
-                           	<option <?php if ($session->get('situacion_fltr') === "ifResolucionEnviada") { echo "selected";}?> value = "ifResolucionEnviada" class="sitAdhesion_ils"> IF + resolució enviada</option>
-                           	<option <?php if ($session->get('situacion_fltr') === "ifResolucionNotificada") { echo "selected";}?> value = "ifResolucionNotificada" class="sitAdhesion_ils"> IF + resolución notificada</option>
-                           	<option <?php if ($session->get('situacion_fltr') === "empresaAdherida") { echo "selected";}?> value = "empresaAdherida" class="sitAdhesion_ils"> Empresa adherida</option>
+						<optgroup class="validacion_tab " label="Fase adhesió:">
+                           	<option <?php if ($session->get('situacion_fltr') === "ifResolucionEmitida") { echo "selected";}?> value = "ifResolucionEmitida" class="sitEjecucion_ils"> IF + resolució emesa</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "ifResolucionEnviada") { echo "selected";}?> value = "ifResolucionEnviada" class="sitEjecucion_ils"> IF + resolució enviada</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "ifResolucionNotificada") { echo "selected";}?> value = "ifResolucionNotificada" class="sitEjecucion_ils"> IF + resolución notificada</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "empresaAdherida") { echo "selected";}?> value = "empresaAdherida" class="sitEjecucion_ils"> Empresa adherida</option>
                         </optgroup>
-						<optgroup class="sitEjecucion_cab_ils" label="Fase seguiment:">
+						<optgroup class="ejecucion_tab" label="Fase seguiment:">
                            	<option <?php if ($session->get('situacion_fltr') === "idResolucionDenegacionEmitida") { echo "selected";}?> value = "idResolucionDenegacionEmitida" class="sitEjecucion_ils"> ID + resolució denegació emesa</option>
                            	<option <?php if ($session->get('situacion_fltr') === "idResolucionDenegacionEnviada") { echo "selected";}?> value = "idResolucionDenegacionEnviada" class="sitEjecucion_ils"> ID + resolución denegació enviada</option>
                            	<option <?php if ($session->get('situacion_fltr') === "idResolucionDenegacionNotificada") { echo "selected";}?> value = "idResolucionDenegacionNotificada" class="sitEjecucion_ils"> ID + resolució denegació notificada</option>
                            	<option <?php if ($session->get('situacion_fltr') === "empresaDenegada") { echo "selected";}?> value = "empresaDenegada" class="sitEjecucion_ils"> Empresa denegada</option>
+                        </optgroup>
+						<optgroup class="justificacion_tab" label="Fase renovació:">
+														<option <?php if ($expedientes['situacion_fltr'] === "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion_ils"> Pendent de justificar</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "justificantGOIB") { echo "selected";}?> value = "justificantGOIB" class="sitEjecucion_ils"> Rebut justificant de distribució GOIB</option>
+                           	<option <?php if ($session->get('situacion_fltr') === "adhesionRenovada") { echo "selected";}?> value = "adhesionRenovada" class="sitEjecucion_ils"> Adhesió renovada</option>
                         </optgroup>
 						<?php }?>
 			        </select>
@@ -551,6 +556,12 @@ else if ($item['situacion'] == "idResolucionDenegacionNotificada") {
 }
 else if ($item['situacion'] == "empresaDenegada") {
 	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits seguimiento-lbl-final"><span title="Aquesta sol·licitud s´ha denegat l´adhesió"><strong>Adhesió Denegada</strong></span></div>';
+}
+else if ($item['situacion'] == "justificantGOIB") {
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits justificacion_tab"><span title="Rebut justificant de distribució GOIB"><strong>Rebut justificant<br>de<br>distribució GOIB</strong></span></div>';
+}
+else if ($item['situacion'] == "adhesionRenovada") {
+	echo '<div  id="'.$item['id'].'"  class = "btn btn-itramits justificacion_tab_final"><span title="Adhesió renovada"><strong>Adhesió Renovada</strong></span></div>';
 }
 /* ------------------------- fin estados propios de ILS -------------------------------------- */
 

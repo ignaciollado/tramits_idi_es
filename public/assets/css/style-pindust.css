@@ -1448,10 +1448,9 @@ span.export {
 
 .header-wrapper-docs-4 {
 	display: grid;
-	grid-template-columns: 40% 40% 10% 10%;
+	grid-template-columns: 25% 55% 10% 10%;
 	padding: .4rem;
 	width: 100%;
-	color: #fff;
 }
 
 .header-wrapper-docs-solicitud {
@@ -1465,12 +1464,13 @@ span.export {
 	background-color: #6d9eeb;
 	color: #000!important;
 }
+
 .header-wrapper-docs-justificacion {
 	display: inline-grid;
-	grid-template-columns: 20% 60% 20%;
+	grid-template-columns: 25% 55% 10% 10%;
 	padding: .4rem;
 	width: 100%;
-	color: #fff;
+	color: #000;
 	font-size: 1.3rem;
 }
 .header-wrapper-docs-desestimiento {
@@ -1511,7 +1511,7 @@ span.export {
 
 .detail-wrapper-docs-4 {
 	display: grid;
-  	grid-template-columns: 40% 40% 10% 10%;
+  	grid-template-columns: 25% 55% 10% 10%;
   	padding: .4rem;
 	width: 100%;
 }
@@ -1527,7 +1527,7 @@ span.export {
 	background-color: #00ff00;
 }
 .detail-wrapper-docs-validacion-ils {
-	background-color: #1ecbe1;
+	background-color: rgb(178, 60, 253);
   }
 
 .detail-wrapper-docs-ejecucion {
@@ -1589,6 +1589,7 @@ span.export {
 
 .detail-wrapper-docs-col {
   background-color: rgba(255, 255, 255, 0.8);
+	color: #000;
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: .1rem;
   font-size: 1rem;
@@ -1699,6 +1700,11 @@ code {
         background-color: #f37020!important;
         color: #fff;
     }
+		.justificacion_tab_final {
+			background-color: #f37020!important;
+			color: #fff;
+			border: 5px solid #fff;
+	}
     .deses_ren_tab {
         background-color: #782400!important;
         color: #fff;

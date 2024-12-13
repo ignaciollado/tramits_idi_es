@@ -128,26 +128,29 @@
                         <label for = "situacion_exped"><strong>Situació:</strong></label>
 	        		    <select class="form-control send_fase_0" id = "situacion_exped" name = "situacion_exped" required onChange="avisarCambiosEnFormulario('send_fase_0', this.id)">
     		    		<option disabled <?php if ($expedientes['situacion'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
-                        <optgroup class="sitSolicitud_cab_ils" label="Fase sol·licitud:">
-                           	<option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitSolicitud_ils"> No ha passat pel REC</option>
-                           	<option <?php if ($expedientes['situacion'] === "pendiente") { echo "selected";}?> value = "pendiente" class="sitSolicitud_ils"> Pendent de validar</option>
-                           	<option <?php if ($expedientes['situacion'] === "reqFirmado") { echo "selected";}?> value = "reqFirmado" class="sitSolicitud_ils"> Requeriment signat</option>
-                           	<option <?php if ($expedientes['situacion'] === "reqNotificado") { echo "selected";}?> value = "reqNotificado" class="sitSolicitud_ils"> Requeriment notificat + 30 dies per subsanar</option>
+                        <optgroup class="solicitud_tab" label="Sol·licitud:">
+                           	<option <?php if ($expedientes['situacion'] === "nohapasadoREC") { echo "selected";}?> value = "nohapasadoREC" class="sitEjecucion_ils"> No ha passat pel REC</option>
+                           	<option <?php if ($expedientes['situacion'] === "pendiente") { echo "selected";}?> value = "pendiente" class="sitEjecucion_ils"> Pendent de validar</option>
+                           	<option <?php if ($expedientes['situacion'] === "reqFirmado") { echo "selected";}?> value = "reqFirmado" class="sitEjecucion_ils"> Requeriment signat</option>
+                           	<option <?php if ($expedientes['situacion'] === "reqNotificado") { echo "selected";}?> value = "reqNotificado" class="sitEjecucion_ils"> Requeriment notificat + 30 dies per subsanar</option>
                         </optgroup>
-						<optgroup class="sitAdhesion_cab_ils" label="Fase adhesió:">
-                           	<option <?php if ($expedientes['situacion'] === "ifResolucionEmitida") { echo "selected";}?> value = "ifResolucionEmitida" class="sitAdhesion_ils"> IF + resolució emesa</option>
-                           	<option <?php if ($expedientes['situacion'] === "ifResolucionEnviada") { echo "selected";}?> value = "ifResolucionEnviada" class="sitAdhesion_ils"> IF + resolució enviada</option>
-                           	<option <?php if ($expedientes['situacion'] === "ifResolucionNotificada") { echo "selected";}?> value = "ifResolucionNotificada" class="sitAdhesion_ils"> IF + resolución notificada</option>
-                           	<option <?php if ($expedientes['situacion'] === "empresaAdherida") { echo "selected";}?> value = "empresaAdherida" class="sitAdhesion_ils"> Empresa adherida</option>
+						<optgroup class="validacion_tab" label="Adhesió:">
+                           	<option <?php if ($expedientes['situacion'] === "ifResolucionEmitida") { echo "selected";}?> value = "ifResolucionEmitida" class="sitEjecucion_ils"> IF + resolució emesa</option>
+                           	<option <?php if ($expedientes['situacion'] === "ifResolucionEnviada") { echo "selected";}?> value = "ifResolucionEnviada" class="sitEjecucion_ils"> IF + resolució enviada</option>
+                           	<option <?php if ($expedientes['situacion'] === "ifResolucionNotificada") { echo "selected";}?> value = "ifResolucionNotificada" class="sitEjecucion_ils"> IF + resolución notificada</option>
+                           	<option <?php if ($expedientes['situacion'] === "empresaAdherida") { echo "selected";}?> value = "empresaAdherida" class="sitEjecucion_ils"> Empresa adherida</option>
                         </optgroup>
-						<optgroup class="sitEjecucion_cab_ils" label="Fase seguiment:">
+						<optgroup class="ejecucion_tab" label="Seguiment:">
                            	<option <?php if ($expedientes['situacion'] === "idResolucionDenegacionEmitida") { echo "selected";}?> value = "idResolucionDenegacionEmitida" class="sitEjecucion_ils"> ID + resolució denegació emesa</option>
                            	<option <?php if ($expedientes['situacion'] === "idResolucionDenegacionEnviada") { echo "selected";}?> value = "idResolucionDenegacionEnviada" class="sitEjecucion_ils"> ID + resolución denegació enviada</option>
                            	<option <?php if ($expedientes['situacion'] === "idResolucionDenegacionNotificada") { echo "selected";}?> value = "idResolucionDenegacionNotificada" class="sitEjecucion_ils"> ID + resolució denegació notificada</option>
                            	<option <?php if ($expedientes['situacion'] === "empresaDenegada") { echo "selected";}?> value = "empresaDenegada" class="sitEjecucion_ils"> Empresa denegada</option>
                         </optgroup>
-                        <optgroup style="background-color:#f37020;color:#000;" label="Fase renovació marca:">
+                        <optgroup class="justificacion_tab" label="Renovació marca:">
                             <option <?php if ($expedientes['situacion'] === "pendienteJustificar") { echo "selected";}?> value = "pendienteJustificar" class="sitEjecucion_ils"> Pendent de justificar</option>
+                            <option <?php if ($expedientes['situacion'] === "justificantGOIB") { echo "selected";}?> value = "justificantGOIB" class="sitEjecucion_ils"> Rebut justificant de distribució GOIB</option>
+                            <option <?php if ($expedientes['situacion'] === "adhesionRenovada") { echo "selected";}?> value = "adhesionRenovada" class="sitEjecucion_ils"> Adhesió renovada</option>
+
                         </optgroup>                        
 			            </select>
 		            </div>
@@ -1040,7 +1043,7 @@
         
         <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
-                <div class = "header-wrapper-docs header-wrapper-docs-solicitud">
+                <div class = "header-wrapper-docs-justificacion">
                     <div >Pujat el</div>
                     <div >Document</div>
                     <div >Estat</div>               
@@ -1055,10 +1058,10 @@
                                 $tipoMIME = $docSolicitud_item->type;
                                 $nom_doc = $docSolicitud_item->name;
                     ?>
-                    <div id ="fila" class = "detail-wrapper-docs detail-wrapper-docs-justificacion">
+                    <div id ="fila" class = "detail-wrapper-docs-4 justificacion_tab">
                         <span id = "fechaComletado" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " / ", $docSolicitud_item->selloDeTiempo); ?></span>	
                         <span id = "convocatoria" class = "detail-wrapper-docs-col"><a	title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docSolicitud_item->name.'/'.$docSolicitud_item->cifnif_propietario.'/'.$docSolicitud_item->selloDeTiempo.'/'.$tipoMIME);?>" target = "_self"><?php echo $nom_doc;?></a></span>
-                       <?php
+                        <?php
                             switch ($docSolicitud_item->estado) {
 				                case 'Pendent':
     					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
@@ -1073,10 +1076,10 @@
     					            $estado_doc = '<button  id="'.$docSolicitud_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDoc(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                            <span class = "detail-wrapper-docs-col">
-                                <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><strong>Elimina</strong></button>
-                            </span>	
+                        <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                        <span class = "detail-wrapper-docs-col">
+                            <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><strong>Elimina</strong></button>
+                        </span>	
                     </div>
                 <?php }
                     endforeach; ?>
@@ -1111,7 +1114,7 @@
                     else {?>
                     <div class = "content-file-upload">
                         <div>
-                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedJustificacion[]" id="file_faseExpedJustificacion" size="20" accept=".zip" multiple />
+                            <input class="fileLoader" type="file" class = "btn btn-secondary btn-lg btn-block btn-docs" required name="file_faseExpedRenovacion[]" id="file_faseExpedJustificacion" size="20" accept=".zip" multiple />
                         </div>
                         <div>
                             <input id="subeDocsJustificacionBtn" type="submit" class = "btn btn-success btn-lg btn-block btn-docs" value="Pujar el/els document/s" />

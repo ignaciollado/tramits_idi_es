@@ -647,6 +647,10 @@ class Expedientes extends Controller
 						case "Desestimiento":
 							$sql = 'UPDATE pindust_expediente SET ref_REC_desestimiento="' . $numRegDistribucioCAIB . '" WHERE id =' . $id;
 							break;
+						case "Renovacion":
+							$nuevaSituacion = 'justificantGOIB';
+							$sql = 'UPDATE pindust_expediente SET ref_REC_justificacion_renov="' . $numRegDistribucioCAIB . '", situacion="'.$nuevaSituacion.'" WHERE id =' . $id;
+							break;
 					}
 					if ($db->simpleQuery($sql)) {
 						echo "Success!";
