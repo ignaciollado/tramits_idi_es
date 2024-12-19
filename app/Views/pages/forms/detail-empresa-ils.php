@@ -32,25 +32,25 @@
     <section class="picture-gallery" id="gallery">
       <?php for ($x = 0; $x <= 9; $x++) {;?>
         <div class="card-picture-list">
-
           <?php if ($row->nif === 'A07166085' || $row->nif === 'A07090707') {?>
             <div class="content">
               <img src="https://docs.tramits.adrbalears.es/writable/gallery-ils/<?php echo  $row->nif.'/'.($x+1).".webp";?>" class="card-img-top" alt="<?php echo  $row->empresa;?>">
             </div>  
             <?php } else {?>
-              <img src="https://dummyjson.com/image/520" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h4>Picture #<?php echo ($x+1);?></h4>
-                <p class="card-text">If you send us ten photos of your company, we will publish them in this section.</p>
-                <h5>Picture specification needed</h5>
-                <ul>
-                  <li>Max width: 1320px</li>
-                  <li>Max pixels depth: 72 ppp</li>
-                  <li>File format: webp</li>
-              </ul>
-            </div>
-          <?php }?>
-          
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src=".https://dummyjson.com/image/520" alt="Card image cap">
+                <div class="card-body">
+                  <h4>Picture #<?php echo ($x+1);?></h4>
+                  <p class="card-text">If you send us ten photos of your company, we will publish them in this space.</p>
+                  <h5>Picture specification needed</h5>
+                  <ul>
+                    <li>Max width: 1320px</li>
+                    <li>Max pixels depth: 72 ppp</li>
+                    <li>File format: webp</li>
+                  </ul>
+                </div>
+              </div>
+          <?php }?> 
         </div>
       <?php };?>
     </section>

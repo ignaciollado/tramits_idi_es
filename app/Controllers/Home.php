@@ -614,7 +614,6 @@ class Home extends BaseController
 		$language = \Config\Services::language();
 		$db = \Config\Database::connect();
 		$language->setLocale('es');
-
 		$sql = "SELECT pindust_expediente.id, empresa, nif, domicilio, canales_comercializacion_empresa, sitio_web_empresa, video_empresa, fecha_creacion_empresa, 
 				name, pindust_documentos.selloDeTiempo, type
 
@@ -624,7 +623,6 @@ class Home extends BaseController
 
 		$query = $db->query($sql);
 		$data['empresas'] = $query->getResult();
-
 		echo view('pages/forms/lista-empresas-ils', $data);
 	}		
 

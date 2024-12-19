@@ -100,7 +100,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 13);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('ILS_13_resolucion_renov_sin_req.13_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('ILS_13_renovacion_resolucion_renov_sin_req.13_intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -110,13 +110,13 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('ILS_13_resolucion_renov_sin_req.13_fets_tit') ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". lang('ILS_13_renovacion_resolucion_renov_sin_req.13_fets_tit') ."</td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_2 = lang('ILS_13_resolucion_renov_sin_req.13_antecedents_1_2_3_4');
+$parrafo_2 = lang('ILS_13_renovacion_resolucion_renov_sin_req.13_antecedents_1_2_3_4');
 $parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'],$parrafo_2);
 $parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'],$parrafo_2);
 $parrafo_2 = str_replace("%FECHARESOLUCION%", date_format(date_create($data['expediente']['fecha_resolucion']),"d/m/Y"),$parrafo_2);
@@ -128,7 +128,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$recursos_tit = lang('ILS_13_resolucion_renov_sin_req.13_resolucion_tit');
+$recursos_tit = lang('ILS_13_renovacion_resolucion_renov_sin_req.13_resolucion_tit');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_tit ."</td></tr>";
 $html .= "</table>";
@@ -136,7 +136,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$resolucio = lang('ILS_13_resolucion_renov_sin_req.13_resolucion');
+$resolucio = lang('ILS_13_renovacion_resolucion_renov_sin_req.13_resolucion');
 $resolucio = str_replace("%SOLICITANTE%", $data['expediente']['empresa'],$resolucio);
 $resolucio = str_replace("%NIF%", $data['expediente']['nif'],$resolucio);
 $resolucio = str_replace("%DESDEFECHANOTRESRENOVACION%", date_format(date_create($data['expediente']['fecha_infor_fav_renov']),"d/m/Y") ,$resolucio);
@@ -155,7 +155,7 @@ $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 25);
-$recursos_tit = lang('ILS_13_resolucion_renov_sin_req.13_recursos_tit');
+$recursos_tit = lang('ILS_13_renovacion_resolucion_renov_sin_req.13_recursos_tit');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_tit ."</td></tr>";
 $html .= "</table>";
@@ -163,7 +163,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
-$recursos = lang('ILS_13_resolucion_renov_sin_req.13_recursos');
+$recursos = lang('ILS_13_renovacion_resolucion_renov_sin_req.13_recursos');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos ."</td></tr>";
 $html .= "</table>";
@@ -171,7 +171,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$firma = lang('ILS_13_resolucion_renov_sin_req.13_firma');
+$firma = lang('ILS_13_renovacion_resolucion_renov_sin_req.13_firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracion']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'] , $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
