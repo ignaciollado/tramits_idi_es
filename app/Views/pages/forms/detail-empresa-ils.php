@@ -32,7 +32,10 @@
     <section class="picture-gallery" id="gallery">
       <?php for ($x = 0; $x <= 9; $x++) {;?>
         <div class="card-picture-list">
-          <?php if ($row->nif === 'A07166085' || $row->nif === 'A07090707') {?>
+          <?php if ($row->nif === 'A07166085' || $row->nif === 'A07090707' || $row->nif === 'B07791445'
+           || $row->nif === 'F07013303' || $row->nif === 'A07002892' || $row->nif === 'B07400153'
+           || $row->nif === 'A07111818' || $row->nif === 'A07012826' || $row->nif === 'B07724149'
+           || $row->nif === 'B57503237') {?>
             <div class="content">
               <img src="https://docs.tramits.adrbalears.es/writable/gallery-ils/<?php echo  $row->nif.'/'.($x+1).".webp";?>" class="card-img-top" alt="<?php echo  $row->empresa;?>">
             </div>  
