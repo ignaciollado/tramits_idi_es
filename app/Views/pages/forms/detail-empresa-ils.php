@@ -32,10 +32,17 @@
     <section class="picture-gallery" id="gallery">
       <?php for ($x = 0; $x <= 9; $x++) {;?>
         <div class="card-picture-list">
-          <?php if ($row->nif === 'A07166085' || $row->nif === 'A07090707' || $row->nif === 'B07791445'
+          <?php if ( 
+              $row->nif === 'A07166085' || $row->nif === 'A07090707' || $row->nif === 'B07791445'
            || $row->nif === 'F07013303' || $row->nif === 'A07002892' || $row->nif === 'B07400153'
            || $row->nif === 'A07111818' || $row->nif === 'A07012826' || $row->nif === 'B07724149'
-           || $row->nif === 'B57503237') {?>
+           || $row->nif === 'B57503237' || $row->nif === 'B57539249' || $row->nif === 'B07644826'
+           || $row->nif === 'B07644792' || $row->nif === 'B07400153' || $row->nif === 'B57619850'
+           || $row->nif === 'B57104101' || $row->nif === 'B07752744' || $row->nif === 'B07549223'
+           || $row->nif === 'B07175615' || $row->nif === 'A07324320' || $row->nif === 'A07004443'
+           || $row->nif === 'B57927899' || $row->nif === 'B57828410' || $row->nif === 'B57718108'
+           || $row->nif === '37338953V' || $row->nif === 'B57462194' || $row->nif === 'A07301377'
+           ) {?>
             <div class="content">
               <img src="https://docs.tramits.adrbalears.es/writable/gallery-ils/<?php echo  $row->nif.'/'.($x+1).".webp";?>" class="card-img-top" alt="<?php echo  $row->empresa;?>">
             </div>  
