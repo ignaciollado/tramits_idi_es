@@ -334,7 +334,7 @@ class Expedientes extends Controller
 
 		$db = \Config\Database::connect();
 
-		//----------------------------- Comprueba si ya hay algún documento de justificación --------------------
+		//----------------------------- Comprueba si ya hay algún documento de justificación ---------------------------------------
 		$data['totalDocsJustifPlan'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PlanTransformacionDigital', $id);
 		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
 		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
@@ -348,7 +348,7 @@ class Expedientes extends Controller
 		$data['totalDocsJustifInformeCalcILS'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificacionInformeCalculo', $id);
 		$data['totalDocsJustifCompromisoReduccionILS'] = $modelJustificacion->checkIfDocumentoJustificacion('file_CompromisoReduccion', $id);
 
-		//----------------------------- Obtiene el detalle del Expediente ----------------------------------------
+		//----------------------------- Obtiene el detalle del Expediente -----------------------------------------------------------
 		$data['expedientes'] = $modelExp->where('id', $id)->first();
 		$idExp = $data['expedientes']['idExp'];
 		$convocatoria = $data['expedientes']['convocatoria'];
@@ -974,7 +974,7 @@ class Expedientes extends Controller
 		echo view('templates/header/header_form_requerimiento_isba_resultado', $data);
 		echo view('pages/forms/documento-justificacion-ayuda-isba', $data);
 		echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-		echo view('pages/forms/rest_api_firma/envia-a-firma-justificacion', $data);
+		echo view('pages/forms/rest_api_firma/envia-a-firma-justificacion-isba', $data);
 		echo view('templates/footer/footer');
 	}
 

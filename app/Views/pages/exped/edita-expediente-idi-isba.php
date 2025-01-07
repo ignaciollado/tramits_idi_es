@@ -1145,8 +1145,6 @@
         </form>
         </div>
         <div class="col docsExpediente">
-            <!-- <h3>Actes administratius:</h3> -->
-            
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
@@ -1155,7 +1153,6 @@
                     <div >Estat</div>               
                     <div >Acció</div>
                 </div>
-
                 <?php if($documentos): ?>
                     <?php foreach($documentos as $docSolicitud_item): 			            
                             if($docSolicitud_item->fase_exped == 'Renovacion') {
@@ -1284,8 +1281,8 @@
    	                    <div>Document</div>
 	                    <div>Estat</div>
                     </div>
-	                <?php if($documentosDeclRespAplicadoFondoIsba): 
-                    foreach($documentosDeclRespAplicadoFondoIsba as $docsJustif_item): 
+	                <?php if($documentosMemoriaActividadesIsba): 
+                    foreach($documentosMemoriaActividadesIsba as $docsJustif_item): 
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $parametro = explode ("/",$path);
