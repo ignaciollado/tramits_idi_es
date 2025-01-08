@@ -82,7 +82,7 @@
 			</div>
 		</fieldset>
 		
-		<fieldset class="container-add-line">
+		<!-- 		<fieldset class="container-add-line">
 			<h4><?php echo lang('message_lang.listaEnumerativaDeGastos');?>:</h4>
 			<div class="form-floating">
   			<input type="text" class="form-control" id="num-factura" placeholder="Num. factura">
@@ -119,7 +119,7 @@
 			<div class="submit-button">
 			<button type="button" disabled class="btn btn-primary" id="addInvoiceLineBtn" onclick="addInvoiceLine()"><?php echo lang('message_lang.addLine');?></button>
 			</div>
-		</fieldset>
+		</fieldset> -->
 
 		<fieldset>
 			<div class="container-lines" id="container-lines"></div>
@@ -152,7 +152,7 @@
 		</fieldset>
 		
 		<fieldset class="submit-button">
-			<button type="submit" disabled class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
+			<button type="submit" class = "btn btn-primary btn-lg" id = "enviar_justificantes"><?php echo lang('message_lang.enviar_documentacion');?></button>
 		</fieldset>
 	</div>
 </form>
@@ -162,22 +162,15 @@
 </div>
 
 <script>
-	$('#form_justificacion').submit(function(){
-		if ( $("#file_PlanTransformacionDigital").val().length == 0 && $("#file_FactTransformacionDigital").val().length == 0 && $("#file_PagosTransformacionDigital").val().length == 0)
-			{
-			alert ("¡Por favor, seleccione algún archivo para enviarnos!");
-			return false;
-			}
-		else {
-			let theForm=document.getElementById("form_justificacion");
-			theForm.style.cursor="progress";
+	$('#form_justificacion').submit(function() {
+			let theForm = document.getElementById("form_justificacion");
+			theForm.style.cursor = "progress";
   			theForm.disabled = true;
   			theForm.style.opacity =".2";
-			$("#enviar_docs", this)
-				.html("Enviant, un moment per favor ...")
+			$("#enviar_justificantes", this)
+				.html("Enviant justificants, un moment per favor ...")
 				.attr('disabled', 'disabled')
-				.css("background-color","orange");			
-		}
+				.css("background-color","orange");
 	});
 </script>
 </section>

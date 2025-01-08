@@ -1,4 +1,4 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/public/assets/css/style-idi-isba.css"/>
 <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
 <script>
@@ -8,12 +8,14 @@
 </script>
 <?php
     use App\Models\DocumentosGeneradosModel;
+    use App\Models\DocumentosJustificacionModel;
     use App\Models\MejorasExpedienteModel;
     use App\Models\ExpedientesModel;
 
     $modelDocumentosGenerados = new DocumentosGeneradosModel();
     $modelMejorasSolicitud = new MejorasExpedienteModel();
     $modelExp = new ExpedientesModel();
+    $modelJustificacion = new DocumentosJustificacionModel();
 
     $session = session();
 	$convocatoria = $expedientes['convocatoria'];
@@ -1228,12 +1230,14 @@
         </div>
         <div class="col docsExpediente">
             <h3>Justificants:</h3>
-
-            <div id = "tab_dec_resp_fondos">
-                <button class="accordion-exped">
-                    <?php echo lang('message_lang.justificacion_decl_resp_aplicado_fondo_isba');?>
-                </button>
-                <div class="panel-exped">
+            <div class="accordion " id="accordionJustificacionISBA">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab_dec_resp_fondos" aria-expanded="true" aria-controls="tab_dec_resp_fondos">
+                            <?php echo lang('message_lang.justificacion_decl_resp_aplicado_fondo_isba');?>
+                        </button>
+                    </h2>
+                    <div id="tab_dec_resp_fondos" class="accordion-collapse collapse show" data-bs-parent="#accordionJustificacionISBA">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
    	                    <div>Document</div>
@@ -1268,14 +1272,16 @@
                         </div>
                         <?php endforeach; ?>
                         <?php endif; ?> 
+                    </div>
                 </div>
-            </div>
 
-            <div id = "tab_mem_actividades">
-                <button class="accordion-exped">
-                    <?php echo lang('message_lang.justificacion_memoria_actividades_isba');?>
-                </button>
-                <div class="panel-exped">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab_mem_actividades" aria-expanded="true" aria-controls="tab_mem_actividades">
+                            <?php echo lang('message_lang.justificacion_memoria_actividades_isba');?>
+                        </button>
+                    </h2>
+                    <div id="tab_mem_actividades" class="accordion-collapse collapse show"  data-bs-parent="#accordionJustificacionISBA">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
    	                    <div>Document</div>
@@ -1310,26 +1316,30 @@
                         </div>
                         <?php endforeach; ?>
                         <?php endif; ?> 
+                    </div>
                 </div>
-            </div>
 
-            <div id = "tab_facturas">
-                <button class="accordion-exped">Factures</button>
-                <div class="panel-exped">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab_facturas" aria-expanded="false" aria-controls="tab_facturas">
+                            <?php echo lang('message_lang.justificacion_facturas_isba');?>
+                        </button>
+                    </h2>
+                    <div id="tab_facturas" class="accordion-collapse collapse show"  data-bs-parent="#accordionJustificacionISBA">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
-   	                    <div>Arxiu</div>
+   	                    <div>Document</div>
 	                    <div>Estat</div>
                     </div>
-                <?php if($documentosFacturasEmitidasIsba): ?>
-                <?php foreach($documentosFacturasEmitidasIsba as $docsJustif_item):
+                    <?php if($documentosFacturasEmitidasIsba): ?>
+                    <?php foreach($documentosFacturasEmitidasIsba as $docsJustif_item):
 
-			        $path =  $docsJustif_item->created_at;
-			        $selloDeTiempo = $docsJustif_item->selloDeTiempo;
-			        $tipoMIME = $docsJustif_item->type;
-			        $nom_doc = $docsJustif_item->name;
-			    ?>
-  	                <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
+			            $path =  $docsJustif_item->created_at;
+			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
+			            $tipoMIME = $docsJustif_item->type;
+			            $nom_doc = $docsJustif_item->name;
+			            ?>
+  	                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
       	                <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
    		                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>" href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
 
@@ -1349,43 +1359,34 @@
                             }
                             ?>
                             <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                    
-                    
-                    <!-- <?php //if (!$documentosJustifPlan->publicAccessIdCustodiado) {?>
-			            <span id="custodia" class = "detail-wrapper-docs-col"> 
-				            <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$documentosJustifPlan->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $documentosJustifPlan->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
-			            </span>
-		            <?php //} else {?>
-			            <span id = "accion" class = "detail-wrapper-docs-col">Pendent de custodiar</span>			
-		            <?php //} ?> -->
-
 	                </div>
-                <?php endforeach; ?>
-                <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    </div>
                 </div>
-            </div>
 
-            <div id = "tab_pagos" class="active">
-                <button class="accordion-exped">Justificants de pagament</button>
-                <div class="panel-exped">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab_pagos" aria-expanded="false" aria-controls="tab_pagos">
+                            <?php echo lang('message_lang.justificacion_justificantes_pago_isba');?>
+                        </button>
+                    </h2>
+                    <div id="tab_pagos" class="accordion-collapse collapse show"  data-bs-parent="#accordionJustificacionISBA">
                     <div class = "header-wrapper-docs-justificacion">
 		                <div >Rebut el</div>
-   		                <div >Arxiu</div>
+   		                <div >Document</div>
 		                <div >Estat</div>   
                     </div>
                     <?php if($documentosJustificantesPagoIsba): ?>
                     <?php foreach($documentosJustificantesPagoIsba as $docsJustif_item): ?>
-			        <?php 
-    			        // $path = str_replace ("D:\wampp\apache2\htdocs\pindust\writable\documentos/","", $docsJustif_item->created_at);
-			            // $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docsJustif_item->created_at);
+			            <?php 
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $tipoMIME = $docsJustif_item->type;
 			            $nom_doc = $docsJustif_item->name;
-                        //echo "#### ". $selloDeTiempo . " ####";
-			        ?>
+    			        ?>
 
-                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
+                        <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
                         <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	     
    		                <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
 
@@ -1404,40 +1405,33 @@
     					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>                        
-                        
-                        <!-- <?php //if (!$documentosJustifPlan->publicAccessIdCustodiado) {?>
-			                <span id="custodia" class = "detail-wrapper-docs-col"> 
-    				            <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$documentosJustifPlan->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $documentosJustifPlan->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
-	    		            </span>
-		                <?php //} else {?>
-			                <span id = "accion" class = "detail-wrapper-docs-col">Pendent de custodiar</span>			
-		                <?php //} ?> -->
-
+                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
 		            </div>
                     <?php endforeach; ?>
                     <?php endif; ?>
+                    </div>
                 </div>
-            </div>
 
-            <div id = "tab_declaracion_isba" class="active">
-                <button class="accordion-exped">Declaració ISBA-SGR</button>
-                <div class="panel-exped">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab_declaracion_isba" aria-expanded="false" aria-controls="tab_declaracion_isba">
+                            <?php echo lang('message_lang.justificacion_declaracion_isba_sgr');?>
+                        </button>
+                    </h2>
+                    <div id="tab_declaracion_isba" class="accordion-collapse collapse show"  data-bs-parent="#accordionJustificacionISBA">
                     <div class = "header-wrapper-docs-justificacion">
 		                <div >Rebut el</div>
-   		                <div >Arxiu</div>
+   		                <div >Document</div>
 		                <div >Estat</div>   
                     </div>
                     <?php if($documentosDeclaracionIsba): ?>
                     <?php foreach($documentosDeclaracionIsba as $docsJustif_item): ?>
-			        <?php 
-    			        // $path = str_replace ("D:\wampp\apache2\htdocs\pindust\writable\documentos/","", $docsJustif_item->created_at);
-			            // $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docsJustif_item->created_at);
+			            <?php
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $tipoMIME = $docsJustif_item->type;
 			            $nom_doc = $docsJustif_item->name;
-			        ?>
+			            ?>
 
                     <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
                         <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	     
@@ -1458,19 +1452,11 @@
     					            $estado_doc = '<button  id="'.$docsJustif_item->id.'"  class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
                             }
                             ?>
-                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>                        
-                        
-                        <!-- <?php //if (!$documentosJustifPlan->publicAccessIdCustodiado) {?>
-			                <span id="custodia" class = "detail-wrapper-docs-col"> 
-    				            <a href="<?php echo base_url('/public/index.php/expedientes/muestrasolicitudfirmada/'.$documentosJustifPlan->publicAccessIdCustodiado);?>"><span class = 'verSello' id='<?php echo $documentosJustifPlan->publicAccessIdCustodiado;?>'>Pendent de custodiar</span></a>
-	    		            </span>
-		                <?php //} else {?>
-			                <span id = "accion" class = "detail-wrapper-docs-col">Pendent de custodiar</span>			
-		                <?php //} ?> -->
-
+                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
 		            </div>
                     <?php endforeach; ?>
                     <?php endif; ?>
+                    </div>
                 </div>
             </div>
 
@@ -1479,9 +1465,46 @@
                 if (isset($selloDeTiempo)) {
                     echo base_url('public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_justificacion_solicitud_ayuda.pdf'.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');
                 }
-            ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a></div>
+            ?>" target = "_blank">Mostrar la declaració responsable de la justificació sense signar</a>
+            </div>
+            <div class="alert alert-info">
+                <small>Estat de la declaració responsable de la justificació</small>
+                <?php
+                	//Compruebo el estado de la firma de la declaración responsable.
+                    $thePublicAccessId = $modelJustificacion->getPublicAccessId ($expedientes['id']);
+	                if (isset($thePublicAccessId))
+		                {
+		                    $PublicAccessId = $thePublicAccessId;
+	                        $requestPublicAccessId = $PublicAccessId;
+                            $request = execute("requests/".$requestPublicAccessId, null, __FUNCTION__);
+		                    $respuesta = json_decode ($request, true);
+		                    $estado_firma = $respuesta['status'];
+
+			                switch ($estado_firma)
+				                {
+				                    case 'NOT_STARTED':
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Pendent de signar</div>";				
+				                        break;
+				                    case 'REJECTED':
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudrechazada/'.$requestPublicAccessId)."><div class = 'warning-msg'><i class='fa fa-warning'></i>Signatura rebutjada</div>";
+				                        $estado_firma .= "</a>";				
+				                        break;
+				                    case 'COMPLETED':
+				                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class = 'success-msg'><i class='fa fa-check'></i>Signada</div>";		
+				                        $estado_firma .= "</a>";					
+				                        break;
+				                    case 'IN_PROCESS':
+                                        $estado_firma = "<a href=".base_url('public/index.php/expedientes/muestrasolicitudfirmada/'.$requestPublicAccessId)." ><div class='info-msg'><i class='fa fa-check'></i>En curs</div>";		
+				                        $estado_firma .= "</a>";						
+				                    default:
+				                        $estado_firma = "<div class='info-msg'><i class='fa fa-info-circle'></i>Desconegut</div>";
+				                }
+			                echo $estado_firma;
+		                }?>
+            </div>
         </div>
     </div>
+
 </div>
 
 <div id="deses_ren_tab" class="tab_fase_exp_content">
@@ -1759,6 +1782,6 @@
     }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/public/assets/js/edita-expediente-isba.js"></script>
 <script src="https://kit.fontawesome.com/1a19d0e4f2.js" crossorigin="anonymous"></script>

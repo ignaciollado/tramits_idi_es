@@ -56,6 +56,7 @@ return [
    'justificacion_memoria_actividades_isba'      => "Memòria d'activitats",
    'justificacion_facturas_isba'                 => "Còpia de les factures",
    'justificacion_justificantes_pago_isba'       => "Còpia dels justificants de pagament",
+   'justificacion_declaracion_isba_sgr'          => "Declaració ISBA-SGR",
 
    'asistente_de_tramitacion'      => 'Assistent de tramitació',
    'btn_next'                      => 'Següent',

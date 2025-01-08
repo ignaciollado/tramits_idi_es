@@ -1417,7 +1417,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
-   	                    <div>Arxiu</div>
+   	                    <div>Document</div>
 	                    <div>Estat</div>
                     </div>
                 <?php if($documentosJustifFact): ?>
@@ -1470,7 +1470,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 <div class="panel-exped">
                     <div class = "header-wrapper-docs-justificacion">
 		                <div >Rebut el</div>
-   		                <div >Arxiu</div>
+   		                <div >Document</div>
 		                <div >Estat</div>   
                     </div>
                     <?php if($documentosJustifPagos): ?>
