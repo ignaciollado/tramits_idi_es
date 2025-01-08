@@ -63,7 +63,7 @@
             <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
             <ul>
             <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions corporatives/2024');?>">               
-              <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.</a><br>
+              <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.</a><br><br>
                   <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_org_2024">0</span>
                   <span class="badge bg-primary" id="totalPendienteIII_org_2024">0</span>
                   <span class="badge bg-secondary" id="totalInicioConsultoriaIII_org_2024">0</span>
