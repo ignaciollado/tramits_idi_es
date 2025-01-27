@@ -25,7 +25,7 @@ class Crud extends BaseController
                         'ref_REC_requerimiento_justificacion', 'ref_REC_desestimiento', 'importe_minimis', 'tecnicoAsignado'])
             
                         ->displayAs('convocatoria', "Convocatòria")
-                        ->displayAs('tipo_tramite', "Línia d'ajuda")
+                        ->displayAs('tipo_tramite', "Línia tràmit")
                         ->displayAs('situacion', "Situació")
                         ->displayAS('fecha_firma_res', 'Firma resolució')
                         ->displayAs('nif', 'NIF / CIF')
@@ -80,7 +80,7 @@ class Crud extends BaseController
     {
         $modelConfig = new ConfiguracionModel();
         $modelConfigLinea = new ConfiguracionLineaModel();
-	    $convocatoria =  '2024';
+	    $convocatoria =  '2025';
         echo "convocatòria actual: ".$convocatoria;
 
         $crud = new GroceryCrud();

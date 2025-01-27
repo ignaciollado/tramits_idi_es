@@ -16,15 +16,15 @@
 <div class="container">
   <div class="jumbotron">
     <h1>Nota informativa</h1>      
-    <div class="alert alert-warning">
+    <section class="alert alert-warning" style="padding:7rem;">
       <h1><?php echo $aviso;?></h1>
       <h2><?php echo $activatedLine;?></h2>
-    </div>
-    <div style="text-align:center;">
-      <a href="https://www.adrbalears.es"><img width="50%" src="/public/assets/images/ADRBalears-conselleria.jpg" 
+    </section>
+    <section style="text-align:center;margin-top: 10rem;">
+      <a href="https://www.adrbalears.es"><img width="50%" src="/public/assets/images/logo gov+adr.svg" 
       title="ADR Balears - Agència de desenvolupament regional de les Illes Balears"
       alt="ADR Balears - Agència de desenvolupament regional de les Illes Balears"/></a>
-    </div>
+    </section>
   </div>   
 </div>
 <style>
