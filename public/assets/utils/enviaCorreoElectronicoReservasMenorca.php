@@ -4,13 +4,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/rest_api_firma/
 $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
 $data = explode  ("/", $items['query']);
-
+echo $data;
 $correoDestino = urldecode($data[0]);
 $solicitante = urldecode($data[1]);
 $contactPhone = urldecode($data[2]);
 $asunto = urldecode($data[3]);
 $mensaje = urldecode($data[4]);
 $mensaje = explode("_", $mensaje);
+$title = urldecode($data[5]);
 
 $project = urldecode($data[5]);
 //$projectMail = "jflopez@idi.es@idi.es";
@@ -41,7 +42,7 @@ $mail->FromName = "ADR Balears";
 // Lo que verá del remitente el destinatario
 $mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("response@tramits.idi.es","ADR Balears"); 
+$mail->AddReplyTo("response@tramits.idi.es","ADR Balears");
 
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
@@ -52,16 +53,20 @@ $mail->IsHTML(true);
 
 
 $mail->Subject = $asunto;
-$project = "Recinte de Menorca";
+$project = "RECINTE EMPRESARIAL DE MENORCA";
 $mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
 
 $mensajeLayout = file_get_contents('contents-booking-menorca.html');
 $mensajeLayout = str_replace("%USUARIO%", $solicitante, $mensajeLayout);
 $mensajeLayout = str_replace("%RECURSO%", $mensaje[0], $mensajeLayout);
+$mensajeLayout = str_replace("%TITLE%", $mensaje[5], $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOMAIL%", $correoDestino, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOASUNTO%", $asunto, $mensajeLayout);
-$fromDate = strtotime($mensaje[1] .' -1 days');
-$toDate = strtotime($mensaje[3] .' -1 days');
+/* $fromDate = strtotime($mensaje[1] .' -1 days');
+$toDate = strtotime($mensaje[3] .' -1 days'); */
+
+$fromDate = strtotime($mensaje[1]);
+$toDate = strtotime($mensaje[3]);
 
 $mensajeLayout = str_replace("%USUARIOMENSAJE%", "Recurs sol·licitat: <strong>".$mensaje[0]."</strong><br>Des-de la data: <strong>".date('d-m-Y', $fromDate)."</strong><br>Hora d'nici: <strong>".$mensaje[2]."</strong><br>Fins a la data: <strong>".date('d-m-Y', $toDate)."</strong><br>Hora de finalització: <strong>".$mensaje[4]."</strong>", $mensajeLayout);
 

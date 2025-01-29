@@ -42,7 +42,7 @@
            || $row->nif === 'B07175615' || $row->nif === 'A07324320' || $row->nif === 'A07004443'
            || $row->nif === 'B57927899' || $row->nif === 'B57828410' || $row->nif === 'B57718108'
            || $row->nif === '37338953V' || $row->nif === 'B57462194' || $row->nif === 'A07301377'
-           || $row->nif === 'B57644411'
+           || $row->nif === 'B57644411' || $row->nif === 'B57160327' || $row->nif === 'G07098957'
            ) {?>
             <div class="content">
               <img src="https://docs.tramits.adrbalears.es/writable/gallery-ils/<?php echo  $row->nif.'/'.($x+1).".webp";?>" class="card-img-top" alt="<?php echo  $row->empresa;?>">
