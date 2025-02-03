@@ -68,7 +68,7 @@ $toDate = strtotime($mensaje[3] .' -1 days'); */
 $fromDate = strtotime($mensaje[1]);
 $toDate = strtotime($mensaje[3]);
 
-$mensajeLayout = str_replace("%USUARIOMENSAJE%", "Recurs sol·licitat: <strong>".$mensaje[0]."</strong><br>Des-de la data: <strong>".date('d-m-Y', $fromDate)."</strong><br>Hora d'nici: <strong>".$mensaje[2]."</strong><br>Fins a la data: <strong>".date('d-m-Y', $toDate)."</strong><br>Hora de finalització: <strong>".$mensaje[4]."</strong>", $mensajeLayout);
+$mensajeLayout = str_replace("%USUARIOMENSAJE%", "Recurs sol·licitat: <strong>".$mensaje[0]."</strong><br>Des-de la data: <strong>".date('d-m-Y', $fromDate)."</strong><br>Fins a la data: <strong>".date('d-m-Y', $toDate)."</strong><br>Hora d'nici:<strong>08:00</strong><br>Hora de finalització: <strong>".$mensaje[2]."</strong>", $mensajeLayout);
 
 $mail->msgHTML( $mensajeLayout , __DIR__);
 
