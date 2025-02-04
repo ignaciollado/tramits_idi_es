@@ -54,16 +54,16 @@ $mail->IsHTML(true);
 
 $mail->Subject = $asunto;
 $project = "RECINTE EMPRESARIAL DE MENORCA";
-$mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
+$mail->AddBCC("jflopez@idi.es", "Gestió interna ADR Balears");
 
 $mensajeLayout = file_get_contents('contents-booking-menorca.html');
 $mensajeLayout = str_replace("%USUARIO%", $solicitante, $mensajeLayout);
 $mensajeLayout = str_replace("%RECURSO%", $mensaje[0], $mensajeLayout);
 $mensajeLayout = str_replace("%TITLE%", $mensaje[5], $mensajeLayout);
+$mensajeLayout = str_replace("%LOCATOR%", $mensaje[6], $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOMAIL%", $correoDestino, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOASUNTO%", $asunto, $mensajeLayout);
-/* $fromDate = strtotime($mensaje[1] .' -1 days');
-$toDate = strtotime($mensaje[3] .' -1 days'); */
+
 
 $fromDate = strtotime($mensaje[1]);
 $toDate = strtotime($mensaje[3]);
