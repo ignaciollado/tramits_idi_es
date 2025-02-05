@@ -4,18 +4,30 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/rest_api_firma/
 $url =  $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $items = parse_url( $url);
 $data = explode  ("/", $items['query']);
+
 $correoDestino = urldecode($data[0]);
 $solicitante = urldecode($data[1]);
 $contactPhone = urldecode($data[2]);
 $asunto = urldecode($data[3]);
-$mensaje = urldecode($data[4]);
+$project = urldecode($data[4]);
+$mensaje = urldecode($data[5]);
 $mensaje = explode("_", $mensaje);
-$title = urldecode($data[5]);
+$domicilio = $mensaje[0];
+$cpostal = $mensaje[1];
+$poblacion = $mensaje[2];
+$municipio = $mensaje[3];
+$isla = $mensaje[4];
+$perfil = $mensaje[5];
 
-$project = urldecode($data[5]);
-$projectMail = "jflopez@idi.es";
+//$projectMail = "mriutord@idi.es";
+$projectMail = "illado@idi.caib.es";
+
 
 $mail = new PHPMailer();
+$response = [];
+
+try {
+	// Configuración del servidor
 // set mailer to use SMTP
 $mail->IsSMTP();
 
@@ -37,9 +49,9 @@ $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
 $mail->FromName = "ADR Balears";
 // Lo que verá del remitente el destinatario
-$mail->SetFrom("noreply@tramits.idi.es","ADR Balears");
+$mail->SetFrom("noreply@tramits.idi.es","Ibrelleu - ADR Balears");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("response@tramits.idi.es","ADR Balears");
+$mail->AddReplyTo("response@tramits.idi.es","Ibrelleu - ADR Balears");
 
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
@@ -50,39 +62,31 @@ $mail->IsHTML(true);
 
 
 $mail->Subject = $asunto;
-$project = "RECINTE EMPRESARIAL DE MENORCA";
 $mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
 
-$mensajeLayout = file_get_contents('contents-booking-menorca.html');
+$mensajeLayout = file_get_contents('contents-ibrelleu.html');
 $mensajeLayout = str_replace("%USUARIO%", $solicitante, $mensajeLayout);
-$mensajeLayout = str_replace("%RECURSO%", $mensaje[0], $mensajeLayout);
-$mensajeLayout = str_replace("%TITLE%", $mensaje[5], $mensajeLayout);
-$mensajeLayout = str_replace("%LOCATOR%", $mensaje[6], $mensajeLayout);
+$mensajeLayout = str_replace("%ADDRESS%", $domicilio, $mensajeLayout);
+$mensajeLayout = str_replace("%ZIPCODE%", $cpostal, $mensajeLayout);
+$mensajeLayout = str_replace("%TOWN%", $poblacion, $mensajeLayout);
+$mensajeLayout = str_replace("%MUNICIPALITY%", $municipio, $mensajeLayout);
+$mensajeLayout = str_replace("%ISLAND%", $isla, $mensajeLayout);
+$mensajeLayout = str_replace("%PHONE%", $contactPhone, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOMAIL%", $correoDestino, $mensajeLayout);
-$mensajeLayout = str_replace("%USUARIOASUNTO%", $asunto, $mensajeLayout);
-
-
-$fromDate = strtotime($mensaje[1]);
-$toDate = strtotime($mensaje[3]);
-
-$mensajeLayout = str_replace("%USUARIOMENSAJE%", "Recurs sol·licitat: <strong>".$mensaje[0]."</strong><br>Des-de la data: <strong>".date('d-m-Y', $fromDate)."</strong><br>Fins a la data: <strong>".date('d-m-Y', $toDate)."</strong><br>Hora d'nici:<strong>08:00</strong><br>Hora de finalització: <strong>".$mensaje[2]."</strong>", $mensajeLayout);
+$mensajeLayout = str_replace("%PROFILE%", $perfil, $mensajeLayout);
 
 $mail->msgHTML( $mensajeLayout , __DIR__);
 
 //Replace the plain text body with one created manually
 $mail->AltBody = $mensajeLayout;
 
-if(!$mail->Send())
-	{
-		$result = "Message could not be sent.";
-		$result .= "Mailer Error: " . $mail->ErrorInfo;
-		$mail->ClearAddresses();
-		$mail->ClearAttachments();
-	}
-else 
-	{
-		$result .= "Missatge enviat correctament a la adreça " .$correoDestino;
-	}
+$mail->send();
+    $response['status'] = 'success';
+    $response['message'] = 'Message has been sent';
+} catch (Exception $e) {
+    $response['status'] = 'error';
+    $response['message'] = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 
-echo $result;
+echo json_encode($response);
 ?>

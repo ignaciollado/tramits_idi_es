@@ -60,15 +60,15 @@ return [
 
   'fundamentosDeDerecho_tit' => "<b>Fonaments de dret</b>",
   'fundamentosDeDerechoTxt' => "<ol>
-                          <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
-                          <li>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</li><br>
-                          <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><br>
-                          <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
-                          <li>La Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</li><br>
-                          li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2024-2026 aprovat per l'Acord del Consell de Govern de dia 19 d'abril de 2024.</li></ol>",
+        <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvencions (BOIB núm. 196, de 31 de desembre).</li><br>
+        <li>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</li><br>
+        <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><br>
+        <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
+        <li>La Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</li><br>
+        <li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2024-2026 aprovat per l'Acord del Consell de Govern de dia 19 d'abril de 2024.</li></ol>",
   'fundamentosDeDerechoTxt_2' => "<li>El Decret 6/2013, de 8 de febrer, de mesures de simplificació documental en els procediments administratius (BOIB núm. 21, de 12 de febrer).</li><br>
-                          <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
-                          <li>L'Ordre 9/2024 del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria (BOIB núm.40 de 23 de març de 2024).</li>",
+        <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
+        <li>L'Ordre 9/2024 del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria (BOIB núm.40 de 23 de març de 2024).</li>",
   
   'propuestaresoluciondef_tit' => "<b>Proposta de resolució provisional favorable</b>",
 
@@ -77,14 +77,15 @@ return [
   'propuestaresoluciondef_1_2_3_4_5_6' => "<ol>
         <li>Aprovar l'atorgament d'un ajut total de %IMPORTEAYUDA%, a favor de %SOLICITANTE%, amb NIF %NIF%, amb càrrec al pressupost de l'ADR Balears per a l'any 2024-25 per cobrir les despeses financeres d'operacions de finançament d'inversions productives amb el següent detall:</li><br>
           <ul>
-		              <li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
+		        <li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
 			      <li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat ISBA el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys.</li><br> 
 			      <li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li><br>  
 			    </ul></li>
 		      <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt quinzè de les bases incloses a la Resolució de la convocatòria.</li><br>
 		      <li>El termini per justificar la realització de l'activitat subvencionada i per sol·licitar el pagament de la subvenció serà com a màxim de 6 mesos des de l'endemà de la notificació de la Resolució de concessió i com a màxim fins el 31 d'octubre de 2025.</li><br> 
 		      <li>La falta de justificació en els termes i terminis que estableix aquesta Resolució, l'aplicació de la subvenció diferent a la que estableix la norma o l'alteració de les condicions tingudes en compte per a la concessió poden donar lloc a la modificació de la subvenció atorgada i, per tant, iniciar un procediment de revocació.</li><br> 
-		      <li>Notificar aquesta proposta de resolució a l'interessat.</li></ol>", 
+		      <li>Notificar aquesta proposta de resolució a l'interessat.</li></ol><br> 
+      <p>Contra aquesta proposta de resolució provisional podeu al·legar el que considereu convenient en el termini màxim de 10 dies hàbils comptadors des de l'endemà de la seva notificació. En cas contrari, s'entendrà que estau conforme amb el contingut de la proposta. Un cop transcorregut aquest termini s'ha de dictar la proposta de resolució definitiva.</p>", 
   
   'firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>"
 ];
