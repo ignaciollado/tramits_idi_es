@@ -19,8 +19,8 @@ $municipio = $mensaje[3];
 $isla = $mensaje[4];
 $perfil = $mensaje[5];
 
-//$projectMail = "mriutord@idi.es";
-$projectMail = "illado@idi.caib.es";
+$projectMail = "mriutord@idi.es";
+//$projectMail = "illado@idi.caib.es";
 
 
 $mail = new PHPMailer();

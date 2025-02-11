@@ -2215,7 +2215,7 @@ class Expedientes extends Controller
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
 	
-				$data['byCEOSigned'] = false;
+				$data['byCEOSigned'] = true;
 				$data_footer = [
 					'tipoDoc' => " Proposta resolució provisional",
 					'conVIAFIRMA' => false
