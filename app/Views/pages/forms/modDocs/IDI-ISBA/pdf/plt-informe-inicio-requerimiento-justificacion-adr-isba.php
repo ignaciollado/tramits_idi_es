@@ -13,7 +13,7 @@ $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
     
 $data['configuracion'] = $modelConfig->configuracionGeneral();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
     
 $db = \Config\Database::connect();
@@ -34,7 +34,7 @@ class MYPDF extends TCPDF {
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
         // $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
         // align: T (top), M (middle), B (bottom), N (next line)
-        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 10, 10, 85, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {

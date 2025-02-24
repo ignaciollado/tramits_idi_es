@@ -31,7 +31,7 @@ class MYPDF extends TCPDF {
     public function Header() {
         // Logo
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
-        $this->Image($image_file, 20, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 20, 10, 85, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {

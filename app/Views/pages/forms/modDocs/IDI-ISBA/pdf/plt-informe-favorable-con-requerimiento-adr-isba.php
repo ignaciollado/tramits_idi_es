@@ -13,7 +13,7 @@ $configuracionLinea = new ConfiguracionLineaModel();
 $expediente = new ExpedientesModel();
     
 $data['configuracion'] = $modelConfig->configuracionGeneral();
-$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('XECS', $convocatoria);
+$data['configuracionLinea'] = $configuracionLinea->activeConfigurationLineData('ADR-ISBA', $convocatoria);
 $data['expediente'] = $expediente->where('id', $id)->first();
     
 $db = \Config\Database::connect();
@@ -34,7 +34,7 @@ class MYPDF extends TCPDF {
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
         // $pdf->Image('images/image_demo.jpg', $x, $y, $w, $h, 'JPG', 'url', 'align', false (resize), 300 (dpi), 'align (L (left) C (center) R (righ)', false, false, 0, $fitbox, false, false);
         // align: T (top), M (middle), B (bottom), N (next line)
-        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 10, 10, 85, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
@@ -77,7 +77,7 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
+$fmt = new NumberFormatter( 'es_ES', NumberFormatter::CURRENCY );
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 $pdf->AddPage();
@@ -124,10 +124,10 @@ $parrafo_12 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], 
 $parrafo_12 = str_replace("%FECHASOLICITUD%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_12);
 $parrafo_12 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_12);
 $parrafo_12 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_12);
-$parrafo_12 = str_replace("%IMPORTEAYUDA%", money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_12);
-$parrafo_12 = str_replace("%IMPORTE_INTERESES%", money_format("%i ", $data['expediente']['intereses_ayuda_solicita_idi_isba']), $parrafo_12);
-$parrafo_12 = str_replace("%IMPORTE_AVAL%", money_format("%i ", $data['expediente']['coste_aval_solicita_idi_isba']), $parrafo_12);
-$parrafo_12 = str_replace("%IMPORTE_APERTURA%", money_format("%i ", $data['expediente']['gastos_aval_solicita_idi_isba']), $parrafo_12);
+$parrafo_12 = str_replace("%IMPORTEAYUDA%", $fmt->formatCurrency($data['expediente']['importe_ayuda_solicita_idi_isba'], "EUR"), $parrafo_12);
+$parrafo_12 = str_replace("%IMPORTE_INTERESES%", $fmt->formatCurrency($data['expediente']['intereses_ayuda_solicita_idi_isba'], "EUR"), $parrafo_12);
+$parrafo_12 = str_replace("%IMPORTE_AVAL%", $fmt->formatCurrency($data['expediente']['coste_aval_solicita_idi_isba'], "EUR"), $parrafo_12);
+$parrafo_12 = str_replace("%IMPORTE_APERTURA%", $fmt->formatCurrency($data['expediente']['gastos_aval_solicita_idi_isba'], "EUR"), $parrafo_12);
 $parrafo_12 = str_replace("%FECHAREQUERIMIENTO%", date_format(date_create($data['expediente']['fecha_requerimiento_notif']),"d/m/Y") , $parrafo_12);
 $parrafo_12 = str_replace("%FECHAENMIENDA%", date_format(date_create($data['expediente']['fecha_REC_enmienda']),"d/m/Y") , $parrafo_12);
 $parrafo_12 = str_replace("%REFERENCIA_ESMENA_REC%", $data['expediente']['ref_REC_enmienda'], $parrafo_12);
@@ -151,7 +151,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
+$pdf->setY($currentY + 1);
 $parrafo_conclusion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('isba_4_informe_favorable_con_requerimiento.conclusionTxt'));
 $parrafo_conclusion = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_conclusion);
 $parrafo_conclusion = str_replace("%IMPORTEAYUDA%",  money_format("%i ", $data['expediente']['importe_ayuda_solicita_idi_isba']), $parrafo_conclusion);
@@ -164,7 +164,7 @@ $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 10);
+$pdf->setY($currentY + 3);
 $firma = lang('isba_4_informe_favorable_con_requerimiento.firma');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
