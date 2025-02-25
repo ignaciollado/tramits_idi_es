@@ -195,7 +195,7 @@ return [
    'justificacion_facturas_dec_resp'  => "Las <strong>facturas emitidas por el consultor</strong> en las cuales figuran: la fecha de la factura, el destinatario de la misma, el importe y el concepto de la consultoría realizada según el programa.",
    'justificacion_justificantes_doc'  => "Los justificantes de pagos realizados al consultor",
    'justificacion_justificantes_dec_resp'  => "Los <strong>justificantes de pago realizados al consultor</strong> en los términos establecidos en la convocatória.",
-   'firmo_documento_justificacion'    => "Firmo este documento al efecto de justificar la convocatoria de ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares para el año 2024 y solicitar el pago de la subvención concedida.",
+   'firmo_documento_justificacion'    => "Firmo este documento al efecto de justificar la convocatoria de ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares para el año 2025 y solicitar el pago de la subvención concedida.",
    'firmo_documento_renovacion_ils'   => "Firmo este documento al efecto de solicitar la renovación de la marca Industria Local Sostenible (ILS) de la Agencia de desarrollo regional de les Illes Balears.",
 
    'enviar_documentacion'  			  => "Enviar la documentación",   
@@ -706,7 +706,7 @@ En caso de ser empresa una empresa “asociada” o una empresa “vinculada”,
 'no_adherido_a_ils'     => "NO",
 'adherido_a_ils'        => "SÍ",
 'empresa_eco_7_2'       => "7.2. En el caso que la empresa solicitante esté adherida al programa ILS - Industria Local Sostenible. El importe de la ayuda para cubrir el coste del aval de las operaciones financieras de inversiones productivas cubrirá los siete años de la operación original, y son: el 100% del coste del aval los siete años de la operación, con la limitación del 1,25% sobre el importe del aval.",
-'solicita_ayuda_idi_isba'  => "SOLICITO<br><small>De acuerdo con la convocatoria para el año 2024 de ayudas a las empresas industriales con actividad en las Islas Baleares
+'solicita_ayuda_idi_isba'  => "SOLICITO<br><small>De acuerdo con la convocatoria para el año 2025 de ayudas a las empresas industriales con actividad en las Islas Baleares
 para cubrir las comisiones de apertura y de estudio, los intereses y el coste del aval para operaciones de financiación de inversiones productivas,
  aprobada por Resolución del consejero de Empresa, Ocupación y Energía, los importes correspondientes para la operación, avalada por sociedad de garantía recíproca ISBA
 , siguiente:</small>",

@@ -118,8 +118,8 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     } else {
         $importeAyuda = $expedientes['importeAyuda'];
     }
-    /*  $importeAyuda = number_format($importeAyuda, 2, ',', '.');
-    $importe_minimis = number_format($expedientes['importe_minimis'], 2, ',', '.'); */
+    $importeAyuda = number_format($importeAyuda, 2, ',', '.');
+    $importe_minimis = number_format($expedientes['importe_minimis'], 2, ',', '.');
     if ($expedientes["convocatoria"] != date("Y")) { 
         $isDisabled = "disabled";
     }
@@ -197,7 +197,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 </div>
                 <div class="form-group general">
                     <label for="importe_minimis">Importe minimis (€):</label>
-                    <input type="text" name="importe_minimis" class="form-control" readonly disabled id = "importe_minimis" maxlength = "4" size="4" placeholder="Import minimis" value="<?php echo $importe_minimis;?>">
+                    <input type="text" name="importe_minimis" class="form-control" readonly disabled id = "importe_minimis" placeholder="Import minimis" value="<?php echo $importe_minimis;?>">
                 </div>                
 		        <div class="form-group general">
                     <label for="nombre_rep">Representant legal:</label>
@@ -350,7 +350,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 </div>
                 <div class="form-group general">
                     <label for="porcentajeConcedido">Percentatje de l'ajuda:</label>
-                    <select class="form-control send_fase_0" readonly disabled id = "porcentajeConcedido" name = "porcentajeConcedido" required>
+                    <select class="form-control" readonly disabled id = "porcentajeConcedido" name = "porcentajeConcedido" required>
     		    		<option disabled <?php if ($expedientes['porcentajeConcedido'] == "") { echo "selected"; }?> value = ""><span>Selecciona una opció:</span></option>
                         <option <?php if ($expedientes['porcentajeConcedido'] == "0") { echo "selected"; }?> value = "0" class="solicitud"></option>
                         <option <?php if ($expedientes['porcentajeConcedido'] == "60") { echo "selected"; }?> value = "60" class="solicitud">60 %</option>

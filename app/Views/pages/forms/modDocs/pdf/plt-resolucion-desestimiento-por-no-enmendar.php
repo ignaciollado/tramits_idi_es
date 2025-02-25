@@ -77,10 +77,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGENCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("RESOLUCIÓN DE DESESTIMIENTO POR NO ENMENDAR");
 $pdf->SetSubject("RESOLUCIÓN DE DESESTIMIENTO POR NO ENMENDAR");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, GOIB");	
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -214,20 +214,17 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-/* $resolucion = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('2_resolucion_desestimiento_por_no_enmendar.2_resolucion')); */
-$antecedentes_4_5 = str_replace("%IMPORTE%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), lang('2_resolucion_desestimiento_por_no_enmendar.2_resolucion'));
-$resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion);
-$resolucion = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion);
+$resolucion = lang('2_resolucion_desestimiento_por_no_enmendar.2_resolucion');
 $resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion);
 $resolucion = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion);
 $html = $resolucion;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
+$pdf->setY($currentY + 4);
 $recursos = lang('2_resolucion_desestimiento_por_no_enmendar.2_recursos_tit');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'><b>". $recursos ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 

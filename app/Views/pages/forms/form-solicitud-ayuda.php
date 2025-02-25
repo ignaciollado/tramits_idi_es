@@ -1,7 +1,4 @@
 <!-- CONTENT -->
-
-<!-- <script type="text/javascript" src="/public/assets/js/comprueba-Documento-Identificador.js"></script>
-<script type="text/javascript" src="/public/assets/js/solicitud-ayuda.js"></script>	 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
@@ -43,7 +40,7 @@
 		<fieldset>
 			<label for = "rgpd" class="main" >
 				<span ><?php echo lang('message_lang.rgpd_leido');?> 
-					<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
+					<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#rgpdModal"><abbr title='Reglamento general de protección de datos'>RGPD.</abbr></button>
 					<input type="checkbox" class="requerido" onChange="javaScript: habilitarNextButton (this.checked);" required value="rgpd" name = "rgpd" id = "rgpd">
 				<span class="w3docs"></span>
 			</label>
@@ -58,7 +55,7 @@
 		</fieldset>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="rgpdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -102,8 +99,8 @@
 		</label>
 		
 		<label class="container-radio"><h6><?php echo lang('message_lang.opc_iGestion');?></h6>
-			<input disabled readonly title="<?php echo lang('message_lang.opc_iGestion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_IV" value="Programa IV">
-			<span class="checkmark checkmark-disabled"></span>
+			<input title="<?php echo lang('message_lang.opc_iGestion');?>" onChange="javaScript: opcionMarcada(this)" type="radio" name="opc_programa" id="Programa_IV" value="Programa IV">
+			<span class="checkmark"></span>
 		</label>
 		</ul>
    </fieldset>  		

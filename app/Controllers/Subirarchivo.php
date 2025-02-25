@@ -29,7 +29,7 @@ class SubirArchivo extends BaseController
 		$db = \Config\Database::connect();
 	  $documentos = $db->table('pindust_documentos');
 		$expediente = $db->table('pindust_expediente');
-		$sql= "SELECT idExp FROM pindust_expediente WHERE convocatoria = '".$convocatoria."' ORDER BY idExp DESC Limit 1";
+		$sql= "SELECT idExp FROM pindust_expediente WHERE convocatoria = '".$convocatoria."' AND tipo_tramite = 'XECS' ORDER BY idExp DESC Limit 1";
 		$query = $db->query($sql);
 
 		foreach ($query->getResult() as $row)
@@ -239,7 +239,7 @@ class SubirArchivo extends BaseController
 				'iae' => $this->request->getVar('codigoIAE'),
 				'nombre_rep' => $this->request->getVar('nom_representante'),
 				'nif_rep' => $this->request->getVar('nif_representante'),
-				'mail_tecnico_felib' => $tel_representante,
+				'telefono_rep' => $tel_representante,
 				'email_rep' => $mail_representante,
 
 				'hay_rep' => $hay_rep,
@@ -303,7 +303,7 @@ class SubirArchivo extends BaseController
 				];
 
 		$save_exp = $expediente->insert($data_exp);
-		/* var_dump($save_exp); */
+		var_dump($save_exp);
 		$last_insert_id = $save_exp->connID->insert_id;
 		$data_exp ['selloDeTiempo'] = $selloTiempo;
 		$data_exp ['last_insert_id'] = $last_insert_id;
@@ -786,7 +786,7 @@ class SubirArchivo extends BaseController
 		/* -------------------- copia nif al NO autorización a IDI comprobar dni, múltiples documentos------------ */
 
 		if (isset($documentosfile['file_enviardocumentoIdentificacion'])) {
-			foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
+		foreach($documentosfile['file_enviardocumentoIdentificacion'] as $copiaDocumentoIdentificacion)
 			{
 				if ($copiaDocumentoIdentificacion->isValid() && ! $copiaDocumentoIdentificacion->hasMoved())
 					{
