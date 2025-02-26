@@ -9,12 +9,106 @@
 <div class="container">
 
 <!-----------------------------------------------------CHEQUES---------------------------------------------------------------->
-<!------------------------------------------------------2024------------------------------------------------------------------>
+<!------------------------------------------------------2025------------------------------------------------------------------>
 <button class="accordion accordion--convo"><h1>Xecs consultoria</h1></button>
 <div class="row">
   <div class="col-sm-12 mb-3 mb-sm-0">
+    <div class="accordion" id="accordeonConvo2025">
+      <div class="btn btn-primary position-relative"><h5 class="card-title">2025 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2025">0</span></div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePI2025" aria-expanded="true" aria-controls="collapsePI2025">Programa I (iDigital)</button>
+        </h2>
+        <div id="collapsePI2025" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa I/2025');?>">
+            <strong>«IDigital»</strong>, estratègia per impulsar la digitalització en la indústria de les Illes Balears.</a><br>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesINoREC_2025">0</span>              
+              <span class="badge bg-primary" id="totalPendienteI_2025">0</span>
+              <span class="badge bg-secondary" id="totalInicioConsultoriaI_2025">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesFinalizadasI_2025">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoI_2025">0.00</span>
+            </li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Programa II (iExporta)</button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa II/2025');?>">            
+            <strong>«IExporta»</strong>, estratègia per impulsar la internacionalització de les empreses industrials de les Illes Balears.</a><br>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIINoREC_2025">0</span>
+              <span class="badge bg-primary" id="totalPendienteII_2025">0</span>
+              <span class="badge bg-secondary" id="totalInicioConsultoriaII_2025">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesFinalizadasII_2025">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoII_2025">0.00</span>
+            </li></ul>
+          
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Programa III (iSostenibilitat)</button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">           
+            <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br><br>
+            <ul>
+            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions corporatives/2025');?>">               
+              <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.</a><br>
+                  <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_org_2025">0</span>
+                  <span class="badge bg-primary" id="totalPendienteIII_org_2025">0</span>
+                  <span class="badge bg-secondary" id="totalInicioConsultoriaIII_org_2025">0</span>
+                  <span class="badge text-bg-success" id="totalSolicitudesFinalizadasIII_org_2025">0</span>
+                  <span class="badge text-bg-success" id="importeConcedidoIII_org_2025">0.00</span>
+              </li>
+            
+            <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions producte/2025');?>">               
+              <li>Identificació i càlcul de les emissions de gasos d'efecte d'hivernacle de producte. </a><br>
+                  <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_prod_2025">0</span>
+                  <span class="badge bg-primary" id="totalPendienteIII_prod_2025">0</span>
+                  <span class="badge bg-secondary" id="totalInicioConsultoriaIII_prod_2025">0</span>
+                  <span class="badge text-bg-success" id="totalSolicitudesFinalizadasIII_prod_2025">0</span>
+                  <span class="badge text-bg-success" id="importeConcedidoIII_prod_2025">0.00</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Programa IV (iGestió)</button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+          <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa IV/2025');?>">              
+            <strong>«IGestió»</strong>, estratègia per impulsar la implantació d'eines de gestió avançada i optimització de processos de la indústria de les Illes Balears.</a><br>
+            <ul><li>
+              <span class="badge text-bg-warning" id="totalSolicitudesIVNoREC_2025">0</span>
+              <span class="badge bg-primary" id="totalPendienteIV_2025">0</span>
+              <span class="badge bg-secondary" id="totalInicioConsultoriaIV_2025">0</span>
+              <span class="badge text-bg-success" id="totalSolicitudesFinalizadasIV_2025">0</span>
+              <span class="badge text-bg-success" id="importeConcedidoIV_2025">0.00</span>
+            </li></ul>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2024">
-      <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2024 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2024">0</span></div>
+      <div class="btn btn-primary position-relative"><h5 class="card-title">2024 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2024">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePI2024" aria-expanded="true" aria-controls="collapsePI2024">Programa I (iDigital)</button>
@@ -60,10 +154,10 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">           
-            <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br>
+            <strong>«ISostenibilitat»</strong>, estratègia per impulsar la millora de la sostenibilitat de la indústria de les Illes Balears.<br><br>
             <ul>
             <a href="<?php echo base_url('public/index.php/expedientes/expedientesPrograma/Programa III actuacions corporatives/2024');?>">               
-              <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.</a><br><br>
+              <li>Identificació i càlcul de les emissions de gasos amb efecte d'hivernacle de l'organització.</a><br>
                   <span class="badge text-bg-warning" id="totalSolicitudesIIINoREC_org_2024">0</span>
                   <span class="badge bg-primary" id="totalPendienteIII_org_2024">0</span>
                   <span class="badge bg-secondary" id="totalInicioConsultoriaIII_org_2024">0</span>
@@ -108,7 +202,7 @@
 
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2023">
-    <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2023 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2023">0</span></div>
+    <div class="btn btn-primary position-relative"><h5 class="card-title">2023 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2023">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2023PI" aria-expanded="true" aria-controls="collapse2023PI">Programa I (iDigital)</button>
@@ -164,7 +258,7 @@
 
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2022">
-    <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2022 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2022">0</span></div>
+    <div class="btn btn-primary position-relative"><h5 class="card-title">2022 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2022">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2022PI" aria-expanded="true" aria-controls="collapse2022PI">Programa I (iDigital)</button>
@@ -221,7 +315,7 @@
 
   <div class="col-sm-12 mb-3 mb-sm-0">
     <div class="accordion" id="accordeonConvo2021">
-    <div class="btn btn-primary position-relative"><h5 class="card-title">Línia 2021 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2021">0</span></div>
+    <div class="btn btn-primary position-relative"><h5 class="card-title">2021 Xecs consultoria</h5><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalSolicitudesXecs2021">0</span></div>
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Programa I (iDigital)</button>

@@ -15,11 +15,6 @@ window.addEventListener('load', (event) => {
     
     // Harcodeo todo lo que sigue por falta de tiempo. Cuando pueda, tengo que refactorizar.  (02/12/2021)
 
-    /* convo 2020 */
-/*     totalSolicitudesConvocatoria('2020')
-    totalSolicitudesPrograma('2020', 'Programa iDigital 20')
-    importeTotalConcedidoPrograma('2020', 'Programa iDigital 20') */
-
     /* ILS */
     totalSolicitudesLineaMultiConvo("\'ILS\'")
     /* ISBA */
@@ -106,6 +101,44 @@ window.addEventListener('load', (event) => {
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions corporatives', 'Finalizado', 'totalSolicitudesFinalizadasIII_org_2024')
     totalSolicitudesPorSituacion('2024', 'Programa III actuacions producte', 'Finalizado', 'totalSolicitudesFinalizadasIII_prod_2024')
     totalSolicitudesPorSituacion('2024', 'Programa IV', 'Finalizado', 'totalSolicitudesFinalizadasIV_2024')
+
+
+        /* convo 2025 */
+        totalSolicitudesConvocatoria('2025')
+
+        importeTotalConcedidoPrograma('2025', 'Programa I')
+        importeTotalConcedidoPrograma('2025', 'Programa II')
+        importeTotalConcedidoPrograma('2025', 'Programa III actuacions corporatives')
+        importeTotalConcedidoPrograma('2025', 'Programa III actuacions producte')
+        importeTotalConcedidoPrograma('2025', 'Programa IV')
+
+            /* NO HA PASADO REC */
+    totalSolicitudesPorSituacion('2025', 'Programa I', 'nohapasadoREC', 'totalSolicitudesINoREC_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa II', 'nohapasadoREC', 'totalSolicitudesIINoREC_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions corporatives', 'nohapasadoREC', 'totalSolicitudesIIINoREC_org_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions producte', 'nohapasadoREC', 'totalSolicitudesIIINoREC_prod_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa IV', 'nohapasadoREC', 'totalSolicitudesIVNoREC_2025')
+
+    /* PENDIENTE JUSTIFICAR */
+    totalSolicitudesPorSituacion('2025', 'Programa I', 'pendienteJustificar', 'totalPendienteI_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa II', 'pendienteJustificar', 'totalPendienteII_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions corporatives', 'pendienteJustificar', 'totalPendienteIII_org_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions producte', 'pendienteJustificar', 'totalPendienteIII_prod_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa IV', 'pendienteJustificar', 'totalPendienteIV_2025')
+
+    /* INICIO CONSULTORÍA */
+    totalSolicitudesPorSituacion('2025', 'Programa I', 'inicioConsultoria', 'totalInicioConsultoriaI_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa II', 'inicioConsultoria', 'totalInicioConsultoriaII_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions corporatives', 'inicioConsultoria', 'totalInicioConsultoriaIII_org_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions producte', 'inicioConsultoria', 'totalInicioConsultoriaIII_prod_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa IV', 'inicioConsultoria', 'totalInicioConsultoriaIV_2025')
+
+    /* FINALIZADO */
+    totalSolicitudesPorSituacion('2025', 'Programa I', 'Finalizado', 'totalSolicitudesFinalizadasI_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa II', 'Finalizado', 'totalSolicitudesFinalizadasII_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions corporatives', 'Finalizado', 'totalSolicitudesFinalizadasIII_org_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa III actuacions producte', 'Finalizado', 'totalSolicitudesFinalizadasIII_prod_2025')
+    totalSolicitudesPorSituacion('2025', 'Programa IV', 'Finalizado', 'totalSolicitudesFinalizadasIV_2025')
 });
 
 async function totalSolicitudesConvocatoria(convo) {
