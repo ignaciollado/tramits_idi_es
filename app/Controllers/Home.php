@@ -173,7 +173,7 @@ class Home extends BaseController
 		echo view('templates/footer/footer');
 	}	
 	
-	public function set_lang () 
+	public function xecs_lang () 
 	{
 		helper('cookie');
 		$language = \Config\Services::language();

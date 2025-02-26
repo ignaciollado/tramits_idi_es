@@ -6,13 +6,14 @@ body {
   margin: auto!important;
   padding: 1rem!important;
 }
-dialog {
+dialog, .modal-rgpd {
   background-color: #e4dede;
-  max-width: 90%;
+  /* max-width: 90%; */
   padding: 1rem;
   margin: auto;
   z-index: 9999;
 }
+
 
 i {
   font-size: 3rem; color: rgb(0, 55, 71);
@@ -306,7 +307,7 @@ select, input, textarea {
   position: sticky;
   top: 0;
   border:none;
-  z-index: 9999;
+  z-index: 9998;
   /* display:inline-block; */
 }
 
@@ -406,7 +407,7 @@ button {
 }
 .modal-body {
 	padding: 2px 16px;
-    width: 70%;}
+}
 
 .modal-footer {
   padding: 16px 16px;

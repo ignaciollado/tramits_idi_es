@@ -29,14 +29,21 @@ class SubirArchivo extends BaseController
 		$db = \Config\Database::connect();
 	  $documentos = $db->table('pindust_documentos');
 		$expediente = $db->table('pindust_expediente');
-		$sql= "SELECT idExp FROM pindust_expediente WHERE convocatoria = '".$convocatoria."' AND tipo_tramite = 'XECS' ORDER BY idExp DESC Limit 1";
+		$sql= "SELECT idExp FROM pindust_expediente WHERE convocatoria = '".$convocatoria."' AND 
+		(tipo_tramite = 'Programa I' 
+		OR tipo_tramite = 'Programa II' 
+		OR tipo_tramite = 'Programa III actuacions corporatives' 
+		OR tipo_tramite = 'Programa III actuacions producte' 
+		OR tipo_tramite = 'Programa IV' 
+		) ORDER BY idExp DESC Limit 1";
 		$query = $db->query($sql);
-
+		/* echo $sql." "; */
 		foreach ($query->getResult() as $row)
 			{
     	$idExp = $row->idExp;
 			$idExp++;
 			}
+		/* echo "el contador: ".$idExp."----"; */
 
 		$tipoTramite = $this->request->getVar('opc_programa');
 		$tipoSolicitante = $this->request->getVar('tipo_solicitante');
@@ -303,7 +310,6 @@ class SubirArchivo extends BaseController
 				];
 
 		$save_exp = $expediente->insert($data_exp);
-		var_dump($save_exp);
 		$last_insert_id = $save_exp->connID->insert_id;
 		$data_exp ['selloDeTiempo'] = $selloTiempo;
 		$data_exp ['last_insert_id'] = $last_insert_id;

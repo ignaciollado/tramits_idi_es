@@ -22,8 +22,10 @@
 <article>
 	<header class="headerFormlineaXecs">
 		<div class="langtoggle btn-group" role="group" aria-label="Language toggle">
-			<a title="Català" href="<?php echo base_url('/public/index.php/home/set_lang/ca'); ?>" class="btn btn-outline-light text-dark" role="button"> Català</a>
-			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/set_lang/es'); ?>" class="btn btn-outline-light text-dark" role="button"> Castellano</a>
+<!-- 			<a title="Català" href="<?php echo base_url('/public/index.php/home/set_lang/ca'); ?>" class="btn btn-outline-light text-dark" role="button"> Català</a>
+			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/set_lang/es'); ?>" class="btn btn-outline-light text-dark" role="button"> Castellano</a> -->
+			<a title="Català" href="<?php echo base_url('/public/index.php/home/xecs_lang/ca'); ?>" class="btn btn-outline-light text-dark" role="button"> Català</a>
+			<a title="Castellano" href="<?php echo base_url('/public/index.php/home/xecs_lang/es'); ?>" class="btn btn-outline-light text-dark" role="button"> Castellano</a>
 		</div>
 		<div class='logoarea'>
 				<a href='https://www.adrbalears.es' target="_blank" title="Agència de desenvolupament regional de les Illes Balears (ADR Balears)">
