@@ -2,14 +2,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <?php	
   use App\Models\ConfiguracionModel;
-
+	$displayInExpList = "";
   $session = session();
   $empresa = $session->get('full_name');
   $nif = $nifcif;
 	$adreca_mail = $session->get('username');
 	$telefono_cont = $session->get('telefono');
 
-		
 	if ( $byCEOSigned ) {
     $configuracion = new ConfiguracionModel();
 		$theUserCode = $adreca_mail;
@@ -94,57 +93,60 @@ $request->documentsToSign = $documentsToSign;
 $json = json_encode($request);
 
 $json = str_replace(array('\r','\n'),'',$json)."<br>";
-$resultRequest = execute("requests", $json, __FUNCTION__);
-printResult($resultRequest, $last_insert_id, $id);
+$resultRequest = execute ("requests", $json, __FUNCTION__);
+printResult ($resultRequest, $last_insert_id, $id);
 
 function execute($apiPath, $json, $methodName) {
-$url = REST_API_URL.$apiPath;
+	global $displayInExpList;
+	$url = REST_API_URL.$apiPath;
 
-// Initiate curl
-$ch = curl_init();
+	// Initiate curl
+	$ch = curl_init();
 
-// Disable SSL verification
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	// Disable SSL verification
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-// Will return the response, if false it print the response
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// Will return the response, if false it print the response
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-// Set the url
-curl_setopt($ch, CURLOPT_URL, $url);
+	// Set the url
+	curl_setopt($ch, CURLOPT_URL, $url);
 
-if (is_null($json)) {
-	curl_setopt($ch, CURLOPT_HTTPGET, 1);
-} else {
-	if ($methodName=='createUser') {
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+	if (is_null($json)) {
+		curl_setopt($ch, CURLOPT_HTTPGET, 1);
 	} else {
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		if ($methodName=='createUser') {
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+		} else {
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		}
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json; charset=utf-8","Accept:application/json, text/javascript, */*; q=0.01"));
 	}
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json; charset=utf-8","Accept:application/json, text/javascript, */*; q=0.01"));
+
+	// Basic Authentication
+	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+	curl_setopt($ch, CURLOPT_USERPWD, REST_API_KEY.":".REST_API_PASS);
+
+	// Execute
+	$result = curl_exec($ch);
+	$data = json_decode($result, true);
+	$displayInExpList = "<br><div class='alert alert-dark' role='alert'>";
+	$displayInExpList .= "<strong>Dades de la sol·licitud de signatura:</strong><br>";
+	$displayInExpList .= "Destinatari: <strong>" . $data['addresseeLines'][0]['addresseeGroups'][0]['userEntities'][0]['userCode'] . "</strong><br>";
+	$displayInExpList .= "Document: <br><strong>" . $data['documentsToSign'][0]['filename'] . "</strong><br>";
+	$formatted_date = date("Y-m-d H:i:s", $data['sendDate']/ 1000);
+	$displayInExpList .= "Data de enviament: " . $formatted_date . "<br>";
+	$displayInExpList .= "Public Access ID: " . $data['publicAccessId'] . "<br>";
+	$displayInExpList .= "</div>";
+	echo $displayInExpList;
+	// Closing
+	curl_close($ch);
+	return $result;
 }
-
-// Basic Authentication
-curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-curl_setopt($ch, CURLOPT_USERPWD, REST_API_KEY.":".REST_API_PASS);
-
-// Execute
-$result = curl_exec($ch);
-$data = json_decode($result, true);
-echo "<br><div class='alert alert-dark' role='alert'>";
-echo "<strong>Dades de la sol·licitud de signatura:</strong><br>";
-echo "Destinatari: <strong>" . $data['addresseeLines'][0]['addresseeGroups'][0]['userEntities'][0]['userCode'] . "</strong><br>";
-echo "Dotument per signar: <strong>" . $data['documentsToSign'][0]['filename'] . "</strong><br>";
-$formatted_date = date("Y-m-d H:i:s", $data['sendDate']/ 1000);
-echo "Data de enviament: " . $formatted_date . "<br>";
-echo "Public Access ID: " . $data['publicAccessId'] . "<br>";
-echo "</div>";
-// Closing
-curl_close($ch);
-return $result;
-}	
 		
 function printResult($result, $last_insert_id, $id) {
+	global $displayInExpList;
 	$respuesta = json_decode ($result, true);
 	$db = \Config\Database::connect();
 	$builder = $db->table('pindust_documentos_generados');
@@ -156,7 +158,7 @@ function printResult($result, $last_insert_id, $id) {
 
   $builder = $db->table('pindust_expediente');
 	$data = [
-    'fecha_requerimiento_sended' => $respuesta['sendDate'],
+    'fecha_requerimiento_sended' => $displayInExpList,
 	];
 	$builder->where('id', $id);
 	$builder->update($data);

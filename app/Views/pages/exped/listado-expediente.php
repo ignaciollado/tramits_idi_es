@@ -43,7 +43,7 @@
 																																																				}
 																																																				?>">
   			<datalist id="programa">
-			  	<option value="Programa iDigital 20">
+			  	<!-- <option value="Programa iDigital 20"> -->
     			<option value="Programa I">
 					<option value="Programa II">
 					<option value="Programa III">	
@@ -300,9 +300,9 @@
 				</div>
 			<?php }
 			else if ($item['situacion'] == "notificadoIFPRProvPago") {?>
-				<div id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
+				<div id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
 					<span title="Aquesta sol·licitud s'ha notificat PR Provisional">
-					<strong>PR Provisional<br>NOTIFICADA (DATA) AUT</strong>
+					<strong>PR Provisional</strong>
 					<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va con o sin requerimiento */
 						echo "<br>sense requeriment";
 						$tipoDocumento = 'doc_prop_res_definitiva_adr_isba';
@@ -310,11 +310,12 @@
 						echo "<br>amb requeriment";
 						$tipoDocumento = 'doc_prop_res_definitiva_con_requerimiento_adr_isba';
 					}?>
+					<strong><br>NOTIFICADA el <?php echo $item['fecha_not_propuesta_resolucion_prov'];?></strong>
 					</span>
 				</div>
-				<div class=" add-margin-top">
+				<div class="btn-idi btn-itramits">
 					<?php
-						echo "<span class='badge badge-primary'><small>S'enviarà el ".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10).'</small></span><br>';
+						echo "<span class='badge badge-primary'><small>La PR Definitiva<br>s'enviarà el ".sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10).'</small></span><br>';
 						$date1 = date_create($item['fecha_not_propuesta_resolucion_prov']); 
 						$actualDate = date_create(date("Y-m-d"));
 						$date2 = date_create(date(sumarDiasHabiles($item['fecha_not_propuesta_resolucion_prov'], 10)));
@@ -373,7 +374,11 @@
 								];
 								$builder->where('id', $item['id']);
 								$builder->update($data_infor);
-								echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
+								if ($item['tipo_tramite'] === 'ADR-ISBA') {
+									echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
+								} else {
+									echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-definitiva-favorable-sin-requerimiento', $data);
+								}
 								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
 							}
@@ -383,14 +388,19 @@
 								];
 								$builder->where('id', $item['id']);
 								$builder->update($data_infor);
-							 echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-con-requerimiento-adr-isba', $data);
+								if ($item['tipo_tramite'] === 'ADR-ISBA') {
+							 		echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-definitiva-favorable-con-requerimiento', $data);
+								} else {
+
+								}
 								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
 							}					
 						}	else {
 							if (!empty($item['fecha_requerimiento_sended'])) {
-								$formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000);
-								echo "<span class='badge bg-success'><small>Enviat el<br>".$formatted_date."</small></span>";
+								/* $formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000); 
+								echo "<span class='badge bg-success'><small>Enviat el<br>".$formatted_date."</small></span>";*/
+								echo "<span class='badge bg-success'><small>Enviat el<br>".$item['fecha_requerimiento_sended']."</small></span>";
 								} else {
 								echo "<span class='badge bg-secondary'><small>Document pendent d'enviament</small></span>";
 							}
@@ -575,18 +585,16 @@ else if ($item['situacion'] == "adhesionRenovada") {
 				if (strlen($item['ref_REC']) > 0) {
 					$referencia = str_replace("/","-",$item['ref_REC']) ;
 				}
-				
 			?>
 			<span id="__<?php echo $item['id'];?>" class = "detail-wrapper-col"><a id="_<?php echo $item['id'];?>" onclick= "cambiarTexto(<?php echo $item['id'];?>)" href="<?php echo base_url('/public/index.php/expedientes/edit/'.$item['id']);?>" class="btn btn-itramits-info">+info</a></span>
   	</div>
 			<?php
-				}
+			}
 			?>
-
     <?php
-        } else {
-            echo "<div class='alert alert-warning'><strong>Cap expedient!</strong> No s'ha trobat cap informació coincident amb els seus criteris de filtrat.</div>";
-        }
+      } else {
+          echo "<div class='alert alert-warning'><strong>Cap expedient!</strong> No s'ha trobat cap informació coincident amb els seus criteris de filtrat.</div>";
+      }
     ?>
 </div>
 </div>

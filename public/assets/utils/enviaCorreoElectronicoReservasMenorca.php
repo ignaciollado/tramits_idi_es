@@ -51,7 +51,7 @@ $mail->IsHTML(true);
 
 $mail->Subject = $asunto;
 $project = "RECINTE EMPRESARIAL DE MENORCA";
-$mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
+$mail->AddBCC($projectMail, "Gestió interna ADR Balears");
 
 $mensajeLayout = file_get_contents('contents-booking-menorca.html');
 $mensajeLayout = str_replace("%USUARIO%", $solicitante, $mensajeLayout);
