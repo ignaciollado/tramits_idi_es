@@ -51,9 +51,10 @@ return [
 
   '9_fundamentosDeDerecho_tit' => "Fonaments de dret",
   '9_fundamentosDeDerechoTxt' => "<ol>
-        <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvenciOIB núm. 196, de 31 de desembre).</li><br>
-        <l>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</l
-        <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><b  <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
+      <li>El Decret legislatiu 2/2005, de 28 de desembre, pel qual s'aprova el text refós de la Llei de subvenciOIB núm. 196, de 31 de desembre).</li><br>
+      <li>La Llei 38/2003, de 17 de novembre, general de subvencions (BOE núm. 276, de 18 de novembre).</li>
+        <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><br>  
+        <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
         <li>La Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</li><br>
         <li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2024-2026, aprovat per l’Acord del Consell de Govern de dia 19 d’abril de 2024 (BOIB núm. 52, de 20 d’abril). En concret, en l’objectiu I, línia 2.I, destinada a ajuts de xecs de consultoria per a la competitivitat industrial en matèria de digitalització, internacionalització. Sostenibilitat i gestió avançada.</li><br>
         <li>El Decret 6/2013, de 8 de febrer, de mesures de simplificació documental en els procediments administratius (BOIB núm. 21, de 12 de febrer).</li><br>
@@ -65,9 +66,9 @@ return [
   '9_propuestaresoluciondefTxt' => "<p>Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:</p><br>",
 
   '9_propuestaresolucionprovisional_1_3'  => "<ol>
-        <li>Denegar la concessió d'una subvenció per un import de %IMPORTE%, a favor de %SOLICITANTE%, amb NIF %NIF%, per cobrir hores de consultoria especialitzada.</li><br>
-        <li>Atorgar al sol·licitant un termini d'al·legacions de deu dies hàbils comptadors des de l'endemà de la seva notificació. En cas contrari, s'entendrà que estau conforme amb el contingut de la proposta. Un cop transcorregut aquest termini s'ha de dictar la proposta de resolució definitiva.</li><br>
-		    <li>Notificar aquesta proposta de resolució a l'interessat.</li></ol>", 
+      <li>Denegar la concessió d'una subvenció per un import de %IMPORTE%, a favor de %SOLICITANTE%, amb NIF %NIF%, per cobrir hores de consultoria especialitzada.</li><br>
+      <li>Atorgar al sol·licitant un termini d'al·legacions de deu dies hàbils comptadors des de l'endemà de la seva notificació. En cas contrari, s'entendrà que estau conforme amb el contingut de la proposta. Un cop transcorregut aquest termini s'ha de dictar la proposta de resolució definitiva.</li><br>
+	<li>Notificar aquesta proposta de resolució a l'interessat.</li></ol>", 
 
   '9_firma' => "Palma, en data de la signatura electrònica<br><br>La directora gerent de l'ADR Balears<br>%DGERENTE%<br>"
 ];

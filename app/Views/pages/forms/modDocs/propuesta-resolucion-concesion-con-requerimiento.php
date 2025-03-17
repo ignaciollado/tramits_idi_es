@@ -1,4 +1,4 @@
-<!-----------------------------------------6.-abril_Proposta resolucio concessió ajut_ amb requeriment SIN VIAFIRMA OK-->
+<!-----------------------------------------16.- Resolució concessió favorable amb requeriment-->
 <div class="card-itramits">
 	<div class="card-itramits-body">
     	6. Proposta resolució concessió amb requeriment		

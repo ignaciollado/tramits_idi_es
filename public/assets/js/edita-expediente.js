@@ -762,7 +762,7 @@ function actualizaFechaConsultoria(kickOffDate, addMonths) {
 	}
 	
 	let valorFechaLimite = d
-	let fechaTopeSegunConvo = new Date("2024-10-04")
+	let fechaTopeSegunConvo = new Date("2025-10-03")
 
 	if ( valorFechaLimite > fechaTopeSegunConvo ) {
 		valorFechaLimite = fechaTopeSegunConvo

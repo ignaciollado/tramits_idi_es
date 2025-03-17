@@ -51,7 +51,7 @@ return [
 			<li>Està al corrent de les obligacions amb la Seguretat Social i amb l'Administració tributària, tant l'estatal com l'autonòmica.</li><br>  
 			</ul></li>
     	<li>D'acord amb l'establert a la resolució de convocatòria, els ajuts concedits en el marc d'aquesta convocatòria constitueixen ajuts d'Estat regulats en els articles 107 i 108 del Tractat de Funcionament de la Unió Europea dels ajuts de minimis (reglament núm. 1407/2013), i al reglament (UE) 2023/2831 de la comissió, de 13 de desembre de 2023, relatiu a l'aplicació dels articles 107 i 108 del Tractat.</li><br>
-			<li>L'import econòmic d'aquesta convocatòria és de %TOTALAMOUNT%.</li><br> 
+			<li>L'import econòmic d'aquesta convocatòria és de 318.000 €.</li><br> 
 			<li>Hi ha crèdit adequat i suficient amb càrrec als pressuposts de l'ADR Balears per a l'exercici de l'any %CONVO%.</li><br>
 			<li>En data %FECHAINFORME% s'ha emès informe tècnic des de l'ADR Balears sobre la concessió d'ajuts en el marc d'aquesta convocatòria.</li><br>
 			<li>En data %FECHAPROPUESTARESOLUCION_PROVISIONAL% la directora gerent de l'ADR Balears ha dictat la proposta de resolució provisional sobre la concessió d'una subvenció a %SOLICITANTE%, destinada a xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada (notificada a l'entitat el %FECHA_NOTIFICACION_PROP_RESOL_PROVISIONAL%), en la qual s'establia un període de deu dies hàbils per presentar al·legacions, així com, que en cas contrari, s'entendria que l'interessat estava conforme amb el contingut de la Proposta.</li><br>  

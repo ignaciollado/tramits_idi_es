@@ -1562,7 +1562,23 @@ class Expedientes extends Controller
 						echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 						echo view('pages/forms/go-back-footer', $data_footer);
 						break;					
-			case "doc_res_concesion_favorable_con_req": 			  // DOC 15
+			case "doc_res_concesion_favorable_sin_req": 			  // DOC 15
+							$data_infor = [
+								'doc_res_concesion_favorable_sin_req' => $last_insert_id
+							];
+							$builder->where('id', $request->uri->getSegment(3));
+							$builder->update($data_infor);
+							$data['byCEOSigned'] = true;
+							$data_footer = [
+								'tipoDoc' => " Resolució de concessió favorable sense requeriment",
+								'conVIAFIRMA' => false
+							];
+							echo view('pages/forms/modDocs/pdf/plt-resolucion-concesion-favorable-sin-requerimiento', $data);
+							echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+							echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+							echo view('pages/forms/go-back-footer', $data_footer);
+							break;				
+			case "doc_res_concesion_favorable_con_req": 			  // DOC 16
 							$data_infor = [
 								'doc_res_concesion_favorable_con_req' => $last_insert_id
 							];
@@ -1578,22 +1594,8 @@ class Expedientes extends Controller
 							echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 							echo view('pages/forms/go-back-footer', $data_footer);
 							break;				
-			case "doc_res_concesion_favorable_sin_req": 			  // DOC 16
-								$data_infor = [
-									'doc_res_concesion_favorable_sin_req' => $last_insert_id
-								];
-								$builder->where('id', $request->uri->getSegment(3));
-								$builder->update($data_infor);
-								$data['byCEOSigned'] = true;
-								$data_footer = [
-									'tipoDoc' => " Resolució de concessió favorable sense requeriment",
-									'conVIAFIRMA' => false
-								];
-								echo view('pages/forms/modDocs/pdf/plt-resolucion-concesion-favorable-sin-requerimiento', $data);
-								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-								echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-								echo view('pages/forms/go-back-footer', $data_footer);
-								break;				
+
+			
 			case "doc_res_denegacion_con_req": 			  					// DOC 17
 							$data_infor = [
 									'doc_res_denegacion_con_req' => $last_insert_id
@@ -1659,7 +1661,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-			case "doc_res_pago_sin_req": 			  								// DOC 27
+			case "doc_res_pago_sin_req": 			  								// DOC 24
 					$data_infor = [
 							'doc_res_pago_sin_req' => $last_insert_id
 					];
@@ -1692,105 +1694,7 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 
-			case "doc_inicio_requerimiento_justificacion": 			// DOC 18
-				$data_infor = [
-					'doc_inicio_requerimiento_justificacion' => $last_insert_id
-				];
-				$builder->where('id', $request->uri->getSegment(3));
-				$builder->update($data_infor);
-				$data['byCEOSigned'] = false;
-				$data_footer = [
-					'tipoDoc' => " Informe inici requeriment justificació",
-					'conVIAFIRMA' => true
-				];
-				echo view('pages/forms/modDocs/pdf/plt-inicio-requerimiento-justificacion', $data);
-				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-				echo view('pages/forms/go-back-footer', $data_footer);
-				break;
 
-			case "doc_requerimiento_justificacion": 						// DOC 19
-				$data_infor = [
-					'doc_requerimiento_justificacion' => $last_insert_id
-				];
-				$builder->where('id', $request->uri->getSegment(3));
-				$builder->update($data_infor);
-				$data['byCEOSigned'] = true;
-				$data_footer = [
-					'tipoDoc' => " Requeriment d'esmena justificació",
-					'conVIAFIRMA' => true
-				];
-				echo view('pages/forms/modDocs/pdf/plt-requerimiento-justificacion', $data);
-				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-				echo view('pages/forms/go-back-footer', $data_footer);
-				break;
-
-			case "doc_informe_sobre_la_subsanacion": 						// DOC 20
-				$data_infor = [
-					'doc_informe_sobre_la_subsanacion' => $last_insert_id
-				];
-				$builder->where('id', $request->uri->getSegment(3));
-				$builder->update($data_infor);
-				$data['byCEOSigned'] = false;
-				$data_footer = [
-					'tipoDoc' => " Informe post esmena justificació",
-					'conVIAFIRMA' => true
-				];
-				echo view('pages/forms/modDocs/pdf/plt-informe-subsanacion-docum-justificacion', $data);
-				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-				echo view('pages/forms/go-back-footer', $data_footer);
-				break;
-
-			case "doc_resolucion_concesion_con_req_20b": 				// DOC 20b
-				$data_infor = [
-					'doc_resolucion_concesion_con_req_20b' => $last_insert_id
-				];
-				$builder->where('id', $request->uri->getSegment(3));
-				$builder->update($data_infor);
-				$data['byCEOSigned'] = false;
-				$data_footer = [
-					'tipoDoc' => " Resolució de concesió amb requeriment (20b)",
-					'conVIAFIRMA' => false
-				];
-				echo view('pages/forms/modDocs/pdf/plt-resolucion-concesion-con-requerimiento', $data);
-				echo view('pages/forms/go-back-footer', $data_footer);
-				break;
-
-			case "doc_res_desestimiento_por_renuncia": 					// DOC 22
-				$data_infor = [
-					'doc_res_desestimiento_por_renuncia' => $last_insert_id
-				];
-				$builder->where('id', $request->uri->getSegment(3));
-				$builder->update($data_infor);
-				$data['byCEOSigned'] = false;
-				$data_footer = [
-					'tipoDoc' => " Resolució desistiment per renúncia",
-					'conVIAFIRMA' => false
-				];
-				echo view('pages/forms/modDocs/pdf/plt-resolucion-desestimiento-por-renuncia', $data);
-				echo view('pages/forms/go-back-footer', $data_footer);
-				break;
-
-			case "doc_prop_res_revocacion_por_no_justificar": 	// DOC 23
-				$data_infor = [
-					'doc_prop_res_revocacion_por_no_justificar' => $last_insert_id
-				];
-				$builder->where('id', $request->uri->getSegment(3));
-				$builder->update($data_infor);
-				$data['byCEOSigned'] = true;
-				$data_footer = [
-					'tipoDoc' => " Proposta de resolució de revocació per no justificar",
-					'conVIAFIRMA' => true
-				];
-				echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-revocacion-por-no-justificar', $data);
-				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-				echo view('pages/forms/go-back-footer', $data_footer);
-				break;
-
-			case "doc_res_revocacion_por_no_justificar": 				// DOC 24
 				$data_infor = [
 					'doc_res_revocacion_por_no_justificar' => $last_insert_id
 				];
