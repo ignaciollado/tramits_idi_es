@@ -2,7 +2,6 @@
 <div class="card-itramits">
   	<div class="card-itramits-body">
     	Resolució de pagament<br>sense requeriment<br>
-			<!-- <small>Pendent crear plantilla json</small> -->
   	</div>
 		<div class="card-itramits-footer">
   		<?php

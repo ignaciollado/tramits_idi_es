@@ -16,7 +16,7 @@ class MYPDF extends TCPDF {
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
-		$this->Cell(0, 5, "Agència de desenvolupament regional - Plaça Son Castelló 1 - Tel. 971 17 61 61 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 5, "Agència de Desenvolupament Regional - Plaça Son Castelló 1 - Tel. 971 17 61 61 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
         $this->Cell(0, 15, 'Pàgina '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
@@ -81,8 +81,8 @@ $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(180, '', 20, 60, $html, 0, 1, 1, true, 'J', true);
 
-$html = "<strong>".lang('message_lang.titulo_justificacion_isba')."</strong><br><br>";
-$html .= "<strong>".lang('message_lang.destino_solicitud').": Agència de desenvolupament regional de les Illes Balears</strong><br><br>";
+$html =  "<strong>".lang('message_lang.titulo_justificacion_isba')."</strong><br><br>";
+$html .= "<strong>".lang('message_lang.destino_solicitud').": Agència de Desenvolupament Regional de les Illes Balears</strong><br><br>";
 $html .= "<strong>".lang('message_lang.codigo_dir3')."</strong> A04003714<br><br>";
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
@@ -93,7 +93,7 @@ echo "<content><section>".$html;
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><strong>".lang('message_lang.identificacion_sol_idigital').":</strong><br><br>".lang('message_lang.solicitante_sol_idigital').": ".$data['expedientes']['empresa']." - NIF: ".$data['expedientes']['nif']."<br>";
 $html .= lang('message_lang.nom_rep_legal_sol_idigital').": ".$data['expedientes']['nombre_rep']." - ".lang('message_lang.nif_rep_legal_sol_idigital').": ".$data['expedientes']['nif_rep']."<br><br>";
-$html .= lang('message_lang.select_programa_justificacion').":<br>";
+$html .= lang('message_lang.select_programa_justificacion_isba').":<br>";
 $html .= $data['expedientes']['tipo_tramite']."</td></tr>";
 $html .= "</table>";
 echo $html;
@@ -111,7 +111,7 @@ $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true); */
 
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br><strong>".lang('message_lang.declaro')."</strong><br><br>".lang('message_lang.justificacion_declaracion_isba').":<br><br>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br><strong>".lang('message_lang.declaro')."</strong><br><br>".lang('message_lang.justificacion_declaracion_isba')."<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
@@ -123,9 +123,9 @@ $html = "<table cellpadding='5' style='border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>";
 $html .= "<ul>";
 foreach($justificacion as $docsJustif_item):
-	if ( $docsJustif_item->corresponde_documento == "file_DeclRespAplicadoFondoIsba") {
+	/* if ( $docsJustif_item->corresponde_documento == "file_DeclRespAplicadoFondoIsba") {
 		$html .= "<li>".lang('message_lang.justificacion_decl_resp_aplicado_fondo_isba').".</li>";
-	}
+	} */
     if ( $docsJustif_item->corresponde_documento == "file_MemoriaActividadesIsba") {
 		$html .= "<li>".lang('message_lang.justificacion_memoria_actividades_isba').".</li>";
 	}
@@ -139,7 +139,7 @@ foreach($justificacion as $docsJustif_item):
 		$html .= "<li>".lang('message_lang.justificacion_declarcion_isba_txt').".</li>";
 	}
 endforeach;
-$html .= "<li>".lang('message_lang.justificacion_mem_econom').":<ul>";
+$html .= "<li>".lang('message_lang.justificacion_mem_econom_isba')."<ul>";
 foreach($justificacion as $docsJustif_item):
     if ( $docsJustif_item->corresponde_documento == "file_FactTransformacionDigital") {
         $html .= "<li>".lang('message_lang.justificacion_facturas_dec_resp')."</li>";

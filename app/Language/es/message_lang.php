@@ -176,7 +176,7 @@ return [
    'justificacion_doc'			        => "Documento",
    'justificacion_exp'			        => "Expediente",   
    'justificacion_declaracion'        => "Que he aportado la documentación siguiente como justificación de la convocatoria de ayudas de cheques de consultoría para la competitividad industrial de las Islas Baleares en materia de digitalización, internacionalización, sostenibilidad y gestión avanzada:",
-   'justificacion_declaracion_isba'   => "Que he aportado la documentación siguiente como justificación de la convocatoria de ayudas a la microempresa, pequeña y mediana empresa de carácter industrial de las Illes Balears que tengan aprobadas operaciones financieras avaladas por una Sociedad de Garantía Recíproca, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas.",
+   'justificacion_declaracion_isba'   => "<ul><li>Que se han aplicado los Fondos percibidos de la operación financiera a la finalidad que ha servido de cimiento para concederla y que se han llevado a cabo las actividad para las cuales se solicitó.</li><li>Que he aportado la documentación siguiente como justificación de la convocatoria de ayudas a la microempresa, pequeña y mediana empresa de carácter industrial de las Illes Balears que tengan aprobadas operaciones financieras avaladas por una Sociedad de Garantía Recíproca, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas.</li></ul>",
    'justificacion_declaracion_ils'    => "Que he aportado la documentación siguiente para la renovación de la marca ILS de la Agencia de desarrollo regional de les Illes Balears",
 
    'justificacion_declarcion_isba_txt' => "Declaración de ISBA-SBR",
@@ -191,6 +191,7 @@ return [
    'justificacion_plan_p2_p3'         => "El plan o los informes",
    'justificacion_mem_econom_titulo'  => "Memoria económica justificativa",
    'justificacion_mem_econom'         => "Memoria económica justificativa (anexo 7) junto con",
+   'justificacion_mem_econom_isba'         => "Memoria económica justificativa.",
    'justificacion_facturas_doc'       => "Las facturas emitidas por el consultor",
    'justificacion_facturas_dec_resp'  => "Las <strong>facturas emitidas por el consultor</strong> en las cuales figuran: la fecha de la factura, el destinatario de la misma, el importe y el concepto de la consultoría realizada según el programa.",
    'justificacion_justificantes_doc'  => "Los justificantes de pagos realizados al consultor",
@@ -202,7 +203,8 @@ return [
    'programa'                         => "1. SELECCIONE EL PROGRAMA DE AYUDA QUE SOLICITA",
    'programa_continuacion'            => "(seleccione sólo una opción. Presente una solicitud para cada programa)",
    'select_programa'                  => "Seleccione un programa",
-   'select_programa_justificacion'    => "<b>Indique el programa</b> que justifica (sólo se puede indicar uno por solicitud)",
+   'select_programa_justificacion'    => "<b>Indique el programa que justifica</b> (sólo se puede indicar uno por solicitud)",
+   'select_programa_justificacion_isba'    => "<b>Indique el programa que justifica</b>",
    'importe_total_justificacion'    => "<b>Importe total justificado</b> (sin IVA)",
 
    'opc_programa_txt'                 => "Programas de ayudas",

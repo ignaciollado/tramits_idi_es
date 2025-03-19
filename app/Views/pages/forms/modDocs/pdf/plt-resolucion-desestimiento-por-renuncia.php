@@ -54,10 +54,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("INSTITUT D'INNOVACIÓ EMPRESARIAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("RESOLUCIÓN DE DESESTIMIENTO POR RENUNCIA");
 $pdf->SetSubject("RESOLUCIÓN DE DESESTIMIENTO POR RENUNCIA");
-$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, IDI, GOIB");	
+$pdf->SetKeywords("INDUSTRIA 4.0, DIAGNOSTIC, DIGITAL, EXPORTA, ILS, PIMES, ADR Balears, GOIB");	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -77,8 +77,9 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 // set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+$fmt = new NumberFormatter( 'es_ES', NumberFormatter::CURRENCY );
 
-$pdf->SetFont('helvetica', '', 10);
+$pdf->SetFont('helvetica', '', 9);
 $pdf->setFontSubsetting(false);
 
 // -------------------------------------------------------------- Programa, datos solicitante, datos consultor ------------------------------------------------------------- //
@@ -87,7 +88,7 @@ $pdf->AddPage();
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$html = "Document: resolució<br>";
+$html = "Document: resolució desestiment<br>";
 $html .= "Núm. Expedient: ". $data['expediente']['idExp']."/".$data['expediente']['convocatoria']." (".$data['expediente']['tipo_tramite'].")"."<br>";
 $html .= "Nom sol·licitant: ".$data['expediente']['empresa']."<br>";
 $html .= "NIF: ". $data['expediente']['nif']."<br>";
@@ -105,7 +106,7 @@ $pdf->setFontSubsetting(false);
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 15);
-$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('message_lang.doc_resolucion_desestimiento_intro'));
+$intro = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], lang('25_resolucion_desistimiento.25_intro'));
 $intro = str_replace("%NIF%", $data['expediente']['nif'], $intro);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". $intro ."</b></td></tr>";
@@ -115,140 +116,86 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 6);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('message_lang.doc_resolucion_desestimiento_antecedentes') ."</b></td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><b>". lang('25_resolucion_desistimiento.25_fets_tit') ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 4);
-$parrafo_1 = str_replace("%RESPRESIDENTE%", $data['configuracion']['respresidente'], lang('message_lang.doc_resolucion_desestimiento_p1'));
-$parrafo_1 = str_replace("%BOIB%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
-$html = "<ol>";
-$html .= "<li>". $parrafo_1 ."</li>";
-$html .= "<br>";
-
-$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('message_lang.doc_resolucion_desestimiento_p2'));
-$parrafo_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_2);
-$parrafo_2 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_2);
-$parrafo_2 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_2);
-$parrafo_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , $parrafo_2);
-$parrafo_2 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_2);
-$html .= "<li>". $parrafo_2 ."</li>";
-$html .= "<br>";
-
-$parrafo_3 = str_replace("%FECHADESESTIMIENTO%", date_format(date_create($data['expediente']['fecha_REC_desestimiento']),"d/m/Y") , lang('message_lang.doc_resolucion_desestimiento_p3'));
-$parrafo_3 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_3);
-$parrafo_3 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_3);
-$parrafo_3 = str_replace("%NUMDESESTIMIENTO%", $data['expediente']['ref_REC_desestimiento'], $parrafo_3);
-$parrafo_3 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']), $parrafo_3);
-$parrafo_3 = str_replace("%PROGRAMA%", $data['expediente']['tipo_tramite'], $parrafo_3);
-$html .= "<li>". $parrafo_3 ."</li>";
-$html .= "<br>";
-
-$parrafo_4 = str_replace("%TEXTOLIBRE%", $data['expediente']['motivoDesestimientoRenuncia'], lang('message_lang.doc_resolucion_desestimiento_p4'));
-$html .= "<li>". $parrafo_4 ."</li>";
-$html .= "</lo>";
+$parrafo_1 = str_replace("%FECHARESPRESIDI%", $data['configuracion']['respresidente'], lang('25_resolucion_desistimiento.25_fets_1_2_3'));
+$parrafo_1 = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $parrafo_1);
+$parrafo_1 = str_replace("%BOIBFECHA%", date_format(date_create($data['configuracionLinea']['fecha_BOIB']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%CONVO%", $convocatoria, $parrafo_1);
+$parrafo_1 = str_replace("%FECHASOL%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $parrafo_1);
+$parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
+$parrafo_1 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_1);
+$parrafo_1 = str_replace("%IMPORTEAYUDA%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_1);
+$parrafo_1 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_1);
+$html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVertical.png';
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
-$req_fundamentos = lang('message_lang.doc_resolucion_desestimiento_fundamentos');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $req_fundamentos ."</td></tr>";
-$html .= "</table>";
+$pdf->setY($currentY + 30);
+
+$parrafo_2 = str_replace("%FECHAREC%", date_format(date_create($data['expediente']['fecha_REC']),"d/m/Y") , lang('25_resolucion_desistimiento.25_fundamentosDeDerecho_tit'));
+$html = "<b>". $parrafo_2 ."</b>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$req_fundamentos_1 = lang('message_lang.doc_resolucion_desestimiento_fundamentos_1');
-$html = "<ol>";
-$html .= "<li>". $req_fundamentos_1 ."</li>";
-$html .= "<br>";
-
-$req_fundamentos_2 = lang('message_lang.doc_resolucion_desestimiento_fundamentos_2');
-$html .= "<li>". $req_fundamentos_2 ."</li>";
-$html .= "<br>";
-
-$req_fundamentos_3 = lang('message_lang.doc_resolucion_desestimiento_fundamentos_3');
-$html .= "<li>". $req_fundamentos_3 ."</li>";
-$html .= "<br>";
-
-$req_fundamentos_4 = lang('message_lang.doc_resolucion_desestimiento_fundamentos_4');
-$html .= "<li>". $req_fundamentos_4 ."</li>";
-$html .= "</lo>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$dicto = lang('message_lang.doc_resolucion_desestimiento_dicto');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $dicto ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$resolucion = lang('message_lang.doc_resolucion_desestimiento_resolucion');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $resolucion ."</td></tr>";
-$html .= "</table>";
-$pdf->writeHTML($html, true, false, true, false, '');
-
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 3);
-$resolucion_1 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_resolucion_desestimiento_resolucion_1'));
-$resolucion_1 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_1);
-$resolucion_1 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_1);
-$html = "<ol>";
-$html .= "<li>". $resolucion_1 ."</li>";
-$html .= "<br>";
-
-$resolucion_2 = str_replace("%IMPORTE%", money_format("%i ", $data['expediente']['importeAyuda']) , lang('message_lang.doc_resolucion_desestimiento_resolucion_2'));
-$resolucion_2 = str_replace("%SOLICITANTE%", $data['expediente']['empresa'] , $resolucion_2);
-$resolucion_2 = str_replace("%NIF%", $data['expediente']['nif'] , $resolucion_2);
-$html .= "<li>". $resolucion_2 ."</li>";
-$html .= "</lo>";
+$pdf->setY($currentY + 4);
+$parrafo_3 = lang('25_resolucion_desistimiento.25_fundamentosDeDerechoTxt');
+$html = $parrafo_3;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // remove default header/footer
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVertical.png';
-$pdf->Image($image_file, 15, 15, '', '40', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 30);
+
+$parrafo_4 = lang('25_resolucion_desistimiento.25_dicto');
+$html = $parrafo_4;
+$pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 15);
-$recursos = lang('message_lang.doc_resolucion_desestimiento_recursos');
+$pdf->setY($currentY + 3);
+$resolucion_tit = lang('25_resolucion_desistimiento.25_resolucion_tit');
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos ."</td></tr>";
+$html .= "<tr><td style='background-color:#ffffff;color:#000;'><b>". $resolucion_tit ."</b></td></tr>";
 $html .= "</table>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$recursos_1 = lang('message_lang.doc_resolucion_desestimiento_recursos_1');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_1 ."</td></tr>";
-$html .= "</table>";
+$resolucion = lang('25_resolucion_desistimiento.25_resolucion');
+$resolucion = str_replace("%SOLICITANTE%", $data['expediente']['empresa'], $resolucion);
+$resolucion = str_replace("%NIF%", $data['expediente']['nif'], $resolucion);
+$html =  $resolucion;
+$pdf->writeHTML($html, true, false, true, false, '');
+
+$currentY = $pdf->getY();
+$pdf->setY($currentY + 5);
+$recursos_tit = lang('25_resolucion_desistimiento.25_recursos_tit');
+$html = "<b>". $recursos_tit ."</b>";
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$recursos_2 = lang('message_lang.doc_resolucion_desestimiento_recursos_2');
-$html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;'>". $recursos_2 ."</td></tr>";
-$html .= "</table>";
+$recursos = lang('25_resolucion_desistimiento.25_recursos');
+$html =  $recursos;
 $pdf->writeHTML($html, true, false, true, false, '');
 
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
-$firma = lang('message_lang.doc_resolucion_desestimiento_firma');
+$firma = lang('25_resolucion_desistimiento.25_firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
 $firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";

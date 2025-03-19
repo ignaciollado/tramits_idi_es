@@ -46,7 +46,7 @@
 	</fieldset>
 
 	<div>  
-		<fieldset>
+<!-- 		<fieldset>
 			<legend><h4><?php echo lang('message_lang.justificacion_decl_resp_aplicado_fondo_isba');?>:</h4> </legend>
 			<div class="panel-justificacion">
 				<div class = "content-file-upload">
@@ -56,7 +56,7 @@
 					</div>
 				</div>
 			</div>
-		</fieldset>
+		</fieldset> -->
 
 		<fieldset>
 			<legend><h4><?php echo lang('message_lang.justificacion_memoria_actividades_isba');?>:</h4> </legend>

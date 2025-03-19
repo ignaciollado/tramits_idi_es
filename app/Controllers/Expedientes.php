@@ -842,7 +842,7 @@ class Expedientes extends Controller
 		$totalEnvoiceLines = $this->request->getVar(('total-invoice-lines'));
 
 		// Sube el file_DeclRespAplicadoFondoIsba
-		$documentosfile = $this->request->getFiles();
+		/* $documentosfile = $this->request->getFiles();
 		foreach ($documentosfile['file_DeclRespAplicadoFondoIsba'] as $decRespAplicFondo) {
 			if ($decRespAplicFondo->isValid() && !$decRespAplicFondo->hasMoved()) {
 				$newName = $decRespAplicFondo->getRandomName();
@@ -851,7 +851,7 @@ class Expedientes extends Controller
 					'name' =>  $newName,
 					'type' => $decRespAplicFondo->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'tipo_tramite' => $tipo_tramite,
 					'corresponde_documento' => 'file_DeclRespAplicadoFondoIsba',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
@@ -863,7 +863,7 @@ class Expedientes extends Controller
 				$last_insert_id = $save->connID->insert_id;
 				$data ['id_sol'] = $id;
 			}
-		}
+		} */
 		// Sube las file_MemoriaActividadesIsba
 		$documentosfile = $this->request->getFiles(); 
 		foreach ($documentosfile['file_MemoriaActividadesIsba'] as $memoriaActiv) {
@@ -1662,39 +1662,39 @@ class Expedientes extends Controller
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
 			case "doc_res_pago_sin_req": 			  								// DOC 24
-					$data_infor = [
-							'doc_res_pago_sin_req' => $last_insert_id
-					];
-					$builder->where('id', $request->uri->getSegment(3));
-					$builder->update($data_infor);
-					$data['byCEOSigned'] = true;
-					$data_footer = [
-						'tipoDoc' => " Resolució de pagament sense requeriment",
-						'conVIAFIRMA' => false
-					];
-					echo view('pages/forms/modDocs/pdf/plt-resolucion-pago-sin-requerimiento', $data);
-					echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
-					echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
-					echo view('pages/forms/go-back-footer', $data_footer);
-					break;													
-			
-				case "doc_res_conces_sin_req": //SIN VIAFIRMA DOC 17 A DIRECTOR GENERAL
 				$data_infor = [
-					'doc_res_conces_sin_req' => $last_insert_id
+					'doc_res_pago_sin_req' => $last_insert_id
 				];
 				$builder->where('id', $request->uri->getSegment(3));
 				$builder->update($data_infor);
-				$data['byCEOSigned'] = false;
+				$data['byCEOSigned'] = true;
 				$data_footer = [
-					'tipoDoc' => " Resolució de concessió sense requeriment",
+					'tipoDoc' => " Resolució de pagament sense requeriment",
 					'conVIAFIRMA' => false
 				];
-				echo "<h4>Resolució de concessió sense requeriment</h4>";
-				echo view('pages/forms/modDocs/pdf/plt-resolucion-concesion', $data);
+				echo view('pages/forms/modDocs/pdf/plt-resolucion-pago-sin-requerimiento', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
+				echo view('pages/forms/go-back-footer', $data_footer);
+				break;													
+			
+			case "doc_res_desestimiento_por_renuncia": 					// DOC 25
+				$data_infor = [
+					'doc_res_desestimiento_por_renuncia' => $last_insert_id
+				];
+				$builder->where('id', $request->uri->getSegment(3));
+				$builder->update($data_infor);
+				$data['byCEOSigned'] = true;
+				$data_footer = [
+					'tipoDoc' => " Resolució de desistiment per renúncia",
+					'conVIAFIRMA' => false
+				];
+				echo view('pages/forms/modDocs/pdf/plt-resolucion-desestimiento-por-renuncia', $data);
+				echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
+				echo view('pages/forms/rest_api_firma/envia-a-firma-informe', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-
-
+			case "doc_res_revocacion_por_no_justificar": 				// DOC 26
 				$data_infor = [
 					'doc_res_revocacion_por_no_justificar' => $last_insert_id
 				];
@@ -1702,13 +1702,12 @@ class Expedientes extends Controller
 				$builder->update($data_infor);
 				$data['byCEOSigned'] = false;
 				$data_footer = [
-					'tipoDoc' => " Resolució revocació per no justificar",
+					'tipoDoc' => " Proposta resolució revocació per no justificar",
 					'conVIAFIRMA' => false
 				];
 				echo view('pages/forms/modDocs/pdf/plt-resolucion-revocacion-por-no-justificar', $data);
 				echo view('pages/forms/go-back-footer', $data_footer);
 				break;
-	
 		}
 		echo view('templates/footer/footer');
 	}
