@@ -150,6 +150,18 @@
 				</div>		
 			</div>
 		</fieldset>
+
+		<fieldset>
+			<legend><h4><?php echo lang('message_lang.justificacion_mem_econom_isba');?>:</h4> </legend>
+			<div class="panel-justificacion">
+				<div class = "content-file-upload">
+					<h5>[.pdf]:</h5>
+					<div>
+						<input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_MemoriaEconomIsba" name="file_MemoriaEconomIsba[]" required size="20" accept=".pdf" multiple />
+					</div>
+				</div>
+			</div>
+		</fieldset>
 		
 		<fieldset class="submit-button">
 			<button type="submit" class = "btn btn-primary btn-lg" id = "enviar_justificantes"><?php echo lang('message_lang.enviar_documentacion');?></button>

@@ -339,7 +339,7 @@ class Expedientes extends Controller
 		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
 		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
 
-		$data['totalDocsDeclRespAplicadoFondoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_DeclRespAplicadoFondoIsba', $id);
+		$data['totalDocsMemoriaEconomIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_MemoriaEconomIsba', $id);
 		$data['totalDocsMemoriaActividadesIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_MemoriaActividadesIsba', $id);
 		$data['totalDocsFacturasEmitidasIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FacturasEmitidasIsba', $id);
 		$data['totalDocsJustificantesPagoIsba'] = $modelJustificacion->checkIfDocumentoJustificacion('file_JustificantesPagoIsba', $id);
@@ -841,29 +841,6 @@ class Expedientes extends Controller
 		$listaEnumerativaDeGastos = $this->request->getVar('invoice-lines');
 		$totalEnvoiceLines = $this->request->getVar(('total-invoice-lines'));
 
-		// Sube el file_DeclRespAplicadoFondoIsba
-		/* $documentosfile = $this->request->getFiles();
-		foreach ($documentosfile['file_DeclRespAplicadoFondoIsba'] as $decRespAplicFondo) {
-			if ($decRespAplicFondo->isValid() && !$decRespAplicFondo->hasMoved()) {
-				$newName = $decRespAplicFondo->getRandomName();
-				$decRespAplicFondo->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
-				$data_file = [
-					'name' =>  $newName,
-					'type' => $decRespAplicFondo->getClientMimeType(),
-					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite,
-					'corresponde_documento' => 'file_DeclRespAplicadoFondoIsba',
-					'datetime_uploaded' => time(),
-					'convocatoria' => $convocatoria,
-					'created_at'  => $decRespAplicFondo->getTempName(),
-					'selloDeTiempo'  => $selloTiempo,
-					'id_sol'         => $id
-				];
-				$save = $documentosJustif->insert($data_file);
-				$last_insert_id = $save->connID->insert_id;
-				$data ['id_sol'] = $id;
-			}
-		} */
 		// Sube las file_MemoriaActividadesIsba
 		$documentosfile = $this->request->getFiles(); 
 		foreach ($documentosfile['file_MemoriaActividadesIsba'] as $memoriaActiv) {
@@ -874,7 +851,7 @@ class Expedientes extends Controller
 					'name' => $newName,
 					'type' => $memoriaActiv->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'tipo_tramite' => $tipo_tramite,
 					'corresponde_documento' => 'file_MemoriaActividadesIsba',
 					'importeTotalJustificado' => $totalEnvoiceLines,
 					'datetime_uploaded' => time(),
@@ -897,7 +874,7 @@ class Expedientes extends Controller
 					'name' => $newName,
 					'type' => $factEmitidas->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'tipo_tramite' => $tipo_tramite,
 					'corresponde_documento' => 'file_FacturasEmitidasIsba',
 					'listaEnumerativaDeGastos' => $listaEnumerativaDeGastos,
 					'datetime_uploaded' => time(),
@@ -920,7 +897,7 @@ class Expedientes extends Controller
 					'name' => $newName,
 					'type' => $justifPago->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'tipo_tramite' => $tipo_tramite,
 					'corresponde_documento' => 'file_JustificantesPagoIsba',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
@@ -942,7 +919,7 @@ class Expedientes extends Controller
 					'name' => $newName,
 					'type' => $justifPago->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'tipo_tramite' => $tipo_tramite,
 					'corresponde_documento' => 'file_DeclaracionIsba',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
@@ -953,6 +930,28 @@ class Expedientes extends Controller
 				$save = $documentosJustif->insert($data_file);
 				$last_insert_id = $save->connID->insert_id;
 			}
+		}
+		// Sube los file_MemoriaEconomIsba
+		$documentosfile = $this->request->getFiles();
+		foreach ($documentosfile['file_MemoriaEconomIsba'] as $justifPago) {
+		if ($justifPago->isValid() && !$justifPago->hasMoved()) {
+			$newName = $justifPago->getRandomName();
+			$justifPago->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+			$data_file = [
+				'name' => $newName,
+				'type' => $justifPago->getClientMimeType(),
+				'cifnif_propietario' => $nif,
+				'tipo_tramite' => $tipo_tramite,
+				'corresponde_documento' => 'file_MemoriaEconomIsba',
+				'datetime_uploaded' => time(),
+				'convocatoria' => $convocatoria,
+				'created_at'  => $justifPago->getTempName(),
+				'selloDeTiempo'  => $selloTiempo,
+				'id_sol'         => $id
+			];
+			$save = $documentosJustif->insert($data_file);
+			$last_insert_id = $save->connID->insert_id;
+		}
 		}		
 		/* ------------------ actualiza el estado del expediente a 'pendienteRECJustificar' ---------------*/
 		$sql = 'UPDATE pindust_expediente SET situacion="pendienteRECJustificar" WHERE id =' . $id;

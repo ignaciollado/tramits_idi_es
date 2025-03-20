@@ -1231,13 +1231,13 @@
         <div class="col docsExpediente">
             <h3>Justificants:</h3>
             <div class="accordion " id="accordionJustificacionISBA">
-<!--                 <div class="accordion-item" style="border:1px solid red;">
+                <div class="accordion-item" style="border:1px solid red;">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab_dec_resp_fondos" aria-expanded="true" aria-controls="tab_dec_resp_fondos">
-                            <?php echo lang('message_lang.justificacion_decl_resp_aplicado_fondo_isba');?>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab_mem_econ_isba" aria-expanded="true" aria-controls="tab_mem_econ_isba">
+                            <?php echo lang('message_lang.justificacion_mem_econom_isba');?>
                         </button>
                     </h2>
-                    <div id="tab_dec_resp_fondos" class="accordion-collapse collapse show" data-bs-parent="#accordionJustificacionISBA">
+                    <div id="tab_mem_econ_isba" class="accordion-collapse collapse show" data-bs-parent="#accordionJustificacionISBA">
                     <div class = "header-wrapper-docs-justificacion">
   	                    <div>Rebut el</div>
    	                    <div>Document</div>
@@ -1273,7 +1273,7 @@
                         <?php endforeach; ?>
                         <?php endif; ?> 
                     </div>
-                </div> -->
+                </div>
 
                 <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -1699,12 +1699,12 @@
 </style>
 
 <script>
-    if (<?php echo $totalDocsDeclRespAplicadoFondoIsba;?> === 0) {
-    	document.getElementById("tab_dec_resp_fondos").classList.add ("warning-msg-justific");
+    if (<?php echo $totalDocsMemoriaEconomIsba;?> === 0) {
+    	document.getElementById("tab_mem_econ_isba").classList.add ("warning-msg-justific");
     }
     else
     {
-    	document.getElementById("tab_dec_resp_fondos").classList.add ("success-msg-justific");
+    	document.getElementById("tab_mem_econ_isba").classList.add ("success-msg-justific");
     }
 
     if (<?php echo $totalDocsMemoriaActividadesIsba;?> === 0) {
