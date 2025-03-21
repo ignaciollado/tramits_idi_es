@@ -399,7 +399,7 @@ class Expedientes extends Controller
 		$data['documentosJustifFact'] = $modelJustificacion->listDocumentosJustificacion('file_FactTransformacionDigital', $id);
 		$data['documentosJustifPagos'] = $modelJustificacion->listDocumentosJustificacion('file_PagosTransformacionDigital', $id);
 
-		$data['documentosDeclRespAplicadoFondoIsba'] = $modelJustificacion->listDocumentosJustificacion('file_DeclRespAplicadoFondoIsba', $id);
+		$data['documentosMemoriaEconomIsba'] = $modelJustificacion->listDocumentosJustificacion('file_MemoriaEconomIsba', $id);
 		$data['documentosMemoriaActividadesIsba'] = $modelJustificacion->listDocumentosJustificacion('file_MemoriaActividadesIsba', $id);
 		$data['documentosFacturasEmitidasIsba'] = $modelJustificacion->listDocumentosJustificacion('file_FacturasEmitidasIsba', $id);
 		$data['documentosJustificantesPagoIsba'] = $modelJustificacion->listDocumentosJustificacion('file_JustificantesPagoIsba', $id);

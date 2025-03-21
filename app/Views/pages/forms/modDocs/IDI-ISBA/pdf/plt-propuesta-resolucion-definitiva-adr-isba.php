@@ -28,8 +28,8 @@ $session = session();
 if ($session->has('logged_in')) {  
     $pieFirma =  $session->get('full_name');
 }
-
-class MYPDF extends TCPDF {
+if (!class_exists('MYPDF')) {
+    class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
@@ -49,6 +49,7 @@ class MYPDF extends TCPDF {
         // Address and Page number
         $this->Cell(0, 5, "Agència de desenvolupament regional - Plaça Son Castelló 1 - Tel. 971 17 61 61 - 07009 - Palma - Illes Balears", 0, false, 'C', 0, '', 0, false, 'T', 'M');
         $this->Cell(0, 15, $this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+    }
     }
 }
 

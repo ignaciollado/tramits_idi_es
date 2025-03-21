@@ -330,7 +330,10 @@
 						<?php } else { ?>
 							<span data-bs-toggle="tooltip" data-bs-placement="left" title="...dies naturals que resten per emetre la Proposta de resolució provisional favorable" class="badge bg-danger">
 						<?php }
-						echo "<small>(resten <strong>".$faltan."</strong> naturals)</small><br>";
+						if (empty($item['fecha_requerimiento_sended'])) {
+							echo "<small>(resten <strong>".$faltan."</strong> naturals)</small><br>";
+						}
+					//echo "<small>(resten <strong>".$faltan."</strong> naturals)</small><br>";
 						echo "</span><br>";
 						
 						if (empty($item['fecha_requerimiento_sended']) && ($faltanNumber <= 0) && ($item['tipo_tramite'] === 'ADR-ISBA')) { /* Si no se ha hecho el envío automático y han transcurrido los 10 días*/
@@ -339,7 +342,7 @@
 							$data['convocatoria'] = $item['convocatoria'];
 							$data['programa'] = $item['tipo_tramite'];
 							$data['nifcif'] = mb_strtoupper($item['nif']);
-							$data['byCEOSigned'] = false;
+							$data['byCEOSigned'] = true;
 							$nombreDocumento = $tipoDocumento . ".pdf";
 							$data['nombreDocumento'] = str_replace("doc_", $item['idExp'] . "_" . $item['convocatoria'] . "_", $nombreDocumento);
 							$documentos = $db->table('pindust_documentos_generados');
@@ -374,10 +377,10 @@
 								];
 								$builder->where('id', $item['id']);
 								$builder->update($data_infor);
-								if ($item['tipo_tramite'] === 'ADR-ISBA') {
+								if ($item['tipo_tramite'] === 'ADR-ISBA') { /* ISBA SIN REQUERIMIENTO */
 									echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
-								} else {
-									echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-definitiva-favorable-sin-requerimiento', $data);
+								} else { /* XECS SIN REQUERIMIENTO PENDIENTE DE QUE ISBA FUNCIONE */
+									/* echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-definitiva-favorable-sin-requerimiento', $data); */
 								}
 								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
 								echo view('pages/forms/rest_api_firma/envia-a-firma-informe-auto-send', $data);
@@ -388,9 +391,9 @@
 								];
 								$builder->where('id', $item['id']);
 								$builder->update($data_infor);
-								if ($item['tipo_tramite'] === 'ADR-ISBA') {
-							 		echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-definitiva-favorable-con-requerimiento', $data);
-								} else {
+								if ($item['tipo_tramite'] === 'ADR-ISBA') { /* ISBA CON REQUERIMIENTO */
+							 		echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-con-requerimiento-adr-isba', $data);
+								} else { /* XECS CON REQUERIMIENTO PENDIENTE DE QUE ISBA FUNCIONE */
 
 								}
 								echo view('pages/forms/rest_api_firma/cabecera_viafirma', $data);
@@ -398,8 +401,7 @@
 							}					
 						}	else {
 							if (!empty($item['fecha_requerimiento_sended'])) {
-								/* $formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000); 
-								echo "<span class='badge bg-success'><small>Enviat el<br>".$formatted_date."</small></span>";*/
+								/* $formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000);*/
 								echo "<span class='badge bg-success'><small>Enviat el<br>".$item['fecha_requerimiento_sended']."</small></span>";
 								} else {
 								echo "<span class='badge bg-secondary'><small>Document pendent d'enviament</small></span>";

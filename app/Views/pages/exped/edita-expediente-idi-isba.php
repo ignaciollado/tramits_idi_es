@@ -1243,8 +1243,8 @@
    	                    <div>Document</div>
 	                    <div>Estat</div>
                     </div>
-	                <?php if($documentosDeclRespAplicadoFondoIsba): 
-                    foreach($documentosDeclRespAplicadoFondoIsba as $docsJustif_item): 
+	                <?php if($documentosMemoriaEconomIsba): 
+                    foreach($documentosMemoriaEconomIsba as $docsJustif_item): 
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $parametro = explode ("/",$path);

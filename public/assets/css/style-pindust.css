@@ -6,6 +6,13 @@
 	outline: none;
 }
 
+.multiline-text {
+	word-wrap: break-word; /* Permite que las palabras se dividan en varias líneas */
+	word-break: break-all; /* Fuerza el texto a romperse en cualquier punto */
+	white-space: normal; /* Asegura que el texto se ajuste al contenedor */
+	font-family: Arial, sans-serif; /* Establece la fuente del texto */
+}
+
 button:hover {
 	cursor:pointer!important;
 }

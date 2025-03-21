@@ -8,7 +8,6 @@
   $nif = $nifcif;
 	$adreca_mail = $session->get('username');
 	$telefono_cont = $session->get('telefono');
-
 	if ( $byCEOSigned ) {
     $configuracion = new ConfiguracionModel();
 		$theUserCode = $adreca_mail;
@@ -134,7 +133,7 @@ function execute($apiPath, $json, $methodName) {
 	$displayInExpList = "<br><div class='alert alert-dark' role='alert'>";
 	$displayInExpList .= "<strong>Dades de la sol·licitud de signatura:</strong><br>";
 	$displayInExpList .= "Destinatari: <strong>" . $data['addresseeLines'][0]['addresseeGroups'][0]['userEntities'][0]['userCode'] . "</strong><br>";
-	$displayInExpList .= "Document: <br><strong>" . $data['documentsToSign'][0]['filename'] . "</strong><br>";
+	$displayInExpList .= "Document: <br><strong><div class='multiline-text'>" . $data['documentsToSign'][0]['filename'] . "</div></strong><br>";
 	$formatted_date = date("Y-m-d H:i:s", $data['sendDate']/ 1000);
 	$displayInExpList .= "Data de enviament: " . $formatted_date . "<br>";
 	$displayInExpList .= "Public Access ID: " . $data['publicAccessId'] . "<br>";
