@@ -25,7 +25,7 @@ class ExpedientesModel extends Model
     }
 
     public function findNumberOfConvocatorias($nif, $tipoTramite, $convocatoria) {  
-        if ($tipoTramite == 'Programa III actuacions corporatives' && $convocatoria == '2024' ) {
+        if ($tipoTramite == 'Programa III actuacions corporatives' && $convocatoria == '2025' ) {
             $tipoTramite = "Programa III";
         }
         $sql = 'SELECT count(id) as totalConvos FROM pindust_expediente WHERE 
@@ -51,6 +51,27 @@ class ExpedientesModel extends Model
             'importeAyuda'  => $importe,
         ];
         return $this->update($id, $data);
+    }
+
+    public function updateFechafirmaPRDef($id, $fecha) {
+        $fechaFormateada = date('Y-m-d', strtotime($fecha));
+        $sql = 'UPDATE pindust_expediente SET fecha_firma_propuesta_resolucion_def = ? WHERE id = ?';
+        
+        // Ejecuta la consulta con parámetros para evitar inyección SQL
+        $query = $this->db->query($sql, [$fechaFormateada, $id]);
+        $results = $query->getResultArray();
+
+       /*  if ($this->db->affectedRows() > 0) {
+            return [
+                'status'  => 200,
+                'message' => 'Fecha de firma de propuesta de resolución definitiva actualizada exitosamente',
+            ];
+        } else {
+            return [
+                'status'  => 500,
+                'message' => 'Error al actualizar la fecha de firma de propuesta de resolución definitiva.',
+            ];
+        } */
     }
 
     public function getPublicAccessId ($id) {

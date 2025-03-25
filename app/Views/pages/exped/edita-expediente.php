@@ -1111,7 +1111,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
             <!-----------------------------------------19.-abril_Acta Kick off ------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-kickoff.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
-            <!-----------------------------------------20.-mayo_Acta de cierre ---->
+            <!-----------------------------------------20.-mayo_Acta de cierre ------------------------------------->
             <li><?php include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/acta-de-cierre.php';?></li>
             <!------------------------------------------------------------------------------------------------------>
             </ol>

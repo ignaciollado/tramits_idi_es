@@ -303,7 +303,7 @@
 				<div id="'.$item['id'].'" class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa">
 					<span title="Aquesta sol·licitud s'ha notificat PR Provisional">
 					<strong>PR Provisional</strong>
-					<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va con o sin requerimiento */
+					<?php	if (($item['fecha_requerimiento_notif'] === '0000-00-00 00:00:00') || ($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va con o sin requerimiento */
 						echo "<br>sense requeriment";
 						$tipoDocumento = 'doc_prop_res_definitiva_adr_isba';
 					} else {
@@ -337,6 +337,7 @@
 						echo "</span><br>";
 						
 						if (empty($item['fecha_requerimiento_sended']) && ($faltanNumber <= 0) && ($item['tipo_tramite'] === 'ADR-ISBA')) { /* Si no se ha hecho el envío automático y han transcurrido los 10 días*/
+							
 							$data['id'] = $item['id'];
 							$data['idExp'] = $item['idExp'];
 							$data['convocatoria'] = $item['convocatoria'];
@@ -371,13 +372,14 @@
 							if (!is_dir($dir)) {
 								mkdir($dir, 0775, true);
 							}
-							if (($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
+							if (($item['fecha_requerimiento_notif'] === '0000-00-00 00:00:00') || ($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* Seleccionar si el documento va sin requerimiento o con */
+								echo "sense requeriment";
 								$data_infor = [
 									'doc_prop_res_definitiva_adr_isba' => $last_insert_id
 								];
 								$builder->where('id', $item['id']);
 								$builder->update($data_infor);
-								if ($item['tipo_tramite'] === 'ADR-ISBA') { /* ISBA SIN REQUERIMIENTO */
+								if ($item['tipo_tramite'] === 'ADR-ISBA' && ($item['fecha_requerimiento_notif'] === '0000-00-00 00:00:00') || ($item['fecha_requerimiento_notif'] === '0000-00-00')) { /* ISBA SIN REQUERIMIENTO */
 									echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-adr-isba', $data);
 								} else { /* XECS SIN REQUERIMIENTO PENDIENTE DE QUE ISBA FUNCIONE */
 									/* echo view('pages/forms/modDocs/pdf/plt-propuesta-resolucion-definitiva-favorable-sin-requerimiento', $data); */
@@ -391,7 +393,7 @@
 								];
 								$builder->where('id', $item['id']);
 								$builder->update($data_infor);
-								if ($item['tipo_tramite'] === 'ADR-ISBA') { /* ISBA CON REQUERIMIENTO */
+								if ($item['tipo_tramite'] === 'ADR-ISBA' && ($item['fecha_requerimiento_notif'] !== '0000-00-00 00:00:00') || ($item['fecha_requerimiento_notif'] !== '0000-00-00')) { /* ISBA CON REQUERIMIENTO */
 							 		echo view('pages/forms/modDocs/IDI-ISBA/pdf/plt-propuesta-resolucion-definitiva-con-requerimiento-adr-isba', $data);
 								} else { /* XECS CON REQUERIMIENTO PENDIENTE DE QUE ISBA FUNCIONE */
 
@@ -401,9 +403,14 @@
 							}					
 						}	else {
 							if (!empty($item['fecha_requerimiento_sended'])) {
-								/* $formatted_date = date("Y-m-d H:i:s", $item['fecha_requerimiento_sended']/ 1000);*/
 								echo "<span class='badge bg-success'><small>Enviat el<br>".$item['fecha_requerimiento_sended']."</small></span>";
 								} else {
+								/* echo $item['fecha_requerimiento_notif']; */
+								if (($item['fecha_requerimiento_notif'] === '0000-00-00 00:00:00') || ($item['fecha_requerimiento_notif'] === '0000-00-00')) {
+									echo "notificará sense requerimient<br>";
+								} else {
+									echo "notificará amb requerimient<br>";
+								}
 								echo "<span class='badge bg-secondary'><small>Document pendent d'enviament</small></span>";
 							}
 						}

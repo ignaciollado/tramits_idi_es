@@ -4,10 +4,8 @@
 	$nif = $_POST["nif"];
 	$adreca_mail = $email_not;
 	$telefono_cont = $telefono_not;
-		
-	//$adreca_mail = "ignacio.llado@idi.es";
-	//$adreca_mail = "pindust@idi.es";
-	//$telefono_cont = "677234076";
+
+	echo $emprea."-".$nif."-".$adreca_mail."-".$telefono_cont;
 		
 	require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 	require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
@@ -80,7 +78,7 @@
 		$json = json_encode($request);
 		/* echo $json; */
 		$resultRequest = execute("requests", $json, __FUNCTION__);
-		/* echo "----".$resultRequest."------"; */
+		//echo "---->".$resultRequest."<------";
 		printResult($resultRequest, $id_sol, $tipo_Doc, $adreca_mail);
 
 	
