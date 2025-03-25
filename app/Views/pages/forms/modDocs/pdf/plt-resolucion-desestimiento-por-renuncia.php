@@ -132,6 +132,10 @@ $parrafo_1 = str_replace("%NIF%", $data['expediente']['nif'], $parrafo_1);
 $parrafo_1 = str_replace("%NUMREC%", $data['expediente']['ref_REC'], $parrafo_1);
 $parrafo_1 = str_replace("%IMPORTEAYUDA%", $fmt->formatCurrency($data['expediente']['importeAyuda'], "EUR"), $parrafo_1);
 $parrafo_1 = str_replace("%PROGRAMA%", $tipo_tramite, $parrafo_1);
+$parrafo_1 = str_replace("%FECHA_DESESTIMIENTO%",  date_format(date_create($data['expediente']['fecha_REC_desestimiento']),"d/m/Y"), $parrafo_1);
+$parrafo_1 = str_replace("%NUM_EXPEDIENTE%", $data['expediente']['idExp']."/".$data['expediente']['convocatoria'], $parrafo_1);
+$parrafo_1 = str_replace("%REFERENCIA_SEDE_DESESTIMIENTO%", $data['expediente']['ref_REC_desestimiento'], $parrafo_1);
+
 $html = $parrafo_1;
 $pdf->writeHTML($html, true, false, true, false, '');
 
@@ -197,7 +201,7 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 3);
 $firma = lang('25_resolucion_desistimiento.25_firma');
 $firma = str_replace("%BOIBNUM%", $data['configuracionLinea']['num_BOIB'], $firma);
-$firma = str_replace("%DIRECTORGENERAL%", $data['configuracion']['directorGeneralPolInd'], $firma);
+$firma = str_replace("%DGERENTE%", $data['configuracion']['directorGerenteIDI'], $firma);
 $html = "<table cellpadding='5' style='width: 100%;border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>". $firma ."</td></tr>";
 $html .= "</table>";
