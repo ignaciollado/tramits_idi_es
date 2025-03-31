@@ -436,13 +436,13 @@ return [
    <li>Adjuntar un documento descriptivo de la empresa y de su actividad.</li>
    </ul>
 ",
-   'documentacion_adjunta'              => "6. DOCUMENTACIÓN ADJUNTA",      
-   'autorizaciones_solicitud'           => "7. AUTORIZACIONES",
+   'documentacion_adjunta'                => "6. DOCUMENTACIÓN ADJUNTA",      
+   'autorizaciones_solicitud'             => "7. AUTORIZACIONES",
    'autorizaciones_solicitud_si_autoriza' => "De acuerdo con el artículo 28.2 de la Ley 39/2015, de 1 de octubre, del procedimiento administrativo común de las administraciones públicas, se entiende otorgado el consentimiento para obtener datos de documentos elaborados por otras administraciones que puedan consultarse mediante redes corporativas o sistemas electrónicos habilitados al efecto, y que sean necesarias para tramitar esta solicitud.",
    'autorizaciones_solicitud_no_autoriza' => "Expresamente no doy mi consentimiento / Me opongo a / No concedo / Deniego mi autorización para que se consulten los datos y documentos necesarios para la tramitación de esta solicitud. Por eso, presento los documentos que constan a continuación",
 
    'expongo_cabecera_ils'                 => "EXPONGO",
-   'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓN REQUERIDA ADJUNTADA",
+   'documentacion_adjuntada_ils'          => "4.1. DOCUMENTACIÓN REQUERIDA ADJUNTADA",
    'documentacion_adjuntada_opcional_ils' => "4.2. OTRA DOCUMENTACIÓN OPCIONAL",
 
    'autorizaciones_solicitud_ils'         => "5. AUTORIZACIONES",

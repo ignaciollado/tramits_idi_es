@@ -456,7 +456,7 @@ municipi.",
    'autorizaciones_solicitud_no_autoriza' => "Expresament no don el meu consentiment / M’opòs a / No concedesc / Deneg la meva autorització perquè es consultin les dades i documents necessaris per la tramitació d’aquesta sol·licitud. Per això, present els documents que consten a continuació",
 
    'expongo_cabecera_ils'                 => "EXPÒS",
-   'documentacion_adjuntada_ils'       => "4.1. DOCUMENTACIÓ REQUERIDA ADJUNTADA",
+   'documentacion_adjuntada_ils'          => "4.1. DOCUMENTACIÓ REQUERIDA ADJUNTADA",
    'documentacion_adjuntada_opcional_ils' => "4.2. ALTRA DOCUMENTACIÓ OPCIONAL",
 
    'autorizaciones_solicitud_ils'         => "5. AUTORITZACIONS",
