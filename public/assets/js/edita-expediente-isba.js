@@ -1019,6 +1019,51 @@ function enviaMailCertificadoATIB_click() {
 	);
 }
 
+async function compruebaExistenciaFecha(fase, elemento) {
+	let theElement = document.getElementById(elemento)
+	let selectedIndexElement = theElement.selectedIndex
+	let currentExpSituation = document.getElementById("situacion_exped").selectedIndex											
+	console.log (fase, 
+		theElement.value, 
+		selectedIndexElement, 
+		currentExpSituation, 
+		document.getElementById("fecha_not_propuesta_resolucion_def").value, 
+		document.getElementById("fecha_not_propuesta_resolucion_def").value.length)
+
+	if (theElement.value === "emitidoIFPRProvPago") {
+		if (document.getElementById("fecha_not_propuesta_resolucion_prov").value.length === 0) {
+			theElement.selectedIndex = currentExpSituation
+			alert (`Falta la data: 'Notificació proposta resolució provisional' de la fase de VALIDACIÓ`)
+		}
+	}
+	if (theElement.value === "emitidaPRDefinitivaNotificada") {
+		alert (document.getElementById("fecha_not_propuesta_resolucion_def").value)
+		let API_URI = "/public/assets/utils/comprobarEstadoSello.php?publicAccessId="+ publicId;
+		await fetch(API_URI)
+			.then((response) => response.text())
+			.then((data) => {
+			switch (data)
+			{
+			case 'NOT_STARTED':
+				estadoFirma = "<div class = 'info-msg'><i class='fa fa-info-circle'></i> Sol·licitud Pendent de signar</div>";				
+				break;
+			case 'REJECTED':
+				estadoFirma = "<div class = 'warning-msg'><i class='fa fa-warning'></i> Sol·licitud rebutjada</div>";			
+				break;
+			case 'COMPLETED':
+				estadoFirma = "<div class = 'success-msg'><i class='fa fa-check'></i> Sol·licitud signada</div>";						
+				break;
+			case 'IN_PROCESS':
+				estadoFirma = "<div class = 'info-msg'><i class='fa fa-info-circle'></i> En curs</div>";
+				break;					
+			default:
+				estadoFirma = "<div class = 'info-msg'><i class='fa fa-info-circle'></i> Desconegut</div>";
+			}
+			document.getElementById ("estat_signatura").innerHTML = estadoFirma;
+			});
+	}
+}
+
 async function insertaMejoraEnSolicitud() {
 	let addMejora = document.getElementById('addMejora')
 	let idSol = document.getElementById('id')
