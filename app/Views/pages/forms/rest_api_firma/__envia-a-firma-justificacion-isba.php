@@ -4,10 +4,8 @@
 	$nif = $_POST["nif"];
 	$adreca_mail = $email_not;
 	$telefono_cont = $telefono_not;
-		
-	//$adreca_mail = "ignacio.llado@idi.es";
-	//$adreca_mail = "pindust@idi.es";
-	//$telefono_cont = "677234076";
+
+	echo "<span>se ha enviado un documento de firma a: ". $empresa."***".$nif."****".$adreca_mail."***".$telefono_cont."</span>";
 		
 	require_once dirname(__FILE__) . '/model/AddresseeActionInfo.php';
 	require_once dirname(__FILE__) . '/model/AddresseeGroup.php';
@@ -30,7 +28,7 @@
 		
 		// Construct Request object
 		$request = new Request;
-		
+
 		$sender = new UserEntity;
 		$sender->entityCode = "default";
 		$sender->userCode = "Q5755018H";
@@ -39,9 +37,10 @@
 		$user = new AddresseeUserEntity;
 		$user->action = "SIGN";  
 		$user->userCode = $adreca_mail;
-		$user->userName = $empresa;
+		$user->entityCode = "default"; 
+/* 		$user->userName = $empresa;
 		$user->userSurname1 = $nif;
-		$user->userSurname2 = "";
+		$user->userSurname2 = ""; */
 		$user->userPhone = "+34".$telefono_cont;
 
 		$line1 = new AddresseeLine;
@@ -70,23 +69,23 @@
 		// Adding a document to sign
 		$doc = new Document;
 
-		$doc->filename = $nif.'_justificacion_solicitud_ayuda.pdf';
-		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/justificacion/'.$selloTiempo.'/'.$nif.'_justificacion_solicitud_ayuda.pdf')));	
+		$doc->filename = $nif.'_justificacion_solicitud_ayuda_isba.pdf';
+		$doc->base64 = chunk_split(base64_encode(file_get_contents(WRITEPATH.'documentos/'.$nif.'/justificacion/'.$selloTiempo.'/'.$nif.'_justificacion_solicitud_ayuda_isba.pdf')));	
 
 		$documentsToSign = array ($doc);
 		$request->documentsToSign = $documentsToSign;
 		
 		// Set json
 		$json = json_encode($request);
-		/* echo "<br>".$json."<br>"; */
+		echo "<br>".$json."<br>";
 		$resultRequest = execute("requests", $json, __FUNCTION__);
-		/* echo "<br><strong>La respuesta desde VIAFIRMA es:<br>----- ".$resultRequest." ------</strong>"; */
+		echo "<br>---- ".$resultRequest." ------";
 		printResult($resultRequest, $id_sol, $tipo_Doc, $adreca_mail);
 
 	
 	function execute($apiPath, $json, $methodName) {
 		$url = REST_API_URL.$apiPath;
-		/* echo "\nMethod URL: ".$url."\n\n"; */
+		echo "\nMethod URL: ".$url."\n\n";
 		
 		// Initiate curl
 		$ch = curl_init();
@@ -128,7 +127,6 @@
 		echo "<content>";
 		echo "<section>";
 		$respuesta = json_decode ($result, true);
-		/* echo "****". $respuesta . "*****"; */
 		echo "<div class='alert alert-info'><strong>".$respuesta['subject']."</strong></div>";
 
 		$db      = \Config\Database::connect();
@@ -140,9 +138,7 @@
 		$builder->update($data);	
 		
 		echo "<div class='alert alert-info'>".lang('message_lang.enviado_correo_electron_justif')." <strong>".$adreca_mail."</strong></div>";
-		echo "<div class='alert alert-warning'>".lang('message_lang.nota_info_rec_justif')."</div>";
 		echo "<div class='alert alert-info'>".lang('message_lang.contacto_idi_pindust')."</div>";		
-		echo "<div class='alert alert-info'>".lang('message_lang.una_vez_firmado')."</div>";
 		echo "</section>";
 		echo "</content>";
 	}

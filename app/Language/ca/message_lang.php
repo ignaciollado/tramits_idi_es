@@ -86,7 +86,7 @@ return [
    'tramite_procedimiento_texto'   => "Sol·licitud d'ajudes a micro empreses, petites i mitjanes empreses per a cobrir despeses financeres d'operacions de finançament d'inversions productives previstes en el Pla Estratègic Industrial 2018-2025",
 
    'titulo_justificacion_idigital' => "Sol·licitud de pagament de l'ajut de xecs de consultoria per a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització, sostenibilitat i gestió avançada.",
-   'titulo_justificacion_isba'     => "Sol·licitud de pagament d’ajuts a la microempresa, petita i mitjana empresa de caràcter indústrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una Societat de Garantia Recíproca, per cobrir les despeses financeres d’operacions de finançament d’inversions productives.",
+   'titulo_justificacion_isba'     => "Sol·licitud de pagament d'ajuts a la microempresa, pime industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per una SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.",
    'titulo_renovacion_ils'         => "Sol·licitud de renovació de la marca Industria Local Sostenible (ILS) de la Agència de desenvolupament regional de les Illes Balears.",
 
 
@@ -102,6 +102,7 @@ return [
    Si necessitau contactar-nos, ho podeu fer per correu electrònic: pindust@adrbalears.es i/o per telèfon: 971 17 61 61 + 62891",
 
    'subtitulo_solicitud_ayudas_idi_isba' => "Sol·licitud d'ajuts a microempreses, petites i mitjanes empreses de caràcter industrial de les Illes Balears per cobrir despeses financeres d'operacions de finançament d'inversions productives, eficiència energètica i transformació digital previstes en el Pla Estratègic Industrial 2018-2025",
+   'subtitulo_justificacion_isba' => "RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/201/empreses/tramites/tramite/6258620 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",
    'subtitulo_justificacion_idigital'	 => "RECORDAU QUE UNA VEGADA SIGNAT EL REQUERIMIENT DE JUSTIFICACIÓ HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",
    'subtitulo_renovacion_ils'	 => "RECORDAU QUE UNA VEGADA SIGNADA LA PETICIÓ DE RENOVACIO DE LA MARCA HEU DE DESCARREGAR EL PDF (per a això té l'enllaç més a baix en 'Documents signats') I ENREGISTRAR-HO A TRAVÉS DE LA SEU ELECTRÒNICA CAIB AL SEGÜENT ENLLAÇ: https://www.caib.es/seucaib/ca/tramites/tramite/5624586 EN ALTRE CAS, S'ENTENDRÀ QUE LA SOL·LICITUD NO HA SIGUT PRESENTADA.",
    'subtitulo_solicitud_felib' => "",
@@ -741,6 +742,11 @@ Abans de començar, és recomanable tenir preparada la següent documentació (p
 'solicita_ayuda_coste_aval_isba_idi_isba' => "Una subvenció al cost de l'aval de ISBA, consistent en la quantia de",
 'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvenció a les despeses d'obertura i d'estudi, consistent en la quantia de",
 'firma_idi_isba' => "Palma, en data de la signatura electrònica",
+'importeTotalAyudaIsba'     => "Import sol·licitat",
+'subvencionTipoInteresIsba' => "Subvenció d'interessos, en la quantia de",
+'subvencionCosteAvalIsba' => "Ajut cost de l’aval",
+'subvencionGastosAperturaIsba' => "Ajut despeses d’obertura i estudi",
+
 'doc_requerimiento_asunto' => "Assumpte: requeriment de documentació relativa a l’expedient de subvenció",
 'doc_requerimiento_p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la resolució del president de l'ADR Balears per la qual s'aprova la convocatòria per a la concessió d’ajuts de xecs de consultoria  per  a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat (BOIB núm. %BOIBNUM%), us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",
 'doc_requerimiento_p2' => "Tal i com estableix la convocatòria a l’article 5.9, l’esmena de les deficiències s’ha de fer a través del tràmit específic que hi ha al procediment de la Seu electrònica de la CAIB. Si no es compleix aquest punt, s’entendrà que la sol·licitud d’esmena no està presentada.",

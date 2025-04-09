@@ -38,11 +38,11 @@
 
 		$user = new AddresseeUserEntity;
 		$user->action = "SIGN";  
-		$user->userCode = $adreca_mail; //"ignacio.llado@idi.es";    
-		$user->userName = $empresa; // "wwwwwwwwwwwwwwww";
-		$user->userSurname1 = $nif; // "43036826P";
+		$user->userCode = $adreca_mail;
+		$user->userName = $empresa;
+		$user->userSurname1 = $nif;
 		$user->userSurname2 = "";
-		$user->userPhone = "+34".$telefono_cont; //"+34677234076";
+		$user->userPhone = "+34".$telefono_cont;
 
 		$line1 = new AddresseeLine;
 		
@@ -62,7 +62,7 @@
 		$request->message = lang('message_lang.subtitulo_justificacion_idigital'); // "Convocatoria para la concesión de ayudas para el diseño de planes de transformación digital para el año 2020 destinados a la industria balear, en el marco de Idigital, estrategia de digitalización industrial.";					
 		$request->senderNotificationLevel = "ALL";
 		$request->stampName = "bar_code";
-		//$request->useDefaultStamp = true;
+		// $request->useDefaultStamp = true;
 		// URL para los callbacks tras realizar una acción con la petición. Será un GET con los parámetros:
 		// action (String con el tipo de acción), label (String con la public access id de la petición) y finished=ok (si está finalizada la petición. En caso contrario, no se incluirá).
 		$request->notificationUrl = "https://tramits.idi.es/public";
@@ -78,15 +78,15 @@
 		
 		// Set json
 		$json = json_encode($request);
-		/* echo $json; */
+		/* echo "<br>".$json."<br>"; */
 		$resultRequest = execute("requests", $json, __FUNCTION__);
-		/* echo "----".$resultRequest."------"; */
+		/* echo "<br><strong>La respuesta desde VIAFIRMA es:<br>----- ".$resultRequest." ------</strong>"; */
 		printResult($resultRequest, $id_sol, $tipo_Doc, $adreca_mail);
 
 	
 	function execute($apiPath, $json, $methodName) {
 		$url = REST_API_URL.$apiPath;
-		// echo "\nMethod URL: ".$url."\n\n";
+		/* echo "\nMethod URL: ".$url."\n\n"; */
 		
 		// Initiate curl
 		$ch = curl_init();

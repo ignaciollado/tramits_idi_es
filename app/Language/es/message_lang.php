@@ -99,8 +99,9 @@ return [
    SI NO PASA POR LA SEDE ELECTRÓNICA DE CAIB SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.
    Si necesita contactarnos, lo puede hacer por correo electrónico: pindust@adrbalears.es y/o por teléfono: 971 17 61 61 + 62891",
    'subtitulo_solicitud_ayudas_idi_isba' => "Solicitud de ayudas a la microempresa, pequeña y mediana empresa de carácter industrial de las Illes Balears que tengan aprobadas operaciones financieras avaladas por ISBA SGR, para cubrir los gastos financieros de operaciones de financiación de inversiones productivas, eficiencia energética y transformación digital previstas en el Plan Estratégico Industrial 2018-2025",
-   'subtitulo_justificacion_idigital'	 => "RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",
-   'subtitulo_renovacion_ils'	 => "RECUERDE QUE UNA VEZ FIRMADA LA PETICIÓN DE RENOVACIÓN DE LA MARCA TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGSITRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",
+   'subtitulo_justificacion_isba' => "RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGISTRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/ca/201/empreses/tramites/tramite/6258620 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",
+   'subtitulo_justificacion_idigital'	 => "RECUERDE QUE UNA VEZ FIRMADO EL REQUERIMIENTO DE JUSTIFICACIÓN TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGISTRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",
+   'subtitulo_renovacion_ils'	 => "RECUERDE QUE UNA VEZ FIRMADA LA PETICIÓN DE RENOVACIÓN DE LA MARCA TIENE QUE DESCARGAR EL PDF (para ello tiene el enlace más abajo en 'Documentos firmados') Y REGISTRARLO A TRAVES DE LA SEDE ELECTRÓNICA DE CAIB EN EL SIGUIENTE ENLACE: https://www.caib.es/seucaib/es/tramites/tramite/5624586 EN OTRO CASO, SE ENTENDERÁ QUE LA SOLICITUD NO HA SIDO PRESENTADA.",
 
    'subtitulo_solicitud_felib' => "",
    'enviado_correo_electron'          => "Le hemos enviado un correo electrónico a la dirección que nos facilitó con la <strong>solicitud de ayuda</strong> para que la firme electrónicamente.",
@@ -720,7 +721,10 @@ para cubrir las comisiones de apertura y de estudio, los intereses y el coste de
 'solicita_ayuda_gastos_apertura_estudio_idi_isba' => "Una subvención a los gastos de apertura y de estudio, consistente en la cuantía de",
 'ayuda_superior_3000' => "En el caso de ayudas superiores a los 3000 €:",
 'firma_idi_isba' => "Palma, en fecha de la firma electrónica",
-
+'importeTotalAyudaIsba' => "Importe solicitado",
+'subvencionTipoInteresIsba' => "Subvención de intereses, en la cuantía de",
+'subvencionCosteAvalIsba' => "Subvención coste aval",
+'subvencionGastosAperturaIsba' => "Subvención gastos de apertura y estudio",
 'doc_requerimiento_asunto' => "Asunto: requerimiento de documentación relativa al expediente de subvención",
 'doc_requerimiento_p1' => "En relació amb la vostra sol·licitud de subvenció, presentada dins el termini legalment establert en la resolució del president de l'ADR Balears per la qual s'aprova la convocatòria per a la concessió d’ajuts de xecs de consultoria  per  a la competitivitat industrial de les Illes Balears en matèria de digitalització, internacionalització i sostenibilitat (BOIB núm. %BOIBNUM%), us informam que, en el termini de deu dies, heu d'aportar la documentació següent:",
 'doc_requerimiento_p2' => "Tal i com estableix la convocatòria a l’article 5.9, l’esmena de les deficiències s’ha de fer a través del tràmit específic que hi ha al procediment de la Seu electrònica de la CAIB. Si no es compleix aquest punt, s’entendrà que la sol·licitud d’esmena no està presentada.",

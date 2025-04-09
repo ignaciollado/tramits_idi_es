@@ -5,7 +5,7 @@ class MYPDF extends TCPDF {
     public function Header() {
         // Logo
         $image_file = K_PATH_IMAGES.'ADRBalears-conselleria.jpg';
-        $this->Image($image_file, 10, 10, 90, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 10, 10, 85, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 	}
     // Page footer
     public function Footer() {
@@ -13,6 +13,8 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
+
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -24,10 +26,10 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 	
-$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (IDI) - SISTEMES D'INFORMACIÓ");
+$pdf->SetAuthor("AGÈNCIA DE DESENVOLUPAMENT REGIONAL DE LES ILLES BALEARS (ADR Balears) - SISTEMES D'INFORMACIÓ");
 $pdf->SetTitle("Requeriment de justificació documentació d'ajuts ISBA");
 $pdf->SetSubject('REQUERIMENT DE JUSTIFICACIÓ ISBA');
-$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, PIMES, IDI, GOIB');	
+$pdf->SetKeywords('INDUSTRIA 4.0, DIAGNÓSTIC, DIGITAL, PIMES, ADR Balears, GOIB');	
 
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 // set header and footer fonts
@@ -50,7 +52,7 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 $pdf->SetFont('helvetica', '', 10);
 $pdf->setFontSubsetting(false);
-
+$fmt = new NumberFormatter( 'es_ES', NumberFormatter::CURRENCY );
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 use App\Models\ConfiguracionModel;
 use App\Models\ConfiguracionLineaModel;
@@ -87,28 +89,24 @@ $html .= "<strong>".lang('message_lang.codigo_dir3')."</strong> A04003714<br><br
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(167, '', 20, 70, $html, 0, 1, 1, true, 'J', true);
+echo "<section>".$html;
 
-echo "<content><section>".$html;
-
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><strong>".lang('message_lang.identificacion_sol_idigital').":</strong><br><br>".lang('message_lang.solicitante_sol_idigital').": ".$data['expedientes']['empresa']." - NIF: ".$data['expedientes']['nif']."<br>";
+$html = "<table>";
+$html .= "<tr><td><strong>".lang('message_lang.identificacion_sol_idigital').":</strong><br><br>".lang('message_lang.solicitante_sol_idigital').": ".$data['expedientes']['empresa']." - NIF: ".$data['expedientes']['nif']."<br>";
 $html .= lang('message_lang.nom_rep_legal_sol_idigital').": ".$data['expedientes']['nombre_rep']." - ".lang('message_lang.nif_rep_legal_sol_idigital').": ".$data['expedientes']['nif_rep']."<br><br>";
 $html .= lang('message_lang.select_programa_justificacion_isba').":<br>";
-$html .= $data['expedientes']['tipo_tramite']."</td></tr>";
+$html .= $data['expedientes']['tipo_tramite']."<br><br>";
+$html .= "<strong>".lang('message_lang.importeTotalAyudaIsba').":</strong> ". $data['expedientes']['importe_ayuda_solicita_idi_isba']." €<br>";
+$html .= "<strong>".lang('message_lang.subvencionTipoInteresIsba').":</strong> ".$data['expedientes']['intereses_ayuda_solicita_idi_isba']." €<br>";
+$html .= "<strong>".lang('message_lang.subvencionCosteAvalIsba').":</strong> ". $data['expedientes']['coste_aval_solicita_idi_isba']." €<br>";
+$html .= "<strong>".lang('message_lang.subvencionGastosAperturaIsba').":</strong> ". $data['expedientes']['gastos_aval_solicita_idi_isba']. " €";
+$html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
-/* $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br>".lang('message_lang.importe_total_justificacion').": ".$importeTotalJustificado." €<br>";
-$html .= "</td></tr>";
-$html .= "</table>";
-echo $html;
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true); */
 
 $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'><br><strong>".lang('message_lang.declaro')."</strong><br><br>".lang('message_lang.justificacion_declaracion_isba')."<br>";
@@ -123,9 +121,6 @@ $html = "<table cellpadding='5' style='border: 1px solid #ffffff;'>";
 $html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>";
 $html .= "<ul>";
 foreach($justificacion as $docsJustif_item):
-	/* if ( $docsJustif_item->corresponde_documento == "file_DeclRespAplicadoFondoIsba") {
-		$html .= "<li>".lang('message_lang.justificacion_decl_resp_aplicado_fondo_isba').".</li>";
-	} */
     if ( $docsJustif_item->corresponde_documento == "file_MemoriaActividadesIsba") {
 		$html .= "<li>".lang('message_lang.justificacion_memoria_actividades_isba').".</li>";
 	}
@@ -157,17 +152,6 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(158, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
-/* $html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td>";
-$html .= "<strong>".lang('message_lang.justificacion_mem_econom_titulo').":</strong><br>";
-$html .= $memoriaEconomicaJustificativa;
-$html .= "</td></tr>";
-$html .= "</table>";
-echo $html;
-$currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
-$pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true); */
-
 /* ------------------firma el documento ------------------------------ */
 $pdf->setPrintHeader(false);
 $pdf->AddPage();
@@ -180,7 +164,7 @@ $html .= "</table>";
 
 echo $html;
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 10);
+$pdf->setY($currentY);
 $pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
 
 // ---------------------------------------------------------RGDP----------------------- //
