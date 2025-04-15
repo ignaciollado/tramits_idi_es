@@ -1147,6 +1147,12 @@
         </form>
         </div>
         <div class="col docsExpediente">
+        <h3>Actes administratius:</h3>
+        <ol start="11">
+            <!----------------- Resolución de pago sin requerimiento  DOC 11 FIRMA D GERENTE ------------------>
+            <li><?php //include $_SERVER['DOCUMENT_ROOT'] . '/app/Views/pages/forms/modDocs/IDI-ISBA/resolucion-de-pago-y-justificacion.php';?></li>
+            <!------------------------------------------------------------------------------------------------->                  
+        </ol>        
             <h3>Documents de l'expedient:</h3>
             <div class="docsExpediente">
                 <div class = "header-wrapper-docs-4 header-wrapper-docs-solicitud">
@@ -1157,7 +1163,7 @@
                 </div>
                 <?php if($documentos): ?>
                     <?php foreach($documentos as $docSolicitud_item): 			            
-                            if($docSolicitud_item->fase_exped == 'Renovacion') {
+                            if($docSolicitud_item->fase_exped == 'Justificacion') {
                                 $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docs_item->created_at);
                                 $parametro = explode ("/",$path);
                                 $tipoMIME = $docSolicitud_item->type;
@@ -1182,11 +1188,9 @@
                             }
                             ?>
                         <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
-                        <?php if (!$docSolicitud_item->publicAccessIdCustodiado) {?>
-                            <span class = "detail-wrapper-docs-col"><?php echo '<button onclick = "javaScript: justificacion_docs_IDI_click (this.id, this.name);" id="'.$docSolicitud_item->id.'" name = "elimina" type = "button" class = "btn btn-link" data-toggle = "modal" data-target = "#myModalDocJustificacion"><strong>Elimina</strong></button>';?></span>		
-                        <?php } else {?>
-                            <span id = "accion" class = "detail-wrapper-docs-col small">No es pot eliminar</span>			
-                        <?php } ?>			
+                        <span class = "detail-wrapper-docs-col">
+                            <button <?php if ($docSolicitud_item->estado == 'Aprovat') {echo 'disabled';} ?>  onclick = "javaScript: myFunction_docs_IDI_click (this.id, this.name);" id="<?php echo $docSolicitud_item->id."_del";?>" name = "elimina" type = "button" class = "btn btn-link" data-bs-toggle="modal" data-bs-target= "#myModalDocJustificacion"><strong>Elimina</strong></button>
+                        </span>
                     </div>
                 <?php }
                     endforeach; ?>
@@ -1211,7 +1215,7 @@
                 </div>
 
                 <h5 class ="upload-docs-type-label">[.zip]:</h5>
-                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Renovacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedRenovacion" id="subir_doc_faseExpedRenovacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <form action="<?php echo base_url('/public/index.php/expedientes/do_upload/'.$expedientes['id'].'/'.strtoupper($expedientes['nif']).'/'.str_replace("%20"," ",$expedientes['tipo_tramite']).'/'.$expedientes['convocatoria'].'/fase/Justificacion');?>" onsubmit="logSubmit('subeDocsJustificacionBtn')" name="subir_doc_faseExpedRenovacion" id="subir_doc_faseExpedRenovacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                     <?php
                         if ( !$esAdmin && !$esConvoActual ) {?>
                     <?php }

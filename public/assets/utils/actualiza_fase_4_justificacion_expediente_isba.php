@@ -2,6 +2,8 @@
 require_once 'conectar_a_bbdd.php';
 
 $id = mysqli_real_escape_string($conn, $_POST["id"]); 
+$fecha_notificacion_resolucion = mysqli_real_escape_string($conn, $_POST["fecha_notificacion_resolucion"]);
+$fecha_limite_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_limite_justificacion"]);
 $fecha_REC_justificacion = mysqli_real_escape_string($conn, $_POST["fecha_REC_justificacion"]);
 $ref_REC_justificacion = mysqli_real_escape_string($conn, $_POST["ref_REC_justificacion"]);
 $fecha_not_res_pago = mysqli_real_escape_string($conn, $_POST["fecha_not_res_pago"]);
@@ -53,6 +55,8 @@ if ( (strlen($date_REC_requerimiento_justificacion) != 0) && ($date_REC_requerim
 
 $query = "UPDATE pindust_expediente 
     SET  
+    fecha_notificacion_resolucion = '" . $fecha_notificacion_resolucion  ."',
+    fecha_limite_justificacion = '" . $fecha_limite_justificacion  ."',
     fecha_REC_justificacion = '" . $date_REC_justificacion  ."',
     ref_REC_justificacion = '" . $ref_REC_justificacion  ."',
     fecha_firma_res_pago_just = '" . $fecha_firma_res_pago_just  ."',

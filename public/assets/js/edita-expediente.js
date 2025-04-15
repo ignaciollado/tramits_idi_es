@@ -1318,6 +1318,7 @@ async function insertaMejoraEnSolicitud() {
 function myFunction_docs_IDI_click(id, nombre) {
 	localStorage.setItem("documento_actual", id);
 }
+
 function opcion_seleccionada_click(respuesta) {
 	document.cookie = "respuesta = " + respuesta;
 }

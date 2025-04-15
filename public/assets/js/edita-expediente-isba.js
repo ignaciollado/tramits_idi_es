@@ -1,5 +1,5 @@
-const actualBaseUrl = window.location.origin
-let base_url_isba = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
+var actualBaseUrl = window.location.origin
+var base_url_isba = actualBaseUrl+'/public/index.php/expedientes/generainformeIDI_ISBA'
 
 function openFaseExped(evt, faseName, backgroundColor, id) {
 	var i, tabcontent, tablinks;
@@ -370,7 +370,8 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 		return;
 	}
 	let id = document.getElementById("id").value;
-	fecha_notificacion_resolucion
+	let fecha_notificacion_resolucion = document.getElementById("fecha_notificacion_resolucion").value;
+	let fecha_limite_justificacion = document.getElementById("fecha_limite_justificacion").value;
 	let fecha_REC_justificacion = document.getElementById("fecha_REC_justificacion").value; // Data SEU justificació
 	let ref_REC_justificacion = document.getElementById("ref_REC_justificacion").value; // Data SEU justificació
 	let fecha_not_res_pago = document.getElementById("fecha_not_res_pago").value; // Data notificació resolucio de pagament
@@ -393,6 +394,8 @@ function actualiza_fase_4_justificacion_expediente_idi_isba(formName) {  //SE EM
 	$.post(
 		"/public/assets/utils/actualiza_fase_4_justificacion_expediente_isba.php",
 		{ id: id, 
+			fecha_notificacion_resolucion: fecha_notificacion_resolucion,
+			fecha_limite_justificacion: fecha_limite_justificacion,
 			fecha_REC_justificacion: fecha_REC_justificacion, 
 			ref_REC_justificacion: ref_REC_justificacion,
 			fecha_not_res_pago: fecha_not_res_pago, 
@@ -1316,6 +1319,10 @@ async function obtieneDatosFirmaDoc (publicId) {
 		});
 }
 
+function myFunction_docs_IDI_click(id, nombre) {
+	localStorage.setItem("documento_actual", id);
+}
+
 function detectExtendedASCII(tipoDoc, files) {
 	for (var i = 0; i < files.length; i++) { 
 		console.log(tipoDoc+" "+files[i].name +" "+ files[i].lastModified)+" "+files[i].size+" "+files[i].type; 
@@ -1381,9 +1388,9 @@ function eliminaDocRequerido_click() {
 
 function eliminaDocValidacion_click() {
 	let id = localStorage.getItem("documento_actual")
-    let idDoc = id.replace("_del", "")
+  let idDoc = id.replace("_del", "")
 	document.getElementById(id).setAttribute("disabled", true);
-    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+  document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
 	let corresponde_documento = 'file_resguardoREC';
 	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
 		location.reload();
@@ -1392,9 +1399,9 @@ function eliminaDocValidacion_click() {
 
 function eliminaDocJustificacion_click() {
 	let id = localStorage.getItem("documento_actual")
-    let idDoc = id.replace("_del", "")
+  let idDoc = id.replace("_del", "")
 	document.getElementById(id).setAttribute("disabled", true);
-    document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
+  document.getElementById(id).innerHTML= "<div class='.info-msg'>Un moment, <br>eliminant ...</div>";
 	let corresponde_documento = 'file_resguardoREC';
 	$.post("/public/assets/utils/delete_documento_expediente.php",{ id: idDoc, corresponde_documento: corresponde_documento}, function(data){
 		location.reload();
