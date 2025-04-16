@@ -18,6 +18,16 @@
   color: #fff;
 }
 
+label {
+  color: #fff;
+  font-size: .9rem;
+}
+
+.label-negativo {
+  color: #000;
+  font-size: .9rem;
+}
+
 /* Change background color of buttons on hover */
 .tab_fase_exp button:hover {
 background-color: #ddd;

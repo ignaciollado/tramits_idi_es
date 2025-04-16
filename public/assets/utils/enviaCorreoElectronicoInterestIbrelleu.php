@@ -19,6 +19,8 @@ $municipio = $mensaje[3];
 $isla = $mensaje[4];
 $perfil = $mensaje[5];
 $idAdv = $mensaje[6];
+$codeAdv = $mensaje[7];
+$titleAdv = $mensaje[8];
 
 $projectMail = "mriutord@idi.es";
 //$projectMail = "illado@idi.caib.es";
@@ -65,7 +67,7 @@ $mail->IsHTML(true);
 $mail->Subject = $asunto;
 $mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
 
-$mensajeLayout = file_get_contents('contents-ibrelleu.html');
+$mensajeLayout = file_get_contents('contents-ibrelleu-interest.html');
 $mensajeLayout = str_replace("%USUARIO%", $solicitante, $mensajeLayout);
 $mensajeLayout = str_replace("%ADDRESS%", $domicilio, $mensajeLayout);
 $mensajeLayout = str_replace("%ZIPCODE%", $cpostal, $mensajeLayout);
@@ -75,6 +77,10 @@ $mensajeLayout = str_replace("%ISLAND%", $isla, $mensajeLayout);
 $mensajeLayout = str_replace("%PHONE%", $contactPhone, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOMAIL%", $correoDestino, $mensajeLayout);
 $mensajeLayout = str_replace("%PROFILE%", $perfil, $mensajeLayout);
+
+$mensajeLayout = str_replace("%IDADV%", $idAdv, $mensajeLayout);
+$mensajeLayout = str_replace("%TITLEADV%", $titleAdv, $mensajeLayout);
+$mensajeLayout = str_replace("%CODEADV%", $codeAdv, $mensajeLayout);
 
 $mail->msgHTML( $mensajeLayout , __DIR__);
 

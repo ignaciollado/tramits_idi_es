@@ -17,6 +17,7 @@
 		<?php }?>
 	</div>
   	<div class="card-itramits-footer">
+		<?php if ($expedientes['doc_res_pago_y_justificacion_adr_isba'] != 0) { ?>
 			<?php
 			$tieneDocumentosGenerados = $modelDocumentosGenerados->documentosGeneradosPorExpedYTipo($expedientes['id'], $expedientes['convocatoria'],'doc_res_pago_y_justificacion_adr_isba.pdf');
 			if (isset($tieneDocumentosGenerados)) {
@@ -47,12 +48,13 @@
 						$estado_firma = "<div class='btn btn-danger btn-acto-admin'><i class='fa fa-info-circle'></i> Desconegut</div>";
 					}
 				echo $estado_firma;
-			}	?>
+				}	?>
+				<?php } ?>
   	</div>
 </div>
 <!------------------------------------------------------------------------------------------------------>
 <script>
-function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
+	function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 		let todoBien = true
 		let fecha_not_propuesta_resolucion_prov = document.getElementById('fecha_not_propuesta_resolucion_prov')
 		let fecha_firma_propuesta_resolucion_def = document.getElementById('fecha_firma_propuesta_resolucion_def')
@@ -104,10 +106,10 @@ function generaResolucionPagoSinReq(id, convocatoria, programa, nifcif) {
 			infoMissingDataDoc11.classList.add('ocultar')
 			btnResPagoSinReq.disabled = true
 			btnResPagoSinReq.innerHTML = "Generant i enviant ..."
-			window.location.href = actualBaseUrl+'/'+id+'/'+convocatoria+'/'+programa+'/'+nifcif+'/doc_res_pago_y_justificacion_adr_isba'
+			console.log (actualBaseUrl)
+			window.location.href = base_url_isba + '/' + id + '/' + convocatoria + '/' + programa + '/' + nifcif + '/doc_res_pago_y_justificacion_adr_isba'
 		} else {
 			infoMissingDataDoc11.classList.remove('ocultar')
 		}
 	}
-
 </script>
