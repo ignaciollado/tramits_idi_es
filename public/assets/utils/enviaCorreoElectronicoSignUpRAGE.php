@@ -45,9 +45,9 @@ $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
 $mail->FromName = "ADR Balears";
 // Lo que verá del remitente el destinatario
-$mail->SetFrom("noreply@tramits.idi.es","RAGE - Password recovery");
+$mail->SetFrom("noreply@tramits.idi.es","RAGE - Sign up");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("response@tramits.idi.es","RAGE - Password recovery");
+$mail->AddReplyTo("response@tramits.idi.es","RAGE - Sign up");
 
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
@@ -57,10 +57,10 @@ $mail->WordWrap = 50;
 $mail->IsHTML(true);
 
 
-$mail->Subject = "RAGE - password recovery";
+$mail->Subject = "RAGE - Sign up";
 $mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
 
-$mensajeLayout = file_get_contents('contents-rage.html');
+$mensajeLayout = file_get_contents('contents-sign-up-rage.html');
 $mensajeLayout = str_replace("%USUARIO%", $solicitante, $mensajeLayout);
 $mensajeLayout = str_replace("%ADDRESS%", $domicilio, $mensajeLayout);
 $mensajeLayout = str_replace("%ZIPCODE%", $cpostal, $mensajeLayout);
