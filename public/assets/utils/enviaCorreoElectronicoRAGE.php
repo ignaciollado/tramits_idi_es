@@ -19,10 +19,6 @@ $municipio = $mensaje[3];
 $isla = $mensaje[4];
 $perfil = $mensaje[5];
 
-$projectMail = "mriutord@idi.es";
-//$projectMail = "illado@idi.caib.es";
-
-
 $mail = new PHPMailer();
 $response = [];
 
@@ -49,9 +45,9 @@ $mail->SMTPDebug = 0;
 $mail->From = "tramits@tramits.idi.es";
 $mail->FromName = "ADR Balears";
 // Lo que verá del remitente el destinatario
-$mail->SetFrom("noreply@tramits.idi.es","Ibrelleu - ADR Balears");
+$mail->SetFrom("noreply@tramits.idi.es","RAGE - Password recovery");
 // La dirección a la que contestará el destinatario
-$mail->AddReplyTo("response@tramits.idi.es","Ibrelleu - ADR Balears");
+$mail->AddReplyTo("response@tramits.idi.es","RAGE - Password recovery");
 
 // El destinatario.
 $mail->AddAddress($correoDestino, $correoDestino);
@@ -63,9 +59,8 @@ $mail->IsHTML(true);
 
 $mail->Subject = $asunto;
 $mail->AddBCC("illado@idi.caib.es", "Gestió interna ADR Balears");
-$mail->AddBCC("mriutord@idi.es", "Servei Ibrelleu ADR Balears");
 
-$mensajeLayout = file_get_contents('contents-ibrelleu.html');
+$mensajeLayout = file_get_contents('contents-rage.html');
 $mensajeLayout = str_replace("%USUARIO%", $solicitante, $mensajeLayout);
 $mensajeLayout = str_replace("%ADDRESS%", $domicilio, $mensajeLayout);
 $mensajeLayout = str_replace("%ZIPCODE%", $cpostal, $mensajeLayout);

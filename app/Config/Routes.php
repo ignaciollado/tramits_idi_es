@@ -36,12 +36,9 @@ $routes->resource('apicontroller', ['websafe' => 1]);
 /* $routes->get('photos/new', 'Photos::new');
 $routes->post('photos', 'Photos::create'); */
 $routes->get('expediente', 'ApiController::index');
-$routes->get('putExpediente/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'ApiController::create/$1/$2/$3/$4/$5');
-
 $routes->get('expediente/(:segment)/(:segment)/(:segment)', 'ApiController::getExpediente/$1/$2/$3');
 $routes->get('nifExpediente/(:segment)', 'ApiController::getExpedientebyNIF/$1');
 $routes->get('numExpediente/(:segment)/(:segment)', 'ApiController::getExpedientebyExp/$1/$2');
-$routes->get('convocatoria/(:segment)', 'ApiController::getConvocatoria/$1');
 
 /* $routes->get('photos/(:segment)/edit', 'Photos::edit/$1');
 $routes->put('photos/(:segment)', 'Photos::update/$1');
@@ -62,6 +59,12 @@ $routes->get('/expedientes/filtrarexpedientes', 'Expedientes::filtrarexpedientes
 $routes->get('/custodia', 'Custodia::index',['filter' => 'auth']);
 //$routes->get('/home/sol_idigital', 'Home::sol_idigital',['filter' => 'auth']);
 $routes->get('logout', 'LoginController::logout');
+
+$routes->options('/recovery/hello', 'MailController::options');
+$routes->get('/recovery/hello', 'MailController::index');
+$routes->options('/recovery/password', 'MailController::options');
+$routes->get('/recovery/password', 'MailController::sendMail');
+
 
 //$routes->get('(:any)', 'LoginController::login');
 /**
