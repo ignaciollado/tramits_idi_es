@@ -82,7 +82,7 @@
 	    			            		<option <?php if ($session->get('situacion_fltr') == "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva Enviada a firma</option>
 														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva signada PENDENT de notificar</option>
 														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitivaNotificada") { echo "selected";}?> value = "emitidaPRDefinitivaNotificada" class="sitValidacion"> PR definitiva NOTIFICADA</option>
-
+														<option <?php if ($session->get('situacion_fltr') == "firmadoIFPRProvPago") { echo "selected";}?> value = "firmadoIFPRProvPago" class="sitValidacion">PR Prov. signada pendent de notificar</option>
                         		<option <?php if ($session->get('situacion_fltr') == "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió enviada a firma</option>
                         		<option <?php if ($session->get('situacion_fltr') == "emitidaResConcesion") { echo "selected";}?> value = "emitidaResConcesion" class="sitValidacion"> Resolució de concessió signada PENDENT de notificar</option>
                         		<option <?php if ($session->get('situacion_fltr') == "notificadaResConcesion") { echo "selected";}?> value = "notificadaResConcesion" class="sitValidacion"> Resolució de concessió NOTIFICADA</option>
@@ -428,7 +428,11 @@
 			}
 			else if ($item['situacion'] == "emitidaPRDefinitivaNotificada") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha notificat PR definitiva"><strong>PR definitiva<br> NOTIFICADA</strong></span></div>';				
+			}
+			else if ($item['situacion'] == "firmadoIFPRProvPago") {
+				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl validacion-lbl-emesa"><span title="Aquesta sol·licitud s´ha notificat PR Provisional firmada pendiente de notificar"><strong>PR Prov.<br> SIGNADA</strong><br>pendent de notificar</span></div>';				
 			}			
+					
 			else if ($item['situacion'] == "emitirResConcesion") {
 				echo '<div  id="'.$item['id'].'"  class = "btn-idi btn-itramits validacion-lbl"><span title="Aquesta sol·licitud s´ha d´emetre la Resolució concessió"><strong>Resolució<br>concessió enviada a firma</strong></span></div>';				
 			}

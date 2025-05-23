@@ -40,7 +40,7 @@
 return [
   'intro' => "Resolució de pagament a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears destinada a cobrir les despeses financeres d'operacions de finançament d'inversions productives",
   'fets_tit' => "Fets",
-  'fets_1_2_3_4_5' => "<ol>
+  'fets_1_2_3' => "<ol>
 			  <li>El dia %FECHAPUBBOIB%, es va publicar al BOIB núm. %BOIBNUM% la Resolució del president de l'ADR Balears, Alejandro Sáenz de San Pedro García, per la qual s'aprova la convocatòria per a als anys 2024-2025 d'ajuts a la micro empresa, petita i mitjana empresa de caràcter industrial de les Illes Balears que tenguin aprovades operacions financeres avalades per ISBA SGR, per cobrir les despeses financeres d'operacions de finançament d'inversions productives.</li><br>
         		  <li>En data %FECHASOL%, %SOLICITANTE%, amb NIF %NIF%, ha presentat una sol·licitud per un import de %IMPORTEAYUDA% , i documentació adjunta en el marc de l'esmentada resolució de convocatòria, dels quals %IMPORTE_INTERESES% corresponen al subsidi d'interessos,  %IMPORTE_AVAL% al subsidi de  l'aval i %IMPORTE_ESTUDIO% als ajuts per cobrir les despeses d'obertura i estudi.</li><br>
 			  <li>El pagament de la subvenció únicament es pot fer efectiu una vegada dictada la resolució corresponent i justificada de manera suficient la realització de l'activitat subvencionada, mitjançant la presentació de la documentació a la qual es fa referència en el punt catorzè de la resolució de convocatòria.</li><br>
@@ -49,19 +49,22 @@ return [
 		          	<li>“ADR Balears durà a terme el pagament de l’ajuda directament a l’entitat col·laboradora, perquè sigui aquesta qui l’aboni en el seu nom a les persones i empreses beneficiàries, prèviament comprovada l’execució de l’actuació i presentada tota la documentació establerta en l’apartat catorzè.”</li><br> 
 			  	</li>“El pagament s’ha de fer una vegada, com a bestreta...”<br>
 			  </ul></li>
-			   <li>D'acord amb l'apartat dotzè de les bases incloses a l'esmentada Resolució de convocatòria, en data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l'ADR Balears va dictar proposta de resolució provisional sobre la concessió d'un ajut a %SOLICITANTE% en el marc de l'esmentada convocatòria d'acord amb les quanties que apareixen a la convocatòria en els punts sisè i setè.
-			   L'esmentada proposta de resolució es va notificar a l'entitat el %FECHA_NOTIF_PRPROV%.
-			   <br><br>A la proposta de resolució, se li va concedir a l'entitat sol·licitant un termini de 10 dies per presentar les al·legacions que considerés oportunes.
-			   Dins l'esmentat termini de 10 dies, l'entitat no va presentar al·legacions.
-			   <br><br>Atès l'anterior, en data %FECHA_PR_DEFINITIVA% la directora gerent de l'ADR Balears va dictar proposta de resolució definitiva sobre la concessió d'una subvenció a %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada.
-			   Aquest document va ser notificat a l'interessat en data %FECHA_NOTIF_PRPDEF%.</li></ol>",
-	'fets_6_7' => "<li>Per Resolució del president de l’ADR Balears de %FECHA_RESOL_CONCE% es va concedir una subvenció a %SOLICITANTE% amb NIF %NIF%, destinada a cobrir les despeses financeres d’operacions de finançament d’inversions productives, per un import total de %IMPORTEAYUDA%, amb el següent detall:</li><br>
+			  </ol>",      
+	'fets_5_7' => '<ol start="5">
+        <li>D’acord amb l’apartat dotzè de les bases incloses a l’esmentada Resolució de convocatòria, en data %FECHA_PROP_RESOL_PROVISIONAL% la directora gerent de l’ADR Balears va dictar proposta de resolució provisional sobre la concessió d’un ajut a %SOLICITANTE% en el marc de l’esmentada convocatòria d’acord amb les quanties que apareixen a la convocatòria en els punts sisè i setè.<br>
+			    L’esmentada proposta de resolució es va notificar a l’entitat el %FECHA_NOTIF_PRPROV%.
+			    <br><br>A la proposta de resolució, se li va concedir a l’entitat sol·licitant un termini de 10 dies per presentar les al·legacions que considerés oportunes.
+			    Dins l’esmentat termini de 10 dies, l’entitat no va presentar al·legacions.
+			    <br><br>Atès l’anterior, en data %FECHA_PR_DEFINITIVA% la directora gerent de l’ADR Balears va dictar proposta de resolució definitiva sobre la concessió d’una subvenció a %SOLICITANTE%, en el marc de la resolució de convocatòria de subvencions ja esmentada.
+			    Aquest document va ser notificat a l’interessat en data %FECHA_NOTIF_PRPDEF%.</li>
+        <li>Per Resolució del president de l’ADR Balears de %FECHA_RESOL_CONCE% es va concedir una subvenció a %SOLICITANTE% amb NIF %NIF%, destinada a cobrir les despeses financeres d’operacions de finançament d’inversions productives, per un import total de %IMPORTEAYUDA%, amb el següent detall:</li><br>
           <ul>
-		              <li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
-			      <li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat ISBA el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys.</li><br> 
-			      <li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses d'obertura i estudi.</li><br>  
-			    </ul></li>
-          <li>En data %FECHA_SEDE_JUSTIFICACION%, %SOLICITANTE% ha presentat la documentació preceptiva per a la justificació, prevista al punt catorzè, de la Resolució de convocatòria. Revisada l'esmentada documentació pel personal tècnic de l'ADR Balears, resulta que és correcta.</li><br>",
+		        <li>%IMPORTE_INTERESES% corresponen al subsidi d’interessos.</li><br> 
+			      <li>%IMPORTE_AVAL% corresponen al cost de l’aval constituït amb l’entitat ISBA el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys.</li><br> 
+			      <li>%IMPORTE_ESTUDIO% corresponen als ajuts per cobrir les despeses ’obertura i estudi.</li><br>  
+			    </ul>
+        </li>
+        <li>En data %FECHA_SEDE_JUSTIFICACION%, %SOLICITANTE% ha presentat la documentació preceptiva per a la justificació, prevista al punt catorzè, de la Resolució de convocatòria. Revisada l’esmentada documentació pel personal tècnic de l’ADR Balears, resulta que és correcta.</li></ol>',
 
   'fundamentosDeDerecho_tit' => "Fonaments de dret",
   'fundamentosDeDerechoTxt'  => "<ol>
@@ -70,14 +73,16 @@ return [
       <li>La Llei 39/2015, d'1 d'octubre, dels procediment administratiu comú de les administracions públiques.</li><br>
       <li>La Llei 40/2015, d'1 d'octubre, de règim jurídic del Sector Públic.</li><br>
       <li>La Llei 3/2003, de 26 de març, de règim jurídic de l'Administració de la Comunitat Autònoma de les Illes Balears.</li><br>
-      <li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2024-2026 aprovat per l'Acord del Consell de Govern de dia 19 d'abril de 2024.</li><br>
+      <li>El Pla Estratègic de Subvencions de la Comunitat Autònoma de les Illes Balears per als exercicis 2024-2026 aprovat per l'Acord del Consell de Govern de dia 19 d'abril de 2024.</li></ol>",
+  'fundamentosDeDerechoTxt_2'  => '<ol start="7">
       <li>El Decret 6/2013, de 8 de febrer, de mesures de simplificació documental en els procediments administratius (BOIB núm. 21, de 12 de febrer).</li><br>
-      <li>El Decret 75/2004, de 27 d'agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
-      <li>L'Ordre 9/2024 del Conseller d'Empresa, Ocupació i Energia per la qual s'estableixen les bases reguladores per a la concessió de subvencions en matèria d'indústria (BOIB núm.40 de 23 de març de 2024).</li></ol>",
+      <li>El Decret 75/2004, de 27 d’agost, pel qual es despleguen determinats aspectes de la Llei de finances i de les lleis de pressuposts generals de la Comunitat Autònoma de les Illes Balears (BOIB núm. 122, de 31 de setembre).</li><br>
+      <li>L’Ordre 9/2024 del Conseller d’Empresa, Ocupació i Energia per la qual s’estableixen les bases reguladores per a la concessió de subvencions en matèria d’indústria (BOIB núm.40 de 23 de març de 2024).</li></ol>',
+  
   'dicto' => "Per tot l'exposat,",
   'propuesta_tit' => "Propòs al president de l'ADR Balears que dicti una resolució en els termes següents:",
   'resolucion'  => "<ol>
-      <li>1.	Reconèixer l'obligació i proposar el pagament a favor de l’empresa %SOLICITANTE%, amb NIF %NIF%, mitjançant l’entitat col·laboradora ISBA, SGR (CIF V07066913) pel seu pagament al beneficiari en el termini màxim de dos mesos comptadors des de la recepció de la resolució de pagament i justificació, i amb càrrec als pressuposts d’ADR Balears de l’any 2025 per cobrir les despeses financeres d’operacions de finançament d’inversions productives, com a pagament de l’ajuda justificada per import de %IMPORTE% amb el següent detall:</li><br>
+      <li>Reconèixer l'obligació i proposar el pagament a favor de l’empresa %SOLICITANTE%, amb NIF %NIF%, mitjançant l’entitat col·laboradora ISBA, SGR (CIF V07066913) pel seu pagament al beneficiari en el termini màxim de dos mesos comptadors des de la recepció de la resolució de pagament i justificació, i amb càrrec als pressuposts d’ADR Balears de l’any 2025 per cobrir les despeses financeres d’operacions de finançament d’inversions productives, com a pagament de l’ajuda justificada per import de %IMPORTEAYUDA% amb el següent detall:</li><br>
         <ul>
 		      <li>%IMPORTE_INTERESES% corresponen al subsidi d'interessos.</li><br> 
 			    <li>%IMPORTE_AVAL% corresponen al cost de l'aval constituït amb l'entitat Isba el %FECHA_AVAL% per un termini de %ANYOS_DURACION_AVAL% anys.</li><br> 

@@ -674,7 +674,7 @@ function compruebaExistenciaFecha(fase, elemento) {
 	let theElement = document.getElementById(elemento)
 	let selectedIndexElement = theElement.selectedIndex
 	let currentExpSituation = document.getElementById("situacion_exped").selectedIndex
-	console.log (fase, theElement.value, selectedIndexElement, currentExpSituation, document.getElementById("fecha_not_propuesta_resolucion_prov").value, document.getElementById("fecha_not_propuesta_resolucion_prov").value.length)
+	console.log ("compruebaExistenciaFecha: ", fase, theElement.value, selectedIndexElement, currentExpSituation, document.getElementById("fecha_not_propuesta_resolucion_prov").value, document.getElementById("fecha_not_propuesta_resolucion_prov").value.length)
 	if (theElement.value === "emitidoIFPRProvPago") {
 		if (document.getElementById("fecha_not_propuesta_resolucion_prov").value.length === 0) {
 			theElement.selectedIndex = currentExpSituation
@@ -1318,7 +1318,6 @@ async function insertaMejoraEnSolicitud() {
 function myFunction_docs_IDI_click(id, nombre) {
 	localStorage.setItem("documento_actual", id);
 }
-
 function opcion_seleccionada_click(respuesta) {
 	document.cookie = "respuesta = " + respuesta;
 }

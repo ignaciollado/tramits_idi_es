@@ -1,6 +1,5 @@
 <?php
 require_once 'conectar_a_bbdd.php';
-
 $id = mysqli_real_escape_string($conn, $_POST["id"]);
 
 $empresa = mysqli_real_escape_string($conn, $_POST["empresa"]);
@@ -15,7 +14,8 @@ $tecnicoAsignado = mysqli_real_escape_string($conn, $_POST["tecnicoAsignado"]);
 $nombre_rep = mysqli_real_escape_string($conn, $_POST["nombre_rep"]);
 $nif_rep = mysqli_real_escape_string($conn, $_POST["nif_rep"]);
 $situacion_exped = mysqli_real_escape_string($conn, $_POST["situacion_exped"]);
-$importeAyuda = mysqli_real_escape_string($conn, $_POST["importeAyuda"]);
+$importeAyuda = $_POST["importeAyuda"];
+$importeAyuda =  str_replace(".", "", $importeAyuda);
 $porcentajeConcedido = mysqli_real_escape_string($conn, $_POST["porcentajeConcedido"]);
 $cc_datos_bancarios = mysqli_real_escape_string($conn, $_POST["cc_datos_bancarios"]);
 $ordenDePago = mysqli_real_escape_string($conn, $_POST["ordenDePago"]);
@@ -36,16 +36,15 @@ $query = "UPDATE pindust_expediente
     nombre_rep = '" . mb_strtoupper($nombre_rep) . "',
     nif_rep = '" . mb_strtoupper($nif_rep) . "',
     situacion = '" . $situacion_exped . "',
-    importeAyuda = '" . $importeAyuda . "',
+    importeAyuda = '" . str_replace(",", ".", $importeAyuda) . "',
     porcentajeConcedido = '" . $porcentajeConcedido . "',
     cc_datos_bancarios = '" . $cc_datos_bancarios . "',
     ordenDePago = '" . $ordenDePago . "',
     fechaEnvioAdministracion = '" . $fechaEnvioAdministracion . "',
     fecha_de_pago = '" . $fecha_de_pago . "'
-
     WHERE  id = " . $id;
 $result = mysqli_query($conn, $query);
-//echo $query;
+/* echo $query; */
 mysqli_close($conn);
 echo $result;
 
