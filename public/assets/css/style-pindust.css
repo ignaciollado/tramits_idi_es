@@ -111,7 +111,7 @@ a:hover {
 .alert {
   position: relative;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  font-size: .6rem;
 	text-align: left;
 }
 .alert-info {

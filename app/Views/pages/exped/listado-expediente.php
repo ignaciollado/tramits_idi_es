@@ -77,12 +77,12 @@
                             <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
         		            		<option <?php if ($session->get('situacion_fltr') == "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
     				            		<option <?php if ($session->get('situacion_fltr') == "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
+														<option <?php if ($session->get('situacion_fltr') == "firmadoPRProv") { echo "selected";}?> value = "firmadoPRProv" class="sitValidacion">PR Provisional signada pendent de notificar</option>
     				            		<option <?php if ($session->get('situacion_fltr') == "notificadoIFPRProvPago") { echo "selected";}?> value = "notificadoIFPRProvPago" class="sitValidacion"> PR Provisional NOTIFICADA (DATA) AUT</option>
 
 	    			            		<option <?php if ($session->get('situacion_fltr') == "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva Enviada a firma</option>
 														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva signada PENDENT de notificar</option>
 														<option <?php if ($session->get('situacion_fltr') == "emitidaPRDefinitivaNotificada") { echo "selected";}?> value = "emitidaPRDefinitivaNotificada" class="sitValidacion"> PR definitiva NOTIFICADA</option>
-														<option <?php if ($session->get('situacion_fltr') == "firmadoIFPRProvPago") { echo "selected";}?> value = "firmadoIFPRProvPago" class="sitValidacion">PR Prov. signada pendent de notificar</option>
                         		<option <?php if ($session->get('situacion_fltr') == "emitirResConcesion") { echo "selected";}?> value = "emitirResConcesion" class="sitValidacion"> Resolució de concessió enviada a firma</option>
                         		<option <?php if ($session->get('situacion_fltr') == "emitidaResConcesion") { echo "selected";}?> value = "emitidaResConcesion" class="sitValidacion"> Resolució de concessió signada PENDENT de notificar</option>
                         		<option <?php if ($session->get('situacion_fltr') == "notificadaResConcesion") { echo "selected";}?> value = "notificadaResConcesion" class="sitValidacion"> Resolució de concessió NOTIFICADA</option>

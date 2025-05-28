@@ -44,7 +44,7 @@
 		</h4>
 	</fieldset>
 
-	<div>  
+	<section>  
 		<fieldset>
 			<legend><h4><?php echo lang('message_lang.justificacion_plan_p1');?>:</h4> </legend>
 			<div class="panel-justificacion">
@@ -52,6 +52,18 @@
 					<h5>[.pdf]:</h5>
 					<div>
 						<input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_PlanTransformacionDigital" name="file_PlanTransformacionDigital[]" required size="20" accept=".pdf" multiple />
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend><h4><?php echo lang('message_lang.justificacion_informe_auditoria_doc');?>:</h4> </legend>
+			<div class="panel-justificacion">
+				<div class = "content-file-upload">
+				<h5>[.pdf]:</h5>
+					<div>
+						<input type="file" onchange="detectExtendedASCII(this.id, this.files)" id = "file_InformeAuditoriaDigital" name = "file_InformeAuditoriaDigital[]" required size = "20" accept = ".pdf" multiple />
 					</div>
 				</div>
 			</div>
@@ -109,7 +121,7 @@
 		</fieldset>
 
 		<fieldset>
-			<div class="container-lines" id="container-lines"></div>
+			<table class="container-lines" id="container-lines"></table>
 			<input type='hidden' id="invoice-lines" name="invoice-lines">
 			<input type='hidden' id="total-invoice-lines" name="total-invoice-lines" value="0">
 		</fieldset>
@@ -127,11 +139,8 @@
 		</fieldset>
 		<fieldset class="submit-button">
 			<button type="submit" disabled class = "btn btn-primary btn-lg" id = "enviar_docs"><?php echo lang('message_lang.enviar_documentacion');?></button>
-
 		</fieldset>
-		
-
-	</div>
+	</section>
 </form>
 <div class="alert alert-info"> 
 	<i class="fa fa-info-circle" style="font-size:24px;color:red;"></i> info

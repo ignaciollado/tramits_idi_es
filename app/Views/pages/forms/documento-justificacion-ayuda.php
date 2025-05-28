@@ -13,6 +13,7 @@ class MYPDF extends TCPDF {
 
 		// Position at 15 mm from bottom
         $this->SetY(-15);
+        $this->SetX(5);
         // Set font
         $this->SetFont('helvetica', 'I', 8);
         // Address and Page number
@@ -81,7 +82,7 @@ $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->writeHTMLCell(180, '', 20, 60, $html, 0, 1, 1, true, 'J', true);
 
-$html = "<strong>".lang('message_lang.titulo_justificacion_idigital')."</strong><br><br>";
+$html =  "<strong>".lang('message_lang.titulo_justificacion_idigital')."</strong><br><br>";
 $html .= "<strong>".lang('message_lang.destino_solicitud').": Agència de desenvolupament regional de les Illes Balears</strong><br><br>";
 $html .= "<strong>".lang('message_lang.codigo_dir3')."</strong>".$data['configuracion']['emisorDIR3']."<br>";
 $pdf->SetFillColor(255, 255, 255);
@@ -90,8 +91,8 @@ $pdf->writeHTMLCell(167, '', 20, 70, $html, 0, 1, 1, true, 'J', true);
 
 echo "<content><section>".$html;
 
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.identificacion_sol_idigital').":<br><br>".lang('message_lang.solicitante_sol_idigital').": ".$data['expedientes']['empresa']." NIF: ".$data['expedientes']['nif']."<br>";
+$html = "<table cellpadding='5' >";
+$html .= "<tr><td>".lang('message_lang.identificacion_sol_idigital').":<br><br>".lang('message_lang.solicitante_sol_idigital').": ".$data['expedientes']['empresa']." NIF: ".$data['expedientes']['nif']."<br>";
 $html .= lang('message_lang.nom_rep_legal_sol_idigital').": ".$data['expedientes']['nombre_rep']." ".lang('message_lang.nif_rep_legal_sol_idigital')." ".$data['expedientes']['nif_rep']."<br><br>";
 $html .= lang('message_lang.select_programa_justificacion').":<br><br>";
 $html .= $data['expedientes']['tipo_tramite']."</td></tr>";
@@ -100,11 +101,9 @@ echo $html;
 $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
-/* echo "<br>********".$importeTotalJustificado."********<br>";
-echo "<br>********".$id_sol."********<br>"; */
 
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.importe_total_justificacion').": ".$importeTotalJustificado." €<br>";
+$html = "<table cellpadding='5'>";
+$html .= "<tr><td >".lang('message_lang.importe_total_justificacion').": ".$importeTotalJustificado." €<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
@@ -112,8 +111,8 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>".lang('message_lang.declaro')."<br><br>".lang('message_lang.justificacion_declaracion').":<br>";
+$html = "<table cellpadding='5'>";
+$html .= "<tr><td>".lang('message_lang.declaro')."<br><br>".lang('message_lang.justificacion_declaracion').":<br>";
 $html .= "</td></tr>";
 $html .= "</table>";
 echo $html;
@@ -121,15 +120,18 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
-$html = "<table cellpadding='5' style='border: 1px solid #ffffff;'>";
-$html .= "<tr><td style='background-color:#ffffff;color:#000;font-size:14px;'>";
+$html = "<table cellpadding='5'>";
+$html .= "<tr><td>";
 $html .= "<ul>";
 foreach($justificacion as $docsJustif_item):
 	if ( $docsJustif_item->corresponde_documento == "file_PlanTransformacionDigital") {
 		$html .= "<li>".lang('message_lang.justificacion_plan_doc').".</li>";
 	}
+    if ( $docsJustif_item->corresponde_documento == "file_InformeAuditoriaDigital") {
+		$html .= "<li>".lang('message_lang.justificacion_informe_auditoria_doc').".</li>";
+	}
 endforeach;
-$html .= "<li>".lang('message_lang.justificacion_mem_econom').":<ul>";
+$html .= "<li>".lang('message_lang.justificacion_mem_econom').":<br><ul>";
 foreach($justificacion as $docsJustif_item):
     if ( $docsJustif_item->corresponde_documento == "file_FactTransformacionDigital") {
         $html .= "<li>".lang('message_lang.justificacion_facturas_dec_resp')."</li>";
@@ -147,16 +149,38 @@ $currentY = $pdf->getY();
 $pdf->setY($currentY + 5);
 $pdf->writeHTMLCell(158, '', 20, '', $html, 0, 1, 1, true, 'J', true);
 
-$html = "<table cellpadding='5' style='width: 100%; border: 1px solid #ffffff;'>";
-$html .= "<tr><td>";
-$html .= "<strong>".lang('message_lang.justificacion_mem_econom_titulo').":</strong><br>";
+$pdf->setPrintHeader(false);
+$pdf->AddPage();
+$image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
+$pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+$pdf->SetFont('helvetica', '', 7);
+$html = "<strong>".lang('message_lang.justificacion_mem_econom_titulo').":</strong><br><br>";
+$html .= '<table cellpadding="5" style="width: 100%; border-collapse: collapse; border: 1px solid #000;">';
+$html .= '<thead>';
+$html .= "<tr>";
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Id</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Núm. factura</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Fecha</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Proveedor</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Concepto</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Base imponible factura</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Retención (si procede)</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">IVA factura</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Importe factura (IVA incluído)</th>';
+$html .= '<th style="background-color: #d3d3d3; border-bottom: 2px solid #000;">Fecha de pago</th>';
+$html .= "</tr>";
+$html .= "</thead>";
+$html .= "<tbody>";
 $html .= $memoriaEconomicaJustificativa;
-$html .= "</td></tr>";
+$html .= "</tbody>";
 $html .= "</table>";
 echo $html;
+
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 5);
+$pdf->setY($currentY + 30);
 $pdf->writeHTMLCell(167, '', 20, '', $html, 0, 1, 1, true, 'J', true);
+
 
 /* ------------------firma el documento ------------------------------ */
 $pdf->setPrintHeader(false);
@@ -164,16 +188,16 @@ $pdf->AddPage();
 $image_file = K_PATH_IMAGES.'logoVerticalIDI.png';
 $pdf->Image($image_file, 15, 15, '', '20', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
+$pdf->SetFont('helvetica', '', 10);
 $html = "<table cellpadding='5' style='font-size: 7px; width: 100%; border: 1px solid #fff;'>";
 $html .= "<tr><td style='text-align:left;background-color:#f2f2f2;color:#000;font-size:8px;'>".lang('message_lang.firmo_documento_justificacion')."</td></tr><br>";
 $html .= "</table>";
-
 echo $html;
 $currentY = $pdf->getY();
-$pdf->setY($currentY + 10);
+/* $pdf->setY($currentY + 10); */
 $pdf->writeHTMLCell(167, '', 20, 80, $html, 0, 1, 1, true, 'J', true);
 
-// ---------------------------------------------------------RGDP----------------------- //
+// -------------------------------------------------RGDP----------------------- //
 $pdf->SetFont('helvetica', '', 7);
 $rgpd = lang('message_lang.rgpd_txt');
 $html29 = "<table cellpadding='3px' style='width: 100%; border: 1px solid #ffffff;'>";

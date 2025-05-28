@@ -194,6 +194,8 @@ return [
    'justificacion_mem_econom'         => "Memoria económica justificativa (anexo 7) junto con",
    'justificacion_mem_econom_isba'         => "Memoria económica justificativa.",
    'justificacion_facturas_doc'       => "Las facturas emitidas por el consultor",
+   'justificacion_informe_auditoria_doc' => "Informe auditoria de verificación",
+
    'justificacion_facturas_dec_resp'  => "Las <strong>facturas emitidas por el consultor</strong> en las cuales figuran: la fecha de la factura, el destinatario de la misma, el importe y el concepto de la consultoría realizada según el programa.",
    'justificacion_justificantes_doc'  => "Los justificantes de pagos realizados al consultor",
    'justificacion_justificantes_dec_resp'  => "Los <strong>justificantes de pago realizados al consultor</strong> en los términos establecidos en la convocatória.",

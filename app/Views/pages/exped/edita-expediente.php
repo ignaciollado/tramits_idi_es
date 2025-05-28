@@ -279,6 +279,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                             <optgroup style="background-color:#fff;color:#1ecbe1;" label="Expedients favorables:">
                                 <option <?php if ($expedientes['situacion'] === "emitirIFPRProvPago") { echo "selected";}?> value = "emitirIFPRProvPago" class="sitValidacion"> IF + PR Provisional emetre</option>
     				            <option <?php if ($expedientes['situacion'] === "emitidoIFPRProvPago") { echo "selected";}?> value = "emitidoIFPRProvPago" class="sitValidacion"> IF + PR Provisional emesa</option>
+								<option <?php if ($expedientes['situacion'] === "firmadoPRProv") { echo "selected";}?> value = "firmadoPRProv" class="sitValidacion">PR Provisional signada pendent de notificar</option>
     				            <option <?php if ($expedientes['situacion'] === "notificadoIFPRProvPago") { echo "selected";}?> value = "notificadoIFPRProvPago" class="sitValidacion"> PR Provisional NOTIFICADA (DATA) AUT**</option>
 	    			            <option <?php if ($expedientes['situacion'] === "emitirPRDefinitiva") { echo "selected";}?> value = "emitirPRDefinitiva" class="sitValidacion"> PR definitiva Enviada a firma</option>
 							    <option <?php if ($expedientes['situacion'] === "emitidaPRDefinitiva") { echo "selected";}?> value = "emitidaPRDefinitiva" class="sitValidacion"> PR definitiva signada PENDENT de notificar</option>
@@ -1378,7 +1379,6 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
    	                    <div>Document</div>
 	                    <div>Estat</div>
                     </div>
-
 	                <?php if($documentosJustifPlan): ?>
                     <?php foreach($documentosJustifPlan as $docsJustif_item): 
 			            $path =  $docsJustif_item->created_at;
@@ -1411,6 +1411,49 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                         <?php endif; ?> 
                 </div>
             </div>
+
+            <div id = "tab_informe_auditoria">
+                <button class="accordion-exped"><?php echo lang('message_lang.justificacion_informe_auditoria_doc');?></button>
+                <div class="panel-exped">
+                    <div class = "header-wrapper-docs-justificacion">
+  	                    <div>Rebut el</div>
+   	                    <div>Document</div>
+	                    <div>Estat</div>
+                    </div>
+                    <?php if($documentosInformeAuditoria): ?>
+
+                        <?php foreach($documentosInformeAuditoria as $docsJustif_item): 
+			            $path =  $docsJustif_item->created_at;
+			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
+			            $parametro = explode ("/",$path);
+			            $tipoMIME = $docsJustif_item->type;
+			            $nom_doc = $docsJustif_item->name;
+			            ?>
+  	                    <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
+      	                    <span id = "convocatoria" class = "detail-wrapper-docs-col"><?php echo str_replace ("_", " ", $docsJustif_item->selloDeTiempo); ?></span>	
+   		                    <span id = "fechaComletado" class = "detail-wrapper-docs-col"><a title="<?php echo $nom_doc;?>"  href="<?php echo base_url('public/index.php/expedientes/muestradocumento/'.$docsJustif_item->name.'/'.$expedientes['nif'].'/'.$selloDeTiempo.'/'.$tipoMIME.'/justificacion');?>" target = "_self"><?php echo $nom_doc;?></a></span>
+                           <?php
+                            switch ($docsJustif_item->estado) {
+				                case 'Pendent':
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_info" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Aquesta documentació està pendent de revisió">Pendent</button>';
+					                break;
+    				            case 'Aprovat':
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_success" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació correcta">Aprovat</button>';
+					                break;
+	    			            case 'Rebutjat':
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_error" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="Es una documentació equivocada">Rebutjat</button>';
+					                break;
+                                default:
+    					            $estado_doc = '<button  id="'.$docsJustif_item->id.'" class = "btn btn-itramits isa_caducado" onclick = "javaScript: cambiaEstadoDocJustificacion(this.id);" title="No sé en què estat es troba aquesta documentació">Desconegut</button>';
+                            }
+                            ?>
+                            <span id = "estado" class = "detail-wrapper-docs-col"><?php echo $estado_doc;?></span>
+                        </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?> 
+	                
+                </div>
+            </div>            
 
             <div id = "tab_facturas">
                 <button class="accordion-exped"><?php echo lang('message_lang.justificacion_facturas_doc');?></button>
@@ -1476,13 +1519,10 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                     <?php if($documentosJustifPagos): ?>
                     <?php foreach($documentosJustifPagos as $docsJustif_item): ?>
 			        <?php 
-    			        // $path = str_replace ("D:\wampp\apache2\htdocs\pindust\writable\documentos/","", $docsJustif_item->created_at);
-			            // $path = str_replace ("/home/tramitsidi/www/writable/documentos/","", $docsJustif_item->created_at);
 			            $path =  $docsJustif_item->created_at;
 			            $selloDeTiempo = $docsJustif_item->selloDeTiempo;
 			            $tipoMIME = $docsJustif_item->type;
 			            $nom_doc = $docsJustif_item->name;
-                        //echo "#### ". $selloDeTiempo . " ####";
 			        ?>
 
                     <div id ="fila" class = "detail-wrapper-docs-justificacion-justificantes">
@@ -1574,6 +1614,15 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
     {
     	document.getElementById("tab_plan").classList.add ("success-msg-justific");
     }
+
+    if (<?php echo $totalDocsInformeAuditoria;?> === 0) {
+    	document.getElementById("tab_informe_auditoria").classList.add ("warning-msg-justific");
+    }
+    else
+    {
+    	document.getElementById("tab_informe_auditoria").classList.add ("success-msg-justific");
+    }
+
 
     if (<?php echo $totalDocsJustifFact;?> === 0) {
     	document.getElementById("tab_facturas").classList.add ("warning-msg-justific");

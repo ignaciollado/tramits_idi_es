@@ -1,5 +1,4 @@
 $(document).ready(function(){
-		
 		$("#info_insercion").hide();
 		$("#cuantia_ayuda").focus();
 		if ($('#ILS').is(':checked')) {
@@ -46,6 +45,8 @@ $('#ILS').click(function() {
 
 let x = "Total Width: " + screen.width;
 let importeFacturaTotal = 0
+let idInvoiceLine = 0
+
 console.log (x);
 x = "Available Width: " + screen.availWidth;
 console.log (x);
@@ -768,12 +769,15 @@ function addInvoiceLine() {
 
 	const fechaFactura = new Date(fechaFacturaInput.value)
 	const fechaPago = new Date(fechaPagoInput.value)
+	const node = document.createElement("table")
 
-	const node = document.createElement("div")
-	const textnode = document.createTextNode(numFactura.value+" " + formatDate(fechaFactura).toString()+" " + proveedor.value+" " + concepto.value+" " + baseImponible.value+" " + importeIVA.value+" " + importeFactura.value+" " + formatDate(fechaPago).toString())
-	node.appendChild(textnode)
+	idInvoiceLine = idInvoiceLine + 1
+
+	let invoiceLine = document.createTextNode("<tr><td>"+(idInvoiceLine)+"</td><td>"+numFactura.value+"</td><td>"+formatDate(fechaFactura).toString()+"</td><td>"+proveedor.value+"</td><td>"+concepto.value+"</td><td>"+baseImponible.value+"</td><td></td><td>"+importeIVA.value+"</td><td>"+importeFactura.value+"</td><td>"+formatDate(fechaPago).toString()+"</td></tr>")
+
+	node.appendChild(invoiceLine)
 	document.getElementById("container-lines").appendChild(node)
-	document.getElementById('invoice-lines').value = document.getElementById('container-lines').innerHTML
+	document.getElementById('invoice-lines').value = document.getElementById('container-lines').innerText
 
 	numFactura.value = ""
 	fechaFacturaInput.value = ""

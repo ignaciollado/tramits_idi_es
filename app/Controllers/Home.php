@@ -156,9 +156,9 @@ class Home extends BaseController
 
 		echo view('templates/header/header-form-justificacion', $data);
 		if ($tipoTramite == 'ADR-ISBA') {
-			echo view('pages/forms/form-justificacion-isba',$data);
+			echo view('pages/forms/form-justificacion-isba', $data);
 		} else  {
-			echo view('pages/forms/form-justificacion-ayuda',$data);
+			echo view('pages/forms/form-justificacion-ayuda', $data);
 		}
 		echo view('templates/footer/footer_form');
 	}

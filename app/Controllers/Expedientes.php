@@ -336,6 +336,7 @@ class Expedientes extends Controller
 
 		//----------------------------- Comprueba si ya hay algún documento de justificación ---------------------------------------
 		$data['totalDocsJustifPlan'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PlanTransformacionDigital', $id);
+		$data['totalDocsInformeAuditoria'] = $modelJustificacion->checkIfDocumentoJustificacion('file_InformeAuditoriaDigital', $id);
 		$data['totalDocsJustifFact'] = $modelJustificacion->checkIfDocumentoJustificacion('file_FactTransformacionDigital', $id);
 		$data['totalDocsJustifPagos'] = $modelJustificacion->checkIfDocumentoJustificacion('file_PagosTransformacionDigital', $id);
 
@@ -396,6 +397,7 @@ class Expedientes extends Controller
 
 		/* Los documentos de la justificación por PLAN, FASCTURA, PAGOS */
 		$data['documentosJustifPlan'] = $modelJustificacion->listDocumentosJustificacion('file_PlanTransformacionDigital', $id);
+		$data['documentosInformeAuditoria'] = $modelJustificacion->listDocumentosJustificacion('file_InformeAuditoriaDigital', $id);
 		$data['documentosJustifFact'] = $modelJustificacion->listDocumentosJustificacion('file_FactTransformacionDigital', $id);
 		$data['documentosJustifPagos'] = $modelJustificacion->listDocumentosJustificacion('file_PagosTransformacionDigital', $id);
 
@@ -678,9 +680,16 @@ class Expedientes extends Controller
 		$query = $db->query($qry);
 		$data['documentosJustifPlan'] = $query->getResult();
 		$query = $db->query("SELECT COUNT(id) AS totalDocsJustifPlan FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_PlanTransformacionDigital' AND id_sol = $id)");
-
 		foreach ($query->getResult('array') as $row) {
 			$data['totalDocsJustifPlan'] = $row['totalDocsJustifPlan'];
+		}
+
+		$qry = "SELECT * FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_InformeAuditoriaDigital' AND id_sol = " . $id . ")";
+		$query = $db->query($qry);
+		$data['documentosInformeAuditoria'] = $query->getResult();
+		$query = $db->query("SELECT COUNT(id) AS totalDocsInformeAuditoria FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_InformeAuditoriaDigital' AND id_sol = $id)");
+		foreach ($query->getResult('array') as $row) {
+			$data['totalDocsInformeAuditoria'] = $row['totalDocsInformeAuditoria'];
 		}
 
 		$qry = "SELECT * FROM pindust_documentos_justificacion WHERE (corresponde_documento = 'file_FactTransformacionDigital' AND id_sol = " . $id . ")";
@@ -724,7 +733,7 @@ class Expedientes extends Controller
 		$listaEnumerativaDeGastos = $this->request->getVar('invoice-lines');
 		$totalEnvoiceLines = $this->request->getVar(('total-invoice-lines'));
 
-		// Sube el plan
+		// Sube el plan o los informes
 		$documentosfile = $this->request->getFiles();
 		foreach ($documentosfile['file_PlanTransformacionDigital'] as $plan) {
 			if ($plan->isValid() && !$plan->hasMoved()) {
@@ -734,7 +743,7 @@ class Expedientes extends Controller
 					'name' =>  $newName,
 					'type' => $plan->getClientMimeType(),
 					'cifnif_propietario' => $nif,
-					'tipo_tramite' => $tipo_tramite, //$tipo_tramite[0]." ".$tipo_tramite[1],
+					'tipo_tramite' => $tipo_tramite,
 					'corresponde_documento' => 'file_PlanTransformacionDigital',
 					'datetime_uploaded' => time(),
 					'convocatoria' => $convocatoria,
@@ -747,7 +756,29 @@ class Expedientes extends Controller
 				$data ['id_sol'] = $id;
 			}
 		}
-
+		// Sube el informe auditoria verificación
+		$documentosfile = $this->request->getFiles();
+		foreach ($documentosfile['file_InformeAuditoriaDigital'] as $plan) {
+			if ($plan->isValid() && !$plan->hasMoved()) {
+				$newName = $plan->getRandomName();
+				$plan->move(WRITEPATH . 'documentos/' . $nif . '/justificacion/' . $selloTiempo . '/', $newName);
+				$data_file = [
+					'name' =>  $newName,
+					'type' => $plan->getClientMimeType(),
+					'cifnif_propietario' => $nif,
+					'tipo_tramite' => $tipo_tramite,
+					'corresponde_documento' => 'file_InformeAuditoriaDigital',
+					'datetime_uploaded' => time(),
+					'convocatoria' => $convocatoria,
+					'created_at'  => $plan->getTempName(),
+					'selloDeTiempo'  => $selloTiempo,
+					'id_sol'         => $id
+				];
+				$save = $documentosJustif->insert($data_file);
+				$last_insert_id = $save->connID->insert_id;
+				$data ['id_sol'] = $id;
+			}
+		}
 		// Sube las facturas
 		$documentosfile = $this->request->getFiles(); 
 		foreach ($documentosfile['file_FactTransformacionDigital'] as $factura) {
