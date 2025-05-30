@@ -235,7 +235,7 @@ function actualiza_fase_0_expediente_idi_isba(formName) {  //SE EMPLEA
 
 	let telefono_rep = document.getElementById("telefono_rep").value; // Mòbil a efectes de notificacions
 	let email_rep = document.getElementById("email_rep").value; // Adreça electrònica a efectes de notificacions
-
+	let comments = document.getElementById("comments").value; // Comentarios
 	let tecnicoAsignado = document.getElementById("tecnicoAsignado").value; // Tècnica asignada
 	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
 
@@ -253,6 +253,7 @@ function actualiza_fase_0_expediente_idi_isba(formName) {  //SE EMPLEA
 	$.post(
 		"/public/assets/utils/actualiza_fase_0_expediente_idi_isba.php",
 		{ id: id, telefono_rep: telefono_rep, email_rep: email_rep,
+			comments: comments,
 			tecnicoAsignado: tecnicoAsignado, 
 			situacion_exped: situacion_exped },
 		

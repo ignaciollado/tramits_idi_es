@@ -5,6 +5,7 @@ $id = mysqli_real_escape_string($conn, $_POST["id"]);
 
 $telefono_rep = mysqli_real_escape_string($conn, $_POST["telefono_rep"]);
 $email_rep = mysqli_real_escape_string($conn, $_POST["email_rep"]);
+$comments = mysqli_real_escape_string($conn, $_POST["comments"]);
 $tecnicoAsignado = mysqli_real_escape_string($conn, $_POST["tecnicoAsignado"]);
 $situacion_exped = mysqli_real_escape_string($conn, $_POST["situacion_exped"]);
 
@@ -12,6 +13,7 @@ $query = "UPDATE pindust_expediente
     SET  
     telefono_rep  = '" . $telefono_rep . "',
     email_rep = '" . $email_rep . "',
+    comments = '" . $comments . "',
     tecnicoAsignado = '" . mb_strtoupper($tecnicoAsignado) . "',
     situacion = '" . $situacion_exped . "'
 

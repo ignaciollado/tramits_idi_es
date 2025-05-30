@@ -573,6 +573,38 @@ function validateFormField(field, step=0) {
 		valid = true;
 	}
 
+	if (field.id === "cpostal") {
+		field.value = field.value.replace(/\D/g, '');
+		if (field.value.length < 5) {
+			field.setAttribute('class', 'invalid')
+			valid = false;
+		}
+	}
+
+	if (field.id === "telefono_cont") {
+		field.value = field.value.replace(/\s+/g, '');
+		if (field.value.length < 9) {
+			field.setAttribute('class', 'invalid')
+			valid = false;
+		}
+	}
+
+	if (field.id === "telefono_contacto_rep") {
+		field.value = field.value.replace(/\s+/g, '');
+		if (field.value.length < 9) {
+			field.setAttribute('class', 'invalid')
+			valid = false;
+		}		
+	}
+
+	if (field.id === "tel_representante") {
+		field.value = field.value.replace(/\s+/g, '');
+		if (field.value.length < 9) {
+			field.setAttribute('class', 'invalid')
+			valid = false;
+		}		
+	}
+
 	if (field.id === "importe_ayuda_solicita_idi_isba") {
 		if (field.value <= 30000) {
 			document.getElementById("documentacion_adjunta_requerida_idi_isba_j").removeAttribute("required")

@@ -224,6 +224,10 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
                 </div>
                 <div class="col">
                 <div class="form-group general">
+                    <label for="comments">Comentaris:</label>
+                    <textarea id="comments" name="comments" rows="15" cols="80" placeholder="Escribe tus comentarios aquí..."><?php echo $expedientes['comments']; ?></textarea>                       
+                </div>
+                <div class="form-group general">
                     <label for="nif_rep">NIF representant legal:</label>
                     <input type="text" name="nif_rep" class="form-control send_fase_0" <?php if ($session->get('rol')!='admin') { echo 'readonly';} ?> id = "nif_rep" minlength = "9" maxlength = "9" placeholder = "NIF del representant" value = "<?php echo $expedientes['nif_rep']; ?>">
                 </div>
@@ -634,7 +638,7 @@ if ($expedientes['importeAyuda'] || $expedientes['importeAyuda'] == 0) {
 			                echo $estado_firma;
 		                }?>
                         <br>
-                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>
+                        <a href="<?php echo base_url('/public/index.php/expedientes/muestradocumento/'.$expedientes['nif'].'_dec_res_solicitud.pdf'.'/'.$parametro [6].'/'.$parametro [7].'/'.$tipoMIME);?>"><small class = 'verSello' id='<?php echo $docs_item->publicAccessIdCustodiado;?>'>La declaració responsable sense signar</small></a>        
             </div>
             
         </div>

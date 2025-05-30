@@ -143,7 +143,11 @@
 					<span class="w3docs"></span>
 				</h4>
                 </div>
-                <div class="col">      	     
+                <div class="col">
+                <div class="form-group general">
+                    <label for="comments" style="color:#000;">Comentaris:</label>
+                    <textarea id="comments" name="comments" rows="15" cols="80" placeholder="Escribe tus comentarios aquí..."><?php echo $expedientes['comments']; ?></textarea>                       
+                </div>                     	     
                 <fieldset>
 			        <h3><?php echo lang('message_lang.adherido_a_ils_si_no');?></h3>
 			        <div class="form-check form-check-inline">

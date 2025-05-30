@@ -1165,6 +1165,7 @@ class Expedientes extends Controller
 			//'telefono' => $this->request->getVar('telefono'),		
 			'nombre_rep' => $this->request->getVar('nombre_rep'),
 			'nif_rep' => $this->request->getVar('nif_rep'),
+			'comments' => $this->request->getVar('comments'),
 			'domicilio_rep' => $this->request->getVar('domicilio_rep'),
 			'telefono_rep' => $this->request->getVar('telefono_rep'),
 			'email_rep' => $this->request->getVar('email_rep'),

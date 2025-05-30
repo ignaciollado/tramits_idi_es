@@ -387,6 +387,7 @@ function actualiza_fase_0_expediente(formName) {  //SE EMPLEA
 	let tecnicoAsignado = document.getElementById("tecnicoAsignado").value; // Tècnica asignada
 	let nombre_rep = document.getElementById("nombre_rep").value; // Representant legal
 	let nif_rep = document.getElementById("nif_rep").value; // Representant legal NIF
+	let comments = document.getElementById("comments").value; // Comentarios
 	let situacion_exped = document.getElementById("situacion_exped").value; // Situació
 	let importeAyuda = document.getElementById("importeAyuda").value; // Import de l'ajuda
 	let porcentajeConcedido = document.getElementById("porcentajeConcedido").value; // Percentatje de l'ajuda
@@ -408,6 +409,7 @@ function actualiza_fase_0_expediente(formName) {  //SE EMPLEA
 		"/public/assets/utils/actualiza_fase_0_expediente.php",
 		{ id: id, empresa: empresa, empresa_consultor: empresa_consultor, nif: nif, telefono_rep: telefono_rep, email_rep: email_rep, nom_consultor: nom_consultor, mail_consultor: mail_consultor,
 			tel_consultor: tel_consultor, tecnicoAsignado: tecnicoAsignado, nombre_rep: nombre_rep, nif_rep, nif_rep,
+			comments: comments,
 			situacion_exped: situacion_exped, importeAyuda: importeAyuda, porcentajeConcedido: porcentajeConcedido, cc_datos_bancarios: cc_datos_bancarios, 
 			ordenDePago: ordenDePago, fechaEnvioAdministracion: fechaEnvioAdministracion, fecha_de_pago: fecha_de_pago },
 		
