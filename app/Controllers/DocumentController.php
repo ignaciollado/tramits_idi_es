@@ -9,31 +9,35 @@ class DocumentController extends BaseController
 {
     use ResponseTrait;
 
-    public function index($foldername = null, $id = null)
+    public function index($nif = null, $timestamp = null)
     {
-        $path = WRITEPATH . 'documentos/' . $foldername . '/' . $id;
-        $files = [];
+    $path = WRITEPATH . 'documentos/' . $nif . '/' . $timestamp;
+    $files = [];
 
-        if (is_dir($path)) {
-            $dirFiles = array_diff(scandir($path), ['.', '..']);
-            foreach ($dirFiles as $file) {
-                $extension = pathinfo($file, PATHINFO_EXTENSION);
-                $files[] = [
-                    'name' => utf8_encode($file),
-                    'path' => utf8_encode($path . '/' . $file),
-                    'extension' => utf8_encode($extension)
-                ];
-            }
+    if (is_dir($path)) {
+        $dirFiles = array_diff(scandir($path), ['.', '..']);
+
+        foreach ($dirFiles as $file) {
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+            $files[] = [
+                'name'      => utf8_encode($file),
+                'extension' => utf8_encode($extension),
+                'url'       => base_url("writable/documentos/$nif/$timestamp/" . rawurlencode($file))
+            ];
         }
-        return $this->respond($files);
     }
 
-    public function upload($foldername = null, $id = null)
+    return $this->respond($files);
+    }
+
+
+    public function upload($nif = null, $timestamp = null)
     {
         try {
             $files = $this->request->getFiles();
             $uploadedFiles = [];
-            $path = WRITEPATH . 'uploads/' . $foldername . '/' . $id;
+            $path = WRITEPATH . 'uploads/' . $nif . '/' . $timestamp;
 
             if (!is_dir($path)) {
                 mkdir($path, 0755, true);
@@ -78,9 +82,9 @@ class DocumentController extends BaseController
         }
     }  
 
-    public function delete($foldername = null, $id = null, $fileName = null)
+    public function delete($foldername = null, $timestamp = null, $fileName = null)
     {
-        $path = WRITEPATH . 'uploads/' . $foldername . '/' . $id . '/' . $fileName;
+        $path = WRITEPATH . 'documentos/' . $nif . '/' . $timestamp . '/' . $fileName;
         if (file_exists($path)) {
             unlink($path);
             return $this->respondDeleted(['message' => 'Documento eliminado correctamente'])
@@ -91,9 +95,9 @@ class DocumentController extends BaseController
            ;
     }
 
-    public function view($foldername = null, $id = null, $fileName = null)
+    public function view($nif = null, $timestamp = null, $fileName = null)
     {
-        $path = WRITEPATH . 'uploads/' . $foldername . '/' . $id . '/' . $fileName;
+        $path = WRITEPATH . 'documentos/' . $nif . '/' . $timestamp . '/' . $fileName;
         if (file_exists($path)) {
             return $this->response->download($path, null)->setFileName($fileName);
         }

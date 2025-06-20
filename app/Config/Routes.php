@@ -111,6 +111,15 @@ $routes->options('pindustactividades/(:num)', 'PindustActividadesCNAEController:
 $routes->delete('pindustactividades/(:num)', 'PindustActividadesCNAEController::delete/$1');
 $routes->options('pindustactividades/(:num)', 'PindustActividadesCNAEController::delete/$1');
 
+/* Documents upload API */
+$routes->options('documents/upload/(:any)/(:any)', 'DocumentController::options');
+$routes->post('documents/upload/(:any)/(:any)', 'DocumentController::upload/$1/$2');
+
+$routes->options('documents/(:segment)/(:segment)', 'DocumentController::options');
+$routes->get('documents/(:segment)/(:segment)', 'DocumentController::index/$1/$2');
+
+$routes->options('documents/delete/(:any)/(:num)/(:any)', 'DocumentController::optionsDelete');
+$routes->delete('documents/delete/(:any)/(:num)/(:any)', 'DocumentController::delete/$1/$2/$3');
 
 
 //$routes->get('(:any)', 'LoginController::login');

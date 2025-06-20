@@ -1,6 +1,0 @@
-CRITICAL - 2025-06-20 13:10:27 --> Class 'App\Models\ActividadesCNAEModel' not found
-#0 /home/pre-tramitsidi/www/system/CodeIgniter.php(886): App\Controllers\PindustActividadesCNAEController->__construct()
-#1 /home/pre-tramitsidi/www/system/CodeIgniter.php(395): CodeIgniter\CodeIgniter->createController()
-#2 /home/pre-tramitsidi/www/system/CodeIgniter.php(308): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#3 /home/pre-tramitsidi/www/public/index.php(45): CodeIgniter\CodeIgniter->run()
-#4 {main}
