@@ -964,7 +964,6 @@ class SubirArchivo extends BaseController
 				 }
 		 }
 	 	}
- 	
  		/* ----------------------------------------------------------------------------------------------------- */
  		/* ----------------------------- declaración responsable, múltiples documentos ------------------------- */
  		if (isset($documentosfile['file_lineaProduccionBalearesIls'])) {

@@ -16,13 +16,7 @@ class ApiController extends ResourceController
 
     // get all
     public function index(){
-
-     /*  $apiModel = new ApiModel();
-      $data = $apiModel->orderBy('id', 'DESC')->findAll();
-      return $this->respond($data); */
-
       return $this->respond($this->model->orderBy('id','ASC')->findAll());
-    
     }
 
     // create

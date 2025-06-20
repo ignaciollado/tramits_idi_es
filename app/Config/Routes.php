@@ -33,17 +33,10 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 
 $routes->resource('apicontroller', ['websafe' => 1]);
-/* $routes->get('photos/new', 'Photos::new');
-$routes->post('photos', 'Photos::create'); */
 $routes->get('expediente', 'ApiController::index');
 $routes->get('expediente/(:segment)/(:segment)/(:segment)', 'ApiController::getExpediente/$1/$2/$3');
 $routes->get('nifExpediente/(:segment)', 'ApiController::getExpedientebyNIF/$1');
 $routes->get('numExpediente/(:segment)/(:segment)', 'ApiController::getExpedientebyExp/$1/$2');
-
-/* $routes->get('photos/(:segment)/edit', 'Photos::edit/$1');
-$routes->put('photos/(:segment)', 'Photos::update/$1');
-$routes->patch('photos/(:segment)', 'Photos::update/$1');
-$routes->delete('photos/(:segment)', 'Photos::delete/$1'); */
 
 $routes->get('/', 'LoginController::index');
 $routes->post('login', 'LoginController::login');
@@ -57,13 +50,67 @@ $routes->get('/expedientes/edit/(:num)', 'Expedientes::edit/$1',['filter' => 'au
 $routes->get('/expedientes/configurador_edit', 'Expedientes::configurador_edit',['filter' => 'auth']);
 $routes->get('/expedientes/filtrarexpedientes', 'Expedientes::filtrarexpedientes',['filter' => 'auth']);
 $routes->get('/custodia', 'Custodia::index',['filter' => 'auth']);
-//$routes->get('/home/sol_idigital', 'Home::sol_idigital',['filter' => 'auth']);
 $routes->get('logout', 'LoginController::logout');
 
 $routes->options('/recovery/hello', 'MailController::options');
 $routes->get('/recovery/hello', 'MailController::index');
 $routes->options('/recovery/password', 'MailController::options');
 $routes->get('/recovery/password', 'MailController::sendMail');
+
+
+/* API REST end points */
+/* Pindust Expediente */
+
+// Rutas RESTful para PindustExpedienteController
+$routes->get('pindustexpediente', 'PindustExpedienteController::index');// Obtener todas los expedientes
+$routes->get('pindustexpediente/(:num)', 'PindustExpedienteController::show/$1'); // Obtener un expediente
+$routes->get('pindustexpediente/convocatoria/(:segment)', 'PindustExpedienteController::getByConvocatoria/$1'); // Obtener un expediente por convocatoria y, opcionalmente, tipo_trámite
+$routes->post('pindustexpediente/create', 'PindustExpedienteController::create');  // Crear un nuev expediente
+$routes->put('pindustexpediente/update/(:segment)', 'PindustExpedienteController::update/$1'); // Actualizar un expediente
+$routes->delete('pindustexpediente/delete/(:segment)', 'PindustExpedienteController::delete/$1'); // Eliminar un expediente
+
+// Rutas para preflight (CORS)
+$routes->options('pindustexpediente/', 'PindustExpedienteController::options');
+$routes->options('pindustexpediente/convocatoria/(:segment)', 'PindustExpedienteController::options'); // Obtener un expediente por convocatoria y, opcionalmente, tipo_trámite
+$routes->options('pindustexpediente/create', 'PindustExpedienteController::options');
+$routes->options('pindustexpediente/update/(:segment)', 'PindustExpedienteController::options');
+$routes->options('pindustexpediente/delete/(:segment)', 'PindustExpedienteController::options');
+$routes->options('pindustexpediente/(:num)', 'PindustExpedienteController::options');
+
+// Rutas RESTful para DocumentosController
+$routes->get('pindustdocumento', 'PindustDocumentoController::index');// Obtener todas los documentos
+$routes->get('pindustdocumento/(:num)', 'PindustDocumentoController::show/$1'); // Obtener un documento
+$routes->get('documentos/expediente/(:num)', 'PindustDocumentoController::getByExpediente/$1');
+$routes->post('pindustdocumento/create', 'PindustDocumentoController::create');  // Crear un nuev documento
+$routes->put('pindustdocumento/update/(:segment)', 'PindustDocumentoController::update/$1'); // Actualizar un documento
+$routes->delete('pindustdocumento/delete/(:segment)', 'PindustDocumentoController::delete/$1'); // Eliminar un documento
+
+// Rutas para preflight (CORS)
+$routes->options('pindustdocumento/', 'PindustDocumentoController::options');
+$routes->options('documentos/expediente/(:num)', 'PindustDocumentoController::options');
+$routes->options('pindustdocumento/create', 'PindustDocumentoController::options');
+$routes->options('pindustdocumento/update/(:segment)', 'PindustDocumentoController::options');
+$routes->options('pindustdocumento/delete/(:segment)', 'PindustDocumentoController::options');
+$routes->options('pindustdocumento/(:num)', 'PindustDocumentoController::options');
+
+// Rutas RESTful para PindustActividadesCNAEController
+// ActividadesCNAE API REST - Rutas individuales
+
+$routes->get('pindustactividades', 'PindustActividadesCNAEController::index');
+$routes->options('pindustactividades', 'PindustActividadesCNAEController::index');
+
+$routes->get('pindustactividades/(:num)', 'PindustActividadesCNAEController::show/$1');
+$routes->options('pindustactividades/(:num)', 'PindustActividadesCNAEController::show/$1');
+
+$routes->post('pindustactividades', 'PindustActividadesCNAEController::create');
+$routes->options('pindustactividades', 'PindustActividadesCNAEController::create');
+
+$routes->put('pindustactividades/(:num)', 'PindustActividadesCNAEController::update/$1');
+$routes->options('pindustactividades/(:num)', 'PindustActividadesCNAEController::update/$1');
+
+$routes->delete('pindustactividades/(:num)', 'PindustActividadesCNAEController::delete/$1');
+$routes->options('pindustactividades/(:num)', 'PindustActividadesCNAEController::delete/$1');
+
 
 
 //$routes->get('(:any)', 'LoginController::login');
