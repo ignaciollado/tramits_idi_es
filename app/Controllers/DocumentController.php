@@ -84,7 +84,7 @@ class DocumentController extends BaseController
 
     public function delete($foldername = null, $timestamp = null, $fileName = null)
     {
-        $path = WRITEPATH . 'documentos/' . $nif . '/' . $timestamp . '/' . $fileName;
+        $path = WRITEPATH . 'documentos/' . $foldername . '/' . $timestamp . '/' . $fileName;
         if (file_exists($path)) {
             unlink($path);
             return $this->respondDeleted(['message' => 'Documento eliminado correctamente'])
