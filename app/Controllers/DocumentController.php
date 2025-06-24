@@ -39,7 +39,7 @@ class DocumentController extends BaseController
             $uploadedFiles = [];
             $path = WRITEPATH . 'uploads/' . $nif . '/' . $timestamp;
 
-            if (!is_dir($path)) {
+            if (!is_dir($path)) { /* si no existe la carpeta la crea */
                 mkdir($path, 0755, true);
             }
     
@@ -82,9 +82,9 @@ class DocumentController extends BaseController
         }
     }  
 
-    public function delete($foldername = null, $timestamp = null, $fileName = null)
+    public function delete($nif = null, $timestamp = null, $fileName = null)
     {
-        $path = WRITEPATH . 'documentos/' . $foldername . '/' . $timestamp . '/' . $fileName;
+        $path = WRITEPATH . 'documentos/' . $nif . '/' . $timestamp . '/' . $fileName;
         if (file_exists($path)) {
             unlink($path);
             return $this->respondDeleted(['message' => 'Documento eliminado correctamente'])
@@ -107,7 +107,9 @@ class DocumentController extends BaseController
 
     public function options()
     {
-        return $this->response->setStatusCode(204); // No Content
+        return $this->response
+        ->setHeader('Access-Control-Allow-Origin', '*')
+        ->setStatusCode(200); // No Content
     }
     
     public function optionsDelete()

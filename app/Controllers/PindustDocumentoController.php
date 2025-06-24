@@ -11,7 +11,7 @@ class PindustDocumentoController extends ResourceController
     protected $modelName = PindustDocumentoModel::class;
     protected $format    = 'json';
 
-    // GET /api/documentos
+    // GET /pindustdocument
     public function index()
     {
         try {
@@ -22,24 +22,30 @@ class PindustDocumentoController extends ResourceController
         }
     }
 
-    // GET /api/documentos/{id}
-    public function show($id = null)
+    // GET /pindustdocument/{nif}/{timestamp}
+    public function show($nif = null, $timestamp = null)
     {
         try {
-            $data = $this->model->find($id);
-            if (!$data) {
-                return $this->failNotFound("Documento con ID $id no encontrado.");
-            }
-            return $this->respond($data);
-        } catch (Exception $e) {
-            return $this->failServerError($e->getMessage());
+        $data = $this->model
+                     ->where('cifnif_propietario', $nif)
+                     ->where('selloDeTiempo', $timestamp)
+                     ->findAll();
+
+        if (!$data) {
+            return $this->failNotFound("Documento con NIF $nif y timestamp $timestamp no encontrado.");
+        }
+
+        return $this->respond($data);
+        } catch (\Throwable $e) {
+        return $this->failServerError($e->getMessage());
         }
     }
 
-    // GET /api/documentos/expediente/{id_sol}
+
+    // GET /pindustdocument/expediente/{id_sol}
     public function getByExpediente($id_sol = null)
     {
-    try {
+        try {
         if (!$id_sol) {
             return $this->failValidationError("Debe proporcionar un ID de expediente (id_sol).");
         }
@@ -51,19 +57,18 @@ class PindustDocumentoController extends ResourceController
         }
 
         return $this->respond($data);
-    } catch (Exception $e) {
+        } catch (Exception $e) {
         return $this->failServerError($e->getMessage());
-    }
+        }
     }
 
-
-    // POST /api/documentos
+    // POST /pindustdocument
     public function create()
     {
         try {
             $data = $this->request->getJSON(true);
             if (!$this->model->insert($data)) {
-                return $this->failValidationErrors($this->model->errors());
+                return $this->failValidationError(json_encode($this->model->errors()));
             }
             return $this->respondCreated($data);
         } catch (Exception $e) {
@@ -71,7 +76,7 @@ class PindustDocumentoController extends ResourceController
         }
     }
 
-    // PUT /api/documentos/{id}
+    // PUT /pindustdocument/{id}
     public function update($id = null)
     {
         try {
@@ -80,7 +85,8 @@ class PindustDocumentoController extends ResourceController
                 return $this->failNotFound("Documento con ID $id no encontrado.");
             }
             if (!$this->model->update($id, $data)) {
-                return $this->failValidationErrors($this->model->errors());
+                return $this->failValidationError(json_encode($this->model->errors()));
+
             }
             return $this->respond($data);
         } catch (Exception $e) {
@@ -88,7 +94,7 @@ class PindustDocumentoController extends ResourceController
         }
     }
 
-    // DELETE /api/documentos/{id}
+    // DELETE /pindustdocument/{id}
     public function delete($id = null)
     {
         try {

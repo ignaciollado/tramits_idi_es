@@ -22,7 +22,10 @@ class PindustActividadesCNAEController extends ResourceController
     {
         try {
             $data = $this->model->findAll();
-            return $this->respond($data);
+            return $this->response
+    ->setHeader('Access-Control-Allow-Origin', '*')
+    ->setJSON($data);
+
         } catch (\Throwable $e) {
             return $this->failServerError($e->getMessage());
         }
@@ -48,7 +51,7 @@ class PindustActividadesCNAEController extends ResourceController
         try {
             $input = $this->request->getJSON(true);
             if (!$this->model->insert($input)) {
-                return $this->failValidationErrors($this->model->errors());
+                return $this->failValidationError(json_encode($this->model->errors()));
             }
             return $this->respondCreated($input);
         } catch (\Throwable $e) {
@@ -62,7 +65,7 @@ class PindustActividadesCNAEController extends ResourceController
         try {
             $input = $this->request->getJSON(true);
             if (!$this->model->update($id, $input)) {
-                return $this->failValidationErrors($this->model->errors());
+                return $this->failValidationError(json_encode($this->model->errors()));
             }
             return $this->respond($input);
         } catch (\Throwable $e) {
@@ -84,9 +87,13 @@ class PindustActividadesCNAEController extends ResourceController
         }
     }
 
+    // preflight
     public function options()
     {
         return $this->response
-            ->setStatusCode(204); // No Content
+            ->setHeader('Access-Control-Allow-Origin', '*')
+            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+            ->setStatusCode(200); // No Content
     } 
 }

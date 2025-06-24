@@ -73,7 +73,7 @@ public function getByConvocatoria($convocatoria = null)
         try {
             $data = $this->request->getJSON(true);
             if (!$this->model->insert($data)) {
-                return $this->failValidationErrors($this->model->errors());
+                return $this->failValidationError(json_encode($this->model->errors()));
             }
             return $this->respondCreated($data);
         } catch (Exception $e) {
@@ -90,7 +90,7 @@ public function getByConvocatoria($convocatoria = null)
                 return $this->failNotFound("Expediente con ID $id no encontrado.");
             }
             if (!$this->model->update($id, $data)) {
-                return $this->failValidationErrors($this->model->errors());
+                return $this->failValidationError(json_encode($this->model->errors()));
             }
             return $this->respond($data);
         } catch (Exception $e) {
