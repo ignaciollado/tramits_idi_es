@@ -72,14 +72,22 @@ public function getByConvocatoria($convocatoria = null)
     {
         try {
             $data = $this->request->getJSON(true);
-            if (!$this->model->insert($data)) {
+
+            $insertedId = $this->model->insert($data, true); // El segundo parámetro true hace que devuelva el ID insertado
+
+            if (!$insertedId) {
                 return $this->failValidationError(json_encode($this->model->errors()));
             }
-            return $this->respondCreated($data);
-        } catch (Exception $e) {
+
+            return $this->respondCreated([
+                'message' => 'Registro creado correctamente',
+                'id' => $insertedId
+            ]);
+        } catch (\Exception $e) {
             return $this->failServerError($e->getMessage());
         }
     }
+
 
     // PUT /api/pindustexpediente/{id}
     public function update($id = null)

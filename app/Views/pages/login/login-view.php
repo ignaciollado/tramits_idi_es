@@ -7,9 +7,9 @@
       <!-- <span class='mensaje'><?= session('msg');?></span> -->
 	
       <form method="post"  action="<?= base_url('/public/index.php/loginController/login') ?>"> 
-        <input type="text" disabled id="user_id" required name="user_id" placeholder="la teva acreça de correu">
-        <input type="password" disabled id="password" required name="password" placeholder="Clau">
-        <input type="submit" disabled value="Log In">
+        <input type="text" id="user_id" required name="user_id" placeholder="la teva acreça de correu">
+        <input type="password" id="password" required name="password" placeholder="Clau">
+        <input type="submit" value="Log In">
       </form>  
       <div class="g-signin2" id="signinGooogloToiTramits"></div>
       <!-- <div class="g-signin2"></div> -->

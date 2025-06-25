@@ -37,13 +37,12 @@ class DocumentController extends BaseController
         try {
             $files = $this->request->getFiles();
             $uploadedFiles = [];
-            $path = WRITEPATH . 'uploads/' . $nif . '/' . $timestamp;
-
+            $path = WRITEPATH . 'documentos/' . $nif . '/' . $timestamp;
             if (!is_dir($path)) { /* si no existe la carpeta la crea */
                 mkdir($path, 0755, true);
             }
     
-            if (!isset($files['documents']) || empty($files['documents'])) {
+            if (!isset($files['files']) || empty($files['files'])) {
                 return $this->fail('No documents were uploaded.')
                     ->setHeader('Access-Control-Allow-Origin', '*')
                     ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
@@ -51,8 +50,7 @@ class DocumentController extends BaseController
             }
     
             // Verificar si 'documents' es un solo archivo o un array de archivos
-            $documents = is_array($files['documents']) ? $files['documents'] : [$files['documents']];
-    
+            $documents = is_array($files['files']) ? $files['files'] : [$files['files']];
             foreach ($documents as $file) {
                 if ($file->isValid() && !$file->hasMoved()) {
                     $fileName = $file->getClientName();
@@ -74,8 +72,12 @@ class DocumentController extends BaseController
                         ->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
                 }
             }
-            return $this->respond(['status' => 'success', 'message' => 'Document uploaded successfully', 'file_name' => $uploadedFiles])
-                ;
+            return $this->respond([
+                'status' => 'success', 'message' => 'Document uploaded successfully', 'file_name' => $uploadedFiles
+                ])
+                ->setHeader('Access-Control-Allow-Origin', '*')
+                ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+                ->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
         } catch (\Exception $e) {
             return $this->failServerError('An error occurred while uploading documents.')
               ;
