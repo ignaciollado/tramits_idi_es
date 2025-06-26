@@ -118,6 +118,10 @@ $routes->post('document/upload/(:any)/(:any)', 'DocumentController::upload/$1/$2
 $routes->options('documents/delete/(:any)/(:num)/(:any)', 'DocumentController::optionsDelete');
 $routes->delete('documents/delete/(:any)/(:num)/(:any)', 'DocumentController::delete/$1/$2/$3'); /* delete the document ?????? */
 
+/* Respuesta preflight envío correos electrónicos */
+$routes->options('utils/enviaCorreoElectronicoUserAppIbrelleu.php/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'PindustExpedienteController::optionsDelete');
+
+
 
 //$routes->get('(:any)', 'LoginController::login');
 /**
