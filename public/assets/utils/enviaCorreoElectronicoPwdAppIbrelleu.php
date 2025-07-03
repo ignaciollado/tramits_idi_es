@@ -63,7 +63,7 @@ $mail->Subject = $asunto;
 $mail->AddBCC("illado@adrbalears.caib.es", "Gestió interna ADR Balears");
 //$mail->AddBCC("mriutord@adrbalears.caib.es", "Servei Ibrelleu ADR Balears");
 
-$mensajeLayout = file_get_contents('contents-ibrelleu-user-app.html');
+$mensajeLayout = file_get_contents('contents-ibrelleu-pwd-app.html');
 $mensajeLayout = str_replace("%SUBJECT%", $asunto, $mensajeLayout);
 $mensajeLayout = str_replace("%NAME%", $solicitante, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIO%", $correoDestino, $mensajeLayout);
@@ -73,7 +73,6 @@ $mensajeLayout = str_replace("%TOWN%", $poblacion, $mensajeLayout);
 $mensajeLayout = str_replace("%PWD%", $pwd, $mensajeLayout);
 $mensajeLayout = str_replace("%ISLAND%", $isla, $mensajeLayout);
 $mensajeLayout = str_replace("%USUARIOMAIL%", $correoDestino, $mensajeLayout);
-$mensajeLayout = str_replace("%PROFILE%", $perfil, $mensajeLayout);
 
 $mail->msgHTML( $mensajeLayout , __DIR__);
 

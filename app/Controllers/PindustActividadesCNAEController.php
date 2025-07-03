@@ -23,9 +23,8 @@ class PindustActividadesCNAEController extends ResourceController
         try {
             $data = $this->model->findAll();
             return $this->response
-    ->setHeader('Access-Control-Allow-Origin', '*')
-    ->setJSON($data);
-
+                ->setHeader('Access-Control-Allow-Origin', '*')
+                ->setJSON($data);
         } catch (\Throwable $e) {
             return $this->failServerError($e->getMessage());
         }

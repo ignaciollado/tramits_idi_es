@@ -62,20 +62,27 @@ $routes->get('/recovery/password', 'MailController::sendMail');
 /* Pindust Expediente */
 
 // Rutas RESTful para PindustExpedienteController
-$routes->get('pindustexpediente', 'PindustExpedienteController::index');// Obtener todas los expedientes
-$routes->get('pindustexpediente/(:num)', 'PindustExpedienteController::show/$1'); // Obtener un expediente
-$routes->get('pindustexpediente/convocatoria/(:segment)', 'PindustExpedienteController::getByConvocatoria/$1'); // Obtener un expediente por convocatoria y, opcionalmente, tipo_trámite
-$routes->post('pindustexpediente/create', 'PindustExpedienteController::create');  // Crear un nuev expediente
-$routes->put('pindustexpediente/update/(:segment)', 'PindustExpedienteController::update/$1'); // Actualizar un expediente
-$routes->delete('pindustexpediente/delete/(:segment)', 'PindustExpedienteController::delete/$1'); // Eliminar un expediente
+$routes->get('pindustexpediente', 'PindustExpedienteController::index');
+$routes->options('pindustexpediente/', 'PindustExpedienteController::options');
+
+$routes->get('pindustexpediente/(:num)', 'PindustExpedienteController::show/$1');
+$routes->options('pindustexpediente/(:num)', 'PindustExpedienteController::options');
+
+$routes->get('pindustexpediente/convocatoria/(:num)', 'PindustExpedienteController::getByConvocatoria/$1');
+$routes->options('pindustexpediente/convocatoria/(:num)', 'PindustExpedienteController::options');
+
+$routes->get('pindustexpediente/last-id/(:segment)', 'PindustExpedienteController::getLastIDByLinea/$1');
+$routes->options('pindustexpediente/last-id/(:segment)', 'PindustExpedienteController::options');
+
+$routes->post('pindustexpediente/create', 'PindustExpedienteController::create');
+$routes->put('pindustexpediente/update/(:segment)', 'PindustExpedienteController::update/$1');
+$routes->delete('pindustexpediente/delete/(:segment)', 'PindustExpedienteController::delete/$1');
 
 // Rutas para preflight (CORS)
-$routes->options('pindustexpediente/', 'PindustExpedienteController::options');
-$routes->options('pindustexpediente/(:num)', 'PindustExpedienteController::options');
-$routes->options('pindustexpediente/convocatoria/(:segment)', 'PindustExpedienteController::options'); // Obtener un expediente por convocatoria y, opcionalmente, tipo_trámite
 $routes->options('pindustexpediente/create', 'PindustExpedienteController::options');
 $routes->options('pindustexpediente/update/(:segment)', 'PindustExpedienteController::options');
 $routes->options('pindustexpediente/delete/(:segment)', 'PindustExpedienteController::options');
+
 
 // Insert Document into bbdd
 $routes->get('pindustdocument/(:segment)/(:segment)', 'PindustDocumentoController::show/$1/$2'); // Obtener un documento por nif y timestamp
@@ -119,9 +126,11 @@ $routes->options('documents/delete/(:any)/(:num)/(:any)', 'DocumentController::o
 $routes->delete('documents/delete/(:any)/(:num)/(:any)', 'DocumentController::delete/$1/$2/$3'); /* delete the document ?????? */
 
 /* Respuesta preflight envío correos electrónicos */
-$routes->options('utils/enviaCorreoElectronicoUserAppIbrelleu.php/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'PindustExpedienteController::optionsDelete');
+$routes->post('api/send-mail', 'MailController::sendMail');
+$routes->options('api/send-mail', 'MailController::options');
 
-
+$routes->options('public/assets/utils/enviaCorreoElectronicoUserAppIbrelleu.php/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'MailController::options');
+$routes->options( 'public/assets/utils/enviaCorreoElectronicoPwdAppIbrelleu.php/(:any)/(:any)/(:any)/(:any)/(:any)', 'MailController::options');
 
 //$routes->get('(:any)', 'LoginController::login');
 /**

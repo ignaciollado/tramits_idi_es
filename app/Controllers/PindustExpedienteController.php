@@ -17,9 +17,11 @@ class PindustExpedienteController extends ResourceController
     public function index()
     {
         try {
-            $data = $this->model->orderBy('id','ASC')->findAll();
-            return $this->respond($data);
-        } catch (Exception $e) {
+            $data = $this->model->orderBy('id', 'ASC')->findAll();
+            return $this->response
+                ->setHeader('Access-Control-Allow-Origin', '*')
+                ->setJSON($data);
+        } catch (\Exception $e) {
             return $this->failServerError($e->getMessage());
         }
     }
@@ -32,17 +34,20 @@ class PindustExpedienteController extends ResourceController
             if (!$data) {
                 return $this->failNotFound("Expediente con ID $id no encontrado.");
             }
-            return $this->respond($data);
+            return $this->response
+            ->setHeader('Access-Control-Allow-Origin', '*')
+            ->setJSON($data);
         } catch (Exception $e) {
             return $this->failServerError($e->getMessage());
         }
     }
 
     // GET /pindustexpediente/convocatoria/{convocatoria}
-// Opcional: ?tipo_tramite=valor
-public function getByConvocatoria($convocatoria = null)
-{
-    try {
+    // Opcional: ?tipo_tramite=valor
+
+    public function getByConvocatoria($convocatoria = null)
+    {
+        try {
         if (!$convocatoria) {
             return $this->failValidationError("Debe proporcionar una convocatoria.");
         }
@@ -54,18 +59,44 @@ public function getByConvocatoria($convocatoria = null)
         if ($tipoTramite) {
             $builder->where('tipo_tramite', $tipoTramite);
         }
-
         $data = $builder->findAll();
 
         if (empty($data)) {
             return $this->failNotFound("No se encontraron expedientes con convocatoria = $convocatoria" . ($tipoTramite ? " y tipo_tramite = $tipoTramite" : "") . ".");
         }
 
-        return $this->respond($data);
-    } catch (Exception $e) {
+        return $this->response
+            ->setHeader('Access-Control-Allow-Origin', '*')
+            ->setJSON($data);
+        } catch (Exception $e) {
         return $this->failServerError($e->getMessage());
+        }
     }
-}
+
+    public function getLastIDByLinea($tipoTramite = null)
+    {
+        try {
+        if (!$tipoTramite) {
+            return $this->failValidationError("Debe proporcionar un tipo de trámite.");
+        }
+
+        // Buscar el último registro por tipo_tramite, ordenado por ID descendente
+        $data = $this->model
+            ->where('tipo_tramite', $tipoTramite)
+            ->orderBy('id', 'DESC')
+            ->first();
+
+        if (!$data) {
+            return $this->failNotFound("No se encontró ningún registro con tipo_tramite = $tipoTramite.");
+        }
+
+        return $this->response
+            ->setHeader('Access-Control-Allow-Origin', '*')
+            ->setJSON(['last_id' => $data['idExp']]);
+        } catch (\Exception $e) {
+        return $this->failServerError($e->getMessage());
+        }
+    }
 
     // POST /api/pindustexpediente
     public function create()
@@ -122,7 +153,11 @@ public function getByConvocatoria($convocatoria = null)
 
     public function options()
     {
-        return $this->response
-            ->setStatusCode(204); // No Content
-    }    
+    return $this->response
+        ->setHeader('Access-Control-Allow-Origin', '*')
+        ->setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, OPTIONS')
+        ->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+        ->setStatusCode(204); // No Content
+    }
+ 
 }

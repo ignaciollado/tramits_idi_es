@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 // Valid PHP Version?
 $minPHPVersion = '7.2';
