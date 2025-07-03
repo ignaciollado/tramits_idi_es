@@ -119,7 +119,6 @@ class PindustExpedienteController extends ResourceController
         }
     }
 
-
     // PUT /api/pindustexpediente/{id}
     public function update($id = null)
     {
